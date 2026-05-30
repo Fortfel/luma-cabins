@@ -1,0 +1,26 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", ":disableRateLimiting", ":enableVulnerabilityAlerts"],
+  "minimumReleaseAge": "3 days",
+  "vulnerabilityAlerts": {
+    "minimumReleaseAge": null
+  },
+  "prCreation": "not-pending",
+  "packageRules": [
+    {
+      "enabled": false,
+      "matchPackageNames": ["/^@workspace//"]
+    },
+    {
+      "matchFileNames": ["apps/**"],
+      "matchDepTypes": ["workspace"],
+      "enabled": false
+    }
+  ],
+  "updateInternalDeps": true,
+  "rangeStrategy": "bump",
+  "automerge": false,
+  "npm": {
+    "managerFilePatterns": ["/(^|/)package\\.json$/", "/(^|/)package\\.json\\.hbs$/"]
+  }
+}

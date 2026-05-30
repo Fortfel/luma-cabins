@@ -1,0 +1,44 @@
+{
+  "name": "nextjs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm with-env next dev",
+    "build": "dotenv -v NODE_ENV=production -e ../../.env -- next build",
+    "start": "dotenv -v NODE_ENV=production -e ../../.env -- next start",
+    "typegen": "pnpm with-env next typegen",
+    "with-env": "dotenv -e ../../.env --",
+    "lint": "pnpm typegen && eslint --flag unstable_native_nodejs_ts_config",
+    "typecheck": "pnpm typegen && tsc --noEmit",
+    "format": "prettier --check . --ignore-path ../../.gitignore --ignore-path .prettierignore"
+  },
+  "dependencies": {
+    "@t3-oss/env-nextjs": "^0.13.11",
+    "@tabler/icons-react": "catalog:",
+    "@tanstack/react-form": "catalog:",
+    "@workspace/ui": "workspace:*",
+    "lucide-react": "catalog:",
+    "motion": "catalog:",
+    "next": "^16.2.4",
+    "react": "catalog:react19",
+    "react-dom": "catalog:react19",
+    "sonner": "catalog:",
+    "url-join": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "@types/react": "catalog:react19",
+    "@types/react-dom": "catalog:react19",
+    "@workspace/eslint-config": "workspace:*",
+    "@workspace/prettier-config": "workspace:*",
+    "@workspace/tailwind-config": "workspace:*",
+    "@workspace/typescript-config": "workspace:*",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:"
+  },
+  "prettier": "@workspace/prettier-config"
+}

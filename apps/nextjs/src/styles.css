@@ -1,0 +1,3 @@
+@import '@workspace/tailwind-config/theme';
+
+@source '../../../packages/ui/src/**/*.{ts,tsx}';

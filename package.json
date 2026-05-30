@@ -1,0 +1,36 @@
+{
+  "name": "luma-cabins",
+  "private": true,
+  "engines": {
+    "node": "^22.21.0",
+    "pnpm": "^10.33.0"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo watch dev --continue",
+    "start": "turbo run start",
+    "lint": "turbo run lint --continue -- --cache --cache-location .cache/.eslintcache",
+    "lint:fix": "turbo run lint --continue -- --fix --cache --cache-location .cache/.eslintcache",
+    "lint:ws": "pnpm dlx sherif@latest",
+    "typecheck": "turbo run typecheck",
+    "format": "turbo run format --continue -- --cache --cache-location .cache/.prettiercache",
+    "format:fix": "turbo run format --continue -- --write --cache --cache-location .cache/.prettiercache",
+    "clean": "pnpm run clean:node_modules && pnpm run clean:cache && pnpm run clean:build",
+    "clean:lock": "rimraf --glob **/package-lock.json **/pnpm-lock.yaml **/yarn.lock",
+    "clean:node_modules": "rimraf --glob **/node_modules",
+    "clean:cache": "rimraf --glob **/.cache **/.turbo",
+    "clean:build": "rimraf --glob **/dist **/build **/.next",
+    "postinstall": "pnpm lint:ws"
+  },
+  "devDependencies": {
+    "@turbo/gen": "2.9.6",
+    "@workspace/prettier-config": "workspace:*",
+    "dotenv-cli": "^11.0.0",
+    "prettier": "catalog:",
+    "rimraf": "^6.1.3",
+    "turbo": "2.9.6",
+    "typescript": "catalog:"
+  },
+  "prettier": "@workspace/prettier-config"
+}
