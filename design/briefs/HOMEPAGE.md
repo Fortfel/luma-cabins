@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Build a premium homepage-style landing page for a fictional modular cabin brand.
+Build a premium homepage-style landing page for a fictional pre-designed cabin brand.
 
 The project is intended as an Upwork portfolio piece that demonstrates the ability to take a premium brand idea from strategy to structure, visual direction, responsive frontend implementation, and deployment.
 
@@ -49,7 +49,7 @@ The project should feel like a complete premium landing page delivery, not just 
 
 ## Category
 
-Premium modular cabins.
+Premium pre-designed cabins.
 
 ## Region Feel
 
@@ -128,19 +128,19 @@ The audience cares about:
 
 ## Offer
 
-Luma Cabins offers pre-designed modular cabins with curated customization and optional add-on modules.
+Luma Cabins offers pre-designed cabins with curated customization and optional add-ons.
 
-The offer is closer to a premium modular cabin product than a traditional architecture agency.
+The offer is closer to a premium pre-designed cabin product than a traditional architecture agency.
 
 ## Core Offer
 
-Choose a cabin model, customize selected finishes and systems, add optional modules, prepare the site, then install.
+Choose a cabin model, customize selected finishes and systems, add optional enhancements, prepare the site, then install.
 
 ## What It Is
 
 - Pre-designed cabin models
 - Curated customization
-- Modular add-ons
+- Optional add-ons
 - High-performance compact homes
 - Premium retreat spaces
 - Solar-ready by default
@@ -206,18 +206,19 @@ Longer stays, small families, remote work, more comfortable retreats.
 
 ---
 
-## Add-on Modules
+## Optional Add-ons
 
-Supported modules:
+Supported add-ons:
 
-- Sauna module
-- Workspace module
-- Storage / utility module
-- Deck / terrace extension
+- Sauna package
+- Plunge pool
+- Deck Lounge Package
 
-Modules should feel like part of the cabin system, not a separate top-level product category.
+Deck Lounge Package should suggest a more comfortable outdoor living setup, such as built-in seating, shade, and optional media features.
 
-They can appear inside model sections, model detail pages, or the modular system section depending on the design direction.
+Add-ons should feel like part of the cabin offer, not a separate top-level product category.
+
+They can appear inside model sections, model detail pages, or the customization section depending on the design direction.
 
 ---
 
@@ -227,9 +228,9 @@ Customization should feel curated, not unlimited.
 
 ## Principle
 
-The core architecture stays fixed. Clients customize finishes, energy setup, and selected add-on modules.
+The core architecture stays fixed. Clients customize finishes, energy setup, and selected add-ons.
 
-This supports the brand promise of a faster, simpler, higher-quality modular cabin process without the complexity of a fully custom build.
+This supports the brand promise of a faster, simpler, higher-quality pre-designed cabin process without the complexity of a fully custom build.
 
 ## Possible Customization Options
 
@@ -251,12 +252,11 @@ Energy setup:
 - Solar-ready
 - Optional off-grid package
 
-Modules:
+Add-ons:
 
 - Sauna
-- Workspace
-- Storage / utility
-- Deck / terrace
+- Plunge pool
+- Deck Lounge Package
 
 ---
 
@@ -330,7 +330,7 @@ FAQ
 
 ## Notes
 
-- Modules do not need to be a top-level nav item
+- Add-ons do not need to be a top-level nav item
 - Pricing does not need to be in the homepage nav yet
 - Pricing can be handled later on model detail pages or a separate page
 - FAQ can link to a section on the homepage
@@ -360,7 +360,7 @@ Sell the feeling first.
 
 The hero should communicate:
 
-- Modular cabins
+- Pre-designed cabins
 - Slower living
 - Nature retreat
 - Compact high-performance homes
@@ -413,7 +413,7 @@ Pricing can be explored later on detail pages or a separate pricing page.
 
 ---
 
-## 3. Modular System / Customization
+## 3. Pre-Designed System / Customization
 
 Purpose:
 
@@ -423,7 +423,7 @@ Must communicate:
 
 - Fixed core architecture
 - Curated customization
-- Optional modules
+- Optional add-ons
 - Faster and simpler than custom building
 - Quality and performance benefits of a controlled system
 
@@ -436,7 +436,7 @@ Possible content themes:
 
 ---
 
-## 4. Why Modular Cabins
+## 4. Why Pre-Designed Cabins
 
 Purpose:
 
@@ -514,7 +514,7 @@ Suggested steps:
 
 ```txt
 Choose your model
-Customize finishes and modules
+Customize finishes and add-ons
 Review your site
 Prepare foundations and utilities
 Produce the cabin
@@ -539,7 +539,7 @@ Suggested FAQ topics:
 - What foundation is required?
 - How long does production and installation take?
 - Are permits included?
-- Can I add modules later?
+- Can I add the deck lounge package or pool later?
 - Where do you deliver?
 
 The FAQ should be practical, not overly brand-focused.
@@ -577,7 +577,7 @@ Recommended pricing approach later:
 
 ```txt
 From €89,000
-Final pricing depends on selected modules, finishes, site access, and installation requirements.
+Final pricing depends on selected add-ons, finishes, site access, and installation requirements.
 ```
 
 ---
@@ -667,7 +667,7 @@ Best for:
 
 ## 5. Product-System Premium
 
-More structured and clear, with model cards, specs, modules, and process clarity.
+More structured and clear, with model cards, specs, add-ons, and process clarity.
 
 Best for:
 
@@ -695,6 +695,6 @@ Use visuals and structure to communicate quality.
 
 Avoid long blocks of text.
 
-Use structured content blocks for specs, modules, sustainability points, and process steps.
+Use structured content blocks for specs, add-ons, sustainability points, and process steps.
 
 ---
