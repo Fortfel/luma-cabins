@@ -1,0 +1,5629 @@
+{
+  "version": "2.13",
+  "children": [
+    {
+      "type": "frame",
+      "id": "u91qr5",
+      "x": 2593,
+      "y": 959,
+      "name": "V2: Dark Cinematic Luxury2",
+      "metadata": {
+        "type": "unsplash",
+        "username": "fabulu75",
+        "link": "https://unsplash.com/@fabulu75",
+        "author": "Fabrice Villard"
+      },
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "layout": "none",
+      "children": [
+        {
+          "type": "rectangle",
+          "id": "uPbQ0",
+          "x": 0,
+          "y": 0,
+          "name": "hut background",
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "images/hero-background-v2.png",
+            "mode": "fill"
+          },
+          "width": 1440,
+          "height": 900
+        },
+        {
+          "type": "rectangle",
+          "id": "nYyYS",
+          "x": 0,
+          "y": 0,
+          "name": "V2 Cinematic Black Overlay",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 180,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#00000073",
+                "position": 0
+              },
+              {
+                "color": "#00000014",
+                "position": 0.51
+              },
+              {
+                "color": "#000000b3",
+                "position": 1
+              }
+            ]
+          },
+          "width": 1440,
+          "height": 900
+        },
+        {
+          "type": "rectangle",
+          "id": "G0YxH",
+          "x": 0,
+          "y": 0,
+          "name": "V2 Moody Dark Overlay",
+          "enabled": false,
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 180,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#131211a6",
+                "position": 0
+              },
+              {
+                "color": "#13121159",
+                "position": 0.5
+              },
+              {
+                "color": "#131211cc",
+                "position": 1
+              }
+            ]
+          },
+          "width": 1440,
+          "height": 900
+        },
+        {
+          "type": "frame",
+          "id": "rVjIH",
+          "x": 64,
+          "y": 560,
+          "name": "Hero Content",
+          "width": 620,
+          "layout": "vertical",
+          "gap": 24,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "Z4TwPb",
+              "name": "Heading",
+              "fill": "#F7F4EF",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Live closer\nto what matters",
+              "lineHeight": 1.15,
+              "fontFamily": "Cabinet Grotesk Variable",
+              "fontSize": 56,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "p690mf",
+              "name": "Subheading",
+              "fill": "#A9A5A0",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Premium pre-designed cabins, designed to help you slow down,\nreconnect, and feel at home - anywhere.",
+              "lineHeight": 1.5,
+              "fontFamily": "Satoshi Variable",
+              "fontSize": 18,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "o5nCs",
+              "name": "Primary Button",
+              "width": "fill_container",
+              "fill": "#F7F4EF",
+              "cornerRadius": 30,
+              "padding": [
+                16,
+                28
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "i41OI",
+                  "name": "Button Text",
+                  "fill": "#39442bff",
+                  "content": "Get Started",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "UD2dm",
+          "x": 64,
+          "y": 772,
+          "name": "Bottom Features Bar",
+          "enabled": false,
+          "width": 1312,
+          "fill": "#13121166",
+          "cornerRadius": 12,
+          "effect": [
+            {
+              "type": "background_blur",
+              "radius": 16
+            },
+            {
+              "type": "shadow",
+              "shadowType": "outer",
+              "color": "#00000033",
+              "offset": {
+                "x": 0,
+                "y": 10
+              },
+              "blur": 30
+            }
+          ],
+          "gap": 24,
+          "padding": [
+            24,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "KcKx7",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "vxLAL",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "layers",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "mGMvh",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "p2g9a9",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Precision Built",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "x5MoIK",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Factory-crafted modules for superior quality.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "UZss1",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "bfaYJ",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "truck",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "kY70J",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "I31wN",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Delivered & Installed",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "lsPTm",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Faster build times, less on-site disruption.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "YrUvI",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "y3B3F",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "shield",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "lTmTi",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "x0vFkP",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Designed to Last",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "toL7z",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Durable materials. Timeless design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "DVxRP",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "a81Owl",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "leaf",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "t8Q6ZY",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "mlX5Y",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Made to Belong",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Q6kpg",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Sustainable by nature. Considered by design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "F7leMZ",
+          "x": 64,
+          "y": 40,
+          "name": "Nav Bar Type 1 (White Pill)",
+          "enabled": false,
+          "width": 1312,
+          "height": 72,
+          "fill": "#FDFBF7",
+          "cornerRadius": 36,
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#0000000f",
+            "offset": {
+              "x": 0,
+              "y": 4
+            },
+            "blur": 20
+          },
+          "padding": [
+            0,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "x2y3V",
+              "name": "Logo Group",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "path",
+                  "id": "OAAvP",
+                  "name": "Cabin Icon",
+                  "geometry": "M4 22l12-19 12 19z m6 0l6-11 6 11z m-9 2l30 0m-27 3l24 0",
+                  "viewBox": [
+                    0,
+                    0,
+                    32,
+                    32
+                  ],
+                  "fill": "#00000000",
+                  "width": 32,
+                  "height": 32,
+                  "stroke": "#1E1D1B",
+                  "strokeWidth": 1.5,
+                  "strokeLinejoin": "round",
+                  "strokeLinecap": "round"
+                },
+                {
+                  "type": "frame",
+                  "id": "YZXq1",
+                  "name": "Logo Text",
+                  "layout": "vertical",
+                  "gap": 1,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "bD2Ut",
+                      "name": "LUMA",
+                      "fill": "#1E1D1B",
+                      "content": "LUMA",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 16,
+                      "fontWeight": "bold",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "yvE0e",
+                      "name": "CABINS",
+                      "fill": "#5A5652",
+                      "content": "CABINS",
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 10,
+                      "fontWeight": "medium",
+                      "letterSpacing": 3
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "weXF3",
+              "name": "Menu Links",
+              "gap": 32,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "S2ecoQ",
+                  "name": "Models",
+                  "fill": "#1E1D1B",
+                  "content": "Models",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "semibold"
+                },
+                {
+                  "type": "text",
+                  "id": "ONCdV",
+                  "name": "How it works",
+                  "fill": "#1E1D1B",
+                  "content": "How it works",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "semibold"
+                },
+                {
+                  "type": "text",
+                  "id": "yeFCR",
+                  "name": "Portfolio",
+                  "fill": "#1E1D1B",
+                  "content": "Portfolio",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "semibold"
+                },
+                {
+                  "type": "text",
+                  "id": "lwct1",
+                  "name": "FAQ",
+                  "fill": "#1E1D1B",
+                  "content": "FAQ",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "semibold"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "XbjO1",
+              "name": "Consultation Button",
+              "fill": "#1E1D1B",
+              "cornerRadius": 20,
+              "padding": [
+                10,
+                24
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "LsreD",
+                  "name": "Button Text",
+                  "fill": "#FDFBF7",
+                  "content": "Get Started",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 14,
+                  "fontWeight": "bold"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "UUXvq",
+          "x": 64,
+          "y": 40,
+          "name": "Nav Bar Type 2 (Dark Transparent)v2",
+          "enabled": false,
+          "width": 1312,
+          "height": 72,
+          "fill": "#12111066",
+          "cornerRadius": 12,
+          "stroke": {
+            "type": "color",
+            "color": "#ffffff1f",
+            "enabled": false
+          },
+          "strokeWidth": 1,
+          "effect": [
+            {
+              "type": "background_blur",
+              "radius": 12
+            },
+            {
+              "type": "shadow",
+              "shadowType": "outer",
+              "color": "#00000040",
+              "offset": {
+                "x": 0,
+                "y": 8
+              },
+              "blur": 24
+            }
+          ],
+          "padding": [
+            0,
+            24
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "Ucm7A",
+              "name": "Logo Group",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "path",
+                  "id": "VCidP",
+                  "name": "Cabin Icon",
+                  "geometry": "M4 22l12-19 12 19z m6 0l6-11 6 11z m-9 2l30 0m-27 3l24 0",
+                  "viewBox": [
+                    0,
+                    0,
+                    32,
+                    32
+                  ],
+                  "fill": "#00000000",
+                  "width": 32,
+                  "height": 32,
+                  "stroke": "#F7F4EF",
+                  "strokeWidth": 1.5,
+                  "strokeLinejoin": "round",
+                  "strokeLinecap": "round"
+                },
+                {
+                  "type": "frame",
+                  "id": "TUcHD",
+                  "name": "Logo Text",
+                  "layout": "vertical",
+                  "gap": 1,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "N7dqt",
+                      "name": "LUMA",
+                      "fill": "#F7F4EF",
+                      "content": "LUMA",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 16,
+                      "fontWeight": "bold",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "vRrrB",
+                      "name": "CABINS",
+                      "fill": "#A9A5A0",
+                      "content": "CABINS",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 10,
+                      "fontWeight": "medium",
+                      "letterSpacing": 3
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "cJXO0",
+              "name": "Menu Links",
+              "gap": 32,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "km9If",
+                  "name": "Models",
+                  "fill": "#F7F4EF",
+                  "content": "Models",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "text",
+                  "id": "J6BPRx",
+                  "name": "How it works",
+                  "fill": "#F7F4EF",
+                  "content": "How it works",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "text",
+                  "id": "S0yblP",
+                  "name": "Portfolio",
+                  "fill": "#F7F4EF",
+                  "content": "Portfolio",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "text",
+                  "id": "mEBjI",
+                  "name": "FAQ",
+                  "fill": "#F7F4EF",
+                  "content": "FAQ",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "NnrbP",
+              "name": "Consultation Button",
+              "fill": "#39442bff",
+              "cornerRadius": 20,
+              "padding": [
+                10,
+                24
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "XuAC1",
+                  "name": "Button Text",
+                  "fill": "#FFFFFF",
+                  "content": "Book consultation",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 14,
+                  "fontWeight": "bold"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "g8wcT",
+          "x": 64,
+          "y": 40,
+          "name": "Nav Bar Type 2 (Dark Transparent)",
+          "width": 1312,
+          "height": 72,
+          "fill": {
+            "type": "color",
+            "color": "#12111066",
+            "enabled": false
+          },
+          "cornerRadius": 12,
+          "stroke": {
+            "type": "color",
+            "color": "#ffffff1f",
+            "enabled": false
+          },
+          "strokeWidth": 1,
+          "effect": [
+            {
+              "type": "background_blur",
+              "radius": 40
+            },
+            {
+              "type": "shadow",
+              "shadowType": "outer",
+              "enabled": false,
+              "color": "#00000040",
+              "offset": {
+                "x": 0,
+                "y": 8
+              },
+              "blur": 24
+            }
+          ],
+          "padding": [
+            0,
+            24
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "S447P",
+              "name": "Logo Group",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "path",
+                  "id": "W5n5jz",
+                  "name": "Cabin Icon",
+                  "geometry": "M4 22l12-19 12 19z m6 0l6-11 6 11z m-9 2l30 0m-27 3l24 0",
+                  "viewBox": [
+                    0,
+                    0,
+                    32,
+                    32
+                  ],
+                  "fill": "#00000000",
+                  "width": 32,
+                  "height": 32,
+                  "stroke": "#F7F4EF",
+                  "strokeWidth": 1.5,
+                  "strokeLinejoin": "round",
+                  "strokeLinecap": "round"
+                },
+                {
+                  "type": "frame",
+                  "id": "cfR8f",
+                  "name": "Logo Text",
+                  "layout": "vertical",
+                  "gap": 1,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "yDPdc",
+                      "name": "LUMA",
+                      "fill": "#F7F4EF",
+                      "content": "LUMA",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 16,
+                      "fontWeight": "bold",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "L2nwH",
+                      "name": "CABINS",
+                      "fill": "#A9A5A0",
+                      "content": "CABINS",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 10,
+                      "fontWeight": "medium",
+                      "letterSpacing": 3
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ysxN1",
+              "name": "Menu Links",
+              "gap": 32,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "hTg9B",
+                  "name": "Models",
+                  "fill": "#F7F4EF",
+                  "content": "Models",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "text",
+                  "id": "mRnAV",
+                  "name": "How it works",
+                  "fill": "#F7F4EF",
+                  "content": "How it works",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "text",
+                  "id": "G0cXbO",
+                  "name": "Portfolio",
+                  "fill": "#F7F4EF",
+                  "content": "Portfolio",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "text",
+                  "id": "m2Wr7",
+                  "name": "FAQ",
+                  "fill": "#F7F4EF",
+                  "content": "FAQ",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "RMWjd",
+              "name": "Consultation Button",
+              "fill": "#39442bff",
+              "cornerRadius": 20,
+              "padding": [
+                10,
+                24
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Bw1ff",
+                  "name": "Button Text",
+                  "fill": "#FFFFFF",
+                  "content": "Get Started",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 14,
+                  "fontWeight": "bold"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "v65j8U",
+          "x": 64,
+          "y": 772,
+          "name": "Bottom Features Bar - V2 (Vertical Dividers)",
+          "enabled": false,
+          "width": 1312,
+          "height": 80,
+          "fill": "#00000000",
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "FEFr2",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "lJw1I",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "layers",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "UM7b4",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "JLX6e",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Precision Built",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "uTbH1",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Factory-crafted modules for superior quality.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "Jg5l7",
+              "name": "Divider",
+              "fill": "#f7f4ef33",
+              "width": 1,
+              "height": 40
+            },
+            {
+              "type": "frame",
+              "id": "Y2Bpr",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "pIHXZ",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "truck",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "P4l24U",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "fdQpu",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Delivered & Installed",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "c7viz",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Faster build times, less on-site disruption.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "omx4j",
+              "name": "Divider",
+              "fill": "#f7f4ef33",
+              "width": 1,
+              "height": 40
+            },
+            {
+              "type": "frame",
+              "id": "p1m0P5",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "XMp6s",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "shield",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "uUhNu",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "aqQFM",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Designed to Last",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "pCThj",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Durable materials. Timeless design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "foGHs",
+              "name": "Divider",
+              "fill": "#f7f4ef33",
+              "width": 1,
+              "height": 40
+            },
+            {
+              "type": "frame",
+              "id": "iO7lH",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "KgCdi",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "leaf",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "nAo3z",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ERKXR",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Made to Belong",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Znhc8",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Sustainable by nature. Considered by design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ajpUi",
+          "x": 64,
+          "y": 772,
+          "name": "Bottom Features Bar - V3 (Top Line Minimal)",
+          "enabled": false,
+          "width": 1312,
+          "height": 90,
+          "fill": "#00000000",
+          "layout": "vertical",
+          "gap": 16,
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "UUlJt",
+              "name": "Divider Line",
+              "fill": "#f7f4ef26",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "s3GQu",
+              "name": "Row Container",
+              "width": "fill_container",
+              "gap": 32,
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "AHz9S",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "b228Uf",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Precision Built",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 15,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "m1OTP",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Factory-crafted modules for superior quality.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "N1uWjM",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "mhWjo",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Delivered & Installed",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 15,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "G7mQrx",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Faster build times, less on-site disruption.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "IlyOA",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "VWNsc",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Designed to Last",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 15,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "duvc1",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Durable materials. Timeless design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "EUhuT",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "T1hx9I",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Made to Belong",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 15,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "h1WzH",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Sustainable by nature. Considered by design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "bx7nB",
+          "x": 1040,
+          "y": 590,
+          "name": "Bottom Features Bar - V4 (Right Stack)",
+          "enabled": false,
+          "width": 336,
+          "fill": {
+            "type": "color",
+            "color": "#13121173",
+            "enabled": false
+          },
+          "cornerRadius": 12,
+          "effect": [
+            {
+              "type": "background_blur",
+              "radius": 16
+            },
+            {
+              "type": "shadow",
+              "shadowType": "outer",
+              "enabled": false,
+              "color": "#00000040",
+              "offset": {
+                "x": 0,
+                "y": 8
+              },
+              "blur": 24
+            }
+          ],
+          "layout": "vertical",
+          "gap": 24,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "p56tPw",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "J0o8a",
+                  "name": "Icon",
+                  "width": 28,
+                  "height": 28,
+                  "icon": "layers",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "oOuTl",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "VopDT",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Precision Built",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "IFFrd",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Factory-crafted modules for superior quality.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ddFQA",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "qcRFU",
+                  "name": "Icon",
+                  "width": 28,
+                  "height": 28,
+                  "icon": "truck",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "vBpN4",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "M7UeL",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Delivered & Installed",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "QY0qQ",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Faster build times, less on-site disruption.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wcQkc",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "ShhI6",
+                  "name": "Icon",
+                  "width": 28,
+                  "height": 28,
+                  "icon": "shield",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "walKF",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "YLrf0",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Designed to Last",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "QAW0c",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Durable materials. Timeless design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "veObX",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "JxqFa",
+                  "name": "Icon",
+                  "width": 28,
+                  "height": 28,
+                  "icon": "leaf",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "TWBq1",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Wj9wx",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Made to Belong",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "GxYPs",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Sustainable by nature. Considered by design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "fXoNI",
+          "x": 807,
+          "y": 742,
+          "name": "Bottom Features Bar - V4 (2x2 Grid Stack)",
+          "width": 569,
+          "fill": {
+            "type": "color",
+            "color": "#13121173",
+            "enabled": false
+          },
+          "cornerRadius": 12,
+          "effect": [
+            {
+              "type": "background_blur",
+              "radius": 16,
+              "enabled": false
+            },
+            {
+              "type": "shadow",
+              "shadowType": "outer",
+              "enabled": false,
+              "color": "#00000040",
+              "offset": {
+                "x": 0,
+                "y": 8
+              },
+              "blur": 24
+            }
+          ],
+          "layout": "vertical",
+          "gap": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "x4Qfwe",
+              "name": "Row 1",
+              "width": "fill_container",
+              "gap": 24,
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "KzRk1",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "qt8wM",
+                      "name": "Icon",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "layers",
+                      "library": "lucide",
+                      "fill": "#F7F4EF"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "cuU2S",
+                      "name": "Texts",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Pkic9",
+                          "name": "Title",
+                          "fill": "#F7F4EF",
+                          "content": "Precision Built",
+                          "fontFamily": "Cabinet Grotesk Variable",
+                          "fontSize": 14,
+                          "fontWeight": "bold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "MyG5B",
+                          "name": "Description",
+                          "fill": "#A9A5A0",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Factory-crafted modules for superior quality.",
+                          "lineHeight": 1.4,
+                          "fontFamily": "Satoshi Variable",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "yp6IC",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "MbbIq",
+                      "name": "Icon",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "truck",
+                      "library": "lucide",
+                      "fill": "#F7F4EF"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "GANI8",
+                      "name": "Texts",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "h89Yfy",
+                          "name": "Title",
+                          "fill": "#F7F4EF",
+                          "content": "Delivered & Installed",
+                          "fontFamily": "Cabinet Grotesk Variable",
+                          "fontSize": 14,
+                          "fontWeight": "bold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "BAmtU",
+                          "name": "Description",
+                          "fill": "#A9A5A0",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Faster build times, less on-site disruption.",
+                          "lineHeight": 1.4,
+                          "fontFamily": "Satoshi Variable",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "qdLyR",
+              "name": "Row 2",
+              "width": "fill_container",
+              "gap": 24,
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "x05cK",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "suj4E",
+                      "name": "Icon",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "shield",
+                      "library": "lucide",
+                      "fill": "#F7F4EF"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "dECeQ",
+                      "name": "Texts",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ccFtl",
+                          "name": "Title",
+                          "fill": "#F7F4EF",
+                          "content": "Designed to Last",
+                          "fontFamily": "Cabinet Grotesk Variable",
+                          "fontSize": 14,
+                          "fontWeight": "bold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "qEu8w",
+                          "name": "Description",
+                          "fill": "#A9A5A0",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Durable materials. Timeless design.",
+                          "lineHeight": 1.4,
+                          "fontFamily": "Satoshi Variable",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "edCGO",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "XDzXx",
+                      "name": "Icon",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "leaf",
+                      "library": "lucide",
+                      "fill": "#F7F4EF"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "j35aqN",
+                      "name": "Texts",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "r8sn2",
+                          "name": "Title",
+                          "fill": "#F7F4EF",
+                          "content": "Made to Belong",
+                          "fontFamily": "Cabinet Grotesk Variable",
+                          "fontSize": 14,
+                          "fontWeight": "bold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "E0X7r",
+                          "name": "Description",
+                          "fill": "#A9A5A0",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Sustainable by nature. Considered by design.",
+                          "lineHeight": 1.4,
+                          "fontFamily": "Satoshi Variable",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "H875el",
+      "x": 4073,
+      "y": 959,
+      "name": "V2: Dark Cinematic Luxury3",
+      "metadata": {
+        "type": "unsplash",
+        "username": "fabulu75",
+        "link": "https://unsplash.com/@fabulu75",
+        "author": "Fabrice Villard"
+      },
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "layout": "none",
+      "children": [
+        {
+          "type": "rectangle",
+          "id": "RancA",
+          "x": 0,
+          "y": 0,
+          "name": "hut background",
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "images/hero-background-v2.png",
+            "mode": "fill"
+          },
+          "width": 1440,
+          "height": 900
+        },
+        {
+          "type": "rectangle",
+          "id": "qLDqO",
+          "x": 0,
+          "y": 0,
+          "name": "V2 Moss Green Overlay",
+          "enabled": false,
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 180,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#39442b26",
+                "position": 0
+              },
+              {
+                "color": "#39442b59",
+                "position": 0.55
+              },
+              {
+                "color": "#39442bb3",
+                "position": 1
+              }
+            ]
+          },
+          "width": 1440,
+          "height": 900
+        },
+        {
+          "type": "rectangle",
+          "id": "CZvMz",
+          "x": 0,
+          "y": 0,
+          "name": "V2 Cinematic Black Overlay",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 180,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#00000073",
+                "position": 0
+              },
+              {
+                "color": "#00000014",
+                "position": 0.51
+              },
+              {
+                "color": "#00000099",
+                "position": 1
+              }
+            ]
+          },
+          "width": 1440,
+          "height": 900
+        },
+        {
+          "type": "rectangle",
+          "id": "SabHt",
+          "x": 0,
+          "y": 0,
+          "name": "V2 Moody Dark Overlay",
+          "enabled": false,
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 180,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#131211a6",
+                "position": 0
+              },
+              {
+                "color": "#13121159",
+                "position": 0.5
+              },
+              {
+                "color": "#131211cc",
+                "position": 1
+              }
+            ]
+          },
+          "width": 1440,
+          "height": 900
+        },
+        {
+          "type": "frame",
+          "id": "kCmlw",
+          "x": 64,
+          "y": 450,
+          "name": "Hero Content",
+          "width": 620,
+          "layout": "vertical",
+          "gap": 24,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "UEQYv",
+              "name": "Heading",
+              "fill": "#F7F4EF",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Live closer\nto what matters",
+              "lineHeight": 1.15,
+              "fontFamily": "Cabinet Grotesk Variable",
+              "fontSize": 56,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "IkHvE",
+              "name": "Subheading",
+              "fill": "#A9A5A0",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Premium pre-designed cabins, designed to help you slow down,\nreconnect, and feel at home - anywhere.",
+              "lineHeight": 1.5,
+              "fontFamily": "Satoshi Variable",
+              "fontSize": 18,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "upiGx",
+              "name": "Primary Button",
+              "width": "fill_container",
+              "fill": "#F7F4EF",
+              "cornerRadius": 30,
+              "padding": [
+                16,
+                28
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "N1OAS",
+                  "name": "Button Text",
+                  "fill": "#39442bff",
+                  "content": "Get Started",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "zRHRE",
+          "x": 64,
+          "y": 772,
+          "name": "Bottom Features Bar",
+          "enabled": false,
+          "width": 1312,
+          "fill": "#13121166",
+          "cornerRadius": 12,
+          "effect": [
+            {
+              "type": "background_blur",
+              "radius": 16
+            },
+            {
+              "type": "shadow",
+              "shadowType": "outer",
+              "color": "#00000033",
+              "offset": {
+                "x": 0,
+                "y": 10
+              },
+              "blur": 30
+            }
+          ],
+          "gap": 24,
+          "padding": [
+            24,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "HYKJu",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "ODcgO",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "layers",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "MnrDb",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "LqtKN",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Precision Built",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "nU0Km",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Factory-crafted modules for superior quality.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "T3UGwM",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "v2Lh7r",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "truck",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "m6gf8",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Q00WcE",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Delivered & Installed",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "YiwOi",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Faster build times, less on-site disruption.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "qPfRB",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "HPGfk",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "shield",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "SzOdw",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ShVUJ",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Designed to Last",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "MUF7B",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Durable materials. Timeless design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ENGHm",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "n1OhN",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "leaf",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "HSnmX",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Wm73e",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Made to Belong",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "MGGTZ",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Sustainable by nature. Considered by design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "wyYxA",
+          "x": 64,
+          "y": 40,
+          "name": "Nav Bar Type 1 (White Pill)",
+          "enabled": false,
+          "width": 1312,
+          "height": 72,
+          "fill": "#FDFBF7",
+          "cornerRadius": 36,
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#0000000f",
+            "offset": {
+              "x": 0,
+              "y": 4
+            },
+            "blur": 20
+          },
+          "padding": [
+            0,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "pc26t",
+              "name": "Logo Group",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "path",
+                  "id": "UAbtE",
+                  "name": "Cabin Icon",
+                  "geometry": "M4 22l12-19 12 19z m6 0l6-11 6 11z m-9 2l30 0m-27 3l24 0",
+                  "viewBox": [
+                    0,
+                    0,
+                    32,
+                    32
+                  ],
+                  "fill": "#00000000",
+                  "width": 32,
+                  "height": 32,
+                  "stroke": "#1E1D1B",
+                  "strokeWidth": 1.5,
+                  "strokeLinejoin": "round",
+                  "strokeLinecap": "round"
+                },
+                {
+                  "type": "frame",
+                  "id": "YUSsQ",
+                  "name": "Logo Text",
+                  "layout": "vertical",
+                  "gap": 1,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "SD2ZF",
+                      "name": "LUMA",
+                      "fill": "#1E1D1B",
+                      "content": "LUMA",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 16,
+                      "fontWeight": "bold",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "YcCPN",
+                      "name": "CABINS",
+                      "fill": "#5A5652",
+                      "content": "CABINS",
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 10,
+                      "fontWeight": "medium",
+                      "letterSpacing": 3
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "jcY5E",
+              "name": "Menu Links",
+              "gap": 32,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Xbxbo",
+                  "name": "Models",
+                  "fill": "#1E1D1B",
+                  "content": "Models",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "semibold"
+                },
+                {
+                  "type": "text",
+                  "id": "HcdVe",
+                  "name": "How it works",
+                  "fill": "#1E1D1B",
+                  "content": "How it works",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "semibold"
+                },
+                {
+                  "type": "text",
+                  "id": "BBlAe",
+                  "name": "Portfolio",
+                  "fill": "#1E1D1B",
+                  "content": "Portfolio",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "semibold"
+                },
+                {
+                  "type": "text",
+                  "id": "h1M4t",
+                  "name": "FAQ",
+                  "fill": "#1E1D1B",
+                  "content": "FAQ",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "semibold"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "p9bZ66",
+              "name": "Consultation Button",
+              "fill": "#1E1D1B",
+              "cornerRadius": 20,
+              "padding": [
+                10,
+                24
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "X6nzHh",
+                  "name": "Button Text",
+                  "fill": "#FDFBF7",
+                  "content": "Get Started",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 14,
+                  "fontWeight": "bold"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "n3RnL",
+          "x": 64,
+          "y": 40,
+          "name": "Nav Bar Type 2 (Dark Transparent)v2",
+          "enabled": false,
+          "width": 1312,
+          "height": 72,
+          "fill": "#12111066",
+          "cornerRadius": 12,
+          "stroke": {
+            "type": "color",
+            "color": "#ffffff1f",
+            "enabled": false
+          },
+          "strokeWidth": 1,
+          "effect": [
+            {
+              "type": "background_blur",
+              "radius": 12
+            },
+            {
+              "type": "shadow",
+              "shadowType": "outer",
+              "color": "#00000040",
+              "offset": {
+                "x": 0,
+                "y": 8
+              },
+              "blur": 24
+            }
+          ],
+          "padding": [
+            0,
+            24
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "L1aF4",
+              "name": "Logo Group",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "path",
+                  "id": "S6WK5K",
+                  "name": "Cabin Icon",
+                  "geometry": "M4 22l12-19 12 19z m6 0l6-11 6 11z m-9 2l30 0m-27 3l24 0",
+                  "viewBox": [
+                    0,
+                    0,
+                    32,
+                    32
+                  ],
+                  "fill": "#00000000",
+                  "width": 32,
+                  "height": 32,
+                  "stroke": "#F7F4EF",
+                  "strokeWidth": 1.5,
+                  "strokeLinejoin": "round",
+                  "strokeLinecap": "round"
+                },
+                {
+                  "type": "frame",
+                  "id": "MlpQN",
+                  "name": "Logo Text",
+                  "layout": "vertical",
+                  "gap": 1,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "o2bKDb",
+                      "name": "LUMA",
+                      "fill": "#F7F4EF",
+                      "content": "LUMA",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 16,
+                      "fontWeight": "bold",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "RTgy1",
+                      "name": "CABINS",
+                      "fill": "#A9A5A0",
+                      "content": "CABINS",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 10,
+                      "fontWeight": "medium",
+                      "letterSpacing": 3
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "z7pN7J",
+              "name": "Menu Links",
+              "gap": 32,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "GGJ6u",
+                  "name": "Models",
+                  "fill": "#F7F4EF",
+                  "content": "Models",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "text",
+                  "id": "l1lYEL",
+                  "name": "How it works",
+                  "fill": "#F7F4EF",
+                  "content": "How it works",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "text",
+                  "id": "HNMyk",
+                  "name": "Portfolio",
+                  "fill": "#F7F4EF",
+                  "content": "Portfolio",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "text",
+                  "id": "AxfZG",
+                  "name": "FAQ",
+                  "fill": "#F7F4EF",
+                  "content": "FAQ",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "h81Qy",
+              "name": "Consultation Button",
+              "fill": "#39442bff",
+              "cornerRadius": 20,
+              "padding": [
+                10,
+                24
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "OXdq1",
+                  "name": "Button Text",
+                  "fill": "#FFFFFF",
+                  "content": "Book consultation",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 14,
+                  "fontWeight": "bold"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "I4Ojnf",
+          "x": 64,
+          "y": 40,
+          "name": "Nav Bar Type 2 (Dark Transparent)",
+          "width": 1312,
+          "height": 72,
+          "fill": {
+            "type": "color",
+            "color": "#12111066",
+            "enabled": false
+          },
+          "cornerRadius": 12,
+          "stroke": {
+            "type": "color",
+            "color": "#ffffff1f",
+            "enabled": false
+          },
+          "strokeWidth": 1,
+          "effect": [
+            {
+              "type": "background_blur",
+              "radius": 40
+            },
+            {
+              "type": "shadow",
+              "shadowType": "outer",
+              "enabled": false,
+              "color": "#00000040",
+              "offset": {
+                "x": 0,
+                "y": 8
+              },
+              "blur": 24
+            }
+          ],
+          "padding": [
+            0,
+            24
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "taVDq",
+              "name": "Logo Group",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "path",
+                  "id": "JZAx9",
+                  "name": "Cabin Icon",
+                  "geometry": "M4 22l12-19 12 19z m6 0l6-11 6 11z m-9 2l30 0m-27 3l24 0",
+                  "viewBox": [
+                    0,
+                    0,
+                    32,
+                    32
+                  ],
+                  "fill": "#00000000",
+                  "width": 32,
+                  "height": 32,
+                  "stroke": "#F7F4EF",
+                  "strokeWidth": 1.5,
+                  "strokeLinejoin": "round",
+                  "strokeLinecap": "round"
+                },
+                {
+                  "type": "frame",
+                  "id": "Fn93p",
+                  "name": "Logo Text",
+                  "layout": "vertical",
+                  "gap": 1,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Ln4wJ",
+                      "name": "LUMA",
+                      "fill": "#F7F4EF",
+                      "content": "LUMA",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 16,
+                      "fontWeight": "bold",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "m05C8s",
+                      "name": "CABINS",
+                      "fill": "#A9A5A0",
+                      "content": "CABINS",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 10,
+                      "fontWeight": "medium",
+                      "letterSpacing": 3
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "yZba6",
+              "name": "Menu Links",
+              "gap": 32,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "DWMJI",
+                  "name": "Models",
+                  "fill": "#F7F4EF",
+                  "content": "Models",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "text",
+                  "id": "f966Z",
+                  "name": "How it works",
+                  "fill": "#F7F4EF",
+                  "content": "How it works",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "text",
+                  "id": "izDwl",
+                  "name": "Portfolio",
+                  "fill": "#F7F4EF",
+                  "content": "Portfolio",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "text",
+                  "id": "zEtzs",
+                  "name": "FAQ",
+                  "fill": "#F7F4EF",
+                  "content": "FAQ",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "LJNQN",
+              "name": "Consultation Button",
+              "fill": "#39442bff",
+              "cornerRadius": 20,
+              "padding": [
+                10,
+                24
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "J90OAh",
+                  "name": "Button Text",
+                  "fill": "#FFFFFF",
+                  "content": "Get Started",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 14,
+                  "fontWeight": "bold"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "wtn4b",
+          "x": 64,
+          "y": 772,
+          "name": "Bottom Features Bar - V2 (Vertical Dividers)",
+          "enabled": false,
+          "width": 1312,
+          "height": 80,
+          "fill": "#00000000",
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "Z47Z7T",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "PedVL",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "layers",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "GTOWs",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "w2JylT",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Precision Built",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "gFfRg",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Factory-crafted modules for superior quality.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "c9krrm",
+              "name": "Divider",
+              "fill": "#f7f4ef33",
+              "width": 1,
+              "height": 40
+            },
+            {
+              "type": "frame",
+              "id": "o0OmKa",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "t2sRUx",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "truck",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "DN2Vh",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "EqKBG",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Delivered & Installed",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Hu1B9",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Faster build times, less on-site disruption.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "WHe6U",
+              "name": "Divider",
+              "fill": "#f7f4ef33",
+              "width": 1,
+              "height": 40
+            },
+            {
+              "type": "frame",
+              "id": "WSOf0",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "zt3ob",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "shield",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "XKWvk",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "NWP7N",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Designed to Last",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "PQLzD",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Durable materials. Timeless design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "O2fNVB",
+              "name": "Divider",
+              "fill": "#f7f4ef33",
+              "width": 1,
+              "height": 40
+            },
+            {
+              "type": "frame",
+              "id": "s9I3y",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "RndRd",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "leaf",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "sWVjC",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "eLjaJ",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Made to Belong",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "P1iPFE",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Sustainable by nature. Considered by design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "B3xA7",
+          "x": 64,
+          "y": 772,
+          "name": "Bottom Features Bar - V3 (Top Line with Icons)",
+          "width": 1312,
+          "height": 90,
+          "fill": "#00000000",
+          "layout": "vertical",
+          "gap": 16,
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "ZU1fz",
+              "name": "Divider Line",
+              "fill": "#f7f4ef26",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "EbwoE",
+              "name": "Row Container",
+              "width": "fill_container",
+              "gap": 32,
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "hhk5C",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "mmgCb",
+                      "name": "Icon",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "layers",
+                      "library": "lucide",
+                      "fill": "#F7F4EF"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "OGQey",
+                      "name": "Texts",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "bkCEm",
+                          "name": "Title",
+                          "fill": "#F7F4EF",
+                          "content": "Precision Built",
+                          "fontFamily": "Cabinet Grotesk Variable",
+                          "fontSize": 15,
+                          "fontWeight": "bold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Dngi3",
+                          "name": "Description",
+                          "fill": "#A9A5A0",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Factory-crafted modules for superior quality.",
+                          "lineHeight": 1.4,
+                          "fontFamily": "Satoshi Variable",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "B7FfXv",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "qCWy7",
+                      "name": "Icon",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "truck",
+                      "library": "lucide",
+                      "fill": "#F7F4EF"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "JYaXj",
+                      "name": "Texts",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "MidjT",
+                          "name": "Title",
+                          "fill": "#F7F4EF",
+                          "content": "Delivered & Installed",
+                          "fontFamily": "Cabinet Grotesk Variable",
+                          "fontSize": 15,
+                          "fontWeight": "bold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "mq8HS",
+                          "name": "Description",
+                          "fill": "#A9A5A0",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Faster build times, less on-site disruption.",
+                          "lineHeight": 1.4,
+                          "fontFamily": "Satoshi Variable",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "b34pQ",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "z3VI8T",
+                      "name": "Icon",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "shield",
+                      "library": "lucide",
+                      "fill": "#F7F4EF"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "TsqO3",
+                      "name": "Texts",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "TovyU",
+                          "name": "Title",
+                          "fill": "#F7F4EF",
+                          "content": "Designed to Last",
+                          "fontFamily": "Cabinet Grotesk Variable",
+                          "fontSize": 15,
+                          "fontWeight": "bold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "C1zWi",
+                          "name": "Description",
+                          "fill": "#A9A5A0",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Durable materials. Timeless design.",
+                          "lineHeight": 1.4,
+                          "fontFamily": "Satoshi Variable",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "MpXNK",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "b3j3z",
+                      "name": "Icon",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "leaf",
+                      "library": "lucide",
+                      "fill": "#F7F4EF"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "S6PzHM",
+                      "name": "Texts",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "m3RPL",
+                          "name": "Title",
+                          "fill": "#F7F4EF",
+                          "content": "Made to Belong",
+                          "fontFamily": "Cabinet Grotesk Variable",
+                          "fontSize": 15,
+                          "fontWeight": "bold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "tqhou",
+                          "name": "Description",
+                          "fill": "#A9A5A0",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Sustainable by nature. Considered by design.",
+                          "lineHeight": 1.4,
+                          "fontFamily": "Satoshi Variable",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "u0wQ0",
+          "x": 64,
+          "y": 772,
+          "name": "Bottom Features Bar - V3 (Top Line Minimal)",
+          "enabled": false,
+          "width": 1312,
+          "height": 90,
+          "fill": "#00000000",
+          "layout": "vertical",
+          "gap": 16,
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "Xnmyt",
+              "name": "Divider Line",
+              "fill": "#f7f4ef26",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "wbhfT",
+              "name": "Row Container",
+              "width": "fill_container",
+              "gap": 32,
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "v4ef4d",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "lMem9",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Precision Built",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 15,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Zby9j",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Factory-crafted modules for superior quality.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "cDqFv",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "jmK3h",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Delivered & Installed",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 15,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "XH6rJ",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Faster build times, less on-site disruption.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "T0G9j",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "OIIbx",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Designed to Last",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 15,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "QsmJX",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Durable materials. Timeless design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "K4aiaK",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "pIMre",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Made to Belong",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 15,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "e6Qx3",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Sustainable by nature. Considered by design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "tHTjc",
+          "x": 1040,
+          "y": 548,
+          "name": "Bottom Features Bar - V4 (Right Stack)",
+          "enabled": false,
+          "width": 336,
+          "fill": {
+            "type": "color",
+            "color": "#13121173",
+            "enabled": false
+          },
+          "cornerRadius": 12,
+          "effect": [
+            {
+              "type": "background_blur",
+              "radius": 16
+            },
+            {
+              "type": "shadow",
+              "shadowType": "outer",
+              "enabled": false,
+              "color": "#00000040",
+              "offset": {
+                "x": 0,
+                "y": 8
+              },
+              "blur": 24
+            }
+          ],
+          "layout": "vertical",
+          "gap": 24,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "X9UmWu",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "Us6ds",
+                  "name": "Icon",
+                  "width": 28,
+                  "height": 28,
+                  "icon": "layers",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "WCNdj",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "U5jH3j",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Precision Built",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "WvK1u",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Factory-crafted modules for superior quality.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "YLgl5",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "ERRfB",
+                  "name": "Icon",
+                  "width": 28,
+                  "height": 28,
+                  "icon": "truck",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "B91cZ",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "rGjuS",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Delivered & Installed",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Jc5tJ",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Faster build times, less on-site disruption.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "VAYGB",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "uQ5xW",
+                  "name": "Icon",
+                  "width": 28,
+                  "height": 28,
+                  "icon": "shield",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "UF0O4",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "UZdwa",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Designed to Last",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "u7Vhi",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Durable materials. Timeless design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "VlnPU",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "nBdCr",
+                  "name": "Icon",
+                  "width": 28,
+                  "height": 28,
+                  "icon": "leaf",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "yWz1B",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "cS74Z",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Made to Belong",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "QsVAI",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Sustainable by nature. Considered by design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ErJj6",
+          "x": 776,
+          "y": 548,
+          "name": "Bottom Features Bar - V4 (2x2 Grid Stack)",
+          "enabled": false,
+          "width": 600,
+          "fill": "#13121173",
+          "cornerRadius": 12,
+          "effect": [
+            {
+              "type": "background_blur",
+              "radius": 16
+            },
+            {
+              "type": "shadow",
+              "shadowType": "outer",
+              "color": "#00000040",
+              "offset": {
+                "x": 0,
+                "y": 8
+              },
+              "blur": 24
+            }
+          ],
+          "layout": "vertical",
+          "gap": 24,
+          "padding": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "InLiZ",
+              "name": "Row 1",
+              "width": "fill_container",
+              "gap": 24,
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "k6NQqK",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "OQAKo",
+                      "name": "Icon",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "layers",
+                      "library": "lucide",
+                      "fill": "#F7F4EF"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "UKnjE",
+                      "name": "Texts",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "mSbvy",
+                          "name": "Title",
+                          "fill": "#F7F4EF",
+                          "content": "Precision Built",
+                          "fontFamily": "Cabinet Grotesk Variable",
+                          "fontSize": 14,
+                          "fontWeight": "bold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "E6Qp3",
+                          "name": "Description",
+                          "fill": "#A9A5A0",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Factory-crafted modules for superior quality.",
+                          "lineHeight": 1.4,
+                          "fontFamily": "Satoshi Variable",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "JqXK7",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "dkj8Z",
+                      "name": "Icon",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "truck",
+                      "library": "lucide",
+                      "fill": "#F7F4EF"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Drf1d",
+                      "name": "Texts",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "xt4tb",
+                          "name": "Title",
+                          "fill": "#F7F4EF",
+                          "content": "Delivered & Installed",
+                          "fontFamily": "Cabinet Grotesk Variable",
+                          "fontSize": 14,
+                          "fontWeight": "bold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "NGMDb",
+                          "name": "Description",
+                          "fill": "#A9A5A0",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Faster build times, less on-site disruption.",
+                          "lineHeight": 1.4,
+                          "fontFamily": "Satoshi Variable",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "UoJyP",
+              "name": "Row 2",
+              "width": "fill_container",
+              "gap": 24,
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "CgZGg",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "EnWuC",
+                      "name": "Icon",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "shield",
+                      "library": "lucide",
+                      "fill": "#F7F4EF"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "g8FPa",
+                      "name": "Texts",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "pJztk",
+                          "name": "Title",
+                          "fill": "#F7F4EF",
+                          "content": "Designed to Last",
+                          "fontFamily": "Cabinet Grotesk Variable",
+                          "fontSize": 14,
+                          "fontWeight": "bold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "o9bbtL",
+                          "name": "Description",
+                          "fill": "#A9A5A0",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Durable materials. Timeless design.",
+                          "lineHeight": 1.4,
+                          "fontFamily": "Satoshi Variable",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sWpl9",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "QE94H",
+                      "name": "Icon",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "leaf",
+                      "library": "lucide",
+                      "fill": "#F7F4EF"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "E658PN",
+                      "name": "Texts",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 4,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "K9dS37",
+                          "name": "Title",
+                          "fill": "#F7F4EF",
+                          "content": "Made to Belong",
+                          "fontFamily": "Cabinet Grotesk Variable",
+                          "fontSize": 14,
+                          "fontWeight": "bold"
+                        },
+                        {
+                          "type": "text",
+                          "id": "U7WhE",
+                          "name": "Description",
+                          "fill": "#A9A5A0",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Sustainable by nature. Considered by design.",
+                          "lineHeight": 1.4,
+                          "fontFamily": "Satoshi Variable",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "AToX8",
+      "x": 2593,
+      "y": -11,
+      "name": "V2: Dark Cinematic Luxury2",
+      "metadata": {
+        "type": "unsplash",
+        "username": "fabulu75",
+        "link": "https://unsplash.com/@fabulu75",
+        "author": "Fabrice Villard"
+      },
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "layout": "none",
+      "children": [
+        {
+          "type": "rectangle",
+          "id": "tSuU3",
+          "x": 0,
+          "y": 0,
+          "name": "hut background",
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "images/hero-background-v2.png",
+            "mode": "fill"
+          },
+          "width": 1440,
+          "height": 900
+        },
+        {
+          "type": "rectangle",
+          "id": "M1mVgR",
+          "x": 0,
+          "y": 0,
+          "name": "V2 Cinematic Black Overlay",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 180,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#00000073",
+                "position": 0
+              },
+              {
+                "color": "#00000014",
+                "position": 0.51
+              },
+              {
+                "color": "#00000099",
+                "position": 1
+              }
+            ]
+          },
+          "width": 1440,
+          "height": 900
+        },
+        {
+          "type": "rectangle",
+          "id": "kR9DI",
+          "x": 0,
+          "y": 0,
+          "name": "V2 Moody Dark Overlay",
+          "enabled": false,
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 180,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#131211a6",
+                "position": 0
+              },
+              {
+                "color": "#13121159",
+                "position": 0.5
+              },
+              {
+                "color": "#131211cc",
+                "position": 1
+              }
+            ]
+          },
+          "width": 1440,
+          "height": 900
+        },
+        {
+          "type": "frame",
+          "id": "RVa13",
+          "x": 64,
+          "y": 559,
+          "name": "Hero Content",
+          "width": 620,
+          "layout": "vertical",
+          "gap": 24,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "eOBIe",
+              "name": "Heading",
+              "fill": "#F7F4EF",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Live closer\nto what matters",
+              "lineHeight": 1.15,
+              "fontFamily": "Cabinet Grotesk Variable",
+              "fontSize": 56,
+              "fontWeight": "500"
+            },
+            {
+              "type": "text",
+              "id": "nayxx",
+              "name": "Subheading",
+              "fill": "#A9A5A0",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Premium pre-designed cabins, designed to help you slow down,\nreconnect, and feel at home - anywhere.",
+              "lineHeight": 1.5,
+              "fontFamily": "Satoshi Variable",
+              "fontSize": 18,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "WfAdV",
+              "name": "Primary Button",
+              "width": "fill_container",
+              "fill": "#F7F4EF",
+              "cornerRadius": 30,
+              "padding": [
+                16,
+                28
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "kQCng",
+                  "name": "Button Text",
+                  "fill": "#39442bff",
+                  "content": "Get Started",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "sSJHS",
+          "x": 64,
+          "y": 772,
+          "name": "Bottom Features Bar",
+          "enabled": false,
+          "width": 1312,
+          "fill": "#13121166",
+          "cornerRadius": 12,
+          "effect": [
+            {
+              "type": "background_blur",
+              "radius": 16
+            },
+            {
+              "type": "shadow",
+              "shadowType": "outer",
+              "color": "#00000033",
+              "offset": {
+                "x": 0,
+                "y": 10
+              },
+              "blur": 30
+            }
+          ],
+          "gap": 24,
+          "padding": [
+            24,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "K1WfF0",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "TVtIv",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "layers",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "pVSa1",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "KbDA3",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Precision Built",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "C3stVJ",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Factory-crafted modules for superior quality.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "AvLn3",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "c7HYQ",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "truck",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "kAdmV",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "gXywC",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Delivered & Installed",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "A5pkao",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Faster build times, less on-site disruption.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "mSeSO",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "WgHR2",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "shield",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "yYRl0",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "l7YS17",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Designed to Last",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "adFzj",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Durable materials. Timeless design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "BYDoK",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "TGbxz",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "leaf",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "oIgeY",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "RTCA7",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Made to Belong",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "G3awde",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Sustainable by nature. Considered by design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "v3e08z",
+          "x": 64,
+          "y": 40,
+          "name": "Nav Bar Type 1 (White Pill)",
+          "enabled": false,
+          "width": 1312,
+          "height": 72,
+          "fill": "#FDFBF7",
+          "cornerRadius": 36,
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#0000000f",
+            "offset": {
+              "x": 0,
+              "y": 4
+            },
+            "blur": 20
+          },
+          "padding": [
+            0,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "wskzH",
+              "name": "Logo Group",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "path",
+                  "id": "W0M3b",
+                  "name": "Cabin Icon",
+                  "geometry": "M4 22l12-19 12 19z m6 0l6-11 6 11z m-9 2l30 0m-27 3l24 0",
+                  "viewBox": [
+                    0,
+                    0,
+                    32,
+                    32
+                  ],
+                  "fill": "#00000000",
+                  "width": 32,
+                  "height": 32,
+                  "stroke": "#1E1D1B",
+                  "strokeWidth": 1.5,
+                  "strokeLinejoin": "round",
+                  "strokeLinecap": "round"
+                },
+                {
+                  "type": "frame",
+                  "id": "vKCvZ",
+                  "name": "Logo Text",
+                  "layout": "vertical",
+                  "gap": 1,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "lmXE5",
+                      "name": "LUMA",
+                      "fill": "#1E1D1B",
+                      "content": "LUMA",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 16,
+                      "fontWeight": "bold",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "OciHZ",
+                      "name": "CABINS",
+                      "fill": "#5A5652",
+                      "content": "CABINS",
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 10,
+                      "fontWeight": "medium",
+                      "letterSpacing": 3
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "RomRW",
+              "name": "Menu Links",
+              "gap": 32,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "niqAQ",
+                  "name": "Models",
+                  "fill": "#1E1D1B",
+                  "content": "Models",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "semibold"
+                },
+                {
+                  "type": "text",
+                  "id": "ZOWT5",
+                  "name": "How it works",
+                  "fill": "#1E1D1B",
+                  "content": "How it works",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "semibold"
+                },
+                {
+                  "type": "text",
+                  "id": "m47EG8",
+                  "name": "Portfolio",
+                  "fill": "#1E1D1B",
+                  "content": "Portfolio",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "semibold"
+                },
+                {
+                  "type": "text",
+                  "id": "XzIog",
+                  "name": "FAQ",
+                  "fill": "#1E1D1B",
+                  "content": "FAQ",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "semibold"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "i1bak",
+              "name": "Consultation Button",
+              "fill": "#1E1D1B",
+              "cornerRadius": 20,
+              "padding": [
+                10,
+                24
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "B4fmE",
+                  "name": "Button Text",
+                  "fill": "#FDFBF7",
+                  "content": "Get Started",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 14,
+                  "fontWeight": "bold"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "C0DrtI",
+          "x": 64,
+          "y": 40,
+          "name": "Nav Bar Type 2 (Dark Transparent)v2",
+          "enabled": false,
+          "width": 1312,
+          "height": 72,
+          "fill": "#12111066",
+          "cornerRadius": 12,
+          "stroke": {
+            "type": "color",
+            "color": "#ffffff1f",
+            "enabled": false
+          },
+          "strokeWidth": 1,
+          "effect": [
+            {
+              "type": "background_blur",
+              "radius": 12
+            },
+            {
+              "type": "shadow",
+              "shadowType": "outer",
+              "color": "#00000040",
+              "offset": {
+                "x": 0,
+                "y": 8
+              },
+              "blur": 24
+            }
+          ],
+          "padding": [
+            0,
+            24
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "I4nQ8q",
+              "name": "Logo Group",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "path",
+                  "id": "uMB80",
+                  "name": "Cabin Icon",
+                  "geometry": "M4 22l12-19 12 19z m6 0l6-11 6 11z m-9 2l30 0m-27 3l24 0",
+                  "viewBox": [
+                    0,
+                    0,
+                    32,
+                    32
+                  ],
+                  "fill": "#00000000",
+                  "width": 32,
+                  "height": 32,
+                  "stroke": "#F7F4EF",
+                  "strokeWidth": 1.5,
+                  "strokeLinejoin": "round",
+                  "strokeLinecap": "round"
+                },
+                {
+                  "type": "frame",
+                  "id": "UjkQk",
+                  "name": "Logo Text",
+                  "layout": "vertical",
+                  "gap": 1,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "uXi2S",
+                      "name": "LUMA",
+                      "fill": "#F7F4EF",
+                      "content": "LUMA",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 16,
+                      "fontWeight": "bold",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "q4I3k",
+                      "name": "CABINS",
+                      "fill": "#A9A5A0",
+                      "content": "CABINS",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 10,
+                      "fontWeight": "medium",
+                      "letterSpacing": 3
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "awbi3",
+              "name": "Menu Links",
+              "gap": 32,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "La9lx",
+                  "name": "Models",
+                  "fill": "#F7F4EF",
+                  "content": "Models",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "text",
+                  "id": "DuWkM",
+                  "name": "How it works",
+                  "fill": "#F7F4EF",
+                  "content": "How it works",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "text",
+                  "id": "Paehc",
+                  "name": "Portfolio",
+                  "fill": "#F7F4EF",
+                  "content": "Portfolio",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "text",
+                  "id": "Ba9Z6",
+                  "name": "FAQ",
+                  "fill": "#F7F4EF",
+                  "content": "FAQ",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Fm4tI",
+              "name": "Consultation Button",
+              "fill": "#39442bff",
+              "cornerRadius": 20,
+              "padding": [
+                10,
+                24
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "sEmNM",
+                  "name": "Button Text",
+                  "fill": "#FFFFFF",
+                  "content": "Book consultation",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 14,
+                  "fontWeight": "bold"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "yzcGt",
+          "x": 64,
+          "y": 40,
+          "name": "Nav Bar Type 2 (Dark Transparent)",
+          "width": 1312,
+          "height": 72,
+          "fill": {
+            "type": "color",
+            "color": "#12111066",
+            "enabled": false
+          },
+          "cornerRadius": 12,
+          "stroke": {
+            "type": "color",
+            "color": "#ffffff1f",
+            "enabled": false
+          },
+          "strokeWidth": 1,
+          "effect": [
+            {
+              "type": "background_blur",
+              "radius": 40
+            },
+            {
+              "type": "shadow",
+              "shadowType": "outer",
+              "enabled": false,
+              "color": "#00000040",
+              "offset": {
+                "x": 0,
+                "y": 8
+              },
+              "blur": 24
+            }
+          ],
+          "padding": [
+            0,
+            24
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "f1CWW",
+              "name": "Logo Group",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "path",
+                  "id": "MvWnI",
+                  "name": "Cabin Icon",
+                  "geometry": "M4 22l12-19 12 19z m6 0l6-11 6 11z m-9 2l30 0m-27 3l24 0",
+                  "viewBox": [
+                    0,
+                    0,
+                    32,
+                    32
+                  ],
+                  "fill": "#00000000",
+                  "width": 32,
+                  "height": 32,
+                  "stroke": "#F7F4EF",
+                  "strokeWidth": 1.5,
+                  "strokeLinejoin": "round",
+                  "strokeLinecap": "round"
+                },
+                {
+                  "type": "frame",
+                  "id": "M7In5t",
+                  "name": "Logo Text",
+                  "layout": "vertical",
+                  "gap": 1,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "E1lWI1",
+                      "name": "LUMA",
+                      "fill": "#F7F4EF",
+                      "content": "LUMA",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 16,
+                      "fontWeight": "bold",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "qU3ea",
+                      "name": "CABINS",
+                      "fill": "#A9A5A0",
+                      "content": "CABINS",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 10,
+                      "fontWeight": "medium",
+                      "letterSpacing": 3
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "EosGo",
+              "name": "Menu Links",
+              "gap": 32,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "rK0ep",
+                  "name": "Models",
+                  "fill": "#F7F4EF",
+                  "content": "Models",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "text",
+                  "id": "B8QDMP",
+                  "name": "How it works",
+                  "fill": "#F7F4EF",
+                  "content": "How it works",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "text",
+                  "id": "Av4Wp",
+                  "name": "Portfolio",
+                  "fill": "#F7F4EF",
+                  "content": "Portfolio",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                },
+                {
+                  "type": "text",
+                  "id": "K8MgA9",
+                  "name": "FAQ",
+                  "fill": "#F7F4EF",
+                  "content": "FAQ",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 15,
+                  "fontWeight": "medium"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "hekqs",
+              "name": "Consultation Button",
+              "fill": "#39442bff",
+              "cornerRadius": 20,
+              "padding": [
+                10,
+                24
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "x1bcYb",
+                  "name": "Button Text",
+                  "fill": "#FFFFFF",
+                  "content": "Get Started",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 14,
+                  "fontWeight": "bold"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "fPuTC",
+          "x": 64,
+          "y": 772,
+          "name": "Bottom Features Bar - V2 (Vertical Dividers)",
+          "enabled": false,
+          "width": 1312,
+          "height": 80,
+          "fill": "#00000000",
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "WFo7E",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "lbES1",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "layers",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "AuHnI",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "nyLoo",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Precision Built",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "C1cif",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Factory-crafted modules for superior quality.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "tCw80",
+              "name": "Divider",
+              "fill": "#f7f4ef33",
+              "width": 1,
+              "height": 40
+            },
+            {
+              "type": "frame",
+              "id": "DkyEv",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "B2bxil",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "truck",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "fpHt6",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "r9RVl",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Delivered & Installed",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "shDNf",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Faster build times, less on-site disruption.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "GqoVn",
+              "name": "Divider",
+              "fill": "#f7f4ef33",
+              "width": 1,
+              "height": 40
+            },
+            {
+              "type": "frame",
+              "id": "YZsrn",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "diYwt",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "shield",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "UIhs7",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "cFOrL",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Designed to Last",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "T0ziu",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Durable materials. Timeless design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "cCaV0",
+              "name": "Divider",
+              "fill": "#f7f4ef33",
+              "width": 1,
+              "height": 40
+            },
+            {
+              "type": "frame",
+              "id": "Ky5xt",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "H87ggE",
+                  "name": "Icon",
+                  "width": 24,
+                  "height": 24,
+                  "icon": "leaf",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "k1ULFi",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "nbvDj",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Made to Belong",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "N31NU",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Sustainable by nature. Considered by design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "GZJiN",
+          "x": 64,
+          "y": 772,
+          "name": "Bottom Features Bar - V3 (Top Line Minimal)",
+          "enabled": false,
+          "width": 1312,
+          "height": 90,
+          "fill": "#00000000",
+          "layout": "vertical",
+          "gap": 16,
+          "children": [
+            {
+              "type": "rectangle",
+              "id": "RL9BQ",
+              "name": "Divider Line",
+              "fill": "#f7f4ef26",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "ZBwfY",
+              "name": "Row Container",
+              "width": "fill_container",
+              "gap": 32,
+              "justifyContent": "space_between",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Q3gY9",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "X08kWe",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Precision Built",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 15,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "N6CXOS",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Factory-crafted modules for superior quality.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ecIuR",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "QIz4M",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Delivered & Installed",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 15,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "x0Hd6K",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Faster build times, less on-site disruption.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "InBsZ",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "l6AliK",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Designed to Last",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 15,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Eg7sU",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Durable materials. Timeless design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ojRlL",
+                  "name": "Feature Card",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "f15eX",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Made to Belong",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 15,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "JTK4F",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Sustainable by nature. Considered by design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "t4Cto",
+          "x": 1091,
+          "y": 617,
+          "name": "Bottom Features Bar - V4 (Right Stack)",
+          "width": 285,
+          "fill": {
+            "type": "color",
+            "color": "#13121173",
+            "enabled": false
+          },
+          "cornerRadius": 12,
+          "effect": [
+            {
+              "type": "background_blur",
+              "radius": 16,
+              "enabled": false
+            },
+            {
+              "type": "shadow",
+              "shadowType": "outer",
+              "enabled": false,
+              "color": "#00000040",
+              "offset": {
+                "x": 0,
+                "y": 8
+              },
+              "blur": 24
+            }
+          ],
+          "layout": "vertical",
+          "gap": 24,
+          "children": [
+            {
+              "type": "frame",
+              "id": "ZlowS",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "N28ol",
+                  "name": "Icon",
+                  "width": 28,
+                  "height": 28,
+                  "icon": "layers",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "OrHd6",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "cYBbG",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Precision Built",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "KrTlL",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Factory-crafted modules for superior quality.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Z41Nz5",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "L31qeK",
+                  "name": "Icon",
+                  "width": 28,
+                  "height": 28,
+                  "icon": "truck",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "pVYeV",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "X04DwS",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Delivered & Installed",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "yToNV",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Faster build times, less on-site disruption.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "gsdfi",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "e3LUT8",
+                  "name": "Icon",
+                  "width": 28,
+                  "height": 28,
+                  "icon": "shield",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "FCIJG",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "UZzm2",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Designed to Last",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "gOTiS",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Durable materials. Timeless design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "IQSKv",
+              "name": "Feature Card",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "bAf90",
+                  "name": "Icon",
+                  "width": 28,
+                  "height": 28,
+                  "icon": "leaf",
+                  "library": "lucide",
+                  "fill": "#F7F4EF"
+                },
+                {
+                  "type": "frame",
+                  "id": "ljFKu",
+                  "name": "Texts",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "qQVMj",
+                      "name": "Title",
+                      "fill": "#F7F4EF",
+                      "content": "Made to Belong",
+                      "fontFamily": "Cabinet Grotesk Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "XmMyY",
+                      "name": "Description",
+                      "fill": "#A9A5A0",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Sustainable by nature. Considered by design.",
+                      "lineHeight": 1.4,
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "background": {
+      "type": "color",
+      "value": "#131211"
+    },
+    "font-heading": {
+      "type": "string",
+      "value": "Cabinet Grotesk Variable"
+    },
+    "font-sans": {
+      "type": "string",
+      "value": "Satoshi Variable"
+    },
+    "foreground": {
+      "type": "color",
+      "value": "#F7F4EF"
+    },
+    "primary": {
+      "type": "color",
+      "value": "#39442b"
+    }
+  },
+  "fonts": [
+    {
+      "name": "Cabinet Grotesk Variable",
+      "url": "fonts/CabinetGrotesk-Variable.woff2",
+      "weight": [
+        100,
+        900
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "start": 100,
+          "end": 900
+        }
+      ]
+    },
+    {
+      "name": "Satoshi Variable",
+      "url": "fonts/Satoshi-Variable.woff2",
+      "weight": [
+        300,
+        900
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "start": 300,
+          "end": 900
+        }
+      ]
+    },
+    {
+      "name": "Satoshi Variable",
+      "url": "fonts/Satoshi-VariableItalic.woff2",
+      "style": "italic",
+      "weight": [
+        300,
+        900
+      ],
+      "axes": [
+        {
+          "tag": "wght",
+          "start": 300,
+          "end": 900
+        }
+      ]
+    }
+  ]
+}
