@@ -899,26 +899,85 @@
             },
             {
               "type": "frame",
-              "id": "RMWjd",
-              "name": "Consultation Button",
-              "fill": "#39442bff",
-              "cornerRadius": 20,
-              "padding": [
-                10,
-                24
-              ],
-              "justifyContent": "center",
+              "id": "R8gOzi",
+              "name": "Frame 1",
+              "clip": true,
+              "gap": 20,
               "alignItems": "center",
               "children": [
                 {
-                  "type": "text",
-                  "id": "Bw1ff",
-                  "name": "Button Text",
-                  "fill": "#FFFFFF",
-                  "content": "Get Started",
-                  "fontFamily": "Satoshi Variable",
-                  "fontSize": 14,
-                  "fontWeight": "bold"
+                  "type": "frame",
+                  "id": "i8mvs",
+                  "name": "Language Switcher",
+                  "fill": {
+                    "type": "color",
+                    "color": "#12111040",
+                    "enabled": false
+                  },
+                  "cornerRadius": 16,
+                  "stroke": "#ffffff14",
+                  "strokeWidth": 1,
+                  "gap": 8,
+                  "padding": [
+                    6,
+                    12
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "GXc0N",
+                      "name": "EN",
+                      "fill": "#F7F4EF",
+                      "content": "EN",
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 13,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "d2fUBM",
+                      "name": "Divider",
+                      "fill": "#ffffff26",
+                      "width": 1,
+                      "height": 10
+                    },
+                    {
+                      "type": "text",
+                      "id": "i2SwT",
+                      "name": "PL",
+                      "fill": "#A9A5A0",
+                      "content": "PL",
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 13,
+                      "fontWeight": "medium"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "RMWjd",
+                  "name": "Consultation Button",
+                  "fill": "#39442bff",
+                  "cornerRadius": 20,
+                  "padding": [
+                    10,
+                    24
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Bw1ff",
+                      "name": "Button Text",
+                      "fill": "#FFFFFF",
+                      "content": "Get Started",
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    }
+                  ]
                 }
               ]
             }
@@ -1846,6 +1905,41 @@
                   ]
                 }
               ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "MDtmJ",
+          "x": 1392,
+          "y": 822,
+          "name": "Video Control Button",
+          "width": 40,
+          "height": 40,
+          "fill": {
+            "type": "color",
+            "color": "#12111080",
+            "enabled": false
+          },
+          "cornerRadius": 20,
+          "stroke": "#ffffff1f",
+          "strokeWidth": 1,
+          "effect": {
+            "type": "background_blur",
+            "radius": 20
+          },
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon",
+              "id": "l1x5ll",
+              "name": "Pause Icon",
+              "width": 16,
+              "height": 16,
+              "icon": "pause",
+              "library": "lucide",
+              "fill": "#F7F4EF"
             }
           ]
         }
@@ -2782,26 +2876,85 @@
             },
             {
               "type": "frame",
-              "id": "LJNQN",
-              "name": "Consultation Button",
-              "fill": "#39442bff",
-              "cornerRadius": 20,
-              "padding": [
-                10,
-                24
-              ],
-              "justifyContent": "center",
+              "id": "WMugj",
+              "name": "Frame 3",
+              "clip": true,
+              "gap": 20,
               "alignItems": "center",
               "children": [
                 {
-                  "type": "text",
-                  "id": "J90OAh",
-                  "name": "Button Text",
-                  "fill": "#FFFFFF",
-                  "content": "Get Started",
-                  "fontFamily": "Satoshi Variable",
-                  "fontSize": 14,
-                  "fontWeight": "bold"
+                  "type": "frame",
+                  "id": "ZWtkU",
+                  "name": "Borderless Language Switcher",
+                  "width": 48,
+                  "height": 28,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "oPkPH",
+                      "layoutPosition": "absolute",
+                      "x": 0,
+                      "y": 0,
+                      "name": "EN",
+                      "fill": "#F7F4EF",
+                      "content": "EN",
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 11,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "NoAbN",
+                      "layoutPosition": "absolute",
+                      "x": 15,
+                      "y": -2,
+                      "name": "Slash",
+                      "fill": "#A9A5A040",
+                      "content": "/",
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 25,
+                      "fontWeight": "300"
+                    },
+                    {
+                      "type": "text",
+                      "id": "CPtK6",
+                      "layoutPosition": "absolute",
+                      "x": 26,
+                      "y": 12,
+                      "name": "PL",
+                      "fill": "#A9A5A0",
+                      "content": "PL",
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "LJNQN",
+                  "name": "Consultation Button",
+                  "fill": "#39442bff",
+                  "cornerRadius": 20,
+                  "padding": [
+                    10,
+                    24
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "J90OAh",
+                      "name": "Button Text",
+                      "fill": "#FFFFFF",
+                      "content": "Get Started",
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    }
+                  ]
                 }
               ]
             }
@@ -3967,6 +4120,30 @@
               ]
             }
           ]
+        },
+        {
+          "type": "frame",
+          "id": "HwlzO",
+          "layoutPosition": "absolute",
+          "x": 1352,
+          "y": 720,
+          "name": "Borderless Video Control",
+          "width": 24,
+          "height": 24,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon",
+              "id": "k1xcu",
+              "name": "Pause Icon",
+              "width": 14,
+              "height": 14,
+              "icon": "pause",
+              "library": "lucide",
+              "fill": "#F7F4EF"
+            }
+          ]
         }
       ]
     },
@@ -4868,26 +5045,83 @@
             },
             {
               "type": "frame",
-              "id": "hekqs",
-              "name": "Consultation Button",
-              "fill": "#39442bff",
-              "cornerRadius": 20,
-              "padding": [
-                10,
-                24
-              ],
-              "justifyContent": "center",
+              "id": "NUCwp",
+              "name": "Frame 2",
+              "clip": true,
+              "gap": 20,
               "alignItems": "center",
               "children": [
                 {
-                  "type": "text",
-                  "id": "x1bcYb",
-                  "name": "Button Text",
-                  "fill": "#FFFFFF",
-                  "content": "Get Started",
-                  "fontFamily": "Satoshi Variable",
-                  "fontSize": 14,
-                  "fontWeight": "bold"
+                  "type": "frame",
+                  "id": "COuMS",
+                  "name": "Language Dropdown Pill",
+                  "fill": "#12111040",
+                  "cornerRadius": 18,
+                  "stroke": "#ffffff14",
+                  "strokeWidth": 1,
+                  "gap": 6,
+                  "padding": [
+                    8,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "Q0lbhL",
+                      "name": "Globe Icon",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "globe",
+                      "library": "lucide",
+                      "fill": "#A9A5A0"
+                    },
+                    {
+                      "type": "text",
+                      "id": "R2iNzZ",
+                      "name": "EN",
+                      "fill": "#F7F4EF",
+                      "content": "EN",
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 13,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "EcHTN",
+                      "name": "Chevron Icon",
+                      "width": 12,
+                      "height": 12,
+                      "icon": "chevron-down",
+                      "library": "lucide",
+                      "fill": "#A9A5A0"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "hekqs",
+                  "name": "Consultation Button",
+                  "fill": "#39442bff",
+                  "cornerRadius": 20,
+                  "padding": [
+                    10,
+                    24
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "x1bcYb",
+                      "name": "Button Text",
+                      "fill": "#FFFFFF",
+                      "content": "Get Started",
+                      "fontFamily": "Satoshi Variable",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    }
+                  ]
                 }
               ]
             }
@@ -5550,6 +5784,69 @@
                   ]
                 }
               ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "w2psE6",
+          "layoutPosition": "absolute",
+          "x": 1091,
+          "y": 561,
+          "name": "Video Status Bar",
+          "width": 285,
+          "height": 40,
+          "fill": "#121110a6",
+          "cornerRadius": 12,
+          "stroke": "#ffffff14",
+          "strokeWidth": 1,
+          "effect": {
+            "type": "background_blur",
+            "radius": 20
+          },
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "WfNtb",
+              "name": "Status Group",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "ellipse",
+                  "id": "DcCAo",
+                  "name": "Live Indicator Dot",
+                  "fill": "#4ade80",
+                  "width": 6,
+                  "height": 6
+                },
+                {
+                  "type": "text",
+                  "id": "hO3Wy",
+                  "name": "Status Text",
+                  "fill": "#A9A5A0",
+                  "content": "Ambient Video",
+                  "fontFamily": "Satoshi Variable",
+                  "fontSize": 12,
+                  "fontWeight": "medium"
+                }
+              ]
+            },
+            {
+              "type": "icon",
+              "id": "KNgqA",
+              "name": "Pause Icon",
+              "width": 14,
+              "height": 14,
+              "icon": "pause",
+              "library": "lucide",
+              "fill": "#F7F4EF"
             }
           ]
         }

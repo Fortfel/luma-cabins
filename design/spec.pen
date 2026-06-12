@@ -120,14 +120,23 @@
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "icon",
-                          "id": "KLCSb",
+                          "type": "path",
+                          "id": "snyUq",
                           "name": "Cabin Icon",
-                          "width": 28,
-                          "height": 28,
-                          "icon": "house",
-                          "library": "lucide",
-                          "fill": "$--foreground"
+                          "geometry": "M4 22l12-19 12 19z m6 0l6-11 6 11z m-9 2l30 0m-27 3l24 0",
+                          "viewBox": [
+                            0,
+                            0,
+                            32,
+                            32
+                          ],
+                          "fill": "$--foreground",
+                          "width": 32,
+                          "height": 32,
+                          "stroke": "$--foreground",
+                          "strokeWidth": 1.5,
+                          "strokeLinejoin": "round",
+                          "strokeLinecap": "round"
                         },
                         {
                           "type": "frame",
@@ -142,7 +151,7 @@
                               "fill": "$--foreground",
                               "content": "LUMA",
                               "fontFamily": "$--font-heading",
-                              "fontSize": 15,
+                              "fontSize": 16,
                               "fontWeight": "bold",
                               "letterSpacing": 2
                             },
@@ -153,9 +162,9 @@
                               "fill": "$--muted-foreground",
                               "content": "CABINS",
                               "fontFamily": "$--font-heading",
-                              "fontSize": 9,
-                              "fontWeight": "medium",
-                              "letterSpacing": 3
+                              "fontSize": 12,
+                              "fontWeight": "500",
+                              "letterSpacing": 2
                             }
                           ]
                         }
@@ -198,7 +207,7 @@
                 },
                 {
                   "type": "frame",
-                  "id": "p8ycF",
+                  "id": "YOkiZ",
                   "name": "Hero Content",
                   "width": "fill_container",
                   "layout": "vertical",
@@ -207,9 +216,9 @@
                   "children": [
                     {
                       "type": "text",
-                      "id": "JXb4L",
+                      "id": "w90Di9",
                       "name": "Heading",
-                      "fill": "$--foreground",
+                      "fill": "$--primary-foreground",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
                       "content": "Live closer\nto what matters",
@@ -220,9 +229,9 @@
                     },
                     {
                       "type": "text",
-                      "id": "kylAm",
+                      "id": "uqfM4",
                       "name": "Subheading",
-                      "fill": "$--muted-foreground",
+                      "fill": "$--primary-foreground",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
                       "content": "Premium pre-designed cabins, designed to help you slow down, reconnect, and feel at home - anywhere.",
@@ -233,7 +242,7 @@
                     },
                     {
                       "type": "frame",
-                      "id": "JqKqC",
+                      "id": "eyg0o",
                       "name": "Primary Button",
                       "width": "fill_container",
                       "fill": "$--secondary",
@@ -247,7 +256,7 @@
                       "children": [
                         {
                           "type": "text",
-                          "id": "mqV6Z",
+                          "id": "H6RYc1",
                           "name": "Button Text",
                           "fill": "$--secondary-foreground",
                           "content": "Get Started",
@@ -278,7 +287,7 @@
                   "children": [
                     {
                       "type": "frame",
-                      "id": "RyJMf",
+                      "id": "p2QUQ3",
                       "name": "Feature Meta - Text Only",
                       "clip": true,
                       "width": "fill_container",
@@ -298,7 +307,7 @@
                       "children": [
                         {
                           "type": "rectangle",
-                          "id": "Jxwn4",
+                          "id": "wWefS",
                           "name": "Divider",
                           "flipY": true,
                           "fill": "#f7f4ef3d",
@@ -307,9 +316,9 @@
                         },
                         {
                           "type": "text",
-                          "id": "rvYek",
+                          "id": "wfbt1",
                           "name": "Feature Text",
-                          "fill": "$--foreground",
+                          "fill": "$--primary-foreground",
                           "content": "PRECISION BUILT • DELIVERED FAST • TIMELESS DESIGN",
                           "fontFamily": "$--font-sans",
                           "fontSize": 10,
@@ -320,109 +329,56 @@
                     },
                     {
                       "type": "frame",
-                      "id": "eYM7P",
+                      "id": "IuVjC",
                       "x": 0,
-                      "y": 24,
+                      "y": 0,
                       "name": "Feature Meta - Icons",
                       "enabled": false,
-                      "width": 350,
+                      "width": 342,
+                      "height": 0,
                       "fill": {
                         "type": "color",
                         "color": "#00000000",
                         "enabled": false
                       },
-                      "layout": "vertical",
-                      "gap": 16,
-                      "children": [
-                        {
-                          "type": "rectangle",
-                          "id": "jOBRM",
-                          "name": "Divider",
-                          "fill": "#f7f4ef3d",
-                          "width": "fill_container",
-                          "height": 1
-                        },
-                        {
-                          "type": "frame",
-                          "id": "S4HCQ",
-                          "name": "Feature Items",
-                          "width": "fill_container",
-                          "gap": 8,
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "ZMD4Y",
-                              "name": "Precision Built",
-                              "gap": 4,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "icon",
-                                  "id": "Vbe6h",
-                                  "name": "Icon",
-                                  "width": 10,
-                                  "height": 10,
-                                  "icon": "layers",
-                                  "library": "lucide",
-                                  "fill": "$--foreground"
-                                },
-                                {
-                                  "type": "text",
-                                  "id": "PmgDO",
-                                  "name": "Label",
-                                  "fill": "$--foreground",
-                                  "content": "PRECISION BUILT",
-                                  "fontFamily": "$--font-sans",
-                                  "fontSize": 9,
-                                  "fontWeight": "900",
-                                  "letterSpacing": 0.4
-                                }
-                              ]
-                            },
-                            {
-                              "type": "text",
-                              "id": "pCVEc",
-                              "name": "Bullet",
-                              "fill": "$--foreground",
-                              "content": "•",
-                              "fontFamily": "$--font-sans",
-                              "fontSize": 9,
-                              "fontWeight": "900"
-                            },
-                            {
-                              "type": "frame",
-                              "id": "x1zVL",
-                              "name": "Installed Fast",
-                              "gap": 4,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "icon",
-                                  "id": "aYWSe",
-                                  "name": "Icon",
-                                  "width": 10,
-                                  "height": 10,
-                                  "icon": "truck",
-                                  "library": "lucide",
-                                  "fill": "$--foreground"
-                                },
-                                {
-                                  "type": "text",
-                                  "id": "gSiN5",
-                                  "name": "Label",
-                                  "fill": "$--foreground",
-                                  "content": "INSTALLED FAST",
-                                  "fontFamily": "$--font-sans",
-                                  "fontSize": 9,
-                                  "fontWeight": "900",
-                                  "letterSpacing": 0.4
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
+                      "layout": "vertical"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "mVid1",
+                  "layoutPosition": "absolute",
+                  "x": 346,
+                  "y": 780,
+                  "name": "Video Control Button",
+                  "width": 40,
+                  "height": 40,
+                  "fill": {
+                    "type": "color",
+                    "color": "#12111080",
+                    "enabled": false
+                  },
+                  "cornerRadius": 20,
+                  "stroke": "#ffffff1f",
+                  "strokeWidth": 1,
+                  "effect": {
+                    "type": "background_blur",
+                    "radius": 20
+                  },
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "mPause",
+                      "x": 12,
+                      "y": 12,
+                      "name": "Pause Icon",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "pause",
+                      "library": "lucide",
+                      "fill": "#F7F4EF"
                     }
                   ]
                 }
@@ -435,7 +391,7 @@
     {
       "type": "frame",
       "id": "wPj2T",
-      "x": 4066,
+      "x": 4065,
       "y": 959,
       "name": "Luma Cabins Tablet",
       "clip": true,
@@ -523,16 +479,16 @@
                   "id": "hHyij",
                   "layoutPosition": "absolute",
                   "x": 48,
-                  "y": 40,
+                  "y": 20,
                   "name": "Tablet Nav",
                   "width": 672,
-                  "height": 72,
+                  "height": 80,
                   "fill": {
                     "type": "color",
                     "color": "#12111066",
                     "enabled": false
                   },
-                  "cornerRadius": "$--radius-lg",
+                  "cornerRadius": "$--radius-md",
                   "stroke": {
                     "type": "color",
                     "color": "#ffffff1f",
@@ -571,9 +527,31 @@
                       "alignItems": "center",
                       "children": [
                         {
+                          "type": "path",
+                          "id": "fqr4L",
+                          "name": "Cabin Icon",
+                          "geometry": "M4 22l12-19 12 19z m6 0l6-11 6 11z m-9 2l30 0m-27 3l24 0",
+                          "viewBox": [
+                            0,
+                            0,
+                            32,
+                            32
+                          ],
+                          "fill": "$--foreground",
+                          "width": 32,
+                          "height": 32,
+                          "stroke": "$--foreground",
+                          "strokeWidth": 1.5,
+                          "strokeLinejoin": "round",
+                          "strokeLinecap": "round"
+                        },
+                        {
                           "type": "icon",
                           "id": "zNbk9",
+                          "x": 42,
+                          "y": 1.5,
                           "name": "Cabin Icon",
+                          "enabled": false,
                           "width": 30,
                           "height": 30,
                           "icon": "house",
@@ -594,7 +572,7 @@
                               "fill": "$--foreground",
                               "content": "LUMA",
                               "fontFamily": "$--font-heading",
-                              "fontSize": 15,
+                              "fontSize": 16,
                               "fontWeight": "bold",
                               "letterSpacing": 2
                             },
@@ -605,9 +583,9 @@
                               "fill": "$--muted-foreground",
                               "content": "CABINS",
                               "fontFamily": "$--font-heading",
-                              "fontSize": 9,
-                              "fontWeight": "medium",
-                              "letterSpacing": 3
+                              "fontSize": 12,
+                              "fontWeight": "500",
+                              "letterSpacing": 2
                             }
                           ]
                         }
@@ -617,7 +595,7 @@
                       "type": "frame",
                       "id": "NbTsy",
                       "name": "Menu Links",
-                      "gap": 22,
+                      "gap": 24,
                       "alignItems": "center",
                       "children": [
                         {
@@ -628,7 +606,7 @@
                           "content": "Models",
                           "fontFamily": "$--font-sans",
                           "fontSize": 14,
-                          "fontWeight": "medium"
+                          "fontWeight": "500"
                         },
                         {
                           "type": "text",
@@ -638,7 +616,7 @@
                           "content": "How it works",
                           "fontFamily": "$--font-sans",
                           "fontSize": 14,
-                          "fontWeight": "medium"
+                          "fontWeight": "500"
                         },
                         {
                           "type": "text",
@@ -648,7 +626,7 @@
                           "content": "Portfolio",
                           "fontFamily": "$--font-sans",
                           "fontSize": 14,
-                          "fontWeight": "medium"
+                          "fontWeight": "500"
                         },
                         {
                           "type": "text",
@@ -658,32 +636,181 @@
                           "content": "FAQ",
                           "fontFamily": "$--font-sans",
                           "fontSize": 14,
-                          "fontWeight": "medium"
+                          "fontWeight": "500"
                         }
                       ]
                     },
                     {
                       "type": "frame",
-                      "id": "OzvO2",
-                      "name": "Consultation Button",
-                      "fill": "$--primary",
-                      "cornerRadius": "$--radius-full",
-                      "padding": [
-                        9,
-                        20
-                      ],
-                      "justifyContent": "center",
+                      "id": "K2656d",
+                      "name": "Action Links",
+                      "clip": true,
+                      "gap": 16,
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "text",
-                          "id": "q43P8P",
-                          "name": "Button Text",
-                          "fill": "$--primary-foreground",
-                          "content": "Get Started",
-                          "fontFamily": "$--font-sans",
-                          "fontSize": 13,
-                          "fontWeight": "bold"
+                          "type": "frame",
+                          "id": "e3Z80",
+                          "x": 0,
+                          "y": 9,
+                          "name": "Borderless Language Switcher",
+                          "enabled": false,
+                          "height": 30,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "XKApr",
+                              "name": "Frame 1",
+                              "rotation": 1.1927080055488188e-15,
+                              "clip": true,
+                              "height": "fill_container",
+                              "padding": [
+                                0,
+                                2,
+                                0,
+                                0
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "R7eeD",
+                                  "name": "EN",
+                                  "fill": "$--primary-foreground",
+                                  "content": "EN",
+                                  "fontFamily": "Satoshi Variable",
+                                  "fontSize": 13,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "OGz5O",
+                              "name": "Frame 3",
+                              "width": 0,
+                              "height": 0,
+                              "children": [
+                                {
+                                  "type": "rectangle",
+                                  "id": "G5nwh",
+                                  "layoutPosition": "absolute",
+                                  "x": -6.008391499433466,
+                                  "y": 9.83487524030325,
+                                  "name": "Separator Line",
+                                  "rotation": 60.00000000000006,
+                                  "fill": "$--muted-foreground",
+                                  "width": 20,
+                                  "height": 1
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "H1UIiA",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "Slash",
+                                  "enabled": false,
+                                  "rotation": -3.975693351829396e-16,
+                                  "fill": "$--muted-foreground",
+                                  "content": "/",
+                                  "fontFamily": "Satoshi Variable",
+                                  "fontSize": 25,
+                                  "fontWeight": "300"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "t21tTG",
+                              "name": "Frame 2",
+                              "clip": true,
+                              "height": "fill_container",
+                              "padding": [
+                                0,
+                                0,
+                                0,
+                                2
+                              ],
+                              "justifyContent": "end",
+                              "alignItems": "end",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "YvG8o",
+                                  "name": "PL",
+                                  "fill": "$--muted-foreground",
+                                  "content": "PL",
+                                  "fontFamily": "Satoshi Variable",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "mbQgx",
+                          "name": "Borderless Language Switcher",
+                          "height": "fill_container",
+                          "layout": "vertical",
+                          "justifyContent": "space_around",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "yYDJ5",
+                              "name": "EN",
+                              "fill": "$--primary-foreground",
+                              "content": "EN",
+                              "fontFamily": "Satoshi Variable",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "rectangle",
+                              "id": "cMIaR",
+                              "name": "Separator Line",
+                              "fill": "$--muted-foreground",
+                              "width": 16,
+                              "height": 1
+                            },
+                            {
+                              "type": "text",
+                              "id": "ttxoY",
+                              "name": "PL",
+                              "fill": "$--muted-foreground",
+                              "content": "PL",
+                              "fontFamily": "Satoshi Variable",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Uzokd",
+                          "name": "Consultation Button",
+                          "width": "fit_content(123)",
+                          "height": 48,
+                          "fill": "$--primary",
+                          "cornerRadius": "$--radius-full",
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "US3Zq",
+                              "x": 24,
+                              "y": 14.5,
+                              "name": "Button Text",
+                              "fill": "$--primary-foreground",
+                              "content": "Get Started",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "700"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -699,7 +826,7 @@
                   "children": [
                     {
                       "type": "frame",
-                      "id": "gfL4B",
+                      "id": "cphba",
                       "name": "Hero Content",
                       "width": "fill_container",
                       "layout": "vertical",
@@ -707,9 +834,9 @@
                       "children": [
                         {
                           "type": "text",
-                          "id": "xqWyP",
+                          "id": "K1WWSn",
                           "name": "Heading",
-                          "fill": "$--foreground",
+                          "fill": "$--primary-foreground",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
                           "content": "Live closer\nto what matters",
@@ -720,9 +847,9 @@
                         },
                         {
                           "type": "text",
-                          "id": "qTOYa",
+                          "id": "VGwnE",
                           "name": "Subheading",
-                          "fill": "$--muted-foreground",
+                          "fill": "$--primary-foreground",
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
                           "content": "Premium pre-designed cabins, designed to help you slow down, reconnect, and feel at home - anywhere.",
@@ -733,7 +860,7 @@
                         },
                         {
                           "type": "frame",
-                          "id": "ds5CG",
+                          "id": "qWiVx",
                           "name": "Primary Button",
                           "width": "fill_container",
                           "fill": "$--secondary",
@@ -747,7 +874,7 @@
                           "children": [
                             {
                               "type": "text",
-                              "id": "IouCm",
+                              "id": "uZGS7",
                               "name": "Button Text",
                               "fill": "$--secondary-foreground",
                               "content": "Get Started",
@@ -761,274 +888,27 @@
                     },
                     {
                       "type": "frame",
-                      "id": "TuFeu",
+                      "id": "D2MQM3",
                       "x": 0,
-                      "y": 290,
+                      "y": 0,
                       "name": "Tablet Feature Grid",
                       "enabled": false,
-                      "width": "fill_container(672)",
+                      "width": 443,
+                      "height": 0,
                       "fill": {
                         "type": "color",
                         "color": "#13121173",
                         "enabled": false
                       },
-                      "cornerRadius": "$--radius-lg",
-                      "effect": [
-                        {
-                          "type": "background_blur",
-                          "radius": 16,
-                          "enabled": false
-                        },
-                        {
-                          "type": "shadow",
-                          "shadowType": "outer",
-                          "enabled": false,
-                          "color": "#00000040",
-                          "offset": {
-                            "x": 0,
-                            "y": 8
-                          },
-                          "blur": 24
-                        }
-                      ],
-                      "layout": "vertical",
-                      "gap": 18,
-                      "children": [
-                        {
-                          "type": "frame",
-                          "id": "kZgtY",
-                          "name": "Feature Row",
-                          "width": "fill_container",
-                          "gap": 24,
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "i5BZES",
-                              "name": "Feature Card",
-                              "width": "fill_container",
-                              "gap": 12,
-                              "children": [
-                                {
-                                  "type": "icon",
-                                  "id": "JNUnf",
-                                  "name": "Icon",
-                                  "width": 24,
-                                  "height": 24,
-                                  "icon": "layers",
-                                  "library": "lucide",
-                                  "fill": "$--foreground"
-                                },
-                                {
-                                  "type": "frame",
-                                  "id": "JKb68",
-                                  "name": "Texts",
-                                  "width": "fill_container",
-                                  "layout": "vertical",
-                                  "gap": 4,
-                                  "children": [
-                                    {
-                                      "type": "text",
-                                      "id": "BzsRd",
-                                      "name": "Title",
-                                      "fill": "$--foreground",
-                                      "content": "Precision Built",
-                                      "fontFamily": "$--font-heading",
-                                      "fontSize": 14,
-                                      "fontWeight": "bold"
-                                    },
-                                    {
-                                      "type": "text",
-                                      "id": "Cdvi1",
-                                      "name": "Description",
-                                      "fill": "$--muted-foreground",
-                                      "textGrowth": "fixed-width",
-                                      "width": "fill_container",
-                                      "content": "Factory-crafted modules for superior quality.",
-                                      "lineHeight": 1.4,
-                                      "fontFamily": "$--font-sans",
-                                      "fontSize": 12,
-                                      "fontWeight": "normal"
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "type": "frame",
-                              "id": "Cu40r",
-                              "name": "Feature Card",
-                              "width": "fill_container",
-                              "gap": 12,
-                              "children": [
-                                {
-                                  "type": "icon",
-                                  "id": "S6n18",
-                                  "name": "Icon",
-                                  "width": 24,
-                                  "height": 24,
-                                  "icon": "truck",
-                                  "library": "lucide",
-                                  "fill": "$--foreground"
-                                },
-                                {
-                                  "type": "frame",
-                                  "id": "Yp4Kq",
-                                  "name": "Texts",
-                                  "width": "fill_container",
-                                  "layout": "vertical",
-                                  "gap": 4,
-                                  "children": [
-                                    {
-                                      "type": "text",
-                                      "id": "GehTX",
-                                      "name": "Title",
-                                      "fill": "$--foreground",
-                                      "content": "Delivered & Installed",
-                                      "fontFamily": "$--font-heading",
-                                      "fontSize": 14,
-                                      "fontWeight": "bold"
-                                    },
-                                    {
-                                      "type": "text",
-                                      "id": "nB9Xr",
-                                      "name": "Description",
-                                      "fill": "$--muted-foreground",
-                                      "textGrowth": "fixed-width",
-                                      "width": "fill_container",
-                                      "content": "Faster build times, less on-site disruption.",
-                                      "lineHeight": 1.4,
-                                      "fontFamily": "$--font-sans",
-                                      "fontSize": 12,
-                                      "fontWeight": "normal"
-                                    }
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "type": "frame",
-                          "id": "WiYhJ",
-                          "name": "Feature Row",
-                          "width": "fill_container",
-                          "gap": 24,
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "Syu6C",
-                              "name": "Feature Card",
-                              "width": "fill_container",
-                              "gap": 12,
-                              "children": [
-                                {
-                                  "type": "icon",
-                                  "id": "GmAfk",
-                                  "name": "Icon",
-                                  "width": 24,
-                                  "height": 24,
-                                  "icon": "shield",
-                                  "library": "lucide",
-                                  "fill": "$--foreground"
-                                },
-                                {
-                                  "type": "frame",
-                                  "id": "GL3Pr",
-                                  "name": "Texts",
-                                  "width": "fill_container",
-                                  "layout": "vertical",
-                                  "gap": 4,
-                                  "children": [
-                                    {
-                                      "type": "text",
-                                      "id": "UjgvV",
-                                      "name": "Title",
-                                      "fill": "$--foreground",
-                                      "content": "Designed to Last",
-                                      "fontFamily": "$--font-heading",
-                                      "fontSize": 14,
-                                      "fontWeight": "bold"
-                                    },
-                                    {
-                                      "type": "text",
-                                      "id": "UdsTy",
-                                      "name": "Description",
-                                      "fill": "$--muted-foreground",
-                                      "textGrowth": "fixed-width",
-                                      "width": "fill_container",
-                                      "content": "Durable materials. Timeless design.",
-                                      "lineHeight": 1.4,
-                                      "fontFamily": "$--font-sans",
-                                      "fontSize": 12,
-                                      "fontWeight": "normal"
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "type": "frame",
-                              "id": "hSifw",
-                              "name": "Feature Card",
-                              "width": "fill_container",
-                              "gap": 12,
-                              "children": [
-                                {
-                                  "type": "icon",
-                                  "id": "K7VFC6",
-                                  "name": "Icon",
-                                  "width": 24,
-                                  "height": 24,
-                                  "icon": "leaf",
-                                  "library": "lucide",
-                                  "fill": "$--foreground"
-                                },
-                                {
-                                  "type": "frame",
-                                  "id": "Tftpd",
-                                  "name": "Texts",
-                                  "width": "fill_container",
-                                  "layout": "vertical",
-                                  "gap": 4,
-                                  "children": [
-                                    {
-                                      "type": "text",
-                                      "id": "tvHjR",
-                                      "name": "Title",
-                                      "fill": "$--foreground",
-                                      "content": "Made to Belong",
-                                      "fontFamily": "$--font-heading",
-                                      "fontSize": 14,
-                                      "fontWeight": "bold"
-                                    },
-                                    {
-                                      "type": "text",
-                                      "id": "cFnVv",
-                                      "name": "Description",
-                                      "fill": "$--muted-foreground",
-                                      "textGrowth": "fixed-width",
-                                      "width": "fill_container",
-                                      "content": "Sustainable by nature. Considered by design.",
-                                      "lineHeight": 1.4,
-                                      "fontFamily": "$--font-sans",
-                                      "fontSize": 12,
-                                      "fontWeight": "normal"
-                                    }
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
+                      "layout": "vertical"
                     }
                   ]
                 },
                 {
                   "type": "frame",
-                  "id": "x05Kl",
-                  "x": 444,
-                  "y": 632,
+                  "id": "Fy5yU",
+                  "x": 215,
+                  "y": 624,
                   "name": "Tablet Features Variant - Right Stack",
                   "enabled": false,
                   "width": 276,
@@ -1037,7 +917,7 @@
                     "color": "#13121173",
                     "enabled": false
                   },
-                  "cornerRadius": "$--radius-lg",
+                  "cornerRadius": "$--radius-md",
                   "effect": [
                     {
                       "type": "background_blur",
@@ -1061,14 +941,14 @@
                   "children": [
                     {
                       "type": "frame",
-                      "id": "H5QtR",
+                      "id": "C39HI",
                       "name": "Feature Card",
                       "width": "fill_container",
                       "gap": 14,
                       "children": [
                         {
                           "type": "icon",
-                          "id": "o8287",
+                          "id": "qJafM",
                           "name": "Icon",
                           "width": 24,
                           "height": 24,
@@ -1078,7 +958,7 @@
                         },
                         {
                           "type": "frame",
-                          "id": "TEFEY",
+                          "id": "YU7Op",
                           "name": "Texts",
                           "width": "fill_container",
                           "layout": "vertical",
@@ -1086,9 +966,9 @@
                           "children": [
                             {
                               "type": "text",
-                              "id": "hjonV",
+                              "id": "b31Ms",
                               "name": "Title",
-                              "fill": "$--foreground",
+                              "fill": "$--primary-foreground",
                               "content": "Precision Built",
                               "fontFamily": "$--font-heading",
                               "fontSize": 14,
@@ -1096,9 +976,9 @@
                             },
                             {
                               "type": "text",
-                              "id": "E6c50",
+                              "id": "nZ4O8",
                               "name": "Description",
-                              "fill": "$--muted-foreground",
+                              "fill": "$--primary-foreground",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
                               "content": "Factory-crafted modules for superior quality.",
@@ -1113,14 +993,14 @@
                     },
                     {
                       "type": "frame",
-                      "id": "rVTxv",
+                      "id": "uS0S9",
                       "name": "Feature Card",
                       "width": "fill_container",
                       "gap": 14,
                       "children": [
                         {
                           "type": "icon",
-                          "id": "K1DX7",
+                          "id": "rhtxZ",
                           "name": "Icon",
                           "width": 24,
                           "height": 24,
@@ -1130,7 +1010,7 @@
                         },
                         {
                           "type": "frame",
-                          "id": "qokzz",
+                          "id": "H1Zi3",
                           "name": "Texts",
                           "width": "fill_container",
                           "layout": "vertical",
@@ -1138,9 +1018,9 @@
                           "children": [
                             {
                               "type": "text",
-                              "id": "MKcj2",
+                              "id": "iX7A3",
                               "name": "Title",
-                              "fill": "$--foreground",
+                              "fill": "$--primary-foreground",
                               "content": "Delivered & Installed",
                               "fontFamily": "$--font-heading",
                               "fontSize": 14,
@@ -1148,9 +1028,9 @@
                             },
                             {
                               "type": "text",
-                              "id": "VlJ0L",
+                              "id": "U0Zg2l",
                               "name": "Description",
-                              "fill": "$--muted-foreground",
+                              "fill": "$--primary-foreground",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
                               "content": "Faster build times, less on-site disruption.",
@@ -1165,14 +1045,14 @@
                     },
                     {
                       "type": "frame",
-                      "id": "sSXV9",
+                      "id": "tEzTf",
                       "name": "Feature Card",
                       "width": "fill_container",
                       "gap": 14,
                       "children": [
                         {
                           "type": "icon",
-                          "id": "XmTI4",
+                          "id": "Z5nLqF",
                           "name": "Icon",
                           "width": 24,
                           "height": 24,
@@ -1182,7 +1062,7 @@
                         },
                         {
                           "type": "frame",
-                          "id": "Nj2Eq",
+                          "id": "pvwhi",
                           "name": "Texts",
                           "width": "fill_container",
                           "layout": "vertical",
@@ -1190,9 +1070,9 @@
                           "children": [
                             {
                               "type": "text",
-                              "id": "MqUzD",
+                              "id": "ya5x3",
                               "name": "Title",
-                              "fill": "$--foreground",
+                              "fill": "$--primary-foreground",
                               "content": "Designed to Last",
                               "fontFamily": "$--font-heading",
                               "fontSize": 14,
@@ -1200,9 +1080,9 @@
                             },
                             {
                               "type": "text",
-                              "id": "Cwpha",
+                              "id": "nXpbc",
                               "name": "Description",
-                              "fill": "$--muted-foreground",
+                              "fill": "$--primary-foreground",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
                               "content": "Durable materials. Timeless design.",
@@ -1217,14 +1097,14 @@
                     },
                     {
                       "type": "frame",
-                      "id": "VByWS",
+                      "id": "hJWBn",
                       "name": "Feature Card",
                       "width": "fill_container",
                       "gap": 14,
                       "children": [
                         {
                           "type": "icon",
-                          "id": "coXI7",
+                          "id": "P7Kly",
                           "name": "Icon",
                           "width": 24,
                           "height": 24,
@@ -1234,7 +1114,7 @@
                         },
                         {
                           "type": "frame",
-                          "id": "iI62o",
+                          "id": "fgpdi",
                           "name": "Texts",
                           "width": "fill_container",
                           "layout": "vertical",
@@ -1242,9 +1122,9 @@
                           "children": [
                             {
                               "type": "text",
-                              "id": "BBO7b",
+                              "id": "KytQT",
                               "name": "Title",
-                              "fill": "$--foreground",
+                              "fill": "$--primary-foreground",
                               "content": "Made to Belong",
                               "fontFamily": "$--font-heading",
                               "fontSize": 14,
@@ -1252,9 +1132,9 @@
                             },
                             {
                               "type": "text",
-                              "id": "b55qdR",
+                              "id": "U8hLb",
                               "name": "Description",
-                              "fill": "$--muted-foreground",
+                              "fill": "$--primary-foreground",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
                               "content": "Sustainable by nature. Considered by design.",
@@ -1271,7 +1151,7 @@
                 },
                 {
                   "type": "frame",
-                  "id": "u3Apgu",
+                  "id": "Fkem7",
                   "name": "Tablet Features Variant - Right Stack Compact",
                   "width": 169,
                   "fill": {
@@ -1279,7 +1159,7 @@
                     "color": "#13121173",
                     "enabled": false
                   },
-                  "cornerRadius": "$--radius-lg",
+                  "cornerRadius": "$--radius-md",
                   "effect": {
                     "type": "background_blur",
                     "radius": 16,
@@ -1290,7 +1170,7 @@
                   "children": [
                     {
                       "type": "frame",
-                      "id": "OeMMv",
+                      "id": "IUMgm",
                       "name": "Feature Item",
                       "width": "fill_container",
                       "gap": 12,
@@ -1298,7 +1178,7 @@
                       "children": [
                         {
                           "type": "icon",
-                          "id": "QYGNG",
+                          "id": "u5XLLJ",
                           "name": "Icon",
                           "width": 22,
                           "height": 22,
@@ -1308,9 +1188,9 @@
                         },
                         {
                           "type": "text",
-                          "id": "pqJAx",
+                          "id": "h8DQnO",
                           "name": "Title",
-                          "fill": "$--foreground",
+                          "fill": "$--primary-foreground",
                           "content": "Precision Built",
                           "fontFamily": "$--font-heading",
                           "fontSize": 14,
@@ -1320,7 +1200,7 @@
                     },
                     {
                       "type": "frame",
-                      "id": "BAHMa",
+                      "id": "c2GH4x",
                       "name": "Feature Item",
                       "width": "fill_container",
                       "gap": 12,
@@ -1328,7 +1208,7 @@
                       "children": [
                         {
                           "type": "icon",
-                          "id": "SNrmS",
+                          "id": "o54ikg",
                           "name": "Icon",
                           "width": 22,
                           "height": 22,
@@ -1338,9 +1218,9 @@
                         },
                         {
                           "type": "text",
-                          "id": "y7nLh",
+                          "id": "fV5hd",
                           "name": "Title",
-                          "fill": "$--foreground",
+                          "fill": "$--primary-foreground",
                           "content": "Delivered & Installed",
                           "fontFamily": "$--font-heading",
                           "fontSize": 14,
@@ -1350,7 +1230,7 @@
                     },
                     {
                       "type": "frame",
-                      "id": "frGCh",
+                      "id": "jXq3m",
                       "name": "Feature Item",
                       "width": "fill_container",
                       "gap": 12,
@@ -1358,7 +1238,7 @@
                       "children": [
                         {
                           "type": "icon",
-                          "id": "q84Yt",
+                          "id": "uusPv",
                           "name": "Icon",
                           "width": 22,
                           "height": 22,
@@ -1368,9 +1248,9 @@
                         },
                         {
                           "type": "text",
-                          "id": "axjMt",
+                          "id": "lTDYC",
                           "name": "Title",
-                          "fill": "$--foreground",
+                          "fill": "$--primary-foreground",
                           "content": "Designed to Last",
                           "fontFamily": "$--font-heading",
                           "fontSize": 14,
@@ -1380,7 +1260,7 @@
                     },
                     {
                       "type": "frame",
-                      "id": "r8Pc9",
+                      "id": "t3Zh1",
                       "name": "Feature Item",
                       "width": "fill_container",
                       "gap": 12,
@@ -1388,7 +1268,7 @@
                       "children": [
                         {
                           "type": "icon",
-                          "id": "M5NJ8",
+                          "id": "tJ5kn",
                           "name": "Icon",
                           "width": 22,
                           "height": 22,
@@ -1398,15 +1278,52 @@
                         },
                         {
                           "type": "text",
-                          "id": "LmNzX",
+                          "id": "aTE7W",
                           "name": "Title",
-                          "fill": "$--foreground",
+                          "fill": "$--primary-foreground",
                           "content": "Made to Belong",
                           "fontFamily": "$--font-heading",
                           "fontSize": 14,
                           "fontWeight": "bold"
                         }
                       ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "tVid1",
+                  "layoutPosition": "absolute",
+                  "x": 720,
+                  "y": 836,
+                  "name": "Video Control Button",
+                  "width": 40,
+                  "height": 40,
+                  "fill": {
+                    "type": "color",
+                    "color": "#12111080",
+                    "enabled": false
+                  },
+                  "cornerRadius": 20,
+                  "stroke": "#ffffff1f",
+                  "strokeWidth": 1,
+                  "effect": {
+                    "type": "background_blur",
+                    "radius": 20
+                  },
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "tPause",
+                      "x": 12,
+                      "y": 12,
+                      "name": "Pause Icon",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "pause",
+                      "library": "lucide",
+                      "fill": "#F7F4EF"
                     }
                   ]
                 }
@@ -1545,16 +1462,16 @@
                   "id": "jHYhI",
                   "layoutPosition": "absolute",
                   "x": 64,
-                  "y": 40,
+                  "y": 20,
                   "name": "Nav Bar Type 2 (Dark Transparent)",
                   "width": 1312,
-                  "height": 72,
+                  "height": 80,
                   "fill": {
                     "type": "color",
                     "color": "#12111066",
                     "enabled": false
                   },
-                  "cornerRadius": "$--radius-lg",
+                  "cornerRadius": "$--radius-md",
                   "stroke": {
                     "type": "color",
                     "color": "#ffffff1f",
@@ -1580,7 +1497,7 @@
                   ],
                   "padding": [
                     0,
-                    24
+                    40
                   ],
                   "justifyContent": "space_between",
                   "alignItems": "center",
@@ -1636,9 +1553,9 @@
                               "fill": "$--muted-foreground",
                               "content": "CABINS",
                               "fontFamily": "$--font-heading",
-                              "fontSize": 10,
-                              "fontWeight": "medium",
-                              "letterSpacing": 3
+                              "fontSize": 12,
+                              "fontWeight": "500",
+                              "letterSpacing": 2
                             }
                           ]
                         }
@@ -1658,8 +1575,8 @@
                           "fill": "$--foreground",
                           "content": "Models",
                           "fontFamily": "$--font-sans",
-                          "fontSize": 15,
-                          "fontWeight": "medium"
+                          "fontSize": 16,
+                          "fontWeight": "500"
                         },
                         {
                           "type": "text",
@@ -1668,8 +1585,8 @@
                           "fill": "$--foreground",
                           "content": "How it works",
                           "fontFamily": "$--font-sans",
-                          "fontSize": 15,
-                          "fontWeight": "medium"
+                          "fontSize": 16,
+                          "fontWeight": "500"
                         },
                         {
                           "type": "text",
@@ -1678,8 +1595,8 @@
                           "fill": "$--foreground",
                           "content": "Portfolio",
                           "fontFamily": "$--font-sans",
-                          "fontSize": 15,
-                          "fontWeight": "medium"
+                          "fontSize": 16,
+                          "fontWeight": "500"
                         },
                         {
                           "type": "text",
@@ -1688,33 +1605,140 @@
                           "fill": "$--foreground",
                           "content": "FAQ",
                           "fontFamily": "$--font-sans",
-                          "fontSize": 15,
-                          "fontWeight": "medium"
+                          "fontSize": 16,
+                          "fontWeight": "500"
                         }
                       ]
                     },
                     {
                       "type": "frame",
-                      "id": "G4x8s",
-                      "name": "Consultation Button",
-                      "fill": "$--primary",
-                      "cornerRadius": "$--radius-full",
-                      "padding": [
-                        10,
-                        24
-                      ],
-                      "justifyContent": "center",
+                      "id": "zxFaV",
+                      "name": "Action Links",
+                      "clip": true,
+                      "gap": 20,
                       "alignItems": "center",
                       "children": [
                         {
-                          "type": "text",
-                          "id": "DqD4Q",
-                          "name": "Button Text",
-                          "fill": "$--primary-foreground",
-                          "content": "Get Started",
-                          "fontFamily": "$--font-sans",
-                          "fontSize": 14,
-                          "fontWeight": "bold"
+                          "type": "frame",
+                          "id": "WJOZU",
+                          "name": "Borderless Language Switcher",
+                          "height": 30,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "OEMJB",
+                              "name": "Frame 1",
+                              "rotation": 1.1927080055488188e-15,
+                              "clip": true,
+                              "height": "fill_container",
+                              "padding": [
+                                0,
+                                2,
+                                0,
+                                0
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "B3Pw8",
+                                  "name": "EN",
+                                  "fill": "$--primary-foreground",
+                                  "content": "EN",
+                                  "fontFamily": "Satoshi Variable",
+                                  "fontSize": 13,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "eSkEQ",
+                              "name": "Frame 3",
+                              "width": 0,
+                              "height": 0,
+                              "children": [
+                                {
+                                  "type": "rectangle",
+                                  "id": "m5f6d",
+                                  "layoutPosition": "absolute",
+                                  "x": -6.008391499433466,
+                                  "y": 9.83487524030325,
+                                  "name": "Separator Line",
+                                  "rotation": 60.00000000000006,
+                                  "fill": "$--muted-foreground",
+                                  "width": 20,
+                                  "height": 1
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "bnaKC",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "Slash",
+                                  "enabled": false,
+                                  "rotation": -3.975693351829396e-16,
+                                  "fill": "$--muted-foreground",
+                                  "content": "/",
+                                  "fontFamily": "Satoshi Variable",
+                                  "fontSize": 25,
+                                  "fontWeight": "300"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "VbK41",
+                              "name": "Frame 2",
+                              "clip": true,
+                              "height": "fill_container",
+                              "padding": [
+                                0,
+                                0,
+                                0,
+                                2
+                              ],
+                              "justifyContent": "end",
+                              "alignItems": "end",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "gbhbU",
+                                  "name": "PL",
+                                  "fill": "$--muted-foreground",
+                                  "content": "PL",
+                                  "fontFamily": "Satoshi Variable",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "G4x8s",
+                          "name": "Consultation Button",
+                          "width": "fit_content(123)",
+                          "height": 48,
+                          "fill": "$--primary",
+                          "cornerRadius": "$--radius-full",
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "DqD4Q",
+                              "x": 24,
+                              "y": 14.5,
+                              "name": "Button Text",
+                              "fill": "$--primary-foreground",
+                              "content": "Get Started",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "700"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -1722,7 +1746,7 @@
                 },
                 {
                   "type": "frame",
-                  "id": "jceNu",
+                  "id": "C57OL",
                   "name": "Hero Content",
                   "width": 620,
                   "layout": "vertical",
@@ -1731,9 +1755,9 @@
                   "children": [
                     {
                       "type": "text",
-                      "id": "gwXtC",
+                      "id": "Sf8fg",
                       "name": "Heading",
-                      "fill": "$--foreground",
+                      "fill": "$--primary-foreground",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
                       "content": "Live closer\nto what matters",
@@ -1744,9 +1768,9 @@
                     },
                     {
                       "type": "text",
-                      "id": "skL4Z",
+                      "id": "hkahL",
                       "name": "Subheading",
-                      "fill": "$--muted-foreground",
+                      "fill": "$--primary-foreground",
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
                       "content": "Premium pre-designed cabins, designed to help you slow down,\nreconnect, and feel at home - anywhere.",
@@ -1757,7 +1781,7 @@
                     },
                     {
                       "type": "frame",
-                      "id": "h1RsU4",
+                      "id": "cS6jO",
                       "name": "Primary Button",
                       "width": "fill_container",
                       "fill": "$--secondary",
@@ -1771,7 +1795,7 @@
                       "children": [
                         {
                           "type": "text",
-                          "id": "f1fJtH",
+                          "id": "GU4fW",
                           "name": "Button Text",
                           "fill": "$--secondary-foreground",
                           "content": "Get Started",
@@ -1785,7 +1809,7 @@
                 },
                 {
                   "type": "frame",
-                  "id": "VSmXD",
+                  "id": "Bzjwa",
                   "x": 577.5,
                   "y": 612,
                   "name": "Bottom Features Bar - V4 (Right Stack)",
@@ -1796,7 +1820,7 @@
                     "color": "#13121173",
                     "enabled": false
                   },
-                  "cornerRadius": "$--radius-lg",
+                  "cornerRadius": "$--radius-md",
                   "effect": [
                     {
                       "type": "background_blur",
@@ -1820,14 +1844,14 @@
                   "children": [
                     {
                       "type": "frame",
-                      "id": "q3eJ2",
+                      "id": "DOron",
                       "name": "Feature Card",
                       "width": "fill_container",
                       "gap": 16,
                       "children": [
                         {
                           "type": "icon",
-                          "id": "nzDn8",
+                          "id": "TJQ35",
                           "name": "Icon",
                           "width": 28,
                           "height": 28,
@@ -1837,7 +1861,7 @@
                         },
                         {
                           "type": "frame",
-                          "id": "QE0wi",
+                          "id": "NIVhX",
                           "name": "Texts",
                           "width": "fill_container",
                           "layout": "vertical",
@@ -1845,9 +1869,9 @@
                           "children": [
                             {
                               "type": "text",
-                              "id": "pabOR",
+                              "id": "zv3FU",
                               "name": "Title",
-                              "fill": "$--foreground",
+                              "fill": "$--primary-foreground",
                               "content": "Precision Built",
                               "fontFamily": "$--font-heading",
                               "fontSize": 14,
@@ -1855,9 +1879,9 @@
                             },
                             {
                               "type": "text",
-                              "id": "lX1tB",
+                              "id": "F8ZTQ",
                               "name": "Description",
-                              "fill": "$--muted-foreground",
+                              "fill": "$--primary-foreground",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
                               "content": "Factory-crafted modules for superior quality.",
@@ -1872,14 +1896,14 @@
                     },
                     {
                       "type": "frame",
-                      "id": "De7Pf",
+                      "id": "m9sYv",
                       "name": "Feature Card",
                       "width": "fill_container",
                       "gap": 16,
                       "children": [
                         {
                           "type": "icon",
-                          "id": "Z4TE7",
+                          "id": "e9l9J",
                           "name": "Icon",
                           "width": 28,
                           "height": 28,
@@ -1889,7 +1913,7 @@
                         },
                         {
                           "type": "frame",
-                          "id": "quuCU",
+                          "id": "l3epy",
                           "name": "Texts",
                           "width": "fill_container",
                           "layout": "vertical",
@@ -1897,9 +1921,9 @@
                           "children": [
                             {
                               "type": "text",
-                              "id": "MLvnN",
+                              "id": "O2eEy4",
                               "name": "Title",
-                              "fill": "$--foreground",
+                              "fill": "$--primary-foreground",
                               "content": "Delivered & Installed",
                               "fontFamily": "$--font-heading",
                               "fontSize": 14,
@@ -1907,9 +1931,9 @@
                             },
                             {
                               "type": "text",
-                              "id": "qSKK9",
+                              "id": "WzkLT",
                               "name": "Description",
-                              "fill": "$--muted-foreground",
+                              "fill": "$--primary-foreground",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
                               "content": "Faster build times, less on-site disruption.",
@@ -1924,14 +1948,14 @@
                     },
                     {
                       "type": "frame",
-                      "id": "QufAP",
+                      "id": "OzAxc",
                       "name": "Feature Card",
                       "width": "fill_container",
                       "gap": 16,
                       "children": [
                         {
                           "type": "icon",
-                          "id": "UW4HX",
+                          "id": "STLnq",
                           "name": "Icon",
                           "width": 28,
                           "height": 28,
@@ -1941,7 +1965,7 @@
                         },
                         {
                           "type": "frame",
-                          "id": "rcVVb",
+                          "id": "B0Nzvg",
                           "name": "Texts",
                           "width": "fill_container",
                           "layout": "vertical",
@@ -1949,9 +1973,9 @@
                           "children": [
                             {
                               "type": "text",
-                              "id": "tyUDp",
+                              "id": "c82m7g",
                               "name": "Title",
-                              "fill": "$--foreground",
+                              "fill": "$--primary-foreground",
                               "content": "Designed to Last",
                               "fontFamily": "$--font-heading",
                               "fontSize": 14,
@@ -1959,9 +1983,9 @@
                             },
                             {
                               "type": "text",
-                              "id": "c42G5",
+                              "id": "GqI2a",
                               "name": "Description",
-                              "fill": "$--muted-foreground",
+                              "fill": "$--primary-foreground",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
                               "content": "Durable materials. Timeless design.",
@@ -1976,14 +2000,14 @@
                     },
                     {
                       "type": "frame",
-                      "id": "HsfK1",
+                      "id": "RFrNa",
                       "name": "Feature Card",
                       "width": "fill_container",
                       "gap": 16,
                       "children": [
                         {
                           "type": "icon",
-                          "id": "isZAn",
+                          "id": "nXtRt",
                           "name": "Icon",
                           "width": 28,
                           "height": 28,
@@ -1993,7 +2017,7 @@
                         },
                         {
                           "type": "frame",
-                          "id": "XX5Iy",
+                          "id": "NR6u8",
                           "name": "Texts",
                           "width": "fill_container",
                           "layout": "vertical",
@@ -2001,9 +2025,9 @@
                           "children": [
                             {
                               "type": "text",
-                              "id": "sDzFD",
+                              "id": "ADOrh",
                               "name": "Title",
-                              "fill": "$--foreground",
+                              "fill": "$--primary-foreground",
                               "content": "Made to Belong",
                               "fontFamily": "$--font-heading",
                               "fontSize": 14,
@@ -2011,9 +2035,9 @@
                             },
                             {
                               "type": "text",
-                              "id": "jd18e",
+                              "id": "KM7Eg",
                               "name": "Description",
-                              "fill": "$--muted-foreground",
+                              "fill": "$--primary-foreground",
                               "textGrowth": "fixed-width",
                               "width": "fill_container",
                               "content": "Sustainable by nature. Considered by design.",
@@ -2030,7 +2054,7 @@
                 },
                 {
                   "type": "frame",
-                  "id": "J0oJf",
+                  "id": "dzwPW",
                   "name": "Bottom Features Bar - V4 (2x2 Grid Stack)",
                   "width": 569,
                   "fill": {
@@ -2038,7 +2062,7 @@
                     "color": "#13121173",
                     "enabled": false
                   },
-                  "cornerRadius": "$--radius-lg",
+                  "cornerRadius": "$--radius-md",
                   "effect": [
                     {
                       "type": "background_blur",
@@ -2062,7 +2086,7 @@
                   "children": [
                     {
                       "type": "frame",
-                      "id": "M1kCW",
+                      "id": "u9XH0p",
                       "name": "Row 1",
                       "width": "fill_container",
                       "gap": 24,
@@ -2070,14 +2094,14 @@
                       "children": [
                         {
                           "type": "frame",
-                          "id": "CF9Qs",
+                          "id": "MTSlI",
                           "name": "Feature Card",
                           "width": "fill_container",
                           "gap": 12,
                           "children": [
                             {
                               "type": "icon",
-                              "id": "oE0do",
+                              "id": "dYZMD",
                               "name": "Icon",
                               "width": 24,
                               "height": 24,
@@ -2087,7 +2111,7 @@
                             },
                             {
                               "type": "frame",
-                              "id": "Wep80",
+                              "id": "HxUN6",
                               "name": "Texts",
                               "width": "fill_container",
                               "layout": "vertical",
@@ -2095,9 +2119,9 @@
                               "children": [
                                 {
                                   "type": "text",
-                                  "id": "GG95a",
+                                  "id": "GDy2Z",
                                   "name": "Title",
-                                  "fill": "$--foreground",
+                                  "fill": "$--primary-foreground",
                                   "content": "Precision Built",
                                   "fontFamily": "$--font-heading",
                                   "fontSize": 14,
@@ -2105,9 +2129,9 @@
                                 },
                                 {
                                   "type": "text",
-                                  "id": "HaQFm",
+                                  "id": "Pv1xG",
                                   "name": "Description",
-                                  "fill": "$--muted-foreground",
+                                  "fill": "$--primary-foreground",
                                   "textGrowth": "fixed-width",
                                   "width": "fill_container",
                                   "content": "Factory-crafted modules for superior quality.",
@@ -2122,14 +2146,14 @@
                         },
                         {
                           "type": "frame",
-                          "id": "Jf77a",
+                          "id": "tkDjK",
                           "name": "Feature Card",
                           "width": "fill_container",
                           "gap": 12,
                           "children": [
                             {
                               "type": "icon",
-                              "id": "nMpa9",
+                              "id": "L8pMnG",
                               "name": "Icon",
                               "width": 24,
                               "height": 24,
@@ -2139,7 +2163,7 @@
                             },
                             {
                               "type": "frame",
-                              "id": "qkWBD",
+                              "id": "lmHDH",
                               "name": "Texts",
                               "width": "fill_container",
                               "layout": "vertical",
@@ -2147,9 +2171,9 @@
                               "children": [
                                 {
                                   "type": "text",
-                                  "id": "FcRH3",
+                                  "id": "cAOy4",
                                   "name": "Title",
-                                  "fill": "$--foreground",
+                                  "fill": "$--primary-foreground",
                                   "content": "Delivered & Installed",
                                   "fontFamily": "$--font-heading",
                                   "fontSize": 14,
@@ -2157,9 +2181,9 @@
                                 },
                                 {
                                   "type": "text",
-                                  "id": "e77Rz",
+                                  "id": "reOlf",
                                   "name": "Description",
-                                  "fill": "$--muted-foreground",
+                                  "fill": "$--primary-foreground",
                                   "textGrowth": "fixed-width",
                                   "width": "fill_container",
                                   "content": "Faster build times, less on-site disruption.",
@@ -2176,7 +2200,7 @@
                     },
                     {
                       "type": "frame",
-                      "id": "wFNr8",
+                      "id": "EHGwr",
                       "name": "Row 2",
                       "width": "fill_container",
                       "gap": 24,
@@ -2184,14 +2208,14 @@
                       "children": [
                         {
                           "type": "frame",
-                          "id": "T6785z",
+                          "id": "JBQyw",
                           "name": "Feature Card",
                           "width": "fill_container",
                           "gap": 12,
                           "children": [
                             {
                               "type": "icon",
-                              "id": "dPPcm",
+                              "id": "Q3Od9",
                               "name": "Icon",
                               "width": 24,
                               "height": 24,
@@ -2201,7 +2225,7 @@
                             },
                             {
                               "type": "frame",
-                              "id": "mb5dX",
+                              "id": "jrCRg",
                               "name": "Texts",
                               "width": "fill_container",
                               "layout": "vertical",
@@ -2209,9 +2233,9 @@
                               "children": [
                                 {
                                   "type": "text",
-                                  "id": "pI2QY",
+                                  "id": "K7423",
                                   "name": "Title",
-                                  "fill": "$--foreground",
+                                  "fill": "$--primary-foreground",
                                   "content": "Designed to Last",
                                   "fontFamily": "$--font-heading",
                                   "fontSize": 14,
@@ -2219,9 +2243,9 @@
                                 },
                                 {
                                   "type": "text",
-                                  "id": "kuo49",
+                                  "id": "JdA2v",
                                   "name": "Description",
-                                  "fill": "$--muted-foreground",
+                                  "fill": "$--primary-foreground",
                                   "textGrowth": "fixed-width",
                                   "width": "fill_container",
                                   "content": "Durable materials. Timeless design.",
@@ -2236,14 +2260,14 @@
                         },
                         {
                           "type": "frame",
-                          "id": "ix3jj",
+                          "id": "WgTT5",
                           "name": "Feature Card",
                           "width": "fill_container",
                           "gap": 12,
                           "children": [
                             {
                               "type": "icon",
-                              "id": "Mg1wz",
+                              "id": "tsXZ2",
                               "name": "Icon",
                               "width": 24,
                               "height": 24,
@@ -2253,7 +2277,7 @@
                             },
                             {
                               "type": "frame",
-                              "id": "B1DYEe",
+                              "id": "rXW0u",
                               "name": "Texts",
                               "width": "fill_container",
                               "layout": "vertical",
@@ -2261,9 +2285,9 @@
                               "children": [
                                 {
                                   "type": "text",
-                                  "id": "nAfFz",
+                                  "id": "h9J8D",
                                   "name": "Title",
-                                  "fill": "$--foreground",
+                                  "fill": "$--primary-foreground",
                                   "content": "Made to Belong",
                                   "fontFamily": "$--font-heading",
                                   "fontSize": 14,
@@ -2271,9 +2295,9 @@
                                 },
                                 {
                                   "type": "text",
-                                  "id": "uwBRt",
+                                  "id": "XkR4s",
                                   "name": "Description",
-                                  "fill": "$--muted-foreground",
+                                  "fill": "$--primary-foreground",
                                   "textGrowth": "fixed-width",
                                   "width": "fill_container",
                                   "content": "Sustainable by nature. Considered by design.",
@@ -2287,6 +2311,43 @@
                           ]
                         }
                       ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "WETuD",
+                  "layoutPosition": "absolute",
+                  "x": 1394,
+                  "y": 836,
+                  "name": "Video Control Button",
+                  "width": 40,
+                  "height": 40,
+                  "fill": {
+                    "type": "color",
+                    "color": "#12111080",
+                    "enabled": false
+                  },
+                  "cornerRadius": 20,
+                  "stroke": "#ffffff1f",
+                  "strokeWidth": 1,
+                  "effect": {
+                    "type": "background_blur",
+                    "radius": 20
+                  },
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "NuFr9",
+                      "x": 12,
+                      "y": 12,
+                      "name": "Pause Icon",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "pause",
+                      "library": "lucide",
+                      "fill": "#F7F4EF"
                     }
                   ]
                 }
@@ -2616,13 +2677,13 @@
       "type": "color",
       "value": [
         {
-          "value": "#A9A5A0",
+          "value": "#737373",
           "theme": {
             "Mode": "light"
           }
         },
         {
-          "value": "#A9A5A0",
+          "value": "#737373",
           "theme": {
             "Mode": "dark"
           }
@@ -2701,7 +2762,7 @@
       "type": "number",
       "value": [
         {
-          "value": 10,
+          "value": 14,
           "theme": {
             "Border-radii": "Default"
           }
@@ -2712,7 +2773,7 @@
       "type": "number",
       "value": [
         {
-          "value": 18,
+          "value": 25.2,
           "theme": {
             "Border-radii": "Default"
           }
@@ -2723,7 +2784,7 @@
       "type": "number",
       "value": [
         {
-          "value": 22,
+          "value": 30.8,
           "theme": {
             "Border-radii": "Default"
           }
@@ -2734,7 +2795,7 @@
       "type": "number",
       "value": [
         {
-          "value": 26,
+          "value": 36.4,
           "theme": {
             "Border-radii": "Default"
           }
@@ -2756,7 +2817,7 @@
       "type": "number",
       "value": [
         {
-          "value": 10,
+          "value": 14,
           "theme": {
             "Border-radii": "Default"
           }
@@ -2767,7 +2828,7 @@
       "type": "number",
       "value": [
         {
-          "value": 8,
+          "value": 11.2,
           "theme": {
             "Border-radii": "Default"
           }
@@ -2778,7 +2839,7 @@
       "type": "number",
       "value": [
         {
-          "value": 6,
+          "value": 8.4,
           "theme": {
             "Border-radii": "Default"
           }
@@ -2789,7 +2850,7 @@
       "type": "number",
       "value": [
         {
-          "value": 14,
+          "value": 19.6,
           "theme": {
             "Border-radii": "Default"
           }
