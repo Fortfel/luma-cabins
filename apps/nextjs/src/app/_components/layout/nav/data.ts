@@ -1,4 +1,4 @@
-import { aboutLinkOptions, contactLinkOptions } from '~/app/(app)/_validations/app-link-options'
+import { aboutLinkOptions } from '~/app/(app)/_validations/app-link-options'
 
 interface NavigationLink {
   className: string
@@ -7,10 +7,16 @@ interface NavigationLink {
 }
 
 const navigationDesktopLinks = [
-  { className: '', label: 'About', linkOptions: aboutLinkOptions() },
-  { className: '', label: 'Contact', linkOptions: contactLinkOptions() },
+  { className: '', label: 'Models', linkOptions: { href: '#models' } },
+  { className: '', label: 'How it works', linkOptions: { href: '#process' } },
+  { className: '', label: 'Portfolio', linkOptions: aboutLinkOptions() },
+  { className: '', label: 'FAQ', linkOptions: { href: '#faqs' } },
+  // { className: '', label: 'EN | PL', linkOptions: { href: '#faqs' } },
 ] as const satisfies ReadonlyArray<NavigationLink>
 
-const navigationMobileLinks = [...navigationDesktopLinks] as const satisfies ReadonlyArray<NavigationLink>
+const navigationMobileLinks = [
+  ...navigationDesktopLinks,
+  { className: '', label: 'Contact', linkOptions: { href: '/contact' } },
+] as const satisfies ReadonlyArray<NavigationLink>
 
 export { navigationDesktopLinks, navigationMobileLinks }

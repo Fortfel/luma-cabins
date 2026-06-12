@@ -26,16 +26,11 @@ const NavbarDesktop = ({
           {navigationDesktopLinks.map((link) => (
             <NavigationMenuItem key={link.label}>
               <NavigationMenuLink
-                render={
-                  <Link
-                    {...link.linkOptions}
-                    // Blur the link after clicking to remove focus styles
-                    onClick={(e) => {
-                      e.currentTarget.blur()
-                    }}
-                  />
-                }
-                className={cn(link.className)}
+                render={<Link {...link.linkOptions} />}
+                className={cn(
+                  'text-primary-foreground hover:bg-primary-foreground/5 focus-visible:bg-primary-foreground/5 px-[clamp(0.75rem,calc(0rem+1.5625vw),1rem)] text-[clamp(0.875rem,calc(0.5rem+0.78125vw),1rem)] font-medium transition-colors focus:bg-transparent',
+                  link.className,
+                )}
               >
                 {link.label}
               </NavigationMenuLink>

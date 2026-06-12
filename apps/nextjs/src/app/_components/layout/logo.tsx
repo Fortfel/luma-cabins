@@ -10,13 +10,16 @@ const Logo = ({ className, ...props }: React.ComponentProps<'div'>) => {
       data-slot="logo"
       role="img"
       aria-label="Luma Cabins logo"
-      className={cn('flex w-fit items-center gap-2 text-2xl', className)}
+      className={cn('font-heading flex w-fit items-center gap-3', className)}
       {...props}
     >
-      <div className="flex size-9 items-center justify-center rounded-md bg-red-500 text-white">
-        <LogoIcon aria-hidden="true" />
+      <div className="text-primary-foreground flex items-center justify-center">
+        <LogoIcon aria-hidden="true" className="size-8" />
       </div>
-      <span className="leading-5 font-semibold tracking-tighter">Luma Cabins</span>
+      <span className="flex flex-col leading-tight font-semibold tracking-widest uppercase">
+        <span className="text-primary-foreground text-base font-bold">Luma</span>
+        <span className="text-muted-foreground text-xs font-medium">Cabins</span>
+      </span>
     </div>
   )
 }
