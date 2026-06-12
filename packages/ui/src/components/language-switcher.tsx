@@ -1,32 +1,31 @@
 'use client'
 
-import type * as React from 'react'
-import { useCallback } from 'react'
+import * as React from 'react'
 import { ChevronDown, Languages } from 'lucide-react'
 
 import { Button } from '@workspace/ui/components/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
+  DropdownMenuItem,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from '@workspace/ui/components/dropdown-menu'
+import { Separator } from '@workspace/ui/components/separator'
 import { cn } from '@workspace/ui/lib/utils'
 
 interface Language {
   key: string
   label: string
+  href: string
 }
 
 type ButtonVariants = Pick<React.ComponentProps<typeof Button>, 'variant'>['variant']
 type ButtonSizes = Pick<React.ComponentProps<typeof Button>, 'size'>['size']
 
-interface LanguageSwitcherProps extends Omit<React.ComponentProps<'div'>, 'onChange'> {
+interface LanguageSwitcherDropdownProps extends React.ComponentProps<'div'> {
   languages: Array<Language>
   currentLocale: string
-  onChange: (value: string) => void
   labelToggle: string
   buttonVariant?: ButtonVariants
   buttonSize?: ButtonSizes
@@ -40,29 +39,70 @@ interface LanguageSwitcherProps extends Omit<React.ComponentProps<'div'>, 'onCha
   showRadioBullets?: boolean
 }
 
-function LanguageSwitcher({
+interface LanguageSwitcherSimpleProps extends React.ComponentProps<'div'> {
+  languages: Array<Language>
+  currentLocale: string
+  labelToggle: string
+  showSeparator?: boolean
+  separator?: React.ReactNode
+}
+
+function LanguageSwitcherSimple({
   languages,
   currentLocale,
-  onChange,
+  labelToggle,
+  showSeparator = true,
+  separator = <Separator orientation="vertical" className="h-4 self-center!" />,
+  className,
+  ...props
+}: LanguageSwitcherSimpleProps) {
+  return (
+    <div
+      data-slot="language-switcher-simple"
+      aria-label={labelToggle}
+      className={cn('flex items-center justify-center gap-3', className)}
+      {...props}
+    >
+      {languages.map(({ key, label, href }, index) => {
+        const isActive = key === currentLocale
+
+        return (
+          <React.Fragment key={key}>
+            <a
+              href={href}
+              hrefLang={key}
+              aria-current={isActive ? 'page' : undefined}
+              className={cn(isActive && 'active')}
+            >
+              {label.toUpperCase()}
+            </a>
+
+            {showSeparator && index < languages.length - 1 && separator}
+          </React.Fragment>
+        )
+      })}
+    </div>
+  )
+}
+
+function LanguageSwitcherDropdown({
+  languages,
+  currentLocale,
   labelToggle,
   buttonVariant = 'outline',
   buttonSize = 'icon',
   localeCodeAsIcon = true,
   showArrow = true,
   showShortcut = true,
-  showRadioBullets = true,
   className,
   ...props
-}: LanguageSwitcherProps) {
-  const handleLanguageChange = useCallback(
-    (languageKey: string) => {
-      onChange(languageKey) // It ll reload the page
-    },
-    [onChange],
-  )
-
+}: LanguageSwitcherDropdownProps) {
   return (
-    <div data-slot="language-switcher" className={cn('[&_svg]:size-4.5 [&>button]:font-normal', className)} {...props}>
+    <div
+      data-slot="language-switcher-dropdown"
+      className={cn('[&_svg]:size-4.5 [&>button]:font-normal', className)}
+      {...props}
+    >
       <DropdownMenu>
         <DropdownMenuTrigger render={<Button variant={buttonVariant} size={buttonSize} aria-label={labelToggle} />}>
           {localeCodeAsIcon ? (
@@ -70,25 +110,30 @@ function LanguageSwitcher({
           ) : (
             <Languages className="size-4" aria-hidden="true" />
           )}
+
           {showArrow && <ChevronDown className="-mr-1 -ml-2 size-4" aria-hidden="true" />}
         </DropdownMenuTrigger>
+
         <DropdownMenuContent align="end">
-          <DropdownMenuRadioGroup value={currentLocale} onValueChange={handleLanguageChange}>
-            {languages.map(({ key, label }) => (
-              <DropdownMenuRadioItem
+          {languages.map(({ key, label, href }) => {
+            const isActive = key === currentLocale
+
+            return (
+              <DropdownMenuItem
                 key={key}
-                value={key}
-                className={cn(showShortcut && 'gap-8', !showRadioBullets && '[&>span:first-child]:hidden')}
+                // eslint-disable-next-line jsx-a11y/anchor-has-content
+                render={<a href={href} hrefLang={key} aria-current={isActive ? 'page' : undefined} />}
+                className={cn(showShortcut && 'gap-8', isActive && 'active')}
               >
-                <span className={cn(!showRadioBullets && '-ml-5')}>{label}</span>
+                <span>{label}</span>
+
                 {showShortcut && <DropdownMenuShortcut>{key.toUpperCase()}</DropdownMenuShortcut>}
-              </DropdownMenuRadioItem>
-            ))}
-          </DropdownMenuRadioGroup>
+              </DropdownMenuItem>
+            )
+          })}
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
   )
 }
-
-export { LanguageSwitcher }
+export { LanguageSwitcherDropdown, LanguageSwitcherSimple }
