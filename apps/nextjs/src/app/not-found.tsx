@@ -3,8 +3,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Button } from '@workspace/ui/components/button'
+import { Button, buttonVariants } from '@workspace/ui/components/button'
+import { cn } from '@workspace/ui/lib/utils'
 
+import { homeLinkOptions } from '~/app/(app)/_validations/app-link-options'
 import notFoundImage from '~/assets/images/not-found.jpg'
 
 export default function NotFound() {
@@ -29,14 +31,14 @@ export default function NotFound() {
               Go back
             </Button>
 
-            <Link href="/">
-              <Button
-                variant="outline"
-                size="lg"
-                className="cursor-pointer bg-transparent uppercase hover:bg-white! hover:text-black!"
-              >
-                Start Over
-              </Button>
+            <Link
+              {...homeLinkOptions()}
+              className={cn(
+                buttonVariants({ variant: 'outline', size: 'lg' }),
+                'cursor-pointer bg-transparent uppercase hover:bg-white! hover:text-black!',
+              )}
+            >
+              Start Over
             </Link>
           </div>
         </div>
