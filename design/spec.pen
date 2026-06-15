@@ -40,6 +40,40 @@
             },
             {
               "type": "rectangle",
+              "id": "SpKCD",
+              "layoutPosition": "absolute",
+              "x": -525,
+              "y": -28,
+              "name": "V2 Cinematic Black Overlay",
+              "enabled": false,
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 180,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#00000073",
+                    "position": 0
+                  },
+                  {
+                    "color": "#00000014",
+                    "position": 0.51
+                  },
+                  {
+                    "color": "#000000b3",
+                    "position": 1
+                  }
+                ]
+              },
+              "width": 1440,
+              "height": 900
+            },
+            {
+              "type": "rectangle",
               "id": "cmGMe",
               "layoutPosition": "absolute",
               "x": 0,
@@ -235,7 +269,7 @@
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
                       "content": "Premium pre-designed cabins, designed to help you slow down, reconnect, and feel at home - anywhere.",
-                      "lineHeight": 1.45,
+                      "lineHeight": 1.5,
                       "fontFamily": "$--font-sans",
                       "fontSize": 16,
                       "fontWeight": "normal"
@@ -248,7 +282,7 @@
                       "fill": "$--secondary",
                       "cornerRadius": "$--radius-full",
                       "padding": [
-                        15,
+                        16,
                         24
                       ],
                       "justifyContent": "center",
@@ -261,7 +295,7 @@
                           "fill": "$--secondary-foreground",
                           "content": "Get Started",
                           "fontFamily": "$--font-sans",
-                          "fontSize": 15,
+                          "fontSize": 16,
                           "fontWeight": "700"
                         }
                       ]
@@ -273,16 +307,17 @@
                   "id": "L2e5yT",
                   "name": "Mobile Feature Variants",
                   "width": "fill_container",
-                  "fill": {
-                    "type": "color",
-                    "color": "#00000000",
-                    "enabled": false
-                  },
                   "effect": {
                     "type": "background_blur",
                     "radius": 0,
                     "enabled": false
                   },
+                  "padding": [
+                    40,
+                    0,
+                    0,
+                    0
+                  ],
                   "alignItems": "center",
                   "children": [
                     {
@@ -291,29 +326,20 @@
                       "name": "Feature Meta - Text Only",
                       "clip": true,
                       "width": "fill_container",
-                      "fill": {
-                        "type": "color",
-                        "color": "#00000000",
-                        "enabled": false
+                      "stroke": "#73737380",
+                      "strokeWidth": {
+                        "top": 1
                       },
+                      "strokeAlignment": "inner",
                       "layout": "vertical",
                       "gap": 20,
                       "padding": [
-                        40,
+                        20,
                         0,
                         0,
                         0
                       ],
                       "children": [
-                        {
-                          "type": "rectangle",
-                          "id": "wWefS",
-                          "name": "Divider",
-                          "flipY": true,
-                          "fill": "#f7f4ef3d",
-                          "width": 342,
-                          "height": 1
-                        },
                         {
                           "type": "text",
                           "id": "wfbt1",
@@ -330,8 +356,8 @@
                     {
                       "type": "frame",
                       "id": "IuVjC",
-                      "x": 0,
-                      "y": 0,
+                      "x": 1,
+                      "y": 57,
                       "name": "Feature Meta - Icons",
                       "enabled": false,
                       "width": 342,
@@ -354,17 +380,12 @@
                   "name": "Video Control Button",
                   "width": 40,
                   "height": 40,
-                  "fill": {
-                    "type": "color",
-                    "color": "#12111080",
-                    "enabled": false
-                  },
                   "cornerRadius": 20,
-                  "stroke": "#ffffff1f",
+                  "stroke": "#73737340",
                   "strokeWidth": 1,
                   "effect": {
                     "type": "background_blur",
-                    "radius": 20
+                    "radius": 24
                   },
                   "layout": "none",
                   "children": [
@@ -378,7 +399,7 @@
                       "height": 16,
                       "icon": "pause",
                       "library": "lucide",
-                      "fill": "#F7F4EF"
+                      "fill": "$--primary-foreground"
                     }
                   ]
                 }
@@ -426,11 +447,11 @@
             },
             {
               "type": "rectangle",
-              "id": "L1jTd",
+              "id": "wYC3v",
               "layoutPosition": "absolute",
               "x": 0,
               "y": 0,
-              "name": "Tablet Cinematic Black Overlay",
+              "name": "V2 Cinematic Black Overlay",
               "fill": {
                 "type": "gradient",
                 "gradientType": "linear",
@@ -441,15 +462,15 @@
                 },
                 "colors": [
                   {
-                    "color": "#00000080",
+                    "color": "#00000073",
                     "position": 0
                   },
                   {
-                    "color": "#0000001f",
-                    "position": 0.46
+                    "color": "#00000014",
+                    "position": 0.51
                   },
                   {
-                    "color": "#000000cc",
+                    "color": "#000000b3",
                     "position": 1
                   }
                 ]
@@ -466,13 +487,12 @@
               "clip": true,
               "width": 768,
               "height": 900,
-              "gap": 60,
+              "layout": "vertical",
               "padding": [
                 64,
                 48
               ],
-              "justifyContent": "space_between",
-              "alignItems": "end",
+              "justifyContent": "end",
               "children": [
                 {
                   "type": "frame",
@@ -820,7 +840,7 @@
                   "type": "frame",
                   "id": "T75iYY",
                   "name": "Hero Stack",
-                  "width": "fill_container",
+                  "width": 576,
                   "layout": "vertical",
                   "gap": 28,
                   "children": [
@@ -830,7 +850,7 @@
                       "name": "Hero Content",
                       "width": "fill_container",
                       "layout": "vertical",
-                      "gap": 22,
+                      "gap": 24,
                       "children": [
                         {
                           "type": "text",
@@ -842,7 +862,7 @@
                           "content": "Live closer\nto what matters",
                           "lineHeight": 1.08,
                           "fontFamily": "$--font-heading",
-                          "fontSize": 54,
+                          "fontSize": 60,
                           "fontWeight": "500"
                         },
                         {
@@ -853,9 +873,9 @@
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
                           "content": "Premium pre-designed cabins, designed to help you slow down, reconnect, and feel at home - anywhere.",
-                          "lineHeight": 1.48,
+                          "lineHeight": 1.5,
                           "fontFamily": "$--font-sans",
-                          "fontSize": 17,
+                          "fontSize": 18,
                           "fontWeight": "normal"
                         },
                         {
@@ -879,7 +899,7 @@
                               "fill": "$--secondary-foreground",
                               "content": "Get Started",
                               "fontFamily": "$--font-sans",
-                              "fontSize": 15,
+                              "fontSize": 16,
                               "fontWeight": "700"
                             }
                           ]
@@ -907,7 +927,7 @@
                 {
                   "type": "frame",
                   "id": "Fy5yU",
-                  "x": 215,
+                  "x": 199,
                   "y": 624,
                   "name": "Tablet Features Variant - Right Stack",
                   "enabled": false,
@@ -1152,8 +1172,11 @@
                 {
                   "type": "frame",
                   "id": "Fkem7",
+                  "x": 535,
+                  "y": 694,
                   "name": "Tablet Features Variant - Right Stack Compact",
-                  "width": 169,
+                  "enabled": false,
+                  "width": 185,
                   "fill": {
                     "type": "color",
                     "color": "#13121173",
@@ -1166,7 +1189,7 @@
                     "enabled": false
                   },
                   "layout": "vertical",
-                  "gap": 16,
+                  "gap": 18,
                   "children": [
                     {
                       "type": "frame",
@@ -1193,7 +1216,7 @@
                           "fill": "$--primary-foreground",
                           "content": "Precision Built",
                           "fontFamily": "$--font-heading",
-                          "fontSize": 14,
+                          "fontSize": 16,
                           "fontWeight": "bold"
                         }
                       ]
@@ -1223,7 +1246,7 @@
                           "fill": "$--primary-foreground",
                           "content": "Delivered & Installed",
                           "fontFamily": "$--font-heading",
-                          "fontSize": 14,
+                          "fontSize": 16,
                           "fontWeight": "bold"
                         }
                       ]
@@ -1253,7 +1276,7 @@
                           "fill": "$--primary-foreground",
                           "content": "Designed to Last",
                           "fontFamily": "$--font-heading",
-                          "fontSize": 14,
+                          "fontSize": 16,
                           "fontWeight": "bold"
                         }
                       ]
@@ -1283,10 +1306,79 @@
                           "fill": "$--primary-foreground",
                           "content": "Made to Belong",
                           "fontFamily": "$--font-heading",
-                          "fontSize": 14,
+                          "fontSize": 16,
                           "fontWeight": "bold"
                         }
                       ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "VK4fi",
+                  "name": "Mobile Feature Variants",
+                  "width": "fill_container",
+                  "effect": {
+                    "type": "background_blur",
+                    "radius": 0,
+                    "enabled": false
+                  },
+                  "padding": [
+                    40,
+                    0,
+                    0,
+                    0
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "G2L7T8",
+                      "name": "Feature Meta - Text Only",
+                      "clip": true,
+                      "width": "fill_container",
+                      "stroke": "#73737380",
+                      "strokeWidth": {
+                        "top": 1
+                      },
+                      "strokeAlignment": "inner",
+                      "layout": "vertical",
+                      "gap": 20,
+                      "padding": [
+                        20,
+                        0,
+                        0,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "sZo1Q",
+                          "name": "Feature Text",
+                          "fill": "$--primary-foreground",
+                          "content": "PRECISION BUILT • DELIVERED FAST • TIMELESS DESIGN",
+                          "fontFamily": "$--font-sans",
+                          "fontSize": 10,
+                          "fontWeight": "900",
+                          "letterSpacing": 0.6
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "H3pofx",
+                      "x": 1,
+                      "y": 57,
+                      "name": "Feature Meta - Icons",
+                      "enabled": false,
+                      "width": 342,
+                      "height": 0,
+                      "fill": {
+                        "type": "color",
+                        "color": "#00000000",
+                        "enabled": false
+                      },
+                      "layout": "vertical"
                     }
                   ]
                 },
@@ -1299,17 +1391,12 @@
                   "name": "Video Control Button",
                   "width": 40,
                   "height": 40,
-                  "fill": {
-                    "type": "color",
-                    "color": "#12111080",
-                    "enabled": false
-                  },
                   "cornerRadius": 20,
-                  "stroke": "#ffffff1f",
+                  "stroke": "#73737340",
                   "strokeWidth": 1,
                   "effect": {
                     "type": "background_blur",
-                    "radius": 20
+                    "radius": 24
                   },
                   "layout": "none",
                   "children": [
@@ -1748,7 +1835,7 @@
                   "type": "frame",
                   "id": "C57OL",
                   "name": "Hero Content",
-                  "width": 620,
+                  "width": 672,
                   "layout": "vertical",
                   "gap": 24,
                   "alignItems": "center",
@@ -1761,9 +1848,9 @@
                       "textGrowth": "fixed-width",
                       "width": "fill_container",
                       "content": "Live closer\nto what matters",
-                      "lineHeight": 1.15,
+                      "lineHeight": 1,
                       "fontFamily": "$--font-heading",
-                      "fontSize": 56,
+                      "fontSize": 80,
                       "fontWeight": "500"
                     },
                     {
@@ -1776,7 +1863,7 @@
                       "content": "Premium pre-designed cabins, designed to help you slow down,\nreconnect, and feel at home - anywhere.",
                       "lineHeight": 1.5,
                       "fontFamily": "$--font-sans",
-                      "fontSize": 18,
+                      "fontSize": 20,
                       "fontWeight": "normal"
                     },
                     {
@@ -1800,7 +1887,7 @@
                           "fill": "$--secondary-foreground",
                           "content": "Get Started",
                           "fontFamily": "$--font-sans",
-                          "fontSize": 15,
+                          "fontSize": 16,
                           "fontWeight": "700"
                         }
                       ]
@@ -1809,253 +1896,11 @@
                 },
                 {
                   "type": "frame",
-                  "id": "Bzjwa",
-                  "x": 577.5,
-                  "y": 612,
-                  "name": "Bottom Features Bar - V4 (Right Stack)",
-                  "enabled": false,
-                  "width": 336,
-                  "fill": {
-                    "type": "color",
-                    "color": "#13121173",
-                    "enabled": false
-                  },
-                  "cornerRadius": "$--radius-md",
-                  "effect": [
-                    {
-                      "type": "background_blur",
-                      "radius": 16,
-                      "enabled": false
-                    },
-                    {
-                      "type": "shadow",
-                      "shadowType": "outer",
-                      "enabled": false,
-                      "color": "#00000040",
-                      "offset": {
-                        "x": 0,
-                        "y": 8
-                      },
-                      "blur": 24
-                    }
-                  ],
-                  "layout": "vertical",
-                  "gap": 24,
-                  "children": [
-                    {
-                      "type": "frame",
-                      "id": "DOron",
-                      "name": "Feature Card",
-                      "width": "fill_container",
-                      "gap": 16,
-                      "children": [
-                        {
-                          "type": "icon",
-                          "id": "TJQ35",
-                          "name": "Icon",
-                          "width": 28,
-                          "height": 28,
-                          "icon": "layers",
-                          "library": "lucide",
-                          "fill": "$--foreground"
-                        },
-                        {
-                          "type": "frame",
-                          "id": "NIVhX",
-                          "name": "Texts",
-                          "width": "fill_container",
-                          "layout": "vertical",
-                          "gap": 4,
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "zv3FU",
-                              "name": "Title",
-                              "fill": "$--primary-foreground",
-                              "content": "Precision Built",
-                              "fontFamily": "$--font-heading",
-                              "fontSize": 14,
-                              "fontWeight": "bold"
-                            },
-                            {
-                              "type": "text",
-                              "id": "F8ZTQ",
-                              "name": "Description",
-                              "fill": "$--primary-foreground",
-                              "textGrowth": "fixed-width",
-                              "width": "fill_container",
-                              "content": "Factory-crafted modules for superior quality.",
-                              "lineHeight": 1.4,
-                              "fontFamily": "$--font-sans",
-                              "fontSize": 12,
-                              "fontWeight": "normal"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "m9sYv",
-                      "name": "Feature Card",
-                      "width": "fill_container",
-                      "gap": 16,
-                      "children": [
-                        {
-                          "type": "icon",
-                          "id": "e9l9J",
-                          "name": "Icon",
-                          "width": 28,
-                          "height": 28,
-                          "icon": "truck",
-                          "library": "lucide",
-                          "fill": "$--foreground"
-                        },
-                        {
-                          "type": "frame",
-                          "id": "l3epy",
-                          "name": "Texts",
-                          "width": "fill_container",
-                          "layout": "vertical",
-                          "gap": 4,
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "O2eEy4",
-                              "name": "Title",
-                              "fill": "$--primary-foreground",
-                              "content": "Delivered & Installed",
-                              "fontFamily": "$--font-heading",
-                              "fontSize": 14,
-                              "fontWeight": "bold"
-                            },
-                            {
-                              "type": "text",
-                              "id": "WzkLT",
-                              "name": "Description",
-                              "fill": "$--primary-foreground",
-                              "textGrowth": "fixed-width",
-                              "width": "fill_container",
-                              "content": "Faster build times, less on-site disruption.",
-                              "lineHeight": 1.4,
-                              "fontFamily": "$--font-sans",
-                              "fontSize": 12,
-                              "fontWeight": "normal"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "OzAxc",
-                      "name": "Feature Card",
-                      "width": "fill_container",
-                      "gap": 16,
-                      "children": [
-                        {
-                          "type": "icon",
-                          "id": "STLnq",
-                          "name": "Icon",
-                          "width": 28,
-                          "height": 28,
-                          "icon": "shield",
-                          "library": "lucide",
-                          "fill": "$--foreground"
-                        },
-                        {
-                          "type": "frame",
-                          "id": "B0Nzvg",
-                          "name": "Texts",
-                          "width": "fill_container",
-                          "layout": "vertical",
-                          "gap": 4,
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "c82m7g",
-                              "name": "Title",
-                              "fill": "$--primary-foreground",
-                              "content": "Designed to Last",
-                              "fontFamily": "$--font-heading",
-                              "fontSize": 14,
-                              "fontWeight": "bold"
-                            },
-                            {
-                              "type": "text",
-                              "id": "GqI2a",
-                              "name": "Description",
-                              "fill": "$--primary-foreground",
-                              "textGrowth": "fixed-width",
-                              "width": "fill_container",
-                              "content": "Durable materials. Timeless design.",
-                              "lineHeight": 1.4,
-                              "fontFamily": "$--font-sans",
-                              "fontSize": 12,
-                              "fontWeight": "normal"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "frame",
-                      "id": "RFrNa",
-                      "name": "Feature Card",
-                      "width": "fill_container",
-                      "gap": 16,
-                      "children": [
-                        {
-                          "type": "icon",
-                          "id": "nXtRt",
-                          "name": "Icon",
-                          "width": 28,
-                          "height": 28,
-                          "icon": "leaf",
-                          "library": "lucide",
-                          "fill": "$--foreground"
-                        },
-                        {
-                          "type": "frame",
-                          "id": "NR6u8",
-                          "name": "Texts",
-                          "width": "fill_container",
-                          "layout": "vertical",
-                          "gap": 4,
-                          "children": [
-                            {
-                              "type": "text",
-                              "id": "ADOrh",
-                              "name": "Title",
-                              "fill": "$--primary-foreground",
-                              "content": "Made to Belong",
-                              "fontFamily": "$--font-heading",
-                              "fontSize": 14,
-                              "fontWeight": "bold"
-                            },
-                            {
-                              "type": "text",
-                              "id": "KM7Eg",
-                              "name": "Description",
-                              "fill": "$--primary-foreground",
-                              "textGrowth": "fixed-width",
-                              "width": "fill_container",
-                              "content": "Sustainable by nature. Considered by design.",
-                              "lineHeight": 1.4,
-                              "fontFamily": "$--font-sans",
-                              "fontSize": 12,
-                              "fontWeight": "normal"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
                   "id": "dzwPW",
+                  "x": 807,
+                  "y": 680,
                   "name": "Bottom Features Bar - V4 (2x2 Grid Stack)",
+                  "enabled": false,
                   "width": 569,
                   "fill": {
                     "type": "color",
@@ -2124,7 +1969,7 @@
                                   "fill": "$--primary-foreground",
                                   "content": "Precision Built",
                                   "fontFamily": "$--font-heading",
-                                  "fontSize": 14,
+                                  "fontSize": 18,
                                   "fontWeight": "bold"
                                 },
                                 {
@@ -2137,7 +1982,7 @@
                                   "content": "Factory-crafted modules for superior quality.",
                                   "lineHeight": 1.4,
                                   "fontFamily": "$--font-sans",
-                                  "fontSize": 12,
+                                  "fontSize": 14,
                                   "fontWeight": "normal"
                                 }
                               ]
@@ -2176,7 +2021,7 @@
                                   "fill": "$--primary-foreground",
                                   "content": "Delivered & Installed",
                                   "fontFamily": "$--font-heading",
-                                  "fontSize": 14,
+                                  "fontSize": 18,
                                   "fontWeight": "bold"
                                 },
                                 {
@@ -2189,7 +2034,7 @@
                                   "content": "Faster build times, less on-site disruption.",
                                   "lineHeight": 1.4,
                                   "fontFamily": "$--font-sans",
-                                  "fontSize": 12,
+                                  "fontSize": 14,
                                   "fontWeight": "normal"
                                 }
                               ]
@@ -2238,7 +2083,7 @@
                                   "fill": "$--primary-foreground",
                                   "content": "Designed to Last",
                                   "fontFamily": "$--font-heading",
-                                  "fontSize": 14,
+                                  "fontSize": 18,
                                   "fontWeight": "bold"
                                 },
                                 {
@@ -2251,7 +2096,7 @@
                                   "content": "Durable materials. Timeless design.",
                                   "lineHeight": 1.4,
                                   "fontFamily": "$--font-sans",
-                                  "fontSize": 12,
+                                  "fontSize": 14,
                                   "fontWeight": "normal"
                                 }
                               ]
@@ -2290,7 +2135,7 @@
                                   "fill": "$--primary-foreground",
                                   "content": "Made to Belong",
                                   "fontFamily": "$--font-heading",
-                                  "fontSize": 14,
+                                  "fontSize": 18,
                                   "fontWeight": "bold"
                                 },
                                 {
@@ -2303,7 +2148,7 @@
                                   "content": "Sustainable by nature. Considered by design.",
                                   "lineHeight": 1.4,
                                   "fontFamily": "$--font-sans",
-                                  "fontSize": 12,
+                                  "fontSize": 14,
                                   "fontWeight": "normal"
                                 }
                               ]
@@ -2323,17 +2168,12 @@
                   "name": "Video Control Button",
                   "width": 40,
                   "height": 40,
-                  "fill": {
-                    "type": "color",
-                    "color": "#12111080",
-                    "enabled": false
-                  },
                   "cornerRadius": 20,
-                  "stroke": "#ffffff1f",
+                  "stroke": "#73737340",
                   "strokeWidth": 1,
                   "effect": {
                     "type": "background_blur",
-                    "radius": 20
+                    "radius": 24
                   },
                   "layout": "none",
                   "children": [
@@ -2350,12 +2190,264 @@
                       "fill": "#F7F4EF"
                     }
                   ]
+                },
+                {
+                  "type": "frame",
+                  "id": "j3uGU",
+                  "width": "fit_content(336)",
+                  "fill": {
+                    "type": "color",
+                    "color": "#13121173",
+                    "enabled": false
+                  },
+                  "cornerRadius": "$--radius-md",
+                  "effect": [
+                    {
+                      "type": "background_blur",
+                      "radius": 16,
+                      "enabled": false
+                    },
+                    {
+                      "type": "shadow",
+                      "shadowType": "outer",
+                      "enabled": false,
+                      "color": "#00000040",
+                      "offset": {
+                        "x": 0,
+                        "y": 8
+                      },
+                      "blur": 24
+                    }
+                  ],
+                  "layout": "vertical",
+                  "gap": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "KBZa5",
+                      "name": "Feature Card",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "I20fmF",
+                          "name": "Icon",
+                          "width": 28,
+                          "height": 28,
+                          "icon": "layers",
+                          "library": "lucide",
+                          "fill": "$--foreground"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "QlG66",
+                          "name": "Texts",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 4,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "ErJGH",
+                              "name": "Title",
+                              "fill": "$--primary-foreground",
+                              "content": "Precision Built",
+                              "fontFamily": "$--font-heading",
+                              "fontSize": 18,
+                              "fontWeight": "bold"
+                            },
+                            {
+                              "type": "text",
+                              "id": "m2Mkf",
+                              "name": "Description",
+                              "fill": "$--primary-foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Factory-crafted modules for superior quality.",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "fbkVA",
+                      "name": "Feature Card",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "WXSSr",
+                          "name": "Icon",
+                          "width": 28,
+                          "height": 28,
+                          "icon": "truck",
+                          "library": "lucide",
+                          "fill": "$--foreground"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "A5e4n",
+                          "name": "Texts",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 4,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "b4qc1",
+                              "name": "Title",
+                              "fill": "$--primary-foreground",
+                              "content": "Delivered & Installed",
+                              "fontFamily": "$--font-heading",
+                              "fontSize": 18,
+                              "fontWeight": "bold"
+                            },
+                            {
+                              "type": "text",
+                              "id": "rWSGZ",
+                              "name": "Description",
+                              "fill": "$--primary-foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Faster build times, less on-site disruption.",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "NQ34M",
+                      "name": "Feature Card",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "P5N3dl",
+                          "name": "Icon",
+                          "width": 28,
+                          "height": 28,
+                          "icon": "shield",
+                          "library": "lucide",
+                          "fill": "$--foreground"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "vzcUB",
+                          "name": "Texts",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 4,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Wcc94",
+                              "name": "Title",
+                              "fill": "$--primary-foreground",
+                              "content": "Designed to Last",
+                              "fontFamily": "$--font-heading",
+                              "fontSize": 18,
+                              "fontWeight": "bold"
+                            },
+                            {
+                              "type": "text",
+                              "id": "jlfk7",
+                              "name": "Description",
+                              "fill": "$--primary-foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Durable materials. Timeless design.",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "iOkbT",
+                      "name": "Feature Card",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "mPv7b",
+                          "name": "Icon",
+                          "width": 28,
+                          "height": 28,
+                          "icon": "leaf",
+                          "library": "lucide",
+                          "fill": "$--foreground"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "NTi4I",
+                          "name": "Texts",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 4,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "W9fyLK",
+                              "name": "Title",
+                              "fill": "$--primary-foreground",
+                              "content": "Made to Belong",
+                              "fontFamily": "$--font-heading",
+                              "fontSize": 18,
+                              "fontWeight": "bold"
+                            },
+                            {
+                              "type": "text",
+                              "id": "ZvhGE",
+                              "name": "Description",
+                              "fill": "$--primary-foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Sustainable by nature. Considered by design.",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             }
           ]
         }
       ]
+    },
+    {
+      "type": "text",
+      "id": "MQklH",
+      "x": 3751.8295964125564,
+      "y": 1401.5,
+      "fill": "#000000",
+      "content": " For example padding on this side should be ",
+      "fontFamily": "Inter",
+      "fontSize": 12,
+      "fontWeight": "normal"
     }
   ],
   "themes": {
