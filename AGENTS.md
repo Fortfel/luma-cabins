@@ -20,6 +20,8 @@ Before any Next.js work, find and read the relevant doc in `apps/nextjs/node_mod
 
 <!-- END:nextjs-agent-rules -->
 
+IMPORTANT: When applicable, prefer using webstorm-index MCP tools for code navigation and refactoring.
+
 ## Snapshot
 
 - Package manager: `pnpm`
