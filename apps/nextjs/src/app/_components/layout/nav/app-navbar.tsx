@@ -21,7 +21,7 @@ const AppNavbar = ({ className, ...props }: React.ComponentProps<'div'>) => {
     <div
       data-slot="navbar"
       className={cn(
-        'mx-auto my-0 flex h-full items-center justify-between px-6 md:px-[clamp(1.25rem,calc(0rem+2.6042vw),2.5rem)]',
+        'mx-auto flex h-full items-center justify-between border-none bg-transparent px-6 backdrop-blur-2xl transition-[background-color,border-color,box-shadow,backdrop-filter,color] md:rounded-md md:px-[clamp(1.25rem,calc(0rem+2.6042vw),2.5rem)]',
         className,
       )}
       {...props}

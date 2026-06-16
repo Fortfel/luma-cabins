@@ -1,0 +1,95 @@
+import Link from 'next/link'
+import { ArrowUpRight, Layers, Leaf, ShieldCheck, Truck } from 'lucide-react'
+
+import { buttonVariants } from '@workspace/ui/components/button'
+import { cn } from '@workspace/ui/lib/utils'
+
+import { HeroBackground } from '~/app/(app)/_components/hero-background'
+import { contactLinkOptions } from '~/app/(app)/_validations/app-link-options'
+
+const HERO_FEATURES = [
+  {
+    icon: Layers,
+    title: 'Precision built',
+    description: 'Factory-crafted modules for superior quality.',
+  },
+  {
+    icon: Truck,
+    title: 'Delivered & Installed',
+    description: 'Faster build times, less on-site disruption.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Designed to Last',
+    description: 'Durable materials. Timeless design.',
+  },
+  {
+    icon: Leaf,
+    title: 'Made to Belong',
+    description: 'Sustainable by nature. Considered by design.',
+  },
+] as const
+
+const MOBILE_FEATURES = ['Precision built', 'Delivered fast', 'Timeless design'] as const
+
+function Hero() {
+  return (
+    <section className="bg-primary text-primary-foreground relative isolate flex min-h-dvh w-full overflow-hidden">
+      <HeroBackground />
+
+      <div
+        className={cn(
+          'container-page flex grow flex-col justify-end pt-30 pb-16',
+          'lg:flex-row lg:items-end lg:justify-between lg:pb-24',
+        )}
+      >
+        <div className="flex flex-col gap-[clamp(1.25rem,calc(1.0115rem+1.0178vw),1.5rem)] sm:max-w-[clamp(36rem,calc(27rem+18.75vw),42rem)]">
+          <h1 className="text-[clamp(2.625rem,calc(1.6409rem+4.1989vw),5rem)] leading-[1.05] font-medium md:leading-none ">
+            Live closer
+            <br />
+            to what matters
+          </h1>
+          <p className="text-[clamp(1rem,calc(0.8964rem+0.442vw),1.25rem)] leading-normal">
+            Premium pre-designed cabins, designed to help you slow down, reconnect, and feel at home - anywhere.
+          </p>
+          <Link
+            {...contactLinkOptions()}
+            className={cn(
+              buttonVariants({ size: 'lg', variant: 'secondary' }),
+              'h-13.5 w-full cursor-pointer text-base font-bold',
+            )}
+          >
+            Get started
+            <ArrowUpRight data-icon="inline-end" />
+          </Link>
+        </div>
+
+        <div>
+          <div className="border-muted-foreground/50 mt-10 grow border-t pt-5 lg:hidden">
+            <p className="text-[10px] font-black tracking-[0.6px] uppercase">{MOBILE_FEATURES.join(' • ')}</p>
+          </div>
+
+          <div className="hidden gap-6 lg:grid">
+            {HERO_FEATURES.map((feature) => (
+              <HeroFeature key={feature.title} {...feature} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function HeroFeature({ icon: Icon, title, description }: (typeof HERO_FEATURES)[number]) {
+  return (
+    <div className="flex items-center gap-4">
+      <Icon aria-hidden="true" className="size-6 xl:size-7" />
+      <div className="flex flex-col gap-1">
+        <p className="font-heading text-lg font-bold">{title}</p>
+        <p className="hidden text-sm xl:block">{description}</p>
+      </div>
+    </div>
+  )
+}
+
+export { Hero }

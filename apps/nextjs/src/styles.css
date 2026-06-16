@@ -1,3 +1,14 @@
 @import '@workspace/tailwind-config/theme';
 
 @source '../../../packages/ui/src/**/*.{ts,tsx}';
+
+@utility container-page {
+  width: 100%;
+  max-width: var(--breakpoint-2xl);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+
+  @variant md {
+    padding-inline: clamp(3rem, calc(1.5rem + 3.125vw), 4rem);
+  }
+}

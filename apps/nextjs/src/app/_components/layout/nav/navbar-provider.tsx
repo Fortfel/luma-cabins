@@ -30,15 +30,14 @@ const NavbarProvider = ({
         data-slot="navbar-wrapper"
         data-scrolled={isScrolled}
         className={cn(
-          'group/navbar-wrapper border-border text-primary-foreground fixed inset-x-0 top-0 z-10 mr-(--removed-body-scroll-bar-size,0px) h-(--nav-height) max-w-(--breakpoint-2xl) border-none bg-transparent backdrop-blur-2xl transition-[background-color,border-color,box-shadow,backdrop-filter,color]',
-          'md:inset-x-6 md:top-5 md:mx-auto md:h-[calc(var(--nav-height)+0.5rem)] md:rounded-md',
-          // isScrolled && 'after:opacity-100',
+          'group/navbar-wrapper text-primary-foreground fixed inset-x-0 top-0 z-50 mr-(--removed-body-scroll-bar-size,0px) h-(--nav-height)',
+          'md:top-5 md:h-[calc(var(--nav-height)+0.5rem)]',
           className,
         )}
         style={{ '--nav-height': height } as React.CSSProperties}
         {...props}
       >
-        {children}
+        <div className="container-page h-full max-md:px-0">{children}</div>
       </header>
     </NavbarContext.Provider>
   )
