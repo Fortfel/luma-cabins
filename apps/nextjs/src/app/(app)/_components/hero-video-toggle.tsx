@@ -18,10 +18,10 @@ function HeroVideoToggle({ isPaused, onClick, className, ...props }: HeroVideoTo
       variant="outline"
       size="icon"
       aria-label={label}
-      aria-pressed={isPaused}
+      aria-pressed={!isPaused}
       onClick={onClick}
       className={cn(
-        'border-muted-foreground/25 pointer-events-auto absolute right-1 bottom-5 z-20 size-10 rounded-full bg-transparent backdrop-blur-xl',
+        'border-muted-foreground/25 pointer-events-auto size-10 rounded-full bg-transparent backdrop-blur-xl',
         className,
       )}
       {...props}
