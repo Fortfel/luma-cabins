@@ -44,7 +44,7 @@ function Hero() {
         )}
       >
         <div className="flex flex-col gap-[clamp(1.25rem,calc(1.0115rem+1.0178vw),1.5rem)] sm:max-w-[clamp(36rem,calc(27rem+18.75vw),42rem)]">
-          <h1 className="text-[clamp(2.625rem,calc(1.6409rem+4.1989vw),5rem)] leading-[1.05] font-medium md:leading-none ">
+          <h1 className="text-[clamp(2.625rem,calc(1.6964rem+3.9621vw),5.5rem)] leading-[1.05] font-medium md:leading-none">
             Live closer
             <br />
             to what matters

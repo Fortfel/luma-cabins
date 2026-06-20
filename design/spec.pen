@@ -9,7 +9,6 @@
       "name": "Luma Cabins Mobile",
       "clip": true,
       "width": 390,
-      "height": 844,
       "fill": "$--background",
       "layout": "vertical",
       "children": [
@@ -417,7 +416,6 @@
       "name": "Luma Cabins Tablet",
       "clip": true,
       "width": 768,
-      "height": 900,
       "fill": "$--background",
       "layout": "vertical",
       "children": [
@@ -1428,7 +1426,6 @@
       "name": "Luma Cabins",
       "clip": true,
       "width": 1440,
-      "height": 900,
       "fill": "$--background",
       "layout": "vertical",
       "children": [
@@ -1850,7 +1847,7 @@
                       "content": "Live closer\nto what matters",
                       "lineHeight": 1,
                       "fontFamily": "$--font-heading",
-                      "fontSize": 80,
+                      "fontSize": 88,
                       "fontWeight": "500"
                     },
                     {
