@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import { ArrowUpRight, Layers, Leaf, ShieldCheck, Truck } from 'lucide-react'
+import Link from 'next/link'
 
 import { buttonVariants } from '@workspace/ui/components/button'
 import { cn } from '@workspace/ui/lib/utils'
@@ -34,7 +34,7 @@ const MOBILE_FEATURES = ['Precision built', 'Delivered fast', 'Timeless design']
 
 function Hero() {
   return (
-    <section className="bg-primary text-primary-foreground relative isolate flex min-h-dvh w-full overflow-hidden">
+    <section className="relative isolate flex min-h-dvh w-full overflow-hidden bg-primary text-primary-foreground">
       <HeroBackground />
 
       <div
@@ -65,7 +65,7 @@ function Hero() {
         </div>
 
         <div>
-          <div className="border-muted-foreground/50 mt-10 grow border-t pt-5 lg:hidden">
+          <div className="mt-10 grow border-t border-muted-foreground/50 pt-5 lg:hidden">
             <p className="text-[10px] font-black tracking-[0.6px] uppercase">{MOBILE_FEATURES.join(' • ')}</p>
           </div>
 

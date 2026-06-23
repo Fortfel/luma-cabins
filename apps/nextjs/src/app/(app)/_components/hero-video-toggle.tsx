@@ -1,4 +1,5 @@
 import type * as React from 'react'
+
 import { Pause, Play } from 'lucide-react'
 
 import { Button } from '@workspace/ui/components/button'
@@ -21,7 +22,7 @@ function HeroVideoToggle({ isPaused, onClick, className, ...props }: HeroVideoTo
       aria-pressed={!isPaused}
       onClick={onClick}
       className={cn(
-        'border-muted-foreground/25 pointer-events-auto size-10 rounded-full bg-transparent backdrop-blur-xl',
+        'pointer-events-auto size-10 rounded-full border-muted-foreground/25 bg-transparent backdrop-blur-xl',
         className,
       )}
       {...props}

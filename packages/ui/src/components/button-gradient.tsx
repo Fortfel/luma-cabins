@@ -1,5 +1,6 @@
-import type { VariantProps } from 'class-variance-authority'
 import type * as React from 'react'
+import type { VariantProps } from 'class-variance-authority'
+
 import { cva } from 'class-variance-authority'
 
 import { Button as ButtonPrimitive } from '@workspace/ui/components/button'

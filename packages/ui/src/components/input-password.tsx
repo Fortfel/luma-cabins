@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+
 import { EyeIcon, EyeOffIcon } from 'lucide-react'
 
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from '@workspace/ui/components/input-group'

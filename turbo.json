@@ -24,8 +24,11 @@
       "outputs": [".cache/tsbuildinfo.json"]
     },
     "format": {
-      "outputs": [".cache/.prettiercache"],
+      "outputs": [],
       "outputLogs": "new-only"
+    },
+    "format:fix": {
+      "cache": false
     }
   }
 }

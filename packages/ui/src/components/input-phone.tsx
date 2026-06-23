@@ -4,6 +4,7 @@
 // @see https://www.npmjs.com/package/react-phone-number-input/v/3.3.6
 // to validate: phone: z.string().refine(isPossiblePhoneNumber, { message: "Invalid phone number" })
 import * as React from 'react'
+
 import { CheckIcon, ChevronsUpDown } from 'lucide-react'
 import * as RPNInput from 'react-phone-number-input'
 import flags from 'react-phone-number-input/flags'
@@ -136,7 +137,7 @@ const CountryComboboxComponent = ({
                     >
                       <FlagComponent country={value} countryName={label} />
                       <span className="flex-1 text-sm">{label}</span>
-                      <span className="text-foreground/50 text-sm">{`+${RPNInput.getCountryCallingCode(value)}`}</span>
+                      <span className="text-sm text-foreground/50">{`+${RPNInput.getCountryCallingCode(value)}`}</span>
                       <CheckIcon
                         className={`ml-auto size-4 ${value === selectedCountry ? 'opacity-100' : 'opacity-0'}`}
                         aria-hidden="true"
@@ -158,7 +159,7 @@ const FlagComponent = ({ country, countryName }: RPNInput.FlagProps) => {
 
   return (
     <span
-      className="bg-foreground/20 flex h-4 w-6 overflow-hidden rounded-sm [&_svg:not([class*='size-'])]:size-full"
+      className="flex h-4 w-6 overflow-hidden rounded-sm bg-foreground/20 [&_svg:not([class*='size-'])]:size-full"
       aria-hidden="true"
     >
       {Flag && <Flag title={countryName} />}

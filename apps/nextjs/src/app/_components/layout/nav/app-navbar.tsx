@@ -1,6 +1,7 @@
 'use client'
 
 import type * as React from 'react'
+
 import Link from 'next/link'
 
 import { buttonVariants } from '@workspace/ui/components/button'
@@ -8,11 +9,11 @@ import { LanguageSwitcherSimple } from '@workspace/ui/components/language-switch
 import { Separator } from '@workspace/ui/components/separator'
 import { cn } from '@workspace/ui/lib/utils'
 
+import { contactLinkOptions, homeLinkOptions } from '~/app/(app)/_validations/app-link-options'
 import { Logo } from '~/app/_components/layout/logo'
 import { NavbarDesktop } from '~/app/_components/layout/nav/navbar-desktop'
 import { NavbarMobile } from '~/app/_components/layout/nav/navbar-mobile'
 import { useNavbar } from '~/app/_components/layout/nav/use-navbar'
-import { contactLinkOptions, homeLinkOptions } from '~/app/(app)/_validations/app-link-options'
 
 const AppNavbar = ({ className, ...props }: React.ComponentProps<'div'>) => {
   const { isMobile } = useNavbar()
@@ -45,16 +46,16 @@ const AppNavbar = ({ className, ...props }: React.ComponentProps<'div'>) => {
           showSeparator={true}
           separator={
             <>
-              <Separator orientation="horizontal" className="bg-muted-foreground hidden md:max-lg:block" />
+              <Separator orientation="horizontal" className="hidden bg-muted-foreground md:max-lg:block" />
               <Separator
                 orientation="vertical"
-                className="bg-muted-foreground hidden h-5 rotate-30 self-center! lg:block"
+                className="hidden h-5 rotate-30 self-center! bg-muted-foreground lg:block"
               />
             </>
           }
           className={cn(
-            'text-muted-foreground hidden h-7.5 gap-1 text-[13px] transition-colors',
-            '[&>a:hover]:text-primary-foreground [&>a.active]:text-primary-foreground [&>a:hover]:underline',
+            'hidden h-7.5 gap-1 text-[13px] text-muted-foreground transition-colors',
+            '[&>a.active]:text-primary-foreground [&>a:hover]:text-primary-foreground [&>a:hover]:underline',
             'md:flex md:flex-col',
             'lg:flex-row lg:[&>a:first-child]:self-start lg:[&>a:last-child]:self-end',
           )}

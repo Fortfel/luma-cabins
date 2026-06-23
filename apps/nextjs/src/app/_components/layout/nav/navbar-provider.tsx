@@ -30,7 +30,7 @@ const NavbarProvider = ({
         data-slot="navbar-wrapper"
         data-scrolled={isScrolled}
         className={cn(
-          'group/navbar-wrapper text-primary-foreground fixed inset-x-0 top-0 z-50 mr-(--removed-body-scroll-bar-size,0px) h-(--nav-height)',
+          'group/navbar-wrapper fixed inset-x-0 top-0 z-50 mr-(--removed-body-scroll-bar-size,0px) h-(--nav-height) text-primary-foreground',
           'md:top-5 md:h-[calc(var(--nav-height)+0.5rem)]',
           className,
         )}

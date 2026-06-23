@@ -1,17 +1,18 @@
 'use client'
 
 import * as React from 'react'
-import Link from 'next/link'
+
 import { Menu } from 'lucide-react'
+import Link from 'next/link'
 
 import { Button } from '@workspace/ui/components/button'
 import { Separator } from '@workspace/ui/components/separator'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@workspace/ui/components/sheet'
 import { cn } from '@workspace/ui/lib/utils'
 
+import { homeLinkOptions } from '~/app/(app)/_validations/app-link-options'
 import { Logo } from '~/app/_components/layout/logo'
 import { navigationMobileLinks } from '~/app/_components/layout/nav/data'
-import { homeLinkOptions } from '~/app/(app)/_validations/app-link-options'
 
 const NavbarMobile = ({ className, ...props }: React.ComponentProps<'div'>) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
@@ -24,7 +25,7 @@ const NavbarMobile = ({ className, ...props }: React.ComponentProps<'div'>) => {
             <Button
               variant="ghost"
               size="icon-lg"
-              className="text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground cursor-pointer rounded-full"
+              className="cursor-pointer rounded-full text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
             />
           }
         >
@@ -48,7 +49,7 @@ const NavbarMobile = ({ className, ...props }: React.ComponentProps<'div'>) => {
             data-slot="navbar-mobile-content"
             className={cn(
               'flex flex-col gap-1 [&_a]:p-4 [&_a]:text-base [&_a]:transition-colors [&_a]:outline-none',
-              '[&_a]:hover:bg-muted [&_a]:focus:bg-muted [&_a]:focus-visible:ring-ring/50 [&_a]:focus-visible:ring-3 [&_a]:focus-visible:outline-1',
+              '[&_a]:hover:bg-muted [&_a]:focus:bg-muted [&_a]:focus-visible:ring-3 [&_a]:focus-visible:ring-ring/50 [&_a]:focus-visible:outline-1',
               '[&_a.active]:bg-muted/50 [&_a.active]:hover:bg-muted [&_a.active]:focus:bg-muted',
             )}
           >

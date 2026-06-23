@@ -1,6 +1,7 @@
+import type * as React from 'react'
 import type { VariantProps } from 'class-variance-authority'
 import type { LucideProps } from 'lucide-react'
-import type * as React from 'react'
+
 import { cva } from 'class-variance-authority'
 import { LoaderCircleIcon, LoaderPinwheelIcon } from 'lucide-react'
 

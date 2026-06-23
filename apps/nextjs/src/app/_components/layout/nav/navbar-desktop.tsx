@@ -1,6 +1,7 @@
 'use client'
 
 import type * as React from 'react'
+
 import Link from 'next/link'
 
 import {
@@ -28,7 +29,7 @@ const NavbarDesktop = ({
               <NavigationMenuLink
                 render={<Link {...link.linkOptions} />}
                 className={cn(
-                  'text-primary-foreground hover:bg-primary-foreground/5 focus-visible:bg-primary-foreground/5 px-[clamp(0.75rem,calc(0rem+1.5625vw),1rem)] text-[clamp(0.875rem,calc(0.5rem+0.78125vw),1rem)] font-medium transition-colors focus:bg-transparent',
+                  'px-[clamp(0.75rem,calc(0rem+1.5625vw),1rem)] text-[clamp(0.875rem,calc(0.5rem+0.78125vw),1rem)] font-medium text-primary-foreground transition-colors hover:bg-primary-foreground/5 focus:bg-transparent focus-visible:bg-primary-foreground/5',
                   link.className,
                 )}
               >

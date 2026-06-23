@@ -1,15 +1,15 @@
 import type { ReactNode } from 'react'
+import type { Metadata } from 'next'
+
 import localFont from 'next/font/local'
 
 import { Toaster } from '@workspace/ui/components/sonner'
 import { TooltipProvider } from '@workspace/ui/components/tooltip'
 import { cn } from '@workspace/ui/lib/utils'
 
-import { createSeoMetadata } from '~/utils/seo'
-
 import '~/styles.css'
 
-import type { Metadata } from 'next'
+import { createSeoMetadata } from '~/utils/seo'
 
 const satoshi = localFont({
   src: [
@@ -52,7 +52,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          'bg-background text-foreground min-h-dvh font-sans antialiased',
+          'min-h-dvh bg-background font-sans text-foreground antialiased',
           satoshi.variable,
           cabinetGrotesk.variable,
         )}

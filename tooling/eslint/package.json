@@ -1,7 +1,7 @@
 {
   "name": "@workspace/eslint-config",
-  "type": "module",
   "private": true,
+  "type": "module",
   "exports": {
     "./base": "./base.ts",
     "./nextjs": "./nextjs.ts",
@@ -9,7 +9,8 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "format": "prettier --check . --ignore-path ../../.gitignore --ignore-path .prettierignore"
+    "format": "oxfmt --check .",
+    "format:fix": "oxfmt --write ."
   },
   "dependencies": {
     "@eslint/compat": "^2.1.0",
@@ -33,10 +34,7 @@
   "devDependencies": {
     "@types/eslint-plugin-jsx-a11y": "^6.10.1",
     "@types/node": "catalog:",
-    "@workspace/prettier-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
-    "prettier": "catalog:",
     "typescript": "catalog:"
-  },
-  "prettier": "@workspace/prettier-config"
+  }
 }

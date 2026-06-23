@@ -10,7 +10,8 @@
     "with-env": "dotenv -e ../../.env --",
     "lint": "pnpm typegen && eslint --flag unstable_native_nodejs_ts_config",
     "typecheck": "pnpm typegen && tsc --noEmit",
-    "format": "prettier --check . --ignore-path ../../.gitignore --ignore-path .prettierignore"
+    "format": "oxfmt --check .",
+    "format:fix": "oxfmt --write ."
   },
   "dependencies": {
     "@t3-oss/env-nextjs": "^0.13.11",
@@ -31,14 +32,11 @@
     "@types/react": "catalog:react19",
     "@types/react-dom": "catalog:react19",
     "@workspace/eslint-config": "workspace:*",
-    "@workspace/prettier-config": "workspace:*",
     "@workspace/tailwind-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
     "babel-plugin-react-compiler": "^1.0.0",
     "eslint": "catalog:",
-    "prettier": "catalog:",
     "tailwindcss": "catalog:",
     "typescript": "catalog:"
-  },
-  "prettier": "@workspace/prettier-config"
+  }
 }

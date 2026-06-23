@@ -10,7 +10,8 @@
   "scripts": {
     "lint": "eslint --flag unstable_native_nodejs_ts_config",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "format": "prettier --check . --ignore-path ../../.gitignore --ignore-path .prettierignore"
+    "format": "oxfmt --check .",
+    "format:fix": "oxfmt --write ."
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
@@ -41,16 +42,13 @@
     "@types/react": "catalog:react19",
     "@types/react-dom": "catalog:react19",
     "@workspace/eslint-config": "workspace:*",
-    "@workspace/prettier-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
     "eslint": "catalog:",
-    "prettier": "catalog:",
     "typescript": "catalog:",
     "zod": "catalog:"
   },
   "peerDependencies": {
     "react": "catalog:react19",
     "zod": "catalog:"
-  },
-  "prettier": "@workspace/prettier-config"
+  }
 }

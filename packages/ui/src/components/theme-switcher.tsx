@@ -1,7 +1,9 @@
 'use client'
 
 import type * as React from 'react'
+
 import { useCallback, useRef } from 'react'
+
 import { motion } from 'motion/react'
 import { flushSync } from 'react-dom'
 
@@ -148,7 +150,7 @@ const ThemeSwitcherToggle = ({
     <div
       data-slot="theme-switcher-toggle"
       className={cn(
-        'bg-background ring-border [&_div]:bg-secondary relative isolate flex h-8 rounded-full p-1 ring-1 [&_div]:inset-0 [&_div]:rounded-full [&_svg]:z-10 [&_svg]:m-auto [&_svg]:size-4 [&>button]:size-6 [&>button]:rounded-full',
+        'relative isolate flex h-8 rounded-full bg-background p-1 ring-1 ring-border [&_div]:inset-0 [&_div]:rounded-full [&_div]:bg-secondary [&_svg]:z-10 [&_svg]:m-auto [&_svg]:size-4 [&>button]:size-6 [&>button]:rounded-full',
         className,
       )}
       aria-label={labelToggle}

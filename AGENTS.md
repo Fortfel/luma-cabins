@@ -28,7 +28,7 @@ IMPORTANT: When applicable, prefer using webstorm-index MCP tools for code navig
 - Monorepo tool: Turborepo
 - Apps: `apps/nextjs`
 - Shared packages: `packages/ui`
-- Shared tooling: `tooling/eslint`, `tooling/prettier`, `tooling/typescript`, `tooling/tailwind`
+- Shared tooling: `tooling/eslint`, `tooling/typescript`, `tooling/tailwind`
 
 ## Repo Layout
 
@@ -56,14 +56,13 @@ IMPORTANT: When applicable, prefer using webstorm-index MCP tools for code navig
 - Typecheck one app/package: `pnpm --filter nextjs typecheck`
 - Format one app/package: `pnpm --filter @workspace/ui format`
 - Run app in dev: `pnpm --filter nextjs dev`
-- Useful filters: `nextjs`, `@workspace/ui`, `@workspace/eslint-config`, `@workspace/prettier-config`, `@workspace/tailwind-config`, `@workspace/typescript-config`
+- Useful filters: `nextjs`, `@workspace/ui`, `@workspace/eslint-config`, `@workspace/tailwind-config`, `@workspace/typescript-config`
 
 ## Package-Local Scripts
 
 - `apps/nextjs`: `dev`, `build`, `start`, `typegen`, `with-env`, `lint`, `typecheck`, `format`
 - `packages/ui`: `lint`, `typecheck`, `format`
 - `tooling/eslint`: `typecheck`, `format`
-- `tooling/prettier`: `typecheck`, `format`
 - `tooling/tailwind`: `lint`, `typecheck`, `format`
 
 ## Tests
@@ -82,14 +81,14 @@ IMPORTANT: When applicable, prefer using webstorm-index MCP tools for code navig
 
 ## Formatting
 
-- Formatting is centralized in `tooling/prettier/index.js`
+- Formatting is centralized in `.oxfmtrc.json`
 - Use the repo Prettier config; do not hand-format against it
 - Do not use semicolons
 - Use single quotes
 - Keep trailing commas enabled
 - Print width is `120`
-- Tailwind classes are sorted by `prettier-plugin-tailwindcss`
-- Imports are sorted by `@ianvs/prettier-plugin-sort-imports`
+- Tailwind classes are sorted by `oxfmt` using `.oxfmtrc.json`
+- Imports are sorted by `oxfmt` using `.oxfmtrc.json`
 - Use English for code and documentation
 
 ## Import Rules
