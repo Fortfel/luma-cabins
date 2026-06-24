@@ -48,12 +48,14 @@ interface LanguageSwitcherSimpleProps extends React.ComponentProps<'div'> {
   separator?: React.ReactNode
 }
 
+const defaultLanguageSwitcherSeparator = <Separator orientation="vertical" className="h-4 self-center!" />
+
 function LanguageSwitcherSimple({
   languages,
   currentLocale,
   labelToggle,
   showSeparator = true,
-  separator = <Separator orientation="vertical" className="h-4 self-center!" />,
+  separator = defaultLanguageSwitcherSeparator,
   className,
   ...props
 }: LanguageSwitcherSimpleProps) {
@@ -122,8 +124,9 @@ function LanguageSwitcherDropdown({
             return (
               <DropdownMenuItem
                 key={key}
-                // eslint-disable-next-line jsx-a11y/anchor-has-content
-                render={<a href={href} hrefLang={key} aria-current={isActive ? 'page' : undefined} />}
+                render={
+                  <a href={href} hrefLang={key} aria-current={isActive ? 'page' : undefined} aria-label={label} />
+                }
                 className={cn(showShortcut && 'gap-8', isActive && 'active')}
               >
                 <span>{label}</span>

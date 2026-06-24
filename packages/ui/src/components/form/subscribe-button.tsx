@@ -17,8 +17,14 @@ const SubscribeButton = ({ label, isPending = false, gradient = 'default', ...pr
   return (
     <form.Subscribe selector={(state) => [state.canSubmit, state.isSubmitting]}>
       {([canSubmit, isSubmitting]) => (
-        <ButtonGradient type="submit" size="lg" gradient={gradient} disabled={!canSubmit || isPending} {...props}>
-          {isSubmitting && <CircleSpinner size="sm" />} {label}
+        <ButtonGradient
+          type="submit"
+          size="lg"
+          gradient={gradient}
+          disabled={canSubmit !== true || isPending}
+          {...props}
+        >
+          {isSubmitting === true && <CircleSpinner size="sm" />} {label}
         </ButtonGradient>
       )}
     </form.Subscribe>

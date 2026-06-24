@@ -28,7 +28,7 @@ IMPORTANT: When applicable, prefer using webstorm-index MCP tools for code navig
 - Monorepo tool: Turborepo
 - Apps: `apps/nextjs`
 - Shared packages: `packages/ui`
-- Shared tooling: `tooling/eslint`, `tooling/typescript`, `tooling/tailwind`
+- Shared tooling: `tooling/typescript`, `tooling/tailwind`
 
 ## Repo Layout
 
@@ -56,14 +56,13 @@ IMPORTANT: When applicable, prefer using webstorm-index MCP tools for code navig
 - Typecheck one app/package: `pnpm --filter nextjs typecheck`
 - Format one app/package: `pnpm --filter @workspace/ui format`
 - Run app in dev: `pnpm --filter nextjs dev`
-- Useful filters: `nextjs`, `@workspace/ui`, `@workspace/eslint-config`, `@workspace/tailwind-config`, `@workspace/typescript-config`
+- Useful filters: `nextjs`, `@workspace/ui`, `@workspace/tailwind-config`, `@workspace/typescript-config`
 
 ## Package-Local Scripts
 
-- `apps/nextjs`: `dev`, `build`, `start`, `typegen`, `with-env`, `lint`, `typecheck`, `format`
-- `packages/ui`: `lint`, `typecheck`, `format`
-- `tooling/eslint`: `typecheck`, `format`
-- `tooling/tailwind`: `lint`, `typecheck`, `format`
+- `apps/nextjs`: `dev`, `build`, `start`, `typegen`, `with-env`, `lint`, `lint:fix`, `typecheck`, `format`, `format:fix`
+- `packages/ui`: `lint`, `lint:fix`, `typecheck`, `format`, `format:fix`
+- `tooling/tailwind`: `lint`, `lint:fix`, `typecheck`, `format`, `format:fix`
 
 ## Tests
 
@@ -82,7 +81,7 @@ IMPORTANT: When applicable, prefer using webstorm-index MCP tools for code navig
 ## Formatting
 
 - Formatting is centralized in `.oxfmtrc.json`
-- Use the repo Prettier config; do not hand-format against it
+- Use the repo `oxfmt` config; do not hand-format against it
 - Do not use semicolons
 - Use single quotes
 - Keep trailing commas enabled

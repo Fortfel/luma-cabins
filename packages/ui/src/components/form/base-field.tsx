@@ -28,21 +28,28 @@ const BaseField = ({
   const field = useFieldContext<string>()
   const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
 
-  const labelElement = labelRight ? (
-    <div className="flex justify-between">
+  const labelElement =
+    labelRight !== undefined && labelRight !== null ? (
+      <div className="flex justify-between">
+        <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
+        {labelRight}
+      </div>
+    ) : (
       <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
-      {labelRight}
-    </div>
-  ) : (
-    <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
-  )
+    )
 
-  const descriptionElem = description && <FieldDescription>{description}</FieldDescription>
+  const descriptionElem = description !== undefined && description !== null && (
+    <FieldDescription>{description}</FieldDescription>
+  )
   const errorElem = isInvalid && <FieldError errors={field.state.meta.errors} />
 
   return (
-    <Field data-invalid={isInvalid} className={cn(className)} orientation={horizontal ? 'horizontal' : undefined}>
-      {controlFirst ? (
+    <Field
+      data-invalid={isInvalid}
+      className={cn(className)}
+      orientation={horizontal === true ? 'horizontal' : undefined}
+    >
+      {controlFirst === true ? (
         <>
           {children}
           {/*<FieldContent>*/}

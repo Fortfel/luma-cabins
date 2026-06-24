@@ -16,8 +16,10 @@
       "persistent": false
     },
     "lint": {
-      "dependsOn": ["^topo", "^build"],
-      "outputs": [".cache/.eslintcache"]
+      "dependsOn": ["^topo", "^build"]
+    },
+    "lint:fix": {
+      "cache": false
     },
     "typecheck": {
       "dependsOn": ["^topo", "^build"],

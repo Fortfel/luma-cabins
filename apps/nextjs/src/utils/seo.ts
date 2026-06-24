@@ -3,9 +3,9 @@ import type { Metadata, Viewport } from 'next'
 import { getBaseUrl } from '~/lib/url'
 
 interface SeoOptions {
-  title: string
-  description?: string
-  image?: string
+  readonly title: string
+  readonly description?: string
+  readonly image?: string
 }
 
 export const defaultViewport: Viewport = {
@@ -17,20 +17,24 @@ export const defaultViewport: Viewport = {
   ],
 }
 
-export const createSeoMetadata = ({ title, description, image }: SeoOptions): Metadata => ({
-  metadataBase: getBaseUrl(),
-  title,
-  description,
-  openGraph: {
+export const createSeoMetadata = ({ title, description, image }: SeoOptions): Metadata => {
+  const hasImage = typeof image === 'string' && image.length > 0
+
+  return {
+    metadataBase: getBaseUrl(),
     title,
     description,
-    type: 'website',
-    images: image ? [image] : undefined,
-  },
-  twitter: {
-    title,
-    description,
-    card: image ? 'summary_large_image' : 'summary',
-    images: image ? [image] : undefined,
-  },
-})
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      images: hasImage ? [image] : undefined,
+    },
+    twitter: {
+      title,
+      description,
+      card: hasImage ? 'summary_large_image' : 'summary',
+      images: hasImage ? [image] : undefined,
+    },
+  }
+}

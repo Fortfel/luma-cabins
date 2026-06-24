@@ -1,0 +1,176 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["eslint", "typescript", "unicorn", "react", "jsx-a11y", "import", "node", "oxc"],
+  "jsPlugins": [
+    "@tanstack/eslint-plugin-query",
+    {
+      "name": "react-hooks-js",
+      "specifier": "eslint-plugin-react-hooks"
+    }
+  ],
+  "options": {
+    "typeAware": true
+  },
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error",
+    "perf": "warn",
+    "pedantic": "error"
+  },
+  "env": {
+    "browser": true,
+    "builtin": true,
+    "node": true
+  },
+  "ignorePatterns": [
+    "**/.next/**",
+    "**/.turbo/**",
+    "**/.cache/**",
+    "**/dist/**",
+    "**/node_modules/**",
+    ".agents/**",
+    ".opencode/**"
+  ],
+  "rules": {
+    "eqeqeq": "error",
+    "import/no-duplicates": [
+      "error",
+      {
+        "considerQueryString": true
+      }
+    ],
+    "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
+    "import/no-unassigned-import": "off",
+    "import/max-dependencies": "off",
+
+    "no-inline-comments": "off",
+    "max-lines": "off",
+    "no-restricted-imports": [
+      "error",
+      {
+        "name": "process",
+        "importNames": ["env"],
+        "message": "Use the validated env module instead of importing process.env directly."
+      }
+    ],
+    "no-restricted-properties": [
+      "error",
+      {
+        "object": "process",
+        "property": "env",
+        "message": "Use the validated env module instead of process.env directly."
+      }
+    ],
+    "no-unused-vars": "off",
+    "max-lines-per-function": "off",
+
+    "jsx-a11y/prefer-tag-over-role": "off",
+
+    "typescript/prefer-readonly-parameter-types": "off",
+    "typescript/no-unsafe-type-assertion": "off",
+    "typescript/no-unused-vars": ["error", { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" }],
+    "typescript/array-type": ["error", { "default": "generic", "readonly": "generic" }],
+    "typescript/ban-ts-comment": ["error", { "ts-expect-error": "allow-with-description" }],
+    "typescript/consistent-type-imports": [
+      "warn",
+      {
+        "prefer": "type-imports",
+        "fixStyle": "separate-type-imports"
+      }
+    ],
+    "typescript/no-confusing-void-expression": ["error", { "ignoreArrowShorthand": true }],
+    "typescript/no-misused-promises": [
+      "error",
+      {
+        "checksVoidReturn": {
+          "attributes": false
+        }
+      }
+    ],
+    "typescript/no-non-null-assertion": "error",
+    "typescript/no-unnecessary-condition": [
+      "error",
+      {
+        "allowConstantLoopConditions": true
+      }
+    ],
+    "typescript/only-throw-error": "error",
+    "typescript/prefer-nullish-coalescing": [
+      "error",
+      {
+        "ignorePrimitives": {
+          "bigint": false,
+          "boolean": false,
+          "number": false,
+          "string": true
+        }
+      }
+    ],
+    "typescript/switch-exhaustiveness-check": "error",
+
+    "react/react-in-jsx-scope": "off",
+    "react/rules-of-hooks": "error",
+    "react/exhaustive-deps": "error",
+    "react/only-export-components": [
+      "error",
+      {
+        "allowExportNames": [
+          "experimental_ppr",
+          "dynamic",
+          "dynamicParams",
+          "revalidate",
+          "fetchCache",
+          "runtime",
+          "preferredRegion",
+          "maxDuration",
+          "metadata",
+          "generateMetadata",
+          "viewport",
+          "generateViewport",
+          "generateImageMetadata",
+          "generateSitemaps",
+          "generateStaticParams"
+        ]
+      }
+    ],
+
+    "react-hooks-js/set-state-in-effect": "error",
+    "react-hooks-js/set-state-in-render": "error",
+    "react-hooks-js/refs": "error",
+    "react-hooks-js/immutability": "error",
+    "react-hooks-js/purity": "error",
+    "react-hooks-js/static-components": "warn",
+    "react-hooks-js/use-memo": "error",
+
+    "@tanstack/query/exhaustive-deps": "error",
+    "@tanstack/query/infinite-query-property-order": "error",
+    "@tanstack/query/mutation-property-order": "error",
+    "@tanstack/query/no-rest-destructuring": "warn",
+    "@tanstack/query/no-unstable-deps": "error",
+    "@tanstack/query/no-void-query-fn": "error",
+    "@tanstack/query/stable-query-client": "error",
+
+    "unicorn/filename-case": ["error", { "cases": { "kebabCase": true, "pascalCase": true }, "ignore": ["/^\\$/"] }],
+    "unicorn/prefer-query-selector": "off",
+    "unicorn/catch-error-name": "off",
+    "unicorn/no-array-for-each": "off",
+    "unicorn/no-null": "off",
+    "unicorn/no-useless-undefined": "off",
+    "unicorn/prefer-string-raw": "off",
+    "unicorn/prefer-global-this": "off",
+    "unicorn/no-nested-ternary": "off",
+    "unicorn/consistent-function-scoping": "off",
+    "unicorn/prefer-top-level-await": "off",
+    "unicorn/no-abusive-eslint-disable": "off",
+    "unicorn/text-encoding-identifier-case": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/env.ts", "**/*.config.*", "next.config.ts", "postcss.config.mjs"],
+      "rules": {
+        "no-restricted-imports": "off",
+        "no-restricted-properties": "off"
+      }
+    }
+  ]
+}

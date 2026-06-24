@@ -48,7 +48,7 @@ const InputPhone = ({ onChange, value, className, ...props }: InputPhoneProps) =
         containerComponent={ButtonGroup}
         smartCaret={false}
         placeholder="Phone number"
-        className={cn('w-full', className)}
+        className="w-full"
         /**
          * Handles the onChange event.
          *
@@ -58,7 +58,7 @@ const InputPhone = ({ onChange, value, className, ...props }: InputPhoneProps) =
          *
          * @param value - (E164Number | undefined) The entered value
          */
-        onChange={(value) => onChange?.(value ?? ('' as RPNInput.Value))}
+        onChange={(v) => onChange?.(v ?? ('' as RPNInput.Value))}
         {...props}
       />
     </div>
@@ -80,8 +80,12 @@ const CountryComboboxComponent = ({
   options: countryList,
   onChange,
 }: CountryComboboxComponentProps) => {
-  const scrollAreaRef = React.useRef<HTMLDivElement>(null)
   const [isOpen, setIsOpen] = React.useState(false)
+  const countryListId = React.useId()
+
+  const scrollAreaRef = React.useRef<HTMLDivElement>(null)
+
+  const selectedCountryLabel = countryList.find(({ value }) => value === selectedCountry)?.label ?? selectedCountry
 
   return (
     <Popover
@@ -97,14 +101,16 @@ const CountryComboboxComponent = ({
             variant="outline"
             role="combobox"
             aria-expanded={isOpen}
+            aria-controls={countryListId}
+            aria-haspopup="listbox"
             className="justify-between focus:z-10"
             disabled={disabled}
-            aria-label={`Select country, currently ${selectedCountry}`}
+            aria-label={`Select country, currently ${selectedCountryLabel}`}
           />
         }
       >
-        <FlagComponent country={selectedCountry} countryName={selectedCountry} />
-        <ChevronsUpDown className={cn('opacity-75')} aria-hidden="true" />
+        <FlagComponent country={selectedCountry} countryName={selectedCountryLabel} />
+        <ChevronsUpDown className="opacity-75" aria-hidden="true" />
       </PopoverTrigger>
       <PopoverContent className="w-[300px] p-0">
         <Command>
@@ -121,7 +127,7 @@ const CountryComboboxComponent = ({
             }}
             placeholder="Search country..."
           />
-          <CommandList>
+          <CommandList id={countryListId}>
             <ScrollArea ref={scrollAreaRef} className="h-72">
               <CommandEmpty>No country found.</CommandEmpty>
               <CommandGroup>

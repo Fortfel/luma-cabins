@@ -155,7 +155,6 @@ const ThemeSwitcherToggle = ({
       )}
       aria-label={labelToggle}
       role="radiogroup"
-      tabIndex={-1}
       {...props}
     >
       {themes.map(({ key, icon: Icon, ariaLabel }) => {
@@ -165,7 +164,7 @@ const ThemeSwitcherToggle = ({
         return (
           <Button
             ref={(node) => {
-              if (!node) return
+              if (!node) return undefined
 
               const buttonMap = getButtonMap()
               buttonMap.set(key, node)
@@ -181,6 +180,7 @@ const ThemeSwitcherToggle = ({
             key={key}
             onClick={() => handleThemeClick(key)}
             role="radio"
+            tabIndex={isActive ? 0 : -1}
             type="button"
             className="relative"
           >
@@ -236,7 +236,8 @@ function ThemeSwitcherDropdown({
   )
 
   // Use resolved theme when system is selected, otherwise use the selected theme
-  const currentTheme = theme === 'system' && resolvedTheme ? resolvedTheme : theme
+  const currentTheme =
+    theme === 'system' && resolvedTheme !== undefined && resolvedTheme.length > 0 ? resolvedTheme : theme
 
   return (
     <div data-slot="theme-switcher-dropdown" className={cn('[&_svg]:size-4.5', className)} {...props}>
@@ -292,8 +293,8 @@ function ThemeSwitcherSwap({
   const { animateThemeChange } = useAnimatedThemeChange(enableAnimation, animationDuration)
   const buttonRef = useRef<HTMLButtonElement>(null)
 
-  const themeLight = themes.find((theme) => theme.key === 'light')
-  const themeDark = themes.find((theme) => theme.key === 'dark')
+  const themeLight = themes.find((themeOption) => themeOption.key === 'light')
+  const themeDark = themes.find((themeOption) => themeOption.key === 'dark')
 
   if (!themeLight || !themeDark) throw new Error('ThemeSwitcherSwap: Theme "light" or "dark" not found')
 

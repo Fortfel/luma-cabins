@@ -8,7 +8,8 @@
     "start": "dotenv -v NODE_ENV=production -e ../../.env -- next start",
     "typegen": "pnpm with-env next typegen",
     "with-env": "dotenv -e ../../.env --",
-    "lint": "pnpm typegen && eslint --flag unstable_native_nodejs_ts_config",
+    "lint": "pnpm typegen && oxlint .",
+    "lint:fix": "pnpm typegen && oxlint . --fix",
     "typecheck": "pnpm typegen && tsc --noEmit",
     "format": "oxfmt --check .",
     "format:fix": "oxfmt --write ."
@@ -31,11 +32,9 @@
     "@types/node": "catalog:",
     "@types/react": "catalog:react19",
     "@types/react-dom": "catalog:react19",
-    "@workspace/eslint-config": "workspace:*",
     "@workspace/tailwind-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
     "babel-plugin-react-compiler": "^1.0.0",
-    "eslint": "catalog:",
     "tailwindcss": "catalog:",
     "typescript": "catalog:"
   }

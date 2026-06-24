@@ -39,7 +39,7 @@ Before any Next.js work, find and read the relevant doc in `apps/nextjs/node_mod
 - Monorepo tool: Turborepo
 - Apps: `apps/nextjs`, `apps/tanstack-start`
 - Shared packages: `packages/api`, `packages/auth`, `packages/db`, `packages/ui`, `packages/validators`
-- Shared tooling: `tooling/eslint`, `tooling/prettier`, `tooling/typescript`, `tooling/tailwind`
+- Shared tooling: `tooling/typescript`, `tooling/tailwind`
 
 ## Repo Layout
 
@@ -109,14 +109,14 @@ Before any Next.js work, find and read the relevant doc in `apps/nextjs/node_mod
 
 ## Formatting
 
-- Formatting is centralized in `tooling/prettier/index.js`
-- Use the repo Prettier config; do not hand-format against it
+- Formatting is centralized in `.oxfmtrc.json`
+- Use the repo `oxfmt` config; do not hand-format against it
 - Do not use semicolons
 - Use single quotes
 - Keep trailing commas enabled
 - Print width is `120`
-- Tailwind classes are sorted by `prettier-plugin-tailwindcss`
-- Imports are sorted by `@ianvs/prettier-plugin-sort-imports`
+- Tailwind classes are sorted by `oxfmt` using `.oxfmtrc.json`
+- Imports are sorted by `oxfmt` using `.oxfmtrc.json`
 - Use English for code and documentation
 
 ## Import Rules
