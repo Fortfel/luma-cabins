@@ -36719,7 +36719,8 @@
                           "content": "Niva",
                           "lineHeight": 1.35,
                           "fontFamily": "$--font-heading",
-                          "fontSize": 28
+                          "fontSize": 28,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -36747,7 +36748,8 @@
                           "content": "24 m² · Studio · Sleeps 2",
                           "lineHeight": 1.35,
                           "fontFamily": "$--font-sans",
-                          "fontSize": 15
+                          "fontSize": 15,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -36775,7 +36777,8 @@
                           "content": "Solo retreats, guest stays, short weekends",
                           "lineHeight": 1.35,
                           "fontFamily": "$--font-sans",
-                          "fontSize": 15
+                          "fontSize": 15,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -36844,7 +36847,8 @@
                           "content": "Aster",
                           "lineHeight": 1.35,
                           "fontFamily": "$--font-heading",
-                          "fontSize": 28
+                          "fontSize": 28,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -36872,7 +36876,8 @@
                           "content": "38 m² · 1 bedroom · Sleeps 2-4",
                           "lineHeight": 1.35,
                           "fontFamily": "$--font-sans",
-                          "fontSize": 15
+                          "fontSize": 15,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -36900,7 +36905,8 @@
                           "content": "Couple’s retreat, compact weekend home",
                           "lineHeight": 1.35,
                           "fontFamily": "$--font-sans",
-                          "fontSize": 15
+                          "fontSize": 15,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -36969,7 +36975,8 @@
                           "content": "Veyra",
                           "lineHeight": 1.35,
                           "fontFamily": "$--font-heading",
-                          "fontSize": 28
+                          "fontSize": 28,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -36997,7 +37004,8 @@
                           "content": "56 m² · 2 bedrooms · Sleeps 4-6",
                           "lineHeight": 1.35,
                           "fontFamily": "$--font-sans",
-                          "fontSize": 15
+                          "fontSize": 15,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
@@ -37025,7 +37033,8 @@
                           "content": "Families, remote work, longer stays",
                           "lineHeight": 1.35,
                           "fontFamily": "$--font-sans",
-                          "fontSize": 15
+                          "fontSize": 15,
+                          "fontWeight": "normal"
                         }
                       ]
                     },
