@@ -1,5 +1,5 @@
 {
-  "version": "2.13",
+  "version": "2.14",
   "children": [
     {
       "type": "frame",
@@ -163,10 +163,10 @@
                             32,
                             32
                           ],
-                          "fill": "$--foreground",
+                          "fill": "$--primary-foreground",
                           "width": 32,
                           "height": 32,
-                          "stroke": "$--foreground",
+                          "stroke": "$--primary-foreground",
                           "strokeWidth": 1.5,
                           "strokeLinejoin": "round",
                           "strokeLinecap": "round"
@@ -181,7 +181,7 @@
                               "type": "text",
                               "id": "C4vf4z",
                               "name": "LUMA",
-                              "fill": "$--foreground",
+                              "fill": "$--primary-foreground",
                               "content": "LUMA",
                               "fontFamily": "$--font-heading",
                               "fontSize": 16,
@@ -232,7 +232,7 @@
                           "height": 22,
                           "icon": "menu",
                           "library": "lucide",
-                          "fill": "$--foreground"
+                          "fill": "$--primary-foreground"
                         }
                       ]
                     }
@@ -291,7 +291,7 @@
                           "type": "text",
                           "id": "H6RYc1",
                           "name": "Button Text",
-                          "fill": "$--secondary-foreground",
+                          "fill": "$--primary",
                           "content": "Get Started",
                           "fontFamily": "$--font-sans",
                           "fontSize": 16,
@@ -555,10 +555,10 @@
                             32,
                             32
                           ],
-                          "fill": "$--foreground",
+                          "fill": "$--primary-foreground",
                           "width": 32,
                           "height": 32,
-                          "stroke": "$--foreground",
+                          "stroke": "$--primary-foreground",
                           "strokeWidth": 1.5,
                           "strokeLinejoin": "round",
                           "strokeLinecap": "round"
@@ -587,7 +587,7 @@
                               "type": "text",
                               "id": "j8SOoQ",
                               "name": "LUMA",
-                              "fill": "$--foreground",
+                              "fill": "$--primary-foreground",
                               "content": "LUMA",
                               "fontFamily": "$--font-heading",
                               "fontSize": 16,
@@ -620,7 +620,7 @@
                           "type": "text",
                           "id": "F61Y3v",
                           "name": "Models",
-                          "fill": "$--foreground",
+                          "fill": "$--primary-foreground",
                           "content": "Models",
                           "fontFamily": "$--font-sans",
                           "fontSize": 14,
@@ -630,7 +630,7 @@
                           "type": "text",
                           "id": "Y2SOh",
                           "name": "How it works",
-                          "fill": "$--foreground",
+                          "fill": "$--primary-foreground",
                           "content": "How it works",
                           "fontFamily": "$--font-sans",
                           "fontSize": 14,
@@ -640,7 +640,7 @@
                           "type": "text",
                           "id": "I1240",
                           "name": "Portfolio",
-                          "fill": "$--foreground",
+                          "fill": "$--primary-foreground",
                           "content": "Portfolio",
                           "fontFamily": "$--font-sans",
                           "fontSize": 14,
@@ -650,7 +650,7 @@
                           "type": "text",
                           "id": "m45xab",
                           "name": "FAQ",
-                          "fill": "$--foreground",
+                          "fill": "$--primary-foreground",
                           "content": "FAQ",
                           "fontFamily": "$--font-sans",
                           "fontSize": 14,
@@ -894,7 +894,7 @@
                               "type": "text",
                               "id": "uZGS7",
                               "name": "Button Text",
-                              "fill": "$--secondary-foreground",
+                              "fill": "$--primary",
                               "content": "Get Started",
                               "fontFamily": "$--font-sans",
                               "fontSize": 16,
@@ -1421,11 +1421,11 @@
     {
       "type": "frame",
       "id": "w8Cqa",
-      "x": 2544,
+      "x": 2443,
       "y": 959,
       "name": "Luma Cabins",
       "clip": true,
-      "width": 1440,
+      "width": 1536,
       "fill": "$--background",
       "layout": "vertical",
       "children": [
@@ -1440,7 +1440,7 @@
             "author": "Fabrice Villard"
           },
           "clip": true,
-          "width": 1440,
+          "width": "fill_container",
           "height": 900,
           "layout": "none",
           "children": [
@@ -1457,8 +1457,8 @@
                 "url": "images/hero-background-v2.png",
                 "mode": "fill"
               },
-              "width": 1440,
-              "height": 900
+              "width": "fill_container(1536)",
+              "height": 960
             },
             {
               "type": "rectangle",
@@ -1490,7 +1490,7 @@
                   }
                 ]
               },
-              "width": 1440,
+              "width": "fill_container(1536)",
               "height": 900
             },
             {
@@ -1524,7 +1524,7 @@
                   }
                 ]
               },
-              "width": 1440,
+              "width": "fill_container(1536)",
               "height": 900
             },
             {
@@ -1534,7 +1534,7 @@
               "y": 0,
               "name": "Content",
               "clip": true,
-              "width": "fill_container(1440)",
+              "width": "fill_container(1536)",
               "height": "fill_container(900)",
               "gap": 60,
               "padding": 64,
@@ -1548,7 +1548,7 @@
                   "x": 64,
                   "y": 20,
                   "name": "Nav Bar Type 2 (Dark Transparent)",
-                  "width": 1312,
+                  "width": 1408,
                   "height": 80,
                   "fill": {
                     "type": "color",
@@ -1604,10 +1604,10 @@
                             32,
                             32
                           ],
-                          "fill": "$--foreground",
+                          "fill": "$--primary-foreground",
                           "width": 32,
                           "height": 32,
-                          "stroke": "$--foreground",
+                          "stroke": "$--primary-foreground",
                           "strokeWidth": 1.5,
                           "strokeLinejoin": "round",
                           "strokeLinecap": "round"
@@ -1623,7 +1623,7 @@
                               "type": "text",
                               "id": "pMSuq",
                               "name": "LUMA",
-                              "fill": "$--foreground",
+                              "fill": "$--primary-foreground",
                               "content": "LUMA",
                               "fontFamily": "$--font-heading",
                               "fontSize": 16,
@@ -1656,7 +1656,7 @@
                           "type": "text",
                           "id": "HQRu2",
                           "name": "Models",
-                          "fill": "$--foreground",
+                          "fill": "$--primary-foreground",
                           "content": "Models",
                           "fontFamily": "$--font-sans",
                           "fontSize": 16,
@@ -1666,7 +1666,7 @@
                           "type": "text",
                           "id": "BATDP",
                           "name": "How it works",
-                          "fill": "$--foreground",
+                          "fill": "$--primary-foreground",
                           "content": "How it works",
                           "fontFamily": "$--font-sans",
                           "fontSize": 16,
@@ -1676,7 +1676,7 @@
                           "type": "text",
                           "id": "HmDMv",
                           "name": "Portfolio",
-                          "fill": "$--foreground",
+                          "fill": "$--primary-foreground",
                           "content": "Portfolio",
                           "fontFamily": "$--font-sans",
                           "fontSize": 16,
@@ -1686,7 +1686,7 @@
                           "type": "text",
                           "id": "i5BZoT",
                           "name": "FAQ",
-                          "fill": "$--foreground",
+                          "fill": "$--primary-foreground",
                           "content": "FAQ",
                           "fontFamily": "$--font-sans",
                           "fontSize": 16,
@@ -1881,7 +1881,7 @@
                           "type": "text",
                           "id": "GU4fW",
                           "name": "Button Text",
-                          "fill": "$--secondary-foreground",
+                          "fill": "$--primary",
                           "content": "Get Started",
                           "fontFamily": "$--font-sans",
                           "fontSize": 16,
@@ -2158,38 +2158,6 @@
                 },
                 {
                   "type": "frame",
-                  "id": "WETuD",
-                  "layoutPosition": "absolute",
-                  "x": 1394,
-                  "y": 836,
-                  "name": "Video Control Button",
-                  "width": 40,
-                  "height": 40,
-                  "cornerRadius": 20,
-                  "stroke": "#73737340",
-                  "strokeWidth": 1,
-                  "effect": {
-                    "type": "background_blur",
-                    "radius": 24
-                  },
-                  "layout": "none",
-                  "children": [
-                    {
-                      "type": "icon",
-                      "id": "NuFr9",
-                      "x": 12,
-                      "y": 12,
-                      "name": "Pause Icon",
-                      "width": 16,
-                      "height": 16,
-                      "icon": "pause",
-                      "library": "lucide",
-                      "fill": "#F7F4EF"
-                    }
-                  ]
-                },
-                {
-                  "type": "frame",
                   "id": "j3uGU",
                   "width": "fit_content(336)",
                   "fill": {
@@ -2428,29 +2396,49 @@
                       ]
                     }
                   ]
+                },
+                {
+                  "type": "frame",
+                  "id": "WETuD",
+                  "layoutPosition": "absolute",
+                  "x": 1472,
+                  "y": 836,
+                  "name": "Video Control Button",
+                  "width": 40,
+                  "height": 40,
+                  "cornerRadius": 20,
+                  "stroke": "#73737340",
+                  "strokeWidth": 1,
+                  "effect": {
+                    "type": "background_blur",
+                    "radius": 24
+                  },
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "NuFr9",
+                      "x": 12,
+                      "y": 12,
+                      "name": "Pause Icon",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "pause",
+                      "library": "lucide",
+                      "fill": "#F7F4EF"
+                    }
+                  ]
                 }
               ]
             }
           ]
         }
       ]
-    },
-    {
-      "type": "text",
-      "id": "MQklH",
-      "x": 3751.8295964125564,
-      "y": 1401.5,
-      "fill": "#000000",
-      "content": " For example padding on this side should be ",
-      "fontFamily": "Inter",
-      "fontSize": 12,
-      "fontWeight": "normal"
     }
   ],
   "themes": {
     "Mode": [
-      "light",
-      "dark"
+      "light"
     ],
     "Typography": [
       "Default"
@@ -2467,15 +2455,9 @@
       "type": "color",
       "value": [
         {
-          "value": "#F5F5F5",
+          "value": "#F7F7F7",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#262626",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -2484,15 +2466,9 @@
       "type": "color",
       "value": [
         {
-          "value": "#171717",
+          "value": "#1F1F1F",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#FAFAFA",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -2505,12 +2481,6 @@
           "theme": {
             "Mode": "light"
           }
-        },
-        {
-          "value": "#0A0A0A",
-          "theme": {
-            "Mode": "dark"
-          }
         }
       ]
     },
@@ -2521,12 +2491,6 @@
           "value": "#E5E5E5",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#FFFFFF1A",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -2539,12 +2503,6 @@
           "theme": {
             "Mode": "light"
           }
-        },
-        {
-          "value": "#171717",
-          "theme": {
-            "Mode": "dark"
-          }
         }
       ]
     },
@@ -2552,15 +2510,9 @@
       "type": "color",
       "value": [
         {
-          "value": "#0A0A0A",
+          "value": "#171717",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#FAFAFA",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -2569,15 +2521,9 @@
       "type": "color",
       "value": [
         {
-          "value": "#8EC5FF",
+          "value": "#5EE9B5",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#8EC5FF",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -2586,15 +2532,9 @@
       "type": "color",
       "value": [
         {
-          "value": "#2B7FFF",
+          "value": "#00BC7D",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#2B7FFF",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -2603,15 +2543,9 @@
       "type": "color",
       "value": [
         {
-          "value": "#155DFC",
+          "value": "#009966",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#155DFC",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -2620,15 +2554,9 @@
       "type": "color",
       "value": [
         {
-          "value": "#1447E6",
+          "value": "#007A55",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#1447E6",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -2637,15 +2565,9 @@
       "type": "color",
       "value": [
         {
-          "value": "#193CB8",
+          "value": "#006045",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#193CB8",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -2657,12 +2579,6 @@
           "value": "#E7000B",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#FF6467",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -2682,7 +2598,7 @@
       "type": "string",
       "value": [
         {
-          "value": "JetBrains Mono",
+          "value": "JetBrains Mono Variable",
           "theme": {
             "Typography": "Default"
           }
@@ -2704,7 +2620,7 @@
       "type": "string",
       "value": [
         {
-          "value": "Source Serif 4",
+          "value": "Source Serif 4 Variable",
           "theme": {
             "Typography": "Default"
           }
@@ -2715,15 +2631,9 @@
       "type": "color",
       "value": [
         {
-          "value": "#F7F4EF",
+          "value": "#171717",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#F7F4EF",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -2736,12 +2646,6 @@
           "theme": {
             "Mode": "light"
           }
-        },
-        {
-          "value": "#FFFFFF26",
-          "theme": {
-            "Mode": "dark"
-          }
         }
       ]
     },
@@ -2749,15 +2653,9 @@
       "type": "color",
       "value": [
         {
-          "value": "#F5F5F5",
+          "value": "#F7F7F7",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#262626",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -2770,12 +2668,6 @@
           "theme": {
             "Mode": "light"
           }
-        },
-        {
-          "value": "#737373",
-          "theme": {
-            "Mode": "dark"
-          }
         }
       ]
     },
@@ -2787,12 +2679,6 @@
           "theme": {
             "Mode": "light"
           }
-        },
-        {
-          "value": "#171717",
-          "theme": {
-            "Mode": "dark"
-          }
         }
       ]
     },
@@ -2800,15 +2686,9 @@
       "type": "color",
       "value": [
         {
-          "value": "#0A0A0A",
+          "value": "#171717",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#FAFAFA",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -2821,12 +2701,6 @@
           "theme": {
             "Mode": "light"
           }
-        },
-        {
-          "value": "#39442B",
-          "theme": {
-            "Mode": "dark"
-          }
         }
       ]
     },
@@ -2834,15 +2708,9 @@
       "type": "color",
       "value": [
         {
-          "value": "#FFFFFF",
+          "value": "#F0FDF4",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#FFFFFF",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -2954,12 +2822,6 @@
           "theme": {
             "Mode": "light"
           }
-        },
-        {
-          "value": "#737373",
-          "theme": {
-            "Mode": "dark"
-          }
         }
       ]
     },
@@ -2967,15 +2829,9 @@
       "type": "color",
       "value": [
         {
-          "value": "#F7F4EF",
+          "value": "#F7F7F8",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#F7F4EF",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -2984,15 +2840,9 @@
       "type": "color",
       "value": [
         {
-          "value": "#39442B",
+          "value": "#252329",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#39442B",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -3159,12 +3009,6 @@
           "theme": {
             "Mode": "light"
           }
-        },
-        {
-          "value": "#171717",
-          "theme": {
-            "Mode": "dark"
-          }
         }
       ]
     },
@@ -3172,15 +3016,9 @@
       "type": "color",
       "value": [
         {
-          "value": "#F5F5F5",
+          "value": "#F7F7F7",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#262626",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -3189,15 +3027,9 @@
       "type": "color",
       "value": [
         {
-          "value": "#171717",
+          "value": "#1F1F1F",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#FAFAFA",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -3210,12 +3042,6 @@
           "theme": {
             "Mode": "light"
           }
-        },
-        {
-          "value": "#FFFFFF1A",
-          "theme": {
-            "Mode": "dark"
-          }
         }
       ]
     },
@@ -3223,15 +3049,9 @@
       "type": "color",
       "value": [
         {
-          "value": "#0A0A0A",
+          "value": "#171717",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#FAFAFA",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -3240,15 +3060,9 @@
       "type": "color",
       "value": [
         {
-          "value": "#0084D1",
+          "value": "#39442B",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#00A6F4",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -3257,15 +3071,9 @@
       "type": "color",
       "value": [
         {
-          "value": "#F0F9FF",
+          "value": "#F0FDF4",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#052F4A",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -3278,12 +3086,6 @@
           "theme": {
             "Mode": "light"
           }
-        },
-        {
-          "value": "#737373",
-          "theme": {
-            "Mode": "dark"
-          }
         }
       ]
     },
@@ -3294,12 +3096,6 @@
           "value": "#E7000B1A",
           "theme": {
             "Mode": "light"
-          }
-        },
-        {
-          "value": "#FF646733",
-          "theme": {
-            "Mode": "dark"
           }
         }
       ]
@@ -3312,12 +3108,6 @@
           "theme": {
             "Mode": "light"
           }
-        },
-        {
-          "value": "#FFFFFF0D",
-          "theme": {
-            "Mode": "dark"
-          }
         }
       ]
     },
@@ -3329,16 +3119,11 @@
           "theme": {
             "Mode": "light"
           }
-        },
-        {
-          "value": "#FFFFFF0D",
-          "theme": {
-            "Mode": "dark"
-          }
         }
       ]
     }
   },
+  "fileToken": "b8fabb78-e8cc-4670-a2ad-039e6ed44f78",
   "fonts": [
     {
       "name": "Cabinet Grotesk Variable",
