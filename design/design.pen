@@ -30246,9 +30246,8 @@
                 {
                   "type": "frame",
                   "id": "o9137a",
-                  "layoutPosition": "absolute",
                   "x": 32,
-                  "y": 470,
+                  "y": 393,
                   "width": 460,
                   "fill": "#FFFFFFF0",
                   "cornerRadius": 18,
