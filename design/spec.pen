@@ -405,6 +405,1277 @@
               ]
             }
           ]
+        },
+        {
+          "type": "frame",
+          "id": "Y0Sdom",
+          "name": "About - Mobile",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            40,
+            24
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "s41KQf",
+              "name": "eyebrow",
+              "fill": "$--foreground",
+              "content": "OUR APPROACH",
+              "fontFamily": "$--font-sans",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": 3
+            },
+            {
+              "type": "frame",
+              "id": "g7522J",
+              "name": "Frame 4",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "FEwLX",
+                  "name": "statement",
+                  "fill": "$--foreground",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "A simpler path to a quiet retreat.",
+                  "lineHeight": 1.12,
+                  "textAlign": "center",
+                  "fontFamily": "$--font-heading",
+                  "fontSize": 36,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "PZ1zd",
+                  "name": "body",
+                  "fill": "$--foreground",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "We design secluded luxury retreats for unforgettable stays in nature. Each cabin combines refined architecture, warm natural materials, panoramic views, and premium comforts for a peaceful escape without compromise. Slow down, reconnect, and experience the calm of modern cabin living.",
+                  "textAlign": "center",
+                  "fontFamily": "$--font-sans",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "d2jfC",
+          "name": "Models Overview - Mobile",
+          "width": "fill_container",
+          "fill": "$--background",
+          "layout": "vertical",
+          "padding": [
+            40,
+            0
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "xjrT4",
+              "name": "Slider Card",
+              "clip": true,
+              "width": "fill_container",
+              "height": 430,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "images/Niva.jpg",
+                "mode": "fill"
+              },
+              "layout": "none",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "id": "nKj7N",
+                  "layoutPosition": "absolute",
+                  "x": 0,
+                  "y": 0,
+                  "name": "Top Gradient",
+                  "fill": {
+                    "type": "gradient",
+                    "gradientType": "linear",
+                    "enabled": true,
+                    "rotation": 0,
+                    "size": {
+                      "height": 1
+                    },
+                    "colors": [
+                      {
+                        "color": "#0E0D0B00",
+                        "position": 0
+                      },
+                      {
+                        "color": "#0e0d0b80",
+                        "position": 1
+                      }
+                    ]
+                  },
+                  "width": 390,
+                  "height": 120
+                },
+                {
+                  "type": "rectangle",
+                  "id": "hPQmq",
+                  "layoutPosition": "absolute",
+                  "x": 0,
+                  "y": 0,
+                  "name": "Bottom Gradient",
+                  "fill": {
+                    "type": "gradient",
+                    "gradientType": "linear",
+                    "enabled": true,
+                    "rotation": 180,
+                    "size": {
+                      "height": 1
+                    },
+                    "colors": [
+                      {
+                        "color": "#0E0D0B00",
+                        "position": 0.75
+                      },
+                      {
+                        "color": "#0e0d0b80",
+                        "position": 1
+                      }
+                    ]
+                  },
+                  "width": 390,
+                  "height": 430
+                },
+                {
+                  "type": "rectangle",
+                  "id": "B3qB1K",
+                  "layoutPosition": "absolute",
+                  "x": 0,
+                  "y": 0,
+                  "name": "Left Edge Gradient",
+                  "enabled": false,
+                  "fill": {
+                    "type": "gradient",
+                    "gradientType": "linear",
+                    "enabled": true,
+                    "rotation": 90,
+                    "size": {
+                      "height": 1
+                    },
+                    "colors": [
+                      {
+                        "color": "#0E0D0B00",
+                        "position": 0
+                      },
+                      {
+                        "color": "#0E0D0B4D",
+                        "position": 1
+                      }
+                    ]
+                  },
+                  "width": 180,
+                  "height": 430
+                },
+                {
+                  "type": "rectangle",
+                  "id": "u3IyJg",
+                  "layoutPosition": "absolute",
+                  "x": 210,
+                  "y": 0,
+                  "name": "Right Edge Gradient",
+                  "enabled": false,
+                  "fill": {
+                    "type": "gradient",
+                    "gradientType": "linear",
+                    "enabled": true,
+                    "rotation": 270,
+                    "size": {
+                      "height": 1
+                    },
+                    "colors": [
+                      {
+                        "color": "#0E0D0B00",
+                        "position": 0
+                      },
+                      {
+                        "color": "#0E0D0B4D",
+                        "position": 1
+                      }
+                    ]
+                  },
+                  "width": 180,
+                  "height": 430
+                },
+                {
+                  "type": "text",
+                  "id": "WmeRh",
+                  "layoutPosition": "absolute",
+                  "x": 48,
+                  "y": 44,
+                  "name": "eyebrow",
+                  "enabled": false,
+                  "fill": "#E8E2D6",
+                  "content": "THE COLLECTION",
+                  "fontFamily": "$--font-sans",
+                  "fontSize": 13,
+                  "fontWeight": "700",
+                  "letterSpacing": 4
+                },
+                {
+                  "type": "frame",
+                  "id": "VEqGx",
+                  "x": 16,
+                  "y": 11,
+                  "name": "Model Caption",
+                  "fill": "#00000000",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Gip4p",
+                      "name": "Model Name",
+                      "fill": "$--primary-foreground",
+                      "textGrowth": "fixed-width",
+                      "width": 80,
+                      "content": "Niva",
+                      "fontFamily": "$--font-heading",
+                      "fontSize": 40,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "uiPxP",
+                      "x": 0,
+                      "y": 50,
+                      "name": "Model Spec",
+                      "enabled": false,
+                      "fill": "$--primary-foreground",
+                      "content": "26 m²   ·   Studio loft   ·   Sleeps 2",
+                      "fontFamily": "$--font-sans",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "SUDBG",
+                  "layoutPosition": "absolute",
+                  "x": 16,
+                  "y": 193,
+                  "name": "Prev",
+                  "enabled": false,
+                  "width": 44,
+                  "height": 44,
+                  "cornerRadius": 999,
+                  "stroke": "#e6e6e632",
+                  "strokeWidth": 1,
+                  "effect": {
+                    "type": "background_blur",
+                    "radius": 20
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "TpsFE",
+                      "name": "chevron-left",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "chevron-left",
+                      "library": "lucide",
+                      "fill": "#FBFAF6"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "v3D5CE",
+                  "layoutPosition": "absolute",
+                  "x": 330,
+                  "y": 193,
+                  "name": "Next",
+                  "enabled": false,
+                  "width": 44,
+                  "height": 44,
+                  "cornerRadius": 999,
+                  "stroke": "#e6e6e633",
+                  "strokeWidth": 1,
+                  "effect": {
+                    "type": "background_blur",
+                    "radius": 20
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "W8sqcw",
+                      "name": "chevron-right",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "chevron-right",
+                      "library": "lucide",
+                      "fill": "#FBFAF6"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "K74TAo",
+                  "x": 50,
+                  "y": 342,
+                  "name": "Thumbnail Nav",
+                  "cornerRadius": "$--radius-lg",
+                  "stroke": "#e6e6e633",
+                  "strokeWidth": 1,
+                  "effect": {
+                    "type": "background_blur",
+                    "radius": 20
+                  },
+                  "gap": 8,
+                  "padding": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "XkEY4",
+                      "name": "Thumb Veyra",
+                      "opacity": 0.55,
+                      "clip": true,
+                      "width": 86,
+                      "height": 56,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "images/Veyra.jpg",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 8,
+                      "stroke": "#FFFFFF33",
+                      "strokeWidth": 1,
+                      "layout": "none"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "cfssf",
+                      "name": "Thumb Aster",
+                      "opacity": 0.55,
+                      "clip": true,
+                      "width": 86,
+                      "height": 56,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "images/Aster.jpg",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 8,
+                      "stroke": "#FFFFFF33",
+                      "strokeWidth": 1,
+                      "layout": "none"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "W7GSA2",
+                      "name": "Thumb Niva (active)",
+                      "clip": true,
+                      "width": 86,
+                      "height": 56,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "images/Niva.jpg",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 8,
+                      "stroke": "#e6e6e6bf",
+                      "strokeWidth": 1.5,
+                      "strokeAlignment": "outer",
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "id": "w1cgo5",
+                          "layoutPosition": "absolute",
+                          "x": 0,
+                          "y": 54,
+                          "name": "Progress Track",
+                          "fill": "#FFFFFF33",
+                          "width": 86,
+                          "height": 2
+                        },
+                        {
+                          "type": "rectangle",
+                          "id": "pFpFi",
+                          "layoutPosition": "absolute",
+                          "x": 0,
+                          "y": 54,
+                          "name": "Progress Fill",
+                          "fill": "$--primary-foreground",
+                          "width": 40,
+                          "height": 2
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "xxSqt",
+          "name": "Interactive Showcase - Mobile",
+          "width": "fill_container",
+          "fill": "$--background",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": [
+            40,
+            0
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "HtYRz",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 14,
+              "padding": [
+                0,
+                24
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "mDNg8",
+                  "fill": "$--foreground",
+                  "content": "MAKE IT YOURS",
+                  "fontFamily": "$--font-sans",
+                  "fontSize": 12,
+                  "fontWeight": "700",
+                  "letterSpacing": 3
+                },
+                {
+                  "type": "text",
+                  "id": "mudAB",
+                  "fill": "$--foreground",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Three models.\nUnlimited adventures.",
+                  "lineHeight": 1.08,
+                  "textAlign": "center",
+                  "fontFamily": "$--font-heading",
+                  "fontSize": 36,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "bIKtL",
+              "name": "showcase body",
+              "width": "fill_container",
+              "fill": "$unofficial/background-accent",
+              "layout": "vertical",
+              "gap": 18,
+              "padding": [
+                32,
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "fwVig",
+                  "name": "Frame 6",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "padding": [
+                    0,
+                    24,
+                    16,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "B3yU2g",
+                      "name": "Frame 7",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "UMbcI",
+                          "fill": "$--foreground",
+                          "content": "Aster",
+                          "fontFamily": "$--font-heading",
+                          "fontSize": 32,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "nyfp7",
+                          "name": "Model Spec Row",
+                          "gap": 5,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "ouCmG",
+                              "name": "Area",
+                              "fill": "$--foreground",
+                              "content": "38 m²",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "hkpdU",
+                              "name": "Separator 1",
+                              "fill": "#73737380",
+                              "content": "|",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "wccKB",
+                              "name": "Bedrooms",
+                              "fill": "$--foreground",
+                              "content": "1 bedroom",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "my6a1",
+                              "name": "Separator 2",
+                              "fill": "#73737380",
+                              "content": "|",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "q2jbb",
+                              "name": "Sleeps",
+                              "fill": "$--foreground",
+                              "content": "Sleeps 2–4",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "TZCEM",
+                  "name": "Cabin Carousel Panel",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "IjlKh",
+                      "name": "Carousel Viewport",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 150,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "ilVpP",
+                          "x": -237,
+                          "y": 0,
+                          "name": "Sliding Image Track",
+                          "width": "fill_container(863)",
+                          "gap": 12,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "UbLYO",
+                              "name": "Prev Image Aster",
+                              "clip": true,
+                              "width": 280,
+                              "height": 140,
+                              "fill": {
+                                "type": "image",
+                                "enabled": true,
+                                "url": "images/veyra-black.png",
+                                "mode": "fit"
+                              },
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "X3Kau",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "Image Vignette",
+                                  "enabled": false,
+                                  "width": 430,
+                                  "height": 360,
+                                  "fill": {
+                                    "type": "gradient",
+                                    "gradientType": "linear",
+                                    "enabled": true,
+                                    "opacity": 0.55,
+                                    "rotation": 180,
+                                    "size": {
+                                      "height": 1
+                                    },
+                                    "colors": [
+                                      {
+                                        "color": "#00000000",
+                                        "position": 0.42
+                                      },
+                                      {
+                                        "color": "#000000A6",
+                                        "position": 1
+                                      }
+                                    ]
+                                  },
+                                  "layout": "none"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "CoB5C",
+                              "name": "Main Image Aster",
+                              "clip": true,
+                              "width": 280,
+                              "height": 140,
+                              "fill": {
+                                "type": "image",
+                                "enabled": true,
+                                "url": "images/aster-black.png",
+                                "mode": "fit"
+                              },
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "L65IAP",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "Image Vignette",
+                                  "enabled": false,
+                                  "width": 430,
+                                  "height": 360,
+                                  "fill": {
+                                    "type": "gradient",
+                                    "gradientType": "linear",
+                                    "enabled": true,
+                                    "opacity": 0.55,
+                                    "rotation": 180,
+                                    "size": {
+                                      "height": 1
+                                    },
+                                    "colors": [
+                                      {
+                                        "color": "#00000000",
+                                        "position": 0.42
+                                      },
+                                      {
+                                        "color": "#000000A6",
+                                        "position": 1
+                                      }
+                                    ]
+                                  },
+                                  "layout": "none"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "ubOkG",
+                              "name": "Next Image Peek",
+                              "width": 280,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "R8CYm",
+                                  "name": "Next Image Peek",
+                                  "clip": true,
+                                  "width": 180,
+                                  "height": 140,
+                                  "fill": {
+                                    "type": "image",
+                                    "enabled": true,
+                                    "url": "images/Niva-black.png",
+                                    "mode": "fit"
+                                  },
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "ZR9F1",
+                                      "x": 0,
+                                      "y": 0,
+                                      "name": "Peek Fade",
+                                      "enabled": false,
+                                      "width": 402,
+                                      "height": 500,
+                                      "fill": "#00000033",
+                                      "layout": "none"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "TQATo",
+                              "layoutPosition": "absolute",
+                              "x": 513,
+                              "y": 82,
+                              "name": "Arrow Buttons",
+                              "enabled": false,
+                              "width": 596,
+                              "height": 56,
+                              "gap": 16,
+                              "justifyContent": "space_between",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "l46Ir",
+                                  "name": "Previous Button",
+                                  "width": 56,
+                                  "height": 56,
+                                  "fill": "$--primary",
+                                  "cornerRadius": "$--radius-full",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon",
+                                      "id": "P9Ztc",
+                                      "name": "Previous Icon",
+                                      "width": 20,
+                                      "height": 20,
+                                      "icon": "arrow-left",
+                                      "library": "lucide",
+                                      "fill": "$--primary-foreground"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "IkJ0U",
+                                  "name": "Next Button",
+                                  "width": 56,
+                                  "height": 56,
+                                  "fill": "$--primary",
+                                  "cornerRadius": "$--radius-full",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon",
+                                      "id": "bXJD5",
+                                      "name": "Next Icon",
+                                      "width": 20,
+                                      "height": 20,
+                                      "icon": "arrow-right",
+                                      "library": "lucide",
+                                      "fill": "$--primary-foreground"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "fXtYq",
+                      "name": "Carousel Controls",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "LSuUy",
+                          "x": 93,
+                          "y": 0,
+                          "name": "Frame 8",
+                          "enabled": false,
+                          "height": 104,
+                          "gap": 16,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "iza3J",
+                              "name": "Cabin Thumbnails",
+                              "width": 148,
+                              "height": 104,
+                              "gap": 16,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "bmOpT",
+                                  "name": "Aster Thumbnail",
+                                  "opacity": 0.5999999999999996,
+                                  "width": 148,
+                                  "height": 104,
+                                  "fill": "$--card",
+                                  "cornerRadius": "$--radius-lg",
+                                  "gap": 8,
+                                  "padding": 8,
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "V41QW",
+                                      "name": "Aster Preview",
+                                      "clip": true,
+                                      "width": 132,
+                                      "height": 88,
+                                      "fill": {
+                                        "type": "image",
+                                        "enabled": true,
+                                        "url": "images/aster-floorplan.png",
+                                        "mode": "fit"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "qaL6Q",
+                          "name": "Carousel Dots Wrap",
+                          "layout": "vertical",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "qiqqC",
+                              "name": "Carousel Dots",
+                              "gap": 8,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "ellipse",
+                                  "id": "b7O6D",
+                                  "name": "Second Dot",
+                                  "fill": "#73737366",
+                                  "width": 8,
+                                  "height": 8
+                                },
+                                {
+                                  "type": "ellipse",
+                                  "id": "rKsx1",
+                                  "name": "Active Dot",
+                                  "fill": "$--primary",
+                                  "width": 8,
+                                  "height": 8
+                                },
+                                {
+                                  "type": "ellipse",
+                                  "id": "C2vojh",
+                                  "name": "Third Dot",
+                                  "fill": "#73737366",
+                                  "width": 8,
+                                  "height": 8
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "iiAgM",
+                  "name": "left panel",
+                  "clip": true,
+                  "width": "fill_container",
+                  "padding": [
+                    0,
+                    24
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "XGCKo",
+                      "name": "left panel",
+                      "width": "fill_container",
+                      "fill": "$--card",
+                      "cornerRadius": "$--radius-lg",
+                      "stroke": "$--border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "layout": "vertical",
+                      "gap": 22,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "LAipI",
+                          "width": "fill_container",
+                          "gap": 16,
+                          "justifyContent": "space_around",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "pEnAF",
+                              "name": "Exterior Finish Label",
+                              "fill": "$--foreground",
+                              "content": "EXTERIOR",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 12,
+                              "fontWeight": "700",
+                              "letterSpacing": 2
+                            },
+                            {
+                              "type": "frame",
+                              "id": "DmJNf",
+                              "gap": 10,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "W7nSOP",
+                                  "width": 40,
+                                  "height": 40,
+                                  "fill": "#00000000",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "#00000026",
+                                  "strokeWidth": 1,
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "eeFnh",
+                                      "fill": "#C2A06B",
+                                      "width": 30,
+                                      "height": 30,
+                                      "stroke": "#00000024",
+                                      "strokeWidth": 1
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "k0aiZx",
+                                  "width": 40,
+                                  "height": 40,
+                                  "fill": "#00000000",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--primary",
+                                  "strokeWidth": 2,
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "Ti64x",
+                                      "fill": "#2E2A26",
+                                      "width": 30,
+                                      "height": 30,
+                                      "stroke": "#00000024",
+                                      "strokeWidth": 1
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "Rbjol",
+                                  "width": 40,
+                                  "height": 40,
+                                  "fill": "#00000000",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "#00000026",
+                                  "strokeWidth": 1,
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "crT12",
+                                      "fill": "#e3e0d3ff",
+                                      "width": 30,
+                                      "height": 30,
+                                      "stroke": "#00000024",
+                                      "strokeWidth": 1
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "xId96",
+                          "width": "fill_container",
+                          "gap": 16,
+                          "justifyContent": "space_around",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "jRGw6",
+                              "fill": "$--foreground",
+                              "content": "INTERIOR",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 12,
+                              "fontWeight": "700",
+                              "letterSpacing": 2
+                            },
+                            {
+                              "type": "frame",
+                              "id": "OfrVA",
+                              "gap": 10,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "Rrh4G",
+                                  "width": 40,
+                                  "height": 40,
+                                  "fill": "#00000000",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--primary",
+                                  "strokeWidth": 2,
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "L21oH",
+                                      "fill": "#DCC79E",
+                                      "width": 30,
+                                      "height": 30,
+                                      "stroke": "#00000024",
+                                      "strokeWidth": 1
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "lImvO",
+                                  "width": 40,
+                                  "height": 40,
+                                  "fill": "#00000000",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "#00000026",
+                                  "strokeWidth": 1,
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "SWcmF",
+                                      "fill": "#C2A988",
+                                      "width": 30,
+                                      "height": 30,
+                                      "stroke": "#00000024",
+                                      "strokeWidth": 1
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "AJduv",
+                                  "width": 40,
+                                  "height": 40,
+                                  "fill": "#00000000",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "#00000026",
+                                  "strokeWidth": 1,
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "zcJxf",
+                                      "fill": "#5A4636",
+                                      "width": 30,
+                                      "height": 30,
+                                      "stroke": "#00000024",
+                                      "strokeWidth": 1
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "m38FYm",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "rU6ux",
+                              "x": 0,
+                              "y": 2,
+                              "enabled": false,
+                              "fill": "$--foreground",
+                              "content": "PRICING",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 12,
+                              "fontWeight": "700",
+                              "letterSpacing": 2
+                            },
+                            {
+                              "type": "frame",
+                              "id": "s121S",
+                              "name": "Pricing Line",
+                              "width": "fill_container",
+                              "padding": [
+                                8,
+                                0
+                              ],
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "ouI7Z",
+                                  "name": "Pricing Prefix",
+                                  "fill": "$--foreground",
+                                  "content": "Starting at ",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 15,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "o3eZ2",
+                                  "name": "Pricing Amount",
+                                  "fill": "$--foreground",
+                                  "content": "€170,000",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 15,
+                                  "fontWeight": "700"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "DNrna",
+                                  "name": "Pricing Suffix",
+                                  "fill": "$--foreground",
+                                  "content": " plus installation.",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 15,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "bQHD8",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 12,
+                          "padding": [
+                            8,
+                            0,
+                            0,
+                            0
+                          ],
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "cCoE4",
+                              "width": "fill_container",
+                              "fill": "$--primary",
+                              "cornerRadius": "$--radius-full",
+                              "padding": [
+                                15,
+                                28
+                              ],
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "ZHP8s",
+                                  "fill": "$--primary-foreground",
+                                  "content": "Explore Aster",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 15,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "V5s3l7",
+                              "width": "fill_container",
+                              "cornerRadius": "$--radius-full",
+                              "stroke": "$--border",
+                              "strokeWidth": 1.5,
+                              "padding": [
+                                15,
+                                28
+                              ],
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "R45J0",
+                                  "fill": "$--secondary-foreground",
+                                  "content": "View floor plan",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 15,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1415,6 +2686,1330 @@
               ]
             }
           ]
+        },
+        {
+          "type": "frame",
+          "id": "fzJNY",
+          "name": "About - Tablet",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": 48,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "TVfb2",
+              "name": "eyebrow",
+              "fill": "$--foreground",
+              "content": "OUR APPROACH",
+              "fontFamily": "$--font-sans",
+              "fontSize": 13,
+              "fontWeight": "700",
+              "letterSpacing": 3
+            },
+            {
+              "type": "frame",
+              "id": "mbrSA",
+              "name": "Frame 4",
+              "width": 640,
+              "layout": "vertical",
+              "gap": 32,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "yvaDr",
+                  "name": "statement",
+                  "fill": "$--foreground",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "A simpler path to a quiet retreat.",
+                  "textAlign": "center",
+                  "fontFamily": "$--font-heading",
+                  "fontSize": 48,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "dhcV9",
+                  "name": "body",
+                  "fill": "$--foreground",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "We design secluded luxury retreats for unforgettable stays in nature. Each cabin combines refined architecture, warm natural materials, panoramic views, and premium comforts for a peaceful escape without compromise. Slow down, reconnect, and experience the calm of modern cabin living.",
+                  "lineHeight": 1.55,
+                  "textAlign": "center",
+                  "fontFamily": "$--font-sans",
+                  "fontSize": 18,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "wQ9wk",
+          "name": "Models Overview - Tablet",
+          "width": "fill_container",
+          "fill": "$--background",
+          "layout": "vertical",
+          "padding": [
+            48,
+            0
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "TgDUQ",
+              "name": "Slider Card",
+              "clip": true,
+              "width": "fill_container",
+              "height": 560,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "images/Niva.jpg",
+                "mode": "fill"
+              },
+              "layout": "none",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "id": "c3BSJ",
+                  "layoutPosition": "absolute",
+                  "x": 0,
+                  "y": 0,
+                  "name": "Top Gradient",
+                  "fill": {
+                    "type": "gradient",
+                    "gradientType": "linear",
+                    "enabled": true,
+                    "rotation": 0,
+                    "size": {
+                      "height": 1
+                    },
+                    "colors": [
+                      {
+                        "color": "#0E0D0B00",
+                        "position": 0
+                      },
+                      {
+                        "color": "#0E0D0B99",
+                        "position": 1
+                      }
+                    ]
+                  },
+                  "width": 768,
+                  "height": 180
+                },
+                {
+                  "type": "rectangle",
+                  "id": "rUTvL",
+                  "layoutPosition": "absolute",
+                  "x": 0,
+                  "y": 0,
+                  "name": "Bottom Gradient",
+                  "fill": {
+                    "type": "gradient",
+                    "gradientType": "linear",
+                    "enabled": true,
+                    "rotation": 180,
+                    "size": {
+                      "height": 1
+                    },
+                    "colors": [
+                      {
+                        "color": "#0E0D0B00",
+                        "position": 0.75
+                      },
+                      {
+                        "color": "#0e0d0b80",
+                        "position": 1
+                      }
+                    ]
+                  },
+                  "width": 768,
+                  "height": 560
+                },
+                {
+                  "type": "rectangle",
+                  "id": "zXBUC",
+                  "layoutPosition": "absolute",
+                  "x": 0,
+                  "y": 0,
+                  "name": "Left Edge Gradient",
+                  "enabled": false,
+                  "fill": {
+                    "type": "gradient",
+                    "gradientType": "linear",
+                    "enabled": true,
+                    "rotation": 90,
+                    "size": {
+                      "height": 1
+                    },
+                    "colors": [
+                      {
+                        "color": "#0E0D0B00",
+                        "position": 0
+                      },
+                      {
+                        "color": "#0E0D0B4D",
+                        "position": 1
+                      }
+                    ]
+                  },
+                  "width": 240,
+                  "height": 560
+                },
+                {
+                  "type": "rectangle",
+                  "id": "TbjMJ",
+                  "layoutPosition": "absolute",
+                  "x": 528,
+                  "y": 0,
+                  "name": "Right Edge Gradient",
+                  "enabled": false,
+                  "fill": {
+                    "type": "gradient",
+                    "gradientType": "linear",
+                    "enabled": true,
+                    "rotation": 270,
+                    "size": {
+                      "height": 1
+                    },
+                    "colors": [
+                      {
+                        "color": "#0E0D0B00",
+                        "position": 0
+                      },
+                      {
+                        "color": "#0E0D0B4D",
+                        "position": 1
+                      }
+                    ]
+                  },
+                  "width": 240,
+                  "height": 560
+                },
+                {
+                  "type": "text",
+                  "id": "Slvq3",
+                  "layoutPosition": "absolute",
+                  "x": 48,
+                  "y": 44,
+                  "name": "eyebrow",
+                  "enabled": false,
+                  "fill": "#E8E2D6",
+                  "content": "THE COLLECTION",
+                  "fontFamily": "$--font-sans",
+                  "fontSize": 13,
+                  "fontWeight": "700",
+                  "letterSpacing": 4
+                },
+                {
+                  "type": "frame",
+                  "id": "s0BcFI",
+                  "x": 24,
+                  "y": 13,
+                  "name": "Model Caption",
+                  "fill": "#00000000",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "q5uVp",
+                      "name": "Model Name",
+                      "fill": "$--primary-foreground",
+                      "textGrowth": "fixed-width",
+                      "width": "fit_content(90)",
+                      "content": "Niva",
+                      "fontFamily": "$--font-heading",
+                      "fontSize": 48,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "tzhgN",
+                      "name": "Model Spec",
+                      "fill": "$--primary-foreground",
+                      "textGrowth": "fixed-width",
+                      "width": 250,
+                      "content": "26 m²   ·   Studio loft   ·   Sleeps 2",
+                      "fontFamily": "$--font-sans",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "XkNSm",
+                  "layoutPosition": "absolute",
+                  "x": 24,
+                  "y": 256,
+                  "name": "Prev",
+                  "width": 48,
+                  "height": 48,
+                  "cornerRadius": 999,
+                  "stroke": "#e6e6e632",
+                  "strokeWidth": 1,
+                  "effect": {
+                    "type": "background_blur",
+                    "radius": 20
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "a5mCl",
+                      "name": "chevron-left",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "chevron-left",
+                      "library": "lucide",
+                      "fill": "#FBFAF6"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "G7P9H",
+                  "layoutPosition": "absolute",
+                  "x": 696,
+                  "y": 256,
+                  "name": "Next",
+                  "width": 48,
+                  "height": 48,
+                  "cornerRadius": 999,
+                  "stroke": "#e6e6e633",
+                  "strokeWidth": 1,
+                  "effect": {
+                    "type": "background_blur",
+                    "radius": 20
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "nnKVH",
+                      "name": "chevron-right",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "chevron-right",
+                      "library": "lucide",
+                      "fill": "#FBFAF6"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "xq8Oc",
+                  "x": 192,
+                  "y": 446,
+                  "name": "Thumbnail Nav",
+                  "cornerRadius": "$--radius-lg",
+                  "stroke": "#e6e6e633",
+                  "strokeWidth": 1,
+                  "effect": {
+                    "type": "background_blur",
+                    "radius": 20
+                  },
+                  "gap": 12,
+                  "padding": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ArUCT",
+                      "name": "Thumb Veyra",
+                      "opacity": 0.55,
+                      "clip": true,
+                      "width": 112,
+                      "height": 72,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "images/Veyra.jpg",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 8,
+                      "stroke": "#FFFFFF33",
+                      "strokeWidth": 1,
+                      "layout": "none"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "miNF8",
+                      "name": "Thumb Aster",
+                      "opacity": 0.55,
+                      "clip": true,
+                      "width": 112,
+                      "height": 72,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "images/Aster.jpg",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 8,
+                      "stroke": "#FFFFFF33",
+                      "strokeWidth": 1,
+                      "layout": "none"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "nh6lz",
+                      "name": "Thumb Niva (active)",
+                      "clip": true,
+                      "width": 112,
+                      "height": 72,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "images/Niva.jpg",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": 8,
+                      "stroke": "#e6e6e6bf",
+                      "strokeWidth": 1.5,
+                      "strokeAlignment": "outer",
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "id": "lodvC",
+                          "layoutPosition": "absolute",
+                          "x": 0,
+                          "y": 70,
+                          "name": "Progress Track",
+                          "fill": "#FFFFFF33",
+                          "width": 112,
+                          "height": 2
+                        },
+                        {
+                          "type": "rectangle",
+                          "id": "P6YeB",
+                          "layoutPosition": "absolute",
+                          "x": 0,
+                          "y": 70,
+                          "name": "Progress Fill",
+                          "fill": "$--primary-foreground",
+                          "width": 52,
+                          "height": 2
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "PDQ32",
+          "name": "Interactive Showcase - Tablet",
+          "width": "fill_container",
+          "fill": "$--background",
+          "layout": "vertical",
+          "gap": 60,
+          "padding": [
+            48,
+            0
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "y1VC5",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "padding": [
+                0,
+                48
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "xt8Hw",
+                  "fill": "$--foreground",
+                  "content": "MAKE IT YOURS",
+                  "fontFamily": "$--font-sans",
+                  "fontSize": 13,
+                  "fontWeight": "700",
+                  "letterSpacing": 3
+                },
+                {
+                  "type": "text",
+                  "id": "vY16x",
+                  "fill": "$--foreground",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Three models.\nUnlimited adventures.",
+                  "textAlign": "center",
+                  "fontFamily": "$--font-heading",
+                  "fontSize": 48,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Rs5tR",
+              "name": "showcase body",
+              "width": "fill_container",
+              "fill": "$unofficial/background-accent",
+              "layout": "vertical",
+              "gap": 20,
+              "padding": [
+                40,
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "orV6s",
+                  "name": "Frame 6",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 20,
+                  "padding": [
+                    0,
+                    0,
+                    20,
+                    0
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ZLCdo",
+                      "name": "Frame 7",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "okeHA",
+                          "fill": "$--foreground",
+                          "content": "Aster",
+                          "fontFamily": "$--font-heading",
+                          "fontSize": 40,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "bwjmo",
+                          "name": "Model Spec Row",
+                          "gap": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "eP4O1",
+                              "name": "Area",
+                              "fill": "$--foreground",
+                              "content": "38 m²",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 17,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "fTCFd",
+                              "name": "Separator 1",
+                              "fill": "#73737380",
+                              "content": "|",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 18,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "fv9BV",
+                              "name": "Bedrooms",
+                              "fill": "$--foreground",
+                              "content": "1 bedroom",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 17,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "P6Lrom",
+                              "name": "Separator 2",
+                              "fill": "#73737380",
+                              "content": "|",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 18,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "ZHLUi",
+                              "name": "Sleeps",
+                              "fill": "$--foreground",
+                              "content": "Sleeps 2–4",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 17,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "S1FXTx",
+                  "name": "Cabin Carousel Panel",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "aaoNs",
+                      "name": "Carousel Viewport",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 246,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "tdc9m",
+                          "x": -427,
+                          "y": 0,
+                          "name": "Sliding Image Track",
+                          "width": "fill_container(1621)",
+                          "gap": 60,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "du7fa",
+                              "name": "Prev Image Aster",
+                              "clip": true,
+                              "width": 500,
+                              "height": 220,
+                              "fill": {
+                                "type": "image",
+                                "enabled": true,
+                                "url": "images/veyra-black.png",
+                                "mode": "fit"
+                              },
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "lD3RM",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "Image Vignette",
+                                  "enabled": false,
+                                  "width": 430,
+                                  "height": 360,
+                                  "fill": {
+                                    "type": "gradient",
+                                    "gradientType": "linear",
+                                    "enabled": true,
+                                    "opacity": 0.55,
+                                    "rotation": 180,
+                                    "size": {
+                                      "height": 1
+                                    },
+                                    "colors": [
+                                      {
+                                        "color": "#00000000",
+                                        "position": 0.42
+                                      },
+                                      {
+                                        "color": "#000000A6",
+                                        "position": 1
+                                      }
+                                    ]
+                                  },
+                                  "layout": "none"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "twSem",
+                              "name": "Main Image Aster",
+                              "clip": true,
+                              "width": 500,
+                              "height": 220,
+                              "fill": {
+                                "type": "image",
+                                "enabled": true,
+                                "url": "images/aster-black.png",
+                                "mode": "fit"
+                              },
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "f78FP",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "Image Vignette",
+                                  "enabled": false,
+                                  "width": 430,
+                                  "height": 360,
+                                  "fill": {
+                                    "type": "gradient",
+                                    "gradientType": "linear",
+                                    "enabled": true,
+                                    "opacity": 0.55,
+                                    "rotation": 180,
+                                    "size": {
+                                      "height": 1
+                                    },
+                                    "colors": [
+                                      {
+                                        "color": "#00000000",
+                                        "position": 0.42
+                                      },
+                                      {
+                                        "color": "#000000A6",
+                                        "position": 1
+                                      }
+                                    ]
+                                  },
+                                  "layout": "none"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "gWFxr",
+                              "name": "Next Image Peek",
+                              "width": 500,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "o3p9ef",
+                                  "name": "Next Image Peek",
+                                  "clip": true,
+                                  "width": 240,
+                                  "height": 220,
+                                  "fill": {
+                                    "type": "image",
+                                    "enabled": true,
+                                    "url": "images/Niva-black.png",
+                                    "mode": "fit"
+                                  },
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "wwNKX",
+                                      "x": 0,
+                                      "y": 0,
+                                      "name": "Peek Fade",
+                                      "enabled": false,
+                                      "width": 402,
+                                      "height": 500,
+                                      "fill": "#00000033",
+                                      "layout": "none"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "T4hAv",
+                              "layoutPosition": "absolute",
+                              "x": 513,
+                              "y": 82,
+                              "name": "Arrow Buttons",
+                              "width": 596,
+                              "height": 56,
+                              "gap": 16,
+                              "justifyContent": "space_between",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "V8I8F",
+                                  "name": "Previous Button",
+                                  "width": 56,
+                                  "height": 56,
+                                  "fill": "$--primary",
+                                  "cornerRadius": "$--radius-full",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon",
+                                      "id": "vP7B8",
+                                      "name": "Previous Icon",
+                                      "width": 20,
+                                      "height": 20,
+                                      "icon": "arrow-left",
+                                      "library": "lucide",
+                                      "fill": "$--primary-foreground"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "pcUm6",
+                                  "name": "Next Button",
+                                  "width": 56,
+                                  "height": 56,
+                                  "fill": "$--primary",
+                                  "cornerRadius": "$--radius-full",
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon",
+                                      "id": "v28ap7",
+                                      "name": "Next Icon",
+                                      "width": 20,
+                                      "height": 20,
+                                      "icon": "arrow-right",
+                                      "library": "lucide",
+                                      "fill": "$--primary-foreground"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "gMUkn",
+                      "name": "Carousel Controls",
+                      "width": "fill_container",
+                      "gap": 32,
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "NOYhB",
+                          "x": 261,
+                          "y": 0,
+                          "name": "Frame 8",
+                          "enabled": false,
+                          "gap": 40,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "L2WpR",
+                              "name": "Cabin Thumbnails",
+                              "width": 174,
+                              "height": 112,
+                              "gap": 16,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "TRHZt",
+                                  "name": "Aster Thumbnail",
+                                  "opacity": 0.5999999999999996,
+                                  "fill": "$--card",
+                                  "cornerRadius": "$--radius-lg",
+                                  "gap": 8,
+                                  "padding": 10,
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "IRVLb",
+                                      "name": "Aster Preview",
+                                      "clip": true,
+                                      "width": 132,
+                                      "height": 88,
+                                      "fill": {
+                                        "type": "image",
+                                        "enabled": true,
+                                        "url": "images/aster-floorplan.png",
+                                        "mode": "fit"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "dYTiB",
+                          "name": "Carousel Dots Wrap",
+                          "layout": "vertical",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "zQT6a",
+                              "name": "Carousel Dots",
+                              "gap": 8,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "ellipse",
+                                  "id": "JrKda",
+                                  "name": "Second Dot",
+                                  "fill": "#73737366",
+                                  "width": 8,
+                                  "height": 8
+                                },
+                                {
+                                  "type": "ellipse",
+                                  "id": "bf3mI",
+                                  "name": "Active Dot",
+                                  "fill": "$--primary",
+                                  "width": 8,
+                                  "height": 8
+                                },
+                                {
+                                  "type": "ellipse",
+                                  "id": "lnd0p",
+                                  "name": "Third Dot",
+                                  "fill": "#73737366",
+                                  "width": 8,
+                                  "height": 8
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "kVHcm",
+                  "name": "left panel",
+                  "clip": true,
+                  "width": "fill_container",
+                  "padding": [
+                    0,
+                    48
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "bt9iR",
+                      "name": "left panel",
+                      "width": "fill_container",
+                      "fill": "$--card",
+                      "cornerRadius": "$--radius-lg",
+                      "stroke": "$--border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "layout": "vertical",
+                      "gap": 24,
+                      "padding": 32,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "zphP7",
+                          "width": "fill_container",
+                          "height": "fit_content(36)",
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "W0IVJv",
+                              "x": 0,
+                              "y": 10,
+                              "fill": "$--foreground",
+                              "content": "EXTERIOR FINISH",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 12,
+                              "fontWeight": "700",
+                              "letterSpacing": 2
+                            },
+                            {
+                              "type": "frame",
+                              "id": "eZJLh",
+                              "x": 188,
+                              "y": 0,
+                              "gap": 10,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "q9ANL",
+                                  "fill": "#00000000",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--border",
+                                  "strokeWidth": 1,
+                                  "gap": 8,
+                                  "padding": [
+                                    9,
+                                    14
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "dy3Bg",
+                                      "fill": "#C2A06B",
+                                      "width": 14,
+                                      "height": 14,
+                                      "stroke": "#00000014",
+                                      "strokeWidth": 1
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "gsjJw",
+                                      "fill": "$--foreground",
+                                      "content": "Timber",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 13,
+                                      "fontWeight": "500"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "WLJoX",
+                                  "fill": "$--card",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--primary",
+                                  "strokeWidth": 1.5,
+                                  "gap": 8,
+                                  "padding": [
+                                    9,
+                                    14
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "j1EJM",
+                                      "fill": "#2E2A26",
+                                      "width": 14,
+                                      "height": 14,
+                                      "stroke": "#00000014",
+                                      "strokeWidth": 1
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "oj0sj",
+                                      "fill": "$--foreground",
+                                      "content": "Charred wood",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 13,
+                                      "fontWeight": "700"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "umS3z",
+                                  "fill": "#00000000",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--border",
+                                  "strokeWidth": 1,
+                                  "gap": 8,
+                                  "padding": [
+                                    9,
+                                    14
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "V5QxQ",
+                                      "fill": "#e3e0d3ff",
+                                      "width": 14,
+                                      "height": 14,
+                                      "stroke": "#00000014",
+                                      "strokeWidth": 1
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "GbE2q",
+                                      "fill": "$--foreground",
+                                      "content": "Oyster ",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 13,
+                                      "fontWeight": "500"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "hWfi7",
+                          "width": "fill_container",
+                          "height": "fit_content(36)",
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "jGWEM",
+                              "x": 0,
+                              "y": 10,
+                              "fill": "$--foreground",
+                              "content": "INTERIOR PALETTE",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 12,
+                              "fontWeight": "700",
+                              "letterSpacing": 2
+                            },
+                            {
+                              "type": "frame",
+                              "id": "d9WfN8",
+                              "x": 188,
+                              "y": 0,
+                              "gap": 10,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "g5FOyy",
+                                  "fill": "$--card",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--primary",
+                                  "strokeWidth": 1.5,
+                                  "gap": 8,
+                                  "padding": [
+                                    9,
+                                    14
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "Lsy3G",
+                                      "fill": "#DCC79E",
+                                      "width": 14,
+                                      "height": 14,
+                                      "stroke": "#00000014",
+                                      "strokeWidth": 1
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "XLaqn",
+                                      "fill": "$--foreground",
+                                      "content": "Light oak",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 13,
+                                      "fontWeight": "700"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "w7b53",
+                                  "fill": "#00000000",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--border",
+                                  "strokeWidth": 1,
+                                  "gap": 8,
+                                  "padding": [
+                                    9,
+                                    14
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "mOm92",
+                                      "fill": "#C2A988",
+                                      "width": 14,
+                                      "height": 14,
+                                      "stroke": "#00000014",
+                                      "strokeWidth": 1
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "IZdIc",
+                                      "fill": "$--foreground",
+                                      "content": "Warm ash",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 13,
+                                      "fontWeight": "500"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "UrT11",
+                                  "fill": "#00000000",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--border",
+                                  "strokeWidth": 1,
+                                  "gap": 8,
+                                  "padding": [
+                                    9,
+                                    14
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "vKiHM",
+                                      "fill": "#5A4636",
+                                      "width": 14,
+                                      "height": 14,
+                                      "stroke": "#00000014",
+                                      "strokeWidth": 1
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "kht4z",
+                                      "fill": "$--foreground",
+                                      "content": "Dark walnut",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 13,
+                                      "fontWeight": "500"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Q9AHJ",
+                          "width": "fill_container",
+                          "height": "fit_content(22)",
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Z7ear",
+                              "x": 0,
+                              "y": 3,
+                              "fill": "$--foreground",
+                              "content": "PRICING",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 12,
+                              "fontWeight": "700",
+                              "letterSpacing": 2
+                            },
+                            {
+                              "type": "frame",
+                              "id": "AEoHe",
+                              "x": 189,
+                              "y": 0,
+                              "name": "Pricing Line",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "V9j65",
+                                  "name": "Pricing Prefix",
+                                  "fill": "$--foreground",
+                                  "content": "Starting at ",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 16,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "lbOOk",
+                                  "name": "Pricing Amount",
+                                  "fill": "$--foreground",
+                                  "content": "€170,000",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 14,
+                                  "fontWeight": "700"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "b1A6Ul",
+                                  "name": "Pricing Suffix",
+                                  "fill": "$--foreground",
+                                  "content": " plus installation.",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 16,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "HZOaz",
+                          "width": "fill_container",
+                          "gap": 16,
+                          "padding": [
+                            20,
+                            0,
+                            0,
+                            0
+                          ],
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "KkXUM",
+                              "width": "fill_container",
+                              "fill": "$--primary",
+                              "cornerRadius": "$--radius-full",
+                              "padding": [
+                                15,
+                                28
+                              ],
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "jegn5",
+                                  "fill": "$--primary-foreground",
+                                  "content": "Explore Aster",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 15,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "umzEv",
+                              "cornerRadius": "$--radius-full",
+                              "stroke": "$--border",
+                              "strokeWidth": 1.5,
+                              "padding": [
+                                15,
+                                28
+                              ],
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "QdupT",
+                                  "fill": "$--secondary-foreground",
+                                  "content": "View floor plan",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 15,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1730,7 +4325,7 @@
                                   "name": "EN",
                                   "fill": "$--primary-foreground",
                                   "content": "EN",
-                                  "fontFamily": "Satoshi Variable",
+                                  "fontFamily": "$--font-sans",
                                   "fontSize": 13,
                                   "fontWeight": "500"
                                 }
@@ -1765,7 +4360,7 @@
                                   "rotation": -3.975693351829396e-16,
                                   "fill": "$--muted-foreground",
                                   "content": "/",
-                                  "fontFamily": "Satoshi Variable",
+                                  "fontFamily": "$--font-sans",
                                   "fontSize": 25,
                                   "fontWeight": "300"
                                 }
@@ -1792,7 +4387,7 @@
                                   "name": "PL",
                                   "fill": "$--muted-foreground",
                                   "content": "PL",
-                                  "fontFamily": "Satoshi Variable",
+                                  "fontFamily": "$--font-sans",
                                   "fontSize": 13,
                                   "fontWeight": "normal"
                                 }
@@ -2432,6 +5027,1501 @@
               ]
             }
           ]
+        },
+        {
+          "type": "frame",
+          "id": "w2YlV9",
+          "name": "Main Content",
+          "width": "fill_container",
+          "fill": "$--background",
+          "layout": "vertical",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "RKb82",
+              "name": "About",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 40,
+              "padding": [
+                88,
+                64
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "E15uPg",
+                  "name": "eyebrow",
+                  "fill": "$--foreground",
+                  "content": "OUR APPROACH",
+                  "fontFamily": "$--font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "700",
+                  "letterSpacing": 3
+                },
+                {
+                  "type": "frame",
+                  "id": "BqCp0",
+                  "name": "Frame 4",
+                  "layout": "vertical",
+                  "gap": 50,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "q2sCe",
+                      "name": "statement",
+                      "fill": "$--foreground",
+                      "textGrowth": "fixed-width",
+                      "width": 768,
+                      "content": "A simpler path to a quiet retreat.",
+                      "textAlign": "center",
+                      "fontFamily": "$--font-heading",
+                      "fontSize": 64,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "F0MhkJ",
+                      "name": "body",
+                      "fill": "$--foreground",
+                      "textGrowth": "fixed-width",
+                      "width": "fit_content(1024)",
+                      "content": "We design secluded luxury retreats for unforgettable stays in nature. Each cabin combines refined architecture, warm natural materials, panoramic views, and premium comforts for a peaceful escape without compromise. Slow down, reconnect, and experience the calm of modern cabin living.",
+                      "lineHeight": 1.6,
+                      "textAlign": "center",
+                      "fontFamily": "$--font-sans",
+                      "fontSize": 20,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "LiVZw",
+              "name": "Models Overview — Slider",
+              "width": "fill_container",
+              "fill": "$--background",
+              "layout": "vertical",
+              "padding": [
+                88,
+                64
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ClZXY",
+                  "name": "Slider Card",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 792,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "images/Niva.jpg",
+                    "mode": "fill"
+                  },
+                  "cornerRadius": 20,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "id": "F54O78",
+                      "layoutPosition": "absolute",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Top Gradient",
+                      "enabled": false,
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 0,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "#0E0D0B00",
+                            "position": 0
+                          },
+                          {
+                            "color": "#0E0D0B99",
+                            "position": 1
+                          }
+                        ]
+                      },
+                      "width": 1408,
+                      "height": 238
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "HSfyR",
+                      "layoutPosition": "absolute",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Bottom Gradient",
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 180,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "#0E0D0B00",
+                            "position": 0.45
+                          },
+                          {
+                            "color": "#0E0D0BD9",
+                            "position": 1
+                          }
+                        ]
+                      },
+                      "width": 1408,
+                      "height": 792
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "DL25T",
+                      "layoutPosition": "absolute",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Left Edge Gradient",
+                      "enabled": false,
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 90,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "#0E0D0B00",
+                            "position": 0
+                          },
+                          {
+                            "color": "#0E0D0B4D",
+                            "position": 1
+                          }
+                        ]
+                      },
+                      "width": 300,
+                      "height": 792
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "gqvZB",
+                      "layoutPosition": "absolute",
+                      "x": 1108,
+                      "y": 0,
+                      "name": "Right Edge Gradient",
+                      "enabled": false,
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 270,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "#0E0D0B00",
+                            "position": 0
+                          },
+                          {
+                            "color": "#0E0D0B4D",
+                            "position": 1
+                          }
+                        ]
+                      },
+                      "width": 300,
+                      "height": 792
+                    },
+                    {
+                      "type": "text",
+                      "id": "Dbf5q",
+                      "layoutPosition": "absolute",
+                      "x": 48,
+                      "y": 44,
+                      "name": "eyebrow",
+                      "enabled": false,
+                      "fill": "#E8E2D6",
+                      "content": "THE COLLECTION",
+                      "fontFamily": "$--font-sans",
+                      "fontSize": 13,
+                      "fontWeight": "700",
+                      "letterSpacing": 4
+                    },
+                    {
+                      "type": "text",
+                      "id": "TKg8w",
+                      "layoutPosition": "absolute",
+                      "x": 1160,
+                      "y": 44,
+                      "name": "counter",
+                      "enabled": false,
+                      "fill": "#E8E2D6",
+                      "textGrowth": "fixed-width",
+                      "width": 200,
+                      "content": "02 / 03",
+                      "textAlign": "right",
+                      "fontFamily": "$--font-sans",
+                      "fontSize": 14,
+                      "fontWeight": "700",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Sjg6p",
+                      "x": 48,
+                      "y": 660,
+                      "name": "Model Caption",
+                      "fill": "#00000000",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "OTpdO",
+                          "name": "Model Name",
+                          "fill": "$--primary-foreground",
+                          "content": "Niva",
+                          "fontFamily": "$--font-heading",
+                          "fontSize": 56,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "igQsr",
+                          "name": "Model Spec",
+                          "fill": "$--primary-foreground",
+                          "content": "26 m²   ·   Studio loft   ·   Sleeps 2",
+                          "fontFamily": "$--font-sans",
+                          "fontSize": 15,
+                          "fontWeight": "600",
+                          "letterSpacing": 1
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "x2sBQD",
+                      "layoutPosition": "absolute",
+                      "x": 32,
+                      "y": 372,
+                      "name": "Prev",
+                      "width": 48,
+                      "height": 48,
+                      "cornerRadius": 999,
+                      "stroke": "#e6e6e632",
+                      "strokeWidth": 1,
+                      "effect": {
+                        "type": "background_blur",
+                        "radius": 20
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "jciSm",
+                          "name": "chevron-left",
+                          "width": 20,
+                          "height": 20,
+                          "icon": "chevron-left",
+                          "library": "lucide",
+                          "fill": "#FBFAF6"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "EKcG2",
+                      "layoutPosition": "absolute",
+                      "x": 1328,
+                      "y": 372,
+                      "name": "Next",
+                      "width": 48,
+                      "height": 48,
+                      "cornerRadius": 999,
+                      "stroke": "#e6e6e633",
+                      "strokeWidth": 1,
+                      "effect": {
+                        "type": "background_blur",
+                        "radius": 20
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "lPMnL",
+                          "name": "chevron-right",
+                          "width": 20,
+                          "height": 20,
+                          "icon": "chevron-right",
+                          "library": "lucide",
+                          "fill": "#FBFAF6"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "LNQ0p",
+                      "layoutPosition": "absolute",
+                      "x": 512,
+                      "y": 660,
+                      "name": "Thumbnail Nav",
+                      "cornerRadius": "$--radius-lg",
+                      "stroke": "#e6e6e633",
+                      "strokeWidth": 1,
+                      "effect": {
+                        "type": "background_blur",
+                        "radius": 20
+                      },
+                      "gap": 12,
+                      "padding": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "jz0R7",
+                          "name": "Thumb Veyra",
+                          "opacity": 0.55,
+                          "clip": true,
+                          "width": 112,
+                          "height": 72,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "images/Veyra.jpg",
+                            "mode": "fill"
+                          },
+                          "cornerRadius": 8,
+                          "stroke": "#FFFFFF33",
+                          "strokeWidth": 1,
+                          "layout": "none"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "nEJ9e",
+                          "name": "Thumb Aster",
+                          "opacity": 0.55,
+                          "clip": true,
+                          "width": 112,
+                          "height": 72,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "images/Aster.jpg",
+                            "mode": "fill"
+                          },
+                          "cornerRadius": 8,
+                          "stroke": "#FFFFFF33",
+                          "strokeWidth": 1,
+                          "layout": "none"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "x01k08",
+                          "name": "Thumb Niva (active)",
+                          "clip": true,
+                          "width": 112,
+                          "height": 72,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "images/Niva.jpg",
+                            "mode": "fill"
+                          },
+                          "cornerRadius": 8,
+                          "stroke": "#e6e6e6bf",
+                          "strokeWidth": 1.5,
+                          "strokeAlignment": "outer",
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "rectangle",
+                              "id": "EMmDM",
+                              "layoutPosition": "absolute",
+                              "x": 0,
+                              "y": 70,
+                              "name": "Progress Track",
+                              "fill": "#FFFFFF33",
+                              "width": 112,
+                              "height": 2
+                            },
+                            {
+                              "type": "rectangle",
+                              "id": "BawPK",
+                              "layoutPosition": "absolute",
+                              "x": 0,
+                              "y": 70,
+                              "name": "Progress Fill",
+                              "fill": "$--primary-foreground",
+                              "width": 52,
+                              "height": 2
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "fgcob",
+              "name": "Interactive Showcase",
+              "width": "fill_container",
+              "fill": "$unofficial/background-accent",
+              "layout": "vertical",
+              "gap": 80,
+              "padding": [
+                88,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "X4Sb5d",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 20,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Fx227",
+                      "fill": "$--foreground",
+                      "content": "MAKE IT YOURS",
+                      "fontFamily": "$--font-sans",
+                      "fontSize": 14,
+                      "fontWeight": "700",
+                      "letterSpacing": 3
+                    },
+                    {
+                      "type": "text",
+                      "id": "V74i0D",
+                      "fill": "$--foreground",
+                      "textGrowth": "fixed-width",
+                      "width": 768,
+                      "content": "Three models.\nUnlimited adventures.",
+                      "textAlign": "center",
+                      "fontFamily": "$--font-heading",
+                      "fontSize": 64,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "gu5o4",
+                  "name": "showcase body",
+                  "width": "fill_container",
+                  "gap": 120,
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    64
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "jFKPg",
+                      "name": "left panel",
+                      "width": 520,
+                      "fill": "$--card",
+                      "cornerRadius": "$--radius-lg",
+                      "stroke": "$--border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "layout": "vertical",
+                      "gap": 28,
+                      "padding": 40,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "d9HpU6",
+                          "name": "Frame 6",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 20,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "gr4vD",
+                              "name": "Frame 7",
+                              "layout": "vertical",
+                              "gap": 12,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "PPI9p",
+                                  "fill": "$--foreground",
+                                  "content": "Aster",
+                                  "fontFamily": "$--font-heading",
+                                  "fontSize": 52,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "m6iZt",
+                                  "name": "Model Spec Row",
+                                  "gap": 8,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "e0TNLR",
+                                      "name": "Area",
+                                      "fill": "$--foreground",
+                                      "content": "38 m²",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 20,
+                                      "fontWeight": "600"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "q8HIU",
+                                      "name": "Separator 1",
+                                      "fill": "#73737380",
+                                      "content": "|",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 20,
+                                      "fontWeight": "normal"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "Q7Y5q",
+                                      "name": "Bedrooms",
+                                      "fill": "$--foreground",
+                                      "content": "1 bedroom",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 20,
+                                      "fontWeight": "600"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "ySi6s",
+                                      "name": "Separator 2",
+                                      "fill": "#73737380",
+                                      "content": "|",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 20,
+                                      "fontWeight": "normal"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "Y4OkD",
+                                      "name": "Sleeps",
+                                      "fill": "$--foreground",
+                                      "content": "Sleeps 2–4",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 20,
+                                      "fontWeight": "600"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "fDHI3",
+                              "fill": "$--muted-foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "A one-bedroom retreat for weekends and couples. Open living, a quiet bedroom, and a deck that opens to the view.",
+                              "lineHeight": 1.6,
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 16,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "X264M",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "AovNn",
+                              "fill": "$--foreground",
+                              "content": "EXTERIOR FINISH",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 12,
+                              "fontWeight": "700",
+                              "letterSpacing": 2
+                            },
+                            {
+                              "type": "frame",
+                              "id": "sAJrb",
+                              "width": "fill_container",
+                              "gap": 10,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "u4iQK",
+                                  "fill": "#00000000",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--border",
+                                  "strokeWidth": 1,
+                                  "gap": 8,
+                                  "padding": [
+                                    9,
+                                    14
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "p8aqr",
+                                      "fill": "#C2A06B",
+                                      "width": 14,
+                                      "height": 14,
+                                      "stroke": "#00000014",
+                                      "strokeWidth": 1
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "WhYhZ",
+                                      "fill": "$--foreground",
+                                      "content": "Timber",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 13,
+                                      "fontWeight": "500"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "DCwvL",
+                                  "fill": "$--card",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--primary",
+                                  "strokeWidth": 1.5,
+                                  "gap": 8,
+                                  "padding": [
+                                    9,
+                                    14
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "WmNbJ",
+                                      "fill": "#2E2A26",
+                                      "width": 14,
+                                      "height": 14,
+                                      "stroke": "#00000014",
+                                      "strokeWidth": 1
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "zq0FS",
+                                      "fill": "$--foreground",
+                                      "content": "Charred wood",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 13,
+                                      "fontWeight": "700"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "EDJIg",
+                                  "fill": "#00000000",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--border",
+                                  "strokeWidth": 1,
+                                  "gap": 8,
+                                  "padding": [
+                                    9,
+                                    14
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "T0d2o1",
+                                      "fill": "#e3e0d3ff",
+                                      "width": 14,
+                                      "height": 14,
+                                      "stroke": "#00000014",
+                                      "strokeWidth": 1
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "D0CRU",
+                                      "fill": "$--foreground",
+                                      "content": "Oyster ",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 13,
+                                      "fontWeight": "500"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "eHVe9",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "qfEA6",
+                              "fill": "$--foreground",
+                              "content": "INTERIOR PALETTE",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 12,
+                              "fontWeight": "700",
+                              "letterSpacing": 2
+                            },
+                            {
+                              "type": "frame",
+                              "id": "oia71",
+                              "width": "fill_container",
+                              "gap": 10,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "HwB7j",
+                                  "fill": "$--card",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--primary",
+                                  "strokeWidth": 1.5,
+                                  "gap": 8,
+                                  "padding": [
+                                    9,
+                                    14
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "zglQI",
+                                      "fill": "#DCC79E",
+                                      "width": 14,
+                                      "height": 14,
+                                      "stroke": "#00000014",
+                                      "strokeWidth": 1
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "EZuJu",
+                                      "fill": "$--foreground",
+                                      "content": "Light oak",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 13,
+                                      "fontWeight": "700"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "LeDdo",
+                                  "fill": "#00000000",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--border",
+                                  "strokeWidth": 1,
+                                  "gap": 8,
+                                  "padding": [
+                                    9,
+                                    14
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "VHbUS",
+                                      "fill": "#C2A988",
+                                      "width": 14,
+                                      "height": 14,
+                                      "stroke": "#00000014",
+                                      "strokeWidth": 1
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "S112h",
+                                      "fill": "$--foreground",
+                                      "content": "Warm ash",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 13,
+                                      "fontWeight": "500"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "F17nA",
+                                  "fill": "#00000000",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--border",
+                                  "strokeWidth": 1,
+                                  "gap": 8,
+                                  "padding": [
+                                    9,
+                                    14
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "U41kJ9",
+                                      "fill": "#5A4636",
+                                      "width": 14,
+                                      "height": 14,
+                                      "stroke": "#00000014",
+                                      "strokeWidth": 1
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "k9igr",
+                                      "fill": "$--foreground",
+                                      "content": "Dark walnut",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 13,
+                                      "fontWeight": "500"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "H50nkN",
+                          "x": 40,
+                          "y": 427,
+                          "enabled": false,
+                          "width": "fill_container(440)",
+                          "layout": "vertical",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Sa6NT",
+                              "fill": "$--foreground",
+                              "content": "ENERGY SETUP",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 12,
+                              "fontWeight": "700",
+                              "letterSpacing": 2
+                            },
+                            {
+                              "type": "frame",
+                              "id": "FaPm5",
+                              "width": "fill_container",
+                              "gap": 10,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "X4jup",
+                                  "fill": "#00000000",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "#E3DDD1",
+                                  "strokeWidth": 1,
+                                  "gap": 8,
+                                  "padding": [
+                                    9,
+                                    14
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "aC8XM",
+                                      "fill": "#6B675F",
+                                      "content": "Grid-ready",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 13,
+                                      "fontWeight": "500"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "HwOIv",
+                                  "fill": "$--card",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--primary",
+                                  "strokeWidth": 1.5,
+                                  "gap": 8,
+                                  "padding": [
+                                    9,
+                                    14
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "HnTEi",
+                                      "fill": "#2A2A26",
+                                      "content": "Solar-ready",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 13,
+                                      "fontWeight": "700"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "u5ELu",
+                                  "fill": "#00000000",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "#E3DDD1",
+                                  "strokeWidth": 1,
+                                  "gap": 8,
+                                  "padding": [
+                                    9,
+                                    14
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "EL3wa",
+                                      "fill": "#6B675F",
+                                      "content": "Off-grid pack",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 13,
+                                      "fontWeight": "500"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "d5yRKD",
+                          "x": 40,
+                          "y": 519,
+                          "enabled": false,
+                          "width": "fill_container(440)",
+                          "layout": "vertical",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "W6IFPR",
+                              "fill": "#6B675F",
+                              "content": "ADD-ONS",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 12,
+                              "fontWeight": "700",
+                              "letterSpacing": 2
+                            },
+                            {
+                              "type": "frame",
+                              "id": "PVjkD",
+                              "width": "fill_container",
+                              "gap": 10,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "x0AZfy",
+                                  "fill": "$--card",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--primary",
+                                  "strokeWidth": 1.5,
+                                  "gap": 8,
+                                  "padding": [
+                                    9,
+                                    14
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "uQdLI",
+                                      "fill": "#2A2A26",
+                                      "content": "Sauna",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 13,
+                                      "fontWeight": "700"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "CaHzg",
+                                  "fill": "#00000000",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "#E3DDD1",
+                                  "strokeWidth": 1,
+                                  "gap": 8,
+                                  "padding": [
+                                    9,
+                                    14
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "VKJqG",
+                                      "fill": "#6B675F",
+                                      "content": "Plunge pool",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 13,
+                                      "fontWeight": "500"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "pOXsg",
+                                  "fill": "#00000000",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "#E3DDD1",
+                                  "strokeWidth": 1,
+                                  "gap": 8,
+                                  "padding": [
+                                    9,
+                                    14
+                                  ],
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "Q7ns4h",
+                                      "fill": "#6B675F",
+                                      "content": "Deck lounge",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 13,
+                                      "fontWeight": "500"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "wNjTp",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "ol1Zw",
+                              "fill": "$--foreground",
+                              "content": "PRICING",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 12,
+                              "fontWeight": "700",
+                              "letterSpacing": 2
+                            },
+                            {
+                              "type": "frame",
+                              "id": "P4HEIp",
+                              "name": "Pricing Line",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "EHf5i",
+                                  "name": "Pricing Prefix",
+                                  "fill": "$--foreground",
+                                  "content": "Starting at ",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 16,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "mwrs8",
+                                  "name": "Pricing Amount",
+                                  "fill": "$--foreground",
+                                  "content": "€170,000",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 14,
+                                  "fontWeight": "700"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "jqIul",
+                                  "name": "Pricing Suffix",
+                                  "fill": "$--foreground",
+                                  "content": " plus installation.",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 16,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "w4F2Is",
+                          "width": "fill_container",
+                          "gap": 24,
+                          "padding": [
+                            20,
+                            0,
+                            0,
+                            0
+                          ],
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "DxeZz",
+                              "width": "fill_container",
+                              "fill": "$--primary",
+                              "cornerRadius": "$--radius-full",
+                              "padding": [
+                                15,
+                                28
+                              ],
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "nCxsv",
+                                  "fill": "$--primary-foreground",
+                                  "content": "Explore Aster",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 15,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "qgKXQ",
+                              "cornerRadius": "$--radius-full",
+                              "stroke": "$--border",
+                              "strokeWidth": 1.5,
+                              "padding": [
+                                15,
+                                28
+                              ],
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "nBklT",
+                                  "fill": "$--secondary-foreground",
+                                  "content": "View floor plan",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 15,
+                                  "fontWeight": "700"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "dAxJc",
+                      "name": "Cabin Carousel Panel",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "Owpyp",
+                          "name": "Carousel Viewport",
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": 500,
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "su9Ti",
+                              "x": 0,
+                              "y": 0,
+                              "name": "Sliding Image Track",
+                              "width": 1068,
+                              "gap": 60,
+                              "padding": [
+                                50,
+                                0
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "Kg0cs",
+                                  "name": "Main Image Aster",
+                                  "clip": true,
+                                  "width": 601,
+                                  "height": "fit_content(400)",
+                                  "fill": {
+                                    "type": "image",
+                                    "enabled": true,
+                                    "url": "images/aster-black.png",
+                                    "mode": "fit"
+                                  },
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "Z7riXb",
+                                      "x": 0,
+                                      "y": 0,
+                                      "name": "Image Vignette",
+                                      "enabled": false,
+                                      "width": 650,
+                                      "height": 500,
+                                      "fill": {
+                                        "type": "gradient",
+                                        "gradientType": "linear",
+                                        "enabled": true,
+                                        "opacity": 0.55,
+                                        "rotation": 180,
+                                        "size": {
+                                          "height": 1
+                                        },
+                                        "colors": [
+                                          {
+                                            "color": "#00000000",
+                                            "position": 0.42
+                                          },
+                                          {
+                                            "color": "#000000A6",
+                                            "position": 1
+                                          }
+                                        ]
+                                      },
+                                      "layout": "none"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "ZgdQX",
+                                  "name": "Next Image Peek",
+                                  "clip": true,
+                                  "width": 600,
+                                  "height": 400,
+                                  "fill": {
+                                    "type": "image",
+                                    "enabled": true,
+                                    "url": "images/Niva-black.png",
+                                    "mode": "fit"
+                                  },
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "A09ik",
+                                      "x": 0,
+                                      "y": 0,
+                                      "name": "Peek Fade",
+                                      "enabled": false,
+                                      "width": 402,
+                                      "height": 500,
+                                      "fill": "#00000033",
+                                      "layout": "none"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "qXTw2",
+                          "name": "Carousel Controls",
+                          "width": 832,
+                          "height": 124,
+                          "gap": 60,
+                          "padding": [
+                            0,
+                            64,
+                            0,
+                            0
+                          ],
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "bA5Tf",
+                              "name": "Frame 8",
+                              "gap": 100,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "OQF17",
+                                  "name": "Arrow Buttons",
+                                  "width": 144,
+                                  "height": 64,
+                                  "gap": 16,
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "ULJf5",
+                                      "name": "Previous Button",
+                                      "width": 64,
+                                      "height": 64,
+                                      "fill": "$--primary",
+                                      "cornerRadius": "$--radius-full",
+                                      "justifyContent": "center",
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "icon",
+                                          "id": "Yii5w",
+                                          "name": "Previous Icon",
+                                          "width": 20,
+                                          "height": 20,
+                                          "icon": "arrow-left",
+                                          "library": "lucide",
+                                          "fill": "$--primary-foreground"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "tDvdZ",
+                                      "name": "Next Button",
+                                      "width": 64,
+                                      "height": 64,
+                                      "fill": "$--primary",
+                                      "cornerRadius": "$--radius-full",
+                                      "justifyContent": "center",
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "icon",
+                                          "id": "h0gEEc",
+                                          "name": "Next Icon",
+                                          "width": 20,
+                                          "height": 20,
+                                          "icon": "arrow-right",
+                                          "library": "lucide",
+                                          "fill": "$--primary-foreground"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "oZFoR",
+                                  "x": 244,
+                                  "y": 0,
+                                  "name": "Cabin Thumbnails",
+                                  "enabled": false,
+                                  "width": 174,
+                                  "height": 124,
+                                  "gap": 16,
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "oZ7Lz",
+                                      "name": "Aster Thumbnail",
+                                      "opacity": 0.5999999999999996,
+                                      "fill": "$--card",
+                                      "cornerRadius": "$--radius-lg",
+                                      "gap": 8,
+                                      "padding": 12,
+                                      "children": [
+                                        {
+                                          "type": "frame",
+                                          "id": "ixDQS",
+                                          "name": "Aster Preview",
+                                          "clip": true,
+                                          "width": 150,
+                                          "height": 100,
+                                          "fill": {
+                                            "type": "image",
+                                            "enabled": true,
+                                            "url": "images/aster-floorplan.png",
+                                            "mode": "fit"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "IrA0N",
+                              "name": "Carousel Dots Wrap",
+                              "layout": "vertical",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "rX80l",
+                                  "name": "Carousel Dots",
+                                  "gap": 8,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "t7XvJh",
+                                      "name": "Second Dot",
+                                      "fill": "#73737366",
+                                      "width": 8,
+                                      "height": 8
+                                    },
+                                    {
+                                      "type": "ellipse",
+                                      "id": "JfRRm",
+                                      "name": "Active Dot",
+                                      "fill": "$--primary",
+                                      "width": 8,
+                                      "height": 8
+                                    },
+                                    {
+                                      "type": "ellipse",
+                                      "id": "qxsNF",
+                                      "name": "Third Dot",
+                                      "fill": "#73737366",
+                                      "width": 8,
+                                      "height": 8
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     }
@@ -2477,7 +6567,7 @@
       "type": "color",
       "value": [
         {
-          "value": "#FFFFFF",
+          "value": "#f7f5f0",
           "theme": {
             "Mode": "light"
           }
@@ -3116,6 +7206,28 @@
       "value": [
         {
           "value": "$--background",
+          "theme": {
+            "Mode": "light"
+          }
+        }
+      ]
+    },
+    "unofficial/background-accent": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#efeae1",
+          "theme": {
+            "Mode": "light"
+          }
+        }
+      ]
+    },
+    "unoffical/background-dark": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#2d2828",
           "theme": {
             "Mode": "light"
           }

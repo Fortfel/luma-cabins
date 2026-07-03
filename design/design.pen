@@ -94996,6 +94996,17 @@
           }
         }
       ]
+    },
+    "unoffical/dark-background": {
+      "type": "color",
+      "value": [
+        {
+          "value": "#2d2828",
+          "theme": {
+            "Mode": "light"
+          }
+        }
+      ]
     }
   },
   "fileToken": "7592dbd9-2622-4bee-925e-fbda47b84f28",
