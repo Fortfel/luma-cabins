@@ -1,5 +1,11 @@
-import { Hero } from '~/app/(app)/_components/hero'
+import { AboutSection } from '~/app/(app)/_components/about-section'
+import { HeroSection } from '~/app/(app)/_components/hero-section'
 
 export default function AppHomePage() {
-  return <Hero />
+  return (
+    <>
+      <HeroSection />
+      <AboutSection className="bg-background py-10" />
+    </>
+  )
 }

@@ -32,7 +32,7 @@ const HERO_FEATURES = [
 
 const MOBILE_FEATURES = ['Precision built', 'Delivered fast', 'Timeless design'] as const
 
-function Hero() {
+function HeroSection() {
   return (
     <section className="relative isolate flex min-h-dvh w-full overflow-hidden bg-primary text-primary-foreground">
       <HeroBackground />
@@ -56,7 +56,7 @@ function Hero() {
             {...contactLinkOptions()}
             className={cn(
               buttonVariants({ size: 'lg', variant: 'secondary' }),
-              'h-13.5 w-full cursor-pointer text-base font-bold',
+              'h-13.5 w-full cursor-pointer text-base font-bold text-primary',
             )}
           >
             Get started
@@ -92,4 +92,4 @@ function HeroFeature({ icon: Icon, title, description }: (typeof HERO_FEATURES)[
   )
 }
 
-export { Hero }
+export { HeroSection }

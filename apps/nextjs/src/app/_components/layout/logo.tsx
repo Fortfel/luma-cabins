@@ -18,7 +18,7 @@ const Logo = ({ className, ...props }: React.ComponentProps<'div'>) => {
       </div>
       <span className="flex flex-col leading-tight font-semibold tracking-widest uppercase">
         <span className="text-base font-bold text-primary-foreground">Luma</span>
-        <span className="text-xs font-medium text-muted-foreground">Cabins</span>
+        <span className="text-xs font-medium text-primary-foreground/75">Cabins</span>
       </span>
     </div>
   )
