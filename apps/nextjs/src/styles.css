@@ -12,3 +12,15 @@
     padding-inline: clamp(3rem, calc(1.5rem + 3.125vw), 4rem);
   }
 }
+
+@utility text-clamp-42-88 {
+  font-size: clamp(2.625rem, calc(1.6964rem + 3.9621vw), 5.5rem);
+}
+
+@utility text-clamp-38-56 {
+  font-size: clamp(2.375rem, calc(2.0116rem + 1.5504vw), 3.5rem);
+}
+
+@utility text-clamp-16-20 {
+  font-size: clamp(1rem, calc(0.8964rem + 0.442vw), 1.25rem);
+}
