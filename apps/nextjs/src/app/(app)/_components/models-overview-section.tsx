@@ -88,88 +88,90 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
   }
 
   return (
-    <section className={cn('container-page py-10 max-xl:px-0 md:py-12 lg:py-22', className)} {...props}>
-      <Carousel
-        setApi={setApi}
-        opts={{ align: 'start', loop: true, watchDrag: !isDesktop }}
-        className={cn('group relative overflow-hidden xl:rounded-xl')}
-      >
-        <CarouselContent>
-          {cabins.map((model) => (
-            <CarouselItem key={model.name}>
-              <div
-                className={cn(
-                  'relative aspect-square cursor-pointer',
-                  'sm:aspect-4/3',
-                  'lg:aspect-video',
-                  isDesktop ? 'cursor-default' : 'cursor-grab',
-                )}
-              >
-                <Image
-                  src={model.images.overview}
-                  alt={model.images.overviewAlt}
-                  fill
-                  sizes="(max-width: 1279px) 100vw, (max-width: 1535px) calc(100vw - 8rem), 1408px"
-                  className="object-cover"
-                />
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-
-        {/* Gradient TOP */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[linear-gradient(to_top,rgba(14,13,11,0)_0%,rgba(14,13,11,0.6)_100%)] md:h-45 lg:hidden" />
-        {/* Gradient BOTTOM */}
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(14,13,11,0)_75%,rgba(14,13,11,0.5)_100%)] lg:bg-[linear-gradient(to_bottom,rgba(14,13,11,0)_45%,rgba(14,13,11,0.85)_100%)]" />
-
-        <div className="absolute top-5 left-5 flex flex-col gap-1 md:top-3.5 md:left-6 lg:top-auto lg:bottom-12 lg:left-12 lg:gap-2">
-          <h2 className="text-clamp-38-56 leading-none font-medium text-primary-foreground" aria-live="polite">
-            {activeModel.name}
-          </h2>
-          <p className="hidden text-sm font-semibold text-primary-foreground md:block lg:text-base">
-            {activeModel.specs.area}&nbsp;&nbsp; · &nbsp;&nbsp;{activeModel.specs.layout}
-          </p>
-        </div>
-
-        <CarouselPrevious
-          className={cn(
-            'left-5 hidden size-12 border-primary-foreground/20 bg-transparent text-primary-foreground backdrop-blur-xl',
-            'hover:bg-primary-foreground/10 hover:text-primary-foreground',
-            'active:-translate-y-1/2!',
-            'md:inline-flex lg:hidden',
-          )}
-        />
-        <CarouselNext
-          className={cn(
-            'right-5 hidden size-12 border-primary-foreground/20 bg-transparent text-primary-foreground backdrop-blur-xl',
-            'hover:bg-primary-foreground/10 hover:text-primary-foreground',
-            'active:-translate-y-1/2!',
-            'md:inline-flex lg:hidden',
-          )}
-        />
-
-        <DesktopClickZone api={api} direction="previous" isDesktop={isDesktop} />
-        <DesktopClickZone api={api} direction="next" isDesktop={isDesktop} />
-
-        <div
-          className={cn(
-            'absolute bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-lg border border-border/20 p-2 backdrop-blur-xl',
-            'md:gap-3 md:p-3',
-          )}
+    <section className={cn('', className)} {...props}>
+      <div className="container-page max-xl:px-0">
+        <Carousel
+          setApi={setApi}
+          opts={{ align: 'start', loop: true, watchDrag: !isDesktop }}
+          className={cn('group relative overflow-hidden xl:rounded-xl')}
         >
-          {cabins.map((model, index) => (
-            <CabinThumbnail
-              key={model.name}
-              model={model}
-              isActive={index === activeIndex}
-              progress={index === activeIndex && !shouldReduceMotion ? progress : 0}
-              onClick={() => {
-                handleThumbnailClick(index)
-              }}
-            />
-          ))}
-        </div>
-      </Carousel>
+          <CarouselContent>
+            {cabins.map((model) => (
+              <CarouselItem key={model.name}>
+                <div
+                  className={cn(
+                    'relative aspect-square cursor-pointer',
+                    'sm:aspect-4/3',
+                    'lg:aspect-video',
+                    isDesktop ? 'cursor-default' : 'cursor-grab',
+                  )}
+                >
+                  <Image
+                    src={model.images.overview}
+                    alt={model.images.overviewAlt}
+                    fill
+                    sizes="(max-width: 1279px) 100vw, (max-width: 1535px) calc(100vw - 8rem), 1408px"
+                    className="object-cover"
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+
+          {/* Gradient TOP */}
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[linear-gradient(to_top,rgba(14,13,11,0)_0%,rgba(14,13,11,0.6)_100%)] md:h-45 lg:hidden" />
+          {/* Gradient BOTTOM */}
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(14,13,11,0)_75%,rgba(14,13,11,0.5)_100%)] lg:bg-[linear-gradient(to_bottom,rgba(14,13,11,0)_45%,rgba(14,13,11,0.85)_100%)]" />
+
+          <div className="absolute top-5 left-5 flex flex-col gap-1 md:top-3.5 md:left-6 lg:top-auto lg:bottom-12 lg:left-12 lg:gap-2">
+            <h2 className="text-clamp-38-56 leading-none font-medium text-primary-foreground" aria-live="polite">
+              {activeModel.name}
+            </h2>
+            <p className="hidden text-sm font-semibold text-primary-foreground md:block lg:text-base">
+              {activeModel.specs.area}&nbsp;&nbsp; · &nbsp;&nbsp;{activeModel.specs.layout}
+            </p>
+          </div>
+
+          <CarouselPrevious
+            className={cn(
+              'left-5 hidden size-12 border-primary-foreground/20 bg-transparent text-primary-foreground backdrop-blur-xl',
+              'hover:bg-primary-foreground/10 hover:text-primary-foreground',
+              'active:-translate-y-1/2!',
+              'md:inline-flex lg:hidden',
+            )}
+          />
+          <CarouselNext
+            className={cn(
+              'right-5 hidden size-12 border-primary-foreground/20 bg-transparent text-primary-foreground backdrop-blur-xl',
+              'hover:bg-primary-foreground/10 hover:text-primary-foreground',
+              'active:-translate-y-1/2!',
+              'md:inline-flex lg:hidden',
+            )}
+          />
+
+          <DesktopClickZone api={api} direction="previous" isDesktop={isDesktop} />
+          <DesktopClickZone api={api} direction="next" isDesktop={isDesktop} />
+
+          <div
+            className={cn(
+              'absolute bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-lg border border-border/20 p-2 backdrop-blur-xl',
+              'md:gap-3 md:p-3',
+            )}
+          >
+            {cabins.map((model, index) => (
+              <CabinThumbnail
+                key={model.name}
+                model={model}
+                isActive={index === activeIndex}
+                progress={index === activeIndex && !shouldReduceMotion ? progress : 0}
+                onClick={() => {
+                  handleThumbnailClick(index)
+                }}
+              />
+            ))}
+          </div>
+        </Carousel>
+      </div>
     </section>
   )
 }
