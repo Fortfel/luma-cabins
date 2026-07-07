@@ -192,7 +192,7 @@
                               "type": "text",
                               "id": "OiWMe",
                               "name": "CABINS",
-                              "fill": "$--muted-foreground",
+                              "fill": "#f0fcf4bf",
                               "content": "CABINS",
                               "fontFamily": "$--font-heading",
                               "fontSize": 12,
@@ -411,9 +411,12 @@
           "id": "Y0Sdom",
           "name": "About - Mobile",
           "width": "fill_container",
+          "fill": "$--background",
           "layout": "vertical",
           "gap": 24,
           "padding": [
+            80,
+            24,
             40,
             24
           ],
@@ -461,6 +464,7 @@
                   "textGrowth": "fixed-width",
                   "width": "fill_container",
                   "content": "We design secluded luxury retreats for unforgettable stays in nature. Each cabin combines refined architecture, warm natural materials, panoramic views, and premium comforts for a peaceful escape without compromise. Slow down, reconnect, and experience the calm of modern cabin living.",
+                  "lineHeight": 1.37,
                   "textAlign": "center",
                   "fontFamily": "$--font-sans",
                   "fontSize": 16,
@@ -489,7 +493,7 @@
               "name": "Slider Card",
               "clip": true,
               "width": "fill_container",
-              "height": 430,
+              "height": 390,
               "fill": {
                 "type": "image",
                 "enabled": true,
@@ -554,7 +558,7 @@
                     ]
                   },
                   "width": 390,
-                  "height": 430
+                  "height": 390
                 },
                 {
                   "type": "rectangle",
@@ -735,7 +739,7 @@
                   "type": "frame",
                   "id": "K74TAo",
                   "x": 50,
-                  "y": 342,
+                  "y": 302,
                   "name": "Thumbnail Nav",
                   "cornerRadius": "$--radius-lg",
                   "stroke": "#e6e6e633",
@@ -801,7 +805,7 @@
                       },
                       "cornerRadius": 8,
                       "stroke": "#e6e6e6bf",
-                      "strokeWidth": 1.5,
+                      "strokeWidth": 2,
                       "strokeAlignment": "outer",
                       "layout": "none",
                       "children": [
@@ -1869,7 +1873,7 @@
                               "type": "text",
                               "id": "Me5JK",
                               "name": "CABINS",
-                              "fill": "$--muted-foreground",
+                              "fill": "#f0fcf4bf",
                               "content": "CABINS",
                               "fontFamily": "$--font-heading",
                               "fontSize": 12,
@@ -2692,9 +2696,15 @@
           "id": "fzJNY",
           "name": "About - Tablet",
           "width": "fill_container",
+          "fill": "$--background",
           "layout": "vertical",
           "gap": 32,
-          "padding": 48,
+          "padding": [
+            96,
+            48,
+            48,
+            48
+          ],
           "alignItems": "center",
           "children": [
             {
@@ -2725,6 +2735,7 @@
                   "textGrowth": "fixed-width",
                   "width": "fill_container",
                   "content": "A simpler path to a quiet retreat.",
+                  "lineHeight": 1.12,
                   "textAlign": "center",
                   "fontFamily": "$--font-heading",
                   "fontSize": 48,
@@ -2738,7 +2749,7 @@
                   "textGrowth": "fixed-width",
                   "width": "fill_container",
                   "content": "We design secluded luxury retreats for unforgettable stays in nature. Each cabin combines refined architecture, warm natural materials, panoramic views, and premium comforts for a peaceful escape without compromise. Slow down, reconnect, and experience the calm of modern cabin living.",
-                  "lineHeight": 1.55,
+                  "lineHeight": 1.25,
                   "textAlign": "center",
                   "fontFamily": "$--font-sans",
                   "fontSize": 18,
@@ -3076,7 +3087,7 @@
                       },
                       "cornerRadius": 8,
                       "stroke": "#e6e6e6bf",
-                      "strokeWidth": 1.5,
+                      "strokeWidth": 2,
                       "strokeAlignment": "outer",
                       "layout": "none",
                       "children": [
@@ -4229,7 +4240,7 @@
                               "type": "text",
                               "id": "LqTCu",
                               "name": "CABINS",
-                              "fill": "$--muted-foreground",
+                              "fill": "#f0fcf4bf",
                               "content": "CABINS",
                               "fontFamily": "$--font-heading",
                               "fontSize": 12,
@@ -5042,9 +5053,12 @@
               "id": "RKb82",
               "name": "About",
               "width": "fill_container",
+              "fill": "$--background",
               "layout": "vertical",
               "gap": 40,
               "padding": [
+                176,
+                64,
                 88,
                 64
               ],
@@ -5077,6 +5091,7 @@
                       "textGrowth": "fixed-width",
                       "width": 768,
                       "content": "A simpler path to a quiet retreat.",
+                      "lineHeight": 1.12,
                       "textAlign": "center",
                       "fontFamily": "$--font-heading",
                       "fontSize": 64,
@@ -5090,7 +5105,7 @@
                       "textGrowth": "fixed-width",
                       "width": "fit_content(1024)",
                       "content": "We design secluded luxury retreats for unforgettable stays in nature. Each cabin combines refined architecture, warm natural materials, panoramic views, and premium comforts for a peaceful escape without compromise. Slow down, reconnect, and experience the calm of modern cabin living.",
-                      "lineHeight": 1.6,
+                      "lineHeight": 1.25,
                       "textAlign": "center",
                       "fontFamily": "$--font-sans",
                       "fontSize": 20,
@@ -5126,7 +5141,7 @@
                     "url": "images/Niva.jpg",
                     "mode": "fill"
                   },
-                  "cornerRadius": 20,
+                  "cornerRadius": "$--radius-xl",
                   "layout": "none",
                   "children": [
                     {
@@ -5447,7 +5462,7 @@
                           },
                           "cornerRadius": 8,
                           "stroke": "#e6e6e6bf",
-                          "strokeWidth": 1.5,
+                          "strokeWidth": 2,
                           "strokeAlignment": "outer",
                           "layout": "none",
                           "children": [
@@ -7223,7 +7238,7 @@
         }
       ]
     },
-    "unoffical/background-dark": {
+    "unofficial/background-dark": {
       "type": "color",
       "value": [
         {
