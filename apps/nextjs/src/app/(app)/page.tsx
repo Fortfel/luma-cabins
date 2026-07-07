@@ -6,8 +6,8 @@ export default function AppHomePage() {
   return (
     <>
       <HeroSection />
-      <AboutSection className="bg-background py-10" />
-      <ModelsOverviewSection className="bg-background py-10" />
+      <AboutSection className="section-py mt-[clamp(2.5rem,calc(-0.5rem+7.5vw),5.5rem)] bg-background" />
+      <ModelsOverviewSection className="section-py bg-background" />
     </>
   )
 }

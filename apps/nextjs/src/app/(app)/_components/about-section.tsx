@@ -1,7 +1,5 @@
 import type * as React from 'react'
 
-import { cn } from '@workspace/ui/lib/utils'
-
 import {
   LandingSectionIntro,
   LandingSectionIntroBody,
@@ -11,11 +9,13 @@ import {
 
 function AboutSection({ className, ...props }: React.ComponentProps<'section'>) {
   return (
-    <section className={cn('py-10', className)} {...props}>
+    <section className={className} {...props}>
       <LandingSectionIntro>
         <LandingSectionIntroEyebrow>Our approach</LandingSectionIntroEyebrow>
-        <LandingSectionIntroTitle>A simpler path to a quiet retreat.</LandingSectionIntroTitle>
-        <LandingSectionIntroBody>
+        <LandingSectionIntroTitle className="max-w-xl lg:max-w-2xl xl:max-w-3xl">
+          A simpler path to a quiet <i>retreat</i>.
+        </LandingSectionIntroTitle>
+        <LandingSectionIntroBody className="max-w-5xl">
           We design secluded luxury retreats for unforgettable stays in nature. Each cabin combines refined
           architecture, warm natural materials, panoramic views, and premium comforts for a peaceful escape without
           compromise. Slow down, reconnect, and experience the calm of modern cabin living.

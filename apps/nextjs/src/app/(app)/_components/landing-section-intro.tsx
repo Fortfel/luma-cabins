@@ -6,7 +6,10 @@ function LandingSectionIntro({ className, ...props }: React.ComponentProps<'div'
   return (
     <div
       data-slot="landing-section-intro"
-      className={cn('container-page flex flex-col items-center gap-6 text-center text-foreground', className)}
+      className={cn(
+        'container-page flex flex-col items-center gap-[clamp(24px,calc(14.73px+2.473vw),40px)] text-center text-foreground',
+        className,
+      )}
       {...props}
     />
   )
@@ -16,7 +19,7 @@ function LandingSectionIntroEyebrow({ className, ...props }: React.ComponentProp
   return (
     <p
       data-slot="landing-section-intro-eyebrow"
-      className={cn('text-xs font-bold tracking-[0.1875rem] uppercase', className)}
+      className={cn('text-clamp-12-14 font-bold tracking-[3px] uppercase', className)}
       {...props}
     />
   )
@@ -26,7 +29,7 @@ function LandingSectionIntroTitle({ children, className, ...props }: React.Compo
   return (
     <h2
       data-slot="landing-section-intro-title"
-      className={cn('text-4xl leading-[1.12] font-medium', className)}
+      className={cn('text-clamp-36-64 leading-[1.12] font-medium', className)}
       {...props}
     >
       {children}
@@ -35,7 +38,13 @@ function LandingSectionIntroTitle({ children, className, ...props }: React.Compo
 }
 
 function LandingSectionIntroBody({ className, ...props }: React.ComponentProps<'p'>) {
-  return <p data-slot="landing-section-intro-body" className={cn('text-base', className)} {...props} />
+  return (
+    <p
+      data-slot="landing-section-intro-body"
+      className={cn('text-clamp-16-20 leading-snug md:leading-tight lg:mt-2.5', className)}
+      {...props}
+    />
+  )
 }
 
 export { LandingSectionIntro, LandingSectionIntroEyebrow, LandingSectionIntroTitle, LandingSectionIntroBody }
