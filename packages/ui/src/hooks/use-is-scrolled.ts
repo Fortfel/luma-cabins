@@ -9,18 +9,20 @@ import { useEffect, useEffectEvent, useState } from 'react'
  * @returns Whether `window.scrollY` exceeds the threshold.
  */
 const useIsScrolled = (threshold = 0) => {
-  const [isScrolled, setIsScrolled] = useState(() => {
-    if (typeof window === 'undefined') return false
-    return window.scrollY > threshold
-  })
+  const [isScrolled, setIsScrolled] = useState(false)
 
-  const handleScroll = useEffectEvent(() => {
+  const updateIsScrolled = useEffectEvent(() => {
     setIsScrolled(window.scrollY > threshold)
   })
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    const animationFrameId = window.requestAnimationFrame(updateIsScrolled)
+
+    window.addEventListener('scroll', updateIsScrolled, { passive: true })
+    return () => {
+      window.cancelAnimationFrame(animationFrameId)
+      window.removeEventListener('scroll', updateIsScrolled)
+    }
   }, [])
 
   return isScrolled
