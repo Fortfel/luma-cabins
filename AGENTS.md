@@ -18,6 +18,8 @@ skills: []
 
 Before any Next.js work, find and read the relevant doc in `apps/nextjs/node_modules/next/dist/docs/`. Your training data is outdated — the docs are the source of truth.
 
+Note: `apps/nextjs/node_modules/next` may be a pnpm Windows reparse point/symlink, and file glob tools may return no matches under it. If docs appear missing, verify with `Test-Path -LiteralPath "apps/nextjs/node_modules/next/dist/docs"` or read files by exact path instead of trusting glob output.
+
 <!-- END:nextjs-agent-rules -->
 
 IMPORTANT: When applicable, prefer using webstorm-index MCP tools for code navigation and refactoring.
