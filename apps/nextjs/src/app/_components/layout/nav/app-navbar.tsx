@@ -22,18 +22,28 @@ const AppNavbar = ({ className, ...props }: React.ComponentProps<'div'>) => {
     <div
       data-slot="navbar"
       className={cn(
-        'mx-auto flex h-full items-center justify-between border-none bg-transparent px-6 backdrop-blur-2xl transition-[background-color,border-color,box-shadow,backdrop-filter,color] md:rounded-md md:px-[clamp(1.25rem,calc(0rem+2.6042vw),2.5rem)]',
+        'mx-auto flex h-full items-center justify-between border-none bg-transparent px-6 text-inherit backdrop-blur-2xl transition-[background-color,backdrop-filter,color] duration-400 ease-out',
+        'md:rounded-md md:px-[clamp(1.25rem,calc(0rem+2.6042vw),2.5rem)]',
         className,
       )}
       {...props}
     >
       <div className="flex items-center gap-4">
         <Link {...homeLinkOptions({ withLabel: true })} className="w-fit">
-          <Logo aria-hidden="true" />
+          <Logo
+            aria-hidden="true"
+            className="text-primary-foreground duration-400 ease-out group-data-[scrolled=true]/navbar-wrapper:text-foreground"
+          />
         </Link>
       </div>
 
-      <NavbarDesktop className="hidden md:block" />
+      <NavbarDesktop
+        className={cn(
+          'hidden md:block',
+          '**:data-[slot=navigation-menu-link]:duration-400 **:data-[slot=navigation-menu-link]:ease-out',
+          'group-data-[scrolled=true]/navbar-wrapper:**:data-[slot=navigation-menu-link]:text-foreground group-data-[scrolled=true]/navbar-wrapper:**:data-[slot=navigation-menu-link]:hover:bg-primary/5 group-data-[scrolled=true]/navbar-wrapper:**:data-[slot=navigation-menu-link]:focus-visible:bg-primary/5',
+        )}
+      />
 
       <div className="flex items-center gap-4 lg:gap-5">
         <LanguageSwitcherSimple
@@ -54,8 +64,10 @@ const AppNavbar = ({ className, ...props }: React.ComponentProps<'div'>) => {
             </>
           }
           className={cn(
-            'hidden h-7.5 gap-1 text-[13px] text-muted-foreground transition-colors',
+            'hidden h-7.5 gap-1 text-[13px] text-primary-foreground/50 transition-colors duration-400 ease-out',
             '[&>a.active]:text-primary-foreground [&>a:hover]:text-primary-foreground [&>a:hover]:underline',
+            'group-data-[scrolled=true]/navbar-wrapper:text-foreground/60',
+            'group-data-[scrolled=true]/navbar-wrapper:[&>a.active]:text-foreground group-data-[scrolled=true]/navbar-wrapper:[&>a:hover]:text-foreground',
             'md:flex md:flex-col',
             'lg:flex-row lg:[&>a:first-child]:self-start lg:[&>a:last-child]:self-end',
           )}
@@ -71,7 +83,15 @@ const AppNavbar = ({ className, ...props }: React.ComponentProps<'div'>) => {
           Get started
         </Link>
 
-        {isMobile && <NavbarMobile className="md:hidden" />}
+        {isMobile && (
+          <NavbarMobile
+            className={cn(
+              'md:hidden',
+              '**:data-[slot=sheet-trigger]:duration-400 **:data-[slot=sheet-trigger]:ease-out',
+              'group-data-[scrolled=true]/navbar-wrapper:**:data-[slot=sheet-trigger]:text-foreground group-data-[scrolled=true]/navbar-wrapper:**:data-[slot=sheet-trigger]:hover:bg-primary/5!  group-data-[scrolled=true]/navbar-wrapper:**:data-[slot=sheet-trigger]:hover:text-foreground',
+            )}
+          />
+        )}
       </div>
     </div>
   )

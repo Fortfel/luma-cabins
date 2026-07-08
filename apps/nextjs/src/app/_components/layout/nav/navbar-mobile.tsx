@@ -25,7 +25,7 @@ const NavbarMobile = ({ className, ...props }: React.ComponentProps<'div'>) => {
             <Button
               variant="ghost"
               size="icon-lg"
-              className="cursor-pointer rounded-full text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
+              className="cursor-pointer rounded-full text-primary-foreground transition-colors hover:bg-primary-foreground/5! hover:text-primary-foreground"
             />
           }
         >
