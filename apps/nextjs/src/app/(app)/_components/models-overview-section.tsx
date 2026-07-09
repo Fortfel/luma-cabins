@@ -4,7 +4,7 @@ import type * as React from 'react'
 import type { CarouselApi } from '@workspace/ui/components/carousel'
 import type { Cabin } from '~/app/(app)/_data/cabins'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
@@ -20,18 +20,32 @@ import {
 import { Progress } from '@workspace/ui/components/progress'
 import { useMediaQuery } from '@workspace/ui/hooks/use-media-query'
 import { usePrefersReducedMotion } from '@workspace/ui/hooks/use-prefers-reduced-motion'
+import { Autoplay } from '@workspace/ui/lib/embla-plugins'
 import { cn } from '@workspace/ui/lib/utils'
 
 import { cabins } from '~/app/(app)/_data/cabins'
 
 const AUTOPLAY_DELAY_MS = 5000
+const AUTOPLAY_VISIBILITY_THRESHOLD = 0.35
+type AutoplayPlugin = ReturnType<typeof Autoplay>
 
 function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'section'>) {
+  const [autoplay] = useState(() =>
+    Autoplay({
+      delay: AUTOPLAY_DELAY_MS,
+      playOnInit: false,
+      stopOnInteraction: false,
+      stopOnFocusIn: true,
+    }),
+  )
+  const [carouselPlugins] = useState(() => [autoplay])
   const [api, setApi] = useState<CarouselApi>()
   const [activeIndex, setActiveIndex] = useState(0)
-  const [progress, setProgress] = useState(0)
+  const [isCarouselInView, setIsCarouselInView] = useState(false)
   const isDesktop = useMediaQuery('(min-width: 1024px)', { initializeWithValue: false }) === true
   const shouldReduceMotion = usePrefersReducedMotion()
+
+  const sectionRef = useRef<HTMLDivElement>(null)
 
   const activeModel = cabins[activeIndex] ?? cabins[0]
 
@@ -55,44 +69,65 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
   }, [api])
 
   useEffect(() => {
-    if (!api || shouldReduceMotion) {
+    const section = sectionRef.current
+
+    if (!section) {
       return undefined
     }
 
-    let frameId = 0
-    const startTime = performance.now()
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsCarouselInView(
+          entry ? entry.isIntersecting && entry.intersectionRatio >= AUTOPLAY_VISIBILITY_THRESHOLD : false,
+        )
+      },
+      { threshold: AUTOPLAY_VISIBILITY_THRESHOLD },
+    )
 
-    const tick = (now: number) => {
-      const nextProgress = Math.min((now - startTime) / AUTOPLAY_DELAY_MS, 1)
-
-      setProgress(nextProgress)
-
-      if (nextProgress >= 1) {
-        api.scrollNext()
-
-        return
-      }
-
-      frameId = requestAnimationFrame(tick)
-    }
-
-    frameId = requestAnimationFrame(tick)
+    observer.observe(section)
 
     return () => {
-      cancelAnimationFrame(frameId)
+      observer.disconnect()
     }
-  }, [api, activeIndex, shouldReduceMotion])
+  }, [])
+
+  useEffect(() => {
+    if (!api) {
+      return undefined
+    }
+
+    if (shouldReduceMotion || !isCarouselInView) {
+      autoplay.stop()
+      return undefined
+    }
+
+    autoplay.play()
+
+    return () => {
+      autoplay.stop()
+    }
+  }, [api, autoplay, isCarouselInView, shouldReduceMotion])
+
+  useEffect(() => {
+    if (!api || shouldReduceMotion || !isCarouselInView || !autoplay.isPlaying()) {
+      return
+    }
+
+    autoplay.reset()
+  }, [api, autoplay, activeIndex, isCarouselInView, shouldReduceMotion])
 
   const handleThumbnailClick = (index: number) => {
     api?.scrollTo(index)
+    autoplay.reset()
   }
 
   return (
     <section className={cn('', className)} {...props}>
-      <div className="container-page max-xl:px-0">
+      <div ref={sectionRef} className="container-page max-xl:px-0">
         <Carousel
           setApi={setApi}
           opts={{ align: 'start', loop: true, watchDrag: !isDesktop }}
+          plugins={carouselPlugins}
           className={cn('group relative overflow-hidden xl:rounded-xl')}
         >
           <CarouselContent>
@@ -103,7 +138,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
                     'relative aspect-square cursor-pointer',
                     'sm:aspect-4/3',
                     'lg:aspect-video',
-                    isDesktop ? 'cursor-default' : 'cursor-grab',
+                    isDesktop ? 'cursor-default' : 'cursor-grab active:cursor-grabbing',
                   )}
                 >
                   <Image
@@ -163,7 +198,9 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
                 key={model.name}
                 model={model}
                 isActive={index === activeIndex}
-                progress={index === activeIndex && !shouldReduceMotion ? progress : 0}
+                api={api}
+                autoplay={autoplay}
+                shouldShowAutoplayProgress={!shouldReduceMotion && isCarouselInView}
                 onClick={() => {
                   handleThumbnailClick(index)
                 }}
@@ -232,12 +269,16 @@ function DesktopClickZone({
 function CabinThumbnail({
   model,
   isActive,
-  progress,
+  api,
+  autoplay,
+  shouldShowAutoplayProgress,
   onClick,
 }: {
   model: Cabin
   isActive: boolean
-  progress: number
+  api?: CarouselApi
+  autoplay: AutoplayPlugin
+  shouldShowAutoplayProgress: boolean
   onClick: () => void
 }) {
   return (
@@ -254,18 +295,79 @@ function CabinThumbnail({
       )}
     >
       <Image src={model.images.overview} alt="" fill sizes="(max-width: 767px) 86px, 128px" className="object-cover" />
-      {isActive ? (
-        <Progress
-          value={progress * 100}
-          aria-label={`${model.name} slide progress`}
-          className={cn(
-            'absolute inset-x-0 bottom-0 gap-0',
-            '**:data-[slot=progress-track]:h-0.5 **:data-[slot=progress-track]:rounded-none **:data-[slot=progress-track]:bg-primary-foreground/20',
-            '**:data-[slot=progress-indicator]:bg-primary-foreground **:data-[slot=progress-indicator]:transition-none',
-          )}
-        />
+      {isActive && shouldShowAutoplayProgress ? (
+        <CabinAutoplayProgress api={api} autoplay={autoplay} modelName={model.name} />
       ) : null}
     </button>
+  )
+}
+
+function CabinAutoplayProgress({
+  api,
+  autoplay,
+  modelName,
+}: {
+  api?: CarouselApi
+  autoplay: AutoplayPlugin
+  modelName: string
+}) {
+  const [progress, setProgress] = useState(0)
+
+  useEffect(() => {
+    if (!api) {
+      return undefined
+    }
+
+    let frameId = 0
+
+    const updateProgress = () => {
+      const timeUntilNext = autoplay.timeUntilNext()
+
+      if (timeUntilNext === null) {
+        setProgress(0)
+
+        return
+      }
+
+      setProgress(Math.max(0, Math.min(1, 1 - timeUntilNext / AUTOPLAY_DELAY_MS)))
+      frameId = requestAnimationFrame(updateProgress)
+    }
+
+    const startProgress = () => {
+      cancelAnimationFrame(frameId)
+      setProgress(0)
+      frameId = requestAnimationFrame(updateProgress)
+    }
+
+    const stopProgress = () => {
+      cancelAnimationFrame(frameId)
+      setProgress(0)
+    }
+
+    api.on('autoplay:timerset', startProgress)
+    api.on('autoplay:timerstopped', stopProgress)
+
+    if (autoplay.isPlaying()) {
+      startProgress()
+    }
+
+    return () => {
+      cancelAnimationFrame(frameId)
+      api.off('autoplay:timerset', startProgress)
+      api.off('autoplay:timerstopped', stopProgress)
+    }
+  }, [api, autoplay])
+
+  return (
+    <Progress
+      value={progress * 100}
+      aria-label={`${modelName} slide progress`}
+      className={cn(
+        'absolute inset-x-0 bottom-0 gap-0',
+        '**:data-[slot=progress-track]:h-0.5 **:data-[slot=progress-track]:rounded-none **:data-[slot=progress-track]:bg-primary-foreground/20',
+        '**:data-[slot=progress-indicator]:bg-primary-foreground **:data-[slot=progress-indicator]:transition-none',
+      )}
+    />
   )
 }
 
