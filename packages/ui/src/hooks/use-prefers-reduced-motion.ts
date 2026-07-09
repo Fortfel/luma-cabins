@@ -4,19 +4,13 @@ import { useEffect, useState } from 'react'
 
 const prefersReducedMotionQuery = '(prefers-reduced-motion: reduce)'
 
-const getPrefersReducedMotion = () => {
-  if (typeof window === 'undefined') return true
-
-  return window.matchMedia(prefersReducedMotionQuery).matches
-}
-
 /**
  * Tracks whether the user has requested reduced motion in their system preferences.
  *
  * @returns Whether `prefers-reduced-motion: reduce` currently matches.
  */
 const usePrefersReducedMotion = () => {
-  const [shouldReduceMotion, setShouldReduceMotion] = useState(getPrefersReducedMotion)
+  const [shouldReduceMotion, setShouldReduceMotion] = useState(true)
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(prefersReducedMotionQuery)
