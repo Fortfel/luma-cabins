@@ -4,7 +4,7 @@ import type * as React from 'react'
 import type { CarouselApi } from '@workspace/ui/components/carousel'
 import type { Cabin } from '~/app/(app)/_data/cabins'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
@@ -44,6 +44,10 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
   const [isCarouselInView, setIsCarouselInView] = useState(false)
   const isDesktop = useMediaQuery('(min-width: 1024px)', { initializeWithValue: false }) === true
   const shouldReduceMotion = usePrefersReducedMotion()
+  const carouselOptions = useMemo(
+    () => ({ align: 'start' as const, loop: true, watchDrag: !isDesktop }),
+    [isDesktop],
+  )
 
   const sectionRef = useRef<HTMLDivElement>(null)
 
@@ -96,14 +100,22 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
       return undefined
     }
 
-    if (shouldReduceMotion || !isCarouselInView) {
-      autoplay.stop()
-      return undefined
+    const handleReInit = () => {
+      if (!shouldReduceMotion && isCarouselInView) {
+        autoplay.play()
+      }
     }
 
-    autoplay.play()
+    if (shouldReduceMotion || !isCarouselInView) {
+      autoplay.stop()
+    } else {
+      autoplay.play()
+    }
+
+    api.on('reInit', handleReInit)
 
     return () => {
+      api.off('reInit', handleReInit)
       autoplay.stop()
     }
   }, [api, autoplay, isCarouselInView, shouldReduceMotion])
@@ -126,7 +138,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
       <div ref={sectionRef} className="container-page max-xl:px-0">
         <Carousel
           setApi={setApi}
-          opts={{ align: 'start', loop: true, watchDrag: !isDesktop }}
+          opts={carouselOptions}
           plugins={carouselPlugins}
           className={cn('group relative overflow-hidden xl:rounded-xl')}
         >
