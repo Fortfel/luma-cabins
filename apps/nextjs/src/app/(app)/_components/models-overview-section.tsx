@@ -44,10 +44,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
   const [isCarouselInView, setIsCarouselInView] = useState(false)
   const isDesktop = useMediaQuery('(min-width: 1024px)', { initializeWithValue: false }) === true
   const shouldReduceMotion = usePrefersReducedMotion()
-  const carouselOptions = useMemo(
-    () => ({ align: 'start' as const, loop: true, watchDrag: !isDesktop }),
-    [isDesktop],
-  )
+  const carouselOptions = useMemo(() => ({ align: 'start' as const, loop: true, watchDrag: !isDesktop }), [isDesktop])
 
   const sectionRef = useRef<HTMLDivElement>(null)
 
@@ -181,7 +178,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
 
           <CarouselPrevious
             className={cn(
-              'left-5 hidden size-12 border-primary-foreground/20 bg-transparent text-primary-foreground backdrop-blur-xl',
+              'left-5 hidden size-12 cursor-pointer border-primary-foreground/20 bg-transparent text-primary-foreground backdrop-blur-xl',
               'hover:bg-primary-foreground/10 hover:text-primary-foreground',
               'active:-translate-y-1/2!',
               'md:inline-flex lg:hidden',
@@ -189,7 +186,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
           />
           <CarouselNext
             className={cn(
-              'right-5 hidden size-12 border-primary-foreground/20 bg-transparent text-primary-foreground backdrop-blur-xl',
+              'right-5 hidden size-12 cursor-pointer border-primary-foreground/20 bg-transparent text-primary-foreground backdrop-blur-xl',
               'hover:bg-primary-foreground/10 hover:text-primary-foreground',
               'active:-translate-y-1/2!',
               'md:inline-flex lg:hidden',
