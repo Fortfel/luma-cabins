@@ -139,9 +139,9 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
           plugins={carouselPlugins}
           className={cn('group relative overflow-hidden xl:rounded-xl')}
         >
-          <CarouselContent>
+          <CarouselContent className="ms-0">
             {cabins.map((model) => (
-              <CarouselItem key={model.name}>
+              <CarouselItem key={model.name} className="ps-0">
                 <div
                   className={cn(
                     'relative aspect-square cursor-pointer',
