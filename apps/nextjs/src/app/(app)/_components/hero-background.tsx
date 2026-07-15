@@ -1,12 +1,20 @@
 'use client'
 
+import type { ComponentProps } from 'react'
+
 import { useEffect, useRef, useState } from 'react'
 
+import { Pause, Play } from 'lucide-react'
 import Image from 'next/image'
 
+import { Button } from '@workspace/ui/components/button'
 import { usePrefersReducedMotion } from '@workspace/ui/hooks/use-prefers-reduced-motion'
+import { cn } from '@workspace/ui/lib/utils'
 
-import { HeroVideoToggle } from '~/app/(app)/_components/hero-video-toggle'
+interface HeroVideoToggleProps extends ComponentProps<typeof Button> {
+  isPaused: boolean
+  onClick: () => void
+}
 
 function HeroBackground() {
   const [isPaused, setIsPaused] = useState(true)
@@ -90,6 +98,28 @@ function HeroBackground() {
         className="absolute right-4 bottom-5 z-20 sm:right-6 sm:bottom-8"
       />
     </>
+  )
+}
+
+function HeroVideoToggle({ isPaused, onClick, className, ...props }: HeroVideoToggleProps) {
+  const label = isPaused ? 'Play background video' : 'Pause background video'
+
+  return (
+    <Button
+      type="button"
+      variant="outline"
+      size="icon"
+      aria-label={label}
+      aria-pressed={!isPaused}
+      onClick={onClick}
+      className={cn(
+        'pointer-events-auto size-10 rounded-full border-muted-foreground/25 bg-transparent backdrop-blur-xl',
+        className,
+      )}
+      {...props}
+    >
+      {isPaused ? <Play aria-hidden="true" /> : <Pause aria-hidden="true" />}
+    </Button>
   )
 }
 
