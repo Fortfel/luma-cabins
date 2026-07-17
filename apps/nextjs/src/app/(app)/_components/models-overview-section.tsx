@@ -4,7 +4,7 @@ import type * as React from 'react'
 import type { CarouselApi } from '@workspace/ui/components/carousel'
 import type { Cabin } from '~/app/(app)/_data/cabins'
 
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
@@ -17,24 +17,24 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@workspace/ui/components/carousel'
-import { Progress } from '@workspace/ui/components/progress'
 import { useMediaQuery } from '@workspace/ui/hooks/use-media-query'
 import { usePrefersReducedMotion } from '@workspace/ui/hooks/use-prefers-reduced-motion'
 import { Autoplay } from '@workspace/ui/lib/embla-plugins'
 import { cn } from '@workspace/ui/lib/utils'
 
 import { cabins } from '~/app/(app)/_data/cabins'
+import { PlayPauseButton } from '~/app/_components/layout/play-pause-button'
 
 const AUTOPLAY_DELAY_MS = 5000
 const AUTOPLAY_VISIBILITY_THRESHOLD = 0.35
-type AutoplayPlugin = ReturnType<typeof Autoplay>
+type AutoplayPauseReason = 'explicit' | 'interaction' | null
 
 function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'section'>) {
   const [autoplay] = useState(() =>
     Autoplay({
       delay: AUTOPLAY_DELAY_MS,
       playOnInit: false,
-      stopOnInteraction: false,
+      stopOnInteraction: true,
       stopOnFocusIn: true,
     }),
   )
@@ -42,13 +42,17 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
   const [api, setApi] = useState<CarouselApi>()
   const [activeIndex, setActiveIndex] = useState(0)
   const [isCarouselInView, setIsCarouselInView] = useState(false)
+  const [autoplayPauseReason, setAutoplayPauseReason] = useState<AutoplayPauseReason>(null)
+  const [autoplayProgressCycle, setAutoplayProgressCycle] = useState(0)
   const isDesktop = useMediaQuery('(min-width: 1024px)', { initializeWithValue: false }) === true
   const shouldReduceMotion = usePrefersReducedMotion()
-  const carouselOptions = useMemo(() => ({ align: 'start' as const, loop: true, watchDrag: !isDesktop }), [isDesktop])
 
-  const sectionRef = useRef<HTMLDivElement>(null)
+  const carouselContainerRef = useRef<HTMLDivElement>(null)
+  const isAutoplayControlPointerInteractionRef = useRef(false)
 
   const activeModel = cabins[activeIndex] ?? cabins[0]
+  const activeSlideLabel = `${activeIndex + 1} of ${cabins.length} — ${activeModel.name}`
+  const canAutoplay = Boolean(api) && !shouldReduceMotion && isCarouselInView && autoplayPauseReason === null
 
   useEffect(() => {
     if (!api) {
@@ -70,7 +74,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
   }, [api])
 
   useEffect(() => {
-    const section = sectionRef.current
+    const section = carouselContainerRef.current
 
     if (!section) {
       return undefined
@@ -78,9 +82,15 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsCarouselInView(
-          entry ? entry.isIntersecting && entry.intersectionRatio >= AUTOPLAY_VISIBILITY_THRESHOLD : false,
-        )
+        const isInView = entry
+          ? entry.isIntersecting && entry.intersectionRatio >= AUTOPLAY_VISIBILITY_THRESHOLD
+          : false
+
+        setIsCarouselInView(isInView)
+
+        if (!isInView) {
+          setAutoplayPauseReason((pauseReason) => (pauseReason === 'interaction' ? null : pauseReason))
+        }
       },
       { threshold: AUTOPLAY_VISIBILITY_THRESHOLD },
     )
@@ -97,17 +107,23 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
       return undefined
     }
 
-    const handleReInit = () => {
-      if (!shouldReduceMotion && isCarouselInView) {
+    const syncAutoplay = () => {
+      if (canAutoplay) {
         autoplay.play()
+      } else {
+        autoplay.stop()
       }
     }
 
-    if (shouldReduceMotion || !isCarouselInView) {
-      autoplay.stop()
-    } else {
-      autoplay.play()
+    const handleReInit = () => {
+      syncAutoplay()
+
+      if (canAutoplay) {
+        setAutoplayProgressCycle((cycle) => cycle + 1)
+      }
     }
+
+    syncAutoplay()
 
     api.on('reInit', handleReInit)
 
@@ -115,33 +131,86 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
       api.off('reInit', handleReInit)
       autoplay.stop()
     }
-  }, [api, autoplay, isCarouselInView, shouldReduceMotion])
+  }, [api, autoplay, canAutoplay])
 
-  useEffect(() => {
-    if (!api || shouldReduceMotion || !isCarouselInView || !autoplay.isPlaying()) {
+  const stopAutoplayFromInteraction = () => {
+    autoplay.stop()
+    setAutoplayPauseReason((pauseReason) => (pauseReason === 'explicit' ? pauseReason : 'interaction'))
+  }
+
+  const isAutoplayControlTarget = (target: EventTarget | null) =>
+    target instanceof Element && Boolean(target.closest('[data-autoplay-control]'))
+
+  const handlePointerDownCapture = (event: React.PointerEvent<HTMLDivElement>) => {
+    isAutoplayControlPointerInteractionRef.current = isAutoplayControlTarget(event.target)
+
+    const isInteractiveDesktopTarget = event.target instanceof Element && Boolean(event.target.closest('button'))
+
+    if (!isAutoplayControlPointerInteractionRef.current && (!isDesktop || isInteractiveDesktopTarget)) {
+      stopAutoplayFromInteraction()
+    }
+  }
+
+  const handleKeyDownCapture = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (!isAutoplayControlTarget(event.target)) {
+      stopAutoplayFromInteraction()
+    }
+  }
+
+  const handleFocusCapture = (event: React.FocusEvent<HTMLDivElement>) => {
+    const shouldIgnorePointerFocus =
+      isAutoplayControlPointerInteractionRef.current && isAutoplayControlTarget(event.target)
+
+    isAutoplayControlPointerInteractionRef.current = false
+
+    if (!shouldIgnorePointerFocus) {
+      stopAutoplayFromInteraction()
+    }
+  }
+
+  const handleToggleAutoplay = () => {
+    if (canAutoplay) {
+      autoplay.stop()
+      setAutoplayPauseReason('explicit')
+
       return
     }
 
-    autoplay.reset()
-  }, [api, autoplay, activeIndex, isCarouselInView, shouldReduceMotion])
+    if (shouldReduceMotion) {
+      return
+    }
+
+    setAutoplayPauseReason(null)
+  }
 
   const handleThumbnailClick = (index: number) => {
     api?.scrollTo(index)
-    autoplay.reset()
   }
 
   return (
-    <section className={cn('', className)} {...props}>
-      <div ref={sectionRef} className="container-page max-xl:px-0">
+    <section className={className} {...props}>
+      <h2 className="sr-only">Cabin models</h2>
+      <div
+        ref={carouselContainerRef}
+        className="container-page max-xl:px-0"
+        onPointerDownCapture={handlePointerDownCapture}
+        onKeyDownCapture={handleKeyDownCapture}
+        onFocusCapture={handleFocusCapture}
+      >
         <Carousel
+          aria-label="Cabin models"
           setApi={setApi}
-          opts={carouselOptions}
+          opts={{ align: 'start' as const, loop: true, watchDrag: !isDesktop }}
           plugins={carouselPlugins}
           className={cn('group relative overflow-hidden xl:rounded-xl')}
         >
           <CarouselContent className="ms-0">
-            {cabins.map((model) => (
-              <CarouselItem key={model.name} className="ps-0">
+            {cabins.map((model, index) => (
+              <CarouselItem
+                key={model.name}
+                aria-label={`${index + 1} of ${cabins.length} — ${model.name}`}
+                className="ps-0"
+              >
                 <div
                   className={cn(
                     'relative aspect-square cursor-pointer',
@@ -168,9 +237,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(14,13,11,0)_75%,rgba(14,13,11,0.5)_100%)] lg:bg-[linear-gradient(to_bottom,rgba(14,13,11,0)_45%,rgba(14,13,11,0.85)_100%)]" />
 
           <div className="absolute top-5 left-5 flex flex-col gap-1 md:top-3.5 md:left-6 lg:top-auto lg:bottom-12 lg:left-12 lg:gap-2">
-            <h2 className="text-clamp-38-56 leading-none font-medium text-primary-foreground" aria-live="polite">
-              {activeModel.name}
-            </h2>
+            <h3 className="text-clamp-38-56 leading-none font-medium text-primary-foreground">{activeModel.name}</h3>
             <p className="hidden text-sm font-semibold text-primary-foreground md:block lg:text-base">
               {activeModel.specs.area}&nbsp;&nbsp; · &nbsp;&nbsp;{activeModel.specs.layout}
             </p>
@@ -207,14 +274,27 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
                 key={model.name}
                 model={model}
                 isActive={index === activeIndex}
-                api={api}
-                autoplay={autoplay}
-                shouldShowAutoplayProgress={!shouldReduceMotion && isCarouselInView}
+                shouldShowAutoplayProgress={canAutoplay}
+                autoplayProgressCycle={autoplayProgressCycle}
                 onClick={() => {
                   handleThumbnailClick(index)
                 }}
               />
             ))}
+          </div>
+
+          <PlayPauseButton
+            data-autoplay-control
+            isPaused={!canAutoplay}
+            playLabel="Play cabin models carousel"
+            pauseLabel="Pause cabin models carousel"
+            onClick={handleToggleAutoplay}
+            aria-disabled={shouldReduceMotion}
+            className="absolute right-4 bottom-26 z-20 border-primary-foreground/25 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground focus-visible:ring-primary-foreground/80 sm:right-6 sm:bottom-8"
+          />
+
+          <div role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+            {activeSlideLabel}
           </div>
         </Carousel>
       </div>
@@ -263,10 +343,9 @@ function DesktopClickZone({
           buttonVariants({ variant: 'outline', size: 'icon-lg' }),
           'size-14 cursor-pointer border-primary-foreground/20 bg-transparent text-primary-foreground opacity-0 backdrop-blur-xl transition-[opacity,translate]',
           'hover:bg-primary-foreground/10 hover:text-primary-foreground',
-          'group-hover/click-zone:opacity-100',
-          isPrevious
-            ? '-translate-x-2 group-hover/click-zone:translate-x-0 group-focus-visible/click-zone:translate-x-0'
-            : 'translate-x-2 group-hover/click-zone:translate-x-0 group-focus-visible/click-zone:translate-x-0',
+          'group-hover/click-zone:translate-x-0 group-hover/click-zone:opacity-100 group-focus-visible/click-zone:translate-x-0 group-focus-visible/click-zone:opacity-100',
+          'group-focus-visible/click-zone:ring-3 group-focus-visible/click-zone:ring-ring/80 group-focus-visible/click-zone:outline-none',
+          isPrevious ? '-translate-x-2' : 'translate-x-2',
         )}
       >
         <Icon className="size-7" />
@@ -278,16 +357,14 @@ function DesktopClickZone({
 function CabinThumbnail({
   model,
   isActive,
-  api,
-  autoplay,
   shouldShowAutoplayProgress,
+  autoplayProgressCycle,
   onClick,
 }: {
   model: Cabin
   isActive: boolean
-  api?: CarouselApi
-  autoplay: AutoplayPlugin
   shouldShowAutoplayProgress: boolean
+  autoplayProgressCycle: number
   onClick: () => void
 }) {
   return (
@@ -304,79 +381,19 @@ function CabinThumbnail({
       )}
     >
       <Image src={model.images.overview} alt="" fill sizes="(max-width: 767px) 86px, 128px" className="object-cover" />
-      {isActive && shouldShowAutoplayProgress ? (
-        <CabinAutoplayProgress api={api} autoplay={autoplay} modelName={model.name} />
-      ) : null}
+      {isActive && shouldShowAutoplayProgress ? <CabinAutoplayProgress key={autoplayProgressCycle} /> : null}
     </button>
   )
 }
 
-function CabinAutoplayProgress({
-  api,
-  autoplay,
-  modelName,
-}: {
-  api?: CarouselApi
-  autoplay: AutoplayPlugin
-  modelName: string
-}) {
-  const [progress, setProgress] = useState(0)
-
-  useEffect(() => {
-    if (!api) {
-      return undefined
-    }
-
-    let frameId = 0
-
-    const updateProgress = () => {
-      const timeUntilNext = autoplay.timeUntilNext()
-
-      if (timeUntilNext === null) {
-        setProgress(0)
-
-        return
-      }
-
-      setProgress(Math.max(0, Math.min(1, 1 - timeUntilNext / AUTOPLAY_DELAY_MS)))
-      frameId = requestAnimationFrame(updateProgress)
-    }
-
-    const startProgress = () => {
-      cancelAnimationFrame(frameId)
-      setProgress(0)
-      frameId = requestAnimationFrame(updateProgress)
-    }
-
-    const stopProgress = () => {
-      cancelAnimationFrame(frameId)
-      setProgress(0)
-    }
-
-    api.on('autoplay:timerset', startProgress)
-    api.on('autoplay:timerstopped', stopProgress)
-
-    if (autoplay.isPlaying()) {
-      startProgress()
-    }
-
-    return () => {
-      cancelAnimationFrame(frameId)
-      api.off('autoplay:timerset', startProgress)
-      api.off('autoplay:timerstopped', stopProgress)
-    }
-  }, [api, autoplay])
-
+function CabinAutoplayProgress() {
   return (
-    <Progress
-      value={progress * 100}
-      aria-label={`${modelName} slide progress`}
-      className={cn(
-        'absolute inset-x-0 bottom-0 gap-0',
-        '**:data-[slot=progress-track]:h-0.5 **:data-[slot=progress-track]:rounded-none **:data-[slot=progress-track]:bg-primary-foreground/20',
-        '**:data-[slot=progress-indicator]:bg-primary-foreground **:data-[slot=progress-indicator]:transition-none',
-      )}
-    />
+    <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-0.5 bg-primary-foreground/20">
+      <span
+        className="block h-full w-0 bg-primary-foreground"
+        style={{ animation: `cabin-carousel-progress ${AUTOPLAY_DELAY_MS}ms linear forwards` }}
+      />
+    </span>
   )
 }
 
