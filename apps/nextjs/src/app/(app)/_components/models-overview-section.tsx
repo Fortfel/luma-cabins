@@ -266,6 +266,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
           <div
             className={cn(
               'absolute bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-lg border border-border/20 p-2 backdrop-blur-xl',
+              'max-[450px]:left-[calc(50%-clamp(1px,calc(138.46px-30.769vw),40px))] max-[450px]:[&>button]:h-12',
               'md:gap-3 md:p-3',
             )}
           >
@@ -290,7 +291,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
             pauseLabel="Pause cabin models carousel"
             onClick={handleToggleAutoplay}
             aria-disabled={shouldReduceMotion}
-            className="absolute right-4 bottom-26 z-20 border-primary-foreground/25 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground focus-visible:ring-primary-foreground/80 sm:right-6 sm:bottom-8"
+            className="absolute right-3 bottom-8 z-20 border-primary-foreground/25 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground focus-visible:ring-primary-foreground/80 sm:right-6"
           />
 
           <div role="status" aria-live="polite" aria-atomic="true" className="sr-only">
