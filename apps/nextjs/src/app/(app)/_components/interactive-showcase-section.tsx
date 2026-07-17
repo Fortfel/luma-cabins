@@ -4,7 +4,7 @@ import type * as React from 'react'
 import type { CarouselApi } from '@workspace/ui/components/carousel'
 import type { Cabin, CabinExteriorFinishId } from '~/app/(app)/_data/cabins'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useId, useState } from 'react'
 
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
@@ -20,6 +20,8 @@ import {
   useCarousel,
 } from '@workspace/ui/components/carousel'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@workspace/ui/components/dialog'
+import { Label } from '@workspace/ui/components/label'
+import { RadioGroup, RadioGroupItem } from '@workspace/ui/components/radio-group'
 import { useMediaQuery } from '@workspace/ui/hooks/use-media-query'
 import { cn } from '@workspace/ui/lib/utils'
 
@@ -74,6 +76,7 @@ const DEFAULT_INTERIOR_PALETTE = INTERIOR_PALETTES[0]
 
 type ExteriorFinishId = (typeof EXTERIOR_FINISHES)[number]['id']
 type InteriorPaletteId = (typeof INTERIOR_PALETTES)[number]['id']
+type FinishId = ExteriorFinishId | InteriorPaletteId
 type ShowcaseSlideStyle = React.CSSProperties & {
   '--showcase-image-opacity': number
   '--showcase-optical-offset': string
@@ -168,6 +171,7 @@ function InteractiveShowcaseSection({ className, ...props }: React.ComponentProp
 
         <div className={cn('order-1 w-full', 'xl:order-2 xl:min-w-0')}>
           <Carousel
+            aria-label="Cabin model showcase"
             setApi={setApi}
             opts={{
               align: 'center',
@@ -188,6 +192,7 @@ function InteractiveShowcaseSection({ className, ...props }: React.ComponentProp
               {SHOWCASE_CABINS.map(({ cabin, imageAspectRatio }, index) => (
                 <CarouselItem
                   key={cabin.id}
+                  aria-label={`${index + 1} of ${SHOWCASE_CABINS.length} — ${cabin.name}`}
                   style={getShowcaseSlideStyle(index === activeIndex)}
                   className={cn('flex w-auto basis-auto flex-col items-center ps-0', 'xl:w-full xl:basis-full')}
                 >
@@ -288,6 +293,9 @@ function ConfigurationPanel({
   onOpenFloorPlan: () => void
   className?: string
 }) {
+  const exteriorFinishLabelId = useId()
+  const interiorPaletteLabelId = useId()
+
   return (
     <div className={cn('max-xl:container-page', 'xl:w-[clamp(28rem,calc(8rem+25vw),32rem)] xl:shrink-0', className)}>
       <div
@@ -303,45 +311,37 @@ function ConfigurationPanel({
       >
         <ModelSummary cabin={activeCabin} className="hidden xl:flex" isDesktop />
 
-        <OptionRow
-          label={
-            <>
-              Exterior <span className="hidden sm:inline">finish</span>
-            </>
-          }
-        >
-          {EXTERIOR_FINISHES.map((finish) => (
-            <FinishButton
-              key={finish.id}
-              label={finish.label}
-              color={finish.color}
-              isActive={finish.id === selectedExterior}
-              onClick={() => {
-                onExteriorSelect(finish.id)
-              }}
-            />
-          ))}
-        </OptionRow>
+        <div className="contents xl:flex xl:flex-col xl:items-start xl:gap-3">
+          <p id={exteriorFinishLabelId} className="text-xs font-bold tracking-[0.125rem] text-foreground uppercase">
+            Exterior <span className="hidden sm:inline">finish</span>
+          </p>
+          <RadioGroup
+            aria-labelledby={exteriorFinishLabelId}
+            value={selectedExterior}
+            onValueChange={onExteriorSelect}
+            className="flex flex-wrap items-center gap-2.5"
+          >
+            {EXTERIOR_FINISHES.map((finish) => (
+              <FinishRadioItem key={finish.id} label={finish.label} color={finish.color} value={finish.id} />
+            ))}
+          </RadioGroup>
+        </div>
 
-        <OptionRow
-          label={
-            <>
-              Interior <span className="hidden sm:inline">palette</span>
-            </>
-          }
-        >
-          {INTERIOR_PALETTES.map((palette) => (
-            <FinishButton
-              key={palette.id}
-              label={palette.label}
-              color={palette.color}
-              isActive={palette.id === selectedInterior}
-              onClick={() => {
-                onInteriorSelect(palette.id)
-              }}
-            />
-          ))}
-        </OptionRow>
+        <div className="contents xl:flex xl:flex-col xl:items-start xl:gap-3">
+          <p id={interiorPaletteLabelId} className="text-xs font-bold tracking-[0.125rem] text-foreground uppercase">
+            Interior <span className="hidden sm:inline">palette</span>
+          </p>
+          <RadioGroup
+            aria-labelledby={interiorPaletteLabelId}
+            value={selectedInterior}
+            onValueChange={onInteriorSelect}
+            className="flex flex-wrap items-center gap-2.5"
+          >
+            {INTERIOR_PALETTES.map((palette) => (
+              <FinishRadioItem key={palette.id} label={palette.label} color={palette.color} value={palette.id} />
+            ))}
+          </RadioGroup>
+        </div>
 
         <div className="contents xl:flex xl:flex-col xl:items-start xl:gap-3">
           <p className="hidden text-xs font-bold tracking-[0.125rem] text-foreground uppercase sm:block">Pricing</p>
@@ -388,7 +388,7 @@ function ModelSummary({
 }) {
   return (
     <div className={cn('flex flex-col gap-3 text-foreground', className)}>
-      <h2 className="text-clamp-32-52 font-heading leading-none font-medium">{cabin.name}</h2>
+      <h3 className="text-clamp-32-52 font-heading leading-none font-medium">{cabin.name}</h3>
       <div className="text-clamp-14-20 flex gap-2 font-semibold">
         <span>{cabin.specs.area}</span>
         <span className="hidden text-muted-foreground sm:inline">|</span>
@@ -396,49 +396,36 @@ function ModelSummary({
       </div>
       {isDesktop && (
         <div className="flex min-h-[3lh] items-center">
-          <p className="text-base text-muted-foreground">{cabin.showcase.description}</p>
+          <p className="text-base text-pretty text-muted-foreground">{cabin.showcase.description}</p>
         </div>
       )}
     </div>
   )
 }
 
-function OptionRow({ label, children }: { label: React.ReactNode; children: React.ReactNode }) {
-  return (
-    <div className="contents xl:flex xl:flex-col xl:items-start xl:gap-3">
-      <p className="text-xs font-bold tracking-[0.125rem] text-foreground uppercase">{label}</p>
-      <div className="flex flex-wrap items-center gap-2.5">{children}</div>
-    </div>
-  )
-}
+function FinishRadioItem({ label, color, value }: { label: string; color: string; value: FinishId }) {
+  const radioId = useId()
 
-function FinishButton({
-  label,
-  color,
-  isActive,
-  onClick,
-}: {
-  label: string
-  color: string
-  isActive: boolean
-  onClick: () => void
-}) {
   return (
-    <button
-      type="button"
-      aria-label={label}
-      aria-pressed={isActive}
-      onClick={onClick}
-      className={cn(
-        'flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-full border border-border bg-transparent text-sm font-medium text-foreground transition-[border-color,background-color]',
-        'focus-visible:ring-3 focus-visible:ring-ring/80 focus-visible:outline-none',
-        'lg:h-10 lg:w-auto lg:gap-2 lg:px-3',
-        isActive && 'border-2 border-primary bg-card font-bold',
-      )}
-    >
-      <span className="size-7 rounded-full lg:size-4" style={{ backgroundColor: color }} />
-      <span className="hidden lg:inline">{label}</span>
-    </button>
+    <div className="relative">
+      <RadioGroupItem
+        id={radioId}
+        value={value}
+        className="absolute inset-0 z-10 size-full cursor-pointer opacity-0 after:hidden"
+      />
+      <Label
+        htmlFor={radioId}
+        className={cn(
+          'flex size-10 cursor-pointer items-center justify-center rounded-full border border-border bg-transparent text-sm font-medium text-foreground transition-[border-color,background-color]',
+          'peer-focus-visible:ring-3 peer-focus-visible:ring-ring/80 peer-focus-visible:outline-none',
+          'lg:h-10 lg:w-auto lg:gap-2 lg:px-3',
+          'peer-data-checked:font-bold peer-data-checked:ring-2 peer-data-checked:ring-primary',
+        )}
+      >
+        <span aria-hidden="true" className="size-7 rounded-full lg:size-4" style={{ backgroundColor: color }} />
+        <span className="hidden lg:inline">{label}</span>
+      </Label>
+    </div>
   )
 }
 
@@ -486,7 +473,7 @@ function CarouselButton({
       onClick={scroll}
       {...props}
     >
-      {isPrevious ? <ArrowLeft /> : <ArrowRight />}
+      {isPrevious ? <ArrowLeft aria-hidden="true" /> : <ArrowRight aria-hidden="true" />}
       <span className="sr-only">{isPrevious ? 'Previous' : 'Next'} slide</span>
     </Button>
   )
@@ -502,7 +489,7 @@ function CarouselDots({
   className?: string
 }) {
   return (
-    <div className={cn('flex items-center gap-2', className)} aria-label="Cabin carousel position">
+    <div role="group" aria-label="Choose cabin model" className={cn('flex items-center gap-2', className)}>
       {SHOWCASE_CABINS.map(({ cabin }, index) => (
         <button
           key={cabin.name}
@@ -534,7 +521,7 @@ function CarouselThumbnails({
   className?: string
 }) {
   return (
-    <div className={cn('items-center gap-3', className)} aria-label="Choose cabin model">
+    <div role="group" aria-label="Choose cabin model thumbnails" className={cn('items-center gap-3', className)}>
       {SHOWCASE_CABINS.map(({ cabin }, index) => (
         <button
           key={cabin.id}

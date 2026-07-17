@@ -20,7 +20,7 @@ const cabinsById = {
       },
       floorPlan: '/images/huts/niva/Niva-floorplan.jpg',
       overviewAlt: 'Niva cabin surrounded by forest',
-      floorPlanAlt: 'Niva cabin floor plan',
+      floorPlanAlt: 'Exploded cutaway rendering of the Niva cabin with ground-floor living space and sleeping loft',
     },
   },
   aster: {
@@ -32,7 +32,7 @@ const cabinsById = {
     },
     showcase: {
       description:
-        'A one-bedroom retreat for weekends and couples. Open living, a quiet bedroom, and a deck that opens to the view.',
+        'A compact studio retreat for weekend stays, couples, and quiet escapes. Open-plan living and a deck that brings you closer to the view.',
       price: '€170,000',
     },
     images: {
@@ -43,8 +43,8 @@ const cabinsById = {
         white: '/images/huts/aster/Aster-white.png',
       },
       floorPlan: '/images/huts/aster/Aster-floorplan.jpg',
-      overviewAlt: 'Aster cabin surrounded by forest',
-      floorPlanAlt: 'Aster cabin floor plan',
+      overviewAlt: 'Aster cabin in a landscaped garden',
+      floorPlanAlt: 'Overhead cutaway rendering of the Aster cabin interior',
     },
   },
   veyra: {
@@ -67,8 +67,8 @@ const cabinsById = {
         white: '/images/huts/veyra/Veyra-white.png',
       },
       floorPlan: '/images/huts/veyra/Veyra-floorplan.jpg',
-      overviewAlt: 'Veyra cabin surrounded by forest',
-      floorPlanAlt: 'Veyra cabin floor plan',
+      overviewAlt: 'Veyra cabin beside a swimming pool in a landscaped garden',
+      floorPlanAlt: 'Overhead cutaway rendering of the Veyra cabin interior',
     },
   },
 } as const
