@@ -49,7 +49,7 @@ function HeroSection() {
             <br />
             to what matters
           </h1>
-          <p className="text-clamp-16-20 leading-normal">
+          <p className="text-clamp-16-20 leading-normal text-pretty">
             Premium pre-designed cabins, designed to help you slow down, reconnect, and feel at home - anywhere.
           </p>
           <Link

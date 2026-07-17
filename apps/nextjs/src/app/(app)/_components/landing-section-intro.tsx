@@ -41,7 +41,7 @@ function LandingSectionIntroBody({ className, ...props }: React.ComponentProps<'
   return (
     <p
       data-slot="landing-section-intro-body"
-      className={cn('text-clamp-16-20 leading-snug md:leading-tight lg:mt-2.5', className)}
+      className={cn('text-clamp-16-20 leading-snug text-pretty md:leading-tight lg:mt-2.5', className)}
       {...props}
     />
   )

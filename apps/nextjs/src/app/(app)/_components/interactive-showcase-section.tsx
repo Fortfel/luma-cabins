@@ -141,12 +141,8 @@ function InteractiveShowcaseSection({ className, ...props }: React.ComponentProp
     >
       <LandingSectionIntro>
         <LandingSectionIntroEyebrow>Make it yours</LandingSectionIntroEyebrow>
-        <LandingSectionIntroTitle>
-          <>
-            Three models.
-            <br />
-            <i>Unlimited</i> adventures.
-          </>
+        <LandingSectionIntroTitle className="max-w-2xl text-balance">
+          Three models. <i>Unlimited</i> adventures.
         </LandingSectionIntroTitle>
       </LandingSectionIntro>
 

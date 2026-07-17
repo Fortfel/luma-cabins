@@ -12,7 +12,7 @@ function AboutSection({ className, ...props }: React.ComponentProps<'section'>) 
     <section className={className} {...props}>
       <LandingSectionIntro>
         <LandingSectionIntroEyebrow>Our approach</LandingSectionIntroEyebrow>
-        <LandingSectionIntroTitle className="max-w-xl lg:max-w-2xl xl:max-w-3xl">
+        <LandingSectionIntroTitle className="max-w-xl text-balance xl:max-w-3xl">
           A simpler path to a quiet <i>retreat</i>.
         </LandingSectionIntroTitle>
         <LandingSectionIntroBody className="max-w-5xl">
