@@ -52,6 +52,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
 
   const activeModel = cabins[activeIndex] ?? cabins[0]
   const activeSlideLabel = `${activeIndex + 1} of ${cabins.length} — ${activeModel.name}`
+  // Autoplay requires motion consent, sufficient visibility, and no user-requested pause.
   const canAutoplay = Boolean(api) && !shouldReduceMotion && isCarouselInView && autoplayPauseReason === null
 
   useEffect(() => {
@@ -80,6 +81,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
       return undefined
     }
 
+    // Visibility gating prevents autoplay from running while the carousel is off-screen.
     const observer = new IntersectionObserver(
       ([entry]) => {
         const isInView = entry
@@ -107,6 +109,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
       return undefined
     }
 
+    // Reconcile Embla's autoplay plugin with visibility, motion preferences, and pause state.
     const syncAutoplay = () => {
       if (canAutoplay) {
         autoplay.play()
@@ -133,6 +136,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
     }
   }, [api, autoplay, canAutoplay])
 
+  // Any direct carousel interaction pauses autoplay until the user explicitly resumes it.
   const stopAutoplayFromInteraction = () => {
     autoplay.stop()
     setAutoplayPauseReason((pauseReason) => (pauseReason === 'explicit' ? pauseReason : 'interaction'))
@@ -158,6 +162,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
   }
 
   const handleFocusCapture = (event: React.FocusEvent<HTMLDivElement>) => {
+    // Clicking the play/pause control already updates its own explicit pause state.
     const shouldIgnorePointerFocus =
       isAutoplayControlPointerInteractionRef.current && isAutoplayControlTarget(event.target)
 

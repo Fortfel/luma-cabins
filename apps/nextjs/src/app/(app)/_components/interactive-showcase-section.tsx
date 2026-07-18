@@ -94,6 +94,7 @@ function InteractiveShowcaseSection({ className, ...props }: React.ComponentProp
   const activeCabin = getCabinByIndex(activeIndex)
   const activeExterior = getExteriorFinish(selectedExterior)
 
+  // Keep the visible model summary synchronized with Embla's selected snap, including after reinitialization.
   useEffect(() => {
     if (!api) {
       return undefined
@@ -113,6 +114,7 @@ function InteractiveShowcaseSection({ className, ...props }: React.ComponentProp
     }
   }, [api])
 
+  // Update visual tween variables during drag; CSS consumes them for opacity and optical positioning.
   useEffect(() => {
     if (!api) {
       return undefined
@@ -402,6 +404,7 @@ function ModelSummary({
 function FinishRadioItem({ label, color, value }: { label: string; color: string; value: FinishId }) {
   const radioId = useId()
 
+  // The native radio remains the interactive control while the label provides the swatch-style UI.
   return (
     <div className="relative">
       <RadioGroupItem
@@ -579,6 +582,7 @@ function FloorPlanDialog({
 }
 
 function updateSlideTweenStyles({ api, isDesktop }: { api: NonNullable<CarouselApi>; isDesktop: boolean }) {
+  // Translate Embla's scroll progress into CSS variables so slides fade and settle into place smoothly.
   const scrollProgress = api.scrollProgress()
   const scrollSnaps = api.scrollSnapList()
   const slideNodes = api.slideNodes()
@@ -623,6 +627,7 @@ function getOpticalSlideOffsets({
     return ZERO_OPTICAL_OFFSETS
   }
 
+  // Interpolate between per-active-slide offset profiles to keep neighboring mobile slides visually centered.
   const { firstActiveNextOffset, secondActiveNeighborOffset } = getResponsiveOpticalOffsets(viewportWidth)
 
   // Each profile contains [Niva, Aster, Veyra] optical offsets
@@ -658,6 +663,7 @@ function getResponsiveOpticalOffsets(viewportWidth: number): {
   firstActiveNextOffset: number
   secondActiveNeighborOffset: number
 } {
+  // Scale calibrated offsets between viewport widths instead of jumping at a breakpoint.
   const firstAnchor = OPTICAL_OFFSET_ANCHORS[0]
   const lastAnchor = OPTICAL_OFFSET_ANCHORS.at(-1) ?? firstAnchor
   const clampedViewportWidth = clamp(viewportWidth, firstAnchor.viewportWidth, lastAnchor.viewportWidth)
@@ -708,6 +714,7 @@ function getSlideTweenProgress({
   scrollProgress: number
   scrollSnaps: ReadonlyArray<number>
 }) {
+  // Normalize a slide's distance from its nearest snap into a 0..1 weight for the visual tween.
   const slideSnap = scrollSnaps[index]
 
   if (slideSnap === undefined) {
