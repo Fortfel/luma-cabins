@@ -47,7 +47,6 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
   const isDesktop = useMediaQuery('(min-width: 1024px)', { initializeWithValue: false }) === true
   const shouldReduceMotion = usePrefersReducedMotion()
 
-  const carouselContainerRef = useRef<HTMLDivElement>(null)
   const isAutoplayControlPointerInteractionRef = useRef(false)
 
   const activeModel = cabins[activeIndex] ?? cabins[0]
@@ -75,7 +74,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
   }, [api])
 
   useEffect(() => {
-    const section = carouselContainerRef.current
+    const section = api?.rootNode()
 
     if (!section) {
       return undefined
@@ -102,7 +101,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
     return () => {
       observer.disconnect()
     }
-  }, [])
+  }, [api])
 
   useEffect(() => {
     if (!api) {
@@ -196,7 +195,6 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
     <section className={className} {...props}>
       <h2 className="sr-only">Cabin models</h2>
       <div
-        ref={carouselContainerRef}
         className="container-page max-xl:px-0"
         onPointerDownCapture={handlePointerDownCapture}
         onKeyDownCapture={handleKeyDownCapture}
