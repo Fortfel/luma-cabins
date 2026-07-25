@@ -479,7 +479,25 @@
           "id": "d2jfC",
           "name": "Models Overview - Mobile",
           "width": "fill_container",
-          "fill": "$--background",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 0,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "$unofficial/background-accent",
+                "position": 0
+              },
+              {
+                "color": "$--background",
+                "position": 1
+              }
+            ]
+          },
           "layout": "vertical",
           "padding": [
             40,
@@ -844,7 +862,7 @@
           "id": "xxSqt",
           "name": "Interactive Showcase - Mobile",
           "width": "fill_container",
-          "fill": "$--background",
+          "fill": "$unofficial/background-accent",
           "layout": "vertical",
           "gap": 48,
           "padding": [
@@ -899,6 +917,8 @@
               "gap": 18,
               "padding": [
                 32,
+                0,
+                0,
                 0
               ],
               "alignItems": "center",
@@ -1029,6 +1049,7 @@
                               "type": "frame",
                               "id": "UbLYO",
                               "name": "Prev Image Aster",
+                              "opacity": 0.49999999999999956,
                               "clip": true,
                               "width": 280,
                               "height": 140,
@@ -1129,6 +1150,7 @@
                                   "type": "frame",
                                   "id": "R8CYm",
                                   "name": "Next Image Peek",
+                                  "opacity": 0.49999999999999956,
                                   "clip": true,
                                   "width": 180,
                                   "height": 140,
@@ -1652,7 +1674,7 @@
                               "width": "fill_container",
                               "cornerRadius": "$--radius-full",
                               "stroke": "$--border",
-                              "strokeWidth": 1.5,
+                              "strokeWidth": 1,
                               "padding": [
                                 15,
                                 28
@@ -1676,6 +1698,1146 @@
                       ]
                     }
                   ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "CJpqx",
+          "name": "Testimonial Section - Mobile",
+          "width": "fill_container",
+          "fill": "$--background",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            64,
+            0
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "AENHF",
+              "name": "Title",
+              "fill": "$--foreground",
+              "textGrowth": "fixed-width",
+              "width": 342,
+              "content": "Why people choose Luma",
+              "textAlign": "center",
+              "fontFamily": "$--font-heading",
+              "fontSize": 24,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "r71ru",
+              "name": "Marquee",
+              "width": "fill_container",
+              "height": 128,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Sf8UE",
+                  "x": 0,
+                  "y": 0,
+                  "name": "Carousel Horizontal Viewport",
+                  "clip": true,
+                  "width": 390,
+                  "height": 128,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "X74WV",
+                      "x": -111,
+                      "y": 0,
+                      "name": "Strip",
+                      "gap": 24,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "rCoXE",
+                          "name": "Quote Card",
+                          "width": 342,
+                          "fill": "$--card",
+                          "cornerRadius": "$--radius-lg",
+                          "stroke": "$--border",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "gap": 16,
+                          "padding": 24,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "b6YoG",
+                              "name": "Q",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "“It feels larger than its footprint.”",
+                              "lineHeight": 1.3,
+                              "fontFamily": "$--font-heading",
+                              "fontSize": 16,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Fk6VI",
+                              "name": "Attribution and Rating",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "RimTz",
+                                  "name": "L",
+                                  "fill": "$--muted-foreground",
+                                  "content": "Aster cabin · Forest retreat",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "zTLgJ",
+                                  "name": "Stars",
+                                  "gap": 4,
+                                  "justifyContent": "end",
+                                  "children": [
+                                    {
+                                      "type": "path",
+                                      "id": "o3rIHy",
+                                      "name": "Filled Rating Star 1",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "SWGPe",
+                                      "name": "Filled Rating Star 2",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "yGsMY",
+                                      "name": "Filled Rating Star 3",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "Uamrs",
+                                      "name": "Filled Rating Star 4",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "ghTXn",
+                                      "name": "Filled Rating Star 5",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "kSXj0",
+                          "name": "Quote Card",
+                          "width": 342,
+                          "fill": "$--card",
+                          "cornerRadius": "$--radius-lg",
+                          "stroke": "$--border",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "gap": 16,
+                          "padding": 24,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "UUOY2",
+                              "name": "Q",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "“The process felt calm from the beginning.”",
+                              "lineHeight": 1.3,
+                              "fontFamily": "$--font-heading",
+                              "fontSize": 16,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "qoRiA",
+                              "name": "Attribution and Rating",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "x4FQE2",
+                                  "name": "L",
+                                  "fill": "$--muted-foreground",
+                                  "content": "Veyra · Lakeside plot",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "yv9SC",
+                                  "name": "Stars",
+                                  "gap": 4,
+                                  "justifyContent": "end",
+                                  "children": [
+                                    {
+                                      "type": "path",
+                                      "id": "W55C8r",
+                                      "name": "Filled Rating Star 1",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "m9mV7",
+                                      "name": "Filled Rating Star 2",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "McetI",
+                                      "name": "Filled Rating Star 3",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "xgUMI",
+                                      "name": "Filled Rating Star 4",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "CODQW",
+                                      "name": "Filled Rating Star 5",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "P5I9Kn",
+                          "name": "Quote Card",
+                          "width": 342,
+                          "fill": "$--card",
+                          "cornerRadius": "$--radius-lg",
+                          "stroke": "$--border",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "gap": 16,
+                          "padding": 24,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Y9Q51",
+                              "name": "Q",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "“Simple, warm, and beautifully resolved.”",
+                              "lineHeight": 1.3,
+                              "fontFamily": "$--font-heading",
+                              "fontSize": 16,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "fcNdK",
+                              "name": "Attribution and Rating",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "ia4VH",
+                                  "name": "L",
+                                  "fill": "$--muted-foreground",
+                                  "content": "Niva retreat",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "tPmRG",
+                                  "name": "Stars",
+                                  "gap": 4,
+                                  "justifyContent": "end",
+                                  "children": [
+                                    {
+                                      "type": "path",
+                                      "id": "XVqPn",
+                                      "name": "Filled Rating Star 1",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "AQurg",
+                                      "name": "Filled Rating Star 2",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "fRgfz",
+                                      "name": "Filled Rating Star 3",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "dNlXl",
+                                      "name": "Filled Rating Star 4",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "FiPAp",
+                                      "name": "Filled Rating Star 5",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "irkLk",
+                          "name": "Quote Card",
+                          "width": 342,
+                          "fill": "$--card",
+                          "cornerRadius": "$--radius-lg",
+                          "stroke": "$--border",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "gap": 16,
+                          "padding": 24,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "BlhYT",
+                              "name": "Q",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "“Every finish felt intentionally chosen.”",
+                              "lineHeight": 1.3,
+                              "fontFamily": "$--font-heading",
+                              "fontSize": 16,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "cozsW",
+                              "name": "Attribution and Rating",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "R4kgP7",
+                                  "name": "L",
+                                  "fill": "$--muted-foreground",
+                                  "content": "Aster · Weekend cabin",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "levOc",
+                                  "name": "Stars",
+                                  "gap": 4,
+                                  "justifyContent": "end",
+                                  "children": [
+                                    {
+                                      "type": "path",
+                                      "id": "IDljE",
+                                      "name": "Filled Rating Star 1",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "J1Nov",
+                                      "name": "Filled Rating Star 2",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "r4wVwP",
+                                      "name": "Filled Rating Star 3",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "U7qWa",
+                                      "name": "Filled Rating Star 4",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "kq34s",
+                                      "name": "Filled Rating Star 5",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "qUrke",
+                          "name": "Quote Card",
+                          "width": 342,
+                          "fill": "$--card",
+                          "cornerRadius": "$--radius-lg",
+                          "stroke": "$--border",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "gap": 16,
+                          "padding": 24,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "sAkl9",
+                              "name": "Q",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "“A quiet place that still feels refined.”",
+                              "lineHeight": 1.3,
+                              "fontFamily": "$--font-heading",
+                              "fontSize": 16,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "mSqxa",
+                              "name": "Attribution and Rating",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "aKFCg",
+                                  "name": "L",
+                                  "fill": "$--muted-foreground",
+                                  "content": "Remote work cabin",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "uA0VS",
+                                  "name": "Stars",
+                                  "gap": 4,
+                                  "justifyContent": "end",
+                                  "children": [
+                                    {
+                                      "type": "path",
+                                      "id": "IiAlr",
+                                      "name": "Filled Rating Star 1",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "qlgd6",
+                                      "name": "Filled Rating Star 2",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "O6yPwr",
+                                      "name": "Filled Rating Star 3",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "h047IY",
+                                      "name": "Filled Rating Star 4",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "hvJkr",
+                                      "name": "Filled Rating Star 5",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "pyOKI",
+                          "name": "Quote Card",
+                          "width": 342,
+                          "fill": "$--card",
+                          "cornerRadius": "$--radius-lg",
+                          "stroke": "$--border",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "gap": 16,
+                          "padding": 24,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "JpV46",
+                              "name": "Q",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "“We chose a palette in one afternoon.”",
+                              "lineHeight": 1.3,
+                              "fontFamily": "$--font-heading",
+                              "fontSize": 16,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Eiuq5",
+                              "name": "Attribution and Rating",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "v0C3O",
+                                  "name": "L",
+                                  "fill": "$--muted-foreground",
+                                  "content": "Veyra · Hilltop plot",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "cikTW",
+                                  "name": "Stars",
+                                  "gap": 4,
+                                  "justifyContent": "end",
+                                  "children": [
+                                    {
+                                      "type": "path",
+                                      "id": "j57Qi",
+                                      "name": "Filled Rating Star 1",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "lBMbR",
+                                      "name": "Filled Rating Star 2",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "lOEWq",
+                                      "name": "Filled Rating Star 3",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "rN4T8",
+                                      "name": "Filled Rating Star 4",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "r0eMd",
+                                      "name": "Filled Rating Star 5",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "AJrdY",
+                      "layoutPosition": "absolute",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Carousel Fade Left",
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 90,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "$unofficial/background-transparent",
+                            "position": 0
+                          },
+                          {
+                            "color": "$--background",
+                            "position": 0.75
+                          }
+                        ]
+                      },
+                      "width": 48,
+                      "height": 128
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "Xs8NH",
+                      "layoutPosition": "absolute",
+                      "x": 342,
+                      "y": 0,
+                      "name": "Carousel Fade Right",
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 270,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "$unofficial/background-transparent",
+                            "position": 0
+                          },
+                          {
+                            "color": "$--background",
+                            "position": 0.75
+                          }
+                        ]
+                      },
+                      "width": 48,
+                      "height": 128
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "O9G1XV",
+                  "layoutPosition": "absolute",
+                  "x": 24,
+                  "y": -50,
+                  "name": "Quote Card Expanded — Selected",
+                  "enabled": false,
+                  "width": 342,
+                  "fill": "$--popover",
+                  "cornerRadius": "$--radius-lg",
+                  "stroke": "$--border",
+                  "strokeWidth": 1,
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$unofficial/popover-shadow",
+                    "offset": {
+                      "x": 0,
+                      "y": 10
+                    },
+                    "blur": 24
+                  },
+                  "layout": "vertical",
+                  "gap": 18,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "NuXNu",
+                      "name": "Expanded Review Copy",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "yLhfN",
+                          "name": "Expanded Quote",
+                          "fill": "$--foreground",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "“Simple, warm, and beautifully resolved.”",
+                          "lineHeight": 1.3,
+                          "fontFamily": "$--font-heading",
+                          "fontSize": 16,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "rjlGo",
+                          "name": "Expanded Review",
+                          "fill": "$--foreground",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "The cabin feels considered in every detail. Natural light moves beautifully through the rooms, and the materials make even a short weekend feel restorative.",
+                          "lineHeight": 1.3,
+                          "fontFamily": "$--font-sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "k4NgvN",
+                      "name": "Expanded Attribution and Rating",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "h1Uy2K",
+                          "name": "Expanded Attribution",
+                          "fill": "$--muted-foreground",
+                          "content": "Niva retreat · Verified stay",
+                          "fontFamily": "$--font-sans",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "P3HV9r",
+                          "name": "Expanded Stars",
+                          "gap": 4,
+                          "justifyContent": "end",
+                          "children": [
+                            {
+                              "type": "path",
+                              "id": "jMwSD",
+                              "name": "Filled Expanded Star 1",
+                              "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                              "viewBox": [
+                                0,
+                                0,
+                                24,
+                                24
+                              ],
+                              "fill": "#B08D45",
+                              "width": 16,
+                              "height": 16
+                            },
+                            {
+                              "type": "path",
+                              "id": "RzOL0",
+                              "name": "Filled Expanded Star 2",
+                              "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                              "viewBox": [
+                                0,
+                                0,
+                                24,
+                                24
+                              ],
+                              "fill": "#B08D45",
+                              "width": 16,
+                              "height": 16
+                            },
+                            {
+                              "type": "path",
+                              "id": "LxcI6",
+                              "name": "Filled Expanded Star 3",
+                              "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                              "viewBox": [
+                                0,
+                                0,
+                                24,
+                                24
+                              ],
+                              "fill": "#B08D45",
+                              "width": 16,
+                              "height": 16
+                            },
+                            {
+                              "type": "path",
+                              "id": "SQiIc",
+                              "name": "Filled Expanded Star 4",
+                              "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                              "viewBox": [
+                                0,
+                                0,
+                                24,
+                                24
+                              ],
+                              "fill": "#B08D45",
+                              "width": 16,
+                              "height": 16
+                            },
+                            {
+                              "type": "path",
+                              "id": "NXnmf",
+                              "name": "Filled Expanded Star 5",
+                              "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                              "viewBox": [
+                                0,
+                                0,
+                                24,
+                                24
+                              ],
+                              "fill": "#B08D45",
+                              "width": 16,
+                              "height": 16
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "rectangle",
+                  "id": "hkgnu",
+                  "layoutPosition": "absolute",
+                  "x": 0,
+                  "y": 0,
+                  "name": "Mobile Carousel Edge Fade Left",
+                  "fill": {
+                    "type": "gradient",
+                    "gradientType": "linear",
+                    "enabled": true,
+                    "rotation": 90,
+                    "size": {
+                      "height": 1
+                    },
+                    "colors": [
+                      {
+                        "color": "$--background",
+                        "position": 0
+                      },
+                      {
+                        "color": "$unofficial/background-transparent",
+                        "position": 1
+                      }
+                    ]
+                  },
+                  "width": 20,
+                  "height": 128
+                },
+                {
+                  "type": "rectangle",
+                  "id": "occCi",
+                  "layoutPosition": "absolute",
+                  "x": 370,
+                  "y": 0,
+                  "name": "Mobile Carousel Edge Fade Right",
+                  "fill": {
+                    "type": "gradient",
+                    "gradientType": "linear",
+                    "enabled": true,
+                    "rotation": 270,
+                    "size": {
+                      "height": 1
+                    },
+                    "colors": [
+                      {
+                        "color": "$--background",
+                        "position": 0
+                      },
+                      {
+                        "color": "$unofficial/background-transparent",
+                        "position": 1
+                      }
+                    ]
+                  },
+                  "width": 20,
+                  "height": 128
                 }
               ]
             }
@@ -2764,7 +3926,25 @@
           "id": "wQ9wk",
           "name": "Models Overview - Tablet",
           "width": "fill_container",
-          "fill": "$--background",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 0,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "$unofficial/background-accent",
+                "position": 0
+              },
+              {
+                "color": "$--background",
+                "position": 1
+              }
+            ]
+          },
           "layout": "vertical",
           "padding": [
             48,
@@ -3126,7 +4306,7 @@
           "id": "PDQ32",
           "name": "Interactive Showcase - Tablet",
           "width": "fill_container",
-          "fill": "$--background",
+          "fill": "$unofficial/background-accent",
           "layout": "vertical",
           "gap": 60,
           "padding": [
@@ -3180,6 +4360,8 @@
               "gap": 20,
               "padding": [
                 40,
+                0,
+                0,
                 0
               ],
               "alignItems": "center",
@@ -3310,6 +4492,7 @@
                               "type": "frame",
                               "id": "du7fa",
                               "name": "Prev Image Aster",
+                              "opacity": 0.49999999999999956,
                               "clip": true,
                               "width": 500,
                               "height": 220,
@@ -3410,6 +4593,7 @@
                                   "type": "frame",
                                   "id": "o3p9ef",
                                   "name": "Next Image Peek",
+                                  "opacity": 0.49999999999999956,
                                   "clip": true,
                                   "width": 240,
                                   "height": 220,
@@ -3935,7 +5119,7 @@
                                   "fill": "$--foreground",
                                   "content": "€170,000",
                                   "fontFamily": "$--font-sans",
-                                  "fontSize": 14,
+                                  "fontSize": 16,
                                   "fontWeight": "700"
                                 },
                                 {
@@ -3993,7 +5177,7 @@
                               "id": "umzEv",
                               "cornerRadius": "$--radius-full",
                               "stroke": "$--border",
-                              "strokeWidth": 1.5,
+                              "strokeWidth": 1,
                               "padding": [
                                 15,
                                 28
@@ -4017,6 +5201,1144 @@
                       ]
                     }
                   ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ZB0Ht",
+          "name": "Testimonial Section - Tablet",
+          "width": "fill_container",
+          "fill": "$--background",
+          "layout": "vertical",
+          "gap": 36,
+          "padding": [
+            72,
+            0
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "TCX69",
+              "name": "Title",
+              "fill": "$--foreground",
+              "textGrowth": "fixed-width",
+              "width": 672,
+              "content": "Why people choose Luma",
+              "textAlign": "center",
+              "fontFamily": "$--font-heading",
+              "fontSize": 30,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "Sfw2s",
+              "name": "Marquee",
+              "width": "fill_container",
+              "height": 140,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "MuoAq",
+                  "x": 0,
+                  "y": 0,
+                  "name": "Carousel Horizontal Viewport",
+                  "clip": true,
+                  "width": 768,
+                  "height": 140,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "fcMMg",
+                      "x": -125,
+                      "y": 0,
+                      "name": "Strip",
+                      "gap": 24,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "MIbmz",
+                          "name": "Quote Card",
+                          "width": 380,
+                          "fill": "$--card",
+                          "cornerRadius": "$--radius-lg",
+                          "stroke": "$--border",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "gap": 16,
+                          "padding": 28,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "HadNR",
+                              "name": "Q",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "“It feels larger than its footprint.”",
+                              "lineHeight": 1.3,
+                              "fontFamily": "$--font-heading",
+                              "fontSize": 17,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "RtAj6",
+                              "name": "Attribution and Rating",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "OUa7Y",
+                                  "name": "L",
+                                  "fill": "$--muted-foreground",
+                                  "content": "Aster cabin · Forest retreat",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "V93jA",
+                                  "name": "Stars",
+                                  "gap": 4,
+                                  "justifyContent": "end",
+                                  "children": [
+                                    {
+                                      "type": "path",
+                                      "id": "CpleY",
+                                      "name": "Filled Rating Star 1",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "NULeh",
+                                      "name": "Filled Rating Star 2",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "H5SuS4",
+                                      "name": "Filled Rating Star 3",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "TANFX",
+                                      "name": "Filled Rating Star 4",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "bBFXC",
+                                      "name": "Filled Rating Star 5",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "q6SrF",
+                          "name": "Quote Card",
+                          "width": 380,
+                          "fill": "$--card",
+                          "cornerRadius": "$--radius-lg",
+                          "stroke": "$--border",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "gap": 16,
+                          "padding": 28,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "GLSbQ",
+                              "name": "Q",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "“The process felt calm from the beginning.”",
+                              "lineHeight": 1.3,
+                              "fontFamily": "$--font-heading",
+                              "fontSize": 17,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "fbVeK",
+                              "name": "Attribution and Rating",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "CGbxp",
+                                  "name": "L",
+                                  "fill": "$--muted-foreground",
+                                  "content": "Veyra · Lakeside plot",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "GjWAr",
+                                  "name": "Stars",
+                                  "gap": 4,
+                                  "justifyContent": "end",
+                                  "children": [
+                                    {
+                                      "type": "path",
+                                      "id": "whRq6",
+                                      "name": "Filled Rating Star 1",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "QM7iA",
+                                      "name": "Filled Rating Star 2",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "v7mxZm",
+                                      "name": "Filled Rating Star 3",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "XIdAN",
+                                      "name": "Filled Rating Star 4",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "EEwCm",
+                                      "name": "Filled Rating Star 5",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "c10Nm",
+                          "name": "Quote Card",
+                          "width": 380,
+                          "fill": "$--card",
+                          "cornerRadius": "$--radius-lg",
+                          "stroke": "$--border",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "gap": 16,
+                          "padding": 28,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "Q8FBI",
+                              "name": "Q",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "“Simple, warm, and beautifully resolved.”",
+                              "lineHeight": 1.3,
+                              "fontFamily": "$--font-heading",
+                              "fontSize": 17,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "jG9oI",
+                              "name": "Attribution and Rating",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "CjfFw",
+                                  "name": "L",
+                                  "fill": "$--muted-foreground",
+                                  "content": "Niva retreat",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "vHbMw",
+                                  "name": "Stars",
+                                  "gap": 4,
+                                  "justifyContent": "end",
+                                  "children": [
+                                    {
+                                      "type": "path",
+                                      "id": "sh7qo",
+                                      "name": "Filled Rating Star 1",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "xOxjM",
+                                      "name": "Filled Rating Star 2",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "NvmQF",
+                                      "name": "Filled Rating Star 3",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "BLKCL",
+                                      "name": "Filled Rating Star 4",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "GNsq9",
+                                      "name": "Filled Rating Star 5",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "rOP8L",
+                          "name": "Quote Card",
+                          "width": 380,
+                          "fill": "$--card",
+                          "cornerRadius": "$--radius-lg",
+                          "stroke": "$--border",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "gap": 16,
+                          "padding": 28,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "wgsLH",
+                              "name": "Q",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "“Every finish felt intentionally chosen.”",
+                              "lineHeight": 1.3,
+                              "fontFamily": "$--font-heading",
+                              "fontSize": 17,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "wAryl",
+                              "name": "Attribution and Rating",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "bGAvm",
+                                  "name": "L",
+                                  "fill": "$--muted-foreground",
+                                  "content": "Aster · Weekend cabin",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "ROFJN",
+                                  "name": "Stars",
+                                  "gap": 4,
+                                  "justifyContent": "end",
+                                  "children": [
+                                    {
+                                      "type": "path",
+                                      "id": "U5bJM",
+                                      "name": "Filled Rating Star 1",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "e8lnKY",
+                                      "name": "Filled Rating Star 2",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "rofal",
+                                      "name": "Filled Rating Star 3",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "Vu1d4",
+                                      "name": "Filled Rating Star 4",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "u3bd3",
+                                      "name": "Filled Rating Star 5",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "dLimY",
+                          "name": "Quote Card",
+                          "width": 380,
+                          "fill": "$--card",
+                          "cornerRadius": "$--radius-lg",
+                          "stroke": "$--border",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "gap": 16,
+                          "padding": 28,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "EGkYo",
+                              "name": "Q",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "“A quiet place that still feels refined.”",
+                              "lineHeight": 1.3,
+                              "fontFamily": "$--font-heading",
+                              "fontSize": 17,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "besgz",
+                              "name": "Attribution and Rating",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "jkYWR",
+                                  "name": "L",
+                                  "fill": "$--muted-foreground",
+                                  "content": "Remote work cabin",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "Nsecn",
+                                  "name": "Stars",
+                                  "gap": 4,
+                                  "justifyContent": "end",
+                                  "children": [
+                                    {
+                                      "type": "path",
+                                      "id": "dzAgc",
+                                      "name": "Filled Rating Star 1",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "zm6Mq",
+                                      "name": "Filled Rating Star 2",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "DNf6J",
+                                      "name": "Filled Rating Star 3",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "fKZzb",
+                                      "name": "Filled Rating Star 4",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "Q8M1y",
+                                      "name": "Filled Rating Star 5",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "w1zMp2",
+                          "name": "Quote Card",
+                          "width": 380,
+                          "fill": "$--card",
+                          "cornerRadius": "$--radius-lg",
+                          "stroke": "$--border",
+                          "strokeWidth": 1,
+                          "layout": "vertical",
+                          "gap": 16,
+                          "padding": 28,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "er9Ks",
+                              "name": "Q",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "“We chose a palette in one afternoon.”",
+                              "lineHeight": 1.3,
+                              "fontFamily": "$--font-heading",
+                              "fontSize": 17,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "CrkiA",
+                              "name": "Attribution and Rating",
+                              "width": "fill_container",
+                              "justifyContent": "space_between",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "GIubN",
+                                  "name": "L",
+                                  "fill": "$--muted-foreground",
+                                  "content": "Veyra · Hilltop plot",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 13,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "FdZAf",
+                                  "name": "Stars",
+                                  "gap": 4,
+                                  "justifyContent": "end",
+                                  "children": [
+                                    {
+                                      "type": "path",
+                                      "id": "F4GjC",
+                                      "name": "Filled Rating Star 1",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "QDBhS",
+                                      "name": "Filled Rating Star 2",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "z3ud7V",
+                                      "name": "Filled Rating Star 3",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "F0OqH",
+                                      "name": "Filled Rating Star 4",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    },
+                                    {
+                                      "type": "path",
+                                      "id": "x9nZI",
+                                      "name": "Filled Rating Star 5",
+                                      "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                      "viewBox": [
+                                        0,
+                                        0,
+                                        24,
+                                        24
+                                      ],
+                                      "fill": "#B08D45",
+                                      "width": 14,
+                                      "height": 14
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "wD0rZ",
+                      "layoutPosition": "absolute",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Carousel Fade Left",
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 90,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "$unofficial/background-transparent",
+                            "position": 0
+                          },
+                          {
+                            "color": "$--background",
+                            "position": 0.75
+                          }
+                        ]
+                      },
+                      "width": 64,
+                      "height": 140
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "QJo0O",
+                      "layoutPosition": "absolute",
+                      "x": 704,
+                      "y": 0,
+                      "name": "Carousel Fade Right",
+                      "fill": {
+                        "type": "gradient",
+                        "gradientType": "linear",
+                        "enabled": true,
+                        "rotation": 270,
+                        "size": {
+                          "height": 1
+                        },
+                        "colors": [
+                          {
+                            "color": "$unofficial/background-transparent",
+                            "position": 0
+                          },
+                          {
+                            "color": "$--background",
+                            "position": 0.75
+                          }
+                        ]
+                      },
+                      "width": 64,
+                      "height": 140
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "yDc1u",
+                  "x": 279,
+                  "y": -36,
+                  "name": "Quote Card Expanded — Selected",
+                  "width": 380,
+                  "fill": "$--popover",
+                  "cornerRadius": "$--radius-lg",
+                  "stroke": "$--border",
+                  "strokeWidth": 1,
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "$unofficial/popover-shadow",
+                    "offset": {
+                      "x": 0,
+                      "y": 10
+                    },
+                    "blur": 24
+                  },
+                  "layout": "vertical",
+                  "gap": 18,
+                  "padding": 28,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "FaWNm",
+                      "name": "Expanded Review Copy",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "zl5ge",
+                          "name": "Expanded Quote",
+                          "fill": "$--foreground",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "“Simple, warm, and beautifully resolved.”",
+                          "lineHeight": 1.3,
+                          "fontFamily": "$--font-heading",
+                          "fontSize": 17,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "scBvk",
+                          "name": "Expanded Review",
+                          "fill": "$--foreground",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "The cabin feels considered in every detail. Natural light moves beautifully through the rooms, and the materials make even a short weekend feel restorative.",
+                          "lineHeight": 1.3,
+                          "fontFamily": "$--font-sans",
+                          "fontSize": 15,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "uFNVg",
+                      "name": "Expanded Attribution and Rating",
+                      "width": "fill_container",
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "fMoWP",
+                          "name": "Expanded Attribution",
+                          "fill": "$--muted-foreground",
+                          "content": "Niva retreat · Verified stay",
+                          "fontFamily": "$--font-sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "vQIpl",
+                          "name": "Expanded Stars",
+                          "gap": 4,
+                          "justifyContent": "end",
+                          "children": [
+                            {
+                              "type": "path",
+                              "id": "uerS3",
+                              "name": "Filled Expanded Star 1",
+                              "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                              "viewBox": [
+                                0,
+                                0,
+                                24,
+                                24
+                              ],
+                              "fill": "#B08D45",
+                              "width": 16,
+                              "height": 16
+                            },
+                            {
+                              "type": "path",
+                              "id": "WEInQ",
+                              "name": "Filled Expanded Star 2",
+                              "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                              "viewBox": [
+                                0,
+                                0,
+                                24,
+                                24
+                              ],
+                              "fill": "#B08D45",
+                              "width": 16,
+                              "height": 16
+                            },
+                            {
+                              "type": "path",
+                              "id": "ZsmiX",
+                              "name": "Filled Expanded Star 3",
+                              "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                              "viewBox": [
+                                0,
+                                0,
+                                24,
+                                24
+                              ],
+                              "fill": "#B08D45",
+                              "width": 16,
+                              "height": 16
+                            },
+                            {
+                              "type": "path",
+                              "id": "N7K6Ef",
+                              "name": "Filled Expanded Star 4",
+                              "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                              "viewBox": [
+                                0,
+                                0,
+                                24,
+                                24
+                              ],
+                              "fill": "#B08D45",
+                              "width": 16,
+                              "height": 16
+                            },
+                            {
+                              "type": "path",
+                              "id": "YT3Fl",
+                              "name": "Filled Expanded Star 5",
+                              "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                              "viewBox": [
+                                0,
+                                0,
+                                24,
+                                24
+                              ],
+                              "fill": "#B08D45",
+                              "width": 16,
+                              "height": 16
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "rectangle",
+                  "id": "b4N9e",
+                  "layoutPosition": "absolute",
+                  "x": 0,
+                  "y": 0,
+                  "name": "Tablet Carousel Edge Fade Left",
+                  "fill": {
+                    "type": "gradient",
+                    "gradientType": "linear",
+                    "enabled": true,
+                    "rotation": 90,
+                    "size": {
+                      "height": 1
+                    },
+                    "colors": [
+                      {
+                        "color": "$--background",
+                        "position": 0
+                      },
+                      {
+                        "color": "$unofficial/background-transparent",
+                        "position": 1
+                      }
+                    ]
+                  },
+                  "width": 32,
+                  "height": 140
+                },
+                {
+                  "type": "rectangle",
+                  "id": "TUj0n",
+                  "layoutPosition": "absolute",
+                  "x": 736,
+                  "y": 0,
+                  "name": "Tablet Carousel Edge Fade Right",
+                  "fill": {
+                    "type": "gradient",
+                    "gradientType": "linear",
+                    "enabled": true,
+                    "rotation": 270,
+                    "size": {
+                      "height": 1
+                    },
+                    "colors": [
+                      {
+                        "color": "$--background",
+                        "position": 0
+                      },
+                      {
+                        "color": "$unofficial/background-transparent",
+                        "position": 1
+                      }
+                    ]
+                  },
+                  "width": 32,
+                  "height": 140
                 }
               ]
             }
@@ -5044,7 +7366,25 @@
           "id": "w2YlV9",
           "name": "Main Content",
           "width": "fill_container",
-          "fill": "$--background",
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 0,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#000000ff",
+                "position": 0
+              },
+              {
+                "color": "#ffffffff",
+                "position": 1
+              }
+            ]
+          },
           "layout": "vertical",
           "alignItems": "center",
           "children": [
@@ -5120,7 +7460,25 @@
               "id": "LiVZw",
               "name": "Models Overview — Slider",
               "width": "fill_container",
-              "fill": "$--background",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 0,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "$unofficial/background-accent",
+                    "position": 0
+                  },
+                  {
+                    "color": "$--background",
+                    "position": 1
+                  }
+                ]
+              },
               "layout": "vertical",
               "padding": [
                 88,
@@ -5506,7 +7864,7 @@
               "gap": 80,
               "padding": [
                 88,
-                0
+                64
               ],
               "children": [
                 {
@@ -5546,19 +7904,19 @@
                   "id": "gu5o4",
                   "name": "showcase body",
                   "width": "fill_container",
-                  "gap": 120,
+                  "gap": 140,
                   "padding": [
+                    40,
                     0,
                     0,
-                    0,
-                    64
+                    0
                   ],
                   "children": [
                     {
                       "type": "frame",
                       "id": "jFKPg",
                       "name": "left panel",
-                      "width": 520,
+                      "width": 512,
                       "fill": "$--card",
                       "cornerRadius": "$--radius-lg",
                       "stroke": "$--border",
@@ -6175,7 +8533,7 @@
                                   "fill": "$--foreground",
                                   "content": "€170,000",
                                   "fontFamily": "$--font-sans",
-                                  "fontSize": 14,
+                                  "fontSize": 16,
                                   "fontWeight": "700"
                                 },
                                 {
@@ -6233,7 +8591,7 @@
                               "id": "qgKXQ",
                               "cornerRadius": "$--radius-full",
                               "stroke": "$--border",
-                              "strokeWidth": 1.5,
+                              "strokeWidth": 1,
                               "padding": [
                                 15,
                                 28
@@ -6271,20 +8629,20 @@
                           "clip": true,
                           "width": "fill_container",
                           "height": 500,
-                          "layout": "none",
+                          "justifyContent": "center",
+                          "alignItems": "center",
                           "children": [
                             {
                               "type": "frame",
                               "id": "su9Ti",
-                              "x": 0,
-                              "y": 0,
                               "name": "Sliding Image Track",
-                              "width": 1068,
+                              "width": "fill_container",
                               "gap": 60,
                               "padding": [
                                 50,
                                 0
                               ],
+                              "justifyContent": "center",
                               "alignItems": "center",
                               "children": [
                                 {
@@ -6333,34 +8691,6 @@
                                       "layout": "none"
                                     }
                                   ]
-                                },
-                                {
-                                  "type": "frame",
-                                  "id": "ZgdQX",
-                                  "name": "Next Image Peek",
-                                  "clip": true,
-                                  "width": 600,
-                                  "height": 400,
-                                  "fill": {
-                                    "type": "image",
-                                    "enabled": true,
-                                    "url": "images/Niva-black.png",
-                                    "mode": "fit"
-                                  },
-                                  "children": [
-                                    {
-                                      "type": "frame",
-                                      "id": "A09ik",
-                                      "x": 0,
-                                      "y": 0,
-                                      "name": "Peek Fade",
-                                      "enabled": false,
-                                      "width": 402,
-                                      "height": 500,
-                                      "fill": "#00000033",
-                                      "layout": "none"
-                                    }
-                                  ]
                                 }
                               ]
                             }
@@ -6370,7 +8700,7 @@
                           "type": "frame",
                           "id": "qXTw2",
                           "name": "Carousel Controls",
-                          "width": 832,
+                          "width": "fill_container",
                           "height": 124,
                           "gap": 60,
                           "padding": [
@@ -6496,7 +8826,10 @@
                                 {
                                   "type": "frame",
                                   "id": "rX80l",
+                                  "x": 0,
+                                  "y": 0,
                                   "name": "Carousel Dots",
+                                  "enabled": false,
                                   "gap": 8,
                                   "alignItems": "center",
                                   "children": [
@@ -6525,6 +8858,1184 @@
                                       "height": 8
                                     }
                                   ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "i0nPd",
+                                  "name": "Cabin Thumbnails",
+                                  "width": 264,
+                                  "height": 48,
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "yfJjl",
+                                      "name": "Niva Thumbnail",
+                                      "opacity": 0.55,
+                                      "width": 80,
+                                      "height": 48,
+                                      "fill": "$--background",
+                                      "cornerRadius": "$--radius-md",
+                                      "stroke": "$--border",
+                                      "strokeWidth": 1,
+                                      "strokeAlignment": "inner",
+                                      "padding": 6,
+                                      "children": [
+                                        {
+                                          "type": "frame",
+                                          "id": "kNXAs",
+                                          "name": "Niva Preview",
+                                          "width": 68,
+                                          "height": 36,
+                                          "fill": {
+                                            "type": "image",
+                                            "enabled": true,
+                                            "url": "images/Niva-black.png",
+                                            "mode": "fit"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "BOio7",
+                                      "name": "Aster Thumbnail",
+                                      "width": 80,
+                                      "height": 48,
+                                      "fill": "$--background",
+                                      "cornerRadius": "$--radius-md",
+                                      "stroke": "$--primary",
+                                      "strokeWidth": 1,
+                                      "strokeAlignment": "inner",
+                                      "padding": 6,
+                                      "children": [
+                                        {
+                                          "type": "frame",
+                                          "id": "q2I1HX",
+                                          "name": "Aster Preview",
+                                          "width": 68,
+                                          "height": 36,
+                                          "fill": {
+                                            "type": "image",
+                                            "enabled": true,
+                                            "url": "images/aster-black.png",
+                                            "mode": "fit"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "aR1eq",
+                                      "name": "Veyra Thumbnail",
+                                      "opacity": 0.55,
+                                      "width": 80,
+                                      "height": 48,
+                                      "fill": "$--background",
+                                      "cornerRadius": "$--radius-md",
+                                      "stroke": "$--border",
+                                      "strokeWidth": 1,
+                                      "strokeAlignment": "inner",
+                                      "padding": 6,
+                                      "children": [
+                                        {
+                                          "type": "frame",
+                                          "id": "V69m5",
+                                          "name": "Veyra Preview",
+                                          "width": 68,
+                                          "height": 36,
+                                          "fill": {
+                                            "type": "image",
+                                            "enabled": true,
+                                            "url": "images/veyra-black.png",
+                                            "mode": "fit"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "e5oWi",
+              "name": "Testimonial Section",
+              "width": "fill_container",
+              "fill": "$--background",
+              "gap": 48,
+              "padding": [
+                88,
+                0,
+                88,
+                64
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "n3YBNZ",
+                  "name": "Title",
+                  "fill": "$--foreground",
+                  "textGrowth": "fixed-width",
+                  "width": 247,
+                  "content": "Why people choose Luma",
+                  "fontFamily": "$--font-heading",
+                  "fontSize": 36,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "frame",
+                  "id": "my9gb",
+                  "name": "Marquee",
+                  "width": "fill_container",
+                  "height": 148,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "d1anrH",
+                      "x": 0,
+                      "y": 0,
+                      "name": "Carousel Horizontal Viewport",
+                      "clip": true,
+                      "width": 1106,
+                      "height": 148,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "aFYwp",
+                          "x": -381,
+                          "y": 0,
+                          "name": "Strip",
+                          "gap": 24,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "OTFZh",
+                              "name": "Quote Card",
+                              "width": 380,
+                              "fill": "$--card",
+                              "cornerRadius": "$--radius-lg",
+                              "stroke": "$--border",
+                              "strokeWidth": 1,
+                              "layout": "vertical",
+                              "gap": 16,
+                              "padding": 28,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "ys9N2",
+                                  "name": "Q",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "“It feels larger than its footprint.”",
+                                  "lineHeight": 1.3,
+                                  "fontFamily": "$--font-heading",
+                                  "fontSize": 19,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "a7wPA",
+                                  "name": "Attribution and Rating",
+                                  "width": "fill_container",
+                                  "justifyContent": "space_between",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "NgxSM",
+                                      "name": "L",
+                                      "fill": "$--muted-foreground",
+                                      "content": "Aster cabin · Forest retreat",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "y6hIeW",
+                                      "name": "Stars",
+                                      "gap": 4,
+                                      "justifyContent": "end",
+                                      "children": [
+                                        {
+                                          "type": "path",
+                                          "id": "HlhlN",
+                                          "name": "Filled Rating Star 1",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "t4JTq",
+                                          "name": "Filled Rating Star 2",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "rWYkK",
+                                          "name": "Filled Rating Star 3",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "pImnY",
+                                          "name": "Filled Rating Star 4",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "IRk1f",
+                                          "name": "Filled Rating Star 5",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Guxwr",
+                              "name": "Quote Card",
+                              "width": 380,
+                              "fill": "$--card",
+                              "cornerRadius": "$--radius-lg",
+                              "stroke": "$--border",
+                              "strokeWidth": 1,
+                              "layout": "vertical",
+                              "gap": 16,
+                              "padding": 28,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "cfnTB",
+                                  "name": "Q",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "“The process felt calm from the beginning.”",
+                                  "lineHeight": 1.3,
+                                  "fontFamily": "$--font-heading",
+                                  "fontSize": 19,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "adXkG",
+                                  "name": "Attribution and Rating",
+                                  "width": "fill_container",
+                                  "justifyContent": "space_between",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "Gunkw",
+                                      "name": "L",
+                                      "fill": "$--muted-foreground",
+                                      "content": "Veyra · Lakeside plot",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "mv0Jn",
+                                      "name": "Stars",
+                                      "gap": 4,
+                                      "justifyContent": "end",
+                                      "children": [
+                                        {
+                                          "type": "path",
+                                          "id": "Y9nEI",
+                                          "name": "Filled Rating Star 1",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "lEjhK",
+                                          "name": "Filled Rating Star 2",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "b6p3Kx",
+                                          "name": "Filled Rating Star 3",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "jJQV1",
+                                          "name": "Filled Rating Star 4",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "JzZfc",
+                                          "name": "Filled Rating Star 5",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "YjdDQ",
+                              "name": "Quote Card",
+                              "width": 380,
+                              "fill": "$--card",
+                              "cornerRadius": "$--radius-lg",
+                              "stroke": "$--border",
+                              "strokeWidth": 1,
+                              "layout": "vertical",
+                              "gap": 16,
+                              "padding": 28,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "P96kp1",
+                                  "name": "Q",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "“Simple, warm, and beautifully resolved.”",
+                                  "lineHeight": 1.3,
+                                  "fontFamily": "$--font-heading",
+                                  "fontSize": 19,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "AmWWP",
+                                  "name": "Attribution and Rating",
+                                  "width": "fill_container",
+                                  "justifyContent": "space_between",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "XYsU9",
+                                      "name": "L",
+                                      "fill": "$--muted-foreground",
+                                      "content": "Niva retreat",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "C7xGE",
+                                      "name": "Stars",
+                                      "gap": 4,
+                                      "justifyContent": "end",
+                                      "children": [
+                                        {
+                                          "type": "path",
+                                          "id": "we1xT",
+                                          "name": "Filled Rating Star 1",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "XOmAO",
+                                          "name": "Filled Rating Star 2",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "eytX8",
+                                          "name": "Filled Rating Star 3",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "q0eWq",
+                                          "name": "Filled Rating Star 4",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "G9bJVH",
+                                          "name": "Filled Rating Star 5",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "woY8B",
+                              "name": "Quote Card",
+                              "width": 380,
+                              "fill": "$--card",
+                              "cornerRadius": "$--radius-lg",
+                              "stroke": "$--border",
+                              "strokeWidth": 1,
+                              "layout": "vertical",
+                              "gap": 16,
+                              "padding": 28,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "Pd6wG",
+                                  "name": "Q",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "“Every finish felt intentionally chosen.”",
+                                  "lineHeight": 1.3,
+                                  "fontFamily": "$--font-heading",
+                                  "fontSize": 19,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "wsZrU",
+                                  "name": "Attribution and Rating",
+                                  "width": "fill_container",
+                                  "justifyContent": "space_between",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "EOi6Y",
+                                      "name": "L",
+                                      "fill": "$--muted-foreground",
+                                      "content": "Aster · Weekend cabin",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "uKRDb",
+                                      "name": "Stars",
+                                      "gap": 4,
+                                      "justifyContent": "end",
+                                      "children": [
+                                        {
+                                          "type": "path",
+                                          "id": "cIhzJ",
+                                          "name": "Filled Rating Star 1",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "UyEQZ",
+                                          "name": "Filled Rating Star 2",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "gyUMW",
+                                          "name": "Filled Rating Star 3",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "Mx3pa",
+                                          "name": "Filled Rating Star 4",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "CRCtv",
+                                          "name": "Filled Rating Star 5",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "l91AqG",
+                              "name": "Quote Card",
+                              "width": 380,
+                              "fill": "$--card",
+                              "cornerRadius": "$--radius-lg",
+                              "stroke": "$--border",
+                              "strokeWidth": 1,
+                              "layout": "vertical",
+                              "gap": 16,
+                              "padding": 28,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "YDXiz",
+                                  "name": "Q",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "“A quiet place that still feels refined.”",
+                                  "lineHeight": 1.3,
+                                  "fontFamily": "$--font-heading",
+                                  "fontSize": 19,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "ZSZsY",
+                                  "name": "Attribution and Rating",
+                                  "width": "fill_container",
+                                  "justifyContent": "space_between",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "vSlXF",
+                                      "name": "L",
+                                      "fill": "$--muted-foreground",
+                                      "content": "Remote work cabin",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "VvItY",
+                                      "name": "Stars",
+                                      "gap": 4,
+                                      "justifyContent": "end",
+                                      "children": [
+                                        {
+                                          "type": "path",
+                                          "id": "C2ep3u",
+                                          "name": "Filled Rating Star 1",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "KuSmD",
+                                          "name": "Filled Rating Star 2",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "MFX5R",
+                                          "name": "Filled Rating Star 3",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "SbVi5",
+                                          "name": "Filled Rating Star 4",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "AQA18",
+                                          "name": "Filled Rating Star 5",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "S7gWKb",
+                              "name": "Quote Card",
+                              "width": 380,
+                              "fill": "$--card",
+                              "cornerRadius": "$--radius-lg",
+                              "stroke": "$--border",
+                              "strokeWidth": 1,
+                              "layout": "vertical",
+                              "gap": 16,
+                              "padding": 28,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "pp1Ff",
+                                  "name": "Q",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "“We chose a palette in one afternoon.”",
+                                  "lineHeight": 1.3,
+                                  "fontFamily": "$--font-heading",
+                                  "fontSize": 19,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "lmmdJ",
+                                  "name": "Attribution and Rating",
+                                  "width": "fill_container",
+                                  "justifyContent": "space_between",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "dVqvt",
+                                      "name": "L",
+                                      "fill": "$--muted-foreground",
+                                      "content": "Veyra · Hilltop plot",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "MNlh3",
+                                      "name": "Stars",
+                                      "gap": 4,
+                                      "justifyContent": "end",
+                                      "children": [
+                                        {
+                                          "type": "path",
+                                          "id": "T11pZE",
+                                          "name": "Filled Rating Star 1",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "pxuj9",
+                                          "name": "Filled Rating Star 2",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "iMbWU",
+                                          "name": "Filled Rating Star 3",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "Lt3WK",
+                                          "name": "Filled Rating Star 4",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        },
+                                        {
+                                          "type": "path",
+                                          "id": "ueewx",
+                                          "name": "Filled Rating Star 5",
+                                          "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                          "viewBox": [
+                                            0,
+                                            0,
+                                            24,
+                                            24
+                                          ],
+                                          "fill": "#B08D45",
+                                          "width": 14,
+                                          "height": 14
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "rectangle",
+                          "id": "UOhAi",
+                          "layoutPosition": "absolute",
+                          "x": 0,
+                          "y": 0,
+                          "name": "Carousel Fade Left",
+                          "fill": {
+                            "type": "gradient",
+                            "gradientType": "linear",
+                            "enabled": true,
+                            "rotation": 90,
+                            "size": {
+                              "height": 1
+                            },
+                            "colors": [
+                              {
+                                "color": "$unofficial/background-transparent",
+                                "position": 0
+                              },
+                              {
+                                "color": "$--background",
+                                "position": 0.75
+                              }
+                            ]
+                          },
+                          "width": 150,
+                          "height": 148
+                        },
+                        {
+                          "type": "rectangle",
+                          "id": "T5W0AO",
+                          "layoutPosition": "absolute",
+                          "x": 956,
+                          "y": 0,
+                          "name": "Carousel Fade Right",
+                          "fill": {
+                            "type": "gradient",
+                            "gradientType": "linear",
+                            "enabled": true,
+                            "rotation": 270,
+                            "size": {
+                              "height": 1
+                            },
+                            "colors": [
+                              {
+                                "color": "$unofficial/background-transparent",
+                                "position": 0
+                              },
+                              {
+                                "color": "$--background",
+                                "position": 0.75
+                              }
+                            ]
+                          },
+                          "width": 150,
+                          "height": 148
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "C7Rzr1",
+                      "layoutPosition": "absolute",
+                      "x": 427,
+                      "y": -50,
+                      "name": "Quote Card Expanded — Selected",
+                      "width": 380,
+                      "fill": "$--popover",
+                      "cornerRadius": "$--radius-lg",
+                      "stroke": "$--border",
+                      "strokeWidth": 1,
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "$unofficial/popover-shadow",
+                        "offset": {
+                          "x": 0,
+                          "y": 10
+                        },
+                        "blur": 24
+                      },
+                      "layout": "vertical",
+                      "gap": 18,
+                      "padding": 28,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "E61g8M",
+                          "name": "Expanded Review Copy",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "D1ZUa",
+                              "name": "Expanded Quote",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "“Simple, warm, and beautifully resolved.”",
+                              "lineHeight": 1.3,
+                              "fontFamily": "$--font-heading",
+                              "fontSize": 19,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "cuzFc",
+                              "name": "Expanded Review",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "The cabin feels considered in every detail. Natural light moves beautifully through the rooms, and the materials make even a short weekend feel restorative.",
+                              "lineHeight": 1.3,
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 16,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "dF8I0",
+                          "name": "Expanded Attribution and Rating",
+                          "width": "fill_container",
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "GDjAX",
+                              "name": "Expanded Attribution",
+                              "fill": "$--muted-foreground",
+                              "content": "Niva retreat · Verified stay",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "N11cx",
+                              "name": "Expanded Stars",
+                              "gap": 4,
+                              "justifyContent": "end",
+                              "children": [
+                                {
+                                  "type": "path",
+                                  "id": "l3QXO",
+                                  "name": "Filled Expanded Star 1",
+                                  "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                  "viewBox": [
+                                    0,
+                                    0,
+                                    24,
+                                    24
+                                  ],
+                                  "fill": "#B08D45",
+                                  "width": 16,
+                                  "height": 16
+                                },
+                                {
+                                  "type": "path",
+                                  "id": "YrYuM",
+                                  "name": "Filled Expanded Star 2",
+                                  "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                  "viewBox": [
+                                    0,
+                                    0,
+                                    24,
+                                    24
+                                  ],
+                                  "fill": "#B08D45",
+                                  "width": 16,
+                                  "height": 16
+                                },
+                                {
+                                  "type": "path",
+                                  "id": "mjxFE",
+                                  "name": "Filled Expanded Star 3",
+                                  "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                  "viewBox": [
+                                    0,
+                                    0,
+                                    24,
+                                    24
+                                  ],
+                                  "fill": "#B08D45",
+                                  "width": 16,
+                                  "height": 16
+                                },
+                                {
+                                  "type": "path",
+                                  "id": "envDp",
+                                  "name": "Filled Expanded Star 4",
+                                  "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                  "viewBox": [
+                                    0,
+                                    0,
+                                    24,
+                                    24
+                                  ],
+                                  "fill": "#B08D45",
+                                  "width": 16,
+                                  "height": 16
+                                },
+                                {
+                                  "type": "path",
+                                  "id": "HZWZ1",
+                                  "name": "Filled Expanded Star 5",
+                                  "geometry": "M12 2.5l2.95 5.98 6.6 0.96-4.78 4.66 1.13 6.58-5.9-3.08-5.9 3.1 1.13-6.58-4.78-4.68 6.6-0.96 2.95-5.98z",
+                                  "viewBox": [
+                                    0,
+                                    0,
+                                    24,
+                                    24
+                                  ],
+                                  "fill": "#B08D45",
+                                  "width": 16,
+                                  "height": 16
                                 }
                               ]
                             }
@@ -7248,6 +10759,22 @@
           }
         }
       ]
+    },
+    "unofficial/taste-v4-sage-from-muted-primary": {
+      "type": "color",
+      "value": "#D8D8C2"
+    },
+    "unofficial/taste-v4-ink-from-foreground": {
+      "type": "color",
+      "value": "#3E342D"
+    },
+    "unofficial/background-transparent": {
+      "type": "color",
+      "value": "#F7F5F000"
+    },
+    "unofficial/popover-shadow": {
+      "type": "color",
+      "value": "#0000001A"
     }
   },
   "fileToken": "b8fabb78-e8cc-4670-a2ad-039e6ed44f78",
