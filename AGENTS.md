@@ -187,6 +187,16 @@ IMPORTANT: When applicable, prefer using webstorm-index MCP tools for code navig
 - Do not use JSDoc-only tags such as `@property` or `@extends`
 - Keep comments useful and concise; avoid narrating obvious code
 
+## Feature Documentation
+
+- `docs/features/` contains current behavioral and architectural documentation for complex product features
+- Update the relevant feature document in the same change when modifying behavior, state transitions, positioning rules, accessibility, shared component contracts, or important implementation rationale
+- Styling-only and copy-only changes do not normally require feature documentation updates
+- Add a feature document for complex interactions involving custom animation, state machines, manual browser geometry, browser event coordination, or shared primitive changes
+- Keep proposed work in `docs/plans/`, point-in-time findings in `docs/audits/`, and current implementation truth in `docs/features/`
+- Reference files and named symbols instead of unstable line numbers
+- Update `docs/features/README.md` when adding, renaming, or removing feature documents
+
 ## Content Conventions
 
 - The landing page uses hardcoded typed content
