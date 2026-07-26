@@ -58,9 +58,9 @@ const NavbarProvider = ({
         data-slot="navbar-wrapper"
         data-scrolled={isScrolled}
         className={cn(
-          'group/navbar-wrapper fixed inset-x-0 top-0 z-50 mr-(--removed-body-scroll-bar-size,0px) h-(--nav-height) border border-transparent text-primary-foreground transition-[top,color] duration-400 ease-out',
+          'group/navbar-wrapper fixed inset-x-0 top-0 z-101 mr-(--removed-body-scroll-bar-size,0px) h-(--nav-height) border-b border-transparent text-primary-foreground transition-[top,color] duration-400 ease-out',
           'data-[scrolled=true]:bg-background data-[scrolled=true]:text-foreground',
-          'data-[scrolled=true]:border-b-border data-[scrolled=true]:shadow-xs',
+          'data-[scrolled=true]:border-border data-[scrolled=true]:shadow-xs',
           'md:top-4 md:h-[calc(var(--nav-height)+0.5rem)] md:data-[scrolled=true]:top-0',
           className,
         )}
