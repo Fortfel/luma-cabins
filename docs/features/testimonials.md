@@ -15,6 +15,7 @@ The interaction should preserve a clear visual connection between the source car
 - `apps/nextjs/src/app/(app)/_components/testimonials-section.tsx`
 - `TestimonialsSection`: carousel state, auto-scroll coordination, active testimonial, and Popover lifecycle.
 - `TestimonialCard`: compact source card and Popover trigger.
+- `TestimonialFooter`: fictional client identity and compact-to-expanded footer transition.
 - `TestimonialPopover`: measurement, shared-frame animation, review scrolling, and page-scroll dismissal.
 - `getNearestEdgeScrollDistance`: horizontal fade-safe positioning.
 - `getVerticalViewportPositionAdjustment`: vertical safe-area positioning.
@@ -61,6 +62,7 @@ Instead, the expanded overlay keeps a full-height content layout while animating
 
 - Shell height morphs between compact and expanded card heights.
 - Quote and attribution remain visible throughout the transition.
+- Compact footers show a generated fictional portrait, rating, and plus affordance; expanded footers reveal the fictional client name, move the rating right, and hide the plus.
 - Quote moves from its compact position toward the expanded header position.
 - Attribution and rating move in the opposite direction toward the expanded footer position.
 - Full review fades and moves into place after the frame begins opening.
@@ -109,19 +111,21 @@ Scrolling inside the testimonial `ScrollArea` does not close the Popover. A capt
 
 Page-scroll dismissal currently uses the full shrink animation. If this feels too slow during testing, page-scroll dismissal can later receive a shorter closing transition without changing other close paths.
 
-The source card remains hidden for the full closing animation. It reappears only after `onCollapseComplete` removes the overlay. This prevents the source and animated overlay from being visible simultaneously.
+The source card remains hidden for the full closing animation. After Motion reports completion, unmount waits one animation frame so the exact collapsed shell geometry can paint before `onCollapseComplete` reveals the source card. This prevents both duplicate-card overlap and a one-frame size jump.
 
 The review viewport resets to the top when closing starts, ensuring that quote and body content return through the expected compact-card geometry.
 
 ## Accessibility
 
 - Each compact card is a labeled Popover trigger.
+- Trigger labels identify the fictional client whose full testimonial will open.
 - Source cards expose testimonial position through screen-reader-only text.
 - Expanded content uses Popover title and description semantics.
 - Escape closes the expanded testimonial.
 - Focus-visible styles remain available on source cards.
 - Reduced-motion preference removes animation durations and disables carousel auto-scroll.
 - Rating stars expose a single accessible rating label while individual icons remain hidden.
+- Avatar portraits and initials are decorative; every portrait retains initials as its loading and error fallback, while the client name remains available in the footer content.
 - Internal review scrolling remains usable without triggering page-scroll dismissal.
 
 ## Invariants
@@ -133,6 +137,7 @@ Future changes should preserve these rules:
 - Auto-scroll must remain stopped after closing when the pointer is still over the carousel.
 - A source card must remain visible until its measured overlay is ready.
 - Opening must not begin until collapsed overlay geometry has completed a hidden preparation frame.
+- Footer identity and rating transitions must preserve the compact card's height and source-to-overlay alignment.
 - A source card must remain hidden until collapse completes.
 - Internal review scrolling must not dismiss the Popover.
 - Page scrolling must dismiss the fully opened Popover.
@@ -148,6 +153,10 @@ Future changes should preserve these rules:
 - Positioning assumes the navbar can be found through `[data-slot="navbar-wrapper"]`.
 - A shadcn update may overwrite the small `PopoverContent` pass-through for `collisionAvoidance`; review generated component diffs during updates.
 - Page-scroll dismissal follows the full closing duration and may need separate timing after user testing.
+
+## Concept Content
+
+Client names, initials, ratings, and testimonials are fictional portfolio content. The repository `README.md` discloses this explicitly. Replace this content with verified client material if the concept is ever adapted for a commercial site.
 
 ## Verification Checklist
 
@@ -174,3 +183,4 @@ Future changes should preserve these rules:
 - July 2026: kept source cards hidden through collapse to prevent duplicate-card overlap.
 - July 2026: made page scrolling trigger the existing full closing animation while preserving internal review scrolling.
 - July 2026: added a hidden preparation frame before opening to prevent intermittent text-first paint races.
+- July 2026: added fictional client identities and an Avatar-based footer morph to clarify card expandability.

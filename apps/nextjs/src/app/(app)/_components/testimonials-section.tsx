@@ -5,10 +5,11 @@ import type { CarouselApi } from '@workspace/ui/components/carousel'
 
 import { useEffect, useEffectEvent, useLayoutEffect, useState } from 'react'
 
-import { Star } from 'lucide-react'
+import { Plus, Star } from 'lucide-react'
 import { motion } from 'motion/react'
 import { createPortal } from 'react-dom'
 
+import { Avatar, AvatarFallback, AvatarImage } from '@workspace/ui/components/avatar'
 import { Carousel, CarouselContent, CarouselItem } from '@workspace/ui/components/carousel'
 import {
   Popover,
@@ -44,50 +45,62 @@ const MOVE_EASE = [0.22, 1, 0.36, 1] as const
 const TESTIMONIALS = [
   {
     id: 'aster-forest-retreat',
-    quote: 'It feels larger than its footprint.',
+    quote: 'We stopped thinking about the square metres.',
     review:
       'The proportions are exceptionally well judged. Even with a compact footprint, the open plan, high ceiling, and generous glazing make the cabin feel calm and spacious rather than constrained. Every sightline feels intentional, and the natural light changes the atmosphere throughout the day. Materials remain warm and quiet without making the interior feel visually busy. After several longer stays, the cabin still feels generous, practical, and deeply connected to its setting.',
-    attribution: 'Aster cabin · Forest retreat',
+    clientName: 'Maya & Theo',
+    clientInitials: 'MT',
+    avatarSrc: 'https://api.dicebear.com/9.x/notionists/svg?seed=Maya-Theo',
     rating: 5,
   },
   {
     id: 'veyra-lakeside-plot',
-    quote: 'The process felt calm from the beginning.',
+    quote: 'We always knew what the next step was.',
     review:
       'From the first conversation to the final choices, every step was clear and unhurried. We always knew what came next, and the team made complex decisions feel surprisingly straightforward.',
-    attribution: 'Veyra · Lakeside plot',
+    clientName: 'Jon Bell',
+    clientInitials: 'JB',
+    avatarSrc: 'https://api.dicebear.com/9.x/notionists/svg?seed=Jon-Bell',
     rating: 5,
   },
   {
     id: 'niva-retreat',
-    quote: 'Simple, warm, and beautifully resolved.',
+    quote: 'Even rainy weekends feel restorative here.',
     review:
       'The cabin feels considered in every detail. Natural light moves beautifully through the rooms, and the materials make even a short weekend feel restorative. We especially appreciate how each space has a clear purpose without feeling rigid or overdesigned. Storage is quietly integrated, the circulation feels effortless, and every window frames a different part of the landscape. After several visits in changing weather, the interior remains equally comfortable, calm, and welcoming.',
-    attribution: 'Niva retreat',
+    clientName: 'Nina Patel',
+    clientInitials: 'NP',
+    avatarSrc: 'https://api.dicebear.com/9.x/notionists/svg?seed=Nina-Patel',
     rating: 5,
   },
   {
     id: 'aster-weekend-cabin',
-    quote: 'Every finish felt intentionally chosen.',
+    quote: 'The materials feel even better in person.',
     review:
       'The timber, fixtures, and small details work together without competing for attention. Nothing feels added as an afterthought, and the result has a warmth that should age beautifully.',
-    attribution: 'Aster · Weekend cabin',
+    clientName: 'Clara Jensen',
+    clientInitials: 'CJ',
+    avatarSrc: 'https://api.dicebear.com/9.x/notionists/svg?seed=Clara-Jensen',
     rating: 5,
   },
   {
     id: 'remote-work-cabin',
-    quote: 'A quiet place that still feels refined.',
+    quote: 'I close my laptop and the room becomes a retreat again.',
     review:
       'It is peaceful enough for focused work but still feels like a genuine retreat at the end of the day. The light, acoustics, and connection to the landscape make long stays remarkably comfortable. Calls feel private, the workspace receives soft daylight without glare, and the surrounding timber keeps the atmosphere warm rather than clinical. Once work is finished, closing the laptop genuinely changes the character of the room. It becomes a quiet place to read, cook, and watch the light disappear through the trees.',
-    attribution: 'Remote work cabin',
+    clientName: 'Theo Martin',
+    clientInitials: 'TM',
+    avatarSrc: 'https://api.dicebear.com/9.x/notionists/svg?seed=Theo-Martin',
     rating: 5,
   },
   {
     id: 'veyra-hilltop-plot',
-    quote: 'We chose a palette in one afternoon.',
+    quote: 'We chose every finish in a single afternoon.',
     review:
       'The options were focused rather than overwhelming, and every combination felt coherent. Within one afternoon we had a palette that felt personal, balanced, and completely resolved.',
-    attribution: 'Veyra · Hilltop plot',
+    clientName: 'Sofia Alvarez',
+    clientInitials: 'SA',
+    avatarSrc: 'https://api.dicebear.com/9.x/notionists/svg?seed=Sofia-Alvarez',
     rating: 5,
   },
 ] as const
@@ -429,7 +442,7 @@ function TestimonialCard({
     <PopoverTrigger
       id={getTestimonialTriggerId(testimonial)}
       data-testimonial-index={index}
-      aria-label={`Read full testimonial: ${testimonial.quote}`}
+      aria-label={`Read full testimonial from ${testimonial.clientName}: ${testimonial.quote}`}
       className={cn(
         'flex w-75 flex-col gap-4 rounded-lg border border-border bg-card p-4 text-left text-card-foreground shadow-xs transition-[border-color,box-shadow]',
         'hover:border-foreground/20 hover:shadow-sm',
@@ -443,10 +456,7 @@ function TestimonialCard({
       <span className="text-clamp-16-19 line-clamp-2 h-[2lh] font-heading leading-[1.3] font-medium">
         “{testimonial.quote}”
       </span>
-      <span className="flex items-center justify-between">
-        <span className="text-clamp-12-14 text-muted-foreground">{testimonial.attribution}</span>
-        <TestimonialRating rating={testimonial.rating} />
-      </span>
+      <TestimonialFooter testimonial={testimonial} isExpanded={false} />
       <span className="sr-only">
         Testimonial {index + 1} of {TESTIMONIALS.length}
       </span>
@@ -614,7 +624,7 @@ function TestimonialPopover({
           transition={geometryTransition}
           onAnimationComplete={() => {
             if (isClosing) {
-              onCollapseComplete()
+              window.requestAnimationFrame(onCollapseComplete)
             } else if (shouldShowExpandedState) {
               setIsExpansionComplete(true)
             }
@@ -668,12 +678,57 @@ function TestimonialPopover({
             transition={geometryTransition}
             className="flex shrink-0 items-center justify-between px-3 xl:px-4"
           >
-            <p className="text-clamp-12-14 text-muted-foreground">{testimonial.attribution}</p>
-            <TestimonialRating rating={testimonial.rating} />
+            <TestimonialFooter testimonial={testimonial} isExpanded={shouldShowExpandedState} />
           </motion.div>
         </div>
       </motion.div>
     </PopoverContent>
+  )
+}
+
+function TestimonialFooter({ testimonial, isExpanded }: { testimonial: Testimonial; isExpanded: boolean }) {
+  const shouldReduceMotion = usePrefersReducedMotion()
+  const layoutDuration = isExpanded ? GEOMETRY_DURATION_S : CLOSING_GEOMETRY_DURATION_S
+  const layoutTransition = shouldReduceMotion ? { duration: 0 } : { duration: layoutDuration, ease: MOVE_EASE }
+  const fadeTransition = shouldReduceMotion ? { duration: 0 } : { duration: 0.14, ease: 'easeOut' as const }
+
+  return (
+    <span className="relative flex h-6 w-full min-w-0 items-center">
+      <Avatar size="sm" aria-hidden="true">
+        <AvatarImage src={testimonial.avatarSrc} alt="" />
+        <AvatarFallback className="bg-secondary font-medium text-secondary-foreground">
+          {testimonial.clientInitials}
+        </AvatarFallback>
+      </Avatar>
+
+      <motion.span
+        initial={false}
+        animate={{ maxWidth: isExpanded ? 112 : 0, marginLeft: isExpanded ? 8 : 0, opacity: isExpanded ? 1 : 0 }}
+        transition={layoutTransition}
+        className="text-clamp-12-14 truncate text-muted-foreground"
+      >
+        {testimonial.clientName}
+      </motion.span>
+
+      <motion.span
+        layout="position"
+        initial={false}
+        transition={{ layout: layoutTransition }}
+        className={cn('shrink-0', isExpanded ? 'ml-auto' : 'ml-2')}
+      >
+        <TestimonialRating rating={testimonial.rating} />
+      </motion.span>
+
+      <motion.span
+        aria-hidden="true"
+        initial={false}
+        animate={{ opacity: isExpanded ? 0 : 1, scale: isExpanded ? 0.8 : 1 }}
+        transition={fadeTransition}
+        className="absolute right-0 flex size-6 items-center justify-center rounded-full border border-border text-muted-foreground"
+      >
+        <Plus className="size-3.5" />
+      </motion.span>
+    </span>
   )
 }
 

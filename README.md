@@ -2,7 +2,7 @@
 
 A premium modular cabin website concept built with **Next.js**, **TypeScript**, **Tailwind CSS**, **Shadcn**, **Turborepo**, and **Vercel**.
 
-Luma Cabins is a fictional European modular cabin brand offering pre-designed, high-performance cabins with curated customization and optional add-on modules. The project demonstrates landing page strategy, premium visual direction, reusable frontend architecture, responsive implementation, and deployment-ready code.
+Luma Cabins is a fictional European modular cabin brand offering pre-designed, high-performance cabins with curated customization and optional add-on modules. All client identities and testimonials are fictional and were created for this concept. The project demonstrates landing page strategy, premium visual direction, reusable frontend architecture, responsive implementation, and deployment-ready code.
 
 ## Concept
 
