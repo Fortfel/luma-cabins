@@ -632,55 +632,57 @@ function TestimonialPopover({
           className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 rounded-lg border border-border bg-card shadow-xs"
         />
 
-        <div className="relative flex min-h-0 flex-col gap-3 border border-transparent px-1 py-4 xl:px-1 xl:py-5">
-          <ScrollArea
-            className={cn(
-              'min-h-0',
-              '**:data-[slot=scroll-area-viewport]:h-auto!',
-              '**:data-[slot=scroll-area-viewport]:max-h-69',
-              '**:data-[slot=scroll-area-viewport]:scroll-fade-y',
-              '**:data-[slot=scroll-area-viewport]:scroll-fade-5',
-              isExpansionComplete && !isClosing
-                ? '**:data-[slot=scroll-area-scrollbar]:opacity-100 **:data-[slot=scroll-area-scrollbar]:transition-opacity! **:data-[slot=scroll-area-scrollbar]:duration-150'
-                : '**:data-[slot=scroll-area-scrollbar]:opacity-0! **:data-[slot=scroll-area-scrollbar]:transition-none!',
-              (!isExpansionComplete || isClosing) && 'pointer-events-none',
-            )}
-          >
-            {/* `pb-2` reserves space for the review's initial `y: 8` animation, */}
-            {/* preventing temporary overflow from triggering the scrollbar. */}
-            <div className="px-3 pb-2 xl:px-4">
-              <PopoverHeader className="gap-3">
-                <motion.div
-                  initial={false}
-                  animate={{ y: shouldShowExpandedState ? 0 : addedHeight / 2 }}
-                  transition={geometryTransition}
-                >
-                  <PopoverTitle className="text-clamp-16-19 font-heading leading-[1.3] font-medium text-card-foreground">
-                    “{testimonial.quote}”
-                  </PopoverTitle>
-                </motion.div>
-                <motion.div
-                  initial={false}
-                  animate={{ opacity: shouldShowExpandedState ? 1 : 0, y: shouldShowExpandedState ? 0 : 8 }}
-                  transition={contentTransition}
-                >
-                  <PopoverDescription className="text-clamp-14-16 text-justify leading-[1.3] text-pretty text-card-foreground">
-                    {testimonial.review}
-                  </PopoverDescription>
-                </motion.div>
-              </PopoverHeader>
-            </div>
-          </ScrollArea>
+        <figure className="relative flex min-h-0 flex-col gap-3 border border-transparent px-1 py-4 xl:px-1 xl:py-5">
+          <blockquote className="min-h-0">
+            <ScrollArea
+              className={cn(
+                'min-h-0',
+                '**:data-[slot=scroll-area-viewport]:h-auto!',
+                '**:data-[slot=scroll-area-viewport]:max-h-69',
+                '**:data-[slot=scroll-area-viewport]:scroll-fade-y',
+                '**:data-[slot=scroll-area-viewport]:scroll-fade-5',
+                isExpansionComplete && !isClosing
+                  ? '**:data-[slot=scroll-area-scrollbar]:opacity-100 **:data-[slot=scroll-area-scrollbar]:transition-opacity! **:data-[slot=scroll-area-scrollbar]:duration-150'
+                  : '**:data-[slot=scroll-area-scrollbar]:opacity-0! **:data-[slot=scroll-area-scrollbar]:transition-none!',
+                (!isExpansionComplete || isClosing) && 'pointer-events-none',
+              )}
+            >
+              {/* `pb-2` reserves space for the review's initial `y: 8` animation, */}
+              {/* preventing temporary overflow from triggering the scrollbar. */}
+              <div className="px-3 pb-2 xl:px-4">
+                <PopoverHeader className="gap-3">
+                  <motion.div
+                    initial={false}
+                    animate={{ y: shouldShowExpandedState ? 0 : addedHeight / 2 }}
+                    transition={geometryTransition}
+                  >
+                    <PopoverTitle className="text-clamp-16-19 font-heading leading-[1.3] font-medium text-card-foreground">
+                      “{testimonial.quote}”
+                    </PopoverTitle>
+                  </motion.div>
+                  <motion.div
+                    initial={false}
+                    animate={{ opacity: shouldShowExpandedState ? 1 : 0, y: shouldShowExpandedState ? 0 : 8 }}
+                    transition={contentTransition}
+                  >
+                    <PopoverDescription className="text-clamp-14-16 text-justify leading-[1.3] text-pretty text-card-foreground">
+                      {testimonial.review}
+                    </PopoverDescription>
+                  </motion.div>
+                </PopoverHeader>
+              </div>
+            </ScrollArea>
+          </blockquote>
 
-          <motion.div
+          <motion.figcaption
             initial={false}
             animate={{ y: shouldShowExpandedState ? 0 : -addedHeight / 2 }}
             transition={geometryTransition}
             className="flex shrink-0 items-center justify-between px-3 xl:px-4"
           >
             <TestimonialFooter testimonial={testimonial} isExpanded={shouldShowExpandedState} />
-          </motion.div>
-        </div>
+          </motion.figcaption>
+        </figure>
       </motion.div>
     </PopoverContent>
   )

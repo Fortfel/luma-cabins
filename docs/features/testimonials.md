@@ -120,7 +120,7 @@ The review viewport resets to the top when closing starts, ensuring that quote a
 - Each compact card is a labeled Popover trigger.
 - Trigger labels identify the fictional client whose full testimonial will open.
 - Source cards expose testimonial position through screen-reader-only text.
-- Expanded content uses Popover title and description semantics.
+- Expanded content uses `figure`, `blockquote`, and `figcaption` semantics while retaining the Popover title and description relationships.
 - Escape closes the expanded testimonial.
 - Focus-visible styles remain available on source cards.
 - Reduced-motion preference removes animation durations and disables carousel auto-scroll.
