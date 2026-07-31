@@ -295,7 +295,13 @@ function ConfigurationPanel({
   const interiorPaletteLabelId = useId()
 
   return (
-    <div className={cn('max-xl:container-page', 'xl:w-[clamp(28rem,calc(8rem+25vw),32rem)] xl:shrink-0', className)}>
+    <div
+      className={cn(
+        'max-xl:container-page max-xl:self-stretch',
+        'xl:w-[clamp(28rem,calc(8rem+25vw),32rem)] xl:shrink-0',
+        className,
+      )}
+    >
       <div
         className={cn(
           'mx-auto grid max-w-[clamp(24rem,calc(14.652rem+42.730vw),42rem)] grid-cols-[auto_minmax(0,1fr)] items-center rounded-lg border border-border bg-card p-[clamp(1.5rem,calc(1.204rem+1.349vw),2.5rem)]',
