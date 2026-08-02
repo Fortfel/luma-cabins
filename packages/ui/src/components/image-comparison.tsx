@@ -121,6 +121,7 @@ function ImageComparisonSlider({
   const { position, setIsFocusVisible, setPosition } = useImageComparison()
   const inputRef = useRef<HTMLInputElement>(null)
   const isPointerFocusRef = useRef(false)
+  const shouldSuppressClickFocusRef = useRef(false)
   const touchGestureRef = useRef<TouchGesture | null>(null)
   const announcedPosition = Math.round(position)
   const valueText = getValueText({ announcedPosition, position })
@@ -191,6 +192,7 @@ function ImageComparisonSlider({
         return
       }
 
+      shouldSuppressClickFocusRef.current = false
       touchGestureRef.current = {
         intent: 'pending',
         pointerId: event.pointerId,
@@ -228,6 +230,7 @@ function ImageComparisonSlider({
 
         if (verticalDistance >= horizontalDistance) {
           touchGesture.intent = 'vertical'
+          shouldSuppressClickFocusRef.current = true
           return
         }
 
@@ -273,8 +276,18 @@ function ImageComparisonSlider({
 
   const handlePointerCancel = (event: React.PointerEvent<HTMLDivElement>) => {
     if (touchGestureRef.current?.pointerId === event.pointerId) {
+      shouldSuppressClickFocusRef.current = true
       touchGestureRef.current = null
     }
+  }
+
+  const handleClick = () => {
+    if (shouldSuppressClickFocusRef.current) {
+      shouldSuppressClickFocusRef.current = false
+      return
+    }
+
+    focusSliderFromPointer()
   }
 
   return (
@@ -302,6 +315,7 @@ function ImageComparisonSlider({
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
+        onClick={handleClick}
         className="absolute inset-0 z-30 cursor-ew-resize touch-pan-y"
       />
     </>
