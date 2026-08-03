@@ -10,7 +10,7 @@ import { contactLinkOptions } from '~/app/(app)/_validations/app-link-options'
 const HERO_FEATURES = [
   {
     icon: Layers,
-    title: 'Precision built',
+    title: 'Precision Built',
     description: 'Factory-crafted modules for superior quality.',
   },
   {
@@ -30,7 +30,7 @@ const HERO_FEATURES = [
   },
 ] as const
 
-const MOBILE_FEATURES = ['Precision built', 'Delivered fast', 'Timeless design'] as const
+const MOBILE_FEATURES = ['Precision Built', 'Delivered fast', 'Timeless design'] as const
 
 function HeroSection() {
   return (
@@ -59,7 +59,7 @@ function HeroSection() {
               'h-13.5 w-full cursor-pointer text-base font-bold text-primary',
             )}
           >
-            Get started
+            Get Started
             <ArrowUpRight data-icon="inline-end" />
           </Link>
         </div>

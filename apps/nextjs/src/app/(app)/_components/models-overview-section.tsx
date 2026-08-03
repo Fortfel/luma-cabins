@@ -25,7 +25,7 @@ import { cn } from '@workspace/ui/lib/utils'
 import { cabins } from '~/app/(app)/_data/cabins'
 import { PlayPauseButton } from '~/app/_components/layout/play-pause-button'
 
-const AUTOPLAY_DELAY_MS = 5000
+const AUTOPLAY_DELAY_MS = 4000
 const AUTOPLAY_VISIBILITY_THRESHOLD = 0.35
 type AutoplayPauseReason = 'explicit' | 'interaction' | null
 

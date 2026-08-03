@@ -80,7 +80,7 @@ const AppNavbar = ({ className, ...props }: React.ComponentProps<'div'>) => {
             'hidden h-12 px-[clamp(1.25rem,calc(1.0897rem+0.641vw),1.5rem)] font-bold min-[400px]:inline-flex',
           )}
         >
-          Get started
+          Get Started
         </Link>
 
         {isMobile && (
