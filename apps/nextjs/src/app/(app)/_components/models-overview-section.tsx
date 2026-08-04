@@ -19,7 +19,6 @@ import {
 } from '@workspace/ui/components/carousel'
 import { useMediaQuery } from '@workspace/ui/hooks/use-media-query'
 import { usePrefersReducedMotion } from '@workspace/ui/hooks/use-prefers-reduced-motion'
-import { Autoplay } from '@workspace/ui/lib/embla-plugins'
 import { cn } from '@workspace/ui/lib/utils'
 
 import { cabins } from '~/app/(app)/_data/cabins'
@@ -27,32 +26,35 @@ import { PlayPauseButton } from '~/app/_components/layout/play-pause-button'
 
 const AUTOPLAY_DELAY_MS = 4000
 const AUTOPLAY_VISIBILITY_THRESHOLD = 0.35
+const GESTURE_INTENT_THRESHOLD_PX = 8
 type AutoplayPauseReason = 'explicit' | 'interaction' | null
 
+interface CarouselPointerGesture {
+  intent: 'horizontal' | 'pending' | 'vertical'
+  pointerId: number
+  startX: number
+  startY: number
+}
+
 function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'section'>) {
-  const [autoplay] = useState(() =>
-    Autoplay({
-      delay: AUTOPLAY_DELAY_MS,
-      playOnInit: false,
-      stopOnInteraction: true,
-      stopOnFocusIn: true,
-    }),
-  )
-  const [carouselPlugins] = useState(() => [autoplay])
   const [api, setApi] = useState<CarouselApi>()
   const [activeIndex, setActiveIndex] = useState(0)
   const [isCarouselInView, setIsCarouselInView] = useState(false)
+  const [isDocumentVisible, setIsDocumentVisible] = useState(true)
   const [autoplayPauseReason, setAutoplayPauseReason] = useState<AutoplayPauseReason>(null)
   const [autoplayProgressCycle, setAutoplayProgressCycle] = useState(0)
   const isDesktop = useMediaQuery('(min-width: 1024px)', { initializeWithValue: false }) === true
   const shouldReduceMotion = usePrefersReducedMotion()
 
   const isAutoplayControlPointerInteractionRef = useRef(false)
+  const autoplayTimerRef = useRef<number | null>(null)
+  const carouselPointerGestureRef = useRef<CarouselPointerGesture | null>(null)
 
   const activeModel = cabins[activeIndex] ?? cabins[0]
   const activeSlideLabel = `${activeIndex + 1} of ${cabins.length} — ${activeModel.name}`
   // Autoplay requires motion consent, sufficient visibility, and no user-requested pause.
-  const canAutoplay = Boolean(api) && !shouldReduceMotion && isCarouselInView && autoplayPauseReason === null
+  const canAutoplay =
+    Boolean(api) && !shouldReduceMotion && isCarouselInView && isDocumentVisible && autoplayPauseReason === null
 
   useEffect(() => {
     if (!api) {
@@ -62,16 +64,33 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
     const handleSelect = () => {
       setActiveIndex(api.selectedScrollSnap())
     }
+    const handleReInit = () => {
+      handleSelect()
+      setAutoplayProgressCycle((cycle) => cycle + 1)
+    }
 
     handleSelect()
     api.on('select', handleSelect)
-    api.on('reInit', handleSelect)
+    api.on('reInit', handleReInit)
 
     return () => {
       api.off('select', handleSelect)
-      api.off('reInit', handleSelect)
+      api.off('reInit', handleReInit)
     }
   }, [api])
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      setIsDocumentVisible(document.visibilityState === 'visible')
+    }
+
+    handleVisibilityChange()
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+    }
+  }, [])
 
   useEffect(() => {
     const section = api?.rootNode()
@@ -104,40 +123,35 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
   }, [api])
 
   useEffect(() => {
-    if (!api) {
+    if (!api || !canAutoplay) {
       return undefined
     }
 
-    // Reconcile Embla's autoplay plugin with visibility, motion preferences, and pause state.
-    const syncAutoplay = () => {
-      if (canAutoplay) {
-        autoplay.play()
-      } else {
-        autoplay.stop()
-      }
-    }
-
-    const handleReInit = () => {
-      syncAutoplay()
-
-      if (canAutoplay) {
-        setAutoplayProgressCycle((cycle) => cycle + 1)
-      }
-    }
-
-    syncAutoplay()
-
-    api.on('reInit', handleReInit)
+    const timerId = window.setTimeout(() => {
+      autoplayTimerRef.current = null
+      api.scrollNext()
+    }, AUTOPLAY_DELAY_MS)
+    autoplayTimerRef.current = timerId
 
     return () => {
-      api.off('reInit', handleReInit)
-      autoplay.stop()
-    }
-  }, [api, autoplay, canAutoplay])
+      window.clearTimeout(timerId)
 
-  // Any direct carousel interaction pauses autoplay until the user explicitly resumes it.
+      if (autoplayTimerRef.current === timerId) {
+        autoplayTimerRef.current = null
+      }
+    }
+  }, [activeIndex, api, autoplayProgressCycle, canAutoplay])
+
+  const stopAutoplayTimer = () => {
+    if (autoplayTimerRef.current !== null) {
+      window.clearTimeout(autoplayTimerRef.current)
+      autoplayTimerRef.current = null
+    }
+  }
+
+  // Direct carousel navigation pauses autoplay without treating vertical scrolling or inert taps as intent.
   const stopAutoplayFromInteraction = () => {
-    autoplay.stop()
+    stopAutoplayTimer()
     setAutoplayPauseReason((pauseReason) => (pauseReason === 'explicit' ? pauseReason : 'interaction'))
   }
 
@@ -147,9 +161,58 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
   const handlePointerDownCapture = (event: React.PointerEvent<HTMLDivElement>) => {
     isAutoplayControlPointerInteractionRef.current = isAutoplayControlTarget(event.target)
 
-    const isInteractiveDesktopTarget = event.target instanceof Element && Boolean(event.target.closest('button'))
+    if (
+      isDesktop ||
+      isAutoplayControlPointerInteractionRef.current ||
+      (event.target instanceof Element && Boolean(event.target.closest('button'))) ||
+      carouselPointerGestureRef.current
+    ) {
+      return
+    }
 
-    if (!isAutoplayControlPointerInteractionRef.current && (!isDesktop || isInteractiveDesktopTarget)) {
+    carouselPointerGestureRef.current = {
+      intent: 'pending',
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+    }
+  }
+
+  const handlePointerMoveCapture = (event: React.PointerEvent<HTMLDivElement>) => {
+    const gesture = carouselPointerGestureRef.current
+
+    if (gesture?.pointerId !== event.pointerId || gesture.intent !== 'pending') {
+      return
+    }
+
+    const horizontalDistance = Math.abs(event.clientX - gesture.startX)
+    const verticalDistance = Math.abs(event.clientY - gesture.startY)
+
+    if (Math.max(horizontalDistance, verticalDistance) < GESTURE_INTENT_THRESHOLD_PX) {
+      return
+    }
+
+    if (verticalDistance >= horizontalDistance) {
+      gesture.intent = 'vertical'
+      return
+    }
+
+    gesture.intent = 'horizontal'
+    stopAutoplayFromInteraction()
+  }
+
+  const clearPointerGesture = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (carouselPointerGestureRef.current?.pointerId === event.pointerId) {
+      carouselPointerGestureRef.current = null
+    }
+  }
+
+  const handleClickCapture = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (
+      !isAutoplayControlTarget(event.target) &&
+      event.target instanceof Element &&
+      Boolean(event.target.closest('button'))
+    ) {
       stopAutoplayFromInteraction()
     }
   }
@@ -174,7 +237,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
 
   const handleToggleAutoplay = () => {
     if (canAutoplay) {
-      autoplay.stop()
+      stopAutoplayTimer()
       setAutoplayPauseReason('explicit')
 
       return
@@ -197,6 +260,10 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
       <div
         className="container-page max-xl:px-0"
         onPointerDownCapture={handlePointerDownCapture}
+        onPointerMoveCapture={handlePointerMoveCapture}
+        onPointerUpCapture={clearPointerGesture}
+        onPointerCancelCapture={clearPointerGesture}
+        onClickCapture={handleClickCapture}
         onKeyDownCapture={handleKeyDownCapture}
         onFocusCapture={handleFocusCapture}
       >
@@ -204,7 +271,6 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
           aria-label="Cabin models"
           setApi={setApi}
           opts={{ align: 'start' as const, loop: true, watchDrag: !isDesktop }}
-          plugins={carouselPlugins}
           className={cn('group relative overflow-hidden xl:rounded-xl')}
         >
           <CarouselContent className="ms-0">
