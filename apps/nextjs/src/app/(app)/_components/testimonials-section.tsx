@@ -345,13 +345,13 @@ function TestimonialsSection({ className, ...props }: React.ComponentProps<'sect
     <section className={className} {...props}>
       <div
         className={cn(
-          'container-page flex w-auto flex-col items-center gap-4',
-          'mr-[max(0px,calc((100%-1920px)/2))] pr-0',
+          'container-page-2xl flex flex-col items-center gap-4',
+          'mr-[max(0px,calc((100%-2560px)/2))]',
           'sm:gap-5 md:gap-7',
-          'max-lg:pl-0 lg:flex-row lg:gap-[clamp(2rem,calc(-6.5rem+13.28125vw),6.25rem)]',
+          'max-lg:container-bleed lg:flex-row lg:gap-[clamp(2rem,calc(-6.5rem+13.28125vw),6.25rem)]',
         )}
       >
-        <h2 className="text-clamp-24-36 max-lg:container-page w-full text-center leading-tight font-medium text-balance text-foreground lg:w-62 lg:shrink-0 lg:px-0 lg:text-left">
+        <h2 className="text-clamp-24-36 max-lg:section-px w-full text-center leading-tight font-medium text-balance text-foreground lg:w-62 lg:shrink-0 lg:px-0 lg:text-left">
           Why people choose Luma
         </h2>
 

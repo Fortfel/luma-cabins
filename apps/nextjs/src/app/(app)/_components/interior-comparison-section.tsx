@@ -14,14 +14,14 @@ import { cn } from '@workspace/ui/lib/utils'
 
 import { InteriorComparisonSlider } from '~/app/(app)/_components/interior-comparison-slider'
 
-const COMPARISON_IMAGE_SIZES = '(max-width: 1279px) 100vw, (max-width: 1535px) calc(100vw - 8rem), 1408px'
+const COMPARISON_IMAGE_SIZES = '(max-width: 1919px) 100vw, 1920px'
 
 function InteriorComparisonSection({ className, ...props }: React.ComponentProps<'section'>) {
   return (
-    <section className={className} {...props}>
+    <section className={cn('4xl:px-4', className)} {...props}>
       <div
         className={cn(
-          'container-page mb-4 flex flex-col gap-2 text-left text-foreground',
+          'container-page-3xl mb-4 flex flex-col gap-5 text-left text-foreground',
           'sm:mb-5 md:mb-5',
           'md:grid md:grid-cols-16 md:items-end',
         )}
@@ -34,8 +34,8 @@ function InteriorComparisonSection({ className, ...props }: React.ComponentProps
         </p>
       </div>
 
-      <div className="container-page max-xl:px-0">
-        <ImageComparison defaultValue={56} className="aspect-3/2 md:aspect-video xl:rounded-xl">
+      <div className="container-page-4xl container-bleed">
+        <ImageComparison defaultValue={56} className="4xl:rounded-xl aspect-3/2 md:aspect-video">
           <ImageComparisonLeft>
             <Image
               src="/images/huts/veyra/Veyra-interior-left-primary.jpg"

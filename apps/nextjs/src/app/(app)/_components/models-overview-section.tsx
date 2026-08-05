@@ -255,10 +255,10 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
   }
 
   return (
-    <section className={className} {...props}>
+    <section className={cn('4xl:px-4', className)} {...props}>
       <h2 className="sr-only">Cabin models</h2>
       <div
-        className="container-page max-xl:px-0"
+        className="container-page-4xl container-bleed"
         onPointerDownCapture={handlePointerDownCapture}
         onPointerMoveCapture={handlePointerMoveCapture}
         onPointerUpCapture={clearPointerGesture}
@@ -271,7 +271,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
           aria-label="Cabin models"
           setApi={setApi}
           opts={{ align: 'start' as const, loop: true, watchDrag: !isDesktop }}
-          className={cn('group relative overflow-hidden xl:rounded-xl')}
+          className={cn('4xl:rounded-xl relative overflow-hidden')}
         >
           <CarouselContent className="ms-0">
             {cabins.map((model, index) => (
@@ -292,7 +292,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
                     src={model.images.overview}
                     alt={model.images.overviewAlt}
                     fill
-                    sizes="(max-width: 1279px) 100vw, (max-width: 1535px) calc(100vw - 8rem), 1408px"
+                    sizes="(max-width: 1919px) 100vw, 1920px"
                     className="object-cover"
                   />
                 </div>

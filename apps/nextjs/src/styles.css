@@ -14,16 +14,41 @@
   --text-clamp-16-19: clamp(1rem, calc(0.9394rem + 0.2584vw), 1.1875rem); /* 1536 */
   --text-clamp-14-16: clamp(0.875rem, calc(0.8232rem + 0.221vw), 1rem); /* 1280 */
   --text-clamp-12-14: clamp(0.75rem, calc(0.6982rem + 0.221vw), 0.875rem); /* 1280 */
+
+  --breakpoint-3xl: 108rem; /* 1728px */
+  --breakpoint-4xl: 120rem; /* 1920px */
 }
 
-@utility container-page {
+:root {
+  --page-gutter-x: clamp(1.5rem, calc(0.55806rem + 4.30571vw), 4rem);
+  --section-gutter-y: clamp(2.5rem, calc(-0.5rem + 7.5vw), 5.5rem);
+}
+
+@utility container-page-2xl {
   width: auto;
-  margin-inline: max(0px, calc((100% - var(--breakpoint-2xl)) / 2));
-  padding-inline: clamp(1.5rem, calc(0.55806rem + 4.30571vw), 4rem);
+  margin-inline: max(var(--container-min-margin, var(--page-gutter-x)), calc((100% - var(--breakpoint-2xl)) / 2));
+}
+
+@utility container-page-3xl {
+  width: auto;
+  margin-inline: max(var(--container-min-margin, var(--page-gutter-x)), calc((100% - var(--breakpoint-3xl)) / 2));
+}
+
+@utility container-page-4xl {
+  width: auto;
+  margin-inline: max(var(--container-min-margin, var(--page-gutter-x)), calc((100% - var(--breakpoint-4xl)) / 2));
+}
+
+@utility container-bleed {
+  --container-min-margin: 0px;
+}
+
+@utility section-px {
+  padding-inline: var(--page-gutter-x);
 }
 
 @utility section-py {
-  padding-block: clamp(2.5rem, calc(-0.5rem + 7.5vw), 5.5rem);
+  padding-block: var(--section-gutter-y);
 }
 
 @keyframes cabin-carousel-progress {

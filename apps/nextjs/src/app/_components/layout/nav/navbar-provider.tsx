@@ -67,7 +67,7 @@ const NavbarProvider = ({
         style={{ '--nav-height': height } as React.CSSProperties}
         {...props}
       >
-        <div className="container-page h-full max-md:px-0">{children}</div>
+        <div className="container-page-2xl max-md:container-bleed h-full">{children}</div>
       </header>
     </NavbarContext.Provider>
   )

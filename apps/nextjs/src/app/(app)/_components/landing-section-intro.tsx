@@ -7,7 +7,7 @@ function LandingSectionIntro({ className, ...props }: React.ComponentProps<'div'
     <div
       data-slot="landing-section-intro"
       className={cn(
-        'container-page flex flex-col items-center gap-[clamp(24px,calc(14.73px+2.473vw),40px)] text-center text-foreground',
+        'container-page-2xl flex flex-col items-center gap-[clamp(24px,calc(14.73px+2.473vw),40px)] text-center text-foreground',
         className,
       )}
       {...props}

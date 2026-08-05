@@ -1,3 +1,5 @@
+import type * as React from 'react'
+
 import { ArrowUpRight, Layers, Leaf, ShieldCheck, Truck } from 'lucide-react'
 import Link from 'next/link'
 
@@ -32,14 +34,20 @@ const HERO_FEATURES = [
 
 const MOBILE_FEATURES = ['Precision Built', 'Delivered fast', 'Timeless design'] as const
 
-function HeroSection() {
+function HeroSection({ className, ...props }: React.ComponentProps<'section'>) {
   return (
-    <section className="relative isolate flex min-h-dvh w-full overflow-hidden bg-primary text-primary-foreground">
+    <section
+      className={cn(
+        'relative isolate flex min-h-dvh w-full overflow-hidden bg-primary text-primary-foreground',
+        className,
+      )}
+      {...props}
+    >
       <HeroBackground />
 
       <div
         className={cn(
-          'container-page flex grow flex-col justify-end pt-30 pb-16',
+          'container-page-2xl flex grow flex-col justify-end pt-30 pb-16',
           'lg:flex-row lg:items-end lg:justify-between lg:pb-24',
         )}
       >

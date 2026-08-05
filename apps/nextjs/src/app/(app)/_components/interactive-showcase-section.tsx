@@ -150,7 +150,7 @@ function InteractiveShowcaseSection({ className, ...props }: React.ComponentProp
 
       <div
         className={cn(
-          'container-page flex flex-col items-center gap-5 pt-8 max-xl:px-0',
+          'container-page-2xl max-xl:container-bleed flex flex-col items-center gap-5 pt-8',
           'md:gap-6 md:pt-10',
           'xl:flex-row xl:gap-15',
         )}
@@ -297,7 +297,7 @@ function ConfigurationPanel({
   return (
     <div
       className={cn(
-        'max-xl:container-page max-xl:self-stretch',
+        'max-xl:section-px max-xl:self-stretch',
         'xl:w-[clamp(28rem,calc(8rem+25vw),32rem)] xl:shrink-0',
         className,
       )}
