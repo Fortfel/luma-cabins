@@ -58,12 +58,13 @@ At endpoints, the fully white 4px divider reaches the true image boundary. Only 
 
 - Below `md`: media is edge-to-edge with a `3:2` aspect ratio.
 - From `md` through `lg`: media is edge-to-edge with a `16:9` aspect ratio.
-- At `xl` and above: media uses `container-page`, a `16:9` ratio, and rounded corners.
-- Above the page maximum: media remains approximately `1408px` wide.
-- Intro text always retains `container-page` padding.
+- Through `1919px`, the media remains edge-to-edge and follows the viewport width.
+- At `4xl`, the section adds `16px` horizontal media gutters and the frame gains rounded corners.
+- As the viewport grows, the `container-page-4xl container-bleed` frame reaches its `1920px` cap and then centers naturally.
+- Intro text uses the default minimum gutter built into `container-page-2xl`.
 - At `md`, heading and description become a bottom-aligned two-column row; smaller widths stack both blocks.
 
-The responsive `sizes` value matches `ModelsOverviewSection`: full viewport below `1280px`, viewport minus desktop page padding through `1535px`, then `1408px`.
+The responsive `sizes` value matches `ModelsOverviewSection`: full viewport width through `1919px`, then `1920px` as the media-width upper bound.
 
 ## Accessibility
 

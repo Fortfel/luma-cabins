@@ -196,6 +196,7 @@ IMPORTANT: When applicable, prefer using webstorm-index MCP tools for code navig
 - Keep proposed work in `docs/plans/`, point-in-time findings in `docs/audits/`, and current implementation truth in `docs/features/`
 - Reference files and named symbols instead of unstable line numbers
 - Update `docs/features/README.md` when adding, renaming, or removing feature documents
+- Treat `docs/features/landing-page.md` as the current landing-page composition map; update it when sections are added, removed, reordered, or renamed, when section IDs or navbar fragments change, or when shared landing layout and responsive conventions change
 
 ## Content Conventions
 
@@ -234,20 +235,5 @@ IMPORTANT: When applicable, prefer using webstorm-index MCP tools for code navig
 - After editing a `.pen` file, verify:
   - the file still opens
   - no accidental hardcoded semantic colors were introduced
-
-## design.lib.pen Rules
-
-- Keep `design.lib.pen` visually in sync with `packages/ui/src/components/*`.
-- When auditing parity, prioritize:
-  - semantic colors
-  - text/icon colors
-  - font tokens
-  - dark-mode token behavior
-  - variable usage
-- Do not change padding, gap, slot heights, or general layout unless explicitly requested.
-- Keep naming consistent with the file convention already in `design.lib.pen`, e.g. `Button/Size/Variant` and `IconButton/Size/Variant`.
-- If a component in `design.lib.pen` is derived from another component via refs, update the base semantic styling first, then verify all derived variants.
-- After editing `design.lib.pen`, verify:
-  - key component screenshots render
 
 # context-mode

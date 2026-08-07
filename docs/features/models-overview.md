@@ -40,6 +40,15 @@ Implemented on the landing page. This document describes current carousel and au
 - Reduced-motion users cannot start autoplay.
 - Focus entering carousel controls prevents an automatic slide change during keyboard interaction.
 
+## Responsive Layout
+
+- The carousel combines `container-page-4xl` with `container-bleed`, removing the page container's default minimum gutter.
+- Through `1919px`, the carousel is edge-to-edge and follows the viewport width.
+- At `4xl`, the section adds `16px` horizontal media gutters and the frame gains rounded corners.
+- As the viewport grows, the carousel reaches its `1920px` cap and then centers naturally.
+- The frame switches to a `16:9` aspect ratio at `lg`.
+- The responsive image `sizes` value reports full viewport width through `1919px`, then uses `1920px` as the media-width upper bound.
+
 ## Invariants
 
 - Vertical page scrolling over the carousel must not pause, restart, or delay the autoplay cycle.
