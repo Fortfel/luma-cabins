@@ -310,7 +310,7 @@ function ConfigurationPanel({
 
           'md:grid-cols-[clamp(9.5rem,22vw,11rem)_minmax(0,1fr)]',
           'xl:flex xl:flex-col xl:items-stretch',
-          'xl:gap-[clamp(1.5rem,1.65vw,1.75rem)]',
+          'xl:gap-[clamp(1.5rem,1.65vw,1.584rem)]',
         )}
       >
         <ModelSummary cabin={activeCabin} className="hidden xl:flex" isDesktop />
