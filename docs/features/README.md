@@ -7,6 +7,7 @@ Feature documents are the current source of truth. Proposed work belongs in `doc
 ## Features
 
 - [Landing page](./landing-page.md): section composition, layout conventions, navigation anchors, shared interaction infrastructure, and extension guidance.
+- [How it works](./how-it-works.md): guided process timeline, scroll geometry, responsive compositions, carousel behavior, and accessibility invariants.
 - [Interior comparison](./interior-comparison.md): image reveal behavior, responsive framing, input semantics, and asset alignment invariants.
 - [Models overview](./models-overview.md): carousel autoplay, gesture intent, navigation behavior, and accessibility invariants.
 - [Testimonials](./testimonials.md): carousel behavior, shared-frame expansion, viewport positioning, dismissal, and accessibility.

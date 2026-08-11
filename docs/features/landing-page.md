@@ -39,6 +39,7 @@ The order below is the rendered order in `AppHomePage`.
 | 4     | `InteractiveShowcaseSection` | Client component                                       | `bg-background-accent`                                                |
 | 5     | `TestimonialsSection`        | Client component                                       | `bg-background`                                                       |
 | 6     | `InteriorComparisonSection`  | Server section with an app-local client slider adapter | Gradient from `background-accent` to `background`                     |
+| 7     | `HowItWorksSection`          | Server section with an app-local client experience     | `bg-background`                                                       |
 
 When changing this order, review adjacent background transitions and confirm that the page still reads as one purchase journey rather than a list of isolated modules.
 
@@ -81,11 +82,11 @@ Every same-page fragment in `navigationDesktopLinks` must match a rendered secti
 
 Current fragment status:
 
-| Fragment   | Intended destination | Current status                                                                                                  |
-| ---------- | -------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `#models`  | Models overview      | Configured in navigation; no matching section ID is currently rendered                                          |
-| `#process` | How it works         | Configured in navigation; section is proposed in `docs/plans/how-it-works-section-plan.md` but not yet rendered |
-| `#faqs`    | FAQ                  | Configured in navigation; no FAQ section is currently rendered                                                  |
+| Fragment   | Intended destination | Current status                                                               |
+| ---------- | -------------------- | ---------------------------------------------------------------------------- |
+| `#models`  | Models overview      | Configured in navigation; no matching section ID is currently rendered       |
+| `#process` | How it works         | Rendered by `HowItWorksSection`; scroll margin accounts for the fixed navbar |
+| `#faqs`    | FAQ                  | Configured in navigation; no FAQ section is currently rendered               |
 
 When adding or removing a fragment target, update the navigation data and this status table in the same change. Apply an appropriate scroll margin so the fixed navbar does not obscure the target heading.
 
