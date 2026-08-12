@@ -38,7 +38,7 @@ function HeroSection({ className, ...props }: React.ComponentProps<'section'>) {
   return (
     <section
       className={cn(
-        'relative isolate flex min-h-dvh w-full overflow-hidden bg-primary text-primary-foreground',
+        'relative isolate flex min-h-svh w-full overflow-hidden bg-primary text-primary-foreground',
         className,
       )}
       {...props}
