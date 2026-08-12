@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
   /** We already do linting and typechecking as separate tasks in CI */
   typescript: { ignoreBuildErrors: true },
   reactCompiler: true,
+  allowedDevOrigins: ['192.168.0.100'],
 }
 
 export default nextConfig

@@ -397,8 +397,8 @@ function TestimonialsSection({ className, ...props }: React.ComponentProps<'sect
               ))}
             </CarouselContent>
 
-            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-6 bg-linear-to-r from-background via-background/80 to-transparent md:w-20" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-6 bg-linear-to-l from-background via-background/80 to-transparent md:w-20" />
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-6 bg-linear-to-r from-background-accent via-background-accent/80 to-transparent md:w-20" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-6 bg-linear-to-l from-background-accent via-background-accent/80 to-transparent md:w-20" />
           </Carousel>
 
           {activeTestimonial && activeTriggerMetrics && isPopoverOpen ? (
