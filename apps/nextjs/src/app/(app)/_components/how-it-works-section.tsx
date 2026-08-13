@@ -12,11 +12,11 @@ function HowItWorksSection({ className, ...props }: React.ComponentProps<'sectio
       aria-labelledby="process-title"
       {...props}
     >
-      <div className="container-page-2xl mb-8 flex flex-col gap-3 text-center text-foreground sm:mb-12 md:mb-24 md:text-left">
+      <div className="container-page-2xl mb-8 flex flex-col gap-2 text-center text-foreground sm:mb-12 md:mb-20">
         <h2 id="process-title" className="text-clamp-32-52 leading-tight font-medium text-balance">
           How it works
         </h2>
-        <p className="text-clamp-16-19 leading-tight text-pretty">A guided path, start to finish.</p>
+        <p className="text-clamp-16-20 leading-tight text-pretty">A guided path, start to finish.</p>
       </div>
 
       <HowItWorksExperience steps={processSteps} />

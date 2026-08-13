@@ -12,6 +12,7 @@ interface ProcessStep {
     kind: 'image' | 'video'
     src: string
     webmSrc?: string
+    posterSrc?: string
     alt: string
     width: number
     height: number
@@ -60,6 +61,7 @@ const processSteps = [
       kind: 'video',
       src: '/videos/process/process-step2-video2.mp4',
       webmSrc: '/videos/process/process-step2-video2.webm',
+      posterSrc: '/images/process/process-step2-video2-poster.webp',
       alt: 'Video of a landscaped garden setting with a mature tree and open lawn.',
       width: 1280,
       height: 720,
@@ -79,6 +81,7 @@ const processSteps = [
       kind: 'video',
       src: '/videos/process/process-step3-video.mp4',
       webmSrc: '/videos/process/process-step3-video.webm',
+      posterSrc: '/images/process/process-step3-video-poster.webp',
       alt: 'Two people reviewing architectural plans, material samples, and interior references at a table.',
       width: 960,
       height: 720,
@@ -95,12 +98,14 @@ const processSteps = [
     bullets: ['Position and secure the cabin', 'Complete agreed site connections', 'Walk through the finished space'],
     copyStatus: 'provisional',
     media: {
-      kind: 'image',
-      src: '/images/process/04-deliver-and-install.svg',
-      alt: 'Temporary placeholder for cabin placement, site connections, and a finished-space handover.',
-      width: 1600,
-      height: 1200,
-      isPlaceholder: true,
+      kind: 'video',
+      src: '/videos/process/process-step4-video.mp4',
+      webmSrc: '/videos/process/process-step4-video.webm',
+      posterSrc: '/images/process/process-step4-video-poster.webp',
+      alt: 'Video showing a cabin being delivered, installed, and prepared for handover.',
+      width: 960,
+      height: 720,
+      isPlaceholder: false,
     },
     cta: {
       label: 'Get started',

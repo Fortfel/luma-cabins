@@ -16,17 +16,12 @@ import { useMediaQuery } from '@workspace/ui/hooks/use-media-query'
 import { usePrefersReducedMotion } from '@workspace/ui/hooks/use-prefers-reduced-motion'
 import { cn } from '@workspace/ui/lib/utils'
 
-const ACTIVATION_LINE_RATIO = 0.5
+const ACTIVATION_BAND_TOP_RATIO = 0.25
+const ACTIVATION_BAND_BOTTOM_RATIO = 0.5
 const GESTURE_INTENT_THRESHOLD_PX = 10
-const TRIGGER_POSITION_TOLERANCE_PX = 0.5
 const DESKTOP_MEDIA_SIZES = '(min-width: 1728px) 756px, (min-width: 1280px) 42vw'
 const TABLET_MEDIA_SIZES = '(min-width: 1024px) 60vw, (min-width: 768px) 66vw'
 const MOBILE_MEDIA_SIZES = '(min-width: 640px) calc(87vw - 3.125rem), calc(87vw - 2.625rem)'
-
-interface ProcessScrollState {
-  activeIndex: number
-  progress: number
-}
 
 interface MobilePointerGesture {
   intent: 'horizontal' | 'pending' | 'vertical'
@@ -35,74 +30,54 @@ interface MobilePointerGesture {
   startY: number
 }
 
-function getProcessScrollState(
-  activationY: number,
-  triggerPositions: ReadonlyArray<number>,
-): ProcessScrollState | null {
-  if (triggerPositions.length < 2) {
-    return null
-  }
-
-  const firstPosition = triggerPositions[0]
-  const finalPosition = triggerPositions.at(-1)
-
-  if (firstPosition === undefined || finalPosition === undefined) {
-    return null
-  }
-
-  const finalIndex = triggerPositions.length - 1
-
-  if (activationY <= firstPosition) {
-    return { activeIndex: 0, progress: 0 }
-  }
-
-  if (activationY >= finalPosition) {
-    return { activeIndex: finalIndex, progress: 1 }
-  }
-
-  let activeIndex = 0
-
-  for (let index = 1; index < triggerPositions.length; index += 1) {
-    const triggerPosition = triggerPositions[index]
-
-    if (triggerPosition !== undefined && triggerPosition <= activationY) {
-      activeIndex = index
-    }
-  }
-
-  const activePosition = triggerPositions[activeIndex]
-  const nextPosition = triggerPositions[activeIndex + 1]
-
-  if (activePosition === undefined || nextPosition === undefined) {
-    return null
-  }
-
-  const segmentProgress =
-    nextPosition > activePosition
-      ? Math.min(1, Math.max(0, (activationY - activePosition) / (nextPosition - activePosition)))
-      : 0
-
-  return {
-    activeIndex,
-    progress: (activeIndex + segmentProgress) / finalIndex,
-  }
-}
-
 function HowItWorksExperience({ steps }: { steps: ReadonlyArray<ProcessStep> }) {
   const [activeStepIndex, setActiveStepIndex] = useState(0)
   const [carouselApi, setCarouselApi] = useState<CarouselApi>()
+  const [hasEnteredViewport, setHasEnteredViewport] = useState(false)
   const isTabletOrDesktop = useMediaQuery('(min-width: 768px)', { initializeWithValue: false }) === true
   const shouldReduceMotion = usePrefersReducedMotion()
 
   const experienceRef = useRef<HTMLDivElement>(null)
-  const railRef = useRef<HTMLDivElement>(null)
   const triggerRefs = useRef<Array<HTMLHeadingElement | null>>([])
-  const triggerPositionsRef = useRef<ReadonlyArray<number>>([])
+  const stepContentRefs = useRef<Array<HTMLDivElement | null>>([])
   const activeStepRef = useRef(0)
+  const lastScrollYRef = useRef<number | null>(null)
   const scrollFrameRef = useRef<number | null>(null)
-  const measurementFrameRef = useRef<number | null>(null)
   const mobilePointerGestureRef = useRef<MobilePointerGesture | null>(null)
   const lastMobileGestureIntentRef = useRef<'horizontal' | 'vertical' | null>(null)
+
+  useEffect(() => {
+    const experience = experienceRef.current
+
+    if (!experience || typeof IntersectionObserver === 'undefined') {
+      setHasEnteredViewport(true)
+      return undefined
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0]
+
+        if (entry === undefined) {
+          return
+        }
+
+        if (!entry.isIntersecting) {
+          return
+        }
+
+        setHasEnteredViewport(true)
+        observer.disconnect()
+      },
+      { rootMargin: '400px 0px' },
+    )
+
+    observer.observe(experience)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
 
   useEffect(() => {
     if (!carouselApi) {
@@ -136,124 +111,78 @@ function HowItWorksExperience({ steps }: { steps: ReadonlyArray<ProcessStep> }) 
     }
 
     const experience = experienceRef.current
-    const rail = railRef.current
 
-    if (!experience || !rail) {
+    if (!experience) {
       return undefined
     }
 
-    const syncTriggerPositions = () => {
-      const measuredPositions: Array<number> = []
+    const updateActiveStep = () => {
+      scrollFrameRef.current = null
 
-      for (const trigger of triggerRefs.current) {
-        if (!trigger) {
-          return
+      const scrollY = window.scrollY
+      const previousScrollY = lastScrollYRef.current
+      lastScrollYRef.current = scrollY
+
+      if (previousScrollY === null || scrollY === previousScrollY) {
+        return
+      }
+
+      const direction = scrollY > previousScrollY ? 1 : -1
+      const bandTop = window.innerHeight * ACTIVATION_BAND_TOP_RATIO
+      const bandBottom = window.innerHeight * ACTIVATION_BAND_BOTTOM_RATIO
+      const currentIndex = activeStepRef.current
+      let nextIndex = currentIndex
+      const intersectsActivationBand = (content: HTMLDivElement) => {
+        const bounds = content.getBoundingClientRect()
+
+        return bounds.top <= bandBottom && bounds.bottom >= bandTop
+      }
+
+      if (direction > 0) {
+        for (let index = currentIndex + 1; index < steps.length; index += 1) {
+          const content = stepContentRefs.current[index]
+
+          if (content && intersectsActivationBand(content)) {
+            nextIndex = index
+          }
         }
+      } else {
+        for (let index = currentIndex - 1; index >= 0; index -= 1) {
+          const content = stepContentRefs.current[index]
 
-        measuredPositions.push(trigger.getBoundingClientRect().top + window.scrollY)
+          if (content && intersectsActivationBand(content)) {
+            nextIndex = index
+          }
+        }
       }
 
-      if (measuredPositions.length !== steps.length) {
-        return
-      }
-
-      const cachedPositions = triggerPositionsRef.current
-      const hasPositionChange =
-        cachedPositions.length !== measuredPositions.length ||
-        measuredPositions.some((position, index) => {
-          const cachedPosition = cachedPositions[index]
-
-          return cachedPosition === undefined || Math.abs(position - cachedPosition) > TRIGGER_POSITION_TOLERANCE_PX
-        })
-
-      if (hasPositionChange) {
-        triggerPositionsRef.current = measuredPositions
+      if (nextIndex !== currentIndex) {
+        activeStepRef.current = nextIndex
+        setActiveStepIndex(nextIndex)
       }
     }
 
-    const updateScrollState = () => {
-      syncTriggerPositions()
-
-      const scrollState = getProcessScrollState(
-        window.scrollY + window.innerHeight * ACTIVATION_LINE_RATIO,
-        triggerPositionsRef.current,
-      )
-
-      if (!scrollState) {
-        return
-      }
-
-      rail.style.setProperty('--process-progress', String(scrollState.progress))
-
-      if (activeStepRef.current !== scrollState.activeIndex) {
-        activeStepRef.current = scrollState.activeIndex
-        setActiveStepIndex(scrollState.activeIndex)
-      }
-    }
-
-    const scheduleMeasurement = () => {
-      if (measurementFrameRef.current !== null) {
-        return
-      }
-
-      measurementFrameRef.current = window.requestAnimationFrame(() => {
-        measurementFrameRef.current = null
-        updateScrollState()
-      })
-    }
-
-    const scheduleScrollUpdate = () => {
+    const scheduleActiveStepUpdate = () => {
       if (scrollFrameRef.current !== null) {
         return
       }
 
-      scrollFrameRef.current = window.requestAnimationFrame(() => {
-        scrollFrameRef.current = null
-        updateScrollState()
-      })
+      scrollFrameRef.current = window.requestAnimationFrame(updateActiveStep)
     }
 
-    const handleScroll = () => {
-      scheduleScrollUpdate()
-    }
-
-    const handleViewportResize = () => {
-      scheduleMeasurement()
-    }
-
-    const resizeObserver = new ResizeObserver(scheduleMeasurement)
-
-    resizeObserver.observe(experience)
-
-    for (const trigger of triggerRefs.current) {
-      if (trigger) {
-        resizeObserver.observe(trigger)
-      }
-    }
-
-    // Upstream content can move the triggers without resizing this section.
-    resizeObserver.observe(document.documentElement)
-    resizeObserver.observe(document.body)
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    window.addEventListener('resize', handleViewportResize)
-    window.visualViewport?.addEventListener('resize', handleViewportResize)
-    scheduleMeasurement()
+    lastScrollYRef.current = window.scrollY
+    window.addEventListener('scroll', scheduleActiveStepUpdate, { passive: true })
+    window.addEventListener('resize', scheduleActiveStepUpdate)
+    window.visualViewport?.addEventListener('resize', scheduleActiveStepUpdate)
 
     return () => {
-      resizeObserver.disconnect()
-      window.removeEventListener('scroll', handleScroll)
-      window.removeEventListener('resize', handleViewportResize)
-      window.visualViewport?.removeEventListener('resize', handleViewportResize)
+      window.removeEventListener('scroll', scheduleActiveStepUpdate)
+      window.removeEventListener('resize', scheduleActiveStepUpdate)
+      window.visualViewport?.removeEventListener('resize', scheduleActiveStepUpdate)
 
       if (scrollFrameRef.current !== null) {
         window.cancelAnimationFrame(scrollFrameRef.current)
         scrollFrameRef.current = null
-      }
-
-      if (measurementFrameRef.current !== null) {
-        window.cancelAnimationFrame(measurementFrameRef.current)
-        measurementFrameRef.current = null
       }
     }
   }, [isTabletOrDesktop, steps.length])
@@ -267,13 +196,16 @@ function HowItWorksExperience({ steps }: { steps: ReadonlyArray<ProcessStep> }) 
       return
     }
 
-    const desiredScrollY =
-      trigger.getBoundingClientRect().top + window.scrollY - window.innerHeight * ACTIVATION_LINE_RATIO
-    const maxScrollY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight)
+    const step = trigger.closest<HTMLElement>('[data-process-step]') ?? trigger
 
-    window.scrollTo({
-      top: Math.min(maxScrollY, Math.max(0, desiredScrollY)),
+    if (shouldReduceMotion) {
+      activeStepRef.current = index
+      setActiveStepIndex(index)
+    }
+
+    step.scrollIntoView({
       behavior: shouldReduceMotion ? 'auto' : 'smooth',
+      block: 'start',
     })
   }
 
@@ -368,19 +300,23 @@ function HowItWorksExperience({ steps }: { steps: ReadonlyArray<ProcessStep> }) 
         <ProcessRail
           steps={steps}
           activeStepIndex={activeStepIndex}
-          railRef={railRef}
+          shouldReduceMotion={shouldReduceMotion}
           onTimelineClick={handleTimelineClick}
+          className="sticky top-[calc(var(--nav-height)+0.5rem)] col-span-4 h-[calc(100svh-var(--nav-height)-0.5rem)] pt-4"
         />
 
         <div className="col-span-8 col-start-5 xl:col-span-5">
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-32 xl:gap-0">
             {steps.map((step, index) => (
               <ProcessStepCopy
                 key={step.id}
                 step={step}
-                isLast={index === steps.length - 1}
                 isActive={index === activeStepIndex}
+                shouldPreload={hasEnteredViewport && Math.abs(index - activeStepIndex) <= 1}
                 shouldReduceMotion={shouldReduceMotion}
+                contentRef={(node) => {
+                  stepContentRefs.current[index] = node
+                }}
                 triggerRef={(node) => {
                   triggerRefs.current[index] = node
                 }}
@@ -389,7 +325,12 @@ function HowItWorksExperience({ steps }: { steps: ReadonlyArray<ProcessStep> }) 
           </div>
         </div>
 
-        <ProcessDesktopMedia steps={steps} activeStepIndex={activeStepIndex} shouldReduceMotion={shouldReduceMotion} />
+        <ProcessDesktopMedia
+          steps={steps}
+          activeStepIndex={activeStepIndex}
+          hasEnteredViewport={hasEnteredViewport}
+          shouldReduceMotion={shouldReduceMotion}
+        />
       </div>
 
       <div className="md:hidden">
@@ -411,7 +352,7 @@ function HowItWorksExperience({ steps }: { steps: ReadonlyArray<ProcessStep> }) 
           onPointerCancelCapture={handleMobilePointerCancelCapture}
           onClickCapture={handleMobileClickCapture}
         >
-          <CarouselContent className="ms-0 gap-3 py-px">
+          <CarouselContent className="ms-0 gap-3 py-px select-none">
             {steps.map((step, index) => (
               <CarouselItem
                 key={step.id}
@@ -422,6 +363,7 @@ function HowItWorksExperience({ steps }: { steps: ReadonlyArray<ProcessStep> }) 
                 <ProcessMobileCard
                   step={step}
                   isActive={index === activeStepIndex}
+                  shouldPreload={hasEnteredViewport && Math.abs(index - activeStepIndex) <= 1}
                   shouldReduceMotion={shouldReduceMotion}
                 />
               </CarouselItem>
@@ -461,33 +403,33 @@ function HowItWorksExperience({ steps }: { steps: ReadonlyArray<ProcessStep> }) 
 function ProcessRail({
   steps,
   activeStepIndex,
-  railRef,
+  shouldReduceMotion,
   onTimelineClick,
+  className,
 }: {
   steps: ReadonlyArray<ProcessStep>
   activeStepIndex: number
-  railRef: React.RefObject<HTMLDivElement | null>
+  shouldReduceMotion: boolean
   onTimelineClick: (index: number, event: React.MouseEvent<HTMLButtonElement>) => void
+  className?: string
 }) {
+  const progress = steps.length > 1 ? activeStepIndex / (steps.length - 1) : 0
+
   return (
-    <aside
-      className="sticky top-[calc(var(--nav-height)_+_0.5rem)] col-span-4 h-[calc(100svh_-_var(--nav-height)_-_0.5rem)]"
-      aria-label="Process timeline"
-    >
-      <div
-        ref={railRef}
-        className="relative flex h-full flex-col border-e border-border/70 pe-6"
-        style={{ '--process-progress': 0 } as React.CSSProperties}
-      >
-        <div className="relative h-1/2 shrink-0">
+    <aside className={cn(className)} aria-label="Process timeline">
+      <div className="relative flex h-full flex-col pe-4">
+        <div className="relative h-full max-h-96 shrink-0">
           <span aria-hidden="true" className="absolute inset-y-6 start-6 w-px bg-border">
             <span
-              className="absolute inset-x-0 top-0 h-full origin-top bg-primary"
-              style={{ transform: 'scaleY(var(--process-progress))' }}
+              className={cn(
+                'absolute inset-x-0 top-0 h-full origin-top bg-primary transition-transform duration-400 ease-out',
+                shouldReduceMotion && 'transition-none',
+              )}
+              style={{ transform: `scaleY(${progress})` }}
             />
           </span>
 
-          <ol className="relative flex h-full flex-col justify-between">
+          <ol className="relative flex h-full flex-col justify-between gap-4">
             {steps.map((step, index) => {
               const isActive = index === activeStepIndex
               const isReached = index <= activeStepIndex
@@ -503,14 +445,16 @@ function ProcessRail({
                     }}
                     className={cn(
                       buttonVariants({ variant: 'ghost', size: 'lg' }),
-                      'relative z-10 h-auto min-h-12 w-full justify-start gap-4 rounded-lg px-0 text-left hover:bg-transparent',
+                      'relative z-10 h-auto min-h-12 w-full cursor-pointer justify-start gap-4 rounded-lg px-0 text-left',
                       'transition-none focus-visible:ring-3 focus-visible:ring-ring/60',
+                      'hover:bg-transparent!',
                     )}
                   >
                     <span
                       aria-hidden="true"
                       className={cn(
-                        'grid size-12 shrink-0 place-items-center rounded-full border font-mono text-xs',
+                        'grid size-12 shrink-0 place-items-center rounded-full border font-mono text-base',
+                        'group-hover/button:bg-[color-mix(in_oklab,var(--color-primary)_80%,white)] group-hover/button:text-primary-foreground',
                         isReached
                           ? 'border-primary bg-primary text-primary-foreground'
                           : 'border-primary/45 bg-background text-muted-foreground',
@@ -521,7 +465,7 @@ function ProcessRail({
                     </span>
                     <span
                       className={cn(
-                        'text-clamp-14-16 leading-tight text-muted-foreground',
+                        'text-clamp-15-18 leading-tight text-muted-foreground',
                         isActive && 'font-semibold text-foreground',
                         isReached && !isActive && 'text-foreground/75',
                       )}
@@ -536,8 +480,8 @@ function ProcessRail({
         </div>
 
         <div aria-hidden="true" className="relative min-h-0 flex-1 overflow-hidden">
-          <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent_0%,black_20%,black_78%,transparent_100%)] opacity-25">
-            <div className="size-full bg-[radial-gradient(circle,var(--primary)_1px,transparent_1.25px)] bg-size-[14px_14px]" />
+          <div className="absolute inset-0 mask-[linear-gradient(to_bottom,transparent_0%,black_20%,black_78%,transparent_100%)] opacity-25">
+            <div className="size-full bg-[radial-gradient(circle,var(--primary)_1px,transparent_1.25px)] bg-size-[12px_12px]" />
           </div>
         </div>
       </div>
@@ -547,57 +491,61 @@ function ProcessRail({
 
 function ProcessStepCopy({
   step,
-  isLast,
   isActive,
+  shouldPreload,
   shouldReduceMotion,
+  contentRef,
   triggerRef,
 }: {
   step: ProcessStep
-  isLast: boolean
   isActive: boolean
+  shouldPreload: boolean
   shouldReduceMotion: boolean
+  contentRef: (node: HTMLDivElement | null) => void
   triggerRef: (node: HTMLHeadingElement | null) => void
 }) {
   return (
     <article
       data-process-step={step.id}
-      className={cn(
-        'flex flex-col gap-6 text-foreground md:gap-5 xl:min-h-[calc(100svh_-_var(--nav-height)_-_0.5rem)] xl:gap-7 xl:pt-[calc(var(--nav-height)_+_0.5rem)]',
-        !isLast && 'pb-24 xl:pb-0',
-      )}
+      className="scroll-mt-[calc(var(--nav-height)+0.5rem)] text-foreground xl:min-h-[calc(100svh-var(--nav-height)-0.5rem)]"
     >
-      <h3
-        id={`process-step-${step.id}`}
-        ref={triggerRef}
-        className="text-clamp-32-52 leading-[1.05] font-medium text-balance"
-      >
-        {step.title}
-      </h3>
+      <div ref={contentRef} data-process-step-content className="flex flex-col gap-6 pt-4 xl:gap-8">
+        <h3
+          id={`process-step-${step.id}`}
+          ref={triggerRef}
+          className="text-clamp-28-44 leading-[1.05] font-medium text-balance"
+        >
+          {step.title}
+        </h3>
 
-      <p className="text-clamp-16-19 max-w-prose leading-[1.35] text-pretty">{step.description}</p>
+        <div className="flex flex-col gap-2">
+          <p className="text-clamp-15-18 leading-[1.35] text-pretty">{step.description}</p>
 
-      <ProcessBulletList step={step} />
+          <ProcessBulletList step={step} />
+        </div>
 
-      {step.cta ? (
-        <Link href={step.cta.href} className={cn(buttonVariants({ size: 'lg' }), 'mt-1 self-start')}>
-          {step.cta.label}
-        </Link>
-      ) : null}
+        {step.cta ? (
+          <Link href={step.cta.href} className={cn(buttonVariants({ size: 'lg' }), 'mt-1 self-start')}>
+            {step.cta.label}
+          </Link>
+        ) : null}
 
-      <ProcessEmbeddedMedia
-        step={step}
-        sizes={TABLET_MEDIA_SIZES}
-        isActive={isActive}
-        shouldReduceMotion={shouldReduceMotion}
-        className="xl:hidden"
-      />
+        <ProcessEmbeddedMedia
+          step={step}
+          sizes={TABLET_MEDIA_SIZES}
+          isActive={isActive}
+          shouldPreload={shouldPreload}
+          shouldReduceMotion={shouldReduceMotion}
+          className="xl:hidden"
+        />
+      </div>
     </article>
   )
 }
 
-function ProcessBulletList({ step }: { step: ProcessStep }) {
+function ProcessBulletList({ step, className }: { step: ProcessStep; className?: string }) {
   return (
-    <ul className="text-clamp-14-16 flex flex-col gap-0  ">
+    <ul className={cn('text-clamp-14-16 flex flex-col gap-0', className)}>
       {step.bullets.map((bullet) => (
         <li key={bullet} className="flex items-start gap-3">
           <span aria-hidden="true" className="mt-[0.48em] size-1.5 shrink-0 rounded-full bg-primary" />
@@ -612,19 +560,26 @@ function ProcessEmbeddedMedia({
   step,
   sizes,
   isActive,
+  shouldPreload,
   shouldReduceMotion,
   className,
 }: {
   step: ProcessStep
   sizes: string
   isActive: boolean
+  shouldPreload: boolean
   shouldReduceMotion: boolean
   className?: string
 }) {
   return (
-    // <figure className={cn('relative mt-2 aspect-4/3 overflow-hidden rounded-xl border border-border', className)}>
     <figure className={cn('relative aspect-4/3 overflow-hidden', className)}>
-      <ProcessMedia step={step} sizes={sizes} isActive={isActive} shouldReduceMotion={shouldReduceMotion} />
+      <ProcessMedia
+        step={step}
+        sizes={sizes}
+        isActive={isActive}
+        shouldPreload={shouldPreload}
+        shouldReduceMotion={shouldReduceMotion}
+      />
     </figure>
   )
 }
@@ -634,6 +589,7 @@ function ProcessMedia({
   sizes,
   isDecorative = false,
   isActive,
+  shouldPreload,
   shouldReduceMotion,
   className,
 }: {
@@ -641,6 +597,7 @@ function ProcessMedia({
   sizes: string
   isDecorative?: boolean
   isActive: boolean
+  shouldPreload: boolean
   shouldReduceMotion: boolean
   className?: string
 }) {
@@ -653,8 +610,10 @@ function ProcessMedia({
         src={step.media.src}
         alt={isDecorative ? undefined : step.media.alt}
         webmSrc={step.media.webmSrc}
+        posterSrc={step.media.posterSrc}
         isDecorative={isDecorative}
         isActive={isActive}
+        shouldPreload={shouldPreload}
         shouldReduceMotion={shouldReduceMotion}
         className={mediaClassName}
       />
@@ -667,7 +626,7 @@ function ProcessMedia({
       alt={isDecorative ? '' : step.media.alt}
       fill
       sizes={sizes}
-      loading="lazy"
+      loading={shouldPreload ? 'eager' : 'lazy'}
       unoptimized={step.media.isPlaceholder}
       draggable={false}
       className={mediaClassName}
@@ -678,17 +637,21 @@ function ProcessMedia({
 function ProcessVideo({
   src,
   webmSrc,
+  posterSrc,
   alt,
   isDecorative = false,
   isActive,
+  shouldPreload,
   shouldReduceMotion,
   className,
 }: {
   src: string
   webmSrc?: string
+  posterSrc?: string
   alt?: string
   isDecorative?: boolean
   isActive: boolean
+  shouldPreload: boolean
   shouldReduceMotion: boolean
   className?: string
 }) {
@@ -739,7 +702,8 @@ function ProcessVideo({
       muted
       loop
       playsInline
-      preload={shouldPlay ? 'auto' : 'metadata'}
+      poster={posterSrc}
+      preload={shouldPreload ? 'auto' : 'metadata'}
       draggable={false}
       className={cn('size-full', className)}
     >
@@ -752,14 +716,16 @@ function ProcessVideo({
 function ProcessDesktopMedia({
   steps,
   activeStepIndex,
+  hasEnteredViewport,
   shouldReduceMotion,
 }: {
   steps: ReadonlyArray<ProcessStep>
   activeStepIndex: number
+  hasEnteredViewport: boolean
   shouldReduceMotion: boolean
 }) {
   return (
-    <div className="sticky top-[calc(var(--nav-height)_+_0.5rem)] hidden h-[calc(100svh_-_var(--nav-height)_-_0.5rem)] items-center xl:col-span-7 xl:col-start-10 xl:flex">
+    <div className="sticky top-[calc(var(--nav-height)+0.5rem)] hidden h-[calc(100svh-var(--nav-height)-0.5rem)] items-center xl:col-span-7 xl:col-start-10 xl:flex">
       <div
         aria-hidden="true"
         className="relative aspect-4/3 max-h-full w-full max-w-full overflow-hidden rounded-xl border border-border bg-background-accent"
@@ -771,6 +737,7 @@ function ProcessDesktopMedia({
             isDecorative
             sizes={DESKTOP_MEDIA_SIZES}
             isActive={index === activeStepIndex}
+            shouldPreload={hasEnteredViewport && Math.abs(index - activeStepIndex) <= 1}
             shouldReduceMotion={shouldReduceMotion}
             className={cn(
               'absolute inset-0 object-cover motion-reduce:transition-none',
@@ -787,10 +754,12 @@ function ProcessDesktopMedia({
 function ProcessMobileCard({
   step,
   isActive,
+  shouldPreload,
   shouldReduceMotion,
 }: {
   step: ProcessStep
   isActive: boolean
+  shouldPreload: boolean
   shouldReduceMotion: boolean
 }) {
   const isPrimaryStep = step.number === '01' || step.number === '04'
@@ -802,6 +771,7 @@ function ProcessMobileCard({
           step={step}
           sizes={MOBILE_MEDIA_SIZES}
           isActive={isActive}
+          shouldPreload={shouldPreload}
           shouldReduceMotion={shouldReduceMotion}
           className=""
         />
@@ -830,11 +800,11 @@ function ProcessMobileCard({
           {step.label}
         </h3>
 
-        <p className="text-clamp-14-16 text-pretty">{step.description}</p>
+        <p className="text-clamp-15-18 text-pretty">{step.description}</p>
       </CardHeader>
 
       <CardContent className="flex flex-col pt-2 pb-6">
-        <ProcessBulletList step={step} />
+        <ProcessBulletList step={step} className="text-clamp-14-16" />
       </CardContent>
     </Card>
   )
