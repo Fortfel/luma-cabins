@@ -453,7 +453,7 @@ function TestimonialCard({
         isDesktop ? 'cursor-pointer' : 'cursor-grab active:cursor-grabbing',
       )}
     >
-      <span className="text-clamp-16-19 line-clamp-2 h-[2lh] font-heading leading-[1.3] font-medium">
+      <span className="text-clamp-15-18 line-clamp-2 h-[2lh] font-heading leading-[1.3] font-medium">
         “{testimonial.quote}”
       </span>
       <TestimonialFooter testimonial={testimonial} isExpanded={false} />
@@ -656,7 +656,7 @@ function TestimonialPopover({
                     animate={{ y: shouldShowExpandedState ? 0 : addedHeight / 2 }}
                     transition={geometryTransition}
                   >
-                    <PopoverTitle className="text-clamp-16-19 font-heading leading-[1.3] font-medium text-card-foreground">
+                    <PopoverTitle className="text-clamp-15-18 font-heading leading-[1.3] font-medium text-card-foreground">
                       “{testimonial.quote}”
                     </PopoverTitle>
                   </motion.div>

@@ -6,12 +6,12 @@
   /* Typography */
   --text-clamp-42-88: clamp(2.625rem, calc(1.6964rem + 3.9621vw), 5.5rem); /* 1536 */
   --text-clamp-36-64: clamp(2.25rem, calc(1.6848rem + 2.4117vw), 4rem); /* 1536 */
-  --text-clamp-38-56: clamp(2.375rem, calc(2.0116rem + 1.5504vw), 3.5rem); /* 1536 */
   --text-clamp-32-52: clamp(2rem, calc(1.596rem + 1.723vw), 3.25rem); /* 1536 */
+  --text-clamp-28-44: clamp(1.75rem, calc(1.427rem + 1.3781vw), 2.75rem); /* 1536 */
   --text-clamp-24-36: clamp(1.5rem, calc(1.2578rem + 1.0336vw), 2.25rem); /* 1536 */
+
   --text-clamp-16-20: clamp(1rem, calc(0.8964rem + 0.442vw), 1.25rem); /* 1280 */
-  --text-clamp-14-20: clamp(0.875rem, calc(0.7539rem + 0.5168vw), 1.25rem); /* 1536 */
-  --text-clamp-16-19: clamp(1rem, calc(0.9394rem + 0.2584vw), 1.1875rem); /* 1536 */
+  --text-clamp-15-18: clamp(0.9375rem, calc(0.8598rem + 0.3315vw), 1.125rem); /* 1280 */
   --text-clamp-14-16: clamp(0.875rem, calc(0.8232rem + 0.221vw), 1rem); /* 1280 */
   --text-clamp-12-14: clamp(0.75rem, calc(0.6982rem + 0.221vw), 0.875rem); /* 1280 */
 

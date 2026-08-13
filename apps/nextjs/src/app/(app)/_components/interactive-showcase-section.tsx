@@ -393,7 +393,7 @@ function ModelSummary({
   return (
     <div className={cn('flex flex-col gap-3 text-foreground', className)}>
       <h3 className="text-clamp-32-52 font-heading leading-none font-medium">{cabin.name}</h3>
-      <div className="text-clamp-14-20 flex gap-2 font-semibold">
+      <div className="text-clamp-16-20 flex gap-2 font-semibold">
         <span>{cabin.specs.area}</span>
         <span className="hidden text-muted-foreground sm:inline">|</span>
         <span className="hidden sm:inline">{cabin.specs.layout}</span>
