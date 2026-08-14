@@ -384,21 +384,20 @@ function TestimonialsSection({ className, ...props }: React.ComponentProps<'sect
                 '**:data-[slot=carousel-content]:cursor-grab **:data-[slot=carousel-content]:select-none **:data-[slot=carousel-content]:active:cursor-grabbing',
             )}
           >
-            <CarouselContent className="ms-0 h-full items-center">
-              {TESTIMONIALS.map((testimonial, index) => (
-                <CarouselItem key={testimonial.id} className="w-auto basis-auto py-1 ps-6">
-                  <TestimonialCard
-                    testimonial={testimonial}
-                    index={index}
-                    isDesktop={isDesktop}
-                    isHidden={isPopoverOpen && isPopoverReady && index === activeIndex}
-                  />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-
-            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-6 bg-linear-to-r from-background-accent via-background-accent/80 to-transparent md:w-20" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-6 bg-linear-to-l from-background-accent via-background-accent/80 to-transparent md:w-20" />
+            <div className="w-full min-w-0 mask-[linear-gradient(to_right,transparent_0,rgb(0_0_0/20%)_12px,black_24px,black_calc(100%-24px),rgb(0_0_0/20%)_calc(100%-12px),transparent_100%)] mask-alpha md:mask-[linear-gradient(to_right,transparent_0,rgb(0_0_0/20%)_40px,black_80px,black_calc(100%-80px),rgb(0_0_0/20%)_calc(100%-40px),transparent_100%)]">
+              <CarouselContent className="ms-0 h-full items-center">
+                {TESTIMONIALS.map((testimonial, index) => (
+                  <CarouselItem key={testimonial.id} className="w-auto basis-auto py-1 ps-6">
+                    <TestimonialCard
+                      testimonial={testimonial}
+                      index={index}
+                      isDesktop={isDesktop}
+                      isHidden={isPopoverOpen && isPopoverReady && index === activeIndex}
+                    />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </div>
           </Carousel>
 
           {activeTestimonial && activeTriggerMetrics && isPopoverOpen ? (
