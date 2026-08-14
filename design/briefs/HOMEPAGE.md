@@ -8,6 +8,12 @@ The homepage should present Luma Cabins as a refined, calm, nature-focused brand
 
 The page should feel like a complete homepage for a real cabin brand, with a clear structure, strong visual direction, practical product information, and a calm conversion flow.
 
+## Current Implementation Status
+
+This brief is aligned to the homepage currently rendered by `apps/nextjs/src/app/(app)/page.tsx`. The shipped route currently contains seven sections: Hero, About, Models Overview, Interactive Showcase, Testimonials, Interior Comparison, and How It Works. Cabins in Context, Benefits, FAQ, a final CTA, and a footer remain future expansion directions rather than rendered homepage sections.
+
+The current page is still a static concept with hardcoded typed content. The `/contact` destination exists as a shell, and the `Models` and `FAQ` navigation fragments do not currently resolve to rendered section IDs.
+
 ---
 
 ## Brand
@@ -26,7 +32,7 @@ European premium cabin brand, suitable for forests, lakes, mountains, and rural 
 
 The brand should not feel tied too strongly to one specific country or legal region.
 
-Avoid overly specific permit, pricing, or delivery promises.
+Avoid unsupported permit or delivery promises. The current starting prices are provisional concept content and are documented in the current showcase section below.
 
 ---
 
@@ -34,15 +40,15 @@ Avoid overly specific permit, pricing, or delivery promises.
 
 The tone should feel:
 
-* Calm
-* Minimal
-* Premium
-* Nature-focused
-* Warm
-* Quietly confident
-* Architectural but not cold
-* Sustainable but not preachy
-* Refined and human
+- Calm
+- Minimal
+- Premium
+- Nature-focused
+- Warm
+- Quietly confident
+- Architectural but not cold
+- Sustainable but not preachy
+- Refined and human
 
 The brand should feel premium and considered, but still approachable.
 
@@ -52,14 +58,14 @@ The brand should feel premium and considered, but still approachable.
 
 The page should not feel like:
 
-* Cheap tiny-house content
-* Survivalist or prepper off-grid housing
-* Generic real estate development
-* A cold corporate architecture firm
-* A tech-startup SaaS website
-* Mass-market prefab housing
-* Overly rustic cabin branding
-* Fake award-winning studio content
+- Cheap tiny-house content
+- Survivalist or prepper off-grid housing
+- Generic real estate development
+- A cold corporate architecture firm
+- A tech-startup SaaS website
+- Mass-market prefab housing
+- Overly rustic cabin branding
+- Fake award-winning studio content
 
 ---
 
@@ -71,11 +77,11 @@ Design-conscious city professionals, couples, or small families who want a compa
 
 They are likely interested in:
 
-* Escaping city life
-* Spending weekends in nature
-* Owning a calm second place
-* Avoiding the complexity of a fully custom build
-* Getting a beautiful, low-maintenance cabin
+- Escaping city life
+- Spending weekends in nature
+- Owning a calm second place
+- Avoiding the complexity of a fully custom build
+- Getting a beautiful, low-maintenance cabin
 
 ### Secondary Audience
 
@@ -89,16 +95,16 @@ This can include people who want a compact home for a more intentional lifestyle
 
 The audience cares about:
 
-* Premium design
-* Nature
-* Simplicity
-* Sustainability
-* Low maintenance
-* Clear process
-* Quality materials
-* Energy performance
-* A calmer lifestyle
-* Avoiding complicated custom construction
+- Premium design
+- Nature
+- Simplicity
+- Sustainability
+- Low maintenance
+- Clear process
+- Quality materials
+- Energy performance
+- A calmer lifestyle
+- Avoiding complicated custom construction
 
 ---
 
@@ -114,21 +120,21 @@ Choose a cabin model, customize selected finishes and systems, add optional enha
 
 ### What It Is
 
-* Pre-designed cabin models
-* Curated customization
-* Optional add-ons
-* High-performance compact homes
-* Premium retreat spaces
-* Solar-ready by default
-* Optional off-grid packages
+- Pre-designed cabin models
+- Curated customization
+- Optional add-ons
+- High-performance compact homes
+- Premium retreat spaces
+- Solar-ready by default
+- Optional off-grid packages
 
 ### What It Is Not
 
-* Fully custom architecture
-* Cheap tiny homes
-* Survival cabins
-* Generic prefab catalog
-* Mass-market housing product
+- Fully custom architecture
+- Cheap tiny homes
+- Survival cabins
+- Generic prefab catalog
+- Mass-market housing product
 
 ---
 
@@ -138,51 +144,57 @@ The homepage should introduce three core models.
 
 ### Niva
 
-Compact studio cabin.
+Compact loft cabin.
 
 ```txt
-24 m² · Studio · Sleeps 2
+20 m² · Sleeping loft
 ```
 
 Use case:
 
-Solo retreats, guest stays, short weekend escapes.
+Focused escapes, solo retreats, and short weekend stays.
 
 ### Aster
 
-One-bedroom retreat.
+Compact studio retreat.
 
 ```txt
-38 m² · 1 bedroom · Sleeps 2–4
+39 m² · Studio
 ```
 
 Use case:
 
-Weekend home, couple’s retreat, compact nature escape.
+Weekend stays, couples, and quiet nature escapes.
 
 ### Veyra
 
-Larger two-bedroom cabin.
+Larger one-bedroom hideaway.
 
 ```txt
-56 m² · 2 bedrooms · Sleeps 4–6
+56 m² · 1 Bedroom
 ```
 
 Use case:
 
-Longer stays, small families, remote work, more comfortable retreats.
+Longer stays, hosting, remote work, and generous indoor-outdoor living.
 
 ---
 
-## Optional Add-ons
+## Product Options And Add-ons
 
-Supported add-ons:
+The current interactive showcase exposes these finish choices:
 
-* Sauna package
-* Plunge pool
-* Deck Lounge Package
+- Exterior: Timber, Charred wood, Oyster
+- Interior palette: Light oak, Warm ash, Dark walnut
+- Floor plan view for the active model
 
-The Deck Lounge Package should suggest a more comfortable outdoor living setup, such as built-in seating, shade, and optional media features.
+Exterior finish changes currently update the visible cabin imagery. Interior palette selectors are present in the control panel, but the current implementation does not map them to a separate visible image.
+
+The following add-ons remain product direction and are not currently surfaced in the homepage UI:
+
+- Sauna package
+- Plunge pool
+- Deck lounge package
 
 Add-ons should feel like part of the cabin offer, not a separate top-level product category.
 
@@ -198,31 +210,33 @@ The core architecture stays fixed. Clients customize finishes, energy setup, and
 
 This supports the brand promise of a faster, simpler, higher-quality pre-designed cabin process without the complexity of a fully custom build.
 
-### Possible Customization Options
+### Current Showcase Options
 
 Exterior finish:
 
-* Timber
-* Charred wood
-* Standing seam metal
+- Timber
+- Charred wood
+- Oyster
 
 Interior palette:
 
-* Light oak
-* Warm ash
-* Dark walnut-style finish
+- Light oak
+- Warm ash
+- Dark walnut
 
 Energy setup:
 
-* Grid-ready
-* Solar-ready
-* Optional off-grid package
+- Grid-ready
+- Solar-ready
+- Optional off-grid package
 
 Add-ons:
 
-* Sauna package
-* Plunge pool
-* Deck Lounge Package
+- Sauna package
+- Plunge pool
+- Deck lounge package
+
+Energy setup and add-ons are product direction only; they are not currently selectable in the homepage showcase.
 
 ---
 
@@ -232,19 +246,19 @@ Sustainability claims should be credible and specific.
 
 Use claims like:
 
-* Compact footprint
-* High-performance insulation
-* Responsibly sourced timber
-* Low-waste prefabrication
-* Solar-ready energy setup
-* Durable, repairable material choices
+- Compact footprint
+- High-performance insulation
+- Responsibly sourced timber
+- Low-waste prefabrication
+- Solar-ready energy setup
+- Durable, repairable material choices
 
 Avoid overclaims like:
 
-* Carbon neutral
-* Zero impact
-* 100% sustainable
-* Fully off-grid by default
+- Carbon neutral
+- Zero impact
+- 100% sustainable
+- Fully off-grid by default
 
 ---
 
@@ -258,53 +272,51 @@ The page should not feel like survivalist or prepper off-grid housing.
 
 ---
 
-## Main CTA Hierarchy
+## Current CTA Hierarchy
 
-The main user journey should be:
+The current page uses this journey:
 
-1. Explore the cabin models
-2. Book a consultation
+1. Start from `Get Started` in the hero or navbar
+2. Review a model and its options
+3. Use `Explore {model}` or `Get started` to reach `/contact`; use `View floor plan` for a local model detail view
 
-### Primary CTA Intent
+### Current Primary CTA
 
-Explore models.
+`Get Started`, linking to `/contact`.
 
-Possible labels:
+The homepage does not currently render a separate “Explore models” hero CTA or a consultation booking flow.
 
-* Explore models
-* View cabin models
-* See the cabins
+### Current Model CTA
 
-### Secondary CTA Intent
-
-Book a consultation.
-
-Possible labels:
-
-* Book a consultation
-* Plan your retreat
-* Start planning
+`Explore {model}`, linking to the contact page from the active showcase model.
 
 ---
 
-## Navigation
+## Current Navigation
 
-Recommended navigation:
+The current navigation renders these labels:
 
 ```txt
 Models
 How it works
 Portfolio
 FAQ
-[Book consultation]
+[Get Started]
 ```
 
-### Notes
+Current destinations:
 
-* Add-ons do not need to be a top-level nav item.
-* Pricing does not need to be in the homepage navigation.
-* FAQ can link to a section on the homepage.
-* The page should feel like a homepage for a fuller brand site.
+- `Models` points to `#models`, but no matching section ID is currently rendered.
+- `How it works` points to the rendered `#process` section.
+- `Portfolio` points to `/about`, which is currently a project shell.
+- `FAQ` points to `#faqs`, but no FAQ section is currently rendered.
+- `Get Started` points to `/contact`, which is currently a contact-page shell.
+
+The mobile menu also exposes `Contact`, and the desktop navigation still includes the placeholder EN/PL language switcher.
+
+### Product Direction Notes
+
+Add-ons do not need to be a top-level nav item. Pricing does not need to be in the homepage navigation. The page can evolve into a fuller brand site as the unresolved routes and section anchors become real.
 
 Possible future routes:
 
@@ -330,12 +342,12 @@ Sell the feeling first.
 
 The hero should communicate:
 
-* Pre-designed cabins
-* Slower living
-* Nature retreat
-* Compact high-performance homes
-* Sustainable footprint
-* Premium simplicity
+- Pre-designed cabins
+- Slower living
+- Nature retreat
+- Compact high-performance homes
+- Sustainable footprint
+- Premium simplicity
 
 ### Hero Media
 
@@ -343,34 +355,31 @@ Use cinematic video footage or a strong image showing cabins in nature.
 
 Video direction:
 
-* Slow camera movement
-* Morning or evening light
-* Exterior cabin shots
-* Forest, lake, or mountain surroundings
-* Maybe a few interior glimpses
-* Calm, premium, atmospheric feeling
+- Slow camera movement
+- Morning or evening light
+- Exterior cabin shots
+- Forest, lake, or mountain surroundings
+- Maybe a few interior glimpses
+- Calm, premium, atmospheric feeling
 
 ### Hero Content
 
-Include:
+The current hero includes:
 
-* Short premium headline
-* Short supporting text
-* Primary CTA
-* Secondary CTA
+- Headline: `Live closer to what matters`
+- Supporting text: `Premium pre-designed cabins, designed to help you slow down, reconnect, and feel at home - anywhere.`
+- One `Get Started` CTA linking to `/contact`
+- Four benefit callouts on large screens: Precision Built, Delivered & Installed, Designed to Last, and Made to Belong
+- A compact benefit line on smaller screens
 
-### Hero CTA
+The hero uses a looping background video with a static image fallback and a visible play/pause control. Reduced-motion behavior is part of the implementation.
+
+### Current Hero CTA
 
 Primary:
 
 ```txt
-Explore models
-```
-
-Secondary:
-
-```txt
-Book a consultation
+Get Started
 ```
 
 ---
@@ -387,19 +396,23 @@ This section should communicate that Luma Cabins offers a simpler path to owning
 
 Keep this section short and clear. It should not feel like a long company story.
 
+### Current Implementation
+
+The shipped section uses the eyebrow `Our approach`, the heading `A simpler path to a quiet retreat.`, and one centered paragraph. It is a text-only editorial introduction with no image or CTA.
+
 ### Possible Themes
 
-* Calm retreat
-* Simpler path than custom building
-* Thoughtful design
-* Premium compact living
-* Nature-focused lifestyle
-* Curated, not complicated
+- Calm retreat
+- Simpler path than custom building
+- Thoughtful design
+- Premium compact living
+- Nature-focused lifestyle
+- Curated, not complicated
 
-### Example Copy Direction
+### Current Copy
 
 ```txt
-Luma Cabins creates pre-designed retreats for slower weekends, remote plots, and quieter ways of living. Each model starts with a resolved architectural base, then adapts through curated finishes, systems, and add-ons.
+We design secluded luxury retreats for unforgettable stays in nature. Each cabin combines refined architecture, warm natural materials, panoramic views, and premium comforts for a peaceful escape without compromise. Slow down, reconnect, and experience the calm of modern cabin living.
 ```
 
 ---
@@ -412,26 +425,21 @@ Introduce the three core cabin models quickly and visually.
 
 ### Must Include
 
-* Niva
-* Aster
-* Veyra
-* Basic specs
-* Short use-case descriptions
-* Path to view model details
+- Niva
+- Aster
+- Veyra
+- Current specs: `20 m² · Sleeping loft`, `39 m² · Studio`, and `56 m² · 1 Bedroom`
+- Image-led model navigation
 
-### Possible Layouts
+### Current Composition
 
-* Large model cards
-* Full-width slider
-* Editorial image panels
-* Three-column premium overview
-* Stacked mobile-first model sections
+The shipped section is a full-width carousel with one large image per model. The active model name and specs sit over the image, with model thumbnails, responsive previous/next controls, and a play/pause control for the four-second autoplay cycle. Dragging is enabled below the desktop breakpoint.
 
 ### Notes
 
-This section should give users a fast overview of the product range.
+This section gives users a fast visual overview of the product range. It does not show prices or use-case descriptions; pricing and the richer model summary live in the Interactive Model Showcase.
 
-No pricing on the homepage for now.
+The current overview order is Niva, Aster, Veyra.
 
 ---
 
@@ -447,35 +455,34 @@ This should be one of the strongest sections on the homepage.
 
 A large interactive product showcase where the user can browse cabin models and see the content update.
 
-### Suggested Layout
+### Current Composition
 
 Left side:
 
-* Current model name
-* Short description
-* Specs
-* Exterior finish options
-* Interior palette options
-* Energy setup options
-* Add-ons
-* CTA to explore the selected model
-* Optional button to view floor plan
+- Current model name
+- Current specs and description
+- Exterior finish options: Timber, Charred wood, Oyster
+- Interior palette options: Light oak, Warm ash, Dark walnut
+- Starting price plus installation note
+- `Explore {model}` CTA to `/contact`
+- `View floor plan` dialog trigger
 
 Right side:
 
-* Large image or render of the current cabin
-* Partial preview of the next cabin visible
-* Arrows and/or drag interaction
-* Image updates based on selected options
-* Optional floor plan mode
+- Large exterior image or render for each cabin
+- Partial previews of neighboring cabins during carousel movement
+- Responsive arrows, dots, or thumbnails depending on viewport
+- Exterior image updates when the finish changes
+- Floor plan dialog for the active cabin
 
-### Optional Interactions
+### Current Interactions
 
-* Switch exterior finish
-* Switch interior palette
-* Toggle floor plan
-* Move to next model
-* Show selected add-ons
+- Switch exterior finish
+- Switch interior palette
+- Toggle floor plan
+- Move to next model
+
+The showcase is a polished product preview, not a full configurator. Energy setup and add-ons are not currently interactive homepage controls.
 
 ### Important
 
@@ -493,55 +500,48 @@ Add warmth and trust while keeping social proof subtle.
 
 Testimonials should be secondary, not the main proof point.
 
-### Recommended Direction
+### Current Implementation
 
-Use a soft testimonial strip or horizontal marquee.
+The shipped section is a horizontally auto-scrolling carousel of six fictional testimonials. Each card contains a short quote, client avatar, client name, and five-star rating. Selecting a card opens the longer review in an animated popover; pointer, keyboard focus, reduced motion, and page-scroll behavior are handled by the component.
 
-### Style
+### Current Style
 
-* Short quote cards
-* 5-star rating
-* No full client names
-* No heavy fake case-study feel
-* Optional small generic label
-* Optional no avatars
-* Slow horizontal movement
-* Soft fade on the left and right edges
+- Short quote cards
+- 5-star rating
+- Slow horizontal movement
+- Soft fade on the left and right edges
 
-### Possible Quote Style
+All testimonial identities and reviews are fictional concept content, not verified customer proof.
+
+### Current Quote Examples
 
 ```txt
-“It feels larger than its footprint.”
+“We stopped thinking about the square metres.”
 ```
 
 ```txt
-“The process felt calm from the beginning.”
+“We always knew what the next step was.”
 ```
 
 ```txt
-“Simple, warm, and beautifully resolved.”
+“Even rainy weekends feel restorative here.”
 ```
 
 ```txt
-“Every finish felt intentionally chosen.”
+“The materials feel even better in person.”
 ```
 
 ```txt
-“A quiet place that still feels refined.”
+“I close my laptop and the room becomes a retreat again.”
 ```
 
-### Optional Generic Labels
+### Additional Current Quotes
 
-* Forest retreat
-* Weekend cabin
-* Lakeside plot
-* Aster cabin
-* Niva retreat
-* Remote work cabin
+- “We chose every finish in a single afternoon.”
 
-### Alternative
+### Future Alternative
 
-Instead of testimonials, this section can become a moving values/proof strip:
+If verified customer proof is not available, this section can instead become a moving values/proof strip:
 
 ```txt
 Solar-ready · Compact footprint · Curated finishes · Low-waste prefabrication · Designed for nature plots · Optional sauna · High-performance envelope
@@ -549,7 +549,7 @@ Solar-ready · Compact footprint · Curated finishes · Low-waste prefabrication
 
 ---
 
-## 6. Visual CTA / Interactive Comparison Reveal
+## 6. Interior Comparison Reveal
 
 ### Purpose
 
@@ -563,38 +563,39 @@ A split-view image reveal / image comparison block with a draggable or mouse-fol
 
 The divider reveals one image version against another.
 
-### Recommended Use
+### Current Implementation
 
-Compare the same cabin or same interior composition in two curated design variants.
+The shipped section compares two Veyra interior variants with a draggable divider. It uses the heading `Your space, your story.` and the supporting copy `Customize your cabin to match your lifestyle, from the way each room works to the details that make it yours.`
 
-Example:
+The two current variants are:
 
-* Light Oak vs Warm Ash
-* Day mood vs Evening mood
-* Minimal palette vs Richer palette
+- `Focus` — Light oak, with a built-in workspace and living area
+- `Unwind` — Dark walnut, with lounge seating and built-in storage
+
+The comparison starts at a 56% split, uses a responsive 3:2-to-16:9 image frame, and supports touch and pointer dragging.
 
 ### Why This Works
 
 This section reinforces the brand promise:
 
-* Pre-designed, but still personal
-* Curated customization
-* Premium choices without complexity
-* One architectural base, refined through details
+- Pre-designed, but still personal
+- Curated customization
+- Premium choices without complexity
+- One architectural base, refined through details
 
-### Alternative Use Cases
+### Future Directions
 
-The comparison reveal could also compare:
+Future variants could compare:
 
-* Interior vs floor plan
-* Interior vs exterior
-* Furnished vs alternative setup
-* Two different lifestyle moods
-* Standard cabin vs add-on enhanced cabin
+- Interior vs floor plan
+- Interior vs exterior
+- Furnished vs alternative setup
+- Two different lifestyle moods
+- Standard cabin vs add-on enhanced cabin
 
-### Recommended Message
+### Current Message
 
-This section should communicate that each cabin starts from a resolved design system, then becomes personal through carefully selected options.
+The current module communicates that a resolved cabin design can still be shaped through personal choices.
 
 ### Possible Headlines
 
@@ -620,34 +621,28 @@ A clear base, shaped through quiet choices.
 Each model begins with a resolved architectural plan, then adapts through curated finishes, palettes, energy options, and add-ons.
 ```
 
-### Possible CTAs
+### Future CTA Options
 
-* Explore model options
-* See what’s customizable
-* View cabin models
+- Explore model options
+- See what’s customizable
+- View cabin models
 
-### Layout Notes
+The current comparison section does not render a CTA.
 
-Preferred:
+### Current Layout
 
-* Large contained layout
-* Generous spacing
-* Strong image treatment
-* Subtle divider interaction
-* Optional CTA below or beside the module
-
-Full bleed is possible, but a large contained layout may feel more refined and intentional.
+- Full-width media surface with a centered maximum width
+- Image-led 3:2 frame below medium widths and 16:9 from medium widths upward
+- Subtle divider and handle interaction
+- Rounded framing at the widest breakpoint
 
 ### Mobile Behavior
 
 Do not rely only on hover.
 
-Possible mobile alternatives:
+Current mobile behavior:
 
-* Touch-drag reveal
-* Toggle between variants
-* Stacked comparison images
-* Tabs for palette options
+- Touch-drag reveal
 
 ---
 
@@ -659,35 +654,34 @@ Reduce uncertainty and show a simple, predictable process.
 
 This section should make the process feel less intimidating than a fully custom architecture or construction project.
 
-### Suggested Steps
+### Current Steps
 
-```txt
-Choose your model
-Curate finishes and add-ons
-Review your site
-Confirm the plan
-Prepare foundations and utilities
-Deliver and install
-```
+| Step | Label               | Editorial heading                              |
+| ---- | ------------------- | ---------------------------------------------- |
+| 01   | Design yours        | Shape a cabin around the way you want to live. |
+| 02   | Pick the spot       | Find the setting that makes it feel at home.   |
+| 03   | Prepare together    | Bring the site and cabin plan together.        |
+| 04   | Deliver and install | Watch your cabin take its place.               |
+
+Only step 04 currently includes the `Get started` CTA to `/contact`. Step descriptions and detail bullets are provisional content.
 
 ### Tone
 
 The process should feel:
 
-* Clear
-* Reassuring
-* Simple
-* Premium
-* Guided
-* Not too corporate
+- Clear
+- Reassuring
+- Simple
+- Premium
+- Guided
+- Not too corporate
 
-### Possible Layouts
+### Current Layout
 
-* Clean step cards
-* Visual timeline
-* Mixed image and text blocks
-* Numbered process cards
-* Subtle connector lines or arrows
+- Sticky timeline rail and media frame on tablet and desktop
+- Scrolling step copy with responsive media
+- Mobile card carousel with neighboring-card peeks and pagination dots
+- Four-step visual process with image/video media
 
 ### Optional Copy Direction
 
@@ -701,7 +695,9 @@ A guided process designed to keep decisions focused and the build predictable.
 
 ---
 
-## 8. Cabins in Context / Lifestyle Visual Section
+## 8. Future: Cabins in Context / Lifestyle Visual Section
+
+This section is not currently rendered by `AppHomePage`. The notes below remain a future visual direction.
 
 ### Purpose
 
@@ -719,12 +715,12 @@ Three image-led sections or blocks, one for each model.
 
 Each block can include:
 
-* Large environment image
-* Short descriptive text
-* Model name
-* Tags
-* Optional smaller inset image
-* Optional interior glimpse
+- Large environment image
+- Short descriptive text
+- Model name
+- Tags
+- Optional smaller inset image
+- Optional interior glimpse
 
 ### Example Contexts
 
@@ -748,15 +744,16 @@ Hilltop workspace
 
 ### Possible Tags
 
-* Weekend retreat
-* Remote work
-* Compact living
-* Sleeps 2
-* Sleeps 4
-* Family stay
-* Solar-ready
-* Optional sauna
-* Deck lounge
+- Weekend retreat
+- Remote work
+- Compact living
+- Sleeping loft
+- Studio
+- 1 Bedroom
+- Family stay
+- Solar-ready
+- Optional sauna
+- Deck lounge
 
 ### Motion / Interaction
 
@@ -766,7 +763,9 @@ Avoid making the section feel overly animated or gimmicky.
 
 ---
 
-## 9. Benefits / Performance / Value Props
+## 9. Future: Benefits / Performance / Value Props
+
+This section is not currently rendered by `AppHomePage`.
 
 ### Purpose
 
@@ -776,17 +775,17 @@ This section should explain why the cabins are a strong alternative to fully cus
 
 ### Possible Points
 
-* Compact footprint
-* High-performance insulation
-* Responsibly sourced timber
-* Low-waste prefabrication
-* Solar-ready setup
-* Optional off-grid package
-* Durable, repairable materials
-* Predictable build system
-* Simpler decision-making
-* Premium material palette
-* Designed for nature plots
+- Compact footprint
+- High-performance insulation
+- Responsibly sourced timber
+- Low-waste prefabrication
+- Solar-ready setup
+- Optional off-grid package
+- Durable, repairable materials
+- Predictable build system
+- Simpler decision-making
+- Premium material palette
+- Designed for nature plots
 
 ### Notes
 
@@ -796,15 +795,17 @@ Avoid unsupported environmental claims.
 
 ### Possible Layouts
 
-* Icon cards
-* Editorial grid
-* Split image and benefits list
-* Horizontal feature cards
-* Technical but soft performance section
+- Icon cards
+- Editorial grid
+- Split image and benefits list
+- Horizontal feature cards
+- Technical but soft performance section
 
 ---
 
-## 10. FAQ
+## 10. Future: FAQ
+
+This section is not currently rendered by `AppHomePage`; the current `#faqs` navigation fragment is unresolved.
 
 ### Purpose
 
@@ -850,7 +851,9 @@ Practical, clear, and reassuring.
 
 ---
 
-## 11. Final CTA
+## 11. Future: Final CTA
+
+No dedicated final CTA is currently rendered after How It Works. The current page uses the hero, navbar, showcase, and final process-step CTAs instead.
 
 ### Purpose
 
@@ -888,17 +891,19 @@ Book a consultation
 
 ---
 
-## 12. Footer
+## 12. Future: Footer
+
+No homepage footer is currently rendered by the app layout or `AppHomePage`.
 
 ### Suggested Content
 
-* Logo / brand name
-* Short brand note
-* Navigation links
-* Model links
-* Consultation link
-* Social links if needed
-* Legal / placeholder links
+- Logo / brand name
+- Short brand note
+- Navigation links
+- Model links
+- Consultation link
+- Social links if needed
+- Legal / placeholder links
 
 ### Possible Footer Navigation
 
@@ -912,7 +917,7 @@ Book consultation
 
 ---
 
-# Recommended Final Homepage Order
+# Current Homepage Order
 
 ```txt
 1. Hero
@@ -920,14 +925,11 @@ Book consultation
 3. Cabin Models Overview
 4. Interactive Model Showcase
 5. Testimonials / Soft Social Proof
-6. Visual CTA / Interactive Comparison Reveal
+6. Interior Comparison Reveal
 7. How It Works
-8. Cabins in Context
-9. Benefits / Performance / Value Props
-10. FAQ
-11. Final CTA
-12. Footer
 ```
+
+Future expansion candidates, in the existing design direction, are Cabins in Context, Benefits, FAQ, a final CTA, and a footer.
 
 ---
 
@@ -944,23 +946,23 @@ The same content structure can be explored through different light-based visual 
 
 Best for:
 
-* Calm premium feel
-* Broad appeal
-* Sustainability
-* Timber cabins
-* Quiet lifestyle mood
+- Calm premium feel
+- Broad appeal
+- Sustainability
+- Timber cabins
+- Quiet lifestyle mood
 
 Traits:
 
-* Warm whites
-* Sand tones
-* Timber hues
-* Muted greens
-* Soft grays
-* Spacious layout
-* Minimal typography
-* Soft image treatment
-* Very restrained decoration
+- Warm whites
+- Sand tones
+- Timber hues
+- Muted greens
+- Soft grays
+- Spacious layout
+- Minimal typography
+- Soft image treatment
+- Very restrained decoration
 
 ---
 
@@ -968,22 +970,22 @@ Traits:
 
 Best for:
 
-* Strong visual impact
-* Premium first impression
-* Cinematic imagery without using a dark UI
-* Hero/video-led homepage direction
+- Strong visual impact
+- Premium first impression
+- Cinematic imagery without using a dark UI
+- Hero/video-led homepage direction
 
 Traits:
 
-* Light page background
-* Large cinematic images or video
-* Strong image contrast
-* Warm natural highlights
-* Big calm typography
-* Editorial spacing
-* Minimal overlays
-* Subtle gradient treatments
-* Image-led composition
+- Light page background
+- Large cinematic images or video
+- Strong image contrast
+- Warm natural highlights
+- Big calm typography
+- Editorial spacing
+- Minimal overlays
+- Subtle gradient treatments
+- Image-led composition
 
 Notes:
 
@@ -995,21 +997,21 @@ This variant can still use darker imagery inside photos or videos, especially in
 
 Best for:
 
-* Design-conscious audience
-* More experimental layout
-* Strong visual identity
-* Premium architecture feel
+- Design-conscious audience
+- More experimental layout
+- Strong visual identity
+- Premium architecture feel
 
 Traits:
 
-* Large typography
-* Asymmetrical layouts
-* Magazine-style image treatment
-* Strong whitespace
-* Editorial rhythm
-* Thin dividers
-* Refined grid structure
-* More expressive composition
+- Large typography
+- Asymmetrical layouts
+- Magazine-style image treatment
+- Strong whitespace
+- Editorial rhythm
+- Thin dividers
+- Refined grid structure
+- More expressive composition
 
 Notes:
 
@@ -1021,21 +1023,21 @@ This variant should feel like a premium architecture/lifestyle publication, but 
 
 Best for:
 
-* Emotional retreat feeling
-* Cozy slower-living angle
-* Human warmth
-* Weekend escape mood
+- Emotional retreat feeling
+- Cozy slower-living angle
+- Human warmth
+- Weekend escape mood
 
 Traits:
 
-* Warm earth tones
-* Natural textures
-* Soft photography
-* Cozy interiors
-* Warm beige / clay / sand palette
-* Gentle typography
-* Human, inviting copy
-* Softer section transitions
+- Warm earth tones
+- Natural textures
+- Soft photography
+- Cozy interiors
+- Warm beige / clay / sand palette
+- Gentle typography
+- Human, inviting copy
+- Softer section transitions
 
 ---
 
@@ -1043,21 +1045,21 @@ Traits:
 
 Best for:
 
-* Clear offer explanation
-* Stronger conversion clarity
-* Practical product understanding
-* Structured model comparison
+- Clear offer explanation
+- Stronger conversion clarity
+- Practical product understanding
+- Structured model comparison
 
 Traits:
 
-* Clear product cards
-* Strong specs presentation
-* Interactive showcase
-* Structured content blocks
-* Clean grid system
-* Premium but practical feel
-* More obvious CTAs
-* More systematic information hierarchy
+- Clear product cards
+- Strong specs presentation
+- Interactive showcase
+- Structured content blocks
+- Clean grid system
+- Premium but practical feel
+- More obvious CTAs
+- More systematic information hierarchy
 
 ---
 
@@ -1065,21 +1067,21 @@ Traits:
 
 Best for:
 
-* Visual richness
-* Lifestyle-heavy homepage
-* Showing cabins in nature
-* Creating a calm emotional flow
+- Visual richness
+- Lifestyle-heavy homepage
+- Showing cabins in nature
+- Creating a calm emotional flow
 
 Traits:
 
-* Large image sections
-* Soft full-width visual moments
-* Minimal text overlays
-* Gallery-like rhythm
-* Calm whitespace between image blocks
-* Subtle parallax or scroll motion
-* Natural light photography
-* Focus on atmosphere and place
+- Large image sections
+- Soft full-width visual moments
+- Minimal text overlays
+- Gallery-like rhythm
+- Calm whitespace between image blocks
+- Subtle parallax or scroll motion
+- Natural light photography
+- Focus on atmosphere and place
 
 Notes:
 
@@ -1089,13 +1091,15 @@ This variant should feel more like browsing a calm retreat brand than comparing 
 
 # Section Variant Options
 
+The current implementation uses the following variants: marquee testimonial cards, an interior palette comparison, a large model slider, and a visual process timeline with mixed media and text.
+
 ## Testimonials Variants
 
 ### A. Marquee Quote Cards
 
 Short quote cards with 5 stars moving slowly across the section.
 
-Best for subtle warmth and visual rhythm.
+This is the current shipped variant, with expandable full reviews.
 
 ### B. Static Horizontal Cards
 
@@ -1115,7 +1119,7 @@ Best if the design should avoid review-style content.
 
 ### A. Interior Palette Comparison
 
-Recommended default.
+This is the current shipped variant for Veyra.
 
 Compare two curated interior palettes of the same cabin.
 
@@ -1145,7 +1149,7 @@ Shows how the same space changes with light and mood.
 
 One model per slide with large imagery and specs.
 
-Best for a more cinematic experience.
+This is the current shipped variant, with thumbnails and responsive controls.
 
 ### B. Three Premium Cards
 
@@ -1162,6 +1166,8 @@ Best for a more premium visual identity.
 ---
 
 ## How It Works Variants
+
+The current section combines the Visual Timeline and Mixed Image + Text Blocks variants, with a mobile card carousel.
 
 ### A. Clean Step Cards
 
@@ -1181,33 +1187,31 @@ More storytelling and lifestyle-oriented.
 
 ## Pricing
 
-Do not show pricing on the homepage for now.
-
-If pricing is explored later, use starting prices only.
-
-Example:
+The Interactive Model Showcase currently shows these starting prices:
 
 ```txt
-From €89,000
+Niva — €130,000
+Aster — €170,000
+Veyra — €210,000
 ```
 
-Always include context that final pricing depends on selected add-ons, finishes, site access, and installation requirements.
+The UI adds `plus installation`. Pricing remains concept content and should be treated as provisional until approved for publication.
 
 ---
 
 ## Testimonials
 
-Testimonials should remain subtle and secondary.
+Testimonials remain subtle and secondary. The current six reviews are fictional concept content and use names, avatars, ratings, short quotes, and expandable long-form reviews.
 
 The stronger trust signals should come from:
 
-* Product clarity
-* Model specs
-* Process clarity
-* Visual quality
-* Performance details
-* Sustainability details
-* Clear offer structure
+- Product clarity
+- Model specs
+- Process clarity
+- Visual quality
+- Performance details
+- Sustainability details
+- Clear offer structure
 
 ---
 
@@ -1215,14 +1219,14 @@ The stronger trust signals should come from:
 
 Copy should feel:
 
-* Concise
-* Premium
-* Calm
-* Human
-* Quietly confident
-* Not too salesy
-* Not too technical
-* Practical after the emotional hero
+- Concise
+- Premium
+- Calm
+- Human
+- Quietly confident
+- Not too salesy
+- Not too technical
+- Practical after the emotional hero
 
 Avoid long text blocks.
 
@@ -1236,11 +1240,13 @@ Use motion carefully.
 
 Good areas for subtle interaction:
 
-* Hero media transitions
-* Interactive model showcase
-* Testimonial marquee
-* Comparison reveal section
-* Subtle parallax in lifestyle visual section
+- Hero media transitions
+- Interactive model showcase
+- Testimonial marquee
+- Comparison reveal section
+- Process timeline activation and media crossfades
+
+Subtle parallax in a future lifestyle section is optional and is not currently implemented.
 
 Avoid making the homepage feel overly animated, gimmicky, or techy.
 
@@ -1250,7 +1256,7 @@ Avoid making the homepage feel overly animated, gimmicky, or techy.
 
 Design a premium homepage for **Luma Cabins**, a European-inspired pre-designed cabin brand. The page should feel calm, minimal, warm, nature-focused, premium, and architectural without feeling cold. It should sell the feeling first, then clearly explain the cabin models, customization options, and buying process.
 
-The homepage structure should include:
+The current homepage structure is:
 
 ```txt
 Hero
@@ -1258,15 +1264,10 @@ About / Brand Story
 Cabin Models Overview
 Interactive Model Showcase
 Testimonials / Soft Social Proof
-Visual CTA with Interactive Comparison Reveal
+Interior Comparison Reveal
 How It Works
-Cabins in Context
-Benefits / Performance / Value Props
-FAQ
-Final CTA
-Footer
 ```
 
-The design should be image-led, spacious, responsive, and easy to scan. Avoid looking like a SaaS site, mass-market prefab brand, cheap tiny-home website, or survivalist off-grid brand.
+Use the current cabin facts exactly: Niva `20 m² · Sleeping loft`, Aster `39 m² · Studio`, and Veyra `56 m² · 1 Bedroom`. Keep the page image-led, spacious, responsive, and easy to scan. Avoid looking like a SaaS site, mass-market prefab brand, cheap tiny-home website, or survivalist off-grid brand.
 
 The strongest sections should be the cinematic hero, the interactive model showcase, and the visual comparison reveal section.

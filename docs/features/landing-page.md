@@ -31,15 +31,17 @@ Product direction remains in `design/briefs/HOMEPAGE.md`. Proposed work remains 
 
 The order below is the rendered order in `AppHomePage`.
 
-| Order | Component                    | Rendering boundary                                     | Page-level surface                                                    |
-| ----- | ---------------------------- | ------------------------------------------------------ | --------------------------------------------------------------------- |
-| 1     | `HeroSection`                | Server component composition                           | Full-height primary hero; bottom separation uses `--section-gutter-y` |
-| 2     | `AboutSection`               | Server component                                       | `bg-background`                                                       |
-| 3     | `ModelsOverviewSection`      | Client component                                       | Gradient from `background` to `background-accent`                     |
-| 4     | `InteractiveShowcaseSection` | Client component                                       | `bg-background-accent`                                                |
-| 5     | `TestimonialsSection`        | Client component                                       | `bg-background`                                                       |
-| 6     | `InteriorComparisonSection`  | Server section with an app-local client slider adapter | Gradient from `background-accent` to `background`                     |
-| 7     | `HowItWorksSection`          | Server section with an app-local client experience     | `bg-background`                                                       |
+| Order | Component                    | Rendering boundary                                     | Page-level surface                                                         |
+| ----- | ---------------------------- | ------------------------------------------------------ | -------------------------------------------------------------------------- |
+| 1     | `HeroSection`                | Server component composition                           | Full-height `bg-primary` hero; the page adds `--section-gutter-y` below it |
+| 2     | `AboutSection`               | Server component                                       | `bg-background`                                                            |
+| 3     | `ModelsOverviewSection`      | Client component                                       | `bg-background`                                                            |
+| 4     | `InteractiveShowcaseSection` | Client component                                       | `bg-background`                                                            |
+| 5     | `TestimonialsSection`        | Client component                                       | `bg-background-accent`                                                     |
+| 6     | `InteriorComparisonSection`  | Server section with an app-local client slider adapter | Gradient from `background` to `background-accent`                          |
+| 7     | `HowItWorksSection`          | Server section with an app-local client experience     | `bg-background-accent`; the page also adds `mb-100` after the section      |
+
+The current surface sequence is: primary hero, `background` for About/Models/Showcase, `background-accent` for Testimonials, a `background` to `background-accent` comparison gradient, then `background-accent` for How It Works.
 
 When changing this order, review adjacent background transitions and confirm that the page still reads as one purchase journey rather than a list of isolated modules.
 
@@ -52,6 +54,18 @@ When changing this order, review adjacent background transitions and confirm tha
 - A section may use a bespoke intro when its grid or media relationship requires a different hierarchy, as `InteriorComparisonSection` does.
 - Keep landing content hardcoded and typed. Use Zod only when runtime input actually requires parsing.
 - Keep feature-specific helpers app-local unless more than one real consumer needs the same behavioral contract.
+
+## Current Cabin Data
+
+`apps/nextjs/src/app/(app)/_data/cabins.ts` is the source of truth for the model names, specs, descriptions, imagery, and showcase prices used by the landing page.
+
+| Model | Current specs           | Showcase starting price |
+| ----- | ----------------------- | ----------------------- |
+| Niva  | `20 m² · Sleeping loft` | `€130,000`              |
+| Aster | `39 m² · Studio`        | `€170,000`              |
+| Veyra | `56 m² · 1 Bedroom`     | `€210,000`              |
+
+The interactive showcase displays each price as “Starting at” plus the model price and “plus installation”. Do not add sleeper counts or extra bedroom claims beyond the current typed layout values unless they are added to the cabin data first.
 
 ## Layout System
 
