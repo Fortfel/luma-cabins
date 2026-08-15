@@ -351,7 +351,7 @@ function TestimonialsSection({ className, ...props }: React.ComponentProps<'sect
           'max-lg:container-bleed lg:flex-row lg:gap-[clamp(2rem,calc(-6.5rem+13.28125vw),6.25rem)]',
         )}
       >
-        <h2 className="text-clamp-24-36 max-lg:section-px w-full text-center leading-tight font-medium text-balance text-foreground lg:w-62 lg:shrink-0 lg:px-0 lg:text-left">
+        <h2 className="text-heading-md max-lg:section-px w-full text-center text-balance text-foreground lg:w-62 lg:shrink-0 lg:px-0 lg:text-left">
           Why people choose Luma
         </h2>
 
@@ -452,7 +452,7 @@ function TestimonialCard({
         isDesktop ? 'cursor-pointer' : 'cursor-grab active:cursor-grabbing',
       )}
     >
-      <span className="text-clamp-15-18 line-clamp-2 h-[2lh] font-heading leading-[1.3] font-medium">
+      <span className="text-body-md line-clamp-2 h-[2lh] font-heading leading-[1.3] font-medium">
         “{testimonial.quote}”
       </span>
       <TestimonialFooter testimonial={testimonial} isExpanded={false} />
@@ -655,7 +655,7 @@ function TestimonialPopover({
                     animate={{ y: shouldShowExpandedState ? 0 : addedHeight / 2 }}
                     transition={geometryTransition}
                   >
-                    <PopoverTitle className="text-clamp-15-18 font-heading leading-[1.3] font-medium text-card-foreground">
+                    <PopoverTitle className="text-body-md font-heading leading-[1.3] font-medium text-card-foreground">
                       “{testimonial.quote}”
                     </PopoverTitle>
                   </motion.div>
@@ -664,7 +664,7 @@ function TestimonialPopover({
                     animate={{ opacity: shouldShowExpandedState ? 1 : 0, y: shouldShowExpandedState ? 0 : 8 }}
                     transition={contentTransition}
                   >
-                    <PopoverDescription className="text-clamp-14-16 text-justify leading-[1.3] text-pretty text-card-foreground">
+                    <PopoverDescription className="text-body-sm text-justify leading-[1.3] text-pretty text-card-foreground">
                       {testimonial.review}
                     </PopoverDescription>
                   </motion.div>
@@ -706,7 +706,7 @@ function TestimonialFooter({ testimonial, isExpanded }: { testimonial: Testimoni
         initial={false}
         animate={{ maxWidth: isExpanded ? 112 : 0, marginLeft: isExpanded ? 8 : 0, opacity: isExpanded ? 1 : 0 }}
         transition={layoutTransition}
-        className="text-clamp-12-14 truncate text-muted-foreground"
+        className="text-body-xs truncate text-muted-foreground"
       >
         {testimonial.clientName}
       </motion.span>

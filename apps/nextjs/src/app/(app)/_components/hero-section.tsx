@@ -52,12 +52,12 @@ function HeroSection({ className, ...props }: React.ComponentProps<'section'>) {
         )}
       >
         <div className="flex flex-col gap-[clamp(1.25rem,calc(1.0115rem+1.0178vw),1.5rem)] sm:max-w-[clamp(36rem,calc(27rem+18.75vw),42rem)]">
-          <h1 className="text-clamp-42-88 leading-[1.05] font-medium md:leading-none">
+          <h1 className="text-display-xl">
             Live closer
             <br />
             to what matters
           </h1>
-          <p className="text-clamp-16-20 leading-normal text-pretty">
+          <p className="text-body-lg text-pretty">
             Premium pre-designed cabins, designed to help you slow down, reconnect, and feel at home - anywhere.
           </p>
           <Link

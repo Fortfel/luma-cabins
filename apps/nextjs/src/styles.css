@@ -3,25 +3,86 @@
 @source '../../../packages/ui/src/**/*.{ts,tsx}';
 
 @theme {
-  /* Typography */
-  --text-clamp-42-88: clamp(2.625rem, calc(1.6964rem + 3.9621vw), 5.5rem); /* 1536 */
-  --text-clamp-36-64: clamp(2.25rem, calc(1.6848rem + 2.4117vw), 4rem); /* 1536 */
-  --text-clamp-32-52: clamp(2rem, calc(1.596rem + 1.723vw), 3.25rem); /* 1536 */
-  --text-clamp-28-44: clamp(1.75rem, calc(1.427rem + 1.3781vw), 2.75rem); /* 1536 */
-  --text-clamp-24-36: clamp(1.5rem, calc(1.2578rem + 1.0336vw), 2.25rem); /* 1536 */
-
-  --text-clamp-16-20: clamp(1rem, calc(0.8964rem + 0.442vw), 1.25rem); /* 1280 */
-  --text-clamp-15-18: clamp(0.9375rem, calc(0.8598rem + 0.3315vw), 1.125rem); /* 1280 */
-  --text-clamp-14-16: clamp(0.875rem, calc(0.8232rem + 0.221vw), 1rem); /* 1280 */
-  --text-clamp-12-14: clamp(0.75rem, calc(0.6982rem + 0.221vw), 0.875rem); /* 1280 */
-
   --breakpoint-3xl: 108rem; /* 1728px */
   --breakpoint-4xl: 120rem; /* 1920px */
 }
 
+/* Next font variables are body-scoped; fallbacks keep semantic roles on the intended faces. */
+@utility text-display-xl {
+  font-family: var(--font-heading, var(--font-cabinet-grotesk, sans-serif));
+  font-size: clamp(2.625rem, calc(1.6964rem + 3.9621vw), 5.5rem); /* 42px @ 375px -> 88px @ 1536px */
+  font-weight: 500;
+  line-height: 1;
+}
+
+@utility text-display-lg {
+  font-family: var(--font-heading, var(--font-cabinet-grotesk, sans-serif));
+  font-size: clamp(2.25rem, calc(1.6848rem + 2.4117vw), 4rem); /* 36px @ 375px -> 64px @ 1536px */
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+@utility text-heading-xl {
+  font-family: var(--font-heading, var(--font-cabinet-grotesk, sans-serif));
+  font-size: clamp(2rem, calc(1.596rem + 1.723vw), 3.25rem); /* 32px @ 375px -> 52px @ 1536px */
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+@utility text-heading-lg {
+  font-family: var(--font-heading, var(--font-cabinet-grotesk, sans-serif));
+  font-size: clamp(1.75rem, calc(1.427rem + 1.3781vw), 2.75rem); /* 28px @ 375px -> 44px @ 1536px */
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+@utility text-heading-md {
+  font-family: var(--font-heading, var(--font-cabinet-grotesk, sans-serif));
+  font-size: clamp(1.5rem, calc(1.2578rem + 1.0336vw), 2.25rem); /* 24px @ 375px -> 36px @ 1536px */
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+@utility text-body-lg {
+  font-family: var(--font-sans, var(--font-satoshi, sans-serif));
+  font-size: clamp(1rem, calc(0.8964rem + 0.442vw), 1.25rem); /* 16px @ 375px -> 20px @ 1280px */
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+@utility text-body-md {
+  font-family: var(--font-sans, var(--font-satoshi, sans-serif));
+  font-size: clamp(0.9375rem, calc(0.8598rem + 0.3315vw), 1.125rem); /* 15px @ 375px -> 18px @ 1280px */
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+@utility text-body-sm {
+  font-family: var(--font-sans, var(--font-satoshi, sans-serif));
+  font-size: clamp(0.875rem, calc(0.8232rem + 0.221vw), 1rem); /* 14px @ 375px -> 16px @ 1280px */
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+@utility text-body-xs {
+  font-family: var(--font-sans, var(--font-satoshi, sans-serif));
+  font-size: clamp(0.75rem, calc(0.6982rem + 0.221vw), 0.875rem); /* 12px @ 375px -> 14px @ 1280px */
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+@utility text-eyebrow {
+  font-family: var(--font-sans, var(--font-satoshi, sans-serif));
+  font-size: clamp(0.75rem, calc(0.6982rem + 0.221vw), 0.875rem); /* 12px @ 375px -> 14px @ 1280px */
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.1875rem;
+  text-transform: uppercase;
+}
+
 :root {
-  --page-gutter-x: clamp(1.5rem, calc(0.55806rem + 4.30571vw), 4rem);
-  --section-gutter-y: clamp(2.5rem, calc(-0.5rem + 7.5vw), 5.5rem);
+  --page-gutter-x: clamp(1.5rem, calc(0.55806rem + 4.30571vw), 4rem); /* 24px @ 350px -> 64px @ 1280px */
+  --section-gutter-y: clamp(2.5rem, calc(-0.5rem + 7.5vw), 5.5rem); /* 40px @ 640px -> 88px @ 1280px */
 }
 
 @utility container-page-2xl {

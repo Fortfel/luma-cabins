@@ -306,8 +306,8 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,rgba(14,13,11,0)_75%,rgba(14,13,11,0.5)_100%)] lg:bg-[linear-gradient(to_bottom,rgba(14,13,11,0)_45%,rgba(14,13,11,0.85)_100%)]" />
 
           <div className="absolute top-5 left-5 flex flex-col gap-1 md:top-3.5 md:left-6 lg:top-auto lg:bottom-12 lg:left-12 lg:gap-2">
-            <h3 className="text-clamp-36-64 leading-none font-medium text-primary-foreground">{activeModel.name}</h3>
-            <p className="hidden text-sm font-semibold text-primary-foreground md:block lg:text-base">
+            <h3 className="text-heading-xl text-primary-foreground">{activeModel.name}</h3>
+            <p className="text-body-sm hidden font-semibold text-primary-foreground md:block">
               {activeModel.specs.area}&nbsp;&nbsp; · &nbsp;&nbsp;{activeModel.specs.layout}
             </p>
           </div>

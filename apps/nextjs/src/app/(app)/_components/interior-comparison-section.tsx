@@ -26,10 +26,8 @@ function InteriorComparisonSection({ className, ...props }: React.ComponentProps
           'md:grid md:grid-cols-16 md:items-end',
         )}
       >
-        <h2 className="text-clamp-24-36 leading-tight font-medium text-balance md:col-span-9">
-          Your space, your story.
-        </h2>
-        <p className="text-clamp-14-16 max-w-sm leading-tight text-pretty md:col-span-full md:col-start-10">
+        <h2 className="text-heading-md text-balance md:col-span-9">Your space, your story.</h2>
+        <p className="text-body-sm max-w-sm leading-tight text-pretty md:col-span-full md:col-start-10">
           Customize your cabin to match your lifestyle, from the way each room works to the details that make it yours.
         </p>
       </div>

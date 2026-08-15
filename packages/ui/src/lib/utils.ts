@@ -8,7 +8,18 @@ const twMerge = extendTailwindMerge({
     classGroups: {
       'font-size': [
         {
-          text: [(value: string) => value.startsWith('clamp-')],
+          text: [
+            'display-xl',
+            'display-lg',
+            'heading-xl',
+            'heading-lg',
+            'heading-md',
+            'body-lg',
+            'body-md',
+            'body-sm',
+            'body-xs',
+            'eyebrow',
+          ],
         },
       ],
     },

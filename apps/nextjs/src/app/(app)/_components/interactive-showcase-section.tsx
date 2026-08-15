@@ -349,7 +349,7 @@ function ConfigurationPanel({
 
         <div className="contents xl:flex xl:flex-col xl:items-start xl:gap-3">
           <p className="hidden text-xs font-bold tracking-[0.125rem] text-foreground uppercase sm:block">Pricing</p>
-          <p className="text-clamp-14-16 col-span-2 text-foreground sm:col-span-1">
+          <p className="text-body-sm col-span-2 text-foreground sm:col-span-1">
             <span>Starting at </span>
             <strong>{activeCabin.showcase.price}</strong>
             <span> plus installation.</span>
@@ -392,8 +392,8 @@ function ModelSummary({
 }) {
   return (
     <div className={cn('flex flex-col gap-3 text-foreground', className)}>
-      <h3 className="text-clamp-32-52 font-heading leading-none font-medium">{cabin.name}</h3>
-      <div className="text-clamp-16-20 flex gap-2 font-semibold">
+      <h3 className="text-heading-xl">{cabin.name}</h3>
+      <div className="text-body-lg flex gap-2 font-semibold">
         <span>{cabin.specs.area}</span>
         <span className="hidden text-muted-foreground sm:inline">|</span>
         <span className="hidden sm:inline">{cabin.specs.layout}</span>

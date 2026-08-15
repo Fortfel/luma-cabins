@@ -465,7 +465,7 @@ function ProcessRail({
                     </span>
                     <span
                       className={cn(
-                        'text-clamp-15-18 leading-tight text-muted-foreground',
+                        'text-body-md text-muted-foreground',
                         isActive && 'font-semibold text-foreground',
                         isReached && !isActive && 'text-foreground/75',
                       )}
@@ -510,16 +510,12 @@ function ProcessStepCopy({
       className="scroll-mt-[calc(var(--nav-height)+0.5rem)] text-foreground xl:min-h-[calc(100svh-var(--nav-height)-0.5rem)]"
     >
       <div ref={contentRef} data-process-step-content className="flex flex-col gap-6 pt-4 xl:gap-8">
-        <h3
-          id={`process-step-${step.id}`}
-          ref={triggerRef}
-          className="text-clamp-28-44 leading-[1.05] font-medium text-balance"
-        >
+        <h3 id={`process-step-${step.id}`} ref={triggerRef} className="text-heading-lg text-balance">
           {step.title}
         </h3>
 
         <div className="flex flex-col gap-2">
-          <p className="text-clamp-15-18 leading-[1.35] text-pretty">{step.description}</p>
+          <p className="text-body-md text-pretty">{step.description}</p>
 
           <ProcessBulletList step={step} />
         </div>
@@ -545,7 +541,7 @@ function ProcessStepCopy({
 
 function ProcessBulletList({ step, className }: { step: ProcessStep; className?: string }) {
   return (
-    <ul className={cn('text-clamp-14-16 flex flex-col gap-0', className)}>
+    <ul className={cn('text-body-sm flex flex-col gap-0', className)}>
       {step.bullets.map((bullet) => (
         <li key={bullet} className="flex items-start gap-3">
           <span aria-hidden="true" className="mt-[0.48em] size-1.5 shrink-0 rounded-full bg-primary" />
@@ -796,15 +792,15 @@ function ProcessMobileCard({
       </div>
 
       <CardHeader className="z-10 -mt-6 gap-2 bg-card pt-6">
-        <h3 id={`process-mobile-step-${step.id}`} className="text-clamp-24-36 font-medium text-balance">
+        <h3 id={`process-mobile-step-${step.id}`} className="text-heading-md text-balance">
           {step.label}
         </h3>
 
-        <p className="text-clamp-15-18 text-pretty">{step.description}</p>
+        <p className="text-body-md text-pretty">{step.description}</p>
       </CardHeader>
 
       <CardContent className="flex flex-col pt-2 pb-6">
-        <ProcessBulletList step={step} className="text-clamp-14-16" />
+        <ProcessBulletList step={step} className="text-body-sm" />
       </CardContent>
     </Card>
   )
