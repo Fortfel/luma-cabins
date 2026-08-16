@@ -255,10 +255,10 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
   }
 
   return (
-    <section className={cn('4xl:px-4', className)} {...props}>
+    <section className={className} {...props}>
       <h2 className="sr-only">Cabin models</h2>
       <div
-        className="container-page-4xl container-bleed"
+        className="container-page-4xl container-bleed 4xl:[--container-min-margin:1rem]"
         onPointerDownCapture={handlePointerDownCapture}
         onPointerMoveCapture={handlePointerMoveCapture}
         onPointerUpCapture={clearPointerGesture}

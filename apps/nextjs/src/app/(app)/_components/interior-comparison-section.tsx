@@ -18,10 +18,10 @@ const COMPARISON_IMAGE_SIZES = '(max-width: 1919px) 100vw, 1920px'
 
 function InteriorComparisonSection({ className, ...props }: React.ComponentProps<'section'>) {
   return (
-    <section className={cn('4xl:px-4', className)} {...props}>
+    <section className={className} {...props}>
       <div
         className={cn(
-          'container-page-3xl mb-4 flex flex-col gap-5 text-left text-foreground',
+          'container-page-3xl mb-4 flex flex-col gap-3 text-left text-foreground',
           'sm:mb-5 md:mb-5',
           'md:grid md:grid-cols-16 md:items-end',
         )}
@@ -32,7 +32,7 @@ function InteriorComparisonSection({ className, ...props }: React.ComponentProps
         </p>
       </div>
 
-      <div className="container-page-4xl container-bleed">
+      <div className="container-page-4xl container-bleed 4xl:[--container-min-margin:1rem]">
         <ImageComparison defaultValue={56} className="4xl:rounded-xl aspect-3/2 md:aspect-video">
           <ImageComparisonLeft>
             <Image
