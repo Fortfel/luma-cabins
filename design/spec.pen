@@ -17,8 +17,8 @@
           "id": "BV7Gy",
           "name": "HERO section - Mobile",
           "clip": true,
-          "width": 390,
-          "height": 844,
+          "width": 375,
+          "height": 900,
           "layout": "none",
           "children": [
             {
@@ -34,8 +34,8 @@
                 "url": "images/luma-cabin-hero.webp",
                 "mode": "fill"
               },
-              "width": 390,
-              "height": 844
+              "width": 375,
+              "height": 900
             },
             {
               "type": "rectangle",
@@ -101,8 +101,8 @@
                   }
                 ]
               },
-              "width": 390,
-              "height": 844
+              "width": 375,
+              "height": 900
             },
             {
               "type": "frame",
@@ -111,8 +111,8 @@
               "y": 0,
               "name": "Content",
               "clip": true,
-              "width": 390,
-              "height": 844,
+              "width": 375,
+              "height": 900,
               "layout": "vertical",
               "padding": [
                 64,
@@ -127,8 +127,8 @@
                   "x": 0,
                   "y": 0,
                   "name": "Mobile Nav",
-                  "width": 390,
-                  "height": 64,
+                  "width": 375,
+                  "height": 72,
                   "fill": {
                     "type": "color",
                     "color": "#12111066",
@@ -386,8 +386,8 @@
                   "type": "frame",
                   "id": "mVid1",
                   "layoutPosition": "absolute",
-                  "x": 334,
-                  "y": 784,
+                  "x": 319,
+                  "y": 840,
                   "name": "Video Control Button",
                   "width": 40,
                   "height": 40,
@@ -427,10 +427,8 @@
           "layout": "vertical",
           "gap": 24,
           "padding": [
-            80,
-            24,
             40,
-            24
+            25.075
           ],
           "alignItems": "center",
           "children": [
@@ -522,7 +520,7 @@
                   "textGrowth": "fixed-width",
                   "width": "fill_container",
                   "content": "We design secluded luxury retreats for unforgettable stays in nature. Each cabin combines refined architecture, warm natural materials, panoramic views, and premium comforts for a peaceful escape without compromise. Slow down, reconnect, and experience the calm of modern cabin living.",
-                  "lineHeight": 1.37,
+                  "lineHeight": 1.3,
                   "textAlign": "center",
                   "fontFamily": "$--font-sans",
                   "fontSize": 16,
@@ -537,25 +535,7 @@
           "id": "d2jfC",
           "name": "Models Overview - Mobile",
           "width": "fill_container",
-          "fill": {
-            "type": "gradient",
-            "gradientType": "linear",
-            "enabled": true,
-            "rotation": 0,
-            "size": {
-              "height": 1
-            },
-            "colors": [
-              {
-                "color": "$unofficial/background-accent",
-                "position": 0
-              },
-              {
-                "color": "$--background",
-                "position": 1
-              }
-            ]
-          },
+          "fill": "$--background",
           "layout": "vertical",
           "padding": [
             40,
@@ -569,11 +549,11 @@
               "name": "Slider Card",
               "clip": true,
               "width": "fill_container",
-              "height": 390,
+              "height": 375,
               "fill": {
                 "type": "image",
                 "enabled": true,
-                "url": "images/Niva.jpg",
+                "url": "images/Veyra.jpg",
                 "mode": "fill"
               },
               "layout": "none",
@@ -604,7 +584,7 @@
                       }
                     ]
                   },
-                  "width": 390,
+                  "width": 375,
                   "height": 120
                 },
                 {
@@ -633,8 +613,8 @@
                       }
                     ]
                   },
-                  "width": 390,
-                  "height": 390
+                  "width": 375,
+                  "height": 375
                 },
                 {
                   "type": "rectangle",
@@ -726,8 +706,8 @@
                       "name": "Model Name",
                       "fill": "$--primary-foreground",
                       "textGrowth": "fixed-width",
-                      "width": 80,
-                      "content": "Niva",
+                      "width": 110,
+                      "content": "Veyra",
                       "fontFamily": "$--font-heading",
                       "fontSize": 40,
                       "fontWeight": "500"
@@ -740,7 +720,7 @@
                       "name": "Model Spec",
                       "enabled": false,
                       "fill": "$--primary-foreground",
-                      "content": "20 m²   ·   Sleeping loft",
+                      "content": "56 m²   ·   1 Bedroom",
                       "fontFamily": "$--font-sans",
                       "fontSize": 12,
                       "fontWeight": "600"
@@ -814,8 +794,8 @@
                 {
                   "type": "frame",
                   "id": "K74TAo",
-                  "x": 40.5,
-                  "y": 302,
+                  "x": 33,
+                  "y": 287,
                   "name": "Thumbnail Nav",
                   "cornerRadius": "$--radius-lg",
                   "stroke": "#e6e6e633",
@@ -831,14 +811,14 @@
                     {
                       "type": "frame",
                       "id": "W7GSA2",
-                      "name": "Thumb Niva (active)",
+                      "name": "Thumb Veyra (active)",
                       "clip": true,
                       "width": 80,
                       "height": 48,
                       "fill": {
                         "type": "image",
                         "enabled": true,
-                        "url": "images/Niva.jpg",
+                        "url": "images/Veyra.jpg",
                         "mode": "fill"
                       },
                       "cornerRadius": 8,
@@ -895,7 +875,7 @@
                     {
                       "type": "frame",
                       "id": "XkEY4",
-                      "name": "Thumb Veyra",
+                      "name": "Thumb Niva",
                       "opacity": 0.55,
                       "clip": true,
                       "width": 80,
@@ -903,7 +883,7 @@
                       "fill": {
                         "type": "image",
                         "enabled": true,
-                        "url": "images/Veyra.jpg",
+                        "url": "images/Niva.jpg",
                         "mode": "fill"
                       },
                       "cornerRadius": 8,
@@ -917,8 +897,8 @@
                   "type": "frame",
                   "id": "pktyl",
                   "layoutPosition": "absolute",
-                  "x": 338,
-                  "y": 318,
+                  "x": 323,
+                  "y": 302,
                   "name": "Carousel Play Control",
                   "width": 40,
                   "height": 40,
@@ -953,9 +933,9 @@
           "id": "xxSqt",
           "name": "Interactive Showcase - Mobile",
           "width": "fill_container",
-          "fill": "$unofficial/background-accent",
+          "fill": "$--background",
           "layout": "vertical",
-          "gap": 48,
+          "gap": 40,
           "padding": [
             40,
             0
@@ -966,7 +946,7 @@
               "id": "HtYRz",
               "width": "fill_container",
               "layout": "vertical",
-              "gap": 14,
+              "gap": 22.97,
               "padding": [
                 0,
                 24
@@ -1003,11 +983,11 @@
               "id": "bIKtL",
               "name": "showcase body",
               "width": "fill_container",
-              "fill": "$unofficial/background-accent",
+              "fill": "$--background",
               "layout": "vertical",
-              "gap": 18,
+              "gap": 17.5,
               "padding": [
-                32,
+                24,
                 0,
                 0,
                 0
@@ -1023,8 +1003,6 @@
                   "gap": 16,
                   "padding": [
                     0,
-                    24,
-                    16,
                     24
                   ],
                   "alignItems": "center",
@@ -1066,7 +1044,10 @@
                             {
                               "type": "text",
                               "id": "hkpdU",
+                              "x": 44,
+                              "y": 0,
                               "name": "Separator 1",
+                              "enabled": false,
                               "fill": "#73737380",
                               "content": "|",
                               "fontFamily": "$--font-sans",
@@ -1076,7 +1057,10 @@
                             {
                               "type": "text",
                               "id": "wccKB",
+                              "x": 54,
+                              "y": 0,
                               "name": "Bedrooms",
+                              "enabled": false,
                               "fill": "$--foreground",
                               "content": "Sleeping loft",
                               "fontFamily": "$--font-sans",
@@ -1129,7 +1113,7 @@
                       "name": "Carousel Viewport",
                       "clip": true,
                       "width": "fill_container",
-                      "height": 150,
+                      "height": 120,
                       "layout": "none",
                       "children": [
                         {
@@ -1152,7 +1136,7 @@
                               "opacity": 0.49999999999999956,
                               "clip": true,
                               "width": 280,
-                              "height": 140,
+                              "height": 110,
                               "fill": {
                                 "type": "image",
                                 "enabled": true,
@@ -1199,7 +1183,7 @@
                               "name": "Main Image Niva",
                               "clip": true,
                               "width": 280,
-                              "height": 140,
+                              "height": 110,
                               "fill": {
                                 "type": "image",
                                 "enabled": true,
@@ -1245,19 +1229,19 @@
                               "id": "ubOkG",
                               "name": "Next Image Peek",
                               "width": 280,
-                              "height": "fit_content(140)",
+                              "height": 110,
                               "children": [
                                 {
                                   "type": "frame",
                                   "id": "R8CYm",
                                   "layoutPosition": "absolute",
-                                  "x": -20,
+                                  "x": -61,
                                   "y": 0,
                                   "name": "Next Image Aster",
                                   "opacity": 0.49999999999999956,
                                   "clip": true,
                                   "width": 280,
-                                  "height": 140,
+                                  "height": 110,
                                   "fill": {
                                     "type": "image",
                                     "enabled": true,
@@ -1408,8 +1392,10 @@
                   "clip": true,
                   "width": "fill_container",
                   "padding": [
+                    8,
+                    25.075,
                     0,
-                    24
+                    25.075
                   ],
                   "children": [
                     {
@@ -1423,8 +1409,8 @@
                       "strokeWidth": 1,
                       "strokeAlignment": "inner",
                       "layout": "vertical",
-                      "gap": 22,
-                      "padding": 24,
+                      "gap": 15.472,
+                      "padding": 24.323,
                       "children": [
                         {
                           "type": "frame",
@@ -1457,8 +1443,8 @@
                                   "height": 40,
                                   "fill": "#00000000",
                                   "cornerRadius": "$--radius-full",
-                                  "stroke": "#00000026",
-                                  "strokeWidth": 1,
+                                  "stroke": "$--primary",
+                                  "strokeWidth": 2,
                                   "justifyContent": "center",
                                   "alignItems": "center",
                                   "children": [
@@ -1480,8 +1466,8 @@
                                   "height": 40,
                                   "fill": "#00000000",
                                   "cornerRadius": "$--radius-full",
-                                  "stroke": "$--primary",
-                                  "strokeWidth": 2,
+                                  "stroke": "#00000026",
+                                  "strokeWidth": 1,
                                   "justifyContent": "center",
                                   "alignItems": "center",
                                   "children": [
@@ -1762,7 +1748,7 @@
           "id": "CJpqx",
           "name": "Testimonial Section - Mobile",
           "width": "fill_container",
-          "fill": "$--background",
+          "fill": "$unofficial/background-accent",
           "layout": "vertical",
           "gap": 16,
           "padding": [
@@ -1777,8 +1763,9 @@
               "name": "Title",
               "fill": "$--foreground",
               "textGrowth": "fixed-width",
-              "width": 342,
+              "width": 324.849,
               "content": "Why people choose Luma",
+              "lineHeight": 1.15,
               "textAlign": "center",
               "fontFamily": "$--font-heading",
               "fontSize": 24,
@@ -1799,7 +1786,7 @@
                   "y": 0,
                   "name": "Carousel Horizontal Viewport",
                   "clip": true,
-                  "width": 390,
+                  "width": 375,
                   "height": 122,
                   "layout": "none",
                   "children": [
@@ -1832,11 +1819,11 @@
                               "fill": "$--foreground",
                               "textGrowth": "fixed-width-height",
                               "width": "fill_container",
-                              "height": 42,
+                              "height": 39,
                               "content": "“We stopped thinking about the square metres.”",
                               "lineHeight": 1.3,
                               "fontFamily": "$--font-heading",
-                              "fontSize": 16,
+                              "fontSize": 15,
                               "fontWeight": "500"
                             },
                             {
@@ -2006,11 +1993,11 @@
                               "fill": "$--foreground",
                               "textGrowth": "fixed-width-height",
                               "width": "fill_container",
-                              "height": 42,
+                              "height": 39,
                               "content": "“We always knew what the next step was.”",
                               "lineHeight": 1.3,
                               "fontFamily": "$--font-heading",
-                              "fontSize": 16,
+                              "fontSize": 15,
                               "fontWeight": "500"
                             },
                             {
@@ -2180,11 +2167,11 @@
                               "fill": "$--foreground",
                               "textGrowth": "fixed-width-height",
                               "width": "fill_container",
-                              "height": 42,
+                              "height": 39,
                               "content": "“Even rainy weekends feel restorative here.”",
                               "lineHeight": 1.3,
                               "fontFamily": "$--font-heading",
-                              "fontSize": 16,
+                              "fontSize": 15,
                               "fontWeight": "500"
                             },
                             {
@@ -2354,11 +2341,11 @@
                               "fill": "$--foreground",
                               "textGrowth": "fixed-width-height",
                               "width": "fill_container",
-                              "height": 42,
+                              "height": 39,
                               "content": "“The materials feel even better in person.”",
                               "lineHeight": 1.3,
                               "fontFamily": "$--font-heading",
-                              "fontSize": 16,
+                              "fontSize": 15,
                               "fontWeight": "500"
                             },
                             {
@@ -2528,11 +2515,11 @@
                               "fill": "$--foreground",
                               "textGrowth": "fixed-width-height",
                               "width": "fill_container",
-                              "height": 42,
+                              "height": 39,
                               "content": "“I close my laptop and the room becomes a retreat again.”",
                               "lineHeight": 1.3,
                               "fontFamily": "$--font-heading",
-                              "fontSize": 16,
+                              "fontSize": 15,
                               "fontWeight": "500"
                             },
                             {
@@ -2702,11 +2689,11 @@
                               "fill": "$--foreground",
                               "textGrowth": "fixed-width-height",
                               "width": "fill_container",
-                              "height": 42,
+                              "height": 39,
                               "content": "“We chose every finish in a single afternoon.”",
                               "lineHeight": 1.3,
                               "fontFamily": "$--font-heading",
-                              "fontSize": 16,
+                              "fontSize": 15,
                               "fontWeight": "500"
                             },
                             {
@@ -2865,6 +2852,7 @@
                       "x": 0,
                       "y": 0,
                       "name": "Carousel Fade Left",
+                      "enabled": false,
                       "fill": {
                         "type": "gradient",
                         "gradientType": "linear",
@@ -2875,11 +2863,11 @@
                         },
                         "colors": [
                           {
-                            "color": "$unofficial/background-transparent",
+                            "color": "$unofficial/background-accent-transparent",
                             "position": 0
                           },
                           {
-                            "color": "$--background",
+                            "color": "$unofficial/background-accent",
                             "position": 0.75
                           }
                         ]
@@ -2894,6 +2882,7 @@
                       "x": 366,
                       "y": 0,
                       "name": "Carousel Fade Right",
+                      "enabled": false,
                       "fill": {
                         "type": "gradient",
                         "gradientType": "linear",
@@ -2904,11 +2893,11 @@
                         },
                         "colors": [
                           {
-                            "color": "$unofficial/background-transparent",
+                            "color": "$unofficial/background-accent-transparent",
                             "position": 0
                           },
                           {
-                            "color": "$--background",
+                            "color": "$unofficial/background-accent",
                             "position": 0.75
                           }
                         ]
@@ -3104,23 +3093,27 @@
                     },
                     "colors": [
                       {
-                        "color": "$--background",
+                        "color": "$unofficial/background-accent",
                         "position": 0
                       },
                       {
-                        "color": "$unofficial/background-transparent",
+                        "color": "$unofficial/background-accent-80",
+                        "position": 0.5
+                      },
+                      {
+                        "color": "$unofficial/background-accent-transparent",
                         "position": 1
                       }
                     ]
                   },
-                  "width": 20,
-                  "height": 128
+                  "width": 24,
+                  "height": 122
                 },
                 {
                   "type": "rectangle",
                   "id": "occCi",
                   "layoutPosition": "absolute",
-                  "x": 370,
+                  "x": 351,
                   "y": 0,
                   "name": "Mobile Carousel Edge Fade Right",
                   "fill": {
@@ -3133,17 +3126,21 @@
                     },
                     "colors": [
                       {
-                        "color": "$--background",
+                        "color": "$unofficial/background-accent-transparent",
                         "position": 0
                       },
                       {
-                        "color": "$unofficial/background-transparent",
+                        "color": "$unofficial/background-accent-80",
+                        "position": 0.5
+                      },
+                      {
+                        "color": "$unofficial/background-accent",
                         "position": 1
                       }
                     ]
                   },
-                  "width": 20,
-                  "height": 128
+                  "width": 24,
+                  "height": 122
                 }
               ]
             }
@@ -3160,17 +3157,17 @@
             "type": "gradient",
             "gradientType": "linear",
             "enabled": true,
-            "rotation": -180,
+            "rotation": 180,
             "size": {
               "height": 1
             },
             "colors": [
               {
-                "color": "$unofficial/background-accent",
+                "color": "$--background",
                 "position": 0
               },
               {
-                "color": "$--background",
+                "color": "$unofficial/background-accent",
                 "position": 1
               }
             ]
@@ -3178,7 +3175,7 @@
           "layout": "vertical",
           "gap": 16,
           "padding": [
-            64,
+            40,
             0
           ],
           "children": [
@@ -3192,7 +3189,7 @@
               "gap": 8,
               "padding": [
                 0,
-                24
+                25.075
               ],
               "children": [
                 {
@@ -3240,7 +3237,7 @@
                   "context": "div",
                   "clip": true,
                   "width": "fill_container",
-                  "height": 260,
+                  "height": 250,
                   "layout": "none",
                   "children": [
                     {
@@ -3250,8 +3247,8 @@
                       "y": 0,
                       "name": "Unwind Image Layer",
                       "context": "div",
-                      "width": 390,
-                      "height": 260,
+                      "width": 375,
+                      "height": 250,
                       "layout": "none",
                       "children": [
                         {
@@ -3267,8 +3264,8 @@
                             "url": "images/localhost/68d932fa89daade0.jpg",
                             "mode": "fill"
                           },
-                          "width": 390,
-                          "height": 260
+                          "width": 375,
+                          "height": 250
                         }
                       ]
                     },
@@ -3280,8 +3277,8 @@
                       "name": "Focus Image Layer",
                       "context": "div",
                       "clip": true,
-                      "width": 218.4,
-                      "height": 260,
+                      "width": 210,
+                      "height": 250,
                       "layout": "none",
                       "children": [
                         {
@@ -3297,17 +3294,17 @@
                             "url": "images/localhost/1d6b15d0a01ef0e2.jpg",
                             "mode": "fill"
                           },
-                          "width": 390,
-                          "height": 260
+                          "width": 375,
+                          "height": 250
                         },
                         {
                           "type": "frame",
                           "id": "oYrEk",
                           "x": 16,
-                          "y": 199,
+                          "y": 187,
                           "name": "Focus Label",
                           "context": "div",
-                          "fill": "$--foreground",
+                          "fill": "$unofficial/foreground-75",
                           "cornerRadius": "$--radius-md",
                           "effect": {
                             "type": "background_blur",
@@ -3325,7 +3322,7 @@
                               "id": "tXhDV",
                               "name": "Focus Label Title",
                               "context": "p",
-                              "fill": "$--primary-foreground",
+                              "fill": "$--background",
                               "content": "Focus",
                               "lineHeight": 1.25,
                               "fontFamily": "$--font-sans",
@@ -3338,7 +3335,7 @@
                               "name": "Focus Label Detail",
                               "context": "p",
                               "opacity": 0.8,
-                              "fill": "$--primary-foreground",
+                              "fill": "$--background",
                               "content": "Light oak",
                               "lineHeight": 1.25,
                               "fontFamily": "$--font-sans",
@@ -3352,11 +3349,11 @@
                     {
                       "type": "frame",
                       "id": "qT4Od",
-                      "x": 294,
-                      "y": 199,
+                      "x": 280,
+                      "y": 187,
                       "name": "Unwind Label",
                       "context": "div",
-                      "fill": "$--foreground",
+                      "fill": "$unofficial/foreground-75",
                       "cornerRadius": "$--radius-md",
                       "effect": {
                         "type": "background_blur",
@@ -3374,7 +3371,7 @@
                           "id": "xdzQZ",
                           "name": "Unwind Label Title",
                           "context": "p",
-                          "fill": "$--primary-foreground",
+                          "fill": "$--background",
                           "content": "Unwind",
                           "lineHeight": 1.25,
                           "fontFamily": "$--font-sans",
@@ -3387,7 +3384,7 @@
                           "name": "Unwind Label Detail",
                           "context": "p",
                           "opacity": 0.8,
-                          "fill": "$--primary-foreground",
+                          "fill": "$--background",
                           "content": "Dark walnut",
                           "lineHeight": 1.25,
                           "fontFamily": "$--font-sans",
@@ -3399,13 +3396,13 @@
                     {
                       "type": "rectangle",
                       "id": "Y7n2T8",
-                      "x": 216.4,
+                      "x": 208,
                       "y": 0,
                       "name": "Comparison Divider",
                       "context": "div",
-                      "fill": "$--card",
+                      "fill": "#FFFFFF",
                       "width": 4,
-                      "height": 260
+                      "height": 250
                     },
                     {
                       "type": "rectangle",
@@ -3414,19 +3411,19 @@
                       "y": 0,
                       "name": "Comparison Slider Hit Area",
                       "context": "ImageComparisonSlider - div",
-                      "width": 390,
-                      "height": 260
+                      "width": 375,
+                      "height": 250
                     },
                     {
                       "type": "frame",
                       "id": "HOs2P",
-                      "x": 194.4,
-                      "y": 106,
+                      "x": 186,
+                      "y": 101,
                       "name": "Comparison Handle",
                       "context": "div",
                       "width": 48,
                       "height": 48,
-                      "fill": "$--background",
+                      "fill": "$unofficial/background-85",
                       "cornerRadius": "$--radius-full",
                       "effect": [
                         {
@@ -5029,9 +5026,9 @@
                           "textGrowth": "fixed-width",
                           "width": "fill_container",
                           "content": "Premium pre-designed cabins, designed to help you slow down, reconnect, and feel at home - anywhere.",
-                          "lineHeight": 1.5,
+                          "lineHeight": 1.3,
                           "fontFamily": "$--font-sans",
-                          "fontSize": 18,
+                          "fontSize": 17.737,
                           "fontWeight": "normal"
                         },
                         {
@@ -5588,17 +5585,25 @@
         },
         {
           "type": "frame",
+          "id": "bjjm7",
+          "name": "Hero Section Gap — Tablet",
+          "width": "fill_container",
+          "height": 49.594,
+          "fill": "$--background"
+        },
+        {
+          "type": "frame",
           "id": "fzJNY",
           "name": "About - Tablet",
           "width": "fill_container",
           "fill": "$--background",
           "layout": "vertical",
-          "gap": 32,
+          "gap": 33.72,
           "padding": [
-            96,
-            48,
-            48,
-            48
+            49.6,
+            41.984,
+            49.991,
+            41.984
           ],
           "alignItems": "center",
           "children": [
@@ -5608,8 +5613,9 @@
               "name": "eyebrow",
               "fill": "$--foreground",
               "content": "OUR APPROACH",
+              "lineHeight": 1.1,
               "fontFamily": "$--font-sans",
-              "fontSize": 13,
+              "fontSize": 12.868,
               "fontWeight": "700",
               "letterSpacing": 3
             },
@@ -5617,16 +5623,16 @@
               "type": "frame",
               "id": "mbrSA",
               "name": "Frame 4",
-              "width": 640,
+              "width": "fill_container",
               "layout": "vertical",
-              "gap": 32,
+              "gap": 33.72,
               "alignItems": "center",
               "children": [
                 {
                   "type": "frame",
                   "id": "nizIR",
                   "name": "About Statement",
-                  "width": "fill_container",
+                  "width": 576,
                   "layout": "vertical",
                   "alignItems": "center",
                   "children": [
@@ -5642,9 +5648,9 @@
                           "name": "Statement Line 1 Text",
                           "fill": "$--foreground",
                           "content": "A simpler path to",
-                          "lineHeight": 1.12,
+                          "lineHeight": 1.1,
                           "fontFamily": "$--font-heading",
-                          "fontSize": 45.48,
+                          "fontSize": 45.479,
                           "fontWeight": "500"
                         }
                       ]
@@ -5661,9 +5667,9 @@
                           "name": "Statement Line 2 Prefix",
                           "fill": "$--foreground",
                           "content": "a quiet ",
-                          "lineHeight": 1.12,
+                          "lineHeight": 1.1,
                           "fontFamily": "$--font-heading",
-                          "fontSize": 45.48,
+                          "fontSize": 45.479,
                           "fontWeight": "500"
                         },
                         {
@@ -5672,9 +5678,9 @@
                           "name": "Statement Emphasis",
                           "fill": "$--foreground",
                           "content": "retreat.",
-                          "lineHeight": 1.12,
+                          "lineHeight": 1.1,
                           "fontFamily": "$--font-heading",
-                          "fontSize": 45.48,
+                          "fontSize": 45.479,
                           "fontWeight": "500",
                           "fontStyle": "italic"
                         }
@@ -5690,10 +5696,10 @@
                   "textGrowth": "fixed-width",
                   "width": "fill_container",
                   "content": "We design secluded luxury retreats for unforgettable stays in nature. Each cabin combines refined architecture, warm natural materials, panoramic views, and premium comforts for a peaceful escape without compromise. Slow down, reconnect, and experience the calm of modern cabin living.",
-                  "lineHeight": 1.25,
+                  "lineHeight": 1.3,
                   "textAlign": "center",
                   "fontFamily": "$--font-sans",
-                  "fontSize": 18,
+                  "fontSize": 17.737,
                   "fontWeight": "normal"
                 }
               ]
@@ -5705,28 +5711,12 @@
           "id": "wQ9wk",
           "name": "Models Overview - Tablet",
           "width": "fill_container",
-          "fill": {
-            "type": "gradient",
-            "gradientType": "linear",
-            "enabled": true,
-            "rotation": 0,
-            "size": {
-              "height": 1
-            },
-            "colors": [
-              {
-                "color": "$unofficial/background-accent",
-                "position": 0
-              },
-              {
-                "color": "$--background",
-                "position": 1
-              }
-            ]
-          },
+          "fill": "$--background",
           "layout": "vertical",
           "padding": [
             49.6,
+            0,
+            49.587,
             0
           ],
           "alignItems": "center",
@@ -5741,7 +5731,7 @@
               "fill": {
                 "type": "image",
                 "enabled": true,
-                "url": "images/Niva.jpg",
+                "url": "images/Veyra.jpg",
                 "mode": "fill"
               },
               "layout": "none",
@@ -5894,10 +5884,11 @@
                       "name": "Model Name",
                       "fill": "$--primary-foreground",
                       "textGrowth": "fixed-width",
-                      "width": 90,
-                      "content": "Niva",
+                      "width": 130,
+                      "content": "Veyra",
+                      "lineHeight": 1.1,
                       "fontFamily": "$--font-heading",
-                      "fontSize": 48,
+                      "fontSize": 38.769,
                       "fontWeight": "500"
                     },
                     {
@@ -5907,9 +5898,10 @@
                       "fill": "$--primary-foreground",
                       "textGrowth": "fixed-width",
                       "width": 250,
-                      "content": "20 m²   ·   Sleeping loft",
+                      "content": "56 m²   ·   1 Bedroom",
+                      "lineHeight": 1.4,
                       "fontFamily": "$--font-sans",
-                      "fontSize": 14,
+                      "fontSize": 14.868,
                       "fontWeight": "600"
                     }
                   ]
@@ -5996,14 +5988,14 @@
                     {
                       "type": "frame",
                       "id": "nh6lz",
-                      "name": "Thumb Niva (active)",
+                      "name": "Thumb Veyra (active)",
                       "clip": true,
                       "width": 128,
                       "height": 72,
                       "fill": {
                         "type": "image",
                         "enabled": true,
-                        "url": "images/Niva.jpg",
+                        "url": "images/Veyra.jpg",
                         "mode": "fill"
                       },
                       "cornerRadius": 8,
@@ -6060,7 +6052,7 @@
                     {
                       "type": "frame",
                       "id": "ArUCT",
-                      "name": "Thumb Veyra",
+                      "name": "Thumb Niva",
                       "opacity": 0.55,
                       "clip": true,
                       "width": 128,
@@ -6068,7 +6060,7 @@
                       "fill": {
                         "type": "image",
                         "enabled": true,
-                        "url": "images/Veyra.jpg",
+                        "url": "images/Niva.jpg",
                         "mode": "fill"
                       },
                       "cornerRadius": 8,
@@ -6118,11 +6110,13 @@
           "id": "PDQ32",
           "name": "Interactive Showcase - Tablet",
           "width": "fill_container",
-          "fill": "$unofficial/background-accent",
+          "fill": "$--background",
           "layout": "vertical",
-          "gap": 60,
+          "gap": 49.6,
           "padding": [
-            48,
+            49.6,
+            0,
+            49.475,
             0
           ],
           "children": [
@@ -6131,7 +6125,7 @@
               "id": "y1VC5",
               "width": "fill_container",
               "layout": "vertical",
-              "gap": 16,
+              "gap": 33.723,
               "padding": [
                 0,
                 48
@@ -6143,8 +6137,9 @@
                   "id": "xt8Hw",
                   "fill": "$--foreground",
                   "content": "MAKE IT YOURS",
+                  "lineHeight": 1.1,
                   "fontFamily": "$--font-sans",
-                  "fontSize": 13,
+                  "fontSize": 12.868,
                   "fontWeight": "700",
                   "letterSpacing": 3
                 },
@@ -6162,9 +6157,9 @@
                       "name": "Showcase Title Line 1",
                       "fill": "$--foreground",
                       "content": "Three models.",
-                      "lineHeight": 1.12,
+                      "lineHeight": 1.1,
                       "fontFamily": "$--font-heading",
-                      "fontSize": 45.48,
+                      "fontSize": 45.479,
                       "fontWeight": "500"
                     },
                     {
@@ -6179,9 +6174,9 @@
                           "name": "Showcase Title Emphasis",
                           "fill": "$--foreground",
                           "content": "Unlimited",
-                          "lineHeight": 1.12,
+                          "lineHeight": 1.1,
                           "fontFamily": "$--font-heading",
-                          "fontSize": 45.48,
+                          "fontSize": 45.479,
                           "fontWeight": "500",
                           "fontStyle": "italic"
                         },
@@ -6191,9 +6186,9 @@
                           "name": "Showcase Title Suffix",
                           "fill": "$--foreground",
                           "content": " adventures.",
-                          "lineHeight": 1.12,
+                          "lineHeight": 1.1,
                           "fontFamily": "$--font-heading",
-                          "fontSize": 45.48,
+                          "fontSize": 45.479,
                           "fontWeight": "500"
                         }
                       ]
@@ -6207,11 +6202,11 @@
               "id": "Rs5tR",
               "name": "showcase body",
               "width": "fill_container",
-              "fill": "$unofficial/background-accent",
+              "fill": "$--background",
               "layout": "vertical",
               "gap": 20,
               "padding": [
-                40,
+                32,
                 0,
                 0,
                 0
@@ -6225,12 +6220,6 @@
                   "width": "fill_container",
                   "layout": "vertical",
                   "gap": 20,
-                  "padding": [
-                    0,
-                    0,
-                    20,
-                    0
-                  ],
                   "alignItems": "center",
                   "children": [
                     {
@@ -6246,8 +6235,9 @@
                           "id": "okeHA",
                           "fill": "$--foreground",
                           "content": "Niva",
+                          "lineHeight": 1.1,
                           "fontFamily": "$--font-heading",
-                          "fontSize": 40,
+                          "fontSize": 38.769,
                           "fontWeight": "500"
                         },
                         {
@@ -6263,8 +6253,9 @@
                               "name": "Area",
                               "fill": "$--foreground",
                               "content": "20 m²",
+                              "lineHeight": 1.3,
                               "fontFamily": "$--font-sans",
-                              "fontSize": 17,
+                              "fontSize": 17.737,
                               "fontWeight": "600"
                             },
                             {
@@ -6273,8 +6264,9 @@
                               "name": "Separator 1",
                               "fill": "#73737380",
                               "content": "|",
+                              "lineHeight": 1.3,
                               "fontFamily": "$--font-sans",
-                              "fontSize": 18,
+                              "fontSize": 17.737,
                               "fontWeight": "normal"
                             },
                             {
@@ -6283,8 +6275,9 @@
                               "name": "Bedrooms",
                               "fill": "$--foreground",
                               "content": "Sleeping loft",
+                              "lineHeight": 1.3,
                               "fontFamily": "$--font-sans",
-                              "fontSize": 17,
+                              "fontSize": 17.737,
                               "fontWeight": "600"
                             },
                             {
@@ -6296,8 +6289,9 @@
                               "enabled": false,
                               "fill": "#73737380",
                               "content": "|",
+                              "lineHeight": 1.3,
                               "fontFamily": "$--font-sans",
-                              "fontSize": 18,
+                              "fontSize": 17.737,
                               "fontWeight": "normal"
                             },
                             {
@@ -6309,8 +6303,9 @@
                               "enabled": false,
                               "fill": "$--foreground",
                               "content": "Sleeps 2–4",
+                              "lineHeight": 1.3,
                               "fontFamily": "$--font-sans",
-                              "fontSize": 17,
+                              "fontSize": 17.737,
                               "fontWeight": "600"
                             }
                           ]
@@ -6333,17 +6328,17 @@
                       "name": "Carousel Viewport",
                       "clip": true,
                       "width": "fill_container",
-                      "height": 246,
+                      "height": 188,
                       "layout": "none",
                       "children": [
                         {
                           "type": "frame",
                           "id": "tdc9m",
-                          "x": 134,
+                          "x": 280,
                           "y": 0,
                           "name": "Sliding Image Track",
-                          "width": "fill_container(1621)",
-                          "gap": 60,
+                          "width": 1218,
+                          "gap": 218,
                           "alignItems": "center",
                           "children": [
                             {
@@ -6356,7 +6351,7 @@
                               "opacity": 0.49999999999999956,
                               "clip": true,
                               "width": 500,
-                              "height": 220,
+                              "height": 188,
                               "fill": {
                                 "type": "image",
                                 "enabled": true,
@@ -6402,8 +6397,8 @@
                               "id": "twSem",
                               "name": "Main Image Niva",
                               "clip": true,
-                              "width": 500,
-                              "height": 220,
+                              "width": 206.88,
+                              "height": 187.8,
                               "fill": {
                                 "type": "image",
                                 "enabled": true,
@@ -6448,11 +6443,11 @@
                               "type": "frame",
                               "id": "T4hAv",
                               "layoutPosition": "absolute",
-                              "x": -48,
-                              "y": 82,
+                              "x": -191,
+                              "y": 70,
                               "name": "Arrow Buttons",
-                              "width": 596,
-                              "height": 56,
+                              "width": 584,
+                              "height": 48,
                               "gap": 16,
                               "justifyContent": "space_between",
                               "children": [
@@ -6461,8 +6456,8 @@
                                   "id": "V8I8F",
                                   "name": "Previous Button",
                                   "opacity": 0.45,
-                                  "width": 56,
-                                  "height": 56,
+                                  "width": 48,
+                                  "height": 48,
                                   "fill": "$--primary",
                                   "cornerRadius": "$--radius-full",
                                   "justifyContent": "center",
@@ -6484,8 +6479,8 @@
                                   "type": "frame",
                                   "id": "pcUm6",
                                   "name": "Next Button",
-                                  "width": 56,
-                                  "height": 56,
+                                  "width": 48,
+                                  "height": 48,
                                   "fill": "$--primary",
                                   "cornerRadius": "$--radius-full",
                                   "justifyContent": "center",
@@ -6509,20 +6504,20 @@
                               "type": "frame",
                               "id": "gWFxr",
                               "name": "Next Image Peek",
-                              "width": 500,
-                              "height": "fit_content(220)",
+                              "width": 352.69,
+                              "height": 187.8,
                               "children": [
                                 {
                                   "type": "frame",
                                   "id": "o3p9ef",
                                   "layoutPosition": "absolute",
-                                  "x": -32,
+                                  "x": 0,
                                   "y": 0,
                                   "name": "Next Image Aster",
                                   "opacity": 0.49999999999999956,
                                   "clip": true,
-                                  "width": 500,
-                                  "height": 220,
+                                  "width": 352.69,
+                                  "height": 187.8,
                                   "fill": {
                                     "type": "image",
                                     "enabled": true,
@@ -6556,6 +6551,12 @@
                       "name": "Carousel Controls",
                       "width": "fill_container",
                       "gap": 32,
+                      "padding": [
+                        20.79,
+                        0,
+                        0,
+                        0
+                      ],
                       "justifyContent": "center",
                       "children": [
                         {
@@ -6612,8 +6613,10 @@
                   "clip": true,
                   "width": "fill_container",
                   "padding": [
+                    16,
+                    102.7,
                     0,
-                    48
+                    102.7
                   ],
                   "children": [
                     {
@@ -6627,14 +6630,14 @@
                       "strokeWidth": 1,
                       "strokeAlignment": "inner",
                       "layout": "vertical",
-                      "gap": 24,
-                      "padding": 32,
+                      "gap": 20.547,
+                      "padding": 29.624,
                       "children": [
                         {
                           "type": "frame",
                           "id": "zphP7",
                           "width": "fill_container",
-                          "height": "fit_content(36)",
+                          "height": 40,
                           "layout": "none",
                           "children": [
                             {
@@ -6659,65 +6662,32 @@
                                 {
                                   "type": "frame",
                                   "id": "q9ANL",
+                                  "width": 40,
+                                  "height": 40,
                                   "fill": "#00000000",
                                   "cornerRadius": "$--radius-full",
-                                  "stroke": "$--border",
-                                  "strokeWidth": 1,
-                                  "gap": 8,
-                                  "padding": [
-                                    9,
-                                    14
-                                  ],
+                                  "stroke": "$--primary",
+                                  "strokeWidth": 2,
+                                  "justifyContent": "center",
                                   "alignItems": "center",
                                   "children": [
                                     {
                                       "type": "ellipse",
                                       "id": "dy3Bg",
                                       "fill": "#C2A06B",
-                                      "width": 14,
-                                      "height": 14,
+                                      "width": 30,
+                                      "height": 30,
                                       "stroke": "#00000014",
                                       "strokeWidth": 1
                                     },
                                     {
                                       "type": "text",
                                       "id": "gsjJw",
+                                      "x": 36,
+                                      "y": 9,
+                                      "enabled": false,
                                       "fill": "$--foreground",
                                       "content": "Timber",
-                                      "fontFamily": "$--font-sans",
-                                      "fontSize": 13,
-                                      "fontWeight": "500"
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "frame",
-                                  "id": "WLJoX",
-                                  "fill": "$--card",
-                                  "cornerRadius": "$--radius-full",
-                                  "stroke": "$--primary",
-                                  "strokeWidth": 1.5,
-                                  "gap": 8,
-                                  "padding": [
-                                    9,
-                                    14
-                                  ],
-                                  "alignItems": "center",
-                                  "children": [
-                                    {
-                                      "type": "ellipse",
-                                      "id": "j1EJM",
-                                      "fill": "#2E2A26",
-                                      "width": 14,
-                                      "height": 14,
-                                      "stroke": "#00000014",
-                                      "strokeWidth": 1
-                                    },
-                                    {
-                                      "type": "text",
-                                      "id": "oj0sj",
-                                      "fill": "$--foreground",
-                                      "content": "Charred wood",
                                       "fontFamily": "$--font-sans",
                                       "fontSize": 13,
                                       "fontWeight": "700"
@@ -6726,30 +6696,66 @@
                                 },
                                 {
                                   "type": "frame",
-                                  "id": "umS3z",
+                                  "id": "WLJoX",
+                                  "width": 40,
+                                  "height": 40,
                                   "fill": "#00000000",
                                   "cornerRadius": "$--radius-full",
                                   "stroke": "$--border",
                                   "strokeWidth": 1,
-                                  "gap": 8,
-                                  "padding": [
-                                    9,
-                                    14
-                                  ],
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "j1EJM",
+                                      "fill": "#2E2A26",
+                                      "width": 30,
+                                      "height": 30,
+                                      "stroke": "#00000014",
+                                      "strokeWidth": 1
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "oj0sj",
+                                      "x": 36,
+                                      "y": 9,
+                                      "enabled": false,
+                                      "fill": "$--foreground",
+                                      "content": "Charred wood",
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 13,
+                                      "fontWeight": "500"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "umS3z",
+                                  "width": 40,
+                                  "height": 40,
+                                  "fill": "#00000000",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--border",
+                                  "strokeWidth": 1,
+                                  "justifyContent": "center",
                                   "alignItems": "center",
                                   "children": [
                                     {
                                       "type": "ellipse",
                                       "id": "V5QxQ",
                                       "fill": "#e3e0d3ff",
-                                      "width": 14,
-                                      "height": 14,
+                                      "width": 30,
+                                      "height": 30,
                                       "stroke": "#00000014",
                                       "strokeWidth": 1
                                     },
                                     {
                                       "type": "text",
                                       "id": "GbE2q",
+                                      "x": 36,
+                                      "y": 9,
+                                      "enabled": false,
                                       "fill": "$--foreground",
                                       "content": "Oyster ",
                                       "fontFamily": "$--font-sans",
@@ -6766,7 +6772,7 @@
                           "type": "frame",
                           "id": "hWfi7",
                           "width": "fill_container",
-                          "height": "fit_content(36)",
+                          "height": 40,
                           "layout": "none",
                           "children": [
                             {
@@ -6791,29 +6797,30 @@
                                 {
                                   "type": "frame",
                                   "id": "g5FOyy",
-                                  "fill": "$--card",
+                                  "width": 40,
+                                  "height": 40,
+                                  "fill": "#00000000",
                                   "cornerRadius": "$--radius-full",
                                   "stroke": "$--primary",
-                                  "strokeWidth": 1.5,
-                                  "gap": 8,
-                                  "padding": [
-                                    9,
-                                    14
-                                  ],
+                                  "strokeWidth": 2,
+                                  "justifyContent": "center",
                                   "alignItems": "center",
                                   "children": [
                                     {
                                       "type": "ellipse",
                                       "id": "Lsy3G",
                                       "fill": "#DCC79E",
-                                      "width": 14,
-                                      "height": 14,
+                                      "width": 30,
+                                      "height": 30,
                                       "stroke": "#00000014",
                                       "strokeWidth": 1
                                     },
                                     {
                                       "type": "text",
                                       "id": "XLaqn",
+                                      "x": 36,
+                                      "y": 9,
+                                      "enabled": false,
                                       "fill": "$--foreground",
                                       "content": "Light oak",
                                       "fontFamily": "$--font-sans",
@@ -6825,29 +6832,30 @@
                                 {
                                   "type": "frame",
                                   "id": "w7b53",
+                                  "width": 40,
+                                  "height": 40,
                                   "fill": "#00000000",
                                   "cornerRadius": "$--radius-full",
                                   "stroke": "$--border",
                                   "strokeWidth": 1,
-                                  "gap": 8,
-                                  "padding": [
-                                    9,
-                                    14
-                                  ],
+                                  "justifyContent": "center",
                                   "alignItems": "center",
                                   "children": [
                                     {
                                       "type": "ellipse",
                                       "id": "mOm92",
                                       "fill": "#C2A988",
-                                      "width": 14,
-                                      "height": 14,
+                                      "width": 30,
+                                      "height": 30,
                                       "stroke": "#00000014",
                                       "strokeWidth": 1
                                     },
                                     {
                                       "type": "text",
                                       "id": "IZdIc",
+                                      "x": 36,
+                                      "y": 9,
+                                      "enabled": false,
                                       "fill": "$--foreground",
                                       "content": "Warm ash",
                                       "fontFamily": "$--font-sans",
@@ -6859,29 +6867,30 @@
                                 {
                                   "type": "frame",
                                   "id": "UrT11",
+                                  "width": 40,
+                                  "height": 40,
                                   "fill": "#00000000",
                                   "cornerRadius": "$--radius-full",
                                   "stroke": "$--border",
                                   "strokeWidth": 1,
-                                  "gap": 8,
-                                  "padding": [
-                                    9,
-                                    14
-                                  ],
+                                  "justifyContent": "center",
                                   "alignItems": "center",
                                   "children": [
                                     {
                                       "type": "ellipse",
                                       "id": "vKiHM",
                                       "fill": "#5A4636",
-                                      "width": 14,
-                                      "height": 14,
+                                      "width": 30,
+                                      "height": 30,
                                       "stroke": "#00000014",
                                       "strokeWidth": 1
                                     },
                                     {
                                       "type": "text",
                                       "id": "kht4z",
+                                      "x": 36,
+                                      "y": 9,
+                                      "enabled": false,
                                       "fill": "$--foreground",
                                       "content": "Dark walnut",
                                       "fontFamily": "$--font-sans",
@@ -6898,7 +6907,7 @@
                           "type": "frame",
                           "id": "Q9AHJ",
                           "width": "fill_container",
-                          "height": "fit_content(22)",
+                          "height": 22,
                           "layout": "none",
                           "children": [
                             {
@@ -7030,11 +7039,13 @@
           "id": "ZB0Ht",
           "name": "Testimonial Section - Tablet",
           "width": "fill_container",
-          "fill": "$--background",
+          "fill": "$unofficial/background-accent",
           "layout": "vertical",
           "gap": 28,
           "padding": [
             49.6,
+            0,
+            50.197,
             0
           ],
           "alignItems": "center",
@@ -7047,9 +7058,10 @@
               "textGrowth": "fixed-width",
               "width": 672,
               "content": "Why people choose Luma",
+              "lineHeight": 1.15,
               "textAlign": "center",
               "fontFamily": "$--font-heading",
-              "fontSize": 30,
+              "fontSize": 28.063,
               "fontWeight": "500"
             },
             {
@@ -8144,11 +8156,11 @@
                         },
                         "colors": [
                           {
-                            "color": "$unofficial/background-transparent",
+                            "color": "$unofficial/background-accent-transparent",
                             "position": 0
                           },
                           {
-                            "color": "$--background",
+                            "color": "$unofficial/background-accent",
                             "position": 0.75
                           }
                         ]
@@ -8173,11 +8185,11 @@
                         },
                         "colors": [
                           {
-                            "color": "$unofficial/background-transparent",
+                            "color": "$unofficial/background-accent-transparent",
                             "position": 0
                           },
                           {
-                            "color": "$--background",
+                            "color": "$unofficial/background-accent",
                             "position": 0.75
                           }
                         ]
@@ -8405,11 +8417,11 @@
                     },
                     "colors": [
                       {
-                        "color": "$--background",
+                        "color": "$unofficial/background-accent",
                         "position": 0
                       },
                       {
-                        "color": "$unofficial/background-transparent",
+                        "color": "$unofficial/background-accent-transparent",
                         "position": 1
                       }
                     ]
@@ -8434,11 +8446,11 @@
                     },
                     "colors": [
                       {
-                        "color": "$--background",
+                        "color": "$unofficial/background-accent",
                         "position": 0
                       },
                       {
-                        "color": "$unofficial/background-transparent",
+                        "color": "$unofficial/background-accent-transparent",
                         "position": 1
                       }
                     ]
@@ -8461,17 +8473,17 @@
             "type": "gradient",
             "gradientType": "linear",
             "enabled": true,
-            "rotation": -180,
+            "rotation": 180,
             "size": {
               "height": 1
             },
             "colors": [
               {
-                "color": "$unofficial/background-accent",
+                "color": "$--background",
                 "position": 0
               },
               {
-                "color": "$--background",
+                "color": "$unofficial/background-accent",
                 "position": 1
               }
             ]
@@ -8479,7 +8491,9 @@
           "layout": "vertical",
           "gap": 20,
           "padding": [
-            72,
+            49.6,
+            0,
+            49.589,
             0
           ],
           "children": [
@@ -8489,38 +8503,38 @@
               "name": "Comparison Intro",
               "context": "div",
               "width": "fill_container",
-              "height": 56,
+              "height": 55.78,
               "layout": "none",
               "children": [
                 {
                   "type": "text",
                   "id": "c6LOT",
-                  "x": 48,
-                  "y": 16,
+                  "x": 41.984,
+                  "y": 23.508,
                   "name": "Comparison Title",
                   "context": "h2",
                   "fill": "$--foreground",
                   "content": "Your space, your story.",
-                  "lineHeight": 1.25,
+                  "lineHeight": 1.15,
                   "fontFamily": "$--font-heading",
-                  "fontSize": 32,
+                  "fontSize": 28.063,
                   "fontWeight": "500"
                 },
                 {
                   "type": "text",
                   "id": "v8rea",
-                  "x": 426,
+                  "x": 433.5,
                   "y": 0,
                   "name": "Comparison Description",
                   "context": "p",
                   "fill": "$--foreground",
                   "textGrowth": "fixed-width-height",
-                  "width": 294,
-                  "height": 56,
+                  "width": 292.516,
+                  "height": 55.78,
                   "content": "Customize your cabin to match your lifestyle, from the way each room works to the details that make it yours.",
                   "lineHeight": 1.25,
                   "fontFamily": "$--font-sans",
-                  "fontSize": 15,
+                  "fontSize": 14.868,
                   "fontWeight": "normal"
                 }
               ]
@@ -8607,7 +8621,7 @@
                           "y": 352.5,
                           "name": "Focus Label",
                           "context": "div",
-                          "fill": "$--foreground",
+                          "fill": "$unofficial/foreground-75",
                           "cornerRadius": "$--radius-md",
                           "effect": {
                             "type": "background_blur",
@@ -8656,7 +8670,7 @@
                       "y": 352.5,
                       "name": "Unwind Label",
                       "context": "div",
-                      "fill": "$--foreground",
+                      "fill": "$unofficial/foreground-75",
                       "cornerRadius": "$--radius-md",
                       "effect": {
                         "type": "background_blur",
@@ -8828,7 +8842,9 @@
           "gap": 73.6,
           "padding": [
             49.6,
-            48
+            41.984,
+            60.922,
+            41.984
           ],
           "alignItems": "center",
           "children": [
@@ -8876,7 +8892,7 @@
                   "type": "frame",
                   "id": "kkyGz",
                   "name": "Process Timeline",
-                  "width": 208,
+                  "width": 212,
                   "height": 868,
                   "fill": "$unofficial/background-accent",
                   "layout": "vertical",
@@ -9224,9 +9240,11 @@
                       "name": "Process Step 01",
                       "width": "fill_container",
                       "layout": "vertical",
-                      "gap": 24,
+                      "gap": 18.1,
                       "padding": [
                         16,
+                        0,
+                        0,
                         0
                       ],
                       "children": [
@@ -9262,7 +9280,6 @@
                           "name": "Step 01 Bullets",
                           "width": "fill_container",
                           "layout": "vertical",
-                          "gap": 4,
                           "children": [
                             {
                               "type": "frame",
@@ -9365,7 +9382,7 @@
                           "name": "Step 01 Media",
                           "clip": true,
                           "width": "fill_container",
-                          "height": 357,
+                          "height": 336,
                           "fill": {
                             "type": "image",
                             "enabled": true,
@@ -9383,9 +9400,11 @@
                       "name": "Process Step 02",
                       "width": "fill_container",
                       "layout": "vertical",
-                      "gap": 24,
+                      "gap": 18.1,
                       "padding": [
                         16,
+                        0,
+                        0,
                         0
                       ],
                       "children": [
@@ -9421,7 +9440,6 @@
                           "name": "Step 02 Bullets",
                           "width": "fill_container",
                           "layout": "vertical",
-                          "gap": 4,
                           "children": [
                             {
                               "type": "frame",
@@ -9524,7 +9542,7 @@
                           "name": "Step 02 Media",
                           "clip": true,
                           "width": "fill_container",
-                          "height": 357,
+                          "height": 336,
                           "fill": {
                             "type": "image",
                             "enabled": true,
@@ -9542,9 +9560,11 @@
                       "name": "Process Step 03",
                       "width": "fill_container",
                       "layout": "vertical",
-                      "gap": 24,
+                      "gap": 18.1,
                       "padding": [
                         16,
+                        0,
+                        0,
                         0
                       ],
                       "children": [
@@ -9580,7 +9600,6 @@
                           "name": "Step 03 Bullets",
                           "width": "fill_container",
                           "layout": "vertical",
-                          "gap": 4,
                           "children": [
                             {
                               "type": "frame",
@@ -9683,7 +9702,7 @@
                           "name": "Step 03 Media",
                           "clip": true,
                           "width": "fill_container",
-                          "height": 357,
+                          "height": 336,
                           "fill": {
                             "type": "image",
                             "enabled": true,
@@ -9701,9 +9720,11 @@
                       "name": "Process Step 04",
                       "width": "fill_container",
                       "layout": "vertical",
-                      "gap": 24,
+                      "gap": 18.1,
                       "padding": [
                         16,
+                        0,
+                        0,
                         0
                       ],
                       "children": [
@@ -9739,7 +9760,6 @@
                           "name": "Step 04 Bullets",
                           "width": "fill_container",
                           "layout": "vertical",
-                          "gap": 4,
                           "children": [
                             {
                               "type": "frame",
@@ -9842,7 +9862,7 @@
                           "name": "Step 04 Media",
                           "clip": true,
                           "width": "fill_container",
-                          "height": 357,
+                          "height": 336,
                           "fill": {
                             "type": "image",
                             "enabled": true,
@@ -11069,29 +11089,11 @@
               "id": "LiVZw",
               "name": "Models Overview — Slider",
               "width": "fill_container",
-              "fill": {
-                "type": "gradient",
-                "gradientType": "linear",
-                "enabled": true,
-                "rotation": 0,
-                "size": {
-                  "height": 1
-                },
-                "colors": [
-                  {
-                    "color": "$unofficial/background-accent",
-                    "position": 0
-                  },
-                  {
-                    "color": "$--background",
-                    "position": 1
-                  }
-                ]
-              },
+              "fill": "$--background",
               "layout": "vertical",
               "padding": [
                 88,
-                64
+                0
               ],
               "alignItems": "center",
               "children": [
@@ -11101,14 +11103,13 @@
                   "name": "Slider Card",
                   "clip": true,
                   "width": "fill_container",
-                  "height": 792,
+                  "height": 864,
                   "fill": {
                     "type": "image",
                     "enabled": true,
-                    "url": "images/Niva.jpg",
+                    "url": "images/Veyra.jpg",
                     "mode": "fill"
                   },
-                  "cornerRadius": "$--radius-xl",
                   "layout": "none",
                   "children": [
                     {
@@ -11138,7 +11139,7 @@
                           }
                         ]
                       },
-                      "width": 1408,
+                      "width": 1536,
                       "height": 238
                     },
                     {
@@ -11167,8 +11168,8 @@
                           }
                         ]
                       },
-                      "width": 1408,
-                      "height": 792
+                      "width": 1536,
+                      "height": 864
                     },
                     {
                       "type": "rectangle",
@@ -11198,13 +11199,13 @@
                         ]
                       },
                       "width": 300,
-                      "height": 792
+                      "height": 864
                     },
                     {
                       "type": "rectangle",
                       "id": "gqvZB",
                       "layoutPosition": "absolute",
-                      "x": 1108,
+                      "x": 1236,
                       "y": 0,
                       "name": "Right Edge Gradient",
                       "enabled": false,
@@ -11228,7 +11229,7 @@
                         ]
                       },
                       "width": 300,
-                      "height": 792
+                      "height": 864
                     },
                     {
                       "type": "text",
@@ -11249,7 +11250,7 @@
                       "type": "text",
                       "id": "TKg8w",
                       "layoutPosition": "absolute",
-                      "x": 1160,
+                      "x": 1288,
                       "y": 44,
                       "name": "counter",
                       "enabled": false,
@@ -11267,7 +11268,7 @@
                       "type": "frame",
                       "id": "Sjg6p",
                       "x": 48,
-                      "y": 660,
+                      "y": 732,
                       "name": "Model Caption",
                       "fill": "#00000000",
                       "layout": "vertical",
@@ -11278,9 +11279,9 @@
                           "id": "OTpdO",
                           "name": "Model Name",
                           "fill": "$--primary-foreground",
-                          "content": "Niva",
+                          "content": "Veyra",
                           "fontFamily": "$--font-heading",
-                          "fontSize": 56,
+                          "fontSize": 52,
                           "fontWeight": "500"
                         },
                         {
@@ -11288,9 +11289,9 @@
                           "id": "igQsr",
                           "name": "Model Spec",
                           "fill": "$--primary-foreground",
-                          "content": "20 m²   ·   Sleeping loft",
+                          "content": "56 m²   ·   1 Bedroom",
                           "fontFamily": "$--font-sans",
-                          "fontSize": 15,
+                          "fontSize": 16,
                           "fontWeight": "600"
                         }
                       ]
@@ -11300,7 +11301,7 @@
                       "id": "x2sBQD",
                       "layoutPosition": "absolute",
                       "x": 32,
-                      "y": 372,
+                      "y": 408,
                       "name": "Prev",
                       "width": 48,
                       "height": 48,
@@ -11330,8 +11331,8 @@
                       "type": "frame",
                       "id": "EKcG2",
                       "layoutPosition": "absolute",
-                      "x": 1328,
-                      "y": 372,
+                      "x": 1456,
+                      "y": 408,
                       "name": "Next",
                       "width": 48,
                       "height": 48,
@@ -11361,8 +11362,8 @@
                       "type": "frame",
                       "id": "LNQ0p",
                       "layoutPosition": "absolute",
-                      "x": 488,
-                      "y": 660,
+                      "x": 552,
+                      "y": 732,
                       "name": "Thumbnail Nav",
                       "cornerRadius": "$--radius-lg",
                       "stroke": "#e6e6e633",
@@ -11378,14 +11379,14 @@
                         {
                           "type": "frame",
                           "id": "x01k08",
-                          "name": "Thumb Niva (active)",
+                          "name": "Thumb Veyra (active)",
                           "clip": true,
                           "width": 128,
                           "height": 72,
                           "fill": {
                             "type": "image",
                             "enabled": true,
-                            "url": "images/Niva.jpg",
+                            "url": "images/Veyra.jpg",
                             "mode": "fill"
                           },
                           "cornerRadius": 8,
@@ -11442,7 +11443,7 @@
                         {
                           "type": "frame",
                           "id": "jz0R7",
-                          "name": "Thumb Veyra",
+                          "name": "Thumb Niva",
                           "opacity": 0.55,
                           "clip": true,
                           "width": 128,
@@ -11450,7 +11451,7 @@
                           "fill": {
                             "type": "image",
                             "enabled": true,
-                            "url": "images/Veyra.jpg",
+                            "url": "images/Niva.jpg",
                             "mode": "fill"
                           },
                           "cornerRadius": 8,
@@ -11464,8 +11465,8 @@
                       "type": "frame",
                       "id": "p8Cw1",
                       "layoutPosition": "absolute",
-                      "x": 1344,
-                      "y": 720,
+                      "x": 1472,
+                      "y": 792,
                       "name": "Carousel Play Control",
                       "width": 40,
                       "height": 40,
@@ -11500,9 +11501,9 @@
               "id": "fgcob",
               "name": "Interactive Showcase",
               "width": "fill_container",
-              "fill": "$unofficial/background-accent",
+              "fill": "$--background",
               "layout": "vertical",
-              "gap": 80,
+              "gap": 88,
               "padding": [
                 88,
                 64
@@ -11585,9 +11586,10 @@
                   "id": "gu5o4",
                   "name": "showcase body",
                   "width": "fill_container",
+                  "fill": "$--background",
                   "gap": 60,
                   "padding": [
-                    40,
+                    48,
                     0,
                     0,
                     0
@@ -11738,10 +11740,10 @@
                                 {
                                   "type": "frame",
                                   "id": "u4iQK",
-                                  "fill": "#00000000",
+                                  "fill": "$--card",
                                   "cornerRadius": "$--radius-full",
-                                  "stroke": "$--border",
-                                  "strokeWidth": 1,
+                                  "stroke": "$--primary",
+                                  "strokeWidth": 1.5,
                                   "gap": 8,
                                   "padding": [
                                     9,
@@ -11765,17 +11767,17 @@
                                       "content": "Timber",
                                       "fontFamily": "$--font-sans",
                                       "fontSize": 13,
-                                      "fontWeight": "500"
+                                      "fontWeight": "700"
                                     }
                                   ]
                                 },
                                 {
                                   "type": "frame",
                                   "id": "DCwvL",
-                                  "fill": "$--card",
+                                  "fill": "#00000000",
                                   "cornerRadius": "$--radius-full",
-                                  "stroke": "$--primary",
-                                  "strokeWidth": 1.5,
+                                  "stroke": "$--border",
+                                  "strokeWidth": 1,
                                   "gap": 8,
                                   "padding": [
                                     9,
@@ -11799,7 +11801,7 @@
                                       "content": "Charred wood",
                                       "fontFamily": "$--font-sans",
                                       "fontSize": 13,
-                                      "fontWeight": "700"
+                                      "fontWeight": "500"
                                     }
                                   ]
                                 },
@@ -12315,7 +12317,7 @@
                           "name": "Carousel Viewport",
                           "clip": true,
                           "width": "fill_container",
-                          "height": 500,
+                          "height": 460,
                           "justifyContent": "center",
                           "alignItems": "center",
                           "children": [
@@ -12388,7 +12390,7 @@
                           "id": "qXTw2",
                           "name": "Carousel Controls",
                           "width": "fill_container",
-                          "height": 124,
+                          "height": 120,
                           "gap": 60,
                           "padding": [
                             0,
@@ -12620,7 +12622,7 @@
               "id": "e5oWi",
               "name": "Testimonial Section",
               "width": "fill_container",
-              "fill": "$--background",
+              "fill": "$unofficial/background-accent",
               "gap": 48,
               "padding": [
                 88,
@@ -12638,6 +12640,7 @@
                   "textGrowth": "fixed-width",
                   "width": 247,
                   "content": "Why people choose Luma",
+                  "lineHeight": 1.15,
                   "fontFamily": "$--font-heading",
                   "fontSize": 36,
                   "fontWeight": "500"
@@ -12694,7 +12697,7 @@
                                   "content": "“We stopped thinking about the square metres.”",
                                   "lineHeight": 1.3,
                                   "fontFamily": "$--font-heading",
-                                  "fontSize": 19,
+                                  "fontSize": 18,
                                   "fontWeight": "500"
                                 },
                                 {
@@ -12724,7 +12727,7 @@
                                           "fill": "$--secondary-foreground",
                                           "content": "MT",
                                           "fontFamily": "$--font-sans",
-                                          "fontSize": 9,
+                                          "fontSize": 12,
                                           "fontWeight": "600"
                                         }
                                       ]
@@ -12869,7 +12872,7 @@
                                   "content": "“We always knew what the next step was.”",
                                   "lineHeight": 1.3,
                                   "fontFamily": "$--font-heading",
-                                  "fontSize": 19,
+                                  "fontSize": 18,
                                   "fontWeight": "500"
                                 },
                                 {
@@ -12899,7 +12902,7 @@
                                           "fill": "$--secondary-foreground",
                                           "content": "JB",
                                           "fontFamily": "$--font-sans",
-                                          "fontSize": 9,
+                                          "fontSize": 12,
                                           "fontWeight": "600"
                                         }
                                       ]
@@ -13043,7 +13046,7 @@
                                   "content": "“Even rainy weekends feel restorative here.”",
                                   "lineHeight": 1.3,
                                   "fontFamily": "$--font-heading",
-                                  "fontSize": 19,
+                                  "fontSize": 18,
                                   "fontWeight": "500"
                                 },
                                 {
@@ -13073,7 +13076,7 @@
                                           "fill": "$--secondary-foreground",
                                           "content": "NP",
                                           "fontFamily": "$--font-sans",
-                                          "fontSize": 9,
+                                          "fontSize": 12,
                                           "fontWeight": "600"
                                         }
                                       ]
@@ -13217,7 +13220,7 @@
                                   "content": "“The materials feel even better in person.”",
                                   "lineHeight": 1.3,
                                   "fontFamily": "$--font-heading",
-                                  "fontSize": 19,
+                                  "fontSize": 18,
                                   "fontWeight": "500"
                                 },
                                 {
@@ -13247,7 +13250,7 @@
                                           "fill": "$--secondary-foreground",
                                           "content": "CJ",
                                           "fontFamily": "$--font-sans",
-                                          "fontSize": 9,
+                                          "fontSize": 12,
                                           "fontWeight": "600"
                                         }
                                       ]
@@ -13391,7 +13394,7 @@
                                   "content": "“I close my laptop and the room becomes a retreat again.”",
                                   "lineHeight": 1.3,
                                   "fontFamily": "$--font-heading",
-                                  "fontSize": 19,
+                                  "fontSize": 18,
                                   "fontWeight": "500"
                                 },
                                 {
@@ -13421,7 +13424,7 @@
                                           "fill": "$--secondary-foreground",
                                           "content": "TM",
                                           "fontFamily": "$--font-sans",
-                                          "fontSize": 9,
+                                          "fontSize": 12,
                                           "fontWeight": "600"
                                         }
                                       ]
@@ -13565,7 +13568,7 @@
                                   "content": "“We chose every finish in a single afternoon.”",
                                   "lineHeight": 1.3,
                                   "fontFamily": "$--font-heading",
-                                  "fontSize": 19,
+                                  "fontSize": 18,
                                   "fontWeight": "500"
                                 },
                                 {
@@ -13595,7 +13598,7 @@
                                           "fill": "$--secondary-foreground",
                                           "content": "SA",
                                           "fontFamily": "$--font-sans",
-                                          "fontSize": 9,
+                                          "fontSize": 12,
                                           "fontWeight": "600"
                                         }
                                       ]
@@ -13734,11 +13737,11 @@
                             },
                             "colors": [
                               {
-                                "color": "$unofficial/background-transparent",
+                                "color": "$unofficial/background-accent-transparent",
                                 "position": 0
                               },
                               {
-                                "color": "$--background",
+                                "color": "$unofficial/background-accent",
                                 "position": 0.75
                               }
                             ]
@@ -13763,11 +13766,11 @@
                             },
                             "colors": [
                               {
-                                "color": "$unofficial/background-transparent",
+                                "color": "$unofficial/background-accent-transparent",
                                 "position": 0
                               },
                               {
-                                "color": "$--background",
+                                "color": "$unofficial/background-accent",
                                 "position": 0.75
                               }
                             ]
@@ -13821,7 +13824,7 @@
                               "content": "“We always knew what the next step was.”",
                               "lineHeight": 1.3,
                               "fontFamily": "$--font-heading",
-                              "fontSize": 19,
+                              "fontSize": 18,
                               "fontWeight": "500"
                             },
                             {
@@ -13873,7 +13876,7 @@
                                       "fill": "$--secondary-foreground",
                                       "content": "JB",
                                       "fontFamily": "$--font-sans",
-                                      "fontSize": 9,
+                                      "fontSize": 12,
                                       "fontWeight": "600"
                                     }
                                   ]
@@ -13993,17 +13996,17 @@
                 "type": "gradient",
                 "gradientType": "linear",
                 "enabled": true,
-                "rotation": -180,
+                "rotation": 180,
                 "size": {
                   "height": 1
                 },
                 "colors": [
                   {
-                    "color": "$unofficial/background-accent",
+                    "color": "$--background",
                     "position": 0
                   },
                   {
-                    "color": "$--background",
+                    "color": "$unofficial/background-accent",
                     "position": 1
                   }
                 ]
@@ -14064,10 +14067,6 @@
                   "context": "div",
                   "width": "fill_container",
                   "layout": "vertical",
-                  "padding": [
-                    0,
-                    64
-                  ],
                   "children": [
                     {
                       "type": "frame",
@@ -14076,8 +14075,7 @@
                       "context": "div",
                       "clip": true,
                       "width": "fill_container",
-                      "height": 792,
-                      "cornerRadius": "$--radius-xl",
+                      "height": 864,
                       "layout": "none",
                       "children": [
                         {
@@ -14087,8 +14085,8 @@
                           "y": 0,
                           "name": "Unwind Image Layer",
                           "context": "div",
-                          "width": 1408,
-                          "height": 792,
+                          "width": 1536,
+                          "height": 864,
                           "layout": "none",
                           "children": [
                             {
@@ -14104,8 +14102,8 @@
                                 "url": "images/localhost/68d932fa89daade0.jpg",
                                 "mode": "fill"
                               },
-                              "width": 1408,
-                              "height": 792
+                              "width": 1536,
+                              "height": 864
                             }
                           ]
                         },
@@ -14117,8 +14115,8 @@
                           "name": "Focus Image Layer",
                           "context": "div",
                           "clip": true,
-                          "width": 788.48,
-                          "height": 792,
+                          "width": 860.16,
+                          "height": 864,
                           "layout": "none",
                           "children": [
                             {
@@ -14134,17 +14132,17 @@
                                 "url": "images/localhost/1d6b15d0a01ef0e2.jpg",
                                 "mode": "fill"
                               },
-                              "width": 1408,
-                              "height": 792
+                              "width": 1536,
+                              "height": 864
                             },
                             {
                               "type": "frame",
                               "id": "Y9Eiv",
                               "x": 24,
-                              "y": 712.5,
+                              "y": 784.5,
                               "name": "Focus Label",
                               "context": "div",
-                              "fill": "$--foreground",
+                              "fill": "$unofficial/foreground-75",
                               "cornerRadius": "$--radius-md",
                               "effect": {
                                 "type": "background_blur",
@@ -14189,11 +14187,11 @@
                         {
                           "type": "frame",
                           "id": "T3W4Lf",
-                          "x": 1287.09,
-                          "y": 712.5,
+                          "x": 1415.09,
+                          "y": 784.5,
                           "name": "Unwind Label",
                           "context": "div",
-                          "fill": "$--foreground",
+                          "fill": "$unofficial/foreground-75",
                           "cornerRadius": "$--radius-md",
                           "effect": {
                             "type": "background_blur",
@@ -14236,13 +14234,13 @@
                         {
                           "type": "rectangle",
                           "id": "fxxac",
-                          "x": 786.47,
+                          "x": 858.16,
                           "y": 0,
                           "name": "Comparison Divider",
                           "context": "div",
                           "fill": "$--card",
                           "width": 4,
-                          "height": 792
+                          "height": 864
                         },
                         {
                           "type": "rectangle",
@@ -14251,14 +14249,14 @@
                           "y": 0,
                           "name": "Comparison Slider Hit Area",
                           "context": "ImageComparisonSlider - div",
-                          "width": 1408,
-                          "height": 792
+                          "width": 1536,
+                          "height": 864
                         },
                         {
                           "type": "frame",
                           "id": "LMKhC",
-                          "x": 764.47,
-                          "y": 372,
+                          "x": 836.16,
+                          "y": 408,
                           "name": "Comparison Handle",
                           "context": "div",
                           "width": 48,
@@ -14375,7 +14373,7 @@
                   "name": "Process Intro",
                   "width": "fill_container",
                   "layout": "vertical",
-                  "gap": 8,
+                  "gap": 18,
                   "alignItems": "center",
                   "children": [
                     {
@@ -14408,6 +14406,12 @@
                   "name": "Desktop Process Experience",
                   "width": "fill_container",
                   "gap": 32,
+                  "padding": [
+                    13,
+                    0,
+                    0,
+                    0
+                  ],
                   "children": [
                     {
                       "type": "frame",
@@ -16238,6 +16242,22 @@
     "unofficial/primary-45": {
       "type": "color",
       "value": "#39442B73"
+    },
+    "unofficial/background-accent-transparent": {
+      "type": "color",
+      "value": "#EFEAE100"
+    },
+    "unofficial/background-accent-80": {
+      "type": "color",
+      "value": "#EFEAE1CC"
+    },
+    "unofficial/foreground-75": {
+      "type": "color",
+      "value": "#171717BF"
+    },
+    "unofficial/background-85": {
+      "type": "color",
+      "value": "#F7F5F0D9"
     }
   },
   "fileToken": "b8fabb78-e8cc-4670-a2ad-039e6ed44f78",
