@@ -137,21 +137,18 @@ function InteractiveShowcaseSection({ className, ...props }: React.ComponentProp
   }, [api, isDesktop])
 
   return (
-    <section
-      className={cn('flex flex-col gap-[clamp(3rem,calc(2.247rem+3.441vw),5rem)] overflow-hidden', className)}
-      {...props}
-    >
+    <section className={cn('flex flex-col gap-(--section-gutter-y) overflow-hidden', className)} {...props}>
       <LandingSectionIntro>
         <LandingSectionIntroEyebrow>Make it yours</LandingSectionIntroEyebrow>
-        <LandingSectionIntroTitle className="max-w-2xl text-balance">
+        <LandingSectionIntroTitle className="max-w-2xl">
           Three models. <i>Unlimited</i> adventures.
         </LandingSectionIntroTitle>
       </LandingSectionIntro>
 
       <div
         className={cn(
-          'container-page-2xl max-xl:container-bleed flex flex-col items-center gap-5 pt-8',
-          'md:gap-6 md:pt-10',
+          'container-page-2xl max-xl:container-bleed flex flex-col items-center gap-5 pt-6',
+          'md:gap-6 md:pt-8',
           'xl:flex-row xl:gap-15',
         )}
       >

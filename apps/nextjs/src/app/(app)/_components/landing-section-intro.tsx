@@ -21,7 +21,7 @@ function LandingSectionIntroEyebrow({ className, ...props }: React.ComponentProp
 
 function LandingSectionIntroTitle({ children, className, ...props }: React.ComponentProps<'h2'>) {
   return (
-    <h2 data-slot="landing-section-intro-title" className={cn('text-display-lg', className)} {...props}>
+    <h2 data-slot="landing-section-intro-title" className={cn('text-display-lg text-balance', className)} {...props}>
       {children}
     </h2>
   )

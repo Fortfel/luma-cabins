@@ -2,6 +2,11 @@
 
 @source '../../../packages/ui/src/**/*.{ts,tsx}';
 
+:root {
+  --page-gutter-x: clamp(1.5rem, calc(0.55806rem + 4.30571vw), 4rem); /* 24px @ 350px -> 64px @ 1280px */
+  --section-gutter-y: clamp(2.5rem, calc(-0.5rem + 7.5vw), 5.5rem); /* 40px @ 640px -> 88px @ 1280px */
+}
+
 @theme {
   --breakpoint-3xl: 108rem; /* 1728px */
   --breakpoint-4xl: 120rem; /* 1920px */
@@ -78,11 +83,6 @@
   line-height: 1.1;
   letter-spacing: 0.1875rem;
   text-transform: uppercase;
-}
-
-:root {
-  --page-gutter-x: clamp(1.5rem, calc(0.55806rem + 4.30571vw), 4rem); /* 24px @ 350px -> 64px @ 1280px */
-  --section-gutter-y: clamp(2.5rem, calc(-0.5rem + 7.5vw), 5.5rem); /* 40px @ 640px -> 88px @ 1280px */
 }
 
 @utility container-page-2xl {

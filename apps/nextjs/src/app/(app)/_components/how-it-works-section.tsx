@@ -3,21 +3,27 @@ import type * as React from 'react'
 import { cn } from '@workspace/ui/lib/utils'
 
 import { HowItWorksExperience } from '~/app/(app)/_components/how-it-works-experience'
+import {
+  LandingSectionIntro,
+  LandingSectionIntroBody,
+  LandingSectionIntroTitle,
+} from '~/app/(app)/_components/landing-section-intro'
 import { processSteps } from '~/app/(app)/_data/process-steps'
 
 function HowItWorksSection({ className, ...props }: React.ComponentProps<'section'>) {
   return (
     <section
-      className={cn('scroll-mt-(--nav-height) md:scroll-mt-[calc(var(--nav-height)+0.5rem)]', className)}
+      className={cn(
+        'flex scroll-mt-(--nav-height) flex-col gap-(--section-gutter-y) md:scroll-mt-[calc(var(--nav-height)+0.5rem)]',
+        className,
+      )}
       aria-labelledby="process-title"
       {...props}
     >
-      <div className="container-page-2xl mb-8 flex flex-col gap-2 text-center text-foreground sm:mb-12 md:mb-20">
-        <h2 id="process-title" className="text-heading-xl text-balance">
-          How it works
-        </h2>
-        <p className="text-body-lg text-pretty">A guided path, start to finish.</p>
-      </div>
+      <LandingSectionIntro className="gap-2 md:mb-6">
+        <LandingSectionIntroTitle>How it works</LandingSectionIntroTitle>
+        <LandingSectionIntroBody>A guided path, start to finish.</LandingSectionIntroBody>
+      </LandingSectionIntro>
 
       <HowItWorksExperience steps={processSteps} />
     </section>
