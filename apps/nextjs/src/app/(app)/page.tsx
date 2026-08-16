@@ -14,9 +14,7 @@ export default function AppHomePage() {
       <ModelsOverviewSection className="section-py bg-background" />
       <InteractiveShowcaseSection className="section-py bg-background" />
       <TestimonialsSection className="section-py bg-background-accent" />
-      {/*<InteriorComparisonSection className="section-py bg-background " />*/}
       <InteriorComparisonSection className="section-py bg-linear-to-b from-background to-background-accent " />
-      {/*<HowItWorksSection id="process" className="section-py bg-background" />*/}
       <HowItWorksSection id="process" className="section-py bg-background-accent" />
     </>
   )
