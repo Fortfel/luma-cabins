@@ -1,5 +1,5 @@
 {
-  "version": "2.15",
+  "version": "2.17",
   "children": [
     {
       "type": "frame",
@@ -8,7 +8,7 @@
       "y": 959,
       "name": "Luma Cabins Mobile",
       "clip": true,
-      "width": 390,
+      "width": 375,
       "fill": "$--background",
       "layout": "vertical",
       "children": [
@@ -1138,7 +1138,7 @@
                           "x": 55,
                           "y": 0,
                           "name": "Sliding Image Track",
-                          "width": "fill_container(863)",
+                          "width": 863,
                           "gap": 12,
                           "alignItems": "center",
                           "children": [
@@ -3510,6 +3510,1052 @@
                           ]
                         }
                       ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "d9zVw",
+          "name": "How It Works — Mobile",
+          "context": "section#process",
+          "clip": true,
+          "width": "fill_container",
+          "fill": "$unofficial/background-accent",
+          "layout": "vertical",
+          "gap": 40,
+          "padding": [
+            40,
+            0
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "nJX2d",
+              "name": "Process Intro",
+              "width": 324.849,
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "K9qdo2",
+                  "name": "Process Title",
+                  "fill": "$--foreground",
+                  "content": "How it works",
+                  "lineHeight": 1.1,
+                  "fontFamily": "$--font-heading",
+                  "fontSize": 36,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "M7OXOM",
+                  "name": "Process Subtitle",
+                  "fill": "$--foreground",
+                  "content": "A guided path, start to finish.",
+                  "lineHeight": 1.3,
+                  "fontFamily": "$--font-sans",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "RLtiU",
+              "name": "Process Cards Carousel",
+              "clip": true,
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "FjNEs",
+                  "name": "Process Cards Track",
+                  "gap": 12,
+                  "padding": [
+                    1,
+                    25.075
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "R0b8gH",
+                      "name": "Process Card 01",
+                      "clip": true,
+                      "width": 326.25,
+                      "height": 456.688,
+                      "fill": "$--card",
+                      "cornerRadius": "$--radius-2xl",
+                      "stroke": "$unofficial/card-outline",
+                      "strokeWidth": 1,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "y0ckg",
+                          "x": 0,
+                          "y": 0,
+                          "name": "Step 01 Media",
+                          "width": 326.25,
+                          "height": 244.688,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "../apps/nextjs/public/images/process/process-step1-v1.jpg",
+                            "mode": "fill"
+                          },
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "o4YVwH",
+                              "x": 20,
+                              "y": 20,
+                              "name": "Step 01 Badge",
+                              "width": 56,
+                              "height": 56,
+                              "fill": "$--primary",
+                              "cornerRadius": "$--radius-full",
+                              "stroke": "$unofficial/border-50",
+                              "strokeWidth": 1,
+                              "effect": {
+                                "type": "background_blur",
+                                "radius": 8
+                              },
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "KzgPw",
+                                  "name": "Step 01 Number",
+                                  "fill": "$--primary-foreground",
+                                  "content": "01",
+                                  "fontFamily": "$--font-mono",
+                                  "fontSize": 20,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "IKlIO",
+                          "x": 0,
+                          "y": 220.688,
+                          "name": "Step 01 Content Panel",
+                          "width": 326.25,
+                          "fill": "$--card",
+                          "cornerRadius": [
+                            "$--radius-xl",
+                            "$--radius-xl",
+                            0,
+                            0
+                          ],
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "uImxL",
+                              "name": "Step 01 Copy",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 8,
+                              "padding": [
+                                24,
+                                24,
+                                0,
+                                24
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "V1sRF7",
+                                  "name": "Step 01 Title",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "Design yours",
+                                  "lineHeight": 1.15,
+                                  "fontFamily": "$--font-heading",
+                                  "fontSize": 24,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "HdB4u",
+                                  "name": "Step 01 Description",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "Start with Niva, Aster, or Veyra, then shape a curated set of finishes, systems, and add-ons around how you want to use the space.",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 15,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "SsvOc",
+                              "name": "Step 01 Bullets",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "padding": [
+                                8,
+                                24,
+                                24,
+                                24
+                              ],
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "Ejd77",
+                                  "name": "Bullet — Choose the model and layout",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "A3tJR",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "nTo80",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 260.25,
+                                      "content": "Choose the model and layout",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "wm3BZ",
+                                  "name": "Bullet — Curate interior and exterior finishes",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "Ra6C3",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "YuRLE",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 260.25,
+                                      "content": "Curate interior and exterior finishes",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "f0PH40",
+                                  "name": "Bullet — Add energy and outdoor options",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "Y4U7CZ",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "S5Kxs",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 260.25,
+                                      "content": "Add energy and outdoor options",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Wsg0k",
+                      "name": "Process Card 02",
+                      "clip": true,
+                      "width": 326.25,
+                      "height": 456.688,
+                      "fill": "$--card",
+                      "cornerRadius": "$--radius-2xl",
+                      "stroke": "$unofficial/card-outline",
+                      "strokeWidth": 1,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "f7UkIg",
+                          "x": 0,
+                          "y": 0,
+                          "name": "Step 02 Media",
+                          "width": 326.25,
+                          "height": 244.688,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "../apps/nextjs/public/images/process/process-step2-video2-poster.webp",
+                            "mode": "fill"
+                          },
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "Nj2ZZ",
+                              "x": 20,
+                              "y": 20,
+                              "name": "Step 02 Badge",
+                              "width": 56,
+                              "height": 56,
+                              "fill": "$unofficial/background-90",
+                              "cornerRadius": "$--radius-full",
+                              "stroke": "$unofficial/primary-75",
+                              "strokeWidth": 1,
+                              "effect": {
+                                "type": "background_blur",
+                                "radius": 8
+                              },
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "IbQxX",
+                                  "name": "Step 02 Number",
+                                  "fill": "$--primary",
+                                  "content": "02",
+                                  "fontFamily": "$--font-mono",
+                                  "fontSize": 20,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "FiC6k",
+                          "x": 0,
+                          "y": 220.688,
+                          "name": "Step 02 Content Panel",
+                          "width": 326.25,
+                          "fill": "$--card",
+                          "cornerRadius": [
+                            "$--radius-xl",
+                            "$--radius-xl",
+                            0,
+                            0
+                          ],
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "XQrQn",
+                              "name": "Step 02 Copy",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 8,
+                              "padding": [
+                                24,
+                                24,
+                                0,
+                                24
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "VaqQU",
+                                  "name": "Step 02 Title",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "Pick the spot",
+                                  "lineHeight": 1.15,
+                                  "fontFamily": "$--font-heading",
+                                  "fontSize": 24,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "wa31C",
+                                  "name": "Step 02 Description",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "Share the setting you have in mind. Luma helps review access, orientation, terrain, and the local requirements that may shape the project.",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 15,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "VzOJb",
+                              "name": "Step 02 Bullets",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "padding": [
+                                8,
+                                24,
+                                24,
+                                24
+                              ],
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "m5bQ4",
+                                  "name": "Bullet — Consider views, daylight, and privacy",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "cXFx2",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "nW5tq",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 260.25,
+                                      "content": "Consider views, daylight, and privacy",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "O4re1",
+                                  "name": "Bullet — Review access and ground conditions",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "MKVzL",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "l7D6F",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 260.25,
+                                      "content": "Review access and ground conditions",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "GheD3",
+                                  "name": "Bullet — Identify local requirements early",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "c1dsB",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "nE0en",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 260.25,
+                                      "content": "Identify local requirements early",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "cWern",
+                      "name": "Process Card 03",
+                      "clip": true,
+                      "width": 326.25,
+                      "height": 456.688,
+                      "fill": "$--card",
+                      "cornerRadius": "$--radius-2xl",
+                      "stroke": "$unofficial/card-outline",
+                      "strokeWidth": 1,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "y7eaMB",
+                          "x": 0,
+                          "y": 0,
+                          "name": "Step 03 Media",
+                          "width": 326.25,
+                          "height": 244.688,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "../apps/nextjs/public/images/process/process-step3-video-poster.webp",
+                            "mode": "fill"
+                          },
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "nmtqo",
+                              "x": 20,
+                              "y": 20,
+                              "name": "Step 03 Badge",
+                              "width": 56,
+                              "height": 56,
+                              "fill": "$unofficial/background-90",
+                              "cornerRadius": "$--radius-full",
+                              "stroke": "$unofficial/primary-75",
+                              "strokeWidth": 1,
+                              "effect": {
+                                "type": "background_blur",
+                                "radius": 8
+                              },
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "RMN7H",
+                                  "name": "Step 03 Number",
+                                  "fill": "$--primary",
+                                  "content": "03",
+                                  "fontFamily": "$--font-mono",
+                                  "fontSize": 20,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "cB11U",
+                          "x": 0,
+                          "y": 220.688,
+                          "name": "Step 03 Content Panel",
+                          "width": 326.25,
+                          "fill": "$--card",
+                          "cornerRadius": [
+                            "$--radius-xl",
+                            "$--radius-xl",
+                            0,
+                            0
+                          ],
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "TusGk",
+                              "name": "Step 03 Copy",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 8,
+                              "padding": [
+                                24,
+                                24,
+                                0,
+                                24
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "a16ut",
+                                  "name": "Step 03 Title",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "Prepare together",
+                                  "lineHeight": 1.15,
+                                  "fontFamily": "$--font-heading",
+                                  "fontSize": 24,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "A14LN",
+                                  "name": "Step 03 Description",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "With the direction agreed, Luma coordinates the cabin plan with the local specialists preparing the foundations, utilities, and route to site.",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 15,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "P5NTm",
+                              "name": "Step 03 Bullets",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "padding": [
+                                8,
+                                24,
+                                24,
+                                24
+                              ],
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "DgXzf",
+                                  "name": "Bullet — Confirm drawings and selections",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "NxCNZ",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "EtqVy",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 260.25,
+                                      "content": "Confirm drawings and selections",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "CX9l2",
+                                  "name": "Bullet — Align foundations and utility work",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "c1tein",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "x9sMm",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 260.25,
+                                      "content": "Align foundations and utility work",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "AmzHY",
+                                  "name": "Bullet — Plan production and delivery",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "jUphl",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "RaIid",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 260.25,
+                                      "content": "Plan production and delivery",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Ue6F3",
+                      "name": "Process Card 04",
+                      "clip": true,
+                      "width": 326.25,
+                      "height": 456.688,
+                      "fill": "$--card",
+                      "cornerRadius": "$--radius-2xl",
+                      "stroke": "$unofficial/card-outline",
+                      "strokeWidth": 1,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "G2uM0",
+                          "x": 0,
+                          "y": 0,
+                          "name": "Step 04 Media",
+                          "width": 326.25,
+                          "height": 244.688,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "../apps/nextjs/public/images/process/process-step4-video-poster.webp",
+                            "mode": "fill"
+                          },
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "Y3GAzd",
+                              "x": 20,
+                              "y": 20,
+                              "name": "Step 04 Badge",
+                              "width": 56,
+                              "height": 56,
+                              "fill": "$unofficial/background-90",
+                              "cornerRadius": "$--radius-full",
+                              "stroke": "$unofficial/primary-75",
+                              "strokeWidth": 1,
+                              "effect": {
+                                "type": "background_blur",
+                                "radius": 8
+                              },
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "p7Nsc",
+                                  "name": "Step 04 Number",
+                                  "fill": "$--primary",
+                                  "content": "04",
+                                  "fontFamily": "$--font-mono",
+                                  "fontSize": 20,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "RbMUN",
+                          "x": 0,
+                          "y": 220.688,
+                          "name": "Step 04 Content Panel",
+                          "width": 326.25,
+                          "fill": "$--card",
+                          "cornerRadius": [
+                            "$--radius-xl",
+                            "$--radius-xl",
+                            0,
+                            0
+                          ],
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "F7hDb",
+                              "name": "Step 04 Copy",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 8,
+                              "padding": [
+                                24,
+                                24,
+                                0,
+                                24
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "TPiPo",
+                                  "name": "Step 04 Title",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "Deliver and install",
+                                  "lineHeight": 1.15,
+                                  "fontFamily": "$--font-heading",
+                                  "fontSize": 24,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "MuLRd",
+                                  "name": "Step 04 Description",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "Once the site is ready, the cabin is delivered and installed, with final connections and handover coordinated around the agreed project scope.",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 15,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "OY6Xn",
+                              "name": "Step 04 Bullets",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "padding": [
+                                8,
+                                24,
+                                24,
+                                24
+                              ],
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "sF2Xz",
+                                  "name": "Bullet — Position and secure the cabin",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "TMteZ",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "ico19",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 260.25,
+                                      "content": "Position and secure the cabin",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "F4olJK",
+                                  "name": "Bullet — Complete agreed site connections",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "ygjt6",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "TdHjk",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 260.25,
+                                      "content": "Complete agreed site connections",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "CJCKV",
+                                  "name": "Bullet — Walk through the finished space",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "fOE56",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "PQGQR",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 260.25,
+                                      "content": "Walk through the finished space",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "nuN3d",
+                  "name": "Carousel Pagination",
+                  "width": "fill_container",
+                  "height": 24,
+                  "gap": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "AsHz0",
+                      "name": "Pagination Dot 1",
+                      "fill": "$--primary",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "ellipse",
+                      "id": "X0zt02",
+                      "name": "Pagination Dot 2",
+                      "fill": "$unofficial/primary-25",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "ellipse",
+                      "id": "u30FXH",
+                      "name": "Pagination Dot 3",
+                      "fill": "$unofficial/primary-25",
+                      "width": 8,
+                      "height": 8
+                    },
+                    {
+                      "type": "ellipse",
+                      "id": "uZ8TT",
+                      "name": "Pagination Dot 4",
+                      "fill": "$unofficial/primary-25",
+                      "width": 8,
+                      "height": 8
                     }
                   ]
                 }
@@ -7760,6 +8806,1072 @@
                               "strokeWidth": 1.6666666666666667,
                               "strokeLinejoin": "round",
                               "strokeLinecap": "round"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "RZSSC",
+          "name": "How It Works — Tablet",
+          "context": "section#process",
+          "width": "fill_container",
+          "fill": "$unofficial/background-accent",
+          "layout": "vertical",
+          "gap": 73.6,
+          "padding": [
+            49.6,
+            48
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "hamm0",
+              "name": "Process Intro",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lThBt",
+                  "name": "Process Title",
+                  "fill": "$--foreground",
+                  "content": "How it works",
+                  "lineHeight": 1.1,
+                  "fontFamily": "$--font-heading",
+                  "fontSize": 45.479,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "s0mdmy",
+                  "name": "Process Subtitle",
+                  "fill": "$--foreground",
+                  "content": "A guided path, start to finish.",
+                  "lineHeight": 1.3,
+                  "fontFamily": "$--font-sans",
+                  "fontSize": 17.737,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "kvaMK",
+              "name": "Tablet Process Experience",
+              "width": "fill_container",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "kkyGz",
+                  "name": "Process Timeline",
+                  "width": 208,
+                  "height": 868,
+                  "fill": "$unofficial/background-accent",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Z89iIs",
+                      "name": "Tablet Timeline Steps",
+                      "width": 192,
+                      "height": 384,
+                      "fill": "$unofficial/background-accent",
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "id": "s5jK3",
+                          "x": 27.5,
+                          "y": 28,
+                          "name": "Timeline Connector",
+                          "fill": "$--border",
+                          "width": 1,
+                          "height": 328
+                        },
+                        {
+                          "type": "frame",
+                          "id": "ZZIr0",
+                          "x": 0,
+                          "y": 0,
+                          "name": "Timeline Step 01",
+                          "width": 192,
+                          "height": 56,
+                          "gap": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "sONFO",
+                              "name": "Step 01 Badge",
+                              "width": 56,
+                              "height": 56,
+                              "fill": "$unofficial/background-transparent",
+                              "cornerRadius": "$--radius-full",
+                              "stroke": "$--primary",
+                              "layout": "none",
+                              "children": [
+                                {
+                                  "type": "ellipse",
+                                  "id": "P90chX",
+                                  "x": 0,
+                                  "y": 0,
+                                  "name": "Active Badge Outer Ring",
+                                  "fill": "$unofficial/background-transparent",
+                                  "width": 56,
+                                  "height": 56,
+                                  "stroke": "$unofficial/primary-25",
+                                  "strokeWidth": 2,
+                                  "strokeAlignment": "inner"
+                                },
+                                {
+                                  "type": "ellipse",
+                                  "id": "IO2vY",
+                                  "x": 2,
+                                  "y": 2,
+                                  "name": "Active Badge Ring Offset",
+                                  "fill": "$--background",
+                                  "width": 52,
+                                  "height": 52
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "jfARr",
+                                  "x": 4,
+                                  "y": 4,
+                                  "name": "Step 01 Badge Fill",
+                                  "width": 48,
+                                  "height": 48,
+                                  "fill": "$--primary",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--primary",
+                                  "strokeWidth": 1,
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "uiyM4",
+                                      "name": "Step 01 Number",
+                                      "fill": "$--primary-foreground",
+                                      "content": "01",
+                                      "lineHeight": 1.25,
+                                      "fontFamily": "$--font-mono",
+                                      "fontSize": 16,
+                                      "fontWeight": "500"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "DAsUP",
+                              "name": "Step 01 Label",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": 128,
+                              "content": "Design yours",
+                              "lineHeight": 1.4,
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 16.303,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "F3xHQ",
+                          "x": 0,
+                          "y": 109.333,
+                          "name": "Timeline Step 02",
+                          "width": 192,
+                          "height": 56,
+                          "gap": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "tZ2iL",
+                              "name": "Step 02 Badge",
+                              "width": 56,
+                              "height": 56,
+                              "fill": "$unofficial/background-transparent",
+                              "cornerRadius": "$--radius-full",
+                              "stroke": "$unofficial/primary-45",
+                              "layout": "none",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "rf0xx",
+                                  "x": 4,
+                                  "y": 4,
+                                  "name": "Step 02 Badge Fill",
+                                  "width": 48,
+                                  "height": 48,
+                                  "fill": "$--background",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$unofficial/primary-45",
+                                  "strokeWidth": 1,
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "VBZmO",
+                                      "name": "Step 02 Number",
+                                      "fill": "$--muted-foreground",
+                                      "content": "02",
+                                      "lineHeight": 1.25,
+                                      "fontFamily": "$--font-mono",
+                                      "fontSize": 16,
+                                      "fontWeight": "500"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "hm1g1",
+                              "name": "Step 02 Label",
+                              "fill": "$--muted-foreground",
+                              "textGrowth": "fixed-width",
+                              "width": 128,
+                              "content": "Pick the spot",
+                              "lineHeight": 1.4,
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 16.303,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Tb5hn",
+                          "x": 0,
+                          "y": 218.667,
+                          "name": "Timeline Step 03",
+                          "width": 192,
+                          "height": 56,
+                          "gap": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "wT4zq",
+                              "name": "Step 03 Badge",
+                              "width": 56,
+                              "height": 56,
+                              "fill": "$unofficial/background-transparent",
+                              "cornerRadius": "$--radius-full",
+                              "stroke": "$unofficial/primary-45",
+                              "layout": "none",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "oPwcv",
+                                  "x": 4,
+                                  "y": 4,
+                                  "name": "Step 03 Badge Fill",
+                                  "width": 48,
+                                  "height": 48,
+                                  "fill": "$--background",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$unofficial/primary-45",
+                                  "strokeWidth": 1,
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "sjrbB",
+                                      "name": "Step 03 Number",
+                                      "fill": "$--muted-foreground",
+                                      "content": "03",
+                                      "lineHeight": 1.25,
+                                      "fontFamily": "$--font-mono",
+                                      "fontSize": 16,
+                                      "fontWeight": "500"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "m7Mhb",
+                              "name": "Step 03 Label",
+                              "fill": "$--muted-foreground",
+                              "textGrowth": "fixed-width",
+                              "width": 128,
+                              "content": "Prepare together",
+                              "lineHeight": 1.4,
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 16.303,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Vrh8L",
+                          "x": 0,
+                          "y": 328,
+                          "name": "Timeline Step 04",
+                          "width": 192,
+                          "height": 56,
+                          "gap": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "U3f1J",
+                              "name": "Step 04 Badge",
+                              "width": 56,
+                              "height": 56,
+                              "fill": "$unofficial/background-transparent",
+                              "cornerRadius": "$--radius-full",
+                              "stroke": "$unofficial/primary-45",
+                              "layout": "none",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "vlrbE",
+                                  "x": 4,
+                                  "y": 4,
+                                  "name": "Step 04 Badge Fill",
+                                  "width": 48,
+                                  "height": 48,
+                                  "fill": "$--background",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$unofficial/primary-45",
+                                  "strokeWidth": 1,
+                                  "justifyContent": "center",
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "id": "i50gXu",
+                                      "name": "Step 04 Number",
+                                      "fill": "$--muted-foreground",
+                                      "content": "04",
+                                      "lineHeight": 1.25,
+                                      "fontFamily": "$--font-mono",
+                                      "fontSize": 16,
+                                      "fontWeight": "500"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "text",
+                              "id": "soaWZ",
+                              "name": "Step 04 Label",
+                              "fill": "$--muted-foreground",
+                              "textGrowth": "fixed-width",
+                              "width": 128,
+                              "content": "Deliver and install",
+                              "lineHeight": 1.4,
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 16.303,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "MgHmX",
+                      "name": "Fading Dot Field",
+                      "clip": true,
+                      "width": 192,
+                      "height": 484,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "images/process-dot-field-tablet.png",
+                        "mode": "stretch"
+                      },
+                      "layout": "none"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "w6GLtF",
+                  "name": "Process Steps",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 128,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "pZBLA",
+                      "name": "Process Step 01",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 24,
+                      "padding": [
+                        16,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "QxxLy",
+                          "name": "Step 01 Heading",
+                          "fill": "$--foreground",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Shape a cabin around the way you want to live.",
+                          "lineHeight": 1.1,
+                          "fontFamily": "$--font-heading",
+                          "fontSize": 33.416,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Otois",
+                          "name": "Step 01 Description",
+                          "fill": "$--foreground",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Start with Niva, Aster, or Veyra, then shape a curated set of finishes, systems, and add-ons around how you want to use the space.",
+                          "lineHeight": 1.4,
+                          "fontFamily": "$--font-sans",
+                          "fontSize": 16.303,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "olVUc",
+                          "name": "Step 01 Bullets",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 4,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "Rs1l9",
+                              "name": "Bullet — Choose the model and layout",
+                              "width": "fill_container",
+                              "gap": 12,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "ellipse",
+                                  "id": "AOZvI",
+                                  "name": "Bullet Dot",
+                                  "fill": "$--primary",
+                                  "width": 6,
+                                  "height": 6
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "a1edc",
+                                  "name": "Bullet Text",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": 420,
+                                  "content": "Choose the model and layout",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 14.868,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "z5uRyj",
+                              "name": "Bullet — Curate interior and exterior finishes",
+                              "width": "fill_container",
+                              "gap": 12,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "ellipse",
+                                  "id": "dQxBK",
+                                  "name": "Bullet Dot",
+                                  "fill": "$--primary",
+                                  "width": 6,
+                                  "height": 6
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "l1kZRh",
+                                  "name": "Bullet Text",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": 420,
+                                  "content": "Curate interior and exterior finishes",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 14.868,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "BRZxx",
+                              "name": "Bullet — Add energy and outdoor options",
+                              "width": "fill_container",
+                              "gap": 12,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "ellipse",
+                                  "id": "FNgFJ",
+                                  "name": "Bullet Dot",
+                                  "fill": "$--primary",
+                                  "width": 6,
+                                  "height": 6
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "mA8Fr",
+                                  "name": "Bullet Text",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": 420,
+                                  "content": "Add energy and outdoor options",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 14.868,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "eeKUI",
+                          "name": "Step 01 Media",
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": 357,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "../apps/nextjs/public/images/process/process-step1-v1.jpg",
+                            "mode": "fill"
+                          },
+                          "stroke": "$--border",
+                          "strokeWidth": 1
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "XIsee",
+                      "name": "Process Step 02",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 24,
+                      "padding": [
+                        16,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "WuItr",
+                          "name": "Step 02 Heading",
+                          "fill": "$--foreground",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Find the setting that makes it feel at home.",
+                          "lineHeight": 1.1,
+                          "fontFamily": "$--font-heading",
+                          "fontSize": 33.416,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Zzl2G",
+                          "name": "Step 02 Description",
+                          "fill": "$--foreground",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Share the setting you have in mind. Luma helps review access, orientation, terrain, and the local requirements that may shape the project.",
+                          "lineHeight": 1.4,
+                          "fontFamily": "$--font-sans",
+                          "fontSize": 16.303,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "dEhUG",
+                          "name": "Step 02 Bullets",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 4,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "a5RG02",
+                              "name": "Bullet — Consider views, daylight, and privacy",
+                              "width": "fill_container",
+                              "gap": 12,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "ellipse",
+                                  "id": "I43EW",
+                                  "name": "Bullet Dot",
+                                  "fill": "$--primary",
+                                  "width": 6,
+                                  "height": 6
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "jA5Ar",
+                                  "name": "Bullet Text",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": 420,
+                                  "content": "Consider views, daylight, and privacy",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 14.868,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "cCZ9V",
+                              "name": "Bullet — Review access and ground conditions",
+                              "width": "fill_container",
+                              "gap": 12,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "ellipse",
+                                  "id": "BzVjq",
+                                  "name": "Bullet Dot",
+                                  "fill": "$--primary",
+                                  "width": 6,
+                                  "height": 6
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "zcltD",
+                                  "name": "Bullet Text",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": 420,
+                                  "content": "Review access and ground conditions",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 14.868,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "jo0XM",
+                              "name": "Bullet — Identify local requirements early",
+                              "width": "fill_container",
+                              "gap": 12,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "ellipse",
+                                  "id": "isG1y",
+                                  "name": "Bullet Dot",
+                                  "fill": "$--primary",
+                                  "width": 6,
+                                  "height": 6
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "E0ftx",
+                                  "name": "Bullet Text",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": 420,
+                                  "content": "Identify local requirements early",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 14.868,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "yGlmh",
+                          "name": "Step 02 Media",
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": 357,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "../apps/nextjs/public/images/process/process-step2-video2-poster.webp",
+                            "mode": "fill"
+                          },
+                          "stroke": "$--border",
+                          "strokeWidth": 1
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "ATyyH",
+                      "name": "Process Step 03",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 24,
+                      "padding": [
+                        16,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "KYuk9",
+                          "name": "Step 03 Heading",
+                          "fill": "$--foreground",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Bring the site and cabin plan together.",
+                          "lineHeight": 1.1,
+                          "fontFamily": "$--font-heading",
+                          "fontSize": 33.416,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "piBhT",
+                          "name": "Step 03 Description",
+                          "fill": "$--foreground",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "With the direction agreed, Luma coordinates the cabin plan with the local specialists preparing the foundations, utilities, and route to site.",
+                          "lineHeight": 1.4,
+                          "fontFamily": "$--font-sans",
+                          "fontSize": 16.303,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "q6w8wC",
+                          "name": "Step 03 Bullets",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 4,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "Oey6K",
+                              "name": "Bullet — Confirm drawings and selections",
+                              "width": "fill_container",
+                              "gap": 12,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "ellipse",
+                                  "id": "A4G2uA",
+                                  "name": "Bullet Dot",
+                                  "fill": "$--primary",
+                                  "width": 6,
+                                  "height": 6
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "xY41A",
+                                  "name": "Bullet Text",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": 420,
+                                  "content": "Confirm drawings and selections",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 14.868,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "yxDup",
+                              "name": "Bullet — Align foundations and utility work",
+                              "width": "fill_container",
+                              "gap": 12,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "ellipse",
+                                  "id": "mBX1e",
+                                  "name": "Bullet Dot",
+                                  "fill": "$--primary",
+                                  "width": 6,
+                                  "height": 6
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "pn5I2",
+                                  "name": "Bullet Text",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": 420,
+                                  "content": "Align foundations and utility work",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 14.868,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "bO3O4",
+                              "name": "Bullet — Plan production and delivery",
+                              "width": "fill_container",
+                              "gap": 12,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "ellipse",
+                                  "id": "O1HAyI",
+                                  "name": "Bullet Dot",
+                                  "fill": "$--primary",
+                                  "width": 6,
+                                  "height": 6
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "g6qBcV",
+                                  "name": "Bullet Text",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": 420,
+                                  "content": "Plan production and delivery",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 14.868,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "jQitC",
+                          "name": "Step 03 Media",
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": 357,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "../apps/nextjs/public/images/process/process-step3-video-poster.webp",
+                            "mode": "fill"
+                          },
+                          "stroke": "$--border",
+                          "strokeWidth": 1
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "dWq6A",
+                      "name": "Process Step 04",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 24,
+                      "padding": [
+                        16,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Gsabn",
+                          "name": "Step 04 Heading",
+                          "fill": "$--foreground",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Watch your cabin take its place.",
+                          "lineHeight": 1.1,
+                          "fontFamily": "$--font-heading",
+                          "fontSize": 33.416,
+                          "fontWeight": "500"
+                        },
+                        {
+                          "type": "text",
+                          "id": "wSb0C",
+                          "name": "Step 04 Description",
+                          "fill": "$--foreground",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Once the site is ready, the cabin is delivered and installed, with final connections and handover coordinated around the agreed project scope.",
+                          "lineHeight": 1.4,
+                          "fontFamily": "$--font-sans",
+                          "fontSize": 16.303,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Mcaop",
+                          "name": "Step 04 Bullets",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 4,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "E6WeWx",
+                              "name": "Bullet — Position and secure the cabin",
+                              "width": "fill_container",
+                              "gap": 12,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "ellipse",
+                                  "id": "W6t9k",
+                                  "name": "Bullet Dot",
+                                  "fill": "$--primary",
+                                  "width": 6,
+                                  "height": 6
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "dHdFt",
+                                  "name": "Bullet Text",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": 420,
+                                  "content": "Position and secure the cabin",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 14.868,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "M7DYaC",
+                              "name": "Bullet — Complete agreed site connections",
+                              "width": "fill_container",
+                              "gap": 12,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "ellipse",
+                                  "id": "P88Lm",
+                                  "name": "Bullet Dot",
+                                  "fill": "$--primary",
+                                  "width": 6,
+                                  "height": 6
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "etJ2m",
+                                  "name": "Bullet Text",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": 420,
+                                  "content": "Complete agreed site connections",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 14.868,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "K0Zscc",
+                              "name": "Bullet — Walk through the finished space",
+                              "width": "fill_container",
+                              "gap": 12,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "ellipse",
+                                  "id": "EPEor",
+                                  "name": "Bullet Dot",
+                                  "fill": "$--primary",
+                                  "width": 6,
+                                  "height": 6
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "NPNmN",
+                                  "name": "Bullet Text",
+                                  "fill": "$--foreground",
+                                  "textGrowth": "fixed-width",
+                                  "width": 420,
+                                  "content": "Walk through the finished space",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 14.868,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Xxq7F",
+                          "name": "Step 04 Media",
+                          "clip": true,
+                          "width": "fill_container",
+                          "height": 357,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "../apps/nextjs/public/images/process/process-step4-video-poster.webp",
+                            "mode": "fill"
+                          },
+                          "stroke": "$--border",
+                          "strokeWidth": 1
+                        },
+                        {
+                          "type": "frame",
+                          "id": "auFk0",
+                          "name": "Get Started Button",
+                          "fill": "$--primary",
+                          "cornerRadius": "$--radius-4xl",
+                          "padding": [
+                            10,
+                            16
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "IDMuG",
+                              "name": "Get Started Label",
+                              "fill": "$--primary-foreground",
+                              "content": "Get started",
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "500"
                             }
                           ]
                         }
@@ -12241,6 +14353,1122 @@
                   ]
                 }
               ]
+            },
+            {
+              "type": "frame",
+              "id": "DApYy",
+              "name": "How It Works — Desktop",
+              "context": "section#process",
+              "width": "fill_container",
+              "fill": "$unofficial/background-accent",
+              "layout": "vertical",
+              "gap": 112,
+              "padding": [
+                88,
+                64
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "H7cJD",
+                  "name": "Process Intro",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "P6Fjp",
+                      "name": "Process Title",
+                      "fill": "$--foreground",
+                      "content": "How it works",
+                      "lineHeight": 1.1,
+                      "fontFamily": "$--font-heading",
+                      "fontSize": 64,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "PKKKB",
+                      "name": "Process Subtitle",
+                      "fill": "$--foreground",
+                      "content": "A guided path, start to finish.",
+                      "lineHeight": 1.3,
+                      "fontFamily": "$--font-sans",
+                      "fontSize": 20,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ylAbt",
+                  "name": "Desktop Process Experience",
+                  "width": "fill_container",
+                  "gap": 32,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "g9K8YM",
+                      "name": "Process Timeline",
+                      "width": 328,
+                      "height": 1080,
+                      "fill": "$unofficial/background-accent",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "E5XAWg",
+                          "name": "Desktop Timeline Steps",
+                          "width": 312,
+                          "height": 384,
+                          "fill": "$unofficial/background-accent",
+                          "layout": "none",
+                          "children": [
+                            {
+                              "type": "rectangle",
+                              "id": "eIymQ",
+                              "x": 27.5,
+                              "y": 28,
+                              "name": "Timeline Connector",
+                              "fill": "$--border",
+                              "width": 1,
+                              "height": 328
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Onh2y",
+                              "x": 0,
+                              "y": 0,
+                              "name": "Timeline Step 01",
+                              "width": 312,
+                              "height": 56,
+                              "gap": 8,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "uGiUi",
+                                  "name": "Step 01 Badge",
+                                  "width": 56,
+                                  "height": 56,
+                                  "fill": "$unofficial/background-transparent",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--primary",
+                                  "layout": "none",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "ber6V",
+                                      "x": 0,
+                                      "y": 0,
+                                      "name": "Active Badge Outer Ring",
+                                      "fill": "$unofficial/background-transparent",
+                                      "width": 56,
+                                      "height": 56,
+                                      "stroke": "$unofficial/primary-25",
+                                      "strokeWidth": 2,
+                                      "strokeAlignment": "inner"
+                                    },
+                                    {
+                                      "type": "ellipse",
+                                      "id": "xlXCD",
+                                      "x": 2,
+                                      "y": 2,
+                                      "name": "Active Badge Ring Offset",
+                                      "fill": "$--background",
+                                      "width": 52,
+                                      "height": 52
+                                    },
+                                    {
+                                      "type": "frame",
+                                      "id": "v1c16Q",
+                                      "x": 4,
+                                      "y": 4,
+                                      "name": "Step 01 Badge Fill",
+                                      "width": 48,
+                                      "height": 48,
+                                      "fill": "$--primary",
+                                      "cornerRadius": "$--radius-full",
+                                      "stroke": "$--primary",
+                                      "strokeWidth": 1,
+                                      "justifyContent": "center",
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "YDD1s",
+                                          "name": "Step 01 Number",
+                                          "fill": "$--primary-foreground",
+                                          "content": "01",
+                                          "lineHeight": 1.25,
+                                          "fontFamily": "$--font-mono",
+                                          "fontSize": 16,
+                                          "fontWeight": "500"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "N8oNHi",
+                                  "name": "Step 01 Label",
+                                  "fill": "$--foreground",
+                                  "content": "Design yours",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 18,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Hx63A",
+                              "x": 0,
+                              "y": 109.333,
+                              "name": "Timeline Step 02",
+                              "width": 312,
+                              "height": 56,
+                              "gap": 8,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "MZen6",
+                                  "name": "Step 02 Badge",
+                                  "width": 56,
+                                  "height": 56,
+                                  "fill": "$unofficial/background-transparent",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--primary",
+                                  "layout": "none",
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "m10tei",
+                                      "x": 4,
+                                      "y": 4,
+                                      "name": "Step 02 Badge Fill",
+                                      "width": 48,
+                                      "height": 48,
+                                      "fill": "$--background",
+                                      "cornerRadius": "$--radius-full",
+                                      "stroke": "$unofficial/primary-45",
+                                      "strokeWidth": 1,
+                                      "justifyContent": "center",
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "QdgFr",
+                                          "name": "Step 02 Number",
+                                          "fill": "$--muted-foreground",
+                                          "content": "02",
+                                          "lineHeight": 1.25,
+                                          "fontFamily": "$--font-mono",
+                                          "fontSize": 16,
+                                          "fontWeight": "500"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "trWiu",
+                                  "name": "Step 02 Label",
+                                  "fill": "$--muted-foreground",
+                                  "content": "Pick the spot",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 18,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "KXL65",
+                              "x": 0,
+                              "y": 218.667,
+                              "name": "Timeline Step 03",
+                              "width": 312,
+                              "height": 56,
+                              "gap": 8,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "hWKv9",
+                                  "name": "Step 03 Badge",
+                                  "width": 56,
+                                  "height": 56,
+                                  "fill": "$unofficial/background-transparent",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--primary",
+                                  "layout": "none",
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "PdGd3",
+                                      "x": 4,
+                                      "y": 4,
+                                      "name": "Step 03 Badge Fill",
+                                      "width": 48,
+                                      "height": 48,
+                                      "fill": "$--background",
+                                      "cornerRadius": "$--radius-full",
+                                      "stroke": "$unofficial/primary-45",
+                                      "strokeWidth": 1,
+                                      "justifyContent": "center",
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "KgxR0",
+                                          "name": "Step 03 Number",
+                                          "fill": "$--muted-foreground",
+                                          "content": "03",
+                                          "lineHeight": 1.25,
+                                          "fontFamily": "$--font-mono",
+                                          "fontSize": 16,
+                                          "fontWeight": "500"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "ITb7x",
+                                  "name": "Step 03 Label",
+                                  "fill": "$--muted-foreground",
+                                  "content": "Prepare together",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 18,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "ce0MZ",
+                              "x": 0,
+                              "y": 328,
+                              "name": "Timeline Step 04",
+                              "width": 312,
+                              "height": 56,
+                              "gap": 8,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "rtVsV",
+                                  "name": "Step 04 Badge",
+                                  "width": 56,
+                                  "height": 56,
+                                  "fill": "$unofficial/background-transparent",
+                                  "cornerRadius": "$--radius-full",
+                                  "stroke": "$--primary",
+                                  "layout": "none",
+                                  "children": [
+                                    {
+                                      "type": "frame",
+                                      "id": "wLMkT",
+                                      "x": 4,
+                                      "y": 4,
+                                      "name": "Step 04 Badge Fill",
+                                      "width": 48,
+                                      "height": 48,
+                                      "fill": "$--background",
+                                      "cornerRadius": "$--radius-full",
+                                      "stroke": "$unofficial/primary-45",
+                                      "strokeWidth": 1,
+                                      "justifyContent": "center",
+                                      "alignItems": "center",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "id": "t4fPe4",
+                                          "name": "Step 04 Number",
+                                          "fill": "$--muted-foreground",
+                                          "content": "04",
+                                          "lineHeight": 1.25,
+                                          "fontFamily": "$--font-mono",
+                                          "fontSize": 16,
+                                          "fontWeight": "500"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "l41eOX",
+                                  "name": "Step 04 Label",
+                                  "fill": "$--muted-foreground",
+                                  "content": "Deliver and install",
+                                  "lineHeight": 1.4,
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 18,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "wZb5p",
+                          "name": "Fading Dot Field",
+                          "width": 312,
+                          "height": 696,
+                          "fill": {
+                            "type": "image",
+                            "enabled": true,
+                            "url": "images/process-dot-field-desktop.png",
+                            "mode": "stretch"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "YY10w",
+                      "name": "Process Steps",
+                      "width": 418,
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "s73t8",
+                          "name": "Process Step 01",
+                          "width": "fill_container",
+                          "height": 1080,
+                          "layout": "vertical",
+                          "gap": 32,
+                          "padding": [
+                            16,
+                            0
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "LEf6H",
+                              "name": "Step 01 Heading",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Shape a cabin around the way you want to live.",
+                              "lineHeight": 1.1,
+                              "fontFamily": "$--font-heading",
+                              "fontSize": 44,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "rqTxD",
+                              "name": "Step 01 Description",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Start with Niva, Aster, or Veyra, then shape a curated set of finishes, systems, and add-ons around how you want to use the space.",
+                              "lineHeight": 1.4,
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 18,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "oLsNZ",
+                              "name": "Step 01 Bullets",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 4,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "vzXb3",
+                                  "name": "Bullet — Choose the model and layout",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "Zg0qw",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "e06pCv",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 380,
+                                      "content": "Choose the model and layout",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 16,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "FFppw",
+                                  "name": "Bullet — Curate interior and exterior finishes",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "o6DWL",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "FcLgj",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 380,
+                                      "content": "Curate interior and exterior finishes",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 16,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "YF04d",
+                                  "name": "Bullet — Add energy and outdoor options",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "BmCzy",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "kMjv1",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 380,
+                                      "content": "Add energy and outdoor options",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 16,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "fgZ9W",
+                          "name": "Process Step 02",
+                          "width": "fill_container",
+                          "height": 1080,
+                          "layout": "vertical",
+                          "gap": 32,
+                          "padding": [
+                            16,
+                            0
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "c6bIW",
+                              "name": "Step 02 Heading",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Find the setting that makes it feel at home.",
+                              "lineHeight": 1.1,
+                              "fontFamily": "$--font-heading",
+                              "fontSize": 44,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "dssfx",
+                              "name": "Step 02 Description",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Share the setting you have in mind. Luma helps review access, orientation, terrain, and the local requirements that may shape the project.",
+                              "lineHeight": 1.4,
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 18,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "qp768",
+                              "name": "Step 02 Bullets",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 4,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "i074J",
+                                  "name": "Bullet — Consider views, daylight, and privacy",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "z4Dp4l",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "gsV1y",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 380,
+                                      "content": "Consider views, daylight, and privacy",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 16,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "Qz0bh",
+                                  "name": "Bullet — Review access and ground conditions",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "qfQbc",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "pkjSE",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 380,
+                                      "content": "Review access and ground conditions",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 16,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "YhVtb",
+                                  "name": "Bullet — Identify local requirements early",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "M9c4qn",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "TUJ6Z",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 380,
+                                      "content": "Identify local requirements early",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 16,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "kk0SX",
+                          "name": "Process Step 03",
+                          "width": "fill_container",
+                          "height": 1080,
+                          "layout": "vertical",
+                          "gap": 32,
+                          "padding": [
+                            16,
+                            0
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "BQYRP",
+                              "name": "Step 03 Heading",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Bring the site and cabin plan together.",
+                              "lineHeight": 1.1,
+                              "fontFamily": "$--font-heading",
+                              "fontSize": 44,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "aLGZv",
+                              "name": "Step 03 Description",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "With the direction agreed, Luma coordinates the cabin plan with the local specialists preparing the foundations, utilities, and route to site.",
+                              "lineHeight": 1.4,
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 18,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "TYpPV",
+                              "name": "Step 03 Bullets",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 4,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "tJJwJ",
+                                  "name": "Bullet — Confirm drawings and selections",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "up2KE",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "yAbEO",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 380,
+                                      "content": "Confirm drawings and selections",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 16,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "E2et5",
+                                  "name": "Bullet — Align foundations and utility work",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "u1m2D1",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "qz8TZ",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 380,
+                                      "content": "Align foundations and utility work",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 16,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "xibGc",
+                                  "name": "Bullet — Plan production and delivery",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "zcBOc",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "kn5hF",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 380,
+                                      "content": "Plan production and delivery",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 16,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "C5DPN",
+                          "name": "Process Step 04",
+                          "width": "fill_container",
+                          "height": 1080,
+                          "layout": "vertical",
+                          "gap": 32,
+                          "padding": [
+                            16,
+                            0
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "O14hgZ",
+                              "name": "Step 04 Heading",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Watch your cabin take its place.",
+                              "lineHeight": 1.1,
+                              "fontFamily": "$--font-heading",
+                              "fontSize": 44,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "kryMW",
+                              "name": "Step 04 Description",
+                              "fill": "$--foreground",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Once the site is ready, the cabin is delivered and installed, with final connections and handover coordinated around the agreed project scope.",
+                              "lineHeight": 1.4,
+                              "fontFamily": "$--font-sans",
+                              "fontSize": 18,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "P4xJ0",
+                              "name": "Step 04 Bullets",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 4,
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "X9ScPE",
+                                  "name": "Bullet — Position and secure the cabin",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "aXr9S",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "pyNeP",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 380,
+                                      "content": "Position and secure the cabin",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 16,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "hFUM2",
+                                  "name": "Bullet — Complete agreed site connections",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "Nwio2",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "Q0Xl0",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 380,
+                                      "content": "Complete agreed site connections",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 16,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "LRFVl",
+                                  "name": "Bullet — Walk through the finished space",
+                                  "width": "fill_container",
+                                  "gap": 12,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "ellipse",
+                                      "id": "SyibH",
+                                      "name": "Bullet Dot",
+                                      "fill": "$--primary",
+                                      "width": 6,
+                                      "height": 6
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "uTIBd",
+                                      "name": "Bullet Text",
+                                      "fill": "$--foreground",
+                                      "textGrowth": "fixed-width",
+                                      "width": 380,
+                                      "content": "Walk through the finished space",
+                                      "lineHeight": 1.4,
+                                      "fontFamily": "$--font-sans",
+                                      "fontSize": 16,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "r2e06",
+                              "name": "Get Started Button",
+                              "fill": "$--primary",
+                              "cornerRadius": "$--radius-4xl",
+                              "padding": [
+                                10,
+                                16
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "s7n3SG",
+                                  "name": "Get Started Label",
+                                  "fill": "$--primary-foreground",
+                                  "content": "Get started",
+                                  "fontFamily": "$--font-sans",
+                                  "fontSize": 14,
+                                  "fontWeight": "500"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "anCJe",
+                      "name": "Process Media Column",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "r5fKl",
+                          "name": "Step 01 Media Viewport",
+                          "width": "fill_container",
+                          "height": 1080,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "RMJ39",
+                              "name": "Step 01 Media",
+                              "clip": true,
+                              "width": 580,
+                              "height": 435,
+                              "fill": {
+                                "type": "image",
+                                "enabled": true,
+                                "url": "../apps/nextjs/public/images/process/process-step1-v1.jpg",
+                                "mode": "fill"
+                              },
+                              "cornerRadius": "$--radius-xl",
+                              "stroke": "$--border",
+                              "strokeWidth": 1
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "FGKuX",
+                          "name": "Step 02 Media Viewport",
+                          "width": "fill_container",
+                          "height": 1080,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "e7jmAa",
+                              "name": "Step 02 Media",
+                              "clip": true,
+                              "width": 580,
+                              "height": 435,
+                              "fill": {
+                                "type": "image",
+                                "enabled": true,
+                                "url": "../apps/nextjs/public/images/process/process-step2-video2-poster.webp",
+                                "mode": "fill"
+                              },
+                              "cornerRadius": "$--radius-xl",
+                              "stroke": "$--border",
+                              "strokeWidth": 1
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "cBb5p",
+                          "name": "Step 03 Media Viewport",
+                          "width": "fill_container",
+                          "height": 1080,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "J457C0",
+                              "name": "Step 03 Media",
+                              "clip": true,
+                              "width": 580,
+                              "height": 435,
+                              "fill": {
+                                "type": "image",
+                                "enabled": true,
+                                "url": "../apps/nextjs/public/images/process/process-step3-video-poster.webp",
+                                "mode": "fill"
+                              },
+                              "cornerRadius": "$--radius-xl",
+                              "stroke": "$--border",
+                              "strokeWidth": 1
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "s5Bc1j",
+                          "name": "Step 04 Media Viewport",
+                          "width": "fill_container",
+                          "height": 1080,
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "eUw52",
+                              "name": "Step 04 Media",
+                              "clip": true,
+                              "width": 580,
+                              "height": 435,
+                              "fill": {
+                                "type": "image",
+                                "enabled": true,
+                                "url": "../apps/nextjs/public/images/process/process-step4-video-poster.webp",
+                                "mode": "fill"
+                              },
+                              "cornerRadius": "$--radius-xl",
+                              "stroke": "$--border",
+                              "strokeWidth": 1
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -12986,6 +16214,30 @@
     "unofficial/primary-foreground-25": {
       "type": "color",
       "value": "#F0FDF440"
+    },
+    "unofficial/card-outline": {
+      "type": "color",
+      "value": "#1717171A"
+    },
+    "unofficial/background-90": {
+      "type": "color",
+      "value": "#F7F5F0E6"
+    },
+    "unofficial/primary-25": {
+      "type": "color",
+      "value": "#39442B40"
+    },
+    "unofficial/border-50": {
+      "type": "color",
+      "value": "#E5E5E580"
+    },
+    "unofficial/primary-75": {
+      "type": "color",
+      "value": "#39442BBF"
+    },
+    "unofficial/primary-45": {
+      "type": "color",
+      "value": "#39442B73"
     }
   },
   "fileToken": "b8fabb78-e8cc-4670-a2ad-039e6ed44f78",
