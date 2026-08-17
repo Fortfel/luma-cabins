@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-17T00:00:00.000Z",
+  "title": "Design System: Luma Cabins",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Deep Olive",
+        "canonical": "oklch(0.369 0.043 127.676)",
+        "tonalRamp": [
+          "#182319",
+          "#24351f",
+          "#304a29",
+          "#3d5f34",
+          "#56754a",
+          "#78906c",
+          "#a8b8a0",
+          "#dbe3d7"
+        ]
+      },
+      "warm-paper": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "oklch(0.97 0.007 88.642)",
+        "tonalRamp": [
+          "#2d2b26",
+          "#514d43",
+          "#746f61",
+          "#969080",
+          "#b9b2a0",
+          "#d6cfbe",
+          "#e9e4d7",
+          "#f7f4ed"
+        ]
+      },
+      "paper-accent": {
+        "role": "neutral",
+        "displayName": "Paper Accent",
+        "canonical": "oklch(0.938 0.013 82.402)",
+        "tonalRamp": [
+          "#302d27",
+          "#554f43",
+          "#776f5f",
+          "#998f7c",
+          "#b9b09b",
+          "#d2c9b4",
+          "#e5decb",
+          "#f2ecdf"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(0.205 0 0)",
+        "tonalRamp": [
+          "#111111",
+          "#292929",
+          "#414141",
+          "#595959",
+          "#717171",
+          "#898989",
+          "#a1a1a1",
+          "#b9b9b9"
+        ]
+      },
+      "muted-ink": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "oklch(0.556 0 0)",
+        "tonalRamp": [
+          "#3f3f3f",
+          "#555555",
+          "#6a6a6a",
+          "#808080",
+          "#969696",
+          "#ababab",
+          "#c1c1c1",
+          "#d6d6d6"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Hairline Border",
+        "canonical": "oklch(0.922 0 0)",
+        "tonalRamp": [
+          "#525252",
+          "#666666",
+          "#7a7a7a",
+          "#8e8e8e",
+          "#a2a2a2",
+          "#b6b6b6",
+          "#cacaca",
+          "#dedede"
+        ]
+      },
+      "card": {
+        "role": "neutral",
+        "displayName": "Card White",
+        "canonical": "oklch(1 0 0)",
+        "tonalRamp": [
+          "#333333",
+          "#4d4d4d",
+          "#666666",
+          "#808080",
+          "#999999",
+          "#b3b3b3",
+          "#cccccc",
+          "#ffffff"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Cabinet Grotesk Display",
+        "purpose": "Carries the architectural idea in hero and section headlines."
+      },
+      "body": {
+        "displayName": "Satoshi Body",
+        "purpose": "Keeps product information, controls, and process copy direct and readable."
+      },
+      "mono": {
+        "displayName": "JetBrains Mono Metadata",
+        "purpose": "Reserved for technical or system-like metadata."
+      }
+    },
+    "shadows": [
+      {
+        "name": "ambient-low",
+        "value": "0 1px 3px 0 hsl(0 0% 0% / 0.05)",
+        "purpose": "Quiet separation for compact cards and testimonial surfaces."
+      },
+      {
+        "name": "surface-low",
+        "value": "0 1px 3px 0 hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1)",
+        "purpose": "Low separation for controls that sit above paper surfaces."
+      },
+      {
+        "name": "overlay",
+        "value": "0 1px 3px 0 hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1)",
+        "purpose": "Separation for dialogs and expanded review content."
+      }
+    ],
+    "motion": [
+      {
+        "name": "fluid-layout",
+        "value": "clamp-based interpolation",
+        "purpose": "Interpolate type, gutters, and media geometry between documented viewport anchors."
+      },
+      {
+        "name": "calm-transition",
+        "value": "400ms ease-out",
+        "purpose": "Navigation, section-control, and selected-state transitions where motion is allowed."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "immediate state change",
+        "purpose": "Remove autoplay and non-essential animation when the user requests reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      },
+      {
+        "name": "3xl",
+        "value": "1728px"
+      },
+      {
+        "name": "4xl",
+        "value": "1920px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main conversion action, used for Get Started and model exploration.",
+      "html": "<button class=\"ds-btn-primary\">GET STARTED</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 0 16px; border: 1px solid transparent; border-radius: 36.4px; background: var(--primary); color: var(--primary-foreground); font: 700 14px/1.4 Satoshi, sans-serif; transition: background-color 0.4s ease-out, box-shadow 0.2s ease-out; } .ds-btn-primary:hover { background: color-mix(in oklch, var(--primary), transparent 20%); } .ds-btn-primary:focus-visible { outline: 3px solid color-mix(in oklch, var(--ring), transparent 20%); outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "A pale inverse action used against the deep olive hero surface.",
+      "html": "<button class=\"ds-btn-secondary\">EXPLORE THE CABINS</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 0 16px; border: 1px solid transparent; border-radius: 36.4px; background: var(--secondary); color: var(--secondary-foreground); font: 700 14px/1.4 Satoshi, sans-serif; transition: background-color 0.4s ease-out, box-shadow 0.2s ease-out; } .ds-btn-secondary:hover { background: color-mix(in oklch, var(--secondary), var(--foreground) 5%); } .ds-btn-secondary:focus-visible { outline: 3px solid color-mix(in oklch, var(--ring), transparent 20%); outline-offset: 2px; }"
+    },
+    {
+      "name": "Editorial Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "A focused white surface for testimonials and product controls.",
+      "html": "<article class=\"ds-card\"><h3>Niva</h3><p>20 m2 / Sleeping loft</p></article>",
+      "css": ".ds-card { padding: 16px; border: 1px solid var(--border); border-radius: 14px; background: var(--card); color: var(--card-foreground); box-shadow: 0 1px 3px 0 hsl(0 0% 0% / 0.05); } .ds-card h3 { margin: 0; font: 500 24px/1.15 Cabinet Grotesk, sans-serif; } .ds-card p { margin: 8px 0 0; color: var(--muted-foreground); font: 400 14px/1.4 Satoshi, sans-serif; }"
+    },
+    {
+      "name": "Finish Selector",
+      "kind": "chip",
+      "refersTo": "finish-selector",
+      "description": "A swatch-led radio control for curated exterior and interior choices.",
+      "html": "<button class=\"ds-finish\" aria-pressed=\"true\"><span aria-hidden=\"true\"></span> TIMBER</button>",
+      "css": ".ds-finish { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border: 1px solid var(--border); border-radius: 999px; background: transparent; color: var(--foreground); font: 700 12px/1.1 Satoshi, sans-serif; letter-spacing: 0.12rem; text-transform: uppercase; transition: border-color 0.2s ease-out, box-shadow 0.2s ease-out; } .ds-finish span { width: 16px; height: 16px; border-radius: 50%; background: #c2a06b; } .ds-finish[aria-pressed=\"true\"] { border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary); } .ds-finish:focus-visible { outline: 3px solid color-mix(in oklch, var(--ring), transparent 20%); outline-offset: 2px; }"
+    },
+    {
+      "name": "Transparent Navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "A transparent hero navigation that transitions to readable foreground text on scroll.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#models\">MODELS</a><a href=\"#process\">HOW IT WORKS</a><a class=\"ds-nav-cta\" href=\"/contact\">GET STARTED</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 24px; min-height: 72px; padding: 0 24px; color: var(--primary-foreground); font: 700 12px/1.1 Satoshi, sans-serif; letter-spacing: 0.12rem; text-transform: uppercase; backdrop-filter: blur(24px); transition: color 0.4s ease-out, background-color 0.4s ease-out; } .ds-nav a { color: inherit; text-decoration: none; } .ds-nav a:hover { text-decoration: underline; text-underline-offset: 4px; } .ds-nav-cta { padding: 12px 20px; border-radius: 36.4px; background: var(--primary); color: var(--primary-foreground); }"
+    },
+    {
+      "name": "Image Comparison",
+      "kind": "custom",
+      "description": "A full-width image surface that makes curated interior choices tangible through direct manipulation.",
+      "html": "<div class=\"ds-comparison\"><span class=\"ds-comparison-label\">FOCUS / LIGHT OAK</span><span class=\"ds-comparison-handle\" aria-hidden=\"true\"></span></div>",
+      "css": ".ds-comparison { position: relative; min-height: 260px; overflow: hidden; background: var(--deep-charcoal); color: var(--primary-foreground); } .ds-comparison-label { position: absolute; left: 16px; bottom: 16px; padding: 8px 12px; border: 1px solid color-mix(in oklch, var(--primary-foreground), transparent 70%); border-radius: 11.2px; background: color-mix(in oklch, var(--deep-charcoal), transparent 35%); font: 700 12px/1.1 Satoshi, sans-serif; letter-spacing: 0.12rem; } .ds-comparison-handle { position: absolute; inset: 0 auto 0 56%; width: 4px; background: var(--primary-foreground); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Quiet Frame",
+    "overview": "Luma frames the cabin as the subject rather than treating it as a generic property listing. The system gives landscape, architecture, material, and human pace enough room to register, then uses precise type and compact controls to make the offer understandable. The result is light architectural calm: warm paper surfaces, a deep olive anchor, large image fields, and a confident but unforced reading rhythm.\n\nThe page is editorial without becoming precious and product-led without becoming technical. The visual system stays light and tactile, letting the shift between image, paper, and olive surfaces carry most of the hierarchy. Motion is purposeful and localized to model browsing, comparison, testimonials, and process guidance.",
+    "keyCharacteristics": [
+      "Image-led composition with spacious editorial framing",
+      "Deep olive used as a decisive anchor rather than scattered decoration",
+      "Cabinet Grotesk display hierarchy paired with Satoshi utility text",
+      "Fluid gutters and type that preserve the same calm at phone and desktop widths",
+      "Flat tonal surfaces with tactile controls and restrained blur"
+    ],
+    "rules": [
+      {
+        "name": "The Paper-to-Image Rule",
+        "body": "Warm paper creates the pause around the image; do not cover a decisive photograph with layers of decorative color.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Voice Rule",
+        "body": "Cabinet Grotesk carries the spatial idea; Satoshi carries the decision. Do not reverse their roles or add a third display family.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-by-Default Rule",
+        "body": "A surface should first earn its hierarchy through space, color, and type. Add a shadow only when the surface is transient or must separate from content beneath it.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do let one strong cabin or landscape image own a section before adding supporting UI.",
+      "Do use deep olive for decisive anchors: hero surfaces, primary actions, active states, and selected controls.",
+      "Do keep type fluid and preserve the display/body role split across responsive widths.",
+      "Do use the existing page containers, gutters, and media-bleed conventions before adding local geometry.",
+      "Do preserve keyboard access, reduced-motion behavior, meaningful media descriptions, and touch scrolling.",
+      "Do make model facts, finish options, and process steps easy to scan before asking for contact."
+    ],
+    "donts": [
+      "Don't turn the page into a SaaS dashboard, feature grid, or prefab catalog.",
+      "Don't use dark mode, neon accents, glass-heavy surfaces, or generic gradient decoration as a new visual layer.",
+      "Don't over-rusticize the brand into survivalist, homesteading, or rough handmade cabin language.",
+      "Don't add large shadows, nested cards, or rounded containers without a structural reason.",
+      "Don't replace fictional testimonials, provisional prices, or provisional process copy with invented proof.",
+      "Don't introduce a new font family or semantic color outside the established token system without an explicit visual-system decision."
+    ]
+  }
+}
