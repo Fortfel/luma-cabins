@@ -97,36 +97,35 @@ The fictional product system includes three main cabin models.
 
 ### Niva
 
-Compact studio cabin for solo retreats, guest stays, and short weekend escapes.
+Compact loft cabin for focused escapes, solo retreats, and short weekend stays.
 
 ```txt
-24 m² · Studio · Sleeps 2
+20 m² · Sleeping loft
 ```
 
 ### Aster
 
-One-bedroom retreat for couples, compact weekend living, and nature escapes.
+Compact studio retreat for weekend stays, couples, and quiet nature escapes.
 
 ```txt
-38 m² · 1 bedroom · Sleeps 2–4
+39 m² · Studio
 ```
 
 ### Veyra
 
-Larger two-bedroom cabin for longer stays, small families, and remote work.
+Larger one-bedroom hideaway for longer stays, hosting, remote work, and generous indoor-outdoor living.
 
 ```txt
-56 m² · 2 bedrooms · Sleeps 4–6
+56 m² · 1 Bedroom
 ```
 
 ## Add-on Modules
 
-Supported modular add-ons:
+The current product direction includes optional add-ons, but they are not yet interactive homepage controls:
 
-* Sauna module
-* Workspace module
-* Storage / utility module
-* Deck / terrace extension
+* Sauna package
+* Plunge pool
+* Deck lounge package
 
 ## Design Direction
 
