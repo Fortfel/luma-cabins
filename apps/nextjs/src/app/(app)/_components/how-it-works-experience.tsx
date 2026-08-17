@@ -417,7 +417,7 @@ function ProcessRail({
 
   return (
     <aside className={cn(className)} aria-label="Process timeline">
-      <div className="relative flex h-full flex-col pe-4">
+      <div className="relative flex h-full flex-col pe-[clamp(1rem,calc(-5rem+12.5vw),3rem)]">
         <div className="relative h-full max-h-96 shrink-0">
           <span aria-hidden="true" className="absolute inset-y-6 start-6 w-px bg-border">
             <span
