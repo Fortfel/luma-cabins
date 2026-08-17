@@ -22,6 +22,16 @@ Note: `apps/nextjs/node_modules/next` may be a pnpm Windows reparse point/symlin
 
 <!-- END:nextjs-agent-rules -->
 
+## Skills
+
+Use relevant installed skills when they clearly match the task; do not load unrelated skills just because they are available
+
+Repository-local skills live under .agents/skills/; treat their skill files as the detailed source of truth for those workflows
+
+If a skill's generic instructions conflict with an explicit repo rule in this file, follow the repo-specific rule
+
+For Playwright CLI specifically, the native-Windows launch restriction in the Browser and UI Verification section overrides generic Playwright skill instructions that tell the agent to run playwright-cli open itself
+
 ## IDE Integration
 
 Always use the `jetbrains-index` MCP server when applicable for:
@@ -103,15 +113,17 @@ Always use the `jetbrains-index` MCP server when applicable for:
 
 ## Import Rules
 
-- Type imports first
-- React / React Native next
-- Next / Expo next
-- Third-party packages next
-- `@workspace/*` next
-- Local aliases like `~/`, `@/`, `#/` next
-- Relative imports (`../`, `./`) last
-- Prefer `import type` for type-only imports
-- When importing/exporting types, use named type imports
+.oxfmtrc.json is the source of truth for import ordering; do not maintain a competing manual framework-specific order here
+
+Prefer import type for type-only imports
+
+Keep type-only specifiers at top level, matching the lint/formatter configuration
+
+Use @workspace/\* for shared workspace packages and @/ for app-local imports
+
+Use relative imports only within the same local module area when an alias/public package export is not more appropriate
+
+Run the formatter instead of manually rearranging imports
 
 ## TypeScript Rules
 
@@ -219,6 +231,52 @@ Always use the `jetbrains-index` MCP server when applicable for:
 - Do not commit accidental noise from `dist/`, `.cache/`, or similar generated output
 - Do not manually edit generated Next.js output under `.next/`
 
+## Browser and UI Verification
+
+Browser verification is separate from the repo's automated test setup. Use the most context-rich browser tool that is already available for the current task; do not force Playwright for every frontend check.
+
+Browser tool selection
+
+OpenChamber Web/browser tool — Prefer for routine runtime verification when working from OpenChamber and the tool is available. Use it to open the running dev app, inspect rendered output, click/type/scroll, check responsive layouts, and capture screenshots when useful.
+
+Pencil browser/MCP — Prefer when the task is centered on .pen design work, design-to-code comparison, or Pencil already provides the relevant browser context. Use pencil_browser when available instead of launching a redundant Playwright browser for the same check.
+
+Playwright CLI — Use when a repeatable CLI-driven flow is specifically useful, when the other browser tools are unavailable or insufficient, or when explicitly requested.
+
+Do not run multiple browser stacks for the same verification unless each one adds distinct value. If a preferred tool is unavailable, use the next appropriate tool and state the limitation rather than pretending the check was performed.
+
+Playwright CLI on native Windows/OpenCode
+
+Do not run playwright-cli open from OpenCode's shell on native Windows. The persistent browser process can leave the shell tool waiting indefinitely.
+
+First use playwright-cli list to inspect existing named sessions.
+
+Reuse a Playwright session only if it is already assigned to the current chat/task.
+
+Never share one named Playwright session between concurrent OpenChamber/OpenCode chats.
+
+If the current chat needs a new Playwright session, propose a short unused name such as <project_name>-<task> (add a suffix when needed) and give the user the exact command to run manually in a separate external terminal, for example: playwright-cli -s=luma-testimonials open <url>.
+
+Do not execute that open command yourself. Wait for the user to confirm that the session is open.
+
+After confirmation, use the same -s=<session> name for every subsequent Playwright CLI command in this chat.
+
+Do not try to work around the launch issue with Start-Process, cmd /c, background jobs, or another detached shell launched by the agent.
+
+Never run playwright-cli close-all or playwright-cli kill-all unless the user explicitly asks, because other concurrent chats may own other sessions.
+
+Verification expectations
+
+Reuse an already-running dev server when possible; do not start duplicate servers unnecessarily.
+
+Do not assume a fixed localhost port. Discover or use the actual running URL.
+
+For visual, responsive, animation, mask/gradient, carousel, dialog, hover, focus, or interaction changes, verify the affected behavior in a browser at the relevant viewport sizes.
+
+For non-UI changes, browser verification is optional unless runtime behavior is affected.
+
+Do not claim browser verification succeeded if the browser tool was unavailable, blocked, or not actually run.
+
 ## Agent Workflow
 
 - Identify the exact workspace before editing
@@ -233,7 +291,8 @@ Always use the `jetbrains-index` MCP server when applicable for:
 
 **Scope:** these rules apply to **spec/production `.pen` files** - `design.lib.pen`, `design/spec.pen`, finalized page specs, and any `.pen` file intended to map directly to code. They do **not** apply to **exploration `.pen` files** used for multi-variant visual exploration, where inventing variables is expected and expected to be reconciled before production handoff. Exploration files should be named or located so they are clearly distinguishable, preferably `design/explorations/` with multiple labeled variants/pages inside.
 
-- `tooling/tailwind/theme.css` is the source of truth for semantic design tokens.
+- `tooling/tailwind/theme.css` is the source of truth for shared semantic design tokens.
+- `apps/nextjs/src/styles.css` is the source of truth for app-specific fluid typography roles, layout clamps, and responsive spacing utilities.
 - In spec/production `.pen` files, always prefer theme tokens from `theme.css`:
   - colors: `$--background`, `$--foreground`, `$--card`, `$--popover`, `$--primary`, `$--secondary`, `$--muted`, `$--accent`, `$--destructive`, `$--border`, `$--input`, `$--ring`, `$--sidebar-*`
   - typography: `$--font-sans`, `$--font-serif`, `$--font-mono`
@@ -241,6 +300,25 @@ Always use the `jetbrains-index` MCP server when applicable for:
 - Do not invent new official `--token` variables in `.pen` files that do not exist in `theme.css`.
 - If a derived token is needed for design parity, create it under `unofficial/<name>` in the relevant `.pen` file and document what it is derived from.
 - Use `$--font-sans` instead of hardcoded fonts unless an existing file already has a deliberate exception.
+
+### Pencil and Fluid Clamp Parity
+
+Pencil frames are discrete visual snapshots, while production CSS may interpolate continuously with `clamp()` for typography, spacing, dimensions, and positioning. Treat Pencil as the source of visual intent at documented frame widths, not as the source of every intermediate CSS value.
+
+- Treat the smallest and largest relevant Pencil frames as the primary visual anchors for each fluid range.
+- Record each clamp's own endpoint values and viewport widths; do not assume every clamp uses the same mobile or desktop anchors.
+- Derive the preferred `calc(...)` term mathematically from the endpoint pair. Do not estimate the `vw` coefficient by eye.
+- For non-obvious clamps, add a concise endpoint comment such as `/* 42px @ 375px -> 88px @ 1536px */`.
+- When transferring Pencil to code, preserve the endpoint appearance while implementing natural interpolation between those endpoints.
+- When transferring code to Pencil, resolve the rendered or computed value at the exact Pencil frame width instead of copying the clamp expression or an unrelated intermediate value.
+- Compare Pencil and browser output at exactly matching viewport widths. Do not compare a `1440px` browser screenshot against a `1536px` Pencil frame as though they were the same target.
+- Verify both endpoint widths, at least one intermediate width, and every documented tablet frame relevant to the affected composition.
+- Intermediate values do not need to match arbitrary discrete snapshots unless those snapshots are explicitly designated as visual anchors.
+- If a tablet frame represents an intentional composition that natural interpolation cannot reproduce, use an explicit breakpoint or separate fluid range rather than distorting one clamp to pass through every snapshot.
+- Keep semantic role names stable while tuning their fluid values. Fix repeated differences in the shared role or clamp instead of adding local arbitrary values.
+- Prefer `rem` endpoints for typography so browser text scaling remains effective; use fixed units only when the value represents genuinely fixed geometry.
+- Browser rendering is the final authority for production behavior. Pencil parity is complete only after visual verification in the running application.
+
 - After editing a `.pen` file, verify:
   - the file still opens
   - no accidental hardcoded semantic colors were introduced
