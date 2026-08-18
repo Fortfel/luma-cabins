@@ -16264,7 +16264,7 @@
   "fonts": [
     {
       "name": "__nextjs-Geist",
-      "url": "fonts/localhost/c88ab7d5c971e5f9.woff2",
+      "url": "fonts/Satoshi-Variable.woff2",
       "weight": [
         400,
         600
@@ -16279,7 +16279,7 @@
     },
     {
       "name": "__nextjs-Geist Mono",
-      "url": "fonts/localhost/ffee273285ac29d7.woff2",
+      "url": "fonts/JetBrainsMono-Variable.woff2",
       "weight": [
         400,
         600
@@ -16309,7 +16309,7 @@
     },
     {
       "name": "cabinetGrotesk",
-      "url": "fonts/localhost/5145e43eae3723cf.woff2",
+      "url": "fonts/CabinetGrotesk-Variable.woff2",
       "weight": [
         100,
         900
@@ -16324,7 +16324,7 @@
     },
     {
       "name": "JetBrains Mono Variable",
-      "url": "fonts/localhost/2756c380fdaf8859.woff2",
+      "url": "fonts/JetBrainsMono-Variable.woff2",
       "weight": [
         100,
         800
@@ -16339,7 +16339,7 @@
     },
     {
       "name": "satoshi",
-      "url": "fonts/localhost/2d34d398b398a7fd.woff2",
+      "url": "fonts/Satoshi-Variable.woff2",
       "weight": [
         300,
         900
@@ -16354,7 +16354,7 @@
     },
     {
       "name": "satoshi",
-      "url": "fonts/localhost/dafa429c1d0a4b05.woff2",
+      "url": "fonts/Satoshi-VariableItalic.woff2",
       "style": "italic",
       "weight": [
         300,
@@ -16401,7 +16401,7 @@
     },
     {
       "name": "Source Serif 4 Variable",
-      "url": "fonts/localhost/eac81e6491934570.woff2",
+      "url": "fonts/SourceSerif4-Variable.woff2",
       "weight": [
         200,
         900
