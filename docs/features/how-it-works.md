@@ -10,15 +10,16 @@ The section reduces uncertainty around buying a Luma cabin with a clear four-ste
 
 ## Implementation Map
 
-- `apps/nextjs/src/app/(app)/page.tsx`
+- `apps/nextjs/src/app/[locale]/(app)/page.tsx`
   - `AppHomePage` renders `HowItWorksSection` immediately after `InteriorComparisonSection` with `id="process"` and the `bg-background` surface.
-- `apps/nextjs/src/app/(app)/_data/process-steps.ts`
-  - `processSteps` is the typed four-step content source.
+- `apps/nextjs/src/app/[locale]/(app)/_data/process-steps.ts`
+  - `createProcessSteps(locale)` is the typed four-step content factory.
+  - The locale-aware factory resolves the final CTA through `contactLinkOptions(locale)` so it uses the canonical public contact route for the active locale.
   - `ProcessStep.copyStatus` marks every description and bullet set as provisional.
   - `ProcessStep.media` contains the media kind, MP4 source path, optional WebM and poster paths, accessible description, intrinsic dimensions, and placeholder flag.
-- `apps/nextjs/src/app/(app)/_components/how-it-works-section.tsx`
+- `apps/nextjs/src/app/[locale]/(app)/_components/how-it-works-section.tsx`
   - `HowItWorksSection` is the server-rendered section shell, anchor target, and left-aligned intro.
-- `apps/nextjs/src/app/(app)/_components/how-it-works-experience.tsx`
+- `apps/nextjs/src/app/[locale]/(app)/_components/how-it-works-experience.tsx`
   - `HowItWorksExperience` is the narrow client boundary for browser geometry, timeline state, desktop media crossfades, and the mobile carousel.
   - `ProcessRail` renders the sticky timeline and survey-dot field.
   - `ProcessStepCopy` renders the shared tablet and desktop copy triggers.
@@ -38,7 +39,7 @@ The visible heading is `How it works`, followed by `A guided path, start to fini
 | 03   | Prepare together    | Bring the site and cabin plan together.        |
 | 04   | Deliver and install | Watch your cabin take its place.               |
 
-Only step 04 contains the `Get started` CTA, which links to `/contact`. Body descriptions and bullets stay in `processSteps`; components do not duplicate or reinterpret that copy.
+Only step 04 contains the `Get started` CTA. It links to `/contact` for English and `/pl/kontakt` for Polish. Body descriptions and bullets stay in the data returned by `createProcessSteps(locale)`; components do not duplicate or reinterpret that copy.
 
 ## Responsive Composition
 
@@ -76,7 +77,7 @@ The rail's upper half contains the four markers and filling connector. Its lower
 
 The seven-column desktop media area stacks all four process media items in one 4:3 frame. Process video elements put WebM before MP4 when a WebM source is configured, allowing the browser to select the supported source and fall back to MP4 otherwise. Video posters match a representative frame from each video and remain visible until the first decoded frame is ready. Active and incoming layers crossfade through opacity over approximately 400ms; neither layer translates, scales, or fades through an empty frame. Reduced-motion preferences remove the transition and prevent process videos from autoplaying.
 
-Desktop media is a decorative duplicate because the scrolling copy column already contains the same step media semantics. The desktop frame and its media therefore use `aria-hidden="true"`; tablet and mobile embedded media use the meaningful description stored in `processSteps`.
+Desktop media is a decorative duplicate because the scrolling copy column already contains the same step media semantics. The desktop frame and its media therefore use `aria-hidden="true"`; tablet and mobile embedded media use the meaningful description returned by `createProcessSteps(locale)`.
 
 Raster process media uses lazy loading until the process section is near the viewport, then the active step and its immediate neighbors load eagerly. Process videos use poster frames and `preload="auto"` for that same active-neighbor window, while playback remains active-step-only. The `unoptimized` flag remains available for placeholder media but is disabled for the final raster and video assets.
 
@@ -104,7 +105,7 @@ A visually hidden polite status announces only carousel selection changes, for e
 
 ## Placeholder Replacement Contract
 
-Final raster and video process media should share one color grade, keep important subjects inside a central safe area, and preserve the intrinsic dimensions recorded in `processSteps`. Update each `media.alt` value with the final description and keep `isPlaceholder` false for final raster and video assets.
+Final raster and video process media should share one color grade, keep important subjects inside a central safe area, and preserve the intrinsic dimensions returned by `createProcessSteps(locale)`. Update each `media.alt` value with the final description and keep `isPlaceholder` false for final raster and video assets.
 
 ## Behavioral Invariants
 

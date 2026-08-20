@@ -3,12 +3,28 @@
   "extends": ["//"],
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "i18n:compile"],
       "env": ["PUBLIC_*", "PROD", "DEV", "MODE", "BASE_URL"],
       "outputs": [".next/**", "!.next/cache/**", "next-env.d.ts"]
     },
     "dev": {
+      "dependsOn": ["^dev", "i18n:compile"],
       "persistent": true
+    },
+    "lint": {
+      "dependsOn": ["^topo", "^build", "i18n:compile"]
+    },
+    "typecheck": {
+      "dependsOn": ["^topo", "^build", "i18n:compile"]
+    },
+    "i18n:compile": {
+      "inputs": [
+        "scripts/compile-paraglide.ts",
+        "$TURBO_ROOT$/packages/i18n/routes.ts",
+        "$TURBO_ROOT$/packages/i18n/messages/**",
+        "$TURBO_ROOT$/packages/i18n/project.inlang/settings.json"
+      ],
+      "outputs": ["src/paraglide/**"]
     }
   }
 }

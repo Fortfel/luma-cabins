@@ -12,7 +12,7 @@ import {
 } from '@workspace/ui/components/image-comparison'
 import { cn } from '@workspace/ui/lib/utils'
 
-import { InteriorComparisonSlider } from '~/app/(app)/_components/interior-comparison-slider'
+import { InteriorComparisonSlider } from '~/app/[locale]/(app)/_components/interior-comparison-slider'
 
 const COMPARISON_IMAGE_SIZES = '(max-width: 1919px) 100vw, 1920px'
 

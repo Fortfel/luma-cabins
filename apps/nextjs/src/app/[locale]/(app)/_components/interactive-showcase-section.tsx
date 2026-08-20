@@ -2,7 +2,7 @@
 
 import type * as React from 'react'
 import type { CarouselApi } from '@workspace/ui/components/carousel'
-import type { Cabin, CabinExteriorFinishId } from '~/app/(app)/_data/cabins'
+import type { Cabin, CabinExteriorFinishId } from '~/app/[locale]/(app)/_data/cabins'
 
 import { useEffect, useId, useState } from 'react'
 
@@ -29,9 +29,9 @@ import {
   LandingSectionIntro,
   LandingSectionIntroEyebrow,
   LandingSectionIntroTitle,
-} from '~/app/(app)/_components/landing-section-intro'
-import { cabinsById } from '~/app/(app)/_data/cabins'
-import { contactLinkOptions } from '~/app/(app)/_validations/app-link-options'
+} from '~/app/[locale]/(app)/_components/landing-section-intro'
+import { cabinsById } from '~/app/[locale]/(app)/_data/cabins'
+import { contactLinkOptions } from '~/app/[locale]/(app)/_validations/app-link-options'
 
 const SHOWCASE_CABINS = [
   {

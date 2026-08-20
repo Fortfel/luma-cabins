@@ -6,8 +6,8 @@ import Link from 'next/link'
 import { buttonVariants } from '@workspace/ui/components/button'
 import { cn } from '@workspace/ui/lib/utils'
 
-import { HeroBackground } from '~/app/(app)/_components/hero-background'
-import { contactLinkOptions } from '~/app/(app)/_validations/app-link-options'
+import { HeroBackground } from '~/app/[locale]/(app)/_components/hero-background'
+import { contactLinkOptions } from '~/app/[locale]/(app)/_validations/app-link-options'
 
 const HERO_FEATURES = [
   {

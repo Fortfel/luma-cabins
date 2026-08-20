@@ -1,0 +1,20 @@
+{
+  "name": "@workspace/i18n",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./routes": "./routes.ts"
+  },
+  "scripts": {
+    "lint": "oxlint .",
+    "lint:fix": "oxlint . --fix",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "format": "oxfmt --check .",
+    "format:fix": "oxfmt --write ."
+  },
+  "devDependencies": {
+    "@inlang/plugin-message-format": "4.4.3",
+    "@workspace/typescript-config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

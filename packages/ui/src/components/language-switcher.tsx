@@ -15,18 +15,18 @@ import {
 import { Separator } from '@workspace/ui/components/separator'
 import { cn } from '@workspace/ui/lib/utils'
 
-interface Language {
-  key: string
-  label: string
-  href: string
+interface LanguageSwitcherLanguage<TLocale extends string = string> {
+  readonly key: TLocale
+  readonly label: string
+  readonly href: string
 }
 
 type ButtonVariants = Pick<React.ComponentProps<typeof Button>, 'variant'>['variant']
 type ButtonSizes = Pick<React.ComponentProps<typeof Button>, 'size'>['size']
 
-interface LanguageSwitcherDropdownProps extends React.ComponentProps<'div'> {
-  languages: Array<Language>
-  currentLocale: string
+interface LanguageSwitcherDropdownProps<TLocale extends string = string> extends React.ComponentProps<'div'> {
+  languages: ReadonlyArray<LanguageSwitcherLanguage<TLocale>>
+  currentLocale: TLocale
   labelToggle: string
   buttonVariant?: ButtonVariants
   buttonSize?: ButtonSizes
@@ -40,25 +40,29 @@ interface LanguageSwitcherDropdownProps extends React.ComponentProps<'div'> {
   showRadioBullets?: boolean
 }
 
-interface LanguageSwitcherSimpleProps extends React.ComponentProps<'div'> {
-  languages: Array<Language>
-  currentLocale: string
+interface LanguageSwitcherSimpleProps<TLocale extends string = string> extends React.ComponentProps<'div'> {
+  languages: ReadonlyArray<LanguageSwitcherLanguage<TLocale>>
+  currentLocale: TLocale
   labelToggle: string
+  onLocalePrepare?: (locale: TLocale, event: React.SyntheticEvent<HTMLAnchorElement>) => void
+  onLocaleSelect?: (locale: TLocale, event: React.MouseEvent<HTMLAnchorElement>) => void
   showSeparator?: boolean
   separator?: React.ReactNode
 }
 
 const defaultLanguageSwitcherSeparator = <Separator orientation="vertical" className="h-4 self-center!" />
 
-function LanguageSwitcherSimple({
+function LanguageSwitcherSimple<TLocale extends string = string>({
   languages,
   currentLocale,
   labelToggle,
+  onLocalePrepare,
+  onLocaleSelect,
   showSeparator = true,
   separator = defaultLanguageSwitcherSeparator,
   className,
   ...props
-}: LanguageSwitcherSimpleProps) {
+}: LanguageSwitcherSimpleProps<TLocale>) {
   return (
     <div
       data-slot="language-switcher-simple"
@@ -76,6 +80,10 @@ function LanguageSwitcherSimple({
               hrefLang={key}
               aria-current={isActive ? 'page' : undefined}
               className={cn(isActive && 'active')}
+              onAuxClick={(event) => onLocalePrepare?.(key, event)}
+              onClick={(event) => onLocaleSelect?.(key, event)}
+              onContextMenu={(event) => onLocalePrepare?.(key, event)}
+              onPointerDown={(event) => onLocalePrepare?.(key, event)}
             >
               {label.toUpperCase()}
             </a>
@@ -88,7 +96,7 @@ function LanguageSwitcherSimple({
   )
 }
 
-function LanguageSwitcherDropdown({
+function LanguageSwitcherDropdown<TLocale extends string = string>({
   languages,
   currentLocale,
   labelToggle,
@@ -99,7 +107,7 @@ function LanguageSwitcherDropdown({
   showShortcut = true,
   className,
   ...props
-}: LanguageSwitcherDropdownProps) {
+}: LanguageSwitcherDropdownProps<TLocale>) {
   return (
     <div
       data-slot="language-switcher-dropdown"
@@ -141,3 +149,4 @@ function LanguageSwitcherDropdown({
   )
 }
 export { LanguageSwitcherDropdown, LanguageSwitcherSimple }
+export type { LanguageSwitcherDropdownProps, LanguageSwitcherLanguage, LanguageSwitcherSimpleProps }

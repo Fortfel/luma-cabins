@@ -6,7 +6,7 @@ Implemented on the landing page. This document describes current carousel and au
 
 ## Implementation Map
 
-- `apps/nextjs/src/app/(app)/_components/models-overview-section.tsx`
+- `apps/nextjs/src/app/[locale]/(app)/_components/models-overview-section.tsx`
 - `ModelsOverviewSection`: carousel state, visibility gating, autoplay controls, gesture intent, and responsive composition.
 - `DesktopClickZone`: large previous and next controls used when drag navigation is disabled on desktop.
 - `CabinThumbnail`: direct model navigation and active autoplay progress.

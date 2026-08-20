@@ -1,9 +1,23 @@
+import type { Metadata } from 'next'
+
+import { resolveLocale } from '~/i18n/server'
+import { metadata_about_description, metadata_about_title } from '~/paraglide/messages.js'
 import { createSeoMetadata } from '~/utils/seo'
 
-export const metadata = createSeoMetadata({
-  title: 'About',
-  description: 'About this project.',
-})
+interface AboutPageProps {
+  readonly params: Promise<{ locale: string }>
+}
+
+export const generateMetadata = async ({ params }: AboutPageProps): Promise<Metadata> => {
+  const locale = resolveLocale((await params).locale)
+
+  return createSeoMetadata({
+    routeKey: 'about',
+    locale,
+    title: metadata_about_title({}, { locale }),
+    description: metadata_about_description({}, { locale }),
+  })
+}
 
 export default function AboutPage() {
   return (

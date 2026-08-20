@@ -1,0 +1,18 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "metadata_home_title": "Luma Cabins",
+  "metadata_home_description": "Premium pre-designed cabins for quiet, refined escapes.",
+  "metadata_about_title": "About",
+  "metadata_about_description": "About Luma Cabins.",
+  "metadata_contact_title": "Contact",
+  "metadata_contact_description": "Contact Luma Cabins.",
+  "nav_models": "Models",
+  "nav_process": "How it works",
+  "nav_portfolio": "Portfolio",
+  "nav_faq": "FAQ",
+  "nav_contact": "Contact",
+  "nav_get_started": "Get Started",
+  "nav_home_aria": "Go to homepage",
+  "nav_language_aria": "Language switcher",
+  "nav_menu_aria": "Toggle menu"
+}

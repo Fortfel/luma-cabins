@@ -76,3 +76,6 @@ logs/
 .worktrees/
 
 .playwright-cli/
+
+# generated localization runtime
+apps/nextjs/src/paraglide/

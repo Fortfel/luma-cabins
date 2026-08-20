@@ -10,9 +10,9 @@ The section presents two inspirational directions for the same cabin interior. F
 
 ## Implementation Map
 
-- `apps/nextjs/src/app/(app)/_components/interior-comparison-section.tsx`
+- `apps/nextjs/src/app/[locale]/(app)/_components/interior-comparison-section.tsx`
 - `InteriorComparisonSection`: server-rendered section, editorial intro, image content, accessible direction labels, and responsive media frame.
-- `apps/nextjs/src/app/(app)/_components/interior-comparison-slider.tsx`
+- `apps/nextjs/src/app/[locale]/(app)/_components/interior-comparison-slider.tsx`
 - `InteriorComparisonSlider`: app-local client adapter for localized range naming and dynamic value text.
 - `packages/ui/src/components/image-comparison.tsx`
 - `ImageComparison`: shared client-side root and range state provider.

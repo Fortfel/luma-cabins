@@ -5,7 +5,7 @@ import {
   LandingSectionIntroBody,
   LandingSectionIntroEyebrow,
   LandingSectionIntroTitle,
-} from '~/app/(app)/_components/landing-section-intro'
+} from '~/app/[locale]/(app)/_components/landing-section-intro'
 
 function AboutSection({ className, ...props }: React.ComponentProps<'section'>) {
   return (

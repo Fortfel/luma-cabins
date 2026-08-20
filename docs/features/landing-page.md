@@ -12,20 +12,20 @@ Product direction remains in `design/briefs/HOMEPAGE.md`. Proposed work remains 
 
 ## Implementation Map
 
-- `apps/nextjs/src/app/(app)/page.tsx`
+- `apps/nextjs/src/app/[locale]/(app)/page.tsx`
 - `AppHomePage` owns section order, section-level vertical spacing, and background transitions.
-- `apps/nextjs/src/app/(app)/layout.tsx`
+- `apps/nextjs/src/app/[locale]/(app)/layout.tsx`
 - `AppLayout` provides the fixed application navbar and exposes `--nav-height` to landing-page content.
-- `apps/nextjs/src/app/(app)/_components/`
+- `apps/nextjs/src/app/[locale]/(app)/_components/`
 - Landing sections and app-local section helpers live here.
-- `apps/nextjs/src/app/(app)/_data/`
+- `apps/nextjs/src/app/[locale]/(app)/_data/`
 - Hardcoded typed landing-page content shared by multiple components lives here.
 - `apps/nextjs/src/styles.css`
 - Page containers, page gutters, section spacing, custom breakpoints, and fluid type utilities are defined here.
 - `tooling/tailwind/theme.css`
 - Semantic colors, typography families, radii, shadows, and Tailwind theme mappings are defined here.
 - `apps/nextjs/src/app/_components/layout/nav/data.ts`
-- `navigationDesktopLinks` and `navigationMobileLinks` define landing-page fragment links and route links.
+- `getNavigationDesktopLinks` and `getNavigationMobileLinks` define localized landing-page fragment links and public route links.
 
 ## Current Section Order
 
@@ -57,7 +57,7 @@ When changing this order, review adjacent background transitions and confirm tha
 
 ## Current Cabin Data
 
-`apps/nextjs/src/app/(app)/_data/cabins.ts` is the source of truth for the model names, specs, descriptions, imagery, and showcase prices used by the landing page.
+`apps/nextjs/src/app/[locale]/(app)/_data/cabins.ts` is the source of truth for the model names, specs, descriptions, imagery, and showcase prices used by the landing page.
 
 | Model | Current specs           | Showcase starting price |
 | ----- | ----------------------- | ----------------------- |
@@ -92,7 +92,11 @@ Prefer existing `md`, `lg`, `xl`, `3xl`, and `4xl` breakpoints. Add a one-off br
 
 The fixed navbar height is exposed as `--nav-height` by `AppLayout`. Sticky sections, anchored sections, and viewport-height calculations must account for it instead of duplicating the navbar height.
 
-Every same-page fragment in `navigationDesktopLinks` must match a rendered section ID. Route links such as `/about` and `/contact` are not part of this fragment contract.
+Every same-page fragment returned by `getNavigationDesktopLinks` must match a rendered section ID. Route links such as `/about` and `/contact` are not part of this fragment contract.
+
+Navigation route and fragment hrefs must be created through `apps/nextjs/src/i18n/routing.ts`. English uses unprefixed public paths, Polish uses translated `/pl` paths, and home fragments include the localized home path so they remain correct from secondary pages. `AppNavbar` receives translated labels and the validated locale from `AppLayout`; it uses selected layout segments rather than the rewritten pathname when building equivalent language-switcher targets.
+
+Locale changes use full-document anchor navigation and preserve the active query string and fragment. Both desktop and mobile navigation expose the same locale state; do not add a separate mobile locale store.
 
 Current fragment status:
 
@@ -164,10 +168,10 @@ Prefer file paths and named symbols over line numbers so this map survives routi
 For changes limited to `apps/nextjs`, run:
 
 ```powershell
-pnpm --filter nextjs lint
-pnpm --filter nextjs typecheck
+pnpm turbo run lint --filter=nextjs
+pnpm turbo run typecheck --filter=nextjs
 ```
 
-Run `pnpm --filter nextjs build` when changes affect client boundaries, image behavior, bundling, emitted output, or production-only rendering.
+Run `pnpm turbo run build --filter=nextjs` when changes affect client boundaries, image behavior, bundling, emitted output, or production-only rendering.
 
 There is no configured automated test runner. Use focused browser QA for responsive layout, keyboard access, reduced motion, touch gestures, sticky behavior, and section-anchor positioning.

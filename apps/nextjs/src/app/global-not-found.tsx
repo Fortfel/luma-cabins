@@ -1,15 +1,12 @@
-import type { ReactNode } from 'react'
 import type { Metadata } from 'next'
 
 import localFont from 'next/font/local'
 
-import { Toaster } from '@workspace/ui/components/sonner'
-import { TooltipProvider } from '@workspace/ui/components/tooltip'
 import { cn } from '@workspace/ui/lib/utils'
 
-import '~/styles.css'
+import { NotFoundPage } from '~/app/_components/layout/not-found-page'
 
-import { createSeoMetadata } from '~/utils/seo'
+import '~/styles.css'
 
 const satoshi = localFont({
   src: [
@@ -40,16 +37,15 @@ const cabinetGrotesk = localFont({
   display: 'swap',
 })
 
-export { defaultViewport as viewport } from '~/utils/seo'
+export const metadata: Metadata = {
+  title: 'Page not found',
+  description: "Sorry, we couldn't find the page you're looking for.",
+  robots: { index: false, follow: false },
+}
 
-export const metadata: Metadata = createSeoMetadata({
-  title: 'Luma Cabins',
-  description: 'Premium modular cabins for quiet, refined escapes.',
-})
-
-export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+export default function GlobalNotFound() {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" dir="ltr">
       <body
         className={cn(
           'min-h-dvh bg-background font-sans text-foreground antialiased',
@@ -57,10 +53,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           cabinetGrotesk.variable,
         )}
       >
-        <TooltipProvider>
-          {children}
-          <Toaster />
-        </TooltipProvider>
+        <NotFoundPage homeHref="/" />
       </body>
     </html>
   )

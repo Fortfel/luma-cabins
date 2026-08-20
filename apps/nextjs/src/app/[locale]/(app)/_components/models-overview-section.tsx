@@ -2,7 +2,7 @@
 
 import type * as React from 'react'
 import type { CarouselApi } from '@workspace/ui/components/carousel'
-import type { Cabin } from '~/app/(app)/_data/cabins'
+import type { Cabin } from '~/app/[locale]/(app)/_data/cabins'
 
 import { useEffect, useRef, useState } from 'react'
 
@@ -21,7 +21,7 @@ import { useMediaQuery } from '@workspace/ui/hooks/use-media-query'
 import { usePrefersReducedMotion } from '@workspace/ui/hooks/use-prefers-reduced-motion'
 import { cn } from '@workspace/ui/lib/utils'
 
-import { cabins } from '~/app/(app)/_data/cabins'
+import { cabins } from '~/app/[locale]/(app)/_data/cabins'
 import { PlayPauseButton } from '~/app/_components/layout/play-pause-button'
 
 const AUTOPLAY_DELAY_MS = 4000

@@ -12,7 +12,7 @@ The interaction should preserve a clear visual connection between the source car
 
 ## Implementation Map
 
-- `apps/nextjs/src/app/(app)/_components/testimonials-section.tsx`
+- `apps/nextjs/src/app/[locale]/(app)/_components/testimonials-section.tsx`
 - `TestimonialsSection`: carousel state, auto-scroll coordination, active testimonial, and Popover lifecycle.
 - `TestimonialCard`: compact source card and Popover trigger.
 - `TestimonialFooter`: fictional client identity and compact-to-expanded footer transition.

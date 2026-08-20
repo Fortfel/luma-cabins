@@ -71,17 +71,19 @@ Always use the `jetbrains-index` MCP server when applicable for:
 
 ## Single-Workspace Commands
 
-- Prefer `pnpm --filter <package> <script>` when only one workspace changes
-- Build one app/package: `pnpm --filter nextjs build`
-- Lint one app/package: `pnpm --filter nextjs lint`
-- Typecheck one app/package: `pnpm --filter nextjs typecheck`
+- Prefer `pnpm turbo run <task> --filter=<package>` for tasks with generated or workspace dependencies
+- Build one app/package: `pnpm turbo run build --filter=nextjs`
+- Lint one app/package: `pnpm turbo run lint --filter=nextjs`
+- Typecheck one app/package: `pnpm turbo run typecheck --filter=nextjs`
 - Format one app/package: `pnpm --filter @workspace/ui format`
-- Run app in dev: `pnpm --filter nextjs dev`
-- Useful filters: `nextjs`, `@workspace/ui`, `@workspace/tailwind-config`, `@workspace/typescript-config`
+- Run one app with dependency-aware watching: `pnpm turbo watch dev --filter=nextjs`
+- Direct `pnpm --filter nextjs <script>` commands are low-level and assume generated Paraglide output already exists
+- Useful filters: `nextjs`, `@workspace/i18n`, `@workspace/ui`, `@workspace/tailwind-config`, `@workspace/typescript-config`
 
 ## Package-Local Scripts
 
-- `apps/nextjs`: `dev`, `build`, `start`, `typegen`, `with-env`, `lint`, `lint:fix`, `typecheck`, `format`, `format:fix`
+- `apps/nextjs`: `dev`, `build`, `i18n:compile`, `start`, `typegen`, `with-env`, `lint`, `lint:fix`, `typecheck`, `format`, `format:fix`
+- `packages/i18n`: `lint`, `lint:fix`, `typecheck`, `format`, `format:fix`
 - `packages/ui`: `lint`, `lint:fix`, `typecheck`, `format`, `format:fix`
 - `tooling/tailwind`: `lint`, `lint:fix`, `typecheck`, `format`, `format:fix`
 
@@ -282,7 +284,7 @@ Do not claim browser verification succeeded if the browser tool was unavailable,
 - Identify the exact workspace before editing
 - Follow existing local patterns before introducing new abstractions
 - Run the narrowest useful verification first
-- Minimum preferred verification after code changes: `pnpm --filter <workspace> lint` and `pnpm --filter <workspace> typecheck`
+- Minimum preferred verification after code changes: `pnpm turbo run lint --filter=<workspace>` and `pnpm turbo run typecheck --filter=<workspace>`
 - Run `build` when changes affect bundling, emitted types, or production behavior
 - If work spans multiple packages, use root `pnpm lint` and `pnpm typecheck` when practical
 - If you add a real test setup, update this file with the exact single-test command

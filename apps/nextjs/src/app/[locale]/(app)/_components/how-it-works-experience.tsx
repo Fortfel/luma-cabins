@@ -2,7 +2,7 @@
 
 import type * as React from 'react'
 import type { CarouselApi } from '@workspace/ui/components/carousel'
-import type { ProcessStep } from '~/app/(app)/_data/process-steps'
+import type { ProcessStep } from '~/app/[locale]/(app)/_data/process-steps'
 
 import { useEffect, useRef, useState } from 'react'
 

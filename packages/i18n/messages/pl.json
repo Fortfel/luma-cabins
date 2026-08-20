@@ -1,0 +1,18 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "metadata_home_title": "Luma Cabins",
+  "metadata_home_description": "Domki premium o dopracowanych projektach, stworzone z myślą o spokojnym, komfortowym wypoczynku.",
+  "metadata_about_title": "O nas",
+  "metadata_about_description": "Poznaj Luma Cabins.",
+  "metadata_contact_title": "Kontakt",
+  "metadata_contact_description": "Skontaktuj się z Luma Cabins.",
+  "nav_models": "Modele",
+  "nav_process": "Jak to działa",
+  "nav_portfolio": "Realizacje",
+  "nav_faq": "FAQ",
+  "nav_contact": "Kontakt",
+  "nav_get_started": "Zacznijmy",
+  "nav_home_aria": "Przejdź do strony głównej",
+  "nav_language_aria": "Wybór języka",
+  "nav_menu_aria": "Otwórz menu"
+}
