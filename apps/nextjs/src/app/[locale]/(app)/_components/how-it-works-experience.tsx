@@ -30,7 +30,15 @@ interface MobilePointerGesture {
   startY: number
 }
 
-function HowItWorksExperience({ steps }: { steps: ReadonlyArray<ProcessStep> }) {
+interface HowItWorksLabels {
+  readonly carousel: string
+  readonly carouselRole: string
+  readonly navigation: string
+  readonly slideRole: string
+  readonly timeline: string
+}
+
+function HowItWorksExperience({ steps, labels }: { steps: ReadonlyArray<ProcessStep>; labels: HowItWorksLabels }) {
   const [activeStepIndex, setActiveStepIndex] = useState(0)
   const [carouselApi, setCarouselApi] = useState<CarouselApi>()
   const [hasEnteredViewport, setHasEnteredViewport] = useState(false)
@@ -292,8 +300,6 @@ function HowItWorksExperience({ steps }: { steps: ReadonlyArray<ProcessStep> }) 
     carouselApi?.scrollTo(index)
   }
 
-  const activeStepLabel = steps[activeStepIndex]?.label ?? steps[0]?.label ?? ''
-
   return (
     <div ref={experienceRef} className="container-page-2xl max-md:container-bleed">
       <div className="hidden items-start md:grid md:grid-cols-12 md:gap-x-6 xl:grid-cols-16 xl:gap-x-8">
@@ -301,6 +307,7 @@ function HowItWorksExperience({ steps }: { steps: ReadonlyArray<ProcessStep> }) 
           steps={steps}
           activeStepIndex={activeStepIndex}
           shouldReduceMotion={shouldReduceMotion}
+          label={labels.timeline}
           onTimelineClick={handleTimelineClick}
           className="sticky top-[calc(var(--nav-height)+0.5rem)] col-span-4 h-[calc(100svh-var(--nav-height)-0.5rem)] pt-4"
         />
@@ -335,7 +342,8 @@ function HowItWorksExperience({ steps }: { steps: ReadonlyArray<ProcessStep> }) 
 
       <div className="md:hidden">
         <Carousel
-          aria-label="How it works steps"
+          aria-label={labels.carousel}
+          aria-roledescription={labels.carouselRole}
           tabIndex={0}
           setApi={setCarouselApi}
           opts={{
@@ -357,7 +365,8 @@ function HowItWorksExperience({ steps }: { steps: ReadonlyArray<ProcessStep> }) 
               <CarouselItem
                 key={step.id}
                 data-process-slide={index}
-                aria-label={`Step ${step.number}: ${step.label}`}
+                aria-label={step.ariaLabel}
+                aria-roledescription={labels.slideRole}
                 className="flex basis-[87%] cursor-grab ps-0 active:cursor-grabbing"
               >
                 <ProcessMobileCard
@@ -371,13 +380,13 @@ function HowItWorksExperience({ steps }: { steps: ReadonlyArray<ProcessStep> }) 
           </CarouselContent>
         </Carousel>
 
-        <nav aria-label="How it works steps" className="mt-4 flex justify-center">
+        <nav aria-label={labels.navigation} className="mt-4 flex justify-center">
           <ol className="flex items-center gap-2">
             {steps.map((step, index) => (
               <li key={step.id}>
                 <button
                   type="button"
-                  aria-label={`Show step ${index + 1}: ${step.label}`}
+                  aria-label={step.showLabel}
                   aria-current={index === activeStepIndex ? 'step' : undefined}
                   onClick={() => {
                     carouselApi?.scrollTo(index)
@@ -393,7 +402,7 @@ function HowItWorksExperience({ steps }: { steps: ReadonlyArray<ProcessStep> }) 
         </nav>
 
         <p role="status" aria-live="polite" aria-atomic="true" className="sr-only">
-          Step {activeStepIndex + 1} of {steps.length}: {activeStepLabel}.
+          {steps[activeStepIndex]?.status ?? ''}
         </p>
       </div>
     </div>
@@ -404,19 +413,21 @@ function ProcessRail({
   steps,
   activeStepIndex,
   shouldReduceMotion,
+  label,
   onTimelineClick,
   className,
 }: {
   steps: ReadonlyArray<ProcessStep>
   activeStepIndex: number
   shouldReduceMotion: boolean
+  label: string
   onTimelineClick: (index: number, event: React.MouseEvent<HTMLButtonElement>) => void
   className?: string
 }) {
   const progress = steps.length > 1 ? activeStepIndex / (steps.length - 1) : 0
 
   return (
-    <aside className={cn(className)} aria-label="Process timeline">
+    <aside className={cn(className)} aria-label={label}>
       <div className="relative flex h-full flex-col pe-[clamp(1rem,calc(-5rem+12.5vw),3rem)]">
         <div className="relative h-full max-h-96 shrink-0">
           <span aria-hidden="true" className="absolute inset-y-6 start-6 w-px bg-border">
@@ -438,7 +449,7 @@ function ProcessRail({
                 <li key={step.id}>
                   <button
                     type="button"
-                    aria-label={`Step ${step.number}: ${step.label}`}
+                    aria-label={step.ariaLabel}
                     aria-current={isActive ? 'step' : undefined}
                     onClick={(event) => {
                       onTimelineClick(index, event)

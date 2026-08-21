@@ -16,6 +16,7 @@
     "format:fix": "oxfmt --write ."
   },
   "dependencies": {
+    "@inlang/paraglide-js-react": "1.0.3",
     "@t3-oss/env-nextjs": "^0.13.11",
     "@tabler/icons-react": "catalog:",
     "@tanstack/react-form": "catalog:",

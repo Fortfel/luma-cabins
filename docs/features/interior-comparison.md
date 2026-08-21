@@ -26,7 +26,7 @@ The shared primitive follows the repository's shadcn-style compound component pa
 
 The root accepts normal `div` props and an optional `defaultValue`. Named parts validate that they are rendered within the root, expose `data-slot` attributes, merge `className`, and forward their normal element props.
 
-`ImageComparisonSlider` receives a value-text formatter rather than constructing English prose. Because functions cannot cross a React server/client boundary, `InteriorComparisonSlider` owns the current English formatter and accessible name in an app-local client module. That adapter is the future Paraglide integration point; the shared primitive remains independent of application messages and locale state.
+`ImageComparisonSlider` receives a value-text formatter rather than constructing prose. Because functions cannot cross a React server/client boundary, the app-local `InteriorComparisonSlider` receives translated endpoint and accessible-name strings, then formats dynamic percentages with its explicit locale and Paraglide message. The shared primitive remains independent of application messages and locale state.
 
 ## Layering Model
 

@@ -53,7 +53,15 @@ export default function GlobalNotFound() {
           cabinetGrotesk.variable,
         )}
       >
-        <NotFoundPage homeHref="/" />
+        <NotFoundPage
+          homeHref="/"
+          labels={{
+            description: "Sorry, we couldn't find the page you're looking for.",
+            goBack: 'Go back',
+            startOver: 'Start Over',
+            title: 'Page not found',
+          }}
+        />
       </body>
     </html>
   )

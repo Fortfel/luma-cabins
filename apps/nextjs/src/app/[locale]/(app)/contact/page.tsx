@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 import { resolveLocale } from '~/i18n/server'
-import { metadata_contact_description, metadata_contact_title } from '~/paraglide/messages.js'
+import { contact_page_placeholder, metadata_contact_description, metadata_contact_title } from '~/paraglide/messages.js'
 import { createSeoMetadata } from '~/utils/seo'
 
 interface ContactPageProps {
@@ -19,6 +19,8 @@ export const generateMetadata = async ({ params }: ContactPageProps): Promise<Me
   })
 }
 
-export default function ContactPage() {
-  return <div>Contact page shell.</div>
+export default async function ContactPage({ params }: ContactPageProps) {
+  const locale = resolveLocale((await params).locale)
+
+  return <div>{contact_page_placeholder({}, { locale })}</div>
 }

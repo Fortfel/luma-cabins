@@ -1,4 +1,7 @@
 import type * as React from 'react'
+import type { Locale } from '~/i18n/routing'
+
+import { ParaglideMessage } from '@inlang/paraglide-js-react'
 
 import {
   LandingSectionIntro,
@@ -6,20 +9,27 @@ import {
   LandingSectionIntroEyebrow,
   LandingSectionIntroTitle,
 } from '~/app/[locale]/(app)/_components/landing-section-intro'
+import { about_body, about_eyebrow, about_title } from '~/paraglide/messages.js'
 
-function AboutSection({ className, ...props }: React.ComponentProps<'section'>) {
+interface AboutSectionProps extends React.ComponentProps<'section'> {
+  readonly locale: Locale
+}
+
+const aboutTitleMarkup = {
+  em: ({ children }: { readonly children?: React.ReactNode }) => <em>{children}</em>,
+}
+
+function AboutSection({ locale, className, ...props }: AboutSectionProps) {
+  const messageOptions = { locale }
+
   return (
     <section className={className} {...props}>
       <LandingSectionIntro>
-        <LandingSectionIntroEyebrow>Our approach</LandingSectionIntroEyebrow>
+        <LandingSectionIntroEyebrow>{about_eyebrow({}, messageOptions)}</LandingSectionIntroEyebrow>
         <LandingSectionIntroTitle className="max-w-xl xl:max-w-3xl">
-          A simpler path to a quiet <i>retreat</i>.
+          <ParaglideMessage message={about_title} options={messageOptions} markup={aboutTitleMarkup} />
         </LandingSectionIntroTitle>
-        <LandingSectionIntroBody className="max-w-5xl">
-          We design secluded luxury retreats for unforgettable stays in nature. Each cabin combines refined
-          architecture, warm natural materials, panoramic views, and premium comforts for a peaceful escape without
-          compromise. Slow down, reconnect, and experience the calm of modern cabin living.
-        </LandingSectionIntroBody>
+        <LandingSectionIntroBody className="max-w-5xl">{about_body({}, messageOptions)}</LandingSectionIntroBody>
       </LandingSectionIntro>
     </section>
   )

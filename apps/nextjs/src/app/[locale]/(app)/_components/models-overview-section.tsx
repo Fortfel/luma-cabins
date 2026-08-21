@@ -3,6 +3,7 @@
 import type * as React from 'react'
 import type { CarouselApi } from '@workspace/ui/components/carousel'
 import type { Cabin } from '~/app/[locale]/(app)/_data/cabins'
+import type { Locale } from '~/i18n/routing'
 
 import { useEffect, useRef, useState } from 'react'
 
@@ -21,8 +22,21 @@ import { useMediaQuery } from '@workspace/ui/hooks/use-media-query'
 import { usePrefersReducedMotion } from '@workspace/ui/hooks/use-prefers-reduced-motion'
 import { cn } from '@workspace/ui/lib/utils'
 
-import { cabins } from '~/app/[locale]/(app)/_data/cabins'
+import { createCabinCatalog } from '~/app/[locale]/(app)/_data/cabins'
 import { PlayPauseButton } from '~/app/_components/layout/play-pause-button'
+import {
+  carousel_next,
+  carousel_previous,
+  carousel_role,
+  carousel_slide_role,
+  models_carousel_pause,
+  models_carousel_play,
+  models_next,
+  models_previous,
+  models_section_label,
+  models_show_cabin,
+  models_slide_position,
+} from '~/paraglide/messages.js'
 
 const AUTOPLAY_DELAY_MS = 4000
 const AUTOPLAY_VISIBILITY_THRESHOLD = 0.35
@@ -36,7 +50,13 @@ interface CarouselPointerGesture {
   startY: number
 }
 
-function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'section'>) {
+interface ModelsOverviewSectionProps extends React.ComponentProps<'section'> {
+  readonly locale: Locale
+}
+
+function ModelsOverviewSection({ locale, className, ...props }: ModelsOverviewSectionProps) {
+  const messageOptions = { locale }
+  const { cabins, cabinsById } = createCabinCatalog(locale)
   const [api, setApi] = useState<CarouselApi>()
   const [activeIndex, setActiveIndex] = useState(0)
   const [isCarouselInView, setIsCarouselInView] = useState(false)
@@ -50,8 +70,11 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
   const autoplayTimerRef = useRef<number | null>(null)
   const carouselPointerGestureRef = useRef<CarouselPointerGesture | null>(null)
 
-  const activeModel = cabins[activeIndex] ?? cabins[0]
-  const activeSlideLabel = `${activeIndex + 1} of ${cabins.length} — ${activeModel.name}`
+  const activeModel = cabins[activeIndex] ?? cabinsById.veyra
+  const activeSlideLabel = models_slide_position(
+    { current: activeIndex + 1, total: cabins.length, model: activeModel.name },
+    messageOptions,
+  )
   // Autoplay requires motion consent, sufficient visibility, and no user-requested pause.
   const canAutoplay =
     Boolean(api) && !shouldReduceMotion && isCarouselInView && isDocumentVisible && autoplayPauseReason === null
@@ -255,8 +278,8 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
   }
 
   return (
-    <section className={className} {...props}>
-      <h2 className="sr-only">Cabin models</h2>
+    <section id="models" className={className} {...props}>
+      <h2 className="sr-only">{models_section_label({}, messageOptions)}</h2>
       <div
         className="container-page-4xl container-bleed 4xl:[--container-min-margin:1rem]"
         onPointerDownCapture={handlePointerDownCapture}
@@ -268,7 +291,8 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
         onFocusCapture={handleFocusCapture}
       >
         <Carousel
-          aria-label="Cabin models"
+          aria-label={models_section_label({}, messageOptions)}
+          aria-roledescription={carousel_role({}, messageOptions)}
           setApi={setApi}
           opts={{ align: 'start' as const, loop: true, watchDrag: !isDesktop }}
           className={cn('4xl:rounded-xl relative overflow-hidden')}
@@ -277,7 +301,11 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
             {cabins.map((model, index) => (
               <CarouselItem
                 key={model.name}
-                aria-label={`${index + 1} of ${cabins.length} — ${model.name}`}
+                aria-label={models_slide_position(
+                  { current: index + 1, total: cabins.length, model: model.name },
+                  messageOptions,
+                )}
+                aria-roledescription={carousel_slide_role({}, messageOptions)}
                 className="ps-0"
               >
                 <div
@@ -313,6 +341,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
           </div>
 
           <CarouselPrevious
+            aria-label={carousel_previous({}, messageOptions)}
             className={cn(
               'left-5 hidden size-12 cursor-pointer border-primary-foreground/20 bg-transparent text-primary-foreground backdrop-blur-xl',
               'hover:bg-primary-foreground/10 hover:text-primary-foreground',
@@ -321,6 +350,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
             )}
           />
           <CarouselNext
+            aria-label={carousel_next({}, messageOptions)}
             className={cn(
               'right-5 hidden size-12 cursor-pointer border-primary-foreground/20 bg-transparent text-primary-foreground backdrop-blur-xl',
               'hover:bg-primary-foreground/10 hover:text-primary-foreground',
@@ -329,8 +359,13 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
             )}
           />
 
-          <DesktopClickZone api={api} direction="previous" isDesktop={isDesktop} />
-          <DesktopClickZone api={api} direction="next" isDesktop={isDesktop} />
+          <DesktopClickZone
+            api={api}
+            direction="previous"
+            isDesktop={isDesktop}
+            label={models_previous({}, messageOptions)}
+          />
+          <DesktopClickZone api={api} direction="next" isDesktop={isDesktop} label={models_next({}, messageOptions)} />
 
           <div
             className={cn(
@@ -346,6 +381,7 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
                 isActive={index === activeIndex}
                 shouldShowAutoplayProgress={canAutoplay}
                 autoplayProgressCycle={autoplayProgressCycle}
+                label={models_show_cabin({ model: model.name }, messageOptions)}
                 onClick={() => {
                   handleThumbnailClick(index)
                 }}
@@ -356,8 +392,8 @@ function ModelsOverviewSection({ className, ...props }: React.ComponentProps<'se
           <PlayPauseButton
             data-autoplay-control
             isPaused={!canAutoplay}
-            playLabel="Play cabin models carousel"
-            pauseLabel="Pause cabin models carousel"
+            playLabel={models_carousel_play({}, messageOptions)}
+            pauseLabel={models_carousel_pause({}, messageOptions)}
             onClick={handleToggleAutoplay}
             aria-disabled={shouldReduceMotion}
             className="absolute right-3 bottom-8 z-20 border-primary-foreground/25 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground focus-visible:ring-primary-foreground/80 sm:right-6"
@@ -376,10 +412,12 @@ function DesktopClickZone({
   api,
   direction,
   isDesktop,
+  label,
 }: {
   api?: CarouselApi
   direction: 'previous' | 'next'
   isDesktop: boolean
+  label: string
 }) {
   const isPrevious = direction === 'previous'
   const isDisabled = api ? (isPrevious ? !api.canScrollPrev() : !api.canScrollNext()) : true
@@ -397,7 +435,7 @@ function DesktopClickZone({
   return (
     <button
       type="button"
-      aria-label={isPrevious ? 'Show previous cabin' : 'Show next cabin'}
+      aria-label={label}
       onClick={handleClick}
       disabled={isDisabled}
       className={cn(
@@ -429,18 +467,20 @@ function CabinThumbnail({
   isActive,
   shouldShowAutoplayProgress,
   autoplayProgressCycle,
+  label,
   onClick,
 }: {
   model: Cabin
   isActive: boolean
   shouldShowAutoplayProgress: boolean
   autoplayProgressCycle: number
+  label: string
   onClick: () => void
 }) {
   return (
     <button
       type="button"
-      aria-label={`Show ${model.name} cabin`}
+      aria-label={label}
       aria-pressed={isActive}
       onClick={onClick}
       className={cn(

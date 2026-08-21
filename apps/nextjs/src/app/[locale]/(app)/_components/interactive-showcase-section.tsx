@@ -3,9 +3,11 @@
 import type * as React from 'react'
 import type { CarouselApi } from '@workspace/ui/components/carousel'
 import type { Cabin, CabinExteriorFinishId } from '~/app/[locale]/(app)/_data/cabins'
+import type { Locale } from '~/i18n/routing'
 
 import { useEffect, useId, useState } from 'react'
 
+import { ParaglideMessage } from '@inlang/paraglide-js-react'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -30,25 +32,41 @@ import {
   LandingSectionIntroEyebrow,
   LandingSectionIntroTitle,
 } from '~/app/[locale]/(app)/_components/landing-section-intro'
-import { cabinsById } from '~/app/[locale]/(app)/_data/cabins'
+import { createCabinCatalog } from '~/app/[locale]/(app)/_data/cabins'
 import { contactLinkOptions } from '~/app/[locale]/(app)/_validations/app-link-options'
+import {
+  carousel_next,
+  carousel_previous,
+  carousel_role,
+  carousel_slide_role,
+  dialog_close,
+  models_show_cabin,
+  models_slide_position,
+  showcase_carousel_label,
+  showcase_choose_model,
+  showcase_choose_thumbnails,
+  showcase_explore,
+  showcase_exterior,
+  showcase_exterior_alt,
+  showcase_finish_charred_wood,
+  showcase_finish_oyster,
+  showcase_finish_timber,
+  showcase_floor_plan_description,
+  showcase_floor_plan_title,
+  showcase_interior,
+  showcase_palette_dark_walnut,
+  showcase_palette_light_oak,
+  showcase_palette_warm_ash,
+  showcase_plus_installation,
+  showcase_pricing,
+  showcase_starting_at,
+  showcase_status,
+  showcase_title,
+  showcase_view_floor_plan,
+  showcase_eyebrow,
+} from '~/paraglide/messages.js'
 
-const SHOWCASE_CABINS = [
-  {
-    cabin: cabinsById.niva,
-    imageAspectRatio: 954 / 866,
-  },
-  {
-    cabin: cabinsById.aster,
-    imageAspectRatio: 1309 / 697,
-  },
-  {
-    cabin: cabinsById.veyra,
-    imageAspectRatio: 1358 / 553,
-  },
-] as const
 const FEATURED_INDEX = 0
-const FEATURED_CABIN = cabinsById.niva
 const INACTIVE_IMAGE_OPACITY = 0.45
 const OPTICAL_OFFSET_ANCHORS = [
   { viewportWidth: 360, firstActiveNextOffset: 40, secondActiveNeighborOffset: 15 },
@@ -58,41 +76,91 @@ const OPTICAL_OFFSET_ANCHORS = [
 ] as const
 const ZERO_OPTICAL_OFFSETS = [0, 0, 0] as const
 
-const EXTERIOR_FINISHES = [
-  { id: 'wood', label: 'Timber', color: '#C2A06B' },
-  { id: 'black', label: 'Charred wood', color: '#2E2A26' },
-  { id: 'white', label: 'Oyster', color: '#E3E0D3' },
-] as const satisfies ReadonlyArray<{ id: CabinExteriorFinishId; label: string; color: string }>
-
-const DEFAULT_EXTERIOR_FINISH = EXTERIOR_FINISHES[0]
-
-const INTERIOR_PALETTES = [
-  { id: 'light-oak', label: 'Light oak', color: '#DCC79E' },
-  { id: 'warm-ash', label: 'Warm ash', color: '#C2A988' },
-  { id: 'dark-walnut', label: 'Dark walnut', color: '#5A4636' },
+const EXTERIOR_FINISH_DEFINITIONS = [
+  { id: 'wood', color: '#C2A06B' },
+  { id: 'black', color: '#2E2A26' },
+  { id: 'white', color: '#E3E0D3' },
+] as const satisfies ReadonlyArray<{ id: CabinExteriorFinishId; color: string }>
+const INTERIOR_PALETTE_DEFINITIONS = [
+  { id: 'light-oak', color: '#DCC79E' },
+  { id: 'warm-ash', color: '#C2A988' },
+  { id: 'dark-walnut', color: '#5A4636' },
 ] as const
 
-const DEFAULT_INTERIOR_PALETTE = INTERIOR_PALETTES[0]
-
-type ExteriorFinishId = (typeof EXTERIOR_FINISHES)[number]['id']
-type InteriorPaletteId = (typeof INTERIOR_PALETTES)[number]['id']
+type ExteriorFinishId = (typeof EXTERIOR_FINISH_DEFINITIONS)[number]['id']
+type InteriorPaletteId = (typeof INTERIOR_PALETTE_DEFINITIONS)[number]['id']
 type FinishId = ExteriorFinishId | InteriorPaletteId
+interface Finish<TId extends FinishId> {
+  readonly id: TId
+  readonly label: string
+  readonly color: string
+}
+type ExteriorFinish = Finish<ExteriorFinishId>
+type InteriorPalette = Finish<InteriorPaletteId>
+interface ShowcaseCabin {
+  readonly cabin: Cabin
+  readonly imageAspectRatio: number
+}
 type ShowcaseSlideStyle = React.CSSProperties & {
   '--showcase-image-opacity': number
   '--showcase-optical-offset': string
   '--showcase-summary-opacity': number
 }
 
-function InteractiveShowcaseSection({ className, ...props }: React.ComponentProps<'section'>) {
+const showcaseTitleMarkup = {
+  em: ({ children }: { readonly children?: React.ReactNode }) => <em>{children}</em>,
+}
+
+interface InteractiveShowcaseSectionProps extends React.ComponentProps<'section'> {
+  readonly locale: Locale
+}
+
+function InteractiveShowcaseSection({ locale, className, ...props }: InteractiveShowcaseSectionProps) {
+  const messageOptions = { locale }
+  const { cabinsById } = createCabinCatalog(locale)
+  const showcaseCabins = [
+    { cabin: cabinsById.niva, imageAspectRatio: 954 / 866 },
+    { cabin: cabinsById.aster, imageAspectRatio: 1309 / 697 },
+    { cabin: cabinsById.veyra, imageAspectRatio: 1358 / 553 },
+  ] as const satisfies ReadonlyArray<ShowcaseCabin>
+  const exteriorFinishes = [
+    {
+      ...EXTERIOR_FINISH_DEFINITIONS[0],
+      label: showcase_finish_timber({}, messageOptions),
+    },
+    {
+      ...EXTERIOR_FINISH_DEFINITIONS[1],
+      label: showcase_finish_charred_wood({}, messageOptions),
+    },
+    {
+      ...EXTERIOR_FINISH_DEFINITIONS[2],
+      label: showcase_finish_oyster({}, messageOptions),
+    },
+  ] as const satisfies ReadonlyArray<ExteriorFinish>
+  const interiorPalettes = [
+    {
+      ...INTERIOR_PALETTE_DEFINITIONS[0],
+      label: showcase_palette_light_oak({}, messageOptions),
+    },
+    {
+      ...INTERIOR_PALETTE_DEFINITIONS[1],
+      label: showcase_palette_warm_ash({}, messageOptions),
+    },
+    {
+      ...INTERIOR_PALETTE_DEFINITIONS[2],
+      label: showcase_palette_dark_walnut({}, messageOptions),
+    },
+  ] as const satisfies ReadonlyArray<InteriorPalette>
+
   const [api, setApi] = useState<CarouselApi>()
   const [activeIndex, setActiveIndex] = useState(FEATURED_INDEX)
-  const [selectedExterior, setSelectedExterior] = useState<ExteriorFinishId>(DEFAULT_EXTERIOR_FINISH.id)
-  const [selectedInterior, setSelectedInterior] = useState<InteriorPaletteId>(DEFAULT_INTERIOR_PALETTE.id)
+  const [selectedExterior, setSelectedExterior] = useState<ExteriorFinishId>('wood')
+  const [selectedInterior, setSelectedInterior] = useState<InteriorPaletteId>('light-oak')
   const [isFloorPlanOpen, setIsFloorPlanOpen] = useState(false)
   const isDesktop = useMediaQuery('(min-width: 1280px)', { initializeWithValue: false }) === true
 
-  const activeCabin = getCabinByIndex(activeIndex)
-  const activeExterior = getExteriorFinish(selectedExterior)
+  const activeCabin = showcaseCabins[activeIndex]?.cabin ?? cabinsById.niva
+  const activeExterior = getExteriorFinish(exteriorFinishes, selectedExterior)
 
   // Keep the visible model summary synchronized with Embla's selected snap, including after reinitialization.
   useEffect(() => {
@@ -139,9 +207,9 @@ function InteractiveShowcaseSection({ className, ...props }: React.ComponentProp
   return (
     <section className={cn('flex flex-col gap-(--section-gutter-y) overflow-hidden', className)} {...props}>
       <LandingSectionIntro>
-        <LandingSectionIntroEyebrow>Make it yours</LandingSectionIntroEyebrow>
+        <LandingSectionIntroEyebrow>{showcase_eyebrow({}, messageOptions)}</LandingSectionIntroEyebrow>
         <LandingSectionIntroTitle className="max-w-2xl">
-          Three models. <i>Unlimited</i> adventures.
+          <ParaglideMessage message={showcase_title} options={messageOptions} markup={showcaseTitleMarkup} />
         </LandingSectionIntroTitle>
       </LandingSectionIntro>
 
@@ -154,6 +222,9 @@ function InteractiveShowcaseSection({ className, ...props }: React.ComponentProp
       >
         <ConfigurationPanel
           activeCabin={activeCabin}
+          locale={locale}
+          exteriorFinishes={exteriorFinishes}
+          interiorPalettes={interiorPalettes}
           selectedExterior={selectedExterior}
           selectedInterior={selectedInterior}
           onExteriorSelect={setSelectedExterior}
@@ -166,7 +237,8 @@ function InteractiveShowcaseSection({ className, ...props }: React.ComponentProp
 
         <div className={cn('order-1 w-full', 'xl:order-2 xl:min-w-0')}>
           <Carousel
-            aria-label="Cabin model showcase"
+            aria-label={showcase_carousel_label({}, messageOptions)}
+            aria-roledescription={carousel_role({}, messageOptions)}
             setApi={setApi}
             opts={{
               align: 'center',
@@ -184,10 +256,14 @@ function InteractiveShowcaseSection({ className, ...props }: React.ComponentProp
             <CarouselContent
               className={cn('ms-0 items-start', 'gap-[clamp(2rem,calc(-1.485rem+15.931vw),11.25rem)]', 'xl:py-12.5')}
             >
-              {SHOWCASE_CABINS.map(({ cabin, imageAspectRatio }, index) => (
+              {showcaseCabins.map(({ cabin, imageAspectRatio }, index) => (
                 <CarouselItem
                   key={cabin.id}
-                  aria-label={`${index + 1} of ${SHOWCASE_CABINS.length} — ${cabin.name}`}
+                  aria-label={models_slide_position(
+                    { current: index + 1, total: showcaseCabins.length, model: cabin.name },
+                    messageOptions,
+                  )}
+                  aria-roledescription={carousel_slide_role({}, messageOptions)}
                   style={getShowcaseSlideStyle(index === activeIndex)}
                   className={cn('flex w-auto basis-auto flex-col items-center ps-0', 'xl:w-full xl:basis-full')}
                 >
@@ -208,7 +284,12 @@ function InteractiveShowcaseSection({ className, ...props }: React.ComponentProp
                         'opacity-(--showcase-image-opacity) will-change-[opacity]',
                       )}
                     >
-                      <CabinImageCard cabin={cabin} finishId={selectedExterior} />
+                      <CabinImageCard
+                        cabin={cabin}
+                        finishId={selectedExterior}
+                        exteriorFinishes={exteriorFinishes}
+                        locale={locale}
+                      />
                     </div>
                   </div>
                 </CarouselItem>
@@ -216,11 +297,13 @@ function InteractiveShowcaseSection({ className, ...props }: React.ComponentProp
             </CarouselContent>
 
             <CarouselPrevious
+              aria-label={carousel_previous({}, messageOptions)}
               variant="default"
               size="icon-lg"
               className="start-[12%] top-[60%] hidden size-12 cursor-pointer bg-primary text-primary-foreground hover:bg-primary/85 active:-translate-y-1/2! md:inline-flex xl:hidden"
             />
             <CarouselNext
+              aria-label={carousel_next({}, messageOptions)}
               variant="default"
               size="icon-lg"
               className="end-[12%] top-[60%] hidden size-12 cursor-pointer bg-primary text-primary-foreground hover:bg-primary/85 active:-translate-y-1/2! md:inline-flex xl:hidden"
@@ -234,15 +317,19 @@ function InteractiveShowcaseSection({ className, ...props }: React.ComponentProp
               <div className="hidden items-center gap-4 xl:flex">
                 <CarouselButton
                   direction="prev"
+                  label={carousel_previous({}, messageOptions)}
                   className="size-16 bg-primary text-primary-foreground hover:bg-primary/85 active:translate-none! [&>svg]:size-6!"
                 />
                 <CarouselButton
                   direction="next"
+                  label={carousel_next({}, messageOptions)}
                   className="size-16 bg-primary text-primary-foreground hover:bg-primary/85 active:translate-none! [&>svg]:size-6!"
                 />
               </div>
               <CarouselDots
                 activeIndex={activeIndex}
+                cabins={showcaseCabins}
+                locale={locale}
                 className="xl:hidden"
                 onSelect={(index) => {
                   api?.scrollTo(index)
@@ -250,7 +337,9 @@ function InteractiveShowcaseSection({ className, ...props }: React.ComponentProp
               />
               <CarouselThumbnails
                 activeIndex={activeIndex}
+                cabins={showcaseCabins}
                 finishId={selectedExterior}
+                locale={locale}
                 className="hidden xl:flex"
                 onSelect={(index) => {
                   api?.scrollTo(index)
@@ -261,18 +350,27 @@ function InteractiveShowcaseSection({ className, ...props }: React.ComponentProp
         </div>
 
         <p className="sr-only" aria-live="polite">
-          Showing {activeCabin.name} with {activeExterior.label.toLowerCase()} exterior and{' '}
-          {getInteriorPalette(selectedInterior).label.toLowerCase()} interior.
+          {showcase_status(
+            {
+              model: activeCabin.name,
+              exterior: activeExterior.label.toLocaleLowerCase(locale),
+              interior: getInteriorPalette(interiorPalettes, selectedInterior).label.toLocaleLowerCase(locale),
+            },
+            messageOptions,
+          )}
         </p>
       </div>
 
-      <FloorPlanDialog cabin={activeCabin} isOpen={isFloorPlanOpen} onOpenChange={setIsFloorPlanOpen} />
+      <FloorPlanDialog cabin={activeCabin} locale={locale} isOpen={isFloorPlanOpen} onOpenChange={setIsFloorPlanOpen} />
     </section>
   )
 }
 
 function ConfigurationPanel({
   activeCabin,
+  locale,
+  exteriorFinishes,
+  interiorPalettes,
   selectedExterior,
   selectedInterior,
   onExteriorSelect,
@@ -281,6 +379,9 @@ function ConfigurationPanel({
   className,
 }: {
   activeCabin: Cabin
+  locale: Locale
+  exteriorFinishes: ReadonlyArray<ExteriorFinish>
+  interiorPalettes: ReadonlyArray<InteriorPalette>
   selectedExterior: ExteriorFinishId
   selectedInterior: InteriorPaletteId
   onExteriorSelect: (finishId: ExteriorFinishId) => void
@@ -288,6 +389,7 @@ function ConfigurationPanel({
   onOpenFloorPlan: () => void
   className?: string
 }) {
+  const messageOptions = { locale }
   const exteriorFinishLabelId = useId()
   const interiorPaletteLabelId = useId()
 
@@ -314,7 +416,7 @@ function ConfigurationPanel({
 
         <div className="contents xl:flex xl:flex-col xl:items-start xl:gap-3">
           <p id={exteriorFinishLabelId} className="text-xs font-bold tracking-[0.125rem] text-foreground uppercase">
-            Exterior <span className="hidden sm:inline">finish</span>
+            {showcase_exterior({}, messageOptions)}
           </p>
           <RadioGroup
             aria-labelledby={exteriorFinishLabelId}
@@ -322,7 +424,7 @@ function ConfigurationPanel({
             onValueChange={onExteriorSelect}
             className="flex flex-wrap items-center gap-2.5"
           >
-            {EXTERIOR_FINISHES.map((finish) => (
+            {exteriorFinishes.map((finish) => (
               <FinishRadioItem key={finish.id} label={finish.label} color={finish.color} value={finish.id} />
             ))}
           </RadioGroup>
@@ -330,7 +432,7 @@ function ConfigurationPanel({
 
         <div className="contents xl:flex xl:flex-col xl:items-start xl:gap-3">
           <p id={interiorPaletteLabelId} className="text-xs font-bold tracking-[0.125rem] text-foreground uppercase">
-            Interior <span className="hidden sm:inline">palette</span>
+            {showcase_interior({}, messageOptions)}
           </p>
           <RadioGroup
             aria-labelledby={interiorPaletteLabelId}
@@ -338,30 +440,32 @@ function ConfigurationPanel({
             onValueChange={onInteriorSelect}
             className="flex flex-wrap items-center gap-2.5"
           >
-            {INTERIOR_PALETTES.map((palette) => (
+            {interiorPalettes.map((palette) => (
               <FinishRadioItem key={palette.id} label={palette.label} color={palette.color} value={palette.id} />
             ))}
           </RadioGroup>
         </div>
 
         <div className="contents xl:flex xl:flex-col xl:items-start xl:gap-3">
-          <p className="hidden text-xs font-bold tracking-[0.125rem] text-foreground uppercase sm:block">Pricing</p>
+          <p className="hidden text-xs font-bold tracking-[0.125rem] text-foreground uppercase sm:block">
+            {showcase_pricing({}, messageOptions)}
+          </p>
           <p className="text-body-sm col-span-2 text-foreground sm:col-span-1">
-            <span>Starting at </span>
+            <span>{showcase_starting_at({}, messageOptions)} </span>
             <strong>{activeCabin.showcase.price}</strong>
-            <span> plus installation.</span>
+            <span> {showcase_plus_installation({}, messageOptions)}</span>
           </p>
         </div>
 
         <div className={cn('col-span-2 flex flex-col gap-3 pt-1', 'sm:flex-row sm:gap-4', 'xl:gap-6')}>
           <Link
-            {...contactLinkOptions()}
+            {...contactLinkOptions(locale)}
             className={cn(
               buttonVariants({ size: 'lg' }),
               'h-auto flex-1 px-7 py-3.75 text-sm font-bold md:flex-1 lg:text-[15px]',
             )}
           >
-            Explore {activeCabin.name}
+            {showcase_explore({ model: activeCabin.name }, messageOptions)}
           </Link>
           <Button
             aria-haspopup="dialog"
@@ -370,7 +474,7 @@ function ConfigurationPanel({
             size="lg"
             className="h-auto cursor-pointer bg-transparent px-7 py-3.75 text-sm font-bold text-secondary-foreground lg:text-[15px]"
           >
-            View floor plan
+            {showcase_view_floor_plan({}, messageOptions)}
           </Button>
         </div>
       </div>
@@ -434,17 +538,23 @@ function FinishRadioItem({ label, color, value }: { label: string; color: string
 function CabinImageCard({
   cabin,
   finishId,
+  exteriorFinishes,
+  locale,
   className,
 }: {
   cabin: Cabin
   finishId: ExteriorFinishId
+  exteriorFinishes: ReadonlyArray<ExteriorFinish>
+  locale: Locale
   className?: string
 }) {
+  const finish = getExteriorFinish(exteriorFinishes, finishId)
+
   return (
     <div className={cn('relative size-full', className)}>
       <Image
         src={cabin.images.exteriors[finishId]}
-        alt={`${cabin.name} cabin exterior in ${getExteriorFinish(finishId).label.toLowerCase()}`}
+        alt={showcase_exterior_alt({ model: cabin.name, finish: finish.label.toLocaleLowerCase(locale) }, { locale })}
         fill
         sizes="(max-width: 767px) 400px, (max-width: 1279px) 700px, 800px"
         className="object-contain"
@@ -455,10 +565,12 @@ function CabinImageCard({
 
 function CarouselButton({
   direction,
+  label,
   className,
   ...props
 }: React.ComponentProps<typeof Button> & {
   direction: 'prev' | 'next'
+  label: string
 }) {
   const { scrollPrev, canScrollPrev, scrollNext, canScrollNext } = useCarousel()
 
@@ -476,27 +588,35 @@ function CarouselButton({
       {...props}
     >
       {isPrevious ? <ArrowLeft aria-hidden="true" /> : <ArrowRight aria-hidden="true" />}
-      <span className="sr-only">{isPrevious ? 'Previous' : 'Next'} slide</span>
+      <span className="sr-only">{label}</span>
     </Button>
   )
 }
 
 function CarouselDots({
   activeIndex,
+  cabins,
+  locale,
   onSelect,
   className,
 }: {
   activeIndex: number
+  cabins: ReadonlyArray<ShowcaseCabin>
+  locale: Locale
   onSelect: (index: number) => void
   className?: string
 }) {
   return (
-    <div role="group" aria-label="Choose cabin model" className={cn('flex items-center gap-2', className)}>
-      {SHOWCASE_CABINS.map(({ cabin }, index) => (
+    <div
+      role="group"
+      aria-label={showcase_choose_model({}, { locale })}
+      className={cn('flex items-center gap-2', className)}
+    >
+      {cabins.map(({ cabin }, index) => (
         <button
           key={cabin.name}
           type="button"
-          aria-label={`Show ${cabin.name} cabin`}
+          aria-label={models_show_cabin({ model: cabin.name }, { locale })}
           aria-pressed={index === activeIndex}
           onClick={() => {
             onSelect(index)
@@ -513,22 +633,30 @@ function CarouselDots({
 
 function CarouselThumbnails({
   activeIndex,
+  cabins,
   finishId,
+  locale,
   onSelect,
   className,
 }: {
   activeIndex: number
+  cabins: ReadonlyArray<ShowcaseCabin>
   finishId: ExteriorFinishId
+  locale: Locale
   onSelect: (index: number) => void
   className?: string
 }) {
   return (
-    <div role="group" aria-label="Choose cabin model thumbnails" className={cn('items-center gap-3', className)}>
-      {SHOWCASE_CABINS.map(({ cabin }, index) => (
+    <div
+      role="group"
+      aria-label={showcase_choose_thumbnails({}, { locale })}
+      className={cn('items-center gap-3', className)}
+    >
+      {cabins.map(({ cabin }, index) => (
         <button
           key={cabin.id}
           type="button"
-          aria-label={`Show ${cabin.name} cabin`}
+          aria-label={models_show_cabin({ model: cabin.name }, { locale })}
           aria-pressed={index === activeIndex}
           onClick={() => {
             onSelect(index)
@@ -548,16 +676,19 @@ function CarouselThumbnails({
 
 function FloorPlanDialog({
   cabin,
+  locale,
   isOpen,
   onOpenChange,
 }: {
   cabin: Cabin
+  locale: Locale
   isOpen: boolean
   onOpenChange: (isOpen: boolean) => void
 }) {
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent
+        closeLabel={dialog_close({}, { locale })}
         className={cn(
           'gap-4 rounded-xl bg-white p-4',
           '[&>button]:top-1 [&>button]:right-1',
@@ -567,8 +698,8 @@ function FloorPlanDialog({
         )}
       >
         <DialogHeader className="sr-only">
-          <DialogTitle>{cabin.name} floor plan</DialogTitle>
-          <DialogDescription>Floor plan layout for the selected {cabin.name} cabin.</DialogDescription>
+          <DialogTitle>{showcase_floor_plan_title({ model: cabin.name }, { locale })}</DialogTitle>
+          <DialogDescription>{showcase_floor_plan_description({ model: cabin.name }, { locale })}</DialogDescription>
         </DialogHeader>
         <div className="relative aspect-video">
           <Image
@@ -657,7 +788,8 @@ function getOpticalSlideOffsets({
   const previousProfile = activeProfiles[previousSnapIndex] ?? ZERO_OPTICAL_OFFSETS
   const nextProfile = activeProfiles[nextSnapIndex] ?? previousProfile
 
-  return SHOWCASE_CABINS.map((_, index) =>
+  // Produce one optical offset per Embla snap; this geometry calculation does not depend on the locale-scoped cabin data.
+  return scrollSnaps.map((_, index) =>
     lerp(previousProfile.at(index) ?? 0, nextProfile.at(index) ?? 0, segmentProgress),
   )
 }
@@ -736,16 +868,14 @@ function getSlideTweenProgress({
   return Math.min(Math.max(1 - Math.abs(distanceToSlide) / snapDistance, 0), 1)
 }
 
-function getCabinByIndex(index: number): Cabin {
-  return SHOWCASE_CABINS[index]?.cabin ?? FEATURED_CABIN
+function getExteriorFinish(finishes: ReadonlyArray<ExteriorFinish>, finishId: ExteriorFinishId) {
+  return finishes.find((finish) => finish.id === finishId) ?? finishes[0] ?? { id: 'wood', label: '', color: '' }
 }
 
-function getExteriorFinish(finishId: ExteriorFinishId) {
-  return EXTERIOR_FINISHES.find((finish) => finish.id === finishId) ?? DEFAULT_EXTERIOR_FINISH
-}
-
-function getInteriorPalette(paletteId: InteriorPaletteId) {
-  return INTERIOR_PALETTES.find((palette) => palette.id === paletteId) ?? DEFAULT_INTERIOR_PALETTE
+function getInteriorPalette(palettes: ReadonlyArray<InteriorPalette>, paletteId: InteriorPaletteId) {
+  return (
+    palettes.find((palette) => palette.id === paletteId) ?? palettes[0] ?? { id: 'light-oak', label: '', color: '' }
+  )
 }
 
 export { InteractiveShowcaseSection }

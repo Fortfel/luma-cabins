@@ -1,6 +1,40 @@
 import type { Locale } from '~/i18n/routing'
 
 import { contactLinkOptions } from '~/app/[locale]/(app)/_validations/app-link-options'
+import {
+  process_cta,
+  process_show_step,
+  process_status,
+  process_step_01_bullet_01,
+  process_step_01_bullet_02,
+  process_step_01_bullet_03,
+  process_step_01_description,
+  process_step_01_label,
+  process_step_01_media_alt,
+  process_step_01_title,
+  process_step_02_bullet_01,
+  process_step_02_bullet_02,
+  process_step_02_bullet_03,
+  process_step_02_description,
+  process_step_02_label,
+  process_step_02_media_alt,
+  process_step_02_title,
+  process_step_03_bullet_01,
+  process_step_03_bullet_02,
+  process_step_03_bullet_03,
+  process_step_03_description,
+  process_step_03_label,
+  process_step_03_media_alt,
+  process_step_03_title,
+  process_step_04_bullet_01,
+  process_step_04_bullet_02,
+  process_step_04_bullet_03,
+  process_step_04_description,
+  process_step_04_label,
+  process_step_04_media_alt,
+  process_step_04_title,
+  process_step_aria,
+} from '~/paraglide/messages.js'
 
 type ProcessStepNumber = '01' | '02' | '03' | '04'
 
@@ -11,6 +45,9 @@ interface ProcessStep {
   title: string
   description: string
   bullets: ReadonlyArray<string>
+  ariaLabel: string
+  showLabel: string
+  status: string
   copyStatus: 'provisional'
   media: {
     kind: 'image' | 'video'
@@ -28,26 +65,39 @@ interface ProcessStep {
   }
 }
 
-// Descriptions and bullets are explicitly provisional until the process is reviewed against the final service scope.
-const createProcessSteps = (locale: Locale) =>
-  [
+const createProcessSteps = (locale: Locale): ReadonlyArray<ProcessStep> => {
+  const messageOptions = { locale }
+  const total = 4
+  const labels = [
+    process_step_01_label({}, messageOptions),
+    process_step_02_label({}, messageOptions),
+    process_step_03_label({}, messageOptions),
+    process_step_04_label({}, messageOptions),
+  ] as const
+  const createAccessibility = (index: number, label: string) => ({
+    ariaLabel: process_step_aria({ number: index + 1, label }, messageOptions),
+    showLabel: process_show_step({ number: index + 1, label }, messageOptions),
+    status: process_status({ current: index + 1, total, label }, messageOptions),
+  })
+
+  return [
     {
       id: 'design-yours',
       number: '01',
-      label: 'Design yours',
-      title: 'Shape a cabin around the way you want to live.',
-      description:
-        'Start with Niva, Aster, or Veyra, then shape a curated set of finishes, systems, and add-ons around how you want to use the space.',
+      label: labels[0],
+      title: process_step_01_title({}, messageOptions),
+      description: process_step_01_description({}, messageOptions),
       bullets: [
-        'Choose the model and layout',
-        'Curate interior and exterior finishes',
-        'Add energy and outdoor options',
+        process_step_01_bullet_01({}, messageOptions),
+        process_step_01_bullet_02({}, messageOptions),
+        process_step_01_bullet_03({}, messageOptions),
       ],
+      ...createAccessibility(0, labels[0]),
       copyStatus: 'provisional',
       media: {
         kind: 'image',
         src: '/images/process/process-step1-v1.jpg',
-        alt: 'Exploded view of a cabin interior with its roof, walls, kitchen, living area, bathroom, bedroom, and deck separated.',
+        alt: process_step_01_media_alt({}, messageOptions),
         width: 1448,
         height: 1086,
         isPlaceholder: false,
@@ -56,22 +106,22 @@ const createProcessSteps = (locale: Locale) =>
     {
       id: 'pick-the-spot',
       number: '02',
-      label: 'Pick the spot',
-      title: 'Find the setting that makes it feel at home.',
-      description:
-        'Share the setting you have in mind. Luma helps review access, orientation, terrain, and the local requirements that may shape the project.',
+      label: labels[1],
+      title: process_step_02_title({}, messageOptions),
+      description: process_step_02_description({}, messageOptions),
       bullets: [
-        'Consider views, daylight, and privacy',
-        'Review access and ground conditions',
-        'Identify local requirements early',
+        process_step_02_bullet_01({}, messageOptions),
+        process_step_02_bullet_02({}, messageOptions),
+        process_step_02_bullet_03({}, messageOptions),
       ],
+      ...createAccessibility(1, labels[1]),
       copyStatus: 'provisional',
       media: {
         kind: 'video',
         src: '/videos/process/process-step2-video2.mp4',
         webmSrc: '/videos/process/process-step2-video2.webm',
         posterSrc: '/images/process/process-step2-video2-poster.webp',
-        alt: 'Video of a landscaped garden setting with a mature tree and open lawn.',
+        alt: process_step_02_media_alt({}, messageOptions),
         width: 1280,
         height: 720,
         isPlaceholder: false,
@@ -80,22 +130,22 @@ const createProcessSteps = (locale: Locale) =>
     {
       id: 'prepare-together',
       number: '03',
-      label: 'Prepare together',
-      title: 'Bring the site and cabin plan together.',
-      description:
-        'With the direction agreed, Luma coordinates the cabin plan with the local specialists preparing the foundations, utilities, and route to site.',
+      label: labels[2],
+      title: process_step_03_title({}, messageOptions),
+      description: process_step_03_description({}, messageOptions),
       bullets: [
-        'Confirm drawings and selections',
-        'Align foundations and utility work',
-        'Plan production and delivery',
+        process_step_03_bullet_01({}, messageOptions),
+        process_step_03_bullet_02({}, messageOptions),
+        process_step_03_bullet_03({}, messageOptions),
       ],
+      ...createAccessibility(2, labels[2]),
       copyStatus: 'provisional',
       media: {
         kind: 'video',
         src: '/videos/process/process-step3-video.mp4',
         webmSrc: '/videos/process/process-step3-video.webm',
         posterSrc: '/images/process/process-step3-video-poster.webp',
-        alt: 'Two people reviewing architectural plans, material samples, and interior references at a table.',
+        alt: process_step_03_media_alt({}, messageOptions),
         width: 960,
         height: 720,
         isPlaceholder: false,
@@ -104,28 +154,33 @@ const createProcessSteps = (locale: Locale) =>
     {
       id: 'deliver-and-install',
       number: '04',
-      label: 'Deliver and install',
-      title: 'Watch your cabin take its place.',
-      description:
-        'Once the site is ready, the cabin is delivered and installed, with final connections and handover coordinated around the agreed project scope.',
-      bullets: ['Position and secure the cabin', 'Complete agreed site connections', 'Walk through the finished space'],
+      label: labels[3],
+      title: process_step_04_title({}, messageOptions),
+      description: process_step_04_description({}, messageOptions),
+      bullets: [
+        process_step_04_bullet_01({}, messageOptions),
+        process_step_04_bullet_02({}, messageOptions),
+        process_step_04_bullet_03({}, messageOptions),
+      ],
+      ...createAccessibility(3, labels[3]),
       copyStatus: 'provisional',
       media: {
         kind: 'video',
         src: '/videos/process/process-step4-video.mp4',
         webmSrc: '/videos/process/process-step4-video.webm',
         posterSrc: '/images/process/process-step4-video-poster.webp',
-        alt: 'Video showing a cabin being delivered, installed, and prepared for handover.',
+        alt: process_step_04_media_alt({}, messageOptions),
         width: 960,
         height: 720,
         isPlaceholder: false,
       },
       cta: {
-        label: 'Get started',
+        label: process_cta({}, messageOptions),
         ...contactLinkOptions(locale),
       },
     },
-  ] as const satisfies ReadonlyArray<ProcessStep>
+  ]
+}
 
 export type { ProcessStep }
 export { createProcessSteps }

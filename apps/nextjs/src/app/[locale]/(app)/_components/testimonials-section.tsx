@@ -2,6 +2,8 @@
 
 import type * as React from 'react'
 import type { CarouselApi } from '@workspace/ui/components/carousel'
+import type { Testimonial } from '~/app/[locale]/(app)/_data/testimonials'
+import type { Locale } from '~/i18n/routing'
 
 import { useEffect, useEffectEvent, useLayoutEffect, useState } from 'react'
 
@@ -25,6 +27,18 @@ import { usePrefersReducedMotion } from '@workspace/ui/hooks/use-prefers-reduced
 import { AutoScroll } from '@workspace/ui/lib/embla-plugins'
 import { cn } from '@workspace/ui/lib/utils'
 
+import { createTestimonials } from '~/app/[locale]/(app)/_data/testimonials'
+import {
+  carousel_role,
+  carousel_slide_role,
+  testimonials_carousel_label,
+  testimonials_close,
+  testimonials_position,
+  testimonials_rating,
+  testimonials_read_full,
+  testimonials_title,
+} from '~/paraglide/messages.js'
+
 const AUTO_SCROLL_SPEED = 0.75
 const AUTO_SCROLL_START_DELAY_MS = 100
 const AUTO_SCROLL_VISIBILITY_THRESHOLD = 0.01
@@ -42,77 +56,19 @@ const SCROLL_DISTANCE_TOLERANCE_PX = 1
 const RATING_STARS = [1, 2, 3, 4, 5] as const
 const MOVE_EASE = [0.22, 1, 0.36, 1] as const
 
-const TESTIMONIALS = [
-  {
-    id: 'aster-forest-retreat',
-    quote: 'We stopped thinking about the square metres.',
-    review:
-      'The proportions are exceptionally well judged. Even with a compact footprint, the open plan, high ceiling, and generous glazing make the cabin feel calm and spacious rather than constrained. Every sightline feels intentional, and the natural light changes the atmosphere throughout the day. Materials remain warm and quiet without making the interior feel visually busy. After several longer stays, the cabin still feels generous, practical, and deeply connected to its setting.',
-    clientName: 'Maya & Theo',
-    clientInitials: 'MT',
-    avatarSrc: 'https://api.dicebear.com/9.x/notionists/svg?seed=Maya-Theo',
-    rating: 5,
-  },
-  {
-    id: 'veyra-lakeside-plot',
-    quote: 'We always knew what the next step was.',
-    review:
-      'From the first conversation to the final choices, every step was clear and unhurried. We always knew what came next, and the team made complex decisions feel surprisingly straightforward.',
-    clientName: 'Jon Bell',
-    clientInitials: 'JB',
-    avatarSrc: 'https://api.dicebear.com/9.x/notionists/svg?seed=Jon-Bell',
-    rating: 5,
-  },
-  {
-    id: 'niva-retreat',
-    quote: 'Even rainy weekends feel restorative here.',
-    review:
-      'The cabin feels considered in every detail. Natural light moves beautifully through the rooms, and the materials make even a short weekend feel restorative. We especially appreciate how each space has a clear purpose without feeling rigid or overdesigned. Storage is quietly integrated, the circulation feels effortless, and every window frames a different part of the landscape. After several visits in changing weather, the interior remains equally comfortable, calm, and welcoming.',
-    clientName: 'Nina Patel',
-    clientInitials: 'NP',
-    avatarSrc: 'https://api.dicebear.com/9.x/notionists/svg?seed=Nina-Patel',
-    rating: 5,
-  },
-  {
-    id: 'aster-weekend-cabin',
-    quote: 'The materials feel even better in person.',
-    review:
-      'The timber, fixtures, and small details work together without competing for attention. Nothing feels added as an afterthought, and the result has a warmth that should age beautifully.',
-    clientName: 'Clara Jensen',
-    clientInitials: 'CJ',
-    avatarSrc: 'https://api.dicebear.com/9.x/notionists/svg?seed=Clara-Jensen',
-    rating: 5,
-  },
-  {
-    id: 'remote-work-cabin',
-    quote: 'I close my laptop and the room becomes a retreat again.',
-    review:
-      'It is peaceful enough for focused work but still feels like a genuine retreat at the end of the day. The light, acoustics, and connection to the landscape make long stays remarkably comfortable. Calls feel private, the workspace receives soft daylight without glare, and the surrounding timber keeps the atmosphere warm rather than clinical. Once work is finished, closing the laptop genuinely changes the character of the room. It becomes a quiet place to read, cook, and watch the light disappear through the trees.',
-    clientName: 'Theo Martin',
-    clientInitials: 'TM',
-    avatarSrc: 'https://api.dicebear.com/9.x/notionists/svg?seed=Theo-Martin',
-    rating: 5,
-  },
-  {
-    id: 'veyra-hilltop-plot',
-    quote: 'We chose every finish in a single afternoon.',
-    review:
-      'The options were focused rather than overwhelming, and every combination felt coherent. Within one afternoon we had a palette that felt personal, balanced, and completely resolved.',
-    clientName: 'Sofia Alvarez',
-    clientInitials: 'SA',
-    avatarSrc: 'https://api.dicebear.com/9.x/notionists/svg?seed=Sofia-Alvarez',
-    rating: 5,
-  },
-] as const
-
-type Testimonial = (typeof TESTIMONIALS)[number]
 type PopoverOpenChangeHandler = NonNullable<React.ComponentProps<typeof Popover>['onOpenChange']>
 interface TriggerMetrics {
   width: number
   height: number
 }
 
-function TestimonialsSection({ className, ...props }: React.ComponentProps<'section'>) {
+interface TestimonialsSectionProps extends React.ComponentProps<'section'> {
+  readonly locale: Locale
+}
+
+function TestimonialsSection({ locale, className, ...props }: TestimonialsSectionProps) {
+  const testimonials = createTestimonials(locale)
+  const messageOptions = { locale }
   const [autoScroll] = useState(() =>
     AutoScroll({
       speed: AUTO_SCROLL_SPEED,
@@ -139,7 +95,7 @@ function TestimonialsSection({ className, ...props }: React.ComponentProps<'sect
   const isDesktop = !useIsMobile()
   const shouldReduceMotion = usePrefersReducedMotion()
 
-  const activeTestimonial = activeIndex === null ? null : TESTIMONIALS[activeIndex]
+  const activeTestimonial = activeIndex === null ? null : testimonials[activeIndex]
   const canAutoScroll =
     Boolean(api) &&
     !shouldReduceMotion &&
@@ -294,7 +250,7 @@ function TestimonialsSection({ className, ...props }: React.ComponentProps<'sect
 
     const triggerId = trigger.id
 
-    const index = TESTIMONIALS.findIndex((testimonial) => getTestimonialTriggerId(testimonial) === triggerId)
+    const index = testimonials.findIndex((testimonial) => getTestimonialTriggerId(testimonial) === triggerId)
 
     if (index < 0) {
       return
@@ -352,11 +308,12 @@ function TestimonialsSection({ className, ...props }: React.ComponentProps<'sect
         )}
       >
         <h2 className="text-heading-md max-lg:section-px w-full text-center text-balance text-foreground lg:w-62 lg:shrink-0 lg:px-0 lg:text-left">
-          Why people choose Luma
+          {testimonials_title({}, messageOptions)}
         </h2>
 
         {isPopoverOpen ? (
           <TestimonialBackdrop
+            label={testimonials_close({}, messageOptions)}
             onClick={() => {
               setIsPopoverClosing(true)
             }}
@@ -365,7 +322,8 @@ function TestimonialsSection({ className, ...props }: React.ComponentProps<'sect
 
         <Popover open={isPopoverOpen} triggerId={activeTriggerId} onOpenChange={handlePopoverOpenChange}>
           <Carousel
-            aria-label="Guest testimonials"
+            aria-label={testimonials_carousel_label({}, messageOptions)}
+            aria-roledescription={carousel_role({}, messageOptions)}
             setApi={setApi}
             opts={{ align: 'start', dragFree: true, loop: true, watchDrag: !isDesktop, watchFocus: false }}
             plugins={carouselPlugins}
@@ -386,11 +344,17 @@ function TestimonialsSection({ className, ...props }: React.ComponentProps<'sect
           >
             <div className="w-full min-w-0 mask-[linear-gradient(to_right,transparent_0,rgb(0_0_0/20%)_12px,black_24px,black_calc(100%-24px),rgb(0_0_0/20%)_calc(100%-12px),transparent_100%)] mask-alpha md:mask-[linear-gradient(to_right,transparent_0,rgb(0_0_0/20%)_40px,black_80px,black_calc(100%-80px),rgb(0_0_0/20%)_calc(100%-40px),transparent_100%)]">
               <CarouselContent className="ms-0 h-full items-center">
-                {TESTIMONIALS.map((testimonial, index) => (
-                  <CarouselItem key={testimonial.id} className="w-auto basis-auto py-1 ps-6">
+                {testimonials.map((testimonial, index) => (
+                  <CarouselItem
+                    key={testimonial.id}
+                    aria-roledescription={carousel_slide_role({}, messageOptions)}
+                    className="w-auto basis-auto py-1 ps-6"
+                  >
                     <TestimonialCard
                       testimonial={testimonial}
                       index={index}
+                      locale={locale}
+                      total={testimonials.length}
                       isDesktop={isDesktop}
                       isHidden={isPopoverOpen && isPopoverReady && index === activeIndex}
                     />
@@ -404,6 +368,7 @@ function TestimonialsSection({ className, ...props }: React.ComponentProps<'sect
             <TestimonialPopover
               key={activeTestimonial.id}
               testimonial={activeTestimonial}
+              locale={locale}
               triggerMetrics={activeTriggerMetrics}
               isClosing={isPopoverClosing}
               shouldReduceMotion={shouldReduceMotion}
@@ -429,11 +394,15 @@ function TestimonialsSection({ className, ...props }: React.ComponentProps<'sect
 function TestimonialCard({
   testimonial,
   index,
+  locale,
+  total,
   isDesktop,
   isHidden,
 }: {
   testimonial: Testimonial
   index: number
+  locale: Locale
+  total: number
   isDesktop: boolean
   isHidden: boolean
 }) {
@@ -441,7 +410,7 @@ function TestimonialCard({
     <PopoverTrigger
       id={getTestimonialTriggerId(testimonial)}
       data-testimonial-index={index}
-      aria-label={`Read full testimonial from ${testimonial.clientName}: ${testimonial.quote}`}
+      aria-label={testimonials_read_full({ client: testimonial.clientName, quote: testimonial.quote }, { locale })}
       className={cn(
         'flex w-75 flex-col gap-4 rounded-lg border border-border bg-card p-4 text-left text-card-foreground shadow-xs transition-[border-color,box-shadow]',
         'hover:border-foreground/20 hover:shadow-sm',
@@ -455,15 +424,13 @@ function TestimonialCard({
       <span className="text-body-md line-clamp-2 h-[2lh] font-heading leading-[1.3] font-medium">
         “{testimonial.quote}”
       </span>
-      <TestimonialFooter testimonial={testimonial} isExpanded={false} />
-      <span className="sr-only">
-        Testimonial {index + 1} of {TESTIMONIALS.length}
-      </span>
+      <TestimonialFooter testimonial={testimonial} locale={locale} isExpanded={false} />
+      <span className="sr-only">{testimonials_position({ current: index + 1, total }, { locale })}</span>
     </PopoverTrigger>
   )
 }
 
-function TestimonialBackdrop({ onClick }: { onClick: () => void }) {
+function TestimonialBackdrop({ label, onClick }: { label: string; onClick: () => void }) {
   if (typeof document === 'undefined') {
     return null
   }
@@ -472,7 +439,7 @@ function TestimonialBackdrop({ onClick }: { onClick: () => void }) {
     <button
       type="button"
       tabIndex={-1}
-      aria-label="Close testimonial"
+      aria-label={label}
       onClick={onClick}
       className="fixed inset-0 z-50 cursor-default bg-transparent"
     />,
@@ -482,6 +449,7 @@ function TestimonialBackdrop({ onClick }: { onClick: () => void }) {
 
 function TestimonialPopover({
   testimonial,
+  locale,
   triggerMetrics,
   isClosing,
   shouldReduceMotion,
@@ -490,6 +458,7 @@ function TestimonialPopover({
   onCollapseComplete,
 }: {
   testimonial: Testimonial
+  locale: Locale
   triggerMetrics: TriggerMetrics
   isClosing: boolean
   shouldReduceMotion: boolean
@@ -679,7 +648,7 @@ function TestimonialPopover({
             transition={geometryTransition}
             className="flex shrink-0 items-center justify-between px-3 xl:px-4"
           >
-            <TestimonialFooter testimonial={testimonial} isExpanded={shouldShowExpandedState} />
+            <TestimonialFooter testimonial={testimonial} locale={locale} isExpanded={shouldShowExpandedState} />
           </motion.figcaption>
         </figure>
       </motion.div>
@@ -687,7 +656,15 @@ function TestimonialPopover({
   )
 }
 
-function TestimonialFooter({ testimonial, isExpanded }: { testimonial: Testimonial; isExpanded: boolean }) {
+function TestimonialFooter({
+  testimonial,
+  locale,
+  isExpanded,
+}: {
+  testimonial: Testimonial
+  locale: Locale
+  isExpanded: boolean
+}) {
   const shouldReduceMotion = usePrefersReducedMotion()
   const layoutDuration = isExpanded ? GEOMETRY_DURATION_S : CLOSING_GEOMETRY_DURATION_S
   const layoutTransition = shouldReduceMotion ? { duration: 0 } : { duration: layoutDuration, ease: MOVE_EASE }
@@ -717,7 +694,7 @@ function TestimonialFooter({ testimonial, isExpanded }: { testimonial: Testimoni
         transition={{ layout: layoutTransition }}
         className={cn('shrink-0', isExpanded ? 'ml-auto' : 'ml-2')}
       >
-        <TestimonialRating rating={testimonial.rating} />
+        <TestimonialRating rating={testimonial.rating} locale={locale} />
       </motion.span>
 
       <motion.span
@@ -733,11 +710,11 @@ function TestimonialFooter({ testimonial, isExpanded }: { testimonial: Testimoni
   )
 }
 
-function TestimonialRating({ rating }: { rating: number }) {
+function TestimonialRating({ rating, locale }: { rating: number; locale: Locale }) {
   return (
     <span
       role="img"
-      aria-label={`${rating} out of 5 stars`}
+      aria-label={testimonials_rating({ rating }, { locale })}
       className={cn('flex shrink-0 items-center gap-1 text-[#B08D45]')}
     >
       {RATING_STARS.map((star) => (

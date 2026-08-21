@@ -1,4 +1,5 @@
 import type * as React from 'react'
+import type { Locale } from '~/i18n/routing'
 
 import { ArrowUpRight, Layers, Leaf, ShieldCheck, Truck } from 'lucide-react'
 import Link from 'next/link'
@@ -8,33 +9,66 @@ import { cn } from '@workspace/ui/lib/utils'
 
 import { HeroBackground } from '~/app/[locale]/(app)/_components/hero-background'
 import { contactLinkOptions } from '~/app/[locale]/(app)/_validations/app-link-options'
+import {
+  hero_cta,
+  hero_description,
+  hero_feature_belonging_description,
+  hero_feature_belonging_title,
+  hero_feature_delivery_description,
+  hero_feature_delivery_title,
+  hero_feature_durability_description,
+  hero_feature_durability_title,
+  hero_feature_precision_description,
+  hero_feature_precision_title,
+  hero_mobile_delivery,
+  hero_mobile_design,
+  hero_mobile_precision,
+  hero_title,
+  hero_video_pause_aria,
+  hero_video_play_aria,
+} from '~/paraglide/messages.js'
 
-const HERO_FEATURES = [
-  {
-    icon: Layers,
-    title: 'Precision Built',
-    description: 'Factory-crafted modules for superior quality.',
-  },
-  {
-    icon: Truck,
-    title: 'Delivered & Installed',
-    description: 'Faster build times, less on-site disruption.',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Designed to Last',
-    description: 'Durable materials. Timeless design.',
-  },
-  {
-    icon: Leaf,
-    title: 'Made to Belong',
-    description: 'Sustainable by nature. Considered by design.',
-  },
-] as const
+interface HeroSectionProps extends React.ComponentProps<'section'> {
+  readonly locale: Locale
+}
 
-const MOBILE_FEATURES = ['Precision Built', 'Delivered fast', 'Timeless design'] as const
+interface HeroFeatureProps {
+  readonly icon: typeof Layers
+  readonly title: string
+  readonly description: string
+}
 
-function HeroSection({ className, ...props }: React.ComponentProps<'section'>) {
+function HeroSection({ locale, className, ...props }: HeroSectionProps) {
+  const messageOptions = { locale }
+  const features = [
+    {
+      icon: Layers,
+      title: hero_feature_precision_title({}, messageOptions),
+      description: hero_feature_precision_description({}, messageOptions),
+    },
+    {
+      icon: Truck,
+      title: hero_feature_delivery_title({}, messageOptions),
+      description: hero_feature_delivery_description({}, messageOptions),
+    },
+    {
+      icon: ShieldCheck,
+      title: hero_feature_durability_title({}, messageOptions),
+      description: hero_feature_durability_description({}, messageOptions),
+    },
+    {
+      icon: Leaf,
+      title: hero_feature_belonging_title({}, messageOptions),
+      description: hero_feature_belonging_description({}, messageOptions),
+    },
+  ] as const satisfies ReadonlyArray<HeroFeatureProps>
+
+  const mobileFeatures = [
+    hero_mobile_precision({}, messageOptions),
+    hero_mobile_delivery({}, messageOptions),
+    hero_mobile_design({}, messageOptions),
+  ]
+
   return (
     <section
       className={cn(
@@ -43,7 +77,10 @@ function HeroSection({ className, ...props }: React.ComponentProps<'section'>) {
       )}
       {...props}
     >
-      <HeroBackground />
+      <HeroBackground
+        playLabel={hero_video_play_aria({}, messageOptions)}
+        pauseLabel={hero_video_pause_aria({}, messageOptions)}
+      />
 
       <div
         className={cn(
@@ -52,33 +89,27 @@ function HeroSection({ className, ...props }: React.ComponentProps<'section'>) {
         )}
       >
         <div className="flex flex-col gap-[clamp(1.25rem,calc(1.0115rem+1.0178vw),1.5rem)] sm:max-w-[clamp(36rem,calc(27rem+18.75vw),42rem)]">
-          <h1 className="text-display-xl">
-            Live closer
-            <br />
-            to what matters
-          </h1>
-          <p className="text-body-lg text-pretty">
-            Premium pre-designed cabins, designed to help you slow down, reconnect, and feel at home - anywhere.
-          </p>
+          <h1 className="text-display-xl text-balance">{hero_title({}, messageOptions)}</h1>
+          <p className="text-body-lg text-pretty">{hero_description({}, messageOptions)}</p>
           <Link
-            {...contactLinkOptions()}
+            {...contactLinkOptions(locale)}
             className={cn(
               buttonVariants({ size: 'lg', variant: 'secondary' }),
               'h-13.5 w-full cursor-pointer text-base font-bold text-primary',
             )}
           >
-            Get Started
+            {hero_cta({}, messageOptions)}
             <ArrowUpRight data-icon="inline-end" />
           </Link>
         </div>
 
         <div>
           <div className="mt-10 grow border-t border-muted-foreground/50 pt-5 lg:hidden">
-            <p className="text-[10px] font-black tracking-[0.6px] uppercase">{MOBILE_FEATURES.join(' • ')}</p>
+            <p className="text-[10px] font-black tracking-[0.6px] uppercase">{mobileFeatures.join(' • ')}</p>
           </div>
 
           <div className="hidden gap-6 lg:grid">
-            {HERO_FEATURES.map((feature) => (
+            {features.map((feature) => (
               <HeroFeature key={feature.title} {...feature} />
             ))}
           </div>
@@ -88,7 +119,7 @@ function HeroSection({ className, ...props }: React.ComponentProps<'section'>) {
   )
 }
 
-function HeroFeature({ icon: Icon, title, description }: (typeof HERO_FEATURES)[number]) {
+function HeroFeature({ icon: Icon, title, description }: HeroFeatureProps) {
   return (
     <div className="flex items-center gap-4">
       <Icon aria-hidden="true" className="size-6 xl:size-7" />

@@ -8,7 +8,12 @@ import { usePrefersReducedMotion } from '@workspace/ui/hooks/use-prefers-reduced
 
 import { PlayPauseButton } from '~/app/_components/layout/play-pause-button'
 
-function HeroBackground() {
+interface HeroBackgroundProps {
+  readonly pauseLabel: string
+  readonly playLabel: string
+}
+
+function HeroBackground({ pauseLabel, playLabel }: HeroBackgroundProps) {
   const [isPaused, setIsPaused] = useState(true)
   const shouldReduceMotion = usePrefersReducedMotion()
 
@@ -86,8 +91,8 @@ function HeroBackground() {
       </div>
       <PlayPauseButton
         isPaused={isPaused}
-        playLabel="Play background video"
-        pauseLabel="Pause background video"
+        playLabel={playLabel}
+        pauseLabel={pauseLabel}
         onClick={handleToggleVideo}
         className="absolute right-4 bottom-5 z-20 sm:right-6 sm:bottom-8"
       />

@@ -57,7 +57,7 @@ When changing this order, review adjacent background transitions and confirm tha
 
 ## Current Cabin Data
 
-`apps/nextjs/src/app/[locale]/(app)/_data/cabins.ts` is the source of truth for the model names, specs, descriptions, imagery, and showcase prices used by the landing page.
+`apps/nextjs/src/app/[locale]/(app)/_data/cabins.ts` is the source of truth for invariant model names, numeric specs and prices, imagery, and the locale-aware `createCabinCatalog(locale)` factory used by the landing page. Layouts, descriptions, media alternatives, areas, and prices are resolved for the active locale before rendering.
 
 | Model | Current specs           | Showcase starting price |
 | ----- | ----------------------- | ----------------------- |
@@ -65,7 +65,7 @@ When changing this order, review adjacent background transitions and confirm tha
 | Aster | `39 m² · Studio`        | `€170,000`              |
 | Veyra | `56 m² · 1 Bedroom`     | `€210,000`              |
 
-The interactive showcase displays each price as “Starting at” plus the model price and “plus installation”. Do not add sleeper counts or extra bedroom claims beyond the current typed layout values unless they are added to the cabin data first.
+The interactive showcase displays localized “Starting at” and “plus installation” copy around an EUR price formatted for the active locale. Do not add sleeper counts or extra bedroom claims beyond the current typed layout values unless they are added to the cabin data first.
 
 ## Layout System
 
@@ -102,7 +102,7 @@ Current fragment status:
 
 | Fragment   | Intended destination | Current status                                                               |
 | ---------- | -------------------- | ---------------------------------------------------------------------------- |
-| `#models`  | Models overview      | Configured in navigation; no matching section ID is currently rendered       |
+| `#models`  | Models overview      | Rendered by `ModelsOverviewSection`                                           |
 | `#process` | How it works         | Rendered by `HowItWorksSection`; scroll margin accounts for the fixed navbar |
 | `#faqs`    | FAQ                  | Configured in navigation; no FAQ section is currently rendered               |
 

@@ -15,6 +15,7 @@ The section reduces uncertainty around buying a Luma cabin with a clear four-ste
 - `apps/nextjs/src/app/[locale]/(app)/_data/process-steps.ts`
   - `createProcessSteps(locale)` is the typed four-step content factory.
   - The locale-aware factory resolves the final CTA through `contactLinkOptions(locale)` so it uses the canonical public contact route for the active locale.
+  - Visible copy, media descriptions, timeline labels, dot labels, and live-region status text are resolved before entering the client experience.
   - `ProcessStep.copyStatus` marks every description and bullet set as provisional.
   - `ProcessStep.media` contains the media kind, MP4 source path, optional WebM and poster paths, accessible description, intrinsic dimensions, and placeholder flag.
 - `apps/nextjs/src/app/[locale]/(app)/_components/how-it-works-section.tsx`
@@ -30,7 +31,7 @@ The section reduces uncertainty around buying a Luma cabin with a clear four-ste
 
 ## Content Contract
 
-The visible heading is `How it works`, followed by `A guided path, start to finish.`. The four steps are fixed in this order:
+The English heading is `How it works`, followed by `A guided path, start to finish.`; Polish renders the corresponding localized messages. The four semantic steps remain fixed in this order even though their visible labels and editorial headings vary by locale:
 
 | Step | Timeline label      | Editorial heading                              |
 | ---- | ------------------- | ---------------------------------------------- |

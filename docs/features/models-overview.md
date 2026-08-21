@@ -8,6 +8,8 @@ Implemented on the landing page. This document describes current carousel and au
 
 - `apps/nextjs/src/app/[locale]/(app)/_components/models-overview-section.tsx`
 - `ModelsOverviewSection`: carousel state, visibility gating, autoplay controls, gesture intent, and responsive composition.
+- `apps/nextjs/src/app/[locale]/(app)/_data/cabins.ts`
+- `createCabinCatalog(locale)`: invariant model identity and assets combined with localized specs, descriptions, prices, and media alternatives.
 - `DesktopClickZone`: large previous and next controls used when drag navigation is disabled on desktop.
 - `CabinThumbnail`: direct model navigation and active autoplay progress.
 - `packages/ui/src/components/carousel.tsx`
@@ -36,6 +38,7 @@ Implemented on the landing page. This document describes current carousel and au
 ## Accessibility
 
 - The carousel, slides, navigation buttons, and play/pause control expose descriptive labels.
+- Carousel role descriptions, controls, model positions, and thumbnail labels use the active locale.
 - The selected model is announced through a polite live region.
 - Reduced-motion users cannot start autoplay.
 - Focus entering carousel controls prevents an automatic slide change during keyboard interaction.

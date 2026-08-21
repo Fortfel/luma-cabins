@@ -2,7 +2,7 @@
 
 ## Status
 
-English and Polish routing, metadata, navigation, and Paraglide generation are implemented. Landing-page copy is being translated section by section; until a section reaches its rollout checkpoint, its Polish route intentionally retains the existing English source copy.
+English and Polish routing, metadata, navigation, Paraglide generation, public page copy, landing-page content, media descriptions, interaction labels, and locale-scoped 404s are implemented. The Polish catalog is a complete draft that still requires native marketing review before launch.
 
 ## Architecture
 
@@ -33,7 +33,7 @@ Next redirects internal aliases to their canonical public URLs and applies `befo
 
 `/` is always English. The URL is the only locale source. Unsupported locale values and unknown localized paths return a 404.
 
-Because invalid top-level segments are rejected before the dynamic locale layout can render, `app/global-not-found.tsx` provides a self-contained English document fallback. Unknown paths beneath valid `en` or `pl` segments continue through `app/[locale]/not-found.tsx`, which shares the same presentation and can be localized independently during the error-copy rollout.
+Because invalid top-level segments are rejected before the dynamic locale layout can render, `app/global-not-found.tsx` provides a self-contained English document fallback. Unknown paths beneath valid `en` or `pl` segments continue through `app/[locale]/not-found.tsx`, which translates the shared presentation and links to the matching localized home page. `global-error.tsx` also remains an English emergency document because it can replace a failed locale layout before validated locale state is available.
 
 ## Static Rendering
 
@@ -74,6 +74,14 @@ Turbo is the generation orchestrator. Scoped app commands must use `pnpm turbo r
 - Do not call message functions at module scope.
 - Add English source messages before Polish drafts, keep keys flat, and preserve stable IDs, model names, asset paths, section IDs, dimensions, and route keys.
 - Use explicit locale message options in metadata and other code that can execute independently of the root layout.
+
+`AppHomePage` resolves its locale from route params and passes it to the localized server sections. `HeroSection` resolves its visible copy and feature data with explicit locale options, uses the localized public contact route for its CTA, and passes only play/pause labels into the existing `HeroBackground` client boundary. The headline wraps naturally rather than encoding English-specific line breaks.
+
+`AboutSection` keeps its sentence-level title in one message. The `{#em}` markup tag lets translators move the emphasized phrase without splitting the sentence into fixed fragments; `@inlang/paraglide-js-react` maps that typed tag to the existing italic presentation while receiving the locale explicitly.
+
+`createCabinCatalog(locale)`, `createTestimonials(locale)`, and `createProcessSteps(locale)` combine invariant IDs, names, assets, and geometry with translated copy. Cabin areas and EUR prices remain numeric at the factory boundary and are formatted through `Intl.NumberFormat(locale)` before crossing into Client Components. Existing interactive sections receive an explicit locale and call only their tree-shakable message functions; no global client provider or locale store is introduced.
+
+Dynamic carousel positions, model labels, testimonial ratings, comparison percentages, process-step announcements, image descriptions, dialog controls, and live-region text are localized. Shared UI primitives retain English defaults for non-localized consumers, while every localized app composition supplies translated accessible names and role descriptions.
 
 ## Verification
 

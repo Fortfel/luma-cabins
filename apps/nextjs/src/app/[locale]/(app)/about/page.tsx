@@ -1,7 +1,24 @@
 import type { Metadata } from 'next'
 
 import { resolveLocale } from '~/i18n/server'
-import { metadata_about_description, metadata_about_title } from '~/paraglide/messages.js'
+import {
+  about_page_backend,
+  about_page_backend_no_auth,
+  about_page_backend_static,
+  about_page_backend_turbo,
+  about_page_backend_vercel,
+  about_page_frontend,
+  about_page_frontend_next,
+  about_page_frontend_react,
+  about_page_frontend_tailwind,
+  about_page_frontend_ui,
+  about_page_intro,
+  about_page_outro,
+  about_page_tech_stack,
+  about_page_title,
+  metadata_about_description,
+  metadata_about_title,
+} from '~/paraglide/messages.js'
 import { createSeoMetadata } from '~/utils/seo'
 
 interface AboutPageProps {
@@ -19,42 +36,52 @@ export const generateMetadata = async ({ params }: AboutPageProps): Promise<Meta
   })
 }
 
-export default function AboutPage() {
+export default async function AboutPage({ params }: AboutPageProps) {
+  const locale = resolveLocale((await params).locale)
+  const messageOptions = { locale }
+  const frontendItems = [
+    about_page_frontend_react({}, messageOptions),
+    about_page_frontend_next({}, messageOptions),
+    about_page_frontend_ui({}, messageOptions),
+    about_page_frontend_tailwind({}, messageOptions),
+  ]
+  const backendItems = [
+    about_page_backend_static({}, messageOptions),
+    about_page_backend_no_auth({}, messageOptions),
+    about_page_backend_vercel({}, messageOptions),
+    about_page_backend_turbo({}, messageOptions),
+  ]
+
   return (
     <div className="px-4 py-6 sm:px-0">
       <div className="rounded-lg bg-white p-6 shadow">
-        <h1 className="mb-6 text-3xl font-bold text-gray-900">About</h1>
+        <h1 className="mb-6 text-3xl font-bold text-gray-900">{about_page_title({}, messageOptions)}</h1>
 
         <div className="prose max-w-none">
-          <p className="mb-4 text-gray-600">This is a starter shell for the Luma Cabins landing page.</p>
+          <p className="mb-4 text-gray-600">{about_page_intro({}, messageOptions)}</p>
 
-          <h2 className="mb-3 text-xl font-semibold text-gray-900">Tech Stack</h2>
+          <h2 className="mb-3 text-xl font-semibold text-gray-900">{about_page_tech_stack({}, messageOptions)}</h2>
           <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2">
             <div className="rounded-lg bg-gray-50 p-4">
-              <h3 className="mb-2 font-semibold text-gray-900">Frontend</h3>
+              <h3 className="mb-2 font-semibold text-gray-900">{about_page_frontend({}, messageOptions)}</h3>
               <ul className="space-y-1 text-sm text-gray-600">
-                <li>• React 19 with TypeScript</li>
-                <li>• Next.js App Router</li>
-                <li>• Shared UI components</li>
-                <li>• Tailwind CSS for styling</li>
+                {frontendItems.map((item) => (
+                  <li key={item}>• {item}</li>
+                ))}
               </ul>
             </div>
 
             <div className="rounded-lg bg-gray-50 p-4">
-              <h3 className="mb-2 font-semibold text-gray-900">Backend</h3>
+              <h3 className="mb-2 font-semibold text-gray-900">{about_page_backend({}, messageOptions)}</h3>
               <ul className="space-y-1 text-sm text-gray-600">
-                <li>• Static content-first pages</li>
-                <li>• No auth or database layer</li>
-                <li>• Production build on Vercel</li>
-                <li>• Turborepo for monorepo management</li>
+                {backendItems.map((item) => (
+                  <li key={item}>• {item}</li>
+                ))}
               </ul>
             </div>
           </div>
 
-          <p className="text-gray-600">
-            This setup provides a robust foundation for building modern web applications with type safety, excellent
-            developer experience, and production-ready architecture.
-          </p>
+          <p className="text-gray-600">{about_page_outro({}, messageOptions)}</p>
         </div>
       </div>
     </div>
