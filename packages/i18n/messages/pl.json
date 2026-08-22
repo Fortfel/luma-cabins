@@ -46,6 +46,14 @@
   "carousel_previous": "Poprzedni slajd",
   "carousel_next": "Następny slajd",
   "dialog_close": "Zamknij",
+  "cabin_area": [
+    {
+      "declarations": ["input area", "local formattedArea = area: number maximumFractionDigits=0"],
+      "match": {
+        "area=*": "{formattedArea} m²"
+      }
+    }
+  ],
   "cabin_niva_layout": "Antresola sypialna",
   "cabin_niva_description": "Kompaktowy domek z antresolą, stworzony na kameralne wyjazdy. Wysokie przeszklenia, funkcjonalne schowki i wszystko, czego potrzeba dwojgu.",
   "cabin_niva_overview_alt": "Domek Niva pośród lasu",
@@ -64,8 +72,17 @@
   "showcase_exterior": "Elewacja",
   "showcase_interior": "Wnętrze",
   "showcase_pricing": "Cena",
-  "showcase_starting_at": "Od",
-  "showcase_plus_installation": "plus montaż.",
+  "showcase_price": [
+    {
+      "declarations": [
+        "input price",
+        "local formattedPrice = price: number style=currency currency=EUR minimumFractionDigits=0 maximumFractionDigits=0"
+      ],
+      "match": {
+        "price=*": "Od {#price}{formattedPrice}{/price}, plus montaż."
+      }
+    }
+  ],
   "showcase_explore": "Poznaj {model}",
   "showcase_view_floor_plan": "Zobacz rzut",
   "showcase_status": "Wyświetlany model {model}: elewacja {exterior}, wnętrze {interior}.",
@@ -84,6 +101,7 @@
   "testimonials_carousel_label": "Opinie klientów",
   "testimonials_read_full": "Przeczytaj pełną opinię — {client}: {quote}",
   "testimonials_position": "Opinia {current} z {total}",
+  "testimonials_details": "{position}. {rating}.",
   "testimonials_close": "Zamknij opinię",
   "testimonials_rating": "Ocena: {rating} na 5 gwiazdek",
   "testimonial_01_quote": "Przestaliśmy myśleć o metrach kwadratowych.",

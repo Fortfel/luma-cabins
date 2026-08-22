@@ -1,6 +1,7 @@
 import type { Locale } from '~/i18n/routing'
 
 import {
+  cabin_area,
   cabin_aster_description,
   cabin_aster_floor_plan_alt,
   cabin_aster_layout,
@@ -22,12 +23,13 @@ interface Cabin {
   readonly id: CabinId
   readonly name: string
   readonly specs: {
+    readonly areaSquareMeters: number
     readonly area: string
     readonly layout: string
   }
   readonly showcase: {
     readonly description: string
-    readonly price: string
+    readonly priceEur: number
   }
   readonly images: {
     readonly overview: string
@@ -45,23 +47,18 @@ interface CabinCatalog {
 
 const createCabinCatalog = (locale: Locale): CabinCatalog => {
   const messageOptions = { locale }
-  const formatArea = new Intl.NumberFormat(locale, { maximumFractionDigits: 0 })
-  const formatPrice = new Intl.NumberFormat(locale, {
-    style: 'currency',
-    currency: 'EUR',
-    maximumFractionDigits: 0,
-  })
   const cabinsById = {
     niva: {
       id: 'niva',
       name: 'Niva',
       specs: {
-        area: `${formatArea.format(20)} m²`,
+        areaSquareMeters: 20,
+        area: cabin_area({ area: 20 }, messageOptions),
         layout: cabin_niva_layout({}, messageOptions),
       },
       showcase: {
         description: cabin_niva_description({}, messageOptions),
-        price: formatPrice.format(130_000),
+        priceEur: 130_000,
       },
       images: {
         overview: '/images/huts/niva/Niva.jpg',
@@ -79,12 +76,13 @@ const createCabinCatalog = (locale: Locale): CabinCatalog => {
       id: 'aster',
       name: 'Aster',
       specs: {
-        area: `${formatArea.format(39)} m²`,
+        areaSquareMeters: 39,
+        area: cabin_area({ area: 39 }, messageOptions),
         layout: cabin_aster_layout({}, messageOptions),
       },
       showcase: {
         description: cabin_aster_description({}, messageOptions),
-        price: formatPrice.format(170_000),
+        priceEur: 170_000,
       },
       images: {
         overview: '/images/huts/aster/Aster.jpg',
@@ -102,12 +100,13 @@ const createCabinCatalog = (locale: Locale): CabinCatalog => {
       id: 'veyra',
       name: 'Veyra',
       specs: {
-        area: `${formatArea.format(56)} m²`,
+        areaSquareMeters: 56,
+        area: cabin_area({ area: 56 }, messageOptions),
         layout: cabin_veyra_layout({}, messageOptions),
       },
       showcase: {
         description: cabin_veyra_description({}, messageOptions),
-        price: formatPrice.format(210_000),
+        priceEur: 210_000,
       },
       images: {
         overview: '/images/huts/veyra/Veyra.jpg',
@@ -125,7 +124,7 @@ const createCabinCatalog = (locale: Locale): CabinCatalog => {
 
   return {
     cabinsById,
-    cabins: [cabinsById.niva, cabinsById.aster, cabinsById.veyra],
+    cabins: [cabinsById.veyra, cabinsById.aster, cabinsById.niva],
   }
 }
 

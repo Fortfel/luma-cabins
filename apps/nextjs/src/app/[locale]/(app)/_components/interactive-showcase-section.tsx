@@ -57,9 +57,8 @@ import {
   showcase_palette_dark_walnut,
   showcase_palette_light_oak,
   showcase_palette_warm_ash,
-  showcase_plus_installation,
+  showcase_price,
   showcase_pricing,
-  showcase_starting_at,
   showcase_status,
   showcase_title,
   showcase_view_floor_plan,
@@ -109,6 +108,9 @@ type ShowcaseSlideStyle = React.CSSProperties & {
 
 const showcaseTitleMarkup = {
   em: ({ children }: { readonly children?: React.ReactNode }) => <em>{children}</em>,
+}
+const showcasePriceMarkup = {
+  price: ({ children }: { readonly children?: React.ReactNode }) => <strong>{children}</strong>,
 }
 
 interface InteractiveShowcaseSectionProps extends React.ComponentProps<'section'> {
@@ -451,9 +453,12 @@ function ConfigurationPanel({
             {showcase_pricing({}, messageOptions)}
           </p>
           <p className="text-body-sm col-span-2 text-foreground sm:col-span-1">
-            <span>{showcase_starting_at({}, messageOptions)} </span>
-            <strong>{activeCabin.showcase.price}</strong>
-            <span> {showcase_plus_installation({}, messageOptions)}</span>
+            <ParaglideMessage
+              message={showcase_price}
+              inputs={{ price: activeCabin.showcase.priceEur }}
+              options={messageOptions}
+              markup={showcasePriceMarkup}
+            />
           </p>
         </div>
 
@@ -517,6 +522,7 @@ function FinishRadioItem({ label, color, value }: { label: string; color: string
       <RadioGroupItem
         id={radioId}
         value={value}
+        aria-label={label}
         className="absolute inset-0 z-10 size-full cursor-pointer opacity-0 after:hidden"
       />
       <Label

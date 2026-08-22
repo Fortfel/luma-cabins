@@ -46,6 +46,14 @@
   "carousel_previous": "Previous slide",
   "carousel_next": "Next slide",
   "dialog_close": "Close",
+  "cabin_area": [
+    {
+      "declarations": ["input area", "local formattedArea = area: number maximumFractionDigits=0"],
+      "match": {
+        "area=*": "{formattedArea} m²"
+      }
+    }
+  ],
   "cabin_niva_layout": "Sleeping loft",
   "cabin_niva_description": "A compact loft cabin for focused escapes. Tall glass, efficient storage, and everything needed for two.",
   "cabin_niva_overview_alt": "Niva cabin surrounded by forest",
@@ -64,8 +72,17 @@
   "showcase_exterior": "Exterior finish",
   "showcase_interior": "Interior palette",
   "showcase_pricing": "Pricing",
-  "showcase_starting_at": "Starting at",
-  "showcase_plus_installation": "plus installation.",
+  "showcase_price": [
+    {
+      "declarations": [
+        "input price",
+        "local formattedPrice = price: number style=currency currency=EUR minimumFractionDigits=0 maximumFractionDigits=0"
+      ],
+      "match": {
+        "price=*": "Starting at {#price}{formattedPrice}{/price} plus installation."
+      }
+    }
+  ],
   "showcase_explore": "Explore {model}",
   "showcase_view_floor_plan": "View floor plan",
   "showcase_status": "Showing {model} with {exterior} exterior and {interior} interior.",
@@ -84,6 +101,7 @@
   "testimonials_carousel_label": "Guest testimonials",
   "testimonials_read_full": "Read full testimonial from {client}: {quote}",
   "testimonials_position": "Testimonial {current} of {total}",
+  "testimonials_details": "{position}. {rating}.",
   "testimonials_close": "Close testimonial",
   "testimonials_rating": "{rating} out of 5 stars",
   "testimonial_01_quote": "We stopped thinking about the square metres.",

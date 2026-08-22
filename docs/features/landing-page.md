@@ -57,7 +57,7 @@ When changing this order, review adjacent background transitions and confirm tha
 
 ## Current Cabin Data
 
-`apps/nextjs/src/app/[locale]/(app)/_data/cabins.ts` is the source of truth for invariant model names, numeric specs and prices, imagery, and the locale-aware `createCabinCatalog(locale)` factory used by the landing page. Layouts, descriptions, media alternatives, areas, and prices are resolved for the active locale before rendering.
+`apps/nextjs/src/app/[locale]/(app)/_data/cabins.ts` is the source of truth for invariant model names, raw `areaSquareMeters` and `priceEur` values, imagery, and the locale-aware `createCabinCatalog(locale)` factory used by the landing page. Layouts, descriptions, media alternatives, and formatted areas are resolved for the active locale while raw numeric values remain available to consumers.
 
 | Model | Current specs           | Showcase starting price |
 | ----- | ----------------------- | ----------------------- |
@@ -65,7 +65,7 @@ When changing this order, review adjacent background transitions and confirm tha
 | Aster | `39 m² · Studio`        | `€170,000`              |
 | Veyra | `56 m² · 1 Bedroom`     | `€210,000`              |
 
-The interactive showcase displays localized “Starting at” and “plus installation” copy around an EUR price formatted for the active locale. Do not add sleeper counts or extra bedroom claims beyond the current typed layout values unless they are added to the cabin data first.
+The interactive showcase passes raw `priceEur` values to one localized pricing message. A Paraglide number declaration formats EUR for the active locale, and message markup preserves the emphasized price without splitting translator-controlled word order or punctuation. Exterior and interior swatches remain radio controls, and each visually swatch-only control carries its localized finish name directly. Do not add sleeper counts or extra bedroom claims beyond the current typed layout values unless they are added to the cabin data first.
 
 ## Layout System
 
@@ -102,7 +102,7 @@ Current fragment status:
 
 | Fragment   | Intended destination | Current status                                                               |
 | ---------- | -------------------- | ---------------------------------------------------------------------------- |
-| `#models`  | Models overview      | Rendered by `ModelsOverviewSection`                                           |
+| `#models`  | Models overview      | Rendered by `ModelsOverviewSection`                                          |
 | `#process` | How it works         | Rendered by `HowItWorksSection`; scroll margin accounts for the fixed navbar |
 | `#faqs`    | FAQ                  | Configured in navigation; no FAQ section is currently rendered               |
 

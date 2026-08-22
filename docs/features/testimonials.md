@@ -121,12 +121,12 @@ The review viewport resets to the top when closing starts, ensuring that quote a
 
 - Each compact card is a labeled Popover trigger.
 - Trigger labels identify the fictional client whose full testimonial will open.
-- Source cards expose testimonial position through screen-reader-only text.
+- Each compact trigger references screen-reader-only descriptive text containing its localized carousel position and rating.
 - Expanded content uses `figure`, `blockquote`, and `figcaption` semantics while retaining the Popover title and description relationships.
 - Escape closes the expanded testimonial.
 - Focus-visible styles remain available on source cards.
 - Reduced-motion preference removes animation durations and disables carousel auto-scroll.
-- Rating stars expose a single accessible rating label while individual icons remain hidden.
+- Expanded rating stars expose a single accessible rating label while individual icons remain hidden; compact stars are decorative because the trigger description already supplies the rating.
 - Trigger labels, carousel semantics, positions, dismissal copy, and ratings use the active locale.
 - Avatar portraits and initials are decorative; every portrait retains initials as its loading and error fallback, while the client name remains available in the footer content.
 - Internal review scrolling remains usable without triggering page-scroll dismissal.

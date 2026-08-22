@@ -79,9 +79,9 @@ Turbo is the generation orchestrator. Scoped app commands must use `pnpm turbo r
 
 `AboutSection` keeps its sentence-level title in one message. The `{#em}` markup tag lets translators move the emphasized phrase without splitting the sentence into fixed fragments; `@inlang/paraglide-js-react` maps that typed tag to the existing italic presentation while receiving the locale explicitly.
 
-`createCabinCatalog(locale)`, `createTestimonials(locale)`, and `createProcessSteps(locale)` combine invariant IDs, names, assets, and geometry with translated copy. Cabin areas and EUR prices remain numeric at the factory boundary and are formatted through `Intl.NumberFormat(locale)` before crossing into Client Components. Existing interactive sections receive an explicit locale and call only their tree-shakable message functions; no global client provider or locale store is introduced.
+`createCabinCatalog(locale)`, `createTestimonials(locale)`, and `createProcessSteps(locale)` combine invariant IDs, names, assets, and geometry with translated copy. The cabin catalog retains raw `areaSquareMeters` and `priceEur` values. Paraglide number declarations format areas and prices for the active locale; the complete pricing sentence remains one message with rich-text markup around the price so translators control its word order and punctuation. Existing interactive sections receive an explicit locale and call only their tree-shakable message functions; no global client provider or locale store is introduced.
 
-Dynamic carousel positions, model labels, testimonial ratings, comparison percentages, process-step announcements, image descriptions, dialog controls, and live-region text are localized. Shared UI primitives retain English defaults for non-localized consumers, while every localized app composition supplies translated accessible names and role descriptions.
+Dynamic carousel positions, model labels, testimonial ratings, comparison percentages, process-step announcements, image descriptions, dialog controls, and live-region text are localized. Compact testimonial triggers reference a localized screen-reader description containing both carousel position and rating. Shared UI primitives retain English defaults for non-localized consumers, while every localized app composition supplies translated accessible names and role descriptions.
 
 ## Verification
 

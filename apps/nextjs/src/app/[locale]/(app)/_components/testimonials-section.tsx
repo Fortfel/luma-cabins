@@ -33,6 +33,7 @@ import {
   carousel_slide_role,
   testimonials_carousel_label,
   testimonials_close,
+  testimonials_details,
   testimonials_position,
   testimonials_rating,
   testimonials_read_full,
@@ -406,11 +407,15 @@ function TestimonialCard({
   isDesktop: boolean
   isHidden: boolean
 }) {
+  const triggerId = getTestimonialTriggerId(testimonial)
+  const descriptionId = `${triggerId}-description`
+
   return (
     <PopoverTrigger
-      id={getTestimonialTriggerId(testimonial)}
+      id={triggerId}
       data-testimonial-index={index}
       aria-label={testimonials_read_full({ client: testimonial.clientName, quote: testimonial.quote }, { locale })}
+      aria-describedby={descriptionId}
       className={cn(
         'flex w-75 flex-col gap-4 rounded-lg border border-border bg-card p-4 text-left text-card-foreground shadow-xs transition-[border-color,box-shadow]',
         'hover:border-foreground/20 hover:shadow-sm',
@@ -425,7 +430,15 @@ function TestimonialCard({
         “{testimonial.quote}”
       </span>
       <TestimonialFooter testimonial={testimonial} locale={locale} isExpanded={false} />
-      <span className="sr-only">{testimonials_position({ current: index + 1, total }, { locale })}</span>
+      <span id={descriptionId} className="sr-only">
+        {testimonials_details(
+          {
+            position: testimonials_position({ current: index + 1, total }, { locale }),
+            rating: testimonials_rating({ rating: testimonial.rating }, { locale }),
+          },
+          { locale },
+        )}
+      </span>
     </PopoverTrigger>
   )
 }
@@ -694,7 +707,7 @@ function TestimonialFooter({
         transition={{ layout: layoutTransition }}
         className={cn('shrink-0', isExpanded ? 'ml-auto' : 'ml-2')}
       >
-        <TestimonialRating rating={testimonial.rating} locale={locale} />
+        <TestimonialRating rating={testimonial.rating} locale={locale} isAccessible={isExpanded} />
       </motion.span>
 
       <motion.span
@@ -710,11 +723,20 @@ function TestimonialFooter({
   )
 }
 
-function TestimonialRating({ rating, locale }: { rating: number; locale: Locale }) {
+function TestimonialRating({
+  rating,
+  locale,
+  isAccessible,
+}: {
+  rating: number
+  locale: Locale
+  isAccessible: boolean
+}) {
   return (
     <span
-      role="img"
-      aria-label={testimonials_rating({ rating }, { locale })}
+      role={isAccessible ? 'img' : undefined}
+      aria-label={isAccessible ? testimonials_rating({ rating }, { locale }) : undefined}
+      aria-hidden={isAccessible ? undefined : true}
       className={cn('flex shrink-0 items-center gap-1 text-[#B08D45]')}
     >
       {RATING_STARS.map((star) => (
