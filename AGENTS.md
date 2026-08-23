@@ -137,8 +137,10 @@ Run the formatter instead of manually rearranging imports
 - Use type aliases where the existing codebase already does so or where unions/utility types fit better
 - Use `Array<T>` instead of `T[]`
 - Prefer `readonly` and `ReadonlyArray<T>` for immutable data where practical
-- Use `as const` for stable literals
-- Use `satisfies` when validating object shapes without widening
+- For static object/array configuration, prefer inferred literals with `as const satisfies ...` over annotating the variable with the target type
+- Use `as const` for stable literals that should preserve their narrow literal/tuple types
+- Use `satisfies` to validate static objects and arrays against a type without widening their inferred type
+- Avoid type annotations such as `const items: ReadonlyArray<Item> = [...]` when `const items = [...] as const satisfies ReadonlyArray<Item>` preserves more useful type information
 - Keep type-only specifiers at top level
 - Do not use `enum`; use unions or `as const` objects instead
 - Do not use non-null assertions (`!`)
