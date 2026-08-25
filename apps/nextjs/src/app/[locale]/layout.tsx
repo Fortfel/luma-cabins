@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import type { Metadata } from 'next'
 
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import localFont from 'next/font/local'
 
 import { Toaster } from '@workspace/ui/components/sonner'
@@ -81,6 +82,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
           {children}
           <Toaster />
         </TooltipProvider>
+        <SpeedInsights />
       </body>
     </html>
   )
