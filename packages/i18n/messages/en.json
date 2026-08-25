@@ -19,10 +19,7 @@
   "about_title": "A simpler path to a quiet {#em}retreat{/em}.",
   "cabin_area": [
     {
-      "declarations": [
-        "input area",
-        "local formattedArea = area: number maximumFractionDigits=0"
-      ],
+      "declarations": ["input area", "local formattedArea = area: number maximumFractionDigits=0"],
       "match": {
         "area=*": "{formattedArea} m²"
       }
