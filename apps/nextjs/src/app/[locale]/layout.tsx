@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react'
 import type { Metadata } from 'next'
 
-import localFont from 'next/font/local'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import localFont from 'next/font/local'
 
 import { Toaster } from '@workspace/ui/components/sonner'
 import { TooltipProvider } from '@workspace/ui/components/tooltip'
