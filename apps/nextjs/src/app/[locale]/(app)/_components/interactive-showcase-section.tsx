@@ -48,12 +48,14 @@ import {
   showcase_explore,
   showcase_exterior,
   showcase_exterior_alt,
+  showcase_exterior_short,
   showcase_finish_charred_wood,
   showcase_finish_oyster,
   showcase_finish_timber,
   showcase_floor_plan_description,
   showcase_floor_plan_title,
   showcase_interior,
+  showcase_interior_short,
   showcase_palette_dark_walnut,
   showcase_palette_light_oak,
   showcase_palette_warm_ash,
@@ -418,7 +420,8 @@ function ConfigurationPanel({
 
         <div className="contents xl:flex xl:flex-col xl:items-start xl:gap-3">
           <p id={exteriorFinishLabelId} className="text-xs font-bold tracking-[0.125rem] text-foreground uppercase">
-            {showcase_exterior({}, messageOptions)}
+            <span className="sm:hidden">{showcase_exterior_short({}, messageOptions)}</span>
+            <span className="hidden sm:inline">{showcase_exterior({}, messageOptions)}</span>
           </p>
           <RadioGroup
             aria-labelledby={exteriorFinishLabelId}
@@ -434,7 +437,8 @@ function ConfigurationPanel({
 
         <div className="contents xl:flex xl:flex-col xl:items-start xl:gap-3">
           <p id={interiorPaletteLabelId} className="text-xs font-bold tracking-[0.125rem] text-foreground uppercase">
-            {showcase_interior({}, messageOptions)}
+            <span className="sm:hidden">{showcase_interior_short({}, messageOptions)}</span>
+            <span className="hidden sm:inline">{showcase_interior({}, messageOptions)}</span>
           </p>
           <RadioGroup
             aria-labelledby={interiorPaletteLabelId}
