@@ -31,7 +31,7 @@
               "fill": {
                 "type": "image",
                 "enabled": true,
-                "url": "images/luma-cabin-hero.webp",
+                "url": "images/luma-cabin-hero-mobile.webp",
                 "mode": "fill"
               },
               "width": 375,
@@ -16205,15 +16205,15 @@
     },
     "unofficial/hero-overlay-top": {
       "type": "color",
-      "value": "#13121173"
+      "value": "#14100A47"
     },
     "unofficial/hero-overlay-middle": {
       "type": "color",
-      "value": "#13121159"
+      "value": "#14100A14"
     },
     "unofficial/hero-overlay-bottom": {
       "type": "color",
-      "value": "#131211CC"
+      "value": "#14100A94"
     },
     "unofficial/primary-foreground-25": {
       "type": "color",
