@@ -58,16 +58,19 @@ function HeroBackground({ pauseLabel, playLabel }: HeroBackgroundProps) {
   return (
     <>
       <div className="pointer-events-none absolute inset-0 -z-10 size-full">
-        <Image
-          src="/images/luma-cabin-hero.webp"
-          alt=""
-          fill
-          loading="eager"
-          fetchPriority="high"
-          decoding="sync"
-          sizes="100vw"
-          className="absolute inset-0 size-full object-cover"
-        />
+        <picture className="absolute inset-0 size-full">
+          <source media="(max-width: 767px)" srcSet="/images/luma-cabin-hero-mobile.webp" type="image/webp" />
+          <Image
+            src="/images/luma-cabin-hero.webp"
+            alt=""
+            fill
+            loading="eager"
+            fetchPriority="high"
+            decoding="sync"
+            sizes="100vw"
+            className="absolute inset-0 size-full object-cover"
+          />
+        </picture>
 
         <video
           ref={videoRef}
@@ -83,11 +86,14 @@ function HeroBackground({ pauseLabel, playLabel }: HeroBackgroundProps) {
           }}
           className="absolute inset-0 size-full object-cover"
         >
-          <source src="/videos/hero_video.mp4" type="video/mp4" />
+          <source media="(max-width: 767px)" src="/videos/hero_mobile.webm" type="video/webm" />
+          <source media="(max-width: 767px)" src="/videos/hero_mobile.mp4" type="video/mp4" />
+          <source src="/videos/hero_desktop.webm" type="video/webm" />
+          <source src="/videos/hero_desktop.mp4" type="video/mp4" />
         </video>
 
         {/* OVERLAY */}
-        <div className="absolute inset-0 size-full bg-[linear-gradient(180deg,rgba(19,18,17,0.45)_0%,rgba(19,18,17,0.35)_50%,rgba(19,18,17,0.80)_100%)]"></div>
+        <div className="absolute inset-0 size-full bg-[linear-gradient(180deg,rgba(20,16,10,0.28)_0%,rgba(20,16,10,0.08)_36%,rgba(20,16,10,0.58)_100%)]" />
       </div>
       <PlayPauseButton
         isPaused={isPaused}
