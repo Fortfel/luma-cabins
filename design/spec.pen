@@ -93,7 +93,7 @@
                   },
                   {
                     "color": "$unofficial/hero-overlay-middle",
-                    "position": 0.5
+                    "position": 0.36
                   },
                   {
                     "color": "$unofficial/hero-overlay-bottom",
@@ -4619,7 +4619,7 @@
                   },
                   {
                     "color": "$unofficial/hero-overlay-middle",
-                    "position": 0.5
+                    "position": 0.36
                   },
                   {
                     "color": "$unofficial/hero-overlay-bottom",
@@ -9969,7 +9969,7 @@
                   },
                   {
                     "color": "$unofficial/hero-overlay-middle",
-                    "position": 0.5
+                    "position": 0.36
                   },
                   {
                     "color": "$unofficial/hero-overlay-bottom",
@@ -16213,7 +16213,7 @@
     },
     "unofficial/hero-overlay-bottom": {
       "type": "color",
-      "value": "#14100A94"
+      "value": "#14100AC7"
     },
     "unofficial/primary-foreground-25": {
       "type": "color",

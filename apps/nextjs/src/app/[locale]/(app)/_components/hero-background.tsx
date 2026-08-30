@@ -93,7 +93,7 @@ function HeroBackground({ pauseLabel, playLabel }: HeroBackgroundProps) {
         </video>
 
         {/* OVERLAY */}
-        <div className="absolute inset-0 size-full bg-[linear-gradient(180deg,rgba(20,16,10,0.28)_0%,rgba(20,16,10,0.08)_36%,rgba(20,16,10,0.58)_100%)]" />
+        <div className="absolute inset-0 size-full bg-[linear-gradient(180deg,rgba(20,16,10,0.28)_0%,rgba(20,16,10,0.08)_36%,rgba(20,16,10,0.78)_100%)]" />
       </div>
       <PlayPauseButton
         isPaused={isPaused}
