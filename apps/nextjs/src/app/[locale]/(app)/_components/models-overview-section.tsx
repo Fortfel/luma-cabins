@@ -278,7 +278,11 @@ function ModelsOverviewSection({ locale, className, ...props }: ModelsOverviewSe
   }
 
   return (
-    <section id="models" className={className} {...props}>
+    <section
+      id="models"
+      className={cn('scroll-mt-(--nav-height) md:scroll-mt-[calc(var(--nav-height)+0.5rem)]', className)}
+      {...props}
+    >
       <h2 className="sr-only">{models_section_label({}, messageOptions)}</h2>
       <div
         className="container-page-4xl container-bleed 4xl:[--container-min-margin:1rem]"
