@@ -1952,7 +1952,11 @@
                                   "width": 24,
                                   "height": 24,
                                   "cornerRadius": "$--radius-full",
-                                  "stroke": "$--border",
+                                  "stroke": {
+                                    "type": "color",
+                                    "color": "$--border",
+                                    "enabled": false
+                                  },
                                   "strokeWidth": 1,
                                   "justifyContent": "center",
                                   "alignItems": "center",
@@ -1963,7 +1967,7 @@
                                       "name": "Expand Icon",
                                       "width": 14,
                                       "height": 14,
-                                      "icon": "plus",
+                                      "icon": "arrow-up-right",
                                       "library": "lucide",
                                       "fill": "$--muted-foreground"
                                     }
@@ -2126,7 +2130,11 @@
                                   "width": 24,
                                   "height": 24,
                                   "cornerRadius": "$--radius-full",
-                                  "stroke": "$--border",
+                                  "stroke": {
+                                    "type": "color",
+                                    "color": "$--border",
+                                    "enabled": false
+                                  },
                                   "strokeWidth": 1,
                                   "justifyContent": "center",
                                   "alignItems": "center",
@@ -2137,7 +2145,7 @@
                                       "name": "Expand Icon",
                                       "width": 14,
                                       "height": 14,
-                                      "icon": "plus",
+                                      "icon": "arrow-up-right",
                                       "library": "lucide",
                                       "fill": "$--muted-foreground"
                                     }
@@ -2300,7 +2308,11 @@
                                   "width": 24,
                                   "height": 24,
                                   "cornerRadius": "$--radius-full",
-                                  "stroke": "$--border",
+                                  "stroke": {
+                                    "type": "color",
+                                    "color": "$--border",
+                                    "enabled": false
+                                  },
                                   "strokeWidth": 1,
                                   "justifyContent": "center",
                                   "alignItems": "center",
@@ -2311,7 +2323,7 @@
                                       "name": "Expand Icon",
                                       "width": 14,
                                       "height": 14,
-                                      "icon": "plus",
+                                      "icon": "arrow-up-right",
                                       "library": "lucide",
                                       "fill": "$--muted-foreground"
                                     }
@@ -2474,7 +2486,11 @@
                                   "width": 24,
                                   "height": 24,
                                   "cornerRadius": "$--radius-full",
-                                  "stroke": "$--border",
+                                  "stroke": {
+                                    "type": "color",
+                                    "color": "$--border",
+                                    "enabled": false
+                                  },
                                   "strokeWidth": 1,
                                   "justifyContent": "center",
                                   "alignItems": "center",
@@ -2485,7 +2501,7 @@
                                       "name": "Expand Icon",
                                       "width": 14,
                                       "height": 14,
-                                      "icon": "plus",
+                                      "icon": "arrow-up-right",
                                       "library": "lucide",
                                       "fill": "$--muted-foreground"
                                     }
@@ -2648,7 +2664,11 @@
                                   "width": 24,
                                   "height": 24,
                                   "cornerRadius": "$--radius-full",
-                                  "stroke": "$--border",
+                                  "stroke": {
+                                    "type": "color",
+                                    "color": "$--border",
+                                    "enabled": false
+                                  },
                                   "strokeWidth": 1,
                                   "justifyContent": "center",
                                   "alignItems": "center",
@@ -2659,7 +2679,7 @@
                                       "name": "Expand Icon",
                                       "width": 14,
                                       "height": 14,
-                                      "icon": "plus",
+                                      "icon": "arrow-up-right",
                                       "library": "lucide",
                                       "fill": "$--muted-foreground"
                                     }
@@ -2822,7 +2842,11 @@
                                   "width": 24,
                                   "height": 24,
                                   "cornerRadius": "$--radius-full",
-                                  "stroke": "$--border",
+                                  "stroke": {
+                                    "type": "color",
+                                    "color": "$--border",
+                                    "enabled": false
+                                  },
                                   "strokeWidth": 1,
                                   "justifyContent": "center",
                                   "alignItems": "center",
@@ -2833,7 +2857,7 @@
                                       "name": "Expand Icon",
                                       "width": 14,
                                       "height": 14,
-                                      "icon": "plus",
+                                      "icon": "arrow-up-right",
                                       "library": "lucide",
                                       "fill": "$--muted-foreground"
                                     }
@@ -7246,7 +7270,11 @@
                                   "width": 24,
                                   "height": 24,
                                   "cornerRadius": "$--radius-full",
-                                  "stroke": "$--border",
+                                  "stroke": {
+                                    "type": "color",
+                                    "color": "$--border",
+                                    "enabled": false
+                                  },
                                   "strokeWidth": 1,
                                   "justifyContent": "center",
                                   "alignItems": "center",
@@ -7257,7 +7285,7 @@
                                       "name": "Expand Icon",
                                       "width": 14,
                                       "height": 14,
-                                      "icon": "plus",
+                                      "icon": "arrow-up-right",
                                       "library": "lucide",
                                       "fill": "$--muted-foreground"
                                     }
@@ -7420,7 +7448,11 @@
                                   "width": 24,
                                   "height": 24,
                                   "cornerRadius": "$--radius-full",
-                                  "stroke": "$--border",
+                                  "stroke": {
+                                    "type": "color",
+                                    "color": "$--border",
+                                    "enabled": false
+                                  },
                                   "strokeWidth": 1,
                                   "justifyContent": "center",
                                   "alignItems": "center",
@@ -7431,7 +7463,7 @@
                                       "name": "Expand Icon",
                                       "width": 14,
                                       "height": 14,
-                                      "icon": "plus",
+                                      "icon": "arrow-up-right",
                                       "library": "lucide",
                                       "fill": "$--muted-foreground"
                                     }
@@ -7594,7 +7626,11 @@
                                   "width": 24,
                                   "height": 24,
                                   "cornerRadius": "$--radius-full",
-                                  "stroke": "$--border",
+                                  "stroke": {
+                                    "type": "color",
+                                    "color": "$--border",
+                                    "enabled": false
+                                  },
                                   "strokeWidth": 1,
                                   "justifyContent": "center",
                                   "alignItems": "center",
@@ -7605,7 +7641,7 @@
                                       "name": "Expand Icon",
                                       "width": 14,
                                       "height": 14,
-                                      "icon": "plus",
+                                      "icon": "arrow-up-right",
                                       "library": "lucide",
                                       "fill": "$--muted-foreground"
                                     }
@@ -7768,7 +7804,11 @@
                                   "width": 24,
                                   "height": 24,
                                   "cornerRadius": "$--radius-full",
-                                  "stroke": "$--border",
+                                  "stroke": {
+                                    "type": "color",
+                                    "color": "$--border",
+                                    "enabled": false
+                                  },
                                   "strokeWidth": 1,
                                   "justifyContent": "center",
                                   "alignItems": "center",
@@ -7779,7 +7819,7 @@
                                       "name": "Expand Icon",
                                       "width": 14,
                                       "height": 14,
-                                      "icon": "plus",
+                                      "icon": "arrow-up-right",
                                       "library": "lucide",
                                       "fill": "$--muted-foreground"
                                     }
@@ -7942,7 +7982,11 @@
                                   "width": 24,
                                   "height": 24,
                                   "cornerRadius": "$--radius-full",
-                                  "stroke": "$--border",
+                                  "stroke": {
+                                    "type": "color",
+                                    "color": "$--border",
+                                    "enabled": false
+                                  },
                                   "strokeWidth": 1,
                                   "justifyContent": "center",
                                   "alignItems": "center",
@@ -7953,7 +7997,7 @@
                                       "name": "Expand Icon",
                                       "width": 14,
                                       "height": 14,
-                                      "icon": "plus",
+                                      "icon": "arrow-up-right",
                                       "library": "lucide",
                                       "fill": "$--muted-foreground"
                                     }
@@ -8116,7 +8160,11 @@
                                   "width": 24,
                                   "height": 24,
                                   "cornerRadius": "$--radius-full",
-                                  "stroke": "$--border",
+                                  "stroke": {
+                                    "type": "color",
+                                    "color": "$--border",
+                                    "enabled": false
+                                  },
                                   "strokeWidth": 1,
                                   "justifyContent": "center",
                                   "alignItems": "center",
@@ -8127,7 +8175,7 @@
                                       "name": "Expand Icon",
                                       "width": 14,
                                       "height": 14,
-                                      "icon": "plus",
+                                      "icon": "arrow-up-right",
                                       "library": "lucide",
                                       "fill": "$--muted-foreground"
                                     }
@@ -12826,7 +12874,11 @@
                                       "width": 24,
                                       "height": 24,
                                       "cornerRadius": "$--radius-full",
-                                      "stroke": "$--border",
+                                      "stroke": {
+                                        "type": "color",
+                                        "color": "$--border",
+                                        "enabled": false
+                                      },
                                       "strokeWidth": 1,
                                       "justifyContent": "center",
                                       "alignItems": "center",
@@ -12837,7 +12889,7 @@
                                           "name": "Expand Icon",
                                           "width": 14,
                                           "height": 14,
-                                          "icon": "plus",
+                                          "icon": "arrow-up-right",
                                           "library": "lucide",
                                           "fill": "$--muted-foreground"
                                         }
@@ -13001,7 +13053,11 @@
                                       "width": 24,
                                       "height": 24,
                                       "cornerRadius": "$--radius-full",
-                                      "stroke": "$--border",
+                                      "stroke": {
+                                        "type": "color",
+                                        "color": "$--border",
+                                        "enabled": false
+                                      },
                                       "strokeWidth": 1,
                                       "justifyContent": "center",
                                       "alignItems": "center",
@@ -13012,7 +13068,7 @@
                                           "name": "Expand Icon",
                                           "width": 14,
                                           "height": 14,
-                                          "icon": "plus",
+                                          "icon": "arrow-up-right",
                                           "library": "lucide",
                                           "fill": "$--muted-foreground"
                                         }
@@ -13175,7 +13231,11 @@
                                       "width": 24,
                                       "height": 24,
                                       "cornerRadius": "$--radius-full",
-                                      "stroke": "$--border",
+                                      "stroke": {
+                                        "type": "color",
+                                        "color": "$--border",
+                                        "enabled": false
+                                      },
                                       "strokeWidth": 1,
                                       "justifyContent": "center",
                                       "alignItems": "center",
@@ -13186,7 +13246,7 @@
                                           "name": "Expand Icon",
                                           "width": 14,
                                           "height": 14,
-                                          "icon": "plus",
+                                          "icon": "arrow-up-right",
                                           "library": "lucide",
                                           "fill": "$--muted-foreground"
                                         }
@@ -13349,7 +13409,11 @@
                                       "width": 24,
                                       "height": 24,
                                       "cornerRadius": "$--radius-full",
-                                      "stroke": "$--border",
+                                      "stroke": {
+                                        "type": "color",
+                                        "color": "$--border",
+                                        "enabled": false
+                                      },
                                       "strokeWidth": 1,
                                       "justifyContent": "center",
                                       "alignItems": "center",
@@ -13360,7 +13424,7 @@
                                           "name": "Expand Icon",
                                           "width": 14,
                                           "height": 14,
-                                          "icon": "plus",
+                                          "icon": "arrow-up-right",
                                           "library": "lucide",
                                           "fill": "$--muted-foreground"
                                         }
@@ -13523,7 +13587,11 @@
                                       "width": 24,
                                       "height": 24,
                                       "cornerRadius": "$--radius-full",
-                                      "stroke": "$--border",
+                                      "stroke": {
+                                        "type": "color",
+                                        "color": "$--border",
+                                        "enabled": false
+                                      },
                                       "strokeWidth": 1,
                                       "justifyContent": "center",
                                       "alignItems": "center",
@@ -13534,7 +13602,7 @@
                                           "name": "Expand Icon",
                                           "width": 14,
                                           "height": 14,
-                                          "icon": "plus",
+                                          "icon": "arrow-up-right",
                                           "library": "lucide",
                                           "fill": "$--muted-foreground"
                                         }
@@ -13697,7 +13765,11 @@
                                       "width": 24,
                                       "height": 24,
                                       "cornerRadius": "$--radius-full",
-                                      "stroke": "$--border",
+                                      "stroke": {
+                                        "type": "color",
+                                        "color": "$--border",
+                                        "enabled": false
+                                      },
                                       "strokeWidth": 1,
                                       "justifyContent": "center",
                                       "alignItems": "center",
@@ -13708,7 +13780,7 @@
                                           "name": "Expand Icon",
                                           "width": 14,
                                           "height": 14,
-                                          "icon": "plus",
+                                          "icon": "arrow-up-right",
                                           "library": "lucide",
                                           "fill": "$--muted-foreground"
                                         }

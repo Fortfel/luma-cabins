@@ -7,7 +7,7 @@ import type { Locale } from '~/i18n/routing'
 
 import { useEffect, useEffectEvent, useLayoutEffect, useState } from 'react'
 
-import { Plus, Star } from 'lucide-react'
+import { ArrowUpRight, Star } from 'lucide-react'
 import { motion } from 'motion/react'
 import { createPortal } from 'react-dom'
 
@@ -326,7 +326,7 @@ function TestimonialsSection({ locale, className, ...props }: TestimonialsSectio
             aria-label={testimonials_carousel_label({}, messageOptions)}
             aria-roledescription={carousel_role({}, messageOptions)}
             setApi={setApi}
-            opts={{ align: 'start', dragFree: true, loop: true, watchDrag: !isDesktop, watchFocus: false }}
+            opts={{ align: 'start', dragFree: true, loop: true, watchDrag: true, watchFocus: false }}
             plugins={carouselPlugins}
             onMouseEnter={() => {
               setIsMouseOver(true)
@@ -339,8 +339,7 @@ function TestimonialsSection({ locale, className, ...props }: TestimonialsSectio
             className={cn(
               'w-full min-w-0 flex-1 overflow-hidden',
               '**:data-[slot=carousel-content]:h-full',
-              !isDesktop &&
-                '**:data-[slot=carousel-content]:cursor-grab **:data-[slot=carousel-content]:select-none **:data-[slot=carousel-content]:active:cursor-grabbing',
+              '**:data-[slot=carousel-content]:cursor-grab **:data-[slot=carousel-content]:select-none **:data-[slot=carousel-content]:active:cursor-grabbing',
             )}
           >
             <div className="w-full min-w-0 mask-[linear-gradient(to_right,transparent_0,rgb(0_0_0/20%)_12px,black_24px,black_calc(100%-24px),rgb(0_0_0/20%)_calc(100%-12px),transparent_100%)] mask-alpha md:mask-[linear-gradient(to_right,transparent_0,rgb(0_0_0/20%)_40px,black_80px,black_calc(100%-80px),rgb(0_0_0/20%)_calc(100%-40px),transparent_100%)]">
@@ -356,7 +355,6 @@ function TestimonialsSection({ locale, className, ...props }: TestimonialsSectio
                       index={index}
                       locale={locale}
                       total={testimonials.length}
-                      isDesktop={isDesktop}
                       isHidden={isPopoverOpen && isPopoverReady && index === activeIndex}
                     />
                   </CarouselItem>
@@ -397,14 +395,12 @@ function TestimonialCard({
   index,
   locale,
   total,
-  isDesktop,
   isHidden,
 }: {
   testimonial: Testimonial
   index: number
   locale: Locale
   total: number
-  isDesktop: boolean
   isHidden: boolean
 }) {
   const triggerId = getTestimonialTriggerId(testimonial)
@@ -423,7 +419,7 @@ function TestimonialCard({
         'lg:w-[clamp(18.75rem,calc(11.25rem+11.71875vw),22.5rem)]',
         'xl:p-5',
         isHidden && 'invisible',
-        isDesktop ? 'cursor-pointer' : 'cursor-grab active:cursor-grabbing',
+        'cursor-pointer',
       )}
     >
       <span className="text-body-md line-clamp-2 h-[2lh] font-heading leading-[1.3] font-medium">
@@ -715,9 +711,9 @@ function TestimonialFooter({
         initial={false}
         animate={{ opacity: isExpanded ? 0 : 1, scale: isExpanded ? 0.8 : 1 }}
         transition={fadeTransition}
-        className="absolute right-0 flex size-6 items-center justify-center rounded-full border border-border text-muted-foreground"
+        className="absolute right-0 flex size-6 items-center justify-center text-muted-foreground"
       >
-        <Plus className="size-3.5" />
+        <ArrowUpRight className="size-3.5" />
       </motion.span>
     </span>
   )

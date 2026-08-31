@@ -47,7 +47,8 @@ The carousel uses Embla with the shared `AutoScroll` plugin.
 - Auto-scroll stops during mouse hover, keyboard focus, pointer interaction, card repositioning, or an open Popover.
 - Carousel hover state is reconciled after the Popover unmounts because its full-screen backdrop can consume the browser's normal `mouseenter` and `mouseleave` sequence.
 - Embla auto-scroll eligibility is reapplied after `reInit`, including automatic reinitialization caused by window resizing.
-- Desktop dragging is disabled; mobile dragging remains enabled.
+- Dragging is enabled at every viewport width.
+- Testimonial cards use a pointer cursor in every interaction state, including while dragging.
 - Selecting a partially faded card stops auto-scroll and moves the card into a safe horizontal area before expansion.
 - Mobile uses a `12px` edge inset.
 - Viewports at `768px` and wider use a `92px` inset, covering the `80px` visual fade plus a `12px` buffer.
@@ -64,7 +65,7 @@ Instead, the expanded overlay keeps a full-height content layout while animating
 
 - Shell height morphs between compact and expanded card heights.
 - Quote and attribution remain visible throughout the transition.
-- Compact footers show a generated fictional portrait, rating, and plus affordance; expanded footers reveal the fictional client name, move the rating right, and hide the plus.
+- Compact footers show a generated fictional portrait, rating, and arrow affordance; expanded footers reveal the fictional client name, move the rating right, and hide the arrow.
 - Quote moves from its compact position toward the expanded header position.
 - Attribution and rating move in the opposite direction toward the expanded footer position.
 - Full review fades and moves into place after the frame begins opening.
@@ -187,3 +188,4 @@ Client names, initials, ratings, and testimonials are fictional portfolio conten
 - July 2026: made page scrolling trigger the existing full closing animation while preserving internal review scrolling.
 - July 2026: added a hidden preparation frame before opening to prevent intermittent text-first paint races.
 - July 2026: added fictional client identities and an Avatar-based footer morph to clarify card expandability.
+- August 2026: enabled testimonial dragging at every viewport width.
