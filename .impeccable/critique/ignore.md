@@ -33,3 +33,11 @@
 - Interior Comparison labels are intentionally concise and editorial. `Focus / Light oak` and `Unwind / Dark walnut` complement the visible workspace and lounge imagery rather than restating it in functional terms. More descriptive image alt text is intentional for accessibility. Do not flag the labels for lacking workspace/lounge descriptors alone unless the visual distinction is genuinely unclear.
 
 - The Interior Comparison intentionally opens at a 56/44 split for visual composition and image framing rather than to imply a preference between `Focus` and `Unwind`. Both directions are presented as equal examples. Do not flag the non-50/50 starting position alone unless it creates an actual visual or semantic imbalance.
+
+- Mobile carousel pagination dots intentionally remain small. They are primarily visual indicators; swipe/drag is the primary carousel interaction. Click/tap behavior is supplementary.
+
+- The How It Works section intentionally presents a high-level customer journey rather than a contractual scope-of-work or responsibility matrix. Luma, customer, and local-partner roles may be indicated where useful, but each stage does not need to define an explicit input, responsibility, handoff, and exclusion. Do not flag cautious scope language alone unless the process becomes materially misleading or contradictory.
+
+- How It Works media is intentionally illustrative and editorial rather than documentary proof of every operational task described in each stage. Do not require footage to literally demonstrate access review, utilities, delivery, handover, or every process bullet unless the media becomes clearly unrelated to the stage.
+
+- The final mobile How It Works CTA intentionally overlays the Step 04 media instead of sitting below the body copy. Keeping it out of normal flow prevents the CTA from increasing the shared carousel card height and creating unnecessary empty space in the other steps. Do not flag this placement alone unless it causes an actual usability, readability, or accessibility problem.

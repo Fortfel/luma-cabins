@@ -297,7 +297,7 @@ function HowItWorksExperience({ steps, labels }: { steps: ReadonlyArray<ProcessS
       return
     }
 
-    carouselApi?.scrollTo(index)
+    carouselApi?.scrollTo(index, shouldReduceMotion)
   }
 
   return (
@@ -367,6 +367,7 @@ function HowItWorksExperience({ steps, labels }: { steps: ReadonlyArray<ProcessS
                 data-process-slide={index}
                 aria-label={step.ariaLabel}
                 aria-roledescription={labels.slideRole}
+                aria-hidden={index !== activeStepIndex}
                 className="flex basis-[87%] cursor-grab ps-0 active:cursor-grabbing"
               >
                 <ProcessMobileCard
@@ -389,7 +390,7 @@ function HowItWorksExperience({ steps, labels }: { steps: ReadonlyArray<ProcessS
                   aria-label={step.showLabel}
                   aria-current={index === activeStepIndex ? 'step' : undefined}
                   onClick={() => {
-                    carouselApi?.scrollTo(index)
+                    carouselApi?.scrollTo(index, shouldReduceMotion)
                   }}
                   className={cn(
                     'size-2 cursor-pointer rounded-full bg-primary/25 transition-colors focus-visible:ring-3 focus-visible:ring-ring/80 focus-visible:outline-none',
@@ -795,6 +796,7 @@ function ProcessMobileCard({
         {step.cta && (
           <Link
             href={step.cta.href}
+            tabIndex={isActive ? 0 : -1}
             className={cn(buttonVariants({ size: 'lg' }), 'absolute right-2 bottom-8 h-12 px-5')}
           >
             {step.cta.label}
