@@ -49,7 +49,7 @@ function InteriorComparisonSection({ locale, className, ...props }: InteriorComp
         )}
       >
         <h2 className="text-heading-md text-balance md:col-span-9">{interior_title({}, messageOptions)}</h2>
-        <p className="text-body-sm max-w-sm leading-tight text-pretty md:col-span-full md:col-start-10">
+        <p className="text-body-sm max-w-md leading-tight text-pretty md:col-span-full md:col-start-10">
           {interior_description({}, messageOptions)}
         </p>
       </div>
