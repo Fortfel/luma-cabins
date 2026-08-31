@@ -79,3 +79,12 @@ logs/
 
 # generated localization runtime
 apps/nextjs/src/paraglide/
+
+# Generated critique artifacts
+.impeccable/critique/*
+
+# Keep intentional design decisions
+!.impeccable/critique/ignore.md
+
+# OpenChamber screenshots
+.openchamber/screenshots/
