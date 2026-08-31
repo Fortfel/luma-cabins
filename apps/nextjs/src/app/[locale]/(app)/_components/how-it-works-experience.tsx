@@ -309,7 +309,7 @@ function HowItWorksExperience({ steps, labels }: { steps: ReadonlyArray<ProcessS
           shouldReduceMotion={shouldReduceMotion}
           label={labels.timeline}
           onTimelineClick={handleTimelineClick}
-          className="sticky top-[calc(var(--nav-height)+0.5rem)] col-span-4 h-[calc(100svh-var(--nav-height)-0.5rem)] pt-4"
+          className="sticky top-[calc(var(--nav-height)+0.5rem)] col-span-4 h-[calc(100svh-var(--nav-height)-0.5rem)] pt-8"
         />
 
         <div className="col-span-8 col-start-5 xl:col-span-5">
@@ -520,7 +520,7 @@ function ProcessStepCopy({
       data-process-step={step.id}
       className="scroll-mt-[calc(var(--nav-height)+0.5rem)] text-foreground xl:min-h-[calc(100svh-var(--nav-height)-0.5rem)]"
     >
-      <div ref={contentRef} data-process-step-content className="flex flex-col gap-6 pt-4 xl:gap-8">
+      <div ref={contentRef} data-process-step-content className="flex flex-col gap-6 pt-8 xl:gap-8">
         <h3 id={`process-step-${step.id}`} ref={triggerRef} className="text-heading-lg text-balance">
           {step.title}
         </h3>

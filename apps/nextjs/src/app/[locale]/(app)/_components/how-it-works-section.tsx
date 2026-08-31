@@ -37,7 +37,7 @@ function HowItWorksSection({ locale, className, ...props }: HowItWorksSectionPro
       aria-labelledby="process-title"
       {...props}
     >
-      <LandingSectionIntro className="gap-2 md:mb-6">
+      <LandingSectionIntro className="gap-2 md:mb-2">
         <LandingSectionIntroTitle id="process-title">{process_title({}, messageOptions)}</LandingSectionIntroTitle>
         <LandingSectionIntroBody>{process_intro({}, messageOptions)}</LandingSectionIntroBody>
       </LandingSectionIntro>
