@@ -140,15 +140,13 @@
   "showcase_explore": "Poznaj {model}",
   "showcase_exterior": "Elewacja",
   "showcase_exterior_alt": "Domek {model} z elewacją {finish}",
-  "showcase_exterior_short": "Elewacja",
   "showcase_eyebrow": "Stwórz po swojemu",
-  "showcase_finish_charred_wood": "Opalane drewno",
-  "showcase_finish_oyster": "Oyster",
-  "showcase_finish_timber": "Drewno",
+  "showcase_finish_charred_black_oil": "Opalane drewno olejowane",
+  "showcase_finish_natural_timber": "Naturalne drewno",
+  "showcase_finish_whitewashed_timber": "Bielone drewno",
   "showcase_floor_plan_description": "Układ pomieszczeń dla wybranego modelu {model}.",
   "showcase_floor_plan_title": "Plan modelu {model}",
   "showcase_interior": "Wnętrze",
-  "showcase_interior_short": "Wnętrze",
   "showcase_palette_dark_walnut": "Ciemny orzech",
   "showcase_palette_light_oak": "Jasny dąb",
   "showcase_palette_warm_ash": "Jesion",
@@ -163,8 +161,32 @@
       }
     }
   ],
+  "showcase_price_delta": [
+    {
+      "declarations": [
+        "input price",
+        "local formattedPrice = price: number style=currency currency=EUR signDisplay=always minimumFractionDigits=0 maximumFractionDigits=0"
+      ],
+      "match": {
+        "price=*": "{formattedPrice}"
+      }
+    }
+  ],
   "showcase_pricing": "Cena",
-  "showcase_status": "Wybrano model {model} z elewacją {exterior} i wnętrzem {interior}.",
+  "showcase_status": [
+    {
+      "declarations": [
+        "input model",
+        "input exterior",
+        "input interior",
+        "input price",
+        "local formattedPrice = price: number style=currency currency=EUR minimumFractionDigits=0 maximumFractionDigits=0"
+      ],
+      "match": {
+        "model=*,exterior=*,interior=*,price=*": "Wybrano model {model} z elewacją {exterior} i wnętrzem {interior}. Od {formattedPrice}. Montaż osobno."
+      }
+    }
+  ],
   "showcase_title": "Trzy modele. {#em}Nieskończone{/em} możliwości.",
   "showcase_view_floor_plan": "Zobacz plan",
   "testimonial_01_quote": "Przestaliśmy myśleć o metrach kwadratowych.",

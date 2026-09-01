@@ -140,15 +140,13 @@
   "showcase_explore": "Explore {model}",
   "showcase_exterior": "Exterior finish",
   "showcase_exterior_alt": "{model} cabin exterior in {finish}",
-  "showcase_exterior_short": "Exterior",
   "showcase_eyebrow": "Make it yours",
-  "showcase_finish_charred_wood": "Charred wood",
-  "showcase_finish_oyster": "Oyster",
-  "showcase_finish_timber": "Timber",
+  "showcase_finish_charred_black_oil": "Charred Black Oil",
+  "showcase_finish_natural_timber": "Natural Timber",
+  "showcase_finish_whitewashed_timber": "Whitewashed Timber",
   "showcase_floor_plan_description": "Floor plan layout for the selected {model} cabin.",
   "showcase_floor_plan_title": "{model} floor plan",
   "showcase_interior": "Interior palette",
-  "showcase_interior_short": "Interior",
   "showcase_palette_dark_walnut": "Dark walnut",
   "showcase_palette_light_oak": "Light oak",
   "showcase_palette_warm_ash": "Warm ash",
@@ -163,8 +161,32 @@
       }
     }
   ],
+  "showcase_price_delta": [
+    {
+      "declarations": [
+        "input price",
+        "local formattedPrice = price: number style=currency currency=EUR signDisplay=always minimumFractionDigits=0 maximumFractionDigits=0"
+      ],
+      "match": {
+        "price=*": "{formattedPrice}"
+      }
+    }
+  ],
   "showcase_pricing": "Pricing",
-  "showcase_status": "Showing {model} with {exterior} exterior and {interior} interior.",
+  "showcase_status": [
+    {
+      "declarations": [
+        "input model",
+        "input exterior",
+        "input interior",
+        "input price",
+        "local formattedPrice = price: number style=currency currency=EUR minimumFractionDigits=0 maximumFractionDigits=0"
+      ],
+      "match": {
+        "model=*,exterior=*,interior=*,price=*": "Showing {model} with {exterior} exterior and {interior} interior. Starting at {formattedPrice} plus installation."
+      }
+    }
+  ],
   "showcase_title": "Three models. {#em}Unlimited{/em} adventures.",
   "showcase_view_floor_plan": "View floor plan",
   "testimonial_01_quote": "We stopped thinking about the square metres.",
