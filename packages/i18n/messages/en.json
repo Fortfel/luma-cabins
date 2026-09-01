@@ -63,13 +63,13 @@
   "interior_description": "Customize your cabin to match your lifestyle, from the way each room works to the details that make it yours. See how one space can support different ways of living.",
   "interior_focus": "Focus",
   "interior_focus_alt": "Light-oak cabin interior arranged around a built-in workspace and living area.",
-  "interior_focus_finish": "Light oak",
+  "interior_focus_finish": "Light Oak",
   "interior_focus_full": "Focus fully shown",
   "interior_position": "{focusPercent}% Focus, {unwindPercent}% Unwind",
   "interior_title": "Your space, your story.",
   "interior_unwind": "Unwind",
   "interior_unwind_alt": "Lounge-oriented cabin interior with seating and dark-walnut built-in storage.",
-  "interior_unwind_finish": "Dark walnut",
+  "interior_unwind_finish": "Dark Walnut",
   "interior_unwind_full": "Unwind fully shown",
   "metadata_about_description": "About Luma Cabins.",
   "metadata_about_title": "About",
@@ -140,18 +140,16 @@
   "showcase_explore": "Explore {model}",
   "showcase_exterior": "Exterior finish",
   "showcase_exterior_alt": "{model} cabin exterior in {finish}",
-  "showcase_exterior_short": "Exterior",
   "showcase_eyebrow": "Make it yours",
-  "showcase_finish_charred_wood": "Charred wood",
-  "showcase_finish_oyster": "Oyster",
-  "showcase_finish_timber": "Timber",
+  "showcase_finish_charred_black_oil": "Charred Black Oil",
+  "showcase_finish_natural_timber": "Natural Timber",
+  "showcase_finish_whitewashed_timber": "Whitewashed Timber",
   "showcase_floor_plan_description": "Floor plan layout for the selected {model} cabin.",
   "showcase_floor_plan_title": "{model} floor plan",
   "showcase_interior": "Interior palette",
-  "showcase_interior_short": "Interior",
-  "showcase_palette_dark_walnut": "Dark walnut",
-  "showcase_palette_light_oak": "Light oak",
-  "showcase_palette_warm_ash": "Warm ash",
+  "showcase_palette_dark_walnut": "Dark Walnut",
+  "showcase_palette_light_oak": "Light Oak",
+  "showcase_palette_warm_ash": "Warm Ash",
   "showcase_price": [
     {
       "declarations": [
@@ -163,8 +161,32 @@
       }
     }
   ],
+  "showcase_price_delta": [
+    {
+      "declarations": [
+        "input price",
+        "local formattedPrice = price: number style=currency currency=EUR signDisplay=always minimumFractionDigits=0 maximumFractionDigits=0"
+      ],
+      "match": {
+        "price=*": "{formattedPrice}"
+      }
+    }
+  ],
   "showcase_pricing": "Pricing",
-  "showcase_status": "Showing {model} with {exterior} exterior and {interior} interior.",
+  "showcase_status": [
+    {
+      "declarations": [
+        "input model",
+        "input exterior",
+        "input interior",
+        "input price",
+        "local formattedPrice = price: number style=currency currency=EUR minimumFractionDigits=0 maximumFractionDigits=0"
+      ],
+      "match": {
+        "model=*,exterior=*,interior=*,price=*": "Showing {model} with {exterior} exterior and {interior} interior. Starting at {formattedPrice} plus installation."
+      }
+    }
+  ],
   "showcase_title": "Three models. {#em}Unlimited{/em} adventures.",
   "showcase_view_floor_plan": "View floor plan",
   "testimonial_01_quote": "We stopped thinking about the square metres.",

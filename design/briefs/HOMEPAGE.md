@@ -184,11 +184,11 @@ Longer stays, hosting, remote work, and generous indoor-outdoor living.
 
 The current interactive showcase exposes these finish choices:
 
-- Exterior: Timber, Charred wood, Oyster
-- Interior palette: Light oak, Warm ash, Dark walnut
+- Exterior: Natural Timber, Whitewashed Timber, Charred Black Oil
+- Interior palette: Light Oak, Warm Ash, Dark Walnut
 - Floor plan view for the active model
 
-Exterior finish changes currently update the visible cabin imagery. Interior palette selectors are present in the control panel, but the current implementation does not map them to a separate visible image.
+Exterior and interior choices use local circular material swatches with persistent localized labels. Charred Black Oil adds €2,500 and Dark Walnut adds €1,500 to the active cabin's base price. Exterior finish changes update the visible cabin imagery. Interior palette selectors affect the displayed starting price but do not map to a separate visible showcase image.
 
 The following add-ons remain product direction and are not currently surfaced in the homepage UI:
 
@@ -214,15 +214,15 @@ This supports the brand promise of a faster, simpler, higher-quality pre-designe
 
 Exterior finish:
 
-- Timber
-- Charred wood
-- Oyster
+- Natural Timber
+- Whitewashed Timber
+- Charred Black Oil (€2,500 surcharge)
 
 Interior palette:
 
-- Light oak
-- Warm ash
-- Dark walnut
+- Light Oak
+- Warm Ash
+- Dark Walnut
 
 Energy setup:
 
@@ -461,9 +461,9 @@ Left side:
 
 - Current model name
 - Current specs and description
-- Exterior finish options: Timber, Charred wood, Oyster
-- Interior palette options: Light oak, Warm ash, Dark walnut
-- Starting price plus installation note
+- Exterior finish options: Natural Timber, Whitewashed Timber, Charred Black Oil
+- Interior palette options: Light Oak, Warm Ash, Dark Walnut
+- Starting price for the selected finishes plus installation note
 - `Explore {model}` CTA to `/contact`
 - `View floor plan` dialog trigger
 
@@ -481,6 +481,8 @@ Right side:
 - Switch interior palette
 - Toggle floor plan
 - Move to next model
+
+The showcase uses the same circular texture, localized name, and optional localized surcharge structure for every finish at mobile, tablet, and desktop widths. The displayed starting price is derived from the active model's immutable base price plus the selected exterior and interior surcharges; switching models retains the selected finishes and recalculates from the new base. It is not a final all-in configured total: installation and other project-specific costs remain additional. Interior selections change the displayed starting price without changing the showcase image.
 
 The showcase is a polished product preview, not a full configurator. Energy setup and add-ons are not currently interactive homepage controls.
 
@@ -569,8 +571,8 @@ The shipped section compares two Veyra interior variants with a draggable divide
 
 The two current variants are:
 
-- `Focus` — Light oak, with a built-in workspace and living area
-- `Unwind` — Dark walnut, with lounge seating and built-in storage
+- `Focus` — Light Oak, with a built-in workspace and living area
+- `Unwind` — Dark Walnut, with lounge seating and built-in storage
 
 The comparison starts at a 56% split, uses a responsive 3:2-to-16:9 image frame, and supports touch and pointer dragging.
 
@@ -1196,6 +1198,8 @@ Veyra — €210,000
 ```
 
 The UI adds `plus installation`. Pricing remains concept content and should be treated as provisional until approved for publication.
+
+The displayed showcase starting price is derived without mutating the cabin data: active cabin starting price plus the selected exterior surcharge and selected interior surcharge. Natural Timber, Whitewashed Timber, Light Oak, and Warm Ash preserve the base price; Charred Black Oil adds €2,500; Dark Walnut adds €1,500. Both premium choices therefore add €4,000. The same calculation applies to Niva, Aster, and Veyra, and the starting price is formatted for the active locale in EUR. This is not a final all-in configured total; installation and other project-specific costs remain additional.
 
 ---
 

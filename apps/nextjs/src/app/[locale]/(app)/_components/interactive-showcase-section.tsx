@@ -48,18 +48,17 @@ import {
   showcase_explore,
   showcase_exterior,
   showcase_exterior_alt,
-  showcase_exterior_short,
-  showcase_finish_charred_wood,
-  showcase_finish_oyster,
-  showcase_finish_timber,
+  showcase_finish_charred_black_oil,
+  showcase_finish_natural_timber,
+  showcase_finish_whitewashed_timber,
   showcase_floor_plan_description,
   showcase_floor_plan_title,
   showcase_interior,
-  showcase_interior_short,
   showcase_palette_dark_walnut,
   showcase_palette_light_oak,
   showcase_palette_warm_ash,
   showcase_price,
+  showcase_price_delta,
   showcase_pricing,
   showcase_status,
   showcase_title,
@@ -78,14 +77,45 @@ const OPTICAL_OFFSET_ANCHORS = [
 const ZERO_OPTICAL_OFFSETS = [0, 0, 0] as const
 
 const EXTERIOR_FINISH_DEFINITIONS = [
-  { id: 'wood', color: '#C2A06B' },
-  { id: 'black', color: '#2E2A26' },
-  { id: 'white', color: '#E3E0D3' },
-] as const satisfies ReadonlyArray<{ id: CabinExteriorFinishId; color: string }>
+  {
+    id: 'wood',
+    swatchSrc: '/images/showcase/materials/exterior-natural-timber.jpg',
+    fallbackColor: '#C2A06B',
+  },
+  {
+    id: 'white',
+    swatchSrc: '/images/showcase/materials/exterior-whitewashed-timber.jpg',
+    fallbackColor: '#E3E0D3',
+  },
+  {
+    id: 'black',
+    swatchSrc: '/images/showcase/materials/exterior-charred-black-oil.jpg',
+    fallbackColor: '#2E2A26',
+    priceDeltaEur: 2_500,
+  },
+] as const satisfies ReadonlyArray<{
+  readonly id: CabinExteriorFinishId
+  readonly swatchSrc: string
+  readonly fallbackColor: string
+  readonly priceDeltaEur?: number
+}>
 const INTERIOR_PALETTE_DEFINITIONS = [
-  { id: 'light-oak', color: '#DCC79E' },
-  { id: 'warm-ash', color: '#C2A988' },
-  { id: 'dark-walnut', color: '#5A4636' },
+  {
+    id: 'light-oak',
+    swatchSrc: '/images/showcase/materials/interior-light-oak.jpg',
+    fallbackColor: '#DCC79E',
+  },
+  {
+    id: 'warm-ash',
+    swatchSrc: '/images/showcase/materials/interior-warm-ash.jpg',
+    fallbackColor: '#C2A988',
+  },
+  {
+    id: 'dark-walnut',
+    swatchSrc: '/images/showcase/materials/interior-dark-walnut.jpg',
+    fallbackColor: '#5A4636',
+    priceDeltaEur: 1_500,
+  },
 ] as const
 
 type ExteriorFinishId = (typeof EXTERIOR_FINISH_DEFINITIONS)[number]['id']
@@ -94,7 +124,9 @@ type FinishId = ExteriorFinishId | InteriorPaletteId
 interface Finish<TId extends FinishId> {
   readonly id: TId
   readonly label: string
-  readonly color: string
+  readonly swatchSrc: string
+  readonly fallbackColor: string
+  readonly priceDeltaEur?: number
 }
 type ExteriorFinish = Finish<ExteriorFinishId>
 type InteriorPalette = Finish<InteriorPaletteId>
@@ -130,15 +162,15 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
   const exteriorFinishes = [
     {
       ...EXTERIOR_FINISH_DEFINITIONS[0],
-      label: showcase_finish_timber({}, messageOptions),
+      label: showcase_finish_natural_timber({}, messageOptions),
     },
     {
       ...EXTERIOR_FINISH_DEFINITIONS[1],
-      label: showcase_finish_charred_wood({}, messageOptions),
+      label: showcase_finish_whitewashed_timber({}, messageOptions),
     },
     {
       ...EXTERIOR_FINISH_DEFINITIONS[2],
-      label: showcase_finish_oyster({}, messageOptions),
+      label: showcase_finish_charred_black_oil({}, messageOptions),
     },
   ] as const satisfies ReadonlyArray<ExteriorFinish>
   const interiorPalettes = [
@@ -165,6 +197,9 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
 
   const activeCabin = showcaseCabins[activeIndex]?.cabin ?? cabinsById.niva
   const activeExterior = getExteriorFinish(exteriorFinishes, selectedExterior)
+  const activeInterior = getInteriorPalette(interiorPalettes, selectedInterior)
+  const configuredPriceEur =
+    activeCabin.showcase.priceEur + (activeExterior.priceDeltaEur ?? 0) + (activeInterior.priceDeltaEur ?? 0)
 
   // Keep the visible model summary synchronized with Embla's selected snap, including after reinitialization.
   useEffect(() => {
@@ -231,6 +266,7 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
           interiorPalettes={interiorPalettes}
           selectedExterior={selectedExterior}
           selectedInterior={selectedInterior}
+          configuredPriceEur={configuredPriceEur}
           onExteriorSelect={setSelectedExterior}
           onInteriorSelect={setSelectedInterior}
           onOpenFloorPlan={() => {
@@ -358,7 +394,8 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
             {
               model: activeCabin.name,
               exterior: activeExterior.label.toLocaleLowerCase(locale),
-              interior: getInteriorPalette(interiorPalettes, selectedInterior).label.toLocaleLowerCase(locale),
+              interior: activeInterior.label.toLocaleLowerCase(locale),
+              price: configuredPriceEur,
             },
             messageOptions,
           )}
@@ -377,6 +414,7 @@ function ConfigurationPanel({
   interiorPalettes,
   selectedExterior,
   selectedInterior,
+  configuredPriceEur,
   onExteriorSelect,
   onInteriorSelect,
   onOpenFloorPlan,
@@ -388,6 +426,7 @@ function ConfigurationPanel({
   interiorPalettes: ReadonlyArray<InteriorPalette>
   selectedExterior: ExteriorFinishId
   selectedInterior: InteriorPaletteId
+  configuredPriceEur: number
   onExteriorSelect: (finishId: ExteriorFinishId) => void
   onInteriorSelect: (paletteId: InteriorPaletteId) => void
   onOpenFloorPlan: () => void
@@ -418,48 +457,70 @@ function ConfigurationPanel({
       >
         <ModelSummary cabin={activeCabin} className="hidden xl:flex" isDesktop />
 
-        <div className="contents xl:flex xl:flex-col xl:items-start xl:gap-3">
-          <p id={exteriorFinishLabelId} className="text-xs font-bold tracking-[0.125rem] text-foreground uppercase">
-            <span className="sm:hidden">{showcase_exterior_short({}, messageOptions)}</span>
-            <span className="hidden sm:inline">{showcase_exterior({}, messageOptions)}</span>
+        <div className="col-span-2 grid gap-4 max-md:mb-2 md:contents xl:flex xl:flex-col xl:items-start xl:gap-3">
+          <p
+            id={exteriorFinishLabelId}
+            className="text-body-xs font-bold tracking-[0.125rem] text-foreground uppercase"
+          >
+            {showcase_exterior({}, messageOptions)}
           </p>
           <RadioGroup
             aria-labelledby={exteriorFinishLabelId}
             value={selectedExterior}
             onValueChange={onExteriorSelect}
-            className="flex flex-wrap items-center gap-2.5"
+            className="grid w-full grid-cols-3 items-start gap-x-4 gap-y-4 max-[374px]:grid-cols-2"
           >
             {exteriorFinishes.map((finish) => (
-              <FinishRadioItem key={finish.id} label={finish.label} color={finish.color} value={finish.id} />
+              <FinishRadioItem
+                key={finish.id}
+                label={finish.label}
+                swatchSrc={finish.swatchSrc}
+                fallbackColor={finish.fallbackColor}
+                priceDeltaEur={finish.priceDeltaEur}
+                value={finish.id}
+                isSelected={selectedExterior === finish.id}
+                locale={locale}
+              />
             ))}
           </RadioGroup>
         </div>
 
-        <div className="contents xl:flex xl:flex-col xl:items-start xl:gap-3">
-          <p id={interiorPaletteLabelId} className="text-xs font-bold tracking-[0.125rem] text-foreground uppercase">
-            <span className="sm:hidden">{showcase_interior_short({}, messageOptions)}</span>
-            <span className="hidden sm:inline">{showcase_interior({}, messageOptions)}</span>
+        <div className="col-span-2 grid gap-4 max-md:mb-2 md:contents xl:flex xl:flex-col xl:items-start xl:gap-3">
+          <p
+            id={interiorPaletteLabelId}
+            className="text-body-xs font-bold tracking-[0.125rem] text-foreground uppercase"
+          >
+            {showcase_interior({}, messageOptions)}
           </p>
           <RadioGroup
             aria-labelledby={interiorPaletteLabelId}
             value={selectedInterior}
             onValueChange={onInteriorSelect}
-            className="flex flex-wrap items-center gap-2.5"
+            className="grid w-full grid-cols-3 items-start gap-x-4 gap-y-4 max-[374px]:grid-cols-2"
           >
             {interiorPalettes.map((palette) => (
-              <FinishRadioItem key={palette.id} label={palette.label} color={palette.color} value={palette.id} />
+              <FinishRadioItem
+                key={palette.id}
+                label={palette.label}
+                swatchSrc={palette.swatchSrc}
+                fallbackColor={palette.fallbackColor}
+                priceDeltaEur={palette.priceDeltaEur}
+                value={palette.id}
+                isSelected={selectedInterior === palette.id}
+                locale={locale}
+              />
             ))}
           </RadioGroup>
         </div>
 
         <div className="contents xl:flex xl:flex-col xl:items-start xl:gap-3">
-          <p className="hidden text-xs font-bold tracking-[0.125rem] text-foreground uppercase sm:block">
+          <p className="text-body-xs hidden font-bold tracking-[0.125rem] text-foreground uppercase sm:block">
             {showcase_pricing({}, messageOptions)}
           </p>
           <p className="text-body-sm col-span-2 text-foreground sm:col-span-1">
             <ParaglideMessage
               message={showcase_price}
-              inputs={{ price: activeCabin.showcase.priceEur }}
+              inputs={{ price: configuredPriceEur }}
               options={messageOptions}
               markup={showcasePriceMarkup}
             />
@@ -517,29 +578,66 @@ function ModelSummary({
   )
 }
 
-function FinishRadioItem({ label, color, value }: { label: string; color: string; value: FinishId }) {
+function FinishRadioItem({
+  label,
+  swatchSrc,
+  fallbackColor,
+  priceDeltaEur,
+  value,
+  isSelected,
+  locale,
+}: {
+  label: string
+  swatchSrc: string
+  fallbackColor: string
+  priceDeltaEur?: number
+  value: FinishId
+  isSelected: boolean
+  locale: Locale
+}) {
   const radioId = useId()
+  const labelId = useId()
+  const priceDelta =
+    priceDeltaEur === undefined ? undefined : showcase_price_delta({ price: priceDeltaEur }, { locale })
 
   // The native radio remains the interactive control while the label provides the swatch-style UI.
   return (
     <div className="relative">
       <RadioGroupItem
         id={radioId}
+        aria-labelledby={labelId}
         value={value}
-        aria-label={label}
         className="absolute inset-0 z-10 size-full cursor-pointer opacity-0 after:hidden"
       />
       <Label
+        id={labelId}
         htmlFor={radioId}
         className={cn(
-          'flex size-10 cursor-pointer items-center justify-center rounded-full border border-border bg-transparent text-sm font-medium text-foreground transition-[border-color,background-color]',
+          'text-body-xs flex min-w-0 cursor-pointer flex-col items-center gap-2 rounded-sm pt-2 text-center leading-tight font-medium text-foreground',
           'peer-focus-visible:ring-3 peer-focus-visible:ring-ring/80 peer-focus-visible:outline-none',
-          'lg:h-10 lg:w-auto lg:gap-2 lg:px-3',
-          'peer-data-checked:font-bold peer-data-checked:ring-2 peer-data-checked:ring-primary',
         )}
       >
-        <span aria-hidden="true" className="size-7 rounded-full lg:size-4" style={{ backgroundColor: color }} />
-        <span className="hidden lg:inline">{label}</span>
+        <span
+          className={cn(
+            'relative size-10 shrink-0 rounded-full border-none bg-transparent transition-shadow md:size-11',
+            isSelected && 'ring-2 ring-primary ring-offset-3 ring-offset-background',
+          )}
+          style={{ backgroundColor: fallbackColor }}
+        >
+          <span aria-hidden="true" className="absolute inset-0 overflow-hidden rounded-full">
+            <Image src={swatchSrc} alt="" width={192} height={192} sizes="48px" className="size-full object-cover" />
+          </span>
+          {priceDelta !== undefined && (
+            <span className="pointer-events-none absolute start-1/2 bottom-0 z-10 -translate-x-1/2 translate-y-1/2 rounded-[2px] bg-foreground px-1 py-0.5 text-xs leading-3 font-semibold whitespace-nowrap text-background">
+              {priceDelta}
+            </span>
+          )}
+        </span>
+        <span
+          className={cn('flex min-w-0 flex-col items-center justify-start text-center', isSelected && 'font-semibold')}
+        >
+          <span className="min-h-[2lh]">{label}</span>
+        </span>
       </Label>
     </div>
   )
@@ -879,12 +977,26 @@ function getSlideTweenProgress({
 }
 
 function getExteriorFinish(finishes: ReadonlyArray<ExteriorFinish>, finishId: ExteriorFinishId) {
-  return finishes.find((finish) => finish.id === finishId) ?? finishes[0] ?? { id: 'wood', label: '', color: '' }
+  return (
+    finishes.find((finish) => finish.id === finishId) ??
+    finishes[0] ?? {
+      id: 'wood',
+      label: '',
+      swatchSrc: '',
+      fallbackColor: '',
+    }
+  )
 }
 
 function getInteriorPalette(palettes: ReadonlyArray<InteriorPalette>, paletteId: InteriorPaletteId) {
   return (
-    palettes.find((palette) => palette.id === paletteId) ?? palettes[0] ?? { id: 'light-oak', label: '', color: '' }
+    palettes.find((palette) => palette.id === paletteId) ??
+    palettes[0] ?? {
+      id: 'light-oak',
+      label: '',
+      swatchSrc: '',
+      fallbackColor: '',
+    }
   )
 }
 
