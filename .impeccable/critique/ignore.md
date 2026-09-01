@@ -30,7 +30,7 @@
 
 - The Interior Comparison section is intentionally a visual breathing point rather than a task-critical interaction. The draggable divider and handle are optional enhancement cues; users do not need to discover or manipulate the slider to understand the section. Do not flag the lack of explicit drag instructions alone unless the static presentation becomes unclear or misleading.
 
-- Interior Comparison labels are intentionally concise and editorial. `Focus / Light oak` and `Unwind / Dark walnut` complement the visible workspace and lounge imagery rather than restating it in functional terms. More descriptive image alt text is intentional for accessibility. Do not flag the labels for lacking workspace/lounge descriptors alone unless the visual distinction is genuinely unclear.
+- Interior Comparison labels are intentionally concise and editorial. `Focus / Light Oak` and `Unwind / Dark Walnut` complement the visible workspace and lounge imagery rather than restating it in functional terms. More descriptive image alt text is intentional for accessibility. Do not flag the labels for lacking workspace/lounge descriptors alone unless the visual distinction is genuinely unclear.
 
 - The Interior Comparison intentionally opens at a 56/44 split for visual composition and image framing rather than to imply a preference between `Focus` and `Unwind`. Both directions are presented as equal examples. Do not flag the non-50/50 starting position alone unless it creates an actual visual or semantic imbalance.
 

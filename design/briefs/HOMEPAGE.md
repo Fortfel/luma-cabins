@@ -185,7 +185,7 @@ Longer stays, hosting, remote work, and generous indoor-outdoor living.
 The current interactive showcase exposes these finish choices:
 
 - Exterior: Natural Timber, Whitewashed Timber, Charred Black Oil
-- Interior palette: Light oak, Warm ash, Dark walnut
+- Interior palette: Light Oak, Warm Ash, Dark Walnut
 - Floor plan view for the active model
 
 Exterior and interior choices use local circular material swatches with persistent localized labels. Charred Black Oil adds €2,500 and Dark Walnut adds €1,500 to the active cabin's base price. Exterior finish changes update the visible cabin imagery. Interior palette selectors affect the displayed starting price but do not map to a separate visible showcase image.
@@ -220,9 +220,9 @@ Exterior finish:
 
 Interior palette:
 
-- Light oak
-- Warm ash
-- Dark walnut
+- Light Oak
+- Warm Ash
+- Dark Walnut
 
 Energy setup:
 
@@ -462,7 +462,7 @@ Left side:
 - Current model name
 - Current specs and description
 - Exterior finish options: Natural Timber, Whitewashed Timber, Charred Black Oil
-- Interior palette options: Light oak, Warm ash, Dark walnut
+- Interior palette options: Light Oak, Warm Ash, Dark Walnut
 - Starting price for the selected finishes plus installation note
 - `Explore {model}` CTA to `/contact`
 - `View floor plan` dialog trigger
@@ -571,8 +571,8 @@ The shipped section compares two Veyra interior variants with a draggable divide
 
 The two current variants are:
 
-- `Focus` — Light oak, with a built-in workspace and living area
-- `Unwind` — Dark walnut, with lounge seating and built-in storage
+- `Focus` — Light Oak, with a built-in workspace and living area
+- `Unwind` — Dark Walnut, with lounge seating and built-in storage
 
 The comparison starts at a 56% split, uses a responsive 3:2-to-16:9 image frame, and supports touch and pointer dragging.
 

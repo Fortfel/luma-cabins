@@ -63,13 +63,13 @@
   "interior_description": "Customize your cabin to match your lifestyle, from the way each room works to the details that make it yours. See how one space can support different ways of living.",
   "interior_focus": "Focus",
   "interior_focus_alt": "Light-oak cabin interior arranged around a built-in workspace and living area.",
-  "interior_focus_finish": "Light oak",
+  "interior_focus_finish": "Light Oak",
   "interior_focus_full": "Focus fully shown",
   "interior_position": "{focusPercent}% Focus, {unwindPercent}% Unwind",
   "interior_title": "Your space, your story.",
   "interior_unwind": "Unwind",
   "interior_unwind_alt": "Lounge-oriented cabin interior with seating and dark-walnut built-in storage.",
-  "interior_unwind_finish": "Dark walnut",
+  "interior_unwind_finish": "Dark Walnut",
   "interior_unwind_full": "Unwind fully shown",
   "metadata_about_description": "About Luma Cabins.",
   "metadata_about_title": "About",
@@ -147,9 +147,9 @@
   "showcase_floor_plan_description": "Floor plan layout for the selected {model} cabin.",
   "showcase_floor_plan_title": "{model} floor plan",
   "showcase_interior": "Interior palette",
-  "showcase_palette_dark_walnut": "Dark walnut",
-  "showcase_palette_light_oak": "Light oak",
-  "showcase_palette_warm_ash": "Warm ash",
+  "showcase_palette_dark_walnut": "Dark Walnut",
+  "showcase_palette_light_oak": "Light Oak",
+  "showcase_palette_warm_ash": "Warm Ash",
   "showcase_price": [
     {
       "declarations": [

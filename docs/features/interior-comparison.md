@@ -6,7 +6,7 @@ Implemented after testimonials on the landing page. This document describes curr
 
 ## Purpose
 
-The section presents two inspirational directions for the same cabin interior. Focus pairs a workspace-led layout with light oak. Unwind pairs a lounge-led layout with dark-walnut storage. These are design ideas, not purchasable packages.
+The section presents two inspirational directions for the same cabin interior. Focus pairs a workspace-led layout with Light Oak. Unwind pairs a lounge-led layout with Dark Walnut storage. These are design ideas, not purchasable packages.
 
 ## Implementation Map
 
@@ -84,7 +84,7 @@ Both images use Next.js image optimization and normal lazy loading. Responsive a
 ## Invariants
 
 - Focus remains left and Unwind remains right.
-- Focus maps to Light oak; Unwind maps to Dark walnut.
+- Focus maps to Light Oak; Unwind maps to Dark Walnut.
 - Both source assets must have identical dimensions, camera framing, and canvas position.
 - Structural edges, especially central doors, must not drift during reveal.
 - Both rendered images must retain identical dimensions, `object-cover`, and centered object position.
