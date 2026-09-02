@@ -566,8 +566,8 @@ function ModelSummary({
       <h3 className="text-heading-xl">{cabin.name}</h3>
       <div className="text-body-lg flex gap-2 font-semibold">
         <span>{cabin.specs.area}</span>
-        <span className="hidden text-muted-foreground sm:inline">|</span>
-        <span className="hidden sm:inline">{cabin.specs.layout}</span>
+        <span className="text-muted-foreground">|</span>
+        <span>{cabin.specs.layout}</span>
       </div>
       {isDesktop && (
         <div className="flex min-h-[3lh] items-center">
