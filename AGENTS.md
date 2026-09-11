@@ -281,6 +281,15 @@ For non-UI changes, browser verification is optional unless runtime behavior is 
 
 Do not claim browser verification succeeded if the browser tool was unavailable, blocked, or not actually run.
 
+### Windows Background Servers
+
+When starting long-running development or production servers from OpenCode on Windows:
+
+- Do not use `-RedirectStandardOutput` or `-RedirectStandardError` with `Start-Process`
+- Do not wait on the spawned process
+- Start the server in one tool call and verify it in a separate tool call
+- Prefer checking the listening port or making an HTTP request to verify startup
+
 ## Agent Workflow
 
 - Identify the exact workspace before editing
