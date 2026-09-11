@@ -1,0 +1,81 @@
+{
+  "status": "Roof grain, compact pulls and vertical fridge handles exported, including corner clearance and WC curtains; user testing pending",
+  "editable_source": "niva-final.blend",
+  "source_scene": "Niva_Source",
+  "assets": {
+    "niva-configurator.glb": {
+      "bytes": 7458280,
+      "sha256": "a3b2269b7e86b4de2253ba9610bb60e25685f5f37a5f04259157ac76faf527d9"
+    },
+    "niva-final.blend": {
+      "bytes": 17839151,
+      "sha256": "ede4ae3382bcb3732ab0042709b84a4840fba829932b1119c145c35ae66ed2ca"
+    },
+    "niva-camera.json": {
+      "bytes": 2398,
+      "sha256": "a15d819ffbafa8acbd7838a90d713a90f017b2b8b57bc8ca50254bc6fd121d70"
+    },
+    "niva-presets.json": {
+      "bytes": 4959,
+      "sha256": "196cd155e36c5ab3bd1e9476e3fdbfd1924b0e4b4a2ec228c1bd189717d2f19c"
+    },
+    "renders/niva-configurator-poster.png": {
+      "bytes": 832550,
+      "sha256": "8c36df658b7d394369833fc8ecba371cb98d46d7e6862179af6927ced5992f60"
+    },
+    "finishes/textures/exterior-charred-black-oil-basecolor.jpg": {
+      "bytes": 237319,
+      "sha256": "e55af436e3155e5ecb4ca55a4bbc6059271ef28b115db718c4dad0953b7e66a8"
+    },
+    "finishes/textures/exterior-whitewashed-timber-basecolor.jpg": {
+      "bytes": 259372,
+      "sha256": "5eb497b50640962f3a936f207aad28d69f4fde513921204df52db80b2108c3b9"
+    },
+    "finishes/textures/interior-dark-walnut-basecolor.jpg": {
+      "bytes": 406921,
+      "sha256": "8965baabf0c44bd5deb5831cb8987bd58d5ced5fd5128360149ab141b1047636"
+    },
+    "finishes/textures/interior-warm-ash-basecolor.jpg": {
+      "bytes": 280054,
+      "sha256": "58a8f454fd9882f341f1f007572c47d841fd91f0ad5cbbadb021302012da5eeb"
+    }
+  },
+  "revision_backup": "validation\\before-roof-hardware-20260911-194448",
+  "model_triangles": 82424,
+  "meshes": 474,
+  "nodes": 475,
+  "materials": 27,
+  "embedded_images": 8,
+  "external_finish_images": 4,
+  "all_four_finish_textures_bytes": 1183666,
+  "default_glb_plus_poster_and_metadata_bytes": 8298187,
+  "all_presets_glb_plus_poster_and_metadata_bytes": 9481853,
+  "one_geometry_asset_for_all_combinations": true,
+  "camera_contract": "niva-camera.json",
+  "preset_contract": "niva-presets.json",
+  "poster_source": "Legacy Blender image from before the corner/curtain revision; retained unchanged",
+  "poster_status": "Legacy Blender reference retained; web replacement is installed in the app",
+  "poster_policy": "Do not generate, sync or overwrite Blender posters during asset updates; capture replacements from the web",
+  "web_poster": {
+    "path": "apps/nextjs/public/niva-3d/niva-configurator-poster.png",
+    "bytes": 374814,
+    "sha256": "41fe011bc5eba814e3508ba7358377d96eb6f0c7d5ef1a1974579467506879e6",
+    "resolution": "954 x 866",
+    "source": "Chrome CDP capture of the live Niva WebGL canvas using niva-configurator.glb"
+  },
+  "embedded_texture_source": "Exact 1K/512px image payloads from the pre-revision configurator GLB",
+  "historical_authoring_renders": [
+    "renders/niva-kitchen-revision.png",
+    "renders/niva-wc-door-revision.png",
+    "renders/niva-front-doors-revision.png"
+  ],
+  "tests_run": false,
+  "browser_verification": "Chrome CDP verified the live canvas and captured the 954 x 866 web poster; integrated browser capture timed out",
+  "validation_note": "Prior topology and six-preset review reports describe the older model, not this revision.",
+  "lighting": {
+    "blender": "Opaque sconce backplates and exterior-directed shadow-casting area lights",
+    "runtime_fix_required": true,
+    "reason": "Application-authored exterior point lights do not cast shadows; GLB geometry cannot enable renderer shadows",
+    "handoff": "web-handoff.md#exterior-lamp-leak--runtime-action-required"
+  }
+}
