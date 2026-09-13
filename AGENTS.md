@@ -300,6 +300,31 @@ When starting long-running development or production servers from OpenCode on Wi
 - If work spans multiple packages, use root `pnpm lint` and `pnpm typecheck` when practical
 - If you add a real test setup, update this file with the exact single-test command
 
+## Agent delegation
+
+Keep quick implementation-local checks in the current agent:
+
+- format
+- lint
+- typecheck
+- targeted tests
+- normal build verification
+
+Delegate substantial, repetitive, noisy, or long-running validation to a cheaper subagent, for example:
+
+- Blender/GLB round-trip checks
+- Khronos glTF validation
+- browser automation
+- repeated variant/material checks
+- orbit/performance/statistics validation
+- large mechanical test reports
+
+The primary agent keeps subjective work such as modeling, reference interpretation, design decisions, and visual acceptance.
+
+For visual acceptance, inspect only the minimum representative outputs needed to judge quality. Do not rerun the full validation/render suite if a validation subagent has already produced usable evidence.
+
+Validation subagents should reuse existing scripts, avoid duplicate diagnostics, and return concise actionable results. The primary agent should not rerun the full suite unless the result is ambiguous.
+
 ## Pen File Rules
 
 **Scope:** these rules apply to **spec/production `.pen` files** - `design.lib.pen`, `design/spec.pen`, finalized page specs, and any `.pen` file intended to map directly to code. They do **not** apply to **exploration `.pen` files** used for multi-variant visual exploration, where inventing variables is expected and expected to be reconciled before production handoff. Exploration files should be named or located so they are clearly distinguishable, preferably `design/explorations/` with multiple labeled variants/pages inside.
