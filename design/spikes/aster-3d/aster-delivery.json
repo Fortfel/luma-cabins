@@ -1,0 +1,158 @@
+{
+  "asset": "aster-configurator.glb",
+  "status": "Revision 8; current export is not validated; older reports are historical. Final user inspection pending.",
+  "validation": {
+    "gltf": {
+      "path": "validation/khronos-validator.json",
+      "matches_current_asset": false,
+      "passed": false,
+      "status": "not-run-for-current-export"
+    },
+    "roundtrip": {
+      "path": "validation/blender-roundtrip.json",
+      "matches_current_asset": false,
+      "passed": false,
+      "status": "not-run-for-current-export"
+    },
+    "browser": {
+      "path": "validation/browser-report.json",
+      "matches_current_asset": false,
+      "passed": false,
+      "status": "not-run-for-current-export"
+    }
+  },
+  "poster_status": "Deferred to user web capture; historical Blender renders excluded from current delivery.",
+  "layout_revision": 8,
+  "blender_version": "5.2.1 LTS",
+  "geometry": {
+    "triangles": 74082,
+    "meshes": 570,
+    "nodes": 570,
+    "materials": 25
+  },
+  "embedded_images": 7,
+  "embedded_image_resolution": [
+    1024,
+    1024
+  ],
+  "extensions_used": [
+    "KHR_materials_emissive_strength",
+    "KHR_materials_specular"
+  ],
+  "default_files": [
+    {
+      "path": "aster-configurator.glb",
+      "bytes": 7758360,
+      "sha256": "b8531f903d1186600a24ccd891d5ba496b28f5b51ab740de9ab2f4801c9385e0"
+    },
+    {
+      "path": "aster-camera.json",
+      "bytes": 2810,
+      "sha256": "fb0232a9e018ef02f46f368159a23294db42ae35ea2b1b7cf87ea6403ce3edd7"
+    },
+    {
+      "path": "aster-presets.json",
+      "bytes": 4910,
+      "sha256": "84d7eca7ddf847429561717d1cc5a81b99b0d9ec1eac5108ee40b2558ce531ff"
+    }
+  ],
+  "optional_finish_files": [
+    {
+      "path": "finishes/textures/exterior-charred-black-oil-basecolor.jpg",
+      "bytes": 237319,
+      "sha256": "e55af436e3155e5ecb4ca55a4bbc6059271ef28b115db718c4dad0953b7e66a8"
+    },
+    {
+      "path": "finishes/textures/exterior-whitewashed-timber-basecolor.jpg",
+      "bytes": 259372,
+      "sha256": "5eb497b50640962f3a936f207aad28d69f4fde513921204df52db80b2108c3b9"
+    },
+    {
+      "path": "finishes/textures/interior-dark-walnut-basecolor.jpg",
+      "bytes": 406921,
+      "sha256": "8965baabf0c44bd5deb5831cb8987bd58d5ced5fd5128360149ab141b1047636"
+    },
+    {
+      "path": "finishes/textures/interior-warm-ash-basecolor.jpg",
+      "bytes": 280054,
+      "sha256": "58a8f454fd9882f341f1f007572c47d841fd91f0ad5cbbadb021302012da5eeb"
+    }
+  ],
+  "default_file_bytes": 7766080,
+  "all_optional_texture_bytes": 1183666,
+  "hdri_bytes": 0,
+  "additional_runtime_support_requests": [],
+  "source": {
+    "path": "aster-source.blend",
+    "bytes": 3265353,
+    "sha256": "ef4db5723b3a78c7485af300b8694f058c0514d275d20e40027a7926adaf0b88"
+  },
+  "source_provenance": {
+    "recorded_at_delivery_utc": "2026-09-13T00:57:02.021132+00:00",
+    "scene": "Aster_Source",
+    "layout_revision": 8,
+    "validation_geometry_fix": true,
+    "reproduction_scripts": [
+      {
+        "path": "scripts/build-aster.py",
+        "bytes": 36557,
+        "sha256": "db108e3f5079d5ba513b3b6be2c9405b850453341111fe986d8966070be4a481"
+      },
+      {
+        "path": "scripts/revise-layout.py",
+        "bytes": 24648,
+        "sha256": "bb01a1d8f165e4a46aff0cb437771940bc4a5db143b8d8ee006ff001dd69c1c2"
+      },
+      {
+        "path": "scripts/revise-details.py",
+        "bytes": 9077,
+        "sha256": "34dddc327c754bb541cfb35bd62ec8e4594daf75503ab990a5177dc82d34576a"
+      },
+      {
+        "path": "scripts/revise-cabinets.py",
+        "bytes": 4960,
+        "sha256": "9424a7fe2d29d47c1e0c167a430ac4957c8e6d7050f92735180ead19c0f15cb6"
+      },
+      {
+        "path": "scripts/fit-fridge.py",
+        "bytes": 1917,
+        "sha256": "89a7acecb378c4a89dd74eccbbc09421d389302801ba2ac54d132c919fc8e4a4"
+      },
+      {
+        "path": "scripts/revise-kitchen-roof.py",
+        "bytes": 7314,
+        "sha256": "6973b8b84dbfd3737f04fc63e3672d9208214c015889cb99797ff2615ea57509"
+      },
+      {
+        "path": "scripts/fix-validation-geometry.py",
+        "bytes": 4765,
+        "sha256": "389cdc27166dc5bea76686d26c5378cb2af38ca162e953475ace128d96326198"
+      },
+      {
+        "path": "scripts/extend-gutters.py",
+        "bytes": 1204,
+        "sha256": "7eb3d325a0f40414680114a1e0f9107ad78c6e40b09cca54c2fe01c9831609c1"
+      },
+      {
+        "path": "scripts/resolve-gutter-join.py",
+        "bytes": 2447,
+        "sha256": "e63bfd3a7fe4deac47848f338911bdcb2bd8b42d0151f774350c0ab28eb25677"
+      },
+      {
+        "path": "scripts/package-aster.py",
+        "bytes": 9784,
+        "sha256": "f7b44f97ac8acd9d5af30749e2475dd16da50b1d9e885d3a2cb37b6e3d0cfaa8"
+      }
+    ],
+    "note": "Source hash and revision chain recorded at delivery, not retroactively claimed as part of the earlier round-trip report."
+  },
+  "not_run": [
+    "gltf validation for current export",
+    "roundtrip validation for current export",
+    "browser validation for current export",
+    "final user visual acceptance",
+    "production website integration",
+    "physical mobile/GPU profiling"
+  ],
+  "accounting_note": "File byte sizes and declared topology counts only; not runtime-performance measurements."
+}
