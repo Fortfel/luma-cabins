@@ -1,0 +1,133 @@
+{
+  "asset": "veyra-configurator.glb",
+  "recorded_at_utc": "2026-09-14T22:55:39.373241+00:00",
+  "status": "Revision 5: cabinet access, handle ergonomics and fruit support; validation authorized; see hash-matched validation records.",
+  "validation": {
+    "gltf": {
+      "path": "validation/khronos-validator.json",
+      "matches_current_asset": true,
+      "passed": true
+    },
+    "roundtrip": {
+      "path": "validation/blender-roundtrip.json",
+      "matches_current_asset": true,
+      "passed": true
+    },
+    "clearances": {
+      "path": "validation/cabinet-clearance.json",
+      "matches_current_asset": true,
+      "passed": true
+    },
+    "browser": {
+      "path": "validation/browser-report.json",
+      "matches_current_asset": true,
+      "passed": true
+    }
+  },
+  "revision": 5,
+  "poster_current": false,
+  "review_images": "Initial renders are historical and stale for the current revision; excluded from current payload.",
+  "blender_version": "5.2.1 LTS",
+  "geometry": {
+    "triangles": 203122,
+    "meshes": 584,
+    "nodes": 584,
+    "materials": 34
+  },
+  "embedded_images": 7,
+  "embedded_image_resolution": [
+    1024,
+    1024
+  ],
+  "extensions_used": [
+    "KHR_materials_emissive_strength",
+    "KHR_materials_specular"
+  ],
+  "default_files": [
+    {
+      "path": "veyra-configurator.glb",
+      "bytes": 13385892,
+      "sha256": "ec810585cac81b361b166ae6e86b2ae5a86463a5f662082903224ece9fe4df2c"
+    },
+    {
+      "path": "veyra-camera.json",
+      "bytes": 2708,
+      "sha256": "b3881d1d5877f85223667fa3ddbf1e6b7f049676a281faa942c5e645bc5bc465"
+    },
+    {
+      "path": "veyra-presets.json",
+      "bytes": 4910,
+      "sha256": "2e1cb1259638fa11a150cf54793c243eace6c2da10c607531c737ea671903f19"
+    }
+  ],
+  "optional_finish_files": [
+    {
+      "path": "finishes/textures/exterior-charred-black-oil-basecolor.jpg",
+      "bytes": 237319,
+      "sha256": "e55af436e3155e5ecb4ca55a4bbc6059271ef28b115db718c4dad0953b7e66a8"
+    },
+    {
+      "path": "finishes/textures/exterior-whitewashed-timber-basecolor.jpg",
+      "bytes": 259372,
+      "sha256": "5eb497b50640962f3a936f207aad28d69f4fde513921204df52db80b2108c3b9"
+    },
+    {
+      "path": "finishes/textures/interior-dark-walnut-basecolor.jpg",
+      "bytes": 406921,
+      "sha256": "8965baabf0c44bd5deb5831cb8987bd58d5ced5fd5128360149ab141b1047636"
+    },
+    {
+      "path": "finishes/textures/interior-warm-ash-basecolor.jpg",
+      "bytes": 280054,
+      "sha256": "58a8f454fd9882f341f1f007572c47d841fd91f0ad5cbbadb021302012da5eeb"
+    }
+  ],
+  "default_file_bytes": 13393510,
+  "all_optional_texture_bytes": 1183666,
+  "source": {
+    "path": "veyra-source.blend",
+    "bytes": 5372697,
+    "sha256": "48b891e3e8d951bfd079e9bddde3a7186bab69d616142114d782fe97990541c3"
+  },
+  "scene": "Veyra_Source",
+  "source_scripts": [
+    {
+      "path": "scripts/build-veyra.py",
+      "bytes": 50081,
+      "sha256": "a3121673495b5ee3ed49acc565e32f80614fc742aa9ed430ca92452494133f8e"
+    },
+    {
+      "path": "scripts/package-veyra.py",
+      "bytes": 11710,
+      "sha256": "20c05b7f7a523f9101483402e84dc8e77959762211cfb6ac968446ff243c4e37"
+    },
+    {
+      "path": "scripts/revise-layout.py",
+      "bytes": 32437,
+      "sha256": "dcb704f9fc7daff7a9d244669ac307a8fe68400d689090775315db80e5f4d8bc"
+    },
+    {
+      "path": "scripts/revise-furnishing.py",
+      "bytes": 28988,
+      "sha256": "8e021bc4707575217668672be8d44e672e4166c15b1d21ff65165290c2809794"
+    },
+    {
+      "path": "scripts/refine-kitchen.py",
+      "bytes": 23935,
+      "sha256": "b1a963fae0c72dfdb9214a95c96301e85cdda52333de902a5f2985013277d85f"
+    },
+    {
+      "path": "scripts/refine-cabinet-access.py",
+      "bytes": 8423,
+      "sha256": "e5a02bf4692e15fa3d834ea7636d4d6b883cc41595d330b1996ca5b467626f11"
+    }
+  ],
+  "hdri_bytes": 0,
+  "additional_runtime_support_requests": [],
+  "not_run": [
+    "final user visual approval",
+    "production website integration",
+    "physical mobile/GPU profiling"
+  ],
+  "note": "Declared export counts, byte accounting and authoring images are not validation or performance evidence."
+}

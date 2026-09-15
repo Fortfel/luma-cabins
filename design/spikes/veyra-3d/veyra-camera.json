@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "camera": "Veyra_CanonicalCamera",
+  "asset": "veyra-configurator.glb",
+  "posterStatus": "No current poster supplied. Retained initial Blender renders predate the current revision.",
+  "image": {
+    "width": 1358,
+    "height": 553,
+    "transparent": true,
+    "background": "#f7f5f0"
+  },
+  "coordinateConvention": {
+    "blender": "+Z up, -Y front",
+    "gltf": "+Y up, +Z front",
+    "origin": "ground level at footprint center",
+    "units": "meters",
+    "conversion": "[x, y, z] Blender -> [x, z, -y] glTF"
+  },
+  "position_blender": [
+    -14.0,
+    -29.0,
+    5.650000095367432
+  ],
+  "position_gltf": [
+    -14.0,
+    5.650001525878906,
+    29.0
+  ],
+  "target_blender": [
+    0.0,
+    -0.15000000596046448,
+    2.4000000953674316
+  ],
+  "target_gltf": [
+    0.0,
+    2.4000000953674316,
+    0.14999990165233612
+  ],
+  "lens_mm": 73.0,
+  "sensor_width_mm": 36.0,
+  "sensor_fit": "HORIZONTAL",
+  "near": 0.05000000074505806,
+  "far": 300.0,
+  "shift_x": 0.0,
+  "shift_y": -0.012000000104308128,
+  "matrix_world_blender": [
+    [
+      0.8996656537055969,
+      0.04402125999331474,
+      -0.4343544840812683,
+      -14.0
+    ],
+    [
+      -0.43657952547073364,
+      0.09071540087461472,
+      -0.8950804471969604,
+      -29.0
+    ],
+    [
+      7.209163044308298e-08,
+      0.9949034452438354,
+      0.10083231329917908,
+      5.650000095367432
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "matrix_world_gltf": [
+    [
+      0.8996656537055969,
+      0.04402125999331474,
+      -0.4343544840812683,
+      -14.0
+    ],
+    [
+      9.117512433931552e-08,
+      0.9949034452438354,
+      0.10083235055208206,
+      5.650001525878906
+    ],
+    [
+      0.43657952547073364,
+      -0.0907154455780983,
+      0.8950804471969604,
+      29.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "projection_matrix": [
+    [
+      4.055555820465088,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      9.959213256835938,
+      -0.05893668532371521,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      -1.000333309173584,
+      -0.10001666843891144
+    ],
+    [
+      0.0,
+      0.0,
+      -1.0,
+      0.0
+    ]
+  ],
+  "matrixStorage": "row arrays",
+  "resize": "Preserve horizontal sensor fit and shifts; recompute projection for changed aspect. Convert row arrays correctly for Three.js column-major storage.",
+  "defaults": {
+    "exterior": "natural-timber",
+    "interior": "light-oak"
+  },
+  "status": "Revision 5: cabinet access, handle ergonomics and fruit support; validation authorized"
+}
