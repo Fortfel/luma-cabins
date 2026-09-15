@@ -1,10 +1,14 @@
-# Niva: Roof Grain, Kitchen Hardware And WC Curtains
+# Niva: Gutters, Roof Grain, Kitchen Hardware And WC Curtains
 
-**Current revision: September 11, 2026, roof/hardware follow-up including the corner/curtain fixes.** `niva-final.blend` is the authoritative editable source, using scene `Niva_Source`. The configurator GLB has been regenerated and copied to `apps/nextjs/public/niva-3d/`.
+**Current source: September 15, 2026, gutter follow-up.** `niva-final.blend` is the authoritative editable source, using scene `Niva_Source`. Both gutters now use Veyra's open half-round profile and closed end caps, fitted closely beneath the roof edge and clear of the timber barge trim. Hollow swept downpipe connections replace the intersecting capped elbows.
+
+The September 15 configurator GLB is regenerated and synced to `apps/nextjs/public/niva-3d/niva-configurator.glb`. Delivery hashes/counts and the runtime's displayed payload figures are updated. Existing posters predate this export and remain retained for the user's web-capture workflow. No tests were run. See [web-handoff.md](./web-handoff.md#gutter-delivery--september-15-2026).
+
+**Previous revision: September 11, 2026, roof/hardware follow-up including the corner/curtain fixes.** Those changes remain included in the new export.
 
 **Poster policy: do not generate or overwrite Blender posters.** The browser gate uses a separate poster captured from the live web canvas; the existing design poster remains retained as a historical reference.
 
-## What Changed
+## Retained Roof, Hardware And Interior Changes
 
 - **Roof timber grain:** remapped the front and rear continuous gable trim, including their narrow underside/top faces. Those faces previously had collapsed, zero-width UVs, creating transverse stripes. Grain now follows each sloping board, using the same `FixedArchitecturalTimber` material as `CeilingBeam_0`. The broad gable faces are split at the existing ridge vertices for separate UV islands; vertex positions and the roof silhouette are retained.
 - **Small cabinet pulls:** the three narrow rear drawers and both above-fridge cupboard pulls are shortened from 240 mm to 140 mm, with correspondingly repositioned mounts. Their centering is retained.
@@ -21,8 +25,8 @@
 
 | Asset                                  | Purpose                                            |           Bytes |
 | -------------------------------------- | -------------------------------------------------- | --------------: |
-| `niva-final.blend`                     | Authoritative editable source                      |      17,839,151 |
-| `niva-configurator.glb`                | Current web model                                  |       7,458,280 |
+| `niva-final.blend`                     | Authoritative editable source                      |      17,991,665 |
+| `niva-configurator.glb`                | Current web model                                  |       7,782,032 |
 | `renders/niva-configurator-poster.png` | Legacy 954 × 866 Blender poster; retained unchanged |         832,550 |
 | `apps/nextjs/public/niva-3d/niva-configurator-poster.png` | Web-captured 954 × 866 gate poster |         374,814 |
 | `niva-camera.json`                     | Canonical pose and off-axis projection             |           2,398 |
@@ -30,9 +34,9 @@
 | `finishes/textures/`                   | Four optional finish JPEGs                         | 1,183,666 total |
 | `niva-configurator-delivery.json`      | Current hashes, counts and review status           |        See file |
 
-Export accounting: **82,424 triangles, 474 meshes, 475 nodes, 27 materials, eight embedded images**. Model plus retained legacy poster and camera/preset payload: **8,298,187 bytes**. With all four optional finish textures: **9,481,853 bytes**, before HTTP compression and runtime code. The separate web poster is 374,814 bytes.
+Export accounting: **96,920 triangles, 478 meshes, 479 nodes, 27 materials, eight embedded images**. Model plus retained legacy poster and camera/preset payload: **8,621,939 bytes**. With all four optional finish textures: **9,805,605 bytes**, before HTTP compression and runtime code. The separate retained web poster is 374,814 bytes.
 
-The export reuses the previous GLB's eight optimized image payloads exactly: seven 1K maps and one 512 px fabric map. Authoring textures remain 2K where originally supplied. No decoder or additional texture dependency was introduced. This is a full export from the current source; historical byte-identical geometry claims no longer apply.
+The export reuses the previous GLB's eight optimized image payloads exactly: seven 1K maps and one 512 px fabric map. Authoring textures remain 2K where originally supplied. No decoder or additional texture dependency was introduced. This is a full export from the saved September 15 source, including the final gutter fit and downpipe connections.
 
 ## Finishes And Camera
 
@@ -52,9 +56,11 @@ The retained design poster was rendered during the previous door/L-kitchen pass 
 - [Front doors](./renders/niva-front-doors-revision.png)
 - [Legacy authoring poster](./renders/niva-configurator-poster.png)
 
-The linked design image files predate these follow-ups. Temporary in-memory close-ups of the curtains, kitchen and roof trim were used during authoring; the separate web poster was captured after the browser GLB was updated. **No automated test suite, topology-validation script or six-preset review suite was run.** Targeted typecheck and live Chrome browser capture verified the web canvas; earlier reports under `validation/` and finish sheets describe preceding models.
+The linked design image files predate these follow-ups. The separate web poster and the targeted typecheck/live Chrome capture belong to the September 11 delivery. **No tests, topology-validation scripts, browser checks, lint or typecheck were run for the September 15 export.** Earlier reports under `validation/` and finish sheets describe preceding models. The raw `validation/niva-doors-kitchen-full.glb` is an export intermediate, not a validation report.
 
 ## Editing And Reproduction
+
+The September 15 gutter edits are authored directly in the saved source and are not reproduced by the older authoring scripts. Continue from `niva-final.blend`; use the existing export/accounting workflow when a new web delivery is requested.
 
 The successive authoring scripts are `scripts/refine-doors-kitchen.py`, `scripts/refine-corner-curtains.py`, then `scripts/refine-roof-hardware.py`. Use the current source directly for further work:
 

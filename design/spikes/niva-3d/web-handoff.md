@@ -1,28 +1,34 @@
 # Niva Configurator Asset Handoff
 
+## Gutter delivery — September 15, 2026
+
+`niva-final.blend / Niva_Source` now contains Veyra-style open half-round `Left_Gutter` / `Right_Gutter` meshes and four `*_GutterClosedEnd_*` caps. Their inner edges clear the timber barge ends, and the lips sit closely beneath the roof edge rather than leaving an exposed timber gap. The final gutter lip is approximately Z=3.627 m in Blender world coordinates. `Left_GutterElbow` / `Right_GutterElbow` are hollow swept connectors with tops fitted to the curved gutter underside; the downspout tops meet the new bends.
+
+These are direct saved-source edits; older authoring scripts do not reproduce them. `niva-configurator.glb` has now been regenerated from this source and synced to `apps/nextjs/public/niva-3d/`. `niva-configurator-delivery.json` records the new source/asset hashes and counts, and the runtime's payload display is updated. No tests, browser checks, lint or typecheck were run for this export. Earlier browser/validation evidence remains historical. Existing posters are retained and predate the new gutter geometry; replacements belong to the user's web-capture workflow.
+
 ## Current Delivery
 
-**September 11, 2026 follow-up: corrected roof-trim grain, smaller cabinet pulls and vertical left-edge fridge handles, including the kitchen corner clearances, chopping-board placement, pleated WC curtains and header reveal cover.** The model is regenerated and synced into `apps/nextjs/public/niva-3d/`. The runtime's displayed payload and model-count constants have been updated.
+**September 15, 2026 delivery:** final gutter fit, closed end caps and hollow downpipe joints, retaining the earlier corrected roof grain, kitchen hardware, corner clearances and WC curtains. The model is regenerated and synced into `apps/nextjs/public/niva-3d/`. The runtime's displayed payload and model-count constants have been updated.
 
 **The browser poster is now captured from the live WebGL canvas. Do not generate, sync or overwrite the Blender poster during future asset work.** The retained design poster remains unchanged and stale relative to this model.
 
-Targeted typecheck and Chrome browser verification were run for the web handoff. The live canvas rendered the current GLB at 474 meshes / geometry and the resulting 954 x 866 poster was captured with the UI overlays hidden. The integrated browser capture session timed out, so Chrome CDP was used for the final capture.
+Historical September 11 evidence: targeted typecheck and Chrome browser verification rendered the preceding GLB at 474 meshes, and its 954 x 866 poster was captured with the UI overlays hidden. That capture does not represent the September 15 export. The integrated browser capture session timed out, so Chrome CDP was used for that earlier capture.
 
 | File                                   | Purpose                                            |      Bytes |
 | -------------------------------------- | -------------------------------------------------- | ---------: |
-| `niva-configurator.glb`                | Current single runtime model                       |  7,458,280 |
+| `niva-configurator.glb`                | Current single runtime model                       |  7,782,032 |
 | `niva-presets.json`                    | Independent material/preset mapping                |      4,959 |
 | `niva-camera.json`                     | Canonical camera contract                          |      2,398 |
 | `renders/niva-configurator-poster.png` | Legacy 954 × 866 Blender poster; retained unchanged |    832,550 |
 | `apps/nextjs/public/niva-3d/niva-configurator-poster.png` | Web-captured 954 × 866 poster used by the gate | 374,814 |
-| `niva-final.blend`                     | Authoritative editable source, scene `Niva_Source` | 17,839,151 |
+| `niva-final.blend`                     | Authoritative source, scene `Niva_Source` | 17,991,665 |
 | `niva-configurator-delivery.json`      | Current SHA-256 hashes and accounting              |   See file |
 
 Use `/niva-3d/niva-configurator.glb` and `/niva-3d/niva-configurator-poster.png` in the app. Transfer camera/preset JSON and `finishes/textures/` with their relative layout. Do not deploy source blends, backups, authoring close-ups or validation intermediates. `niva.glb` and `niva-web-candidate.glb` remain older reference assets.
 
 ## Geometry And Compatibility
 
-The current file is a full export from the user's current editable source, with modifiers applied for glTF. It contains **82,424 triangles, 474 meshes, 475 nodes, 27 materials and eight embedded images**. It has one model for all independent finish combinations. No new decoder dependency was introduced.
+The delivered GLB is a full export from the September 15 editable source, with modifiers applied for glTF. It contains **96,920 triangles, 478 meshes, 479 nodes, 27 materials and eight embedded images**. It has one model for all independent finish combinations. No new decoder dependency was introduced.
 
 - `Front_ContinuousTimberBarge` / `Rear_ContinuousTimberBarge`: fixed zero-width UVs on the narrow faces and aligned the grain with each roof slope. Material is the same `FixedArchitecturalTimber` used by `CeilingBeam_0`. The two broad concave faces are split into coplanar quads at existing ridge vertices, allowing separate slope UV islands without changing vertex positions or silhouette. Mapping uses 1.83 m tiles and proper two-dimensional islands for broad faces, narrow depth faces and end caps.
 - `KitchenPull_1_*` / `KitchenFridge_OverheadPull_*`: grips shortened to 140 mm, centered as before, with narrower mount spacing. Larger return-drawer pulls retain their existing size.
@@ -110,18 +116,18 @@ The design poster is a legacy Natural Timber / Light Oak source render from the 
 
 The export reuses the preceding configurator GLB's eight embedded image payloads exactly: seven 1024 × 1024 maps and one 512 × 512 fabric image. Four optional 1K JPEGs remain unchanged, totaling **1,183,666 bytes**. They are material-only derivatives of the approved oak grain; finish names describe tones rather than verified timber species.
 
-- Current GLB + retained legacy poster + camera/preset JSON: **8,298,187 bytes**. This design-delivery total intentionally excludes the separate web poster.
-- With all four optional finish textures: **9,481,853 bytes**. The web poster is 374,814 bytes and is accounted for separately in `niva-configurator-delivery.json`.
+- Current GLB + retained legacy poster + camera/preset JSON: **8,621,939 bytes**. This design-delivery total intentionally excludes the separate web poster.
+- With all four optional finish textures: **9,805,605 bytes**. The retained web poster is 374,814 bytes and is accounted for separately in `niva-configurator-delivery.json` as predating the current asset.
 - These are file bytes before HTTP compression and runtime assets. Additional mesh detail increases geometry/draw-call counts; no performance approval is implied.
 
 Historical authoring images: `renders/niva-kitchen-revision.png`, `renders/niva-wc-door-revision.png`, `renders/niva-front-doors-revision.png`, and `renders/niva-configurator-poster.png`. These predate this follow-up. Its curtain/kitchen previews were rendered only in memory.
 
-**No automated test suite, topology validation or full preset review was run for this revision.** Targeted typecheck and live browser capture were completed; reports such as `validation/finish-review.json`, `finish-readability.json` and `configurator-package.json` remain historical. Current asset identities and review status are recorded in `niva-configurator-delivery.json`.
+**No tests or verification commands were run for the September 15 export.** Targeted typecheck and live browser capture belong to the September 11 delivery; reports such as `validation/finish-review.json`, `finish-readability.json` and `configurator-package.json` remain historical. Current asset identities and review status are recorded in `niva-configurator-delivery.json`.
 
 ## Source And Reproduction
 
 Use `niva-final.blend / Niva_Source`. The latest pre-edit source/GLB/docs are preserved at `validation/before-roof-hardware-20260911-194448/`, including both the last saved source and the in-memory scene. Previous backups remain at `validation/before-corner-curtains-20260911-154636/` and `validation/before-doors-kitchen-20260911-152003/`. Superseded geometry, including the old WC blind, is hidden under `Archive_DoorsKitchen_PreRevision` and must stay excluded when exporting.
 
-`scripts/refine-roof-hardware.py` authors the latest changes once, after `scripts/refine-corner-curtains.py`. Both use `export_delivery()` and `finish_metadata()` from `scripts/refine-doors-kitchen.py` for repeated exports and accounting. `finish_metadata()` no longer copies posters. See [README.md](./README.md#editing-and-reproduction) for the sequence. Older build scripts do not incorporate these revisions.
+`scripts/refine-roof-hardware.py` authors the September 11 changes once, after `scripts/refine-corner-curtains.py`. Both use `export_delivery()` and `finish_metadata()` from `scripts/refine-doors-kitchen.py` for repeated exports and accounting. `finish_metadata()` no longer copies posters. See [README.md](./README.md#editing-and-reproduction) for the sequence and the later direct-source gutter edits. Older build scripts do not incorporate these revisions.
 
 Read `AGENTS.md` and the local Next.js docs before application changes. The lamp shadow fix is the outstanding runtime work for this request; the user will perform testing. Reusable cabin conventions are in `../cabin-3d-pipeline.md`.

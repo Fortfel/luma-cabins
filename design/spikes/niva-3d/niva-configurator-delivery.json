@@ -1,15 +1,16 @@
 {
-  "status": "Roof grain, compact pulls and vertical fridge handles exported, including corner clearance and WC curtains; user testing pending",
+  "status": "September 15, 2026: fitted open half-round gutters, end caps and hollow downpipe joints exported and synced to the app; user testing pending",
+  "source_followup": "Direct edits in niva-final.blend; older authoring scripts do not reproduce the gutter changes. Exported with refine-doors-kitchen.py export_delivery().",
   "editable_source": "niva-final.blend",
   "source_scene": "Niva_Source",
   "assets": {
     "niva-configurator.glb": {
-      "bytes": 7458280,
-      "sha256": "a3b2269b7e86b4de2253ba9610bb60e25685f5f37a5f04259157ac76faf527d9"
+      "bytes": 7782032,
+      "sha256": "c73d3ceb3670af7c09bd699718b681d9d10461e606889a6380001fd5481b426c"
     },
     "niva-final.blend": {
-      "bytes": 17839151,
-      "sha256": "ede4ae3382bcb3732ab0042709b84a4840fba829932b1119c145c35ae66ed2ca"
+      "bytes": 17991665,
+      "sha256": "71f4565dabcf0e825e55bb84c20240533f190b6e2cbd6ce1ff14c4e5f4d5d248"
     },
     "niva-camera.json": {
       "bytes": 2398,
@@ -41,28 +42,29 @@
     }
   },
   "revision_backup": "validation\\before-roof-hardware-20260911-194448",
-  "model_triangles": 82424,
-  "meshes": 474,
-  "nodes": 475,
+  "model_triangles": 96920,
+  "meshes": 478,
+  "nodes": 479,
   "materials": 27,
   "embedded_images": 8,
   "external_finish_images": 4,
   "all_four_finish_textures_bytes": 1183666,
-  "default_glb_plus_poster_and_metadata_bytes": 8298187,
-  "all_presets_glb_plus_poster_and_metadata_bytes": 9481853,
+  "default_glb_plus_poster_and_metadata_bytes": 8621939,
+  "all_presets_glb_plus_poster_and_metadata_bytes": 9805605,
   "one_geometry_asset_for_all_combinations": true,
   "camera_contract": "niva-camera.json",
   "preset_contract": "niva-presets.json",
   "poster_source": "Legacy Blender image from before the corner/curtain revision; retained unchanged",
-  "poster_status": "Legacy Blender reference retained; web replacement is installed in the app",
-  "poster_policy": "Do not generate, sync or overwrite Blender posters during asset updates; capture replacements from the web",
+  "poster_status": "Legacy Blender reference and existing web poster retained; both predate the September 15 gutter export",
   "web_poster": {
     "path": "apps/nextjs/public/niva-3d/niva-configurator-poster.png",
     "bytes": 374814,
     "sha256": "41fe011bc5eba814e3508ba7358377d96eb6f0c7d5ef1a1974579467506879e6",
     "resolution": "954 x 866",
-    "source": "Chrome CDP capture of the live Niva WebGL canvas using niva-configurator.glb"
+    "source": "Retained Chrome CDP capture of the September 11 Niva WebGL canvas",
+    "matches_current_asset": false
   },
+  "poster_policy": "Do not generate, sync or overwrite posters during Blender asset updates",
   "embedded_texture_source": "Exact 1K/512px image payloads from the pre-revision configurator GLB",
   "historical_authoring_renders": [
     "renders/niva-kitchen-revision.png",
@@ -70,7 +72,7 @@
     "renders/niva-front-doors-revision.png"
   ],
   "tests_run": false,
-  "browser_verification": "Chrome CDP verified the live canvas and captured the 954 x 866 web poster; integrated browser capture timed out",
+  "browser_verification": "Not run, user will test",
   "validation_note": "Prior topology and six-preset review reports describe the older model, not this revision.",
   "lighting": {
     "blender": "Opaque sconce backplates and exterior-directed shadow-casting area lights",

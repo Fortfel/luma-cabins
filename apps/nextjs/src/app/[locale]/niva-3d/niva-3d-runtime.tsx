@@ -29,16 +29,16 @@ const CANONICAL_RESOLUTION = '954 x 866'
 const POSTER_BYTES = 374_814
 const CANONICAL_TARGET: [number, number, number] = [0, 3, 0.3]
 const CANONICAL_POSITION: [number, number, number] = [-5.715943, 3.32287, 17.891865]
-const GLB_TRIANGLES = 82_424
-const GLB_MESHES = 474
+const GLB_TRIANGLES = 96_920
+const GLB_MESHES = 478
 const GLB_MATERIALS = 27
 const GLB_TEXTURES = 8
 const MODEL_LOAD_TIMEOUT_MS = 20_000
 const CONFIGURATOR_ASSET = {
   label: 'Niva configurator',
   path: '/niva-3d/niva-configurator.glb',
-  sizeBytes: 7_458_280,
-  sizeLabel: '7.46 MB',
+  sizeBytes: 7_782_032,
+  sizeLabel: '7.78 MB',
 } as const
 const PRESET_MANIFEST_URL = '/niva-3d/niva-presets.json'
 const CANVAS_CAMERA_OPTIONS = {
