@@ -1,27 +1,28 @@
 {
   "asset": "veyra-configurator.glb",
-  "recorded_at_utc": "2026-09-14T22:55:39.373241+00:00",
-  "status": "Revision 5: cabinet access, handle ergonomics and fruit support; validation authorized; see hash-matched validation records.",
+  "recorded_at_utc": "2026-09-15T12:40:16.467599+00:00",
+  "status": "Revision 5 plus September 15, 2026 exposed kitchen-hinge removal; original filler and door dimensions retained. Exported without tests; user testing pending.",
+  "source_followup": "Direct edits in veyra-source.blend; older authoring scripts do not reproduce the hinge removal. Exported with package-veyra.py export_delivery().",
   "validation": {
     "gltf": {
       "path": "validation/khronos-validator.json",
-      "matches_current_asset": true,
-      "passed": true
+      "matches_current_asset": false,
+      "passed": false
     },
     "roundtrip": {
       "path": "validation/blender-roundtrip.json",
-      "matches_current_asset": true,
-      "passed": true
+      "matches_current_asset": false,
+      "passed": false
     },
     "clearances": {
       "path": "validation/cabinet-clearance.json",
-      "matches_current_asset": true,
-      "passed": true
+      "matches_current_asset": false,
+      "passed": false
     },
     "browser": {
       "path": "validation/browser-report.json",
-      "matches_current_asset": true,
-      "passed": true
+      "matches_current_asset": false,
+      "passed": false
     }
   },
   "revision": 5,
@@ -29,9 +30,9 @@
   "review_images": "Initial renders are historical and stale for the current revision; excluded from current payload.",
   "blender_version": "5.2.1 LTS",
   "geometry": {
-    "triangles": 203122,
-    "meshes": 584,
-    "nodes": 584,
+    "triangles": 203034,
+    "meshes": 582,
+    "nodes": 582,
     "materials": 34
   },
   "embedded_images": 7,
@@ -46,8 +47,8 @@
   "default_files": [
     {
       "path": "veyra-configurator.glb",
-      "bytes": 13385892,
-      "sha256": "ec810585cac81b361b166ae6e86b2ae5a86463a5f662082903224ece9fe4df2c"
+      "bytes": 13380580,
+      "sha256": "7ea52fd4aea7d43720b64a5fb625bc28f32b2bb40de59fb03057aa4be1759ba3"
     },
     {
       "path": "veyra-camera.json",
@@ -82,12 +83,12 @@
       "sha256": "58a8f454fd9882f341f1f007572c47d841fd91f0ad5cbbadb021302012da5eeb"
     }
   ],
-  "default_file_bytes": 13393510,
+  "default_file_bytes": 13388198,
   "all_optional_texture_bytes": 1183666,
   "source": {
     "path": "veyra-source.blend",
-    "bytes": 5372697,
-    "sha256": "48b891e3e8d951bfd079e9bddde3a7186bab69d616142114d782fe97990541c3"
+    "bytes": 5377156,
+    "sha256": "f98d6dcec43c0c87fa3aca60502c77d839fb5bb2e9d157dfa31a0e478605440d"
   },
   "scene": "Veyra_Source",
   "source_scripts": [
@@ -127,7 +128,11 @@
   "not_run": [
     "final user visual approval",
     "production website integration",
-    "physical mobile/GPU profiling"
+    "physical mobile/GPU profiling",
+    "Khronos validator for the current asset",
+    "Blender geometry and GLB round trip for the current asset",
+    "cabinet/fruit clearance checks for the current asset",
+    "browser finish/orbit checks for the current asset"
   ],
   "note": "Declared export counts, byte accounting and authoring images are not validation or performance evidence."
 }

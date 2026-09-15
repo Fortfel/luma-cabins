@@ -1,9 +1,16 @@
 # Veyra configurator candidate handoff
 
+## Kitchen delivery — September 15, 2026
+
+`veyra-source.blend / Veyra_Source` retains the original 108 mm `Kitchen_ReturnBlindCornerFiller`, 233 mm `Kitchen_ReturnAccessDoor` and original knob position. The temporary filler widening was reverted. `Kitchen_ReturnAccessHinge_0` and `Kitchen_ReturnAccessHinge_1` were removed, leaving the original static door-opening intent without exposed hinge meshes. Veyra's gutter geometry is unchanged by this follow-up and supplied the half-round profile used for the separate Aster/Niva source edits.
+
+This is a direct saved-source change; older authoring scripts do not reproduce the hinge removal. `package-veyra.py` has regenerated the GLB, camera/preset/lighting contracts and `veyra-delivery.json` from the saved source. The manifest records current source/asset hashes and marks the preceding revision-5 validation reports as unmatched. No tests or renders were run for this export. The package remains in this design directory, with no configured Veyra app route; a replacement poster remains deferred to the user's web workflow.
+
 ## Status and review gate
 
-**Revision 5 — authored and validated; final user visual approval pending.**
-The user authorized checks, which ran through the `validate` subagent. Khronos
+**September 15 follow-up — exported, user testing pending.** The following evidence
+belongs to the preceding revision-5 delivery, not the current GLB.
+The user previously authorized checks, which ran through the `validate` subagent. Khronos
 validation, saved-source/GLB round trip, sampled cabinet opening and fruit clearance,
 all nine finish combinations, default restoration, orbit rendering and responsive
 canonical camera checks passed. See [validation/README.md](./validation/README.md)
@@ -212,12 +219,12 @@ Harness lighting demonstrates compatibility, not final Blender/WebGL pixel parit
 
 ## Payload accounting
 
-The current GLB is **13,385,892 bytes**, with **203,122 declared triangles,
-584 meshes/nodes, 34 materials and seven embedded 1K images**. It uses
+The current GLB is **13,380,580 bytes**, with **203,034 declared triangles,
+582 meshes/nodes, 34 materials and seven embedded 1K images**. It uses
 `KHR_materials_specular` and `KHR_materials_emissive_strength`; no compression
 decoder was introduced. No decimation was performed.
 
-Default GLB + camera/presets total **13,393,510 bytes**, with no poster. Four optional
+Default GLB + camera/presets total **13,388,198 bytes**, with no poster. Four optional
 1K JPEGs add **1,183,666 bytes**. File sizes and export declarations are not runtime
 performance measurements. The browser test measured CPU render submission only;
 physical-device GPU profiling has not been performed.
@@ -230,6 +237,6 @@ for file identities, authors, URLs, resolutions and derivation details.
 
 ## Next action
 
-Final user visual review and corrections. Asset/browser compatibility checks are
-complete for the recorded hash; website integration and comparison photography
-remain unperformed.
+User testing of the September 15 export. No asset/browser compatibility checks
+were run for this hash; preceding revision-5 results are historical. Website
+integration and comparison photography remain separate follow-ups.

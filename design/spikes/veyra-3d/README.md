@@ -1,7 +1,15 @@
 # Veyra configurator candidate
 
-Independent Veyra source and runtime delivery. **Revision 5 is authored and
-validated, with final user visual approval pending.** The `validate` subagent ran
+Independent Veyra source and runtime delivery. **September 15 exported follow-up:**
+the kitchen retains its original 108 mm blind-corner filler, 233 mm access door and
+original knob position; the temporary widening was reverted. The two exposed
+`Kitchen_ReturnAccessHinge_*` meshes are removed. The GLB and delivery metadata are
+regenerated from `veyra-source.blend`: **13,380,580 bytes, 203,034 triangles and
+582 meshes/nodes**. No tests were run for this export. See
+[web-handoff.md](./web-handoff.md#kitchen-delivery--september-15-2026).
+
+**The preceding revision-5 delivery was authored and validated, with final user
+visual approval pending.** The `validate` subagent ran
 the authorized asset, round-trip, clearance and isolated R3F checks. See
 [validation/README.md](./validation/README.md) for results and non-blocking notices.
 
@@ -77,7 +85,8 @@ grip lowered. Fruit is supported inside the bowl without penetrating it.
 
 The user authorized validation after revision 5. Khronos validation, saved-source
 round trip, cabinet/fruit checks, all nine independent finish combinations and
-responsive camera/orbit checks passed for the current asset hash. Non-blocking
+responsive camera/orbit checks passed for the revision-5 exported asset hash. Those
+reports predate the September 15 hinge-removal export. Non-blocking
 redundant tessellation, runtime-generated tangent-space and unused-UV notices are
 documented. Final user visual approval, public integration and physical-device GPU
 profiling remain separate. Authoring images alone are not validation evidence.
@@ -88,6 +97,8 @@ Niva and Aster are read-only references. No website integration is included.
 
 The current source is authoritative for further edits. Preserve a copy before
 making revisions. `veyra-source.blend1` is a previous save, not a second master.
+The September 15 hinge removal is a direct saved-source edit, not reproduced by
+the preceding revision scripts.
 The pre-revision saved/live source and delivery are preserved under
 `history/before-revision-2-20260913-140824/`. Superseded pieces are also retained in
 `Veyra_Archive_PreRevision2`, hidden and excluded from the GLB. Revision 3 additionally
