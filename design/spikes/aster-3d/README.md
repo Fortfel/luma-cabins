@@ -1,11 +1,17 @@
 # Aster configurator asset
 
+## Current source — September 15, 2026
+
+`aster-source.blend / Aster_Source` now has Veyra-style open half-round gutters with closed end caps. Both gutters sit 45 mm below the initial half-round conversion, and hollow swept outlet bends replace the clipping downpipe joints. These changes were authored directly in the saved source; the revision scripts below do not reproduce them.
+
+The September 15 GLB and delivery metadata have now been regenerated from this source: **8,088,464 bytes, 88,386 triangles and 574 meshes/nodes**. Camera/finish contracts are included in the design package. No Aster app route is configured. Posters remain deferred to the user's web workflow. No tests were run for this export; the earlier joint authoring was inspected in Blender's viewport. See [web-handoff.md](./web-handoff.md#gutter-delivery--september-15-2026).
+
 ## Review status
 
-Revision 8 separates the extended gutters from the corner/fascia trim. **No tests
-or renders were run for this change, as requested.** Revision 6 passed the authorized asset checks, but
+The September 15 export includes the half-round gutter follow-up after revision 8's
+gutter/trim separation. **No tests or renders were run for this export, as requested.** Revision 6 passed the authorized asset checks, but
 those reports apply to its earlier GLB hash, not the current export. See
-`revision-8.md` and the explicit historical-report status in `aster-delivery.json`.
+`revision-8.md` for the earlier trim work and the explicit historical-report status in `aster-delivery.json`.
 
 No Blender renders or loading posters were generated in this pass. Diagnostic
 browser captures under `validation/` are test evidence only. The user will capture the

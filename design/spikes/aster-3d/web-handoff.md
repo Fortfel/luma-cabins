@@ -1,15 +1,22 @@
 # Aster configurator candidate handoff
 
+## Gutter delivery — September 15, 2026
+
+`aster-configurator.glb` is regenerated from `aster-source.blend / Aster_Source`. `Gutter_-1` / `Gutter_1` retain their 8.94 m length but now use Veyra's open half-round profile, with four `Gutter_ClosedEnd_*` caps. The final lip is approximately Z=3.280 m, 45 mm below the initial half-round conversion. `DownpipeOffset_-1` / `DownpipeOffset_1` are hollow swept bends fitted to the gutter underside, with shortened vertical downpipe tops meeting the bends. Existing drip aprons remain.
+
+These are direct saved-source edits, not a new run of the revision scripts. `package-aster.py` regenerated the GLB, camera/lighting contracts and `aster-delivery.json`, including current source/asset hashes and payload counts. Older validation reports are explicitly unmatched to this export. No tests or renders were run; the earlier joint authoring was inspected in Blender's viewport. The package remains in this design directory, with no configured Aster app route; posters remain deferred to the user's web workflow.
+
 ## Status and review gate
 
-**Revision 8 — gutter/trim separation, untested by explicit user request.** Both
+**September 15 gutter follow-up — exported, untested by explicit user request.** The
+earlier revision 8 established gutter/trim separation. Both
 gutters retain their 8.94 m length. Their bodies are moved 61 mm outward; corner
 returns and barge ends are brought behind them. Matching drain offsets and thin
 drip aprons replace the intersecting end join.
 No tests or renders were run for this change. The previous revision 6 passed
 Khronos, Blender round-trip and isolated R3F finish/orbit checks; those reports are
 historical and do not match the new GLB hash. `aster-delivery.json` marks them
-`not-run-for-current-export`. See `revision-8.md` for the current change and
+`not-run-for-current-export`. See the gutter-delivery section above for the current change, `revision-8.md` for the preceding trim work and
 `revision-6.md` for the earlier evidence.
 
 No Blender renders or loading posters were generated in this revision. The user will generate
@@ -96,7 +103,7 @@ eave fascia/end returns, and a roof-pitch-matched flashing/collar with an actual
 pipe hole. Targeted validation cleanup corrects opening-board topology, thin-detail
 bevel triangles, tap end caps and seven UV-edge meshes without decimation.
 
-The current GLB declares **74,082 triangles, 570 meshes, 570 nodes, and 25 materials**.
+The current GLB declares **88,386 triangles, 574 meshes, 574 nodes, and 25 materials**.
 No geometry decimation was used. It uses the same extension types as Niva:
 `KHR_materials_specular` and `KHR_materials_emissive_strength`. No extra decoder
 is required. These are packaging facts, not proof of browser parity.
@@ -186,11 +193,11 @@ localized runtime treatment when browser work is authorized.
 
 | Payload | File bytes |
 | --- | ---: |
-| GLB | 7,758,360 |
+| GLB | 8,088,464 |
 | Camera + presets JSON | 7,720 |
-| Default total (no poster) | **7,766,080** |
+| Default total (no poster) | **8,096,184** |
 | Four optional finish JPEGs | **1,183,666** |
-| Default plus all options (no poster) | **8,949,746** |
+| Default plus all options (no poster) | **9,279,850** |
 
 Seven default 1024 × 1024 images are embedded. Four alternative 1024 × 1024 JPEGs
 remain external and load on demand. Source maps reuse Poly Haven `oak_veneer_01`
@@ -203,7 +210,7 @@ the app, libraries and browser lighting resources. File size is not a performanc
 
 ## Next gate
 
-Stop for the user's inspection. **Do not run tests on revision 8 without renewed
+Stop for the user's inspection. **Do not run tests on the September 15 export without renewed
 authorization.** The following validator/browser observations describe revision 6,
 not the gutter-adjusted current export.
 Retain the proven implicit tangent convention: Khronos reports 107 generated-tangent

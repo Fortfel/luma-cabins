@@ -1,6 +1,7 @@
 {
   "asset": "aster-configurator.glb",
-  "status": "Revision 8; current export is not validated; older reports are historical. Final user inspection pending.",
+  "status": "Revision 8 plus September 15, 2026 half-round gutter and outlet follow-up; exported without tests. User testing pending; older reports are historical.",
+  "source_followup": "Direct edits in aster-source.blend; older revision scripts do not reproduce the half-round gutters and hollow outlet bends. Exported with package-aster.py export_delivery().",
   "validation": {
     "gltf": {
       "path": "validation/khronos-validator.json",
@@ -25,9 +26,9 @@
   "layout_revision": 8,
   "blender_version": "5.2.1 LTS",
   "geometry": {
-    "triangles": 74082,
-    "meshes": 570,
-    "nodes": 570,
+    "triangles": 88386,
+    "meshes": 574,
+    "nodes": 574,
     "materials": 25
   },
   "embedded_images": 7,
@@ -42,8 +43,8 @@
   "default_files": [
     {
       "path": "aster-configurator.glb",
-      "bytes": 7758360,
-      "sha256": "b8531f903d1186600a24ccd891d5ba496b28f5b51ab740de9ab2f4801c9385e0"
+      "bytes": 8088464,
+      "sha256": "a26a979fb18c8f4a8362738c4f70d82f426fb5180d0c4f403d54145c02dfbb83"
     },
     {
       "path": "aster-camera.json",
@@ -78,17 +79,17 @@
       "sha256": "58a8f454fd9882f341f1f007572c47d841fd91f0ad5cbbadb021302012da5eeb"
     }
   ],
-  "default_file_bytes": 7766080,
+  "default_file_bytes": 8096184,
   "all_optional_texture_bytes": 1183666,
   "hdri_bytes": 0,
   "additional_runtime_support_requests": [],
   "source": {
     "path": "aster-source.blend",
-    "bytes": 3265353,
-    "sha256": "ef4db5723b3a78c7485af300b8694f058c0514d275d20e40027a7926adaf0b88"
+    "bytes": 3387672,
+    "sha256": "ace25c5673ed65445eb078960b934b3069381fdb33bb04d3b4d4068cb8220d4f"
   },
   "source_provenance": {
-    "recorded_at_delivery_utc": "2026-09-13T00:57:02.021132+00:00",
+    "recorded_at_delivery_utc": "2026-09-15T12:39:53.491822+00:00",
     "scene": "Aster_Source",
     "layout_revision": 8,
     "validation_geometry_fix": true,
