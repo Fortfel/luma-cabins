@@ -173,6 +173,15 @@
     }
   ],
   "showcase_pricing": "Pricing",
+  "showcase_3d_enter": "Explore in 3D",
+  "showcase_3d_error": "The {model} 3D preview is unavailable. The image preview is still available.",
+  "showcase_3d_exit": "Exit 3D",
+  "showcase_3d_finish_error": "This finish could not be loaded. The previous finish is still shown.",
+  "showcase_3d_hint_desktop": "Drag to explore. Scroll to zoom.",
+  "showcase_3d_hint_mobile": "Explore in 3D to rotate and zoom.",
+  "showcase_3d_loading": "Preparing {model} in 3D",
+  "showcase_3d_retry": "Retry 3D preview",
+  "showcase_3d_updating": "Updating finish",
   "showcase_status": [
     {
       "declarations": [

@@ -11,6 +11,7 @@ Feature documents are the current source of truth. Proposed work belongs in `doc
 - [How it works](./how-it-works.md): guided process timeline, scroll geometry, responsive compositions, carousel behavior, and accessibility invariants.
 - [Interior comparison](./interior-comparison.md): image reveal behavior, responsive framing, input semantics, and asset alignment invariants.
 - [Models overview](./models-overview.md): carousel autoplay, gesture intent, navigation behavior, and accessibility invariants.
+- [Interactive showcase 3D](./interactive-showcase-3d.md): lazy renderer mounting, carousel media-slot tracking, and live-surface positioning.
 - [Testimonials](./testimonials.md): carousel behavior, shared-frame expansion, viewport positioning, dismissal, and accessibility.
 
 ## Maintenance

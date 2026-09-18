@@ -56,7 +56,7 @@ The current website is a content-first homepage concept. The rendered landing pa
 - The voice is calm, minimal, premium, nature-focused, warm, quietly confident, architectural without feeling cold, sustainable without being preachy, refined, and human.
 - The offer should feel premium and considered while remaining approachable.
 - The project is a fictional concept. Client identities, testimonials, and review content are fictional portfolio content and are not verified customer proof.
-- Existing brand and media assets include the Luma logo component at `apps/nextjs/src/app/_components/layout/logo.tsx`, cabin imagery under `apps/nextjs/public/images/huts/`, process media under `apps/nextjs/public/images/process/` and `apps/nextjs/public/videos/process/`, and the hero media under `apps/nextjs/public/images/` and `apps/nextjs/public/videos/`.
+- Existing brand and media assets include the Luma logo component at `apps/nextjs/src/app/_components/layout/logo.tsx`, cabin imagery under `apps/nextjs/public/images/cabins/`, process media under `apps/nextjs/public/images/process/` and `apps/nextjs/public/videos/process/`, and the hero media under `apps/nextjs/public/images/` and `apps/nextjs/public/videos/`.
 
 ## Evidence on Hand
 

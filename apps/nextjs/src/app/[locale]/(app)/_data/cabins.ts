@@ -31,6 +31,13 @@ interface Cabin {
     readonly description: string
     readonly priceEur: number
   }
+  readonly threeD: {
+    readonly assetUrl: string
+    readonly manifestUrl: string
+    readonly cameraUrl: string
+    readonly minDistance: number
+    readonly maxDistance: number
+  }
   readonly images: {
     readonly overview: string
     readonly exteriors: Record<CabinExteriorFinishId, string>
@@ -60,14 +67,21 @@ const createCabinCatalog = (locale: Locale): CabinCatalog => {
         description: cabin_niva_description({}, messageOptions),
         priceEur: 130_000,
       },
+      threeD: {
+        assetUrl: '/cabin-3d/niva/niva-configurator.glb',
+        manifestUrl: '/cabin-3d/niva/niva-presets.json',
+        cameraUrl: '/cabin-3d/niva/niva-camera.json',
+        minDistance: 12,
+        maxDistance: 21,
+      },
       images: {
-        overview: '/images/huts/niva/Niva.jpg',
+        overview: '/images/cabins/niva/Niva.jpg',
         exteriors: {
-          wood: '/images/huts/niva/Niva-wood.png',
-          black: '/images/huts/niva/Niva-black.png',
-          white: '/images/huts/niva/Niva-white.png',
+          wood: '/images/cabins/niva/Niva-wood.png',
+          black: '/images/cabins/niva/Niva-black.png',
+          white: '/images/cabins/niva/Niva-white.png',
         },
-        floorPlan: '/images/huts/niva/Niva-floorplan.jpg',
+        floorPlan: '/images/cabins/niva/Niva-floorplan.jpg',
         overviewAlt: cabin_niva_overview_alt({}, messageOptions),
         floorPlanAlt: cabin_niva_floor_plan_alt({}, messageOptions),
       },
@@ -84,14 +98,21 @@ const createCabinCatalog = (locale: Locale): CabinCatalog => {
         description: cabin_aster_description({}, messageOptions),
         priceEur: 170_000,
       },
+      threeD: {
+        assetUrl: '/cabin-3d/aster/aster-configurator.glb',
+        manifestUrl: '/cabin-3d/aster/aster-presets.json',
+        cameraUrl: '/cabin-3d/aster/aster-camera.json',
+        minDistance: 16,
+        maxDistance: 42,
+      },
       images: {
-        overview: '/images/huts/aster/Aster.jpg',
+        overview: '/images/cabins/aster/Aster.jpg',
         exteriors: {
-          wood: '/images/huts/aster/Aster-wood.png',
-          black: '/images/huts/aster/Aster-black.png',
-          white: '/images/huts/aster/Aster-white.png',
+          wood: '/images/cabins/aster/Aster-wood.png',
+          black: '/images/cabins/aster/Aster-black.png',
+          white: '/images/cabins/aster/Aster-white.png',
         },
-        floorPlan: '/images/huts/aster/Aster-floorplan.jpg',
+        floorPlan: '/images/cabins/aster/Aster-floorplan.jpg',
         overviewAlt: cabin_aster_overview_alt({}, messageOptions),
         floorPlanAlt: cabin_aster_floor_plan_alt({}, messageOptions),
       },
@@ -108,14 +129,21 @@ const createCabinCatalog = (locale: Locale): CabinCatalog => {
         description: cabin_veyra_description({}, messageOptions),
         priceEur: 210_000,
       },
+      threeD: {
+        assetUrl: '/cabin-3d/veyra/veyra-configurator.glb',
+        manifestUrl: '/cabin-3d/veyra/veyra-presets.json',
+        cameraUrl: '/cabin-3d/veyra/veyra-camera.json',
+        minDistance: 18,
+        maxDistance: 46,
+      },
       images: {
-        overview: '/images/huts/veyra/Veyra.jpg',
+        overview: '/images/cabins/veyra/Veyra.jpg',
         exteriors: {
-          wood: '/images/huts/veyra/Veyra-wood.png',
-          black: '/images/huts/veyra/Veyra-black.png',
-          white: '/images/huts/veyra/Veyra-white.png',
+          wood: '/images/cabins/veyra/Veyra-wood.png',
+          black: '/images/cabins/veyra/Veyra-black.png',
+          white: '/images/cabins/veyra/Veyra-white.png',
         },
-        floorPlan: '/images/huts/veyra/Veyra-floorplan.jpg',
+        floorPlan: '/images/cabins/veyra/Veyra-floorplan.jpg',
         overviewAlt: cabin_veyra_overview_alt({}, messageOptions),
         floorPlanAlt: cabin_veyra_floor_plan_alt({}, messageOptions),
       },
