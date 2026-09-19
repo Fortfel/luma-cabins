@@ -146,7 +146,7 @@ type ExteriorFinish = Finish<ExteriorFinishId>
 type InteriorPalette = Finish<InteriorPaletteId>
 interface ShowcaseCabin {
   readonly cabin: Cabin
-  readonly imageAspectRatio: number
+  readonly mobilePosterAspectRatio: number
 }
 type ShowcaseSlideStyle = React.CSSProperties & {
   '--showcase-image-opacity': number
@@ -169,9 +169,9 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
   const messageOptions = { locale }
   const { cabinsById } = createCabinCatalog(locale)
   const showcaseCabins = [
-    { cabin: cabinsById.niva, imageAspectRatio: 954 / 866 },
-    { cabin: cabinsById.aster, imageAspectRatio: 1309 / 697 },
-    { cabin: cabinsById.veyra, imageAspectRatio: 1358 / 553 },
+    { cabin: cabinsById.niva, mobilePosterAspectRatio: 954 / 866 },
+    { cabin: cabinsById.aster, mobilePosterAspectRatio: 1309 / 697 },
+    { cabin: cabinsById.veyra, mobilePosterAspectRatio: 1358 / 553 },
   ] as const satisfies ReadonlyArray<ShowcaseCabin>
   const exteriorFinishes = [
     {
@@ -401,7 +401,7 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
           className="order-2 pt-2 md:pt-3 lg:pt-4 xl:order-1"
         />
 
-        <div className={cn('order-1 w-full', 'xl:order-2 xl:min-w-0')}>
+        <div className={cn('order-1 w-full', 'lg:pt-4 xl:order-2 xl:min-w-0')}>
           <Carousel
             aria-label={showcase_carousel_label({}, messageOptions)}
             aria-roledescription={carousel_role({}, messageOptions)}
@@ -419,11 +419,15 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
                 '**:data-[slot=carousel-content]:cursor-grab **:data-[slot=carousel-content]:select-none **:data-[slot=carousel-content]:active:cursor-grabbing',
             )}
           >
-            <div ref={mediaViewportRef} className="relative w-full overflow-hidden">
+            <div ref={mediaViewportRef} className="relative w-full overflow-hidden xl:h-[31.25rem]">
               <CarouselContent
-                className={cn('ms-0 items-start', 'gap-[clamp(2rem,calc(-1.485rem+15.931vw),11.25rem)]', 'xl:py-12.5')}
+                className={cn(
+                  'ms-0 items-start',
+                  'gap-[clamp(2rem,calc(-1.485rem+15.931vw),11.25rem)]',
+                  'xl:h-full xl:py-0',
+                )}
               >
-                {showcaseCabins.map(({ cabin, imageAspectRatio }, index) => (
+                {showcaseCabins.map(({ cabin, mobilePosterAspectRatio }, index) => (
                   <CarouselItem
                     key={cabin.id}
                     aria-label={models_slide_position(
@@ -432,9 +436,12 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
                     )}
                     aria-roledescription={carousel_slide_role({}, messageOptions)}
                     style={getShowcaseSlideStyle(index === activeIndex)}
-                    className={cn('flex w-auto basis-auto flex-col items-center ps-0', 'xl:w-full xl:basis-full')}
+                    className={cn(
+                      'flex w-auto basis-auto flex-col items-center ps-0',
+                      'xl:h-full xl:w-full xl:basis-full',
+                    )}
                   >
-                    <div className="flex transform-[translate3d(var(--showcase-optical-offset),0,0)] flex-col items-center gap-5 will-change-transform xl:transform-none">
+                    <div className="flex transform-[translate3d(var(--showcase-optical-offset),0,0)] flex-col items-center gap-5 will-change-transform xl:h-full xl:w-full xl:transform-none">
                       <div
                         aria-hidden={index !== activeIndex}
                         className="w-full opacity-(--showcase-summary-opacity) will-change-[opacity] xl:hidden"
@@ -446,11 +453,10 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
                         ref={(node) => {
                           mediaSlotRefs.current[index] = node
                         }}
-                        style={{ aspectRatio: imageAspectRatio }}
+                        style={{ aspectRatio: isDesktop ? 'auto' : mobilePosterAspectRatio }}
                         className={cn(
-                          '',
                           'h-[clamp(6rem,calc(1.197rem+21.959vw),18.75rem)]',
-                          'xl:h-[clamp(16.25rem,calc(-2.5rem+23.438vw),20rem)]',
+                          'xl:h-full xl:w-full',
                           'opacity-(--showcase-image-opacity) will-change-[opacity]',
                         )}
                       >

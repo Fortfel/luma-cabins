@@ -11,7 +11,7 @@ Runtime hardening is implemented pending browser acceptance. The showcase render
 - `apps/nextjs/src/app/[locale]/(app)/_components/interactive-showcase-3d.tsx`
 - `InteractiveShowcase3D`: client-only lazy boundary for the renderer runtime.
 - `apps/nextjs/src/app/[locale]/(app)/_components/interactive-showcase-3d-runtime.tsx`
-- `InteractiveShowcase3DRuntime`: one demand-rendered Canvas, resource preloading, revision-safe presentation readiness, and a clipped surface that tracks the corresponding carousel media slot.
+- `InteractiveShowcase3DRuntime`: one demand-rendered Canvas, resource preloading, revision-safe presentation readiness, and a clipped surface that fills the shared desktop media viewport while tracking the corresponding carousel media slot below `xl`.
 - `CabinModel`: applies the production manifest's `ExteriorCladding` and `InteriorJoinery` finish boundaries and reports readiness from a renderable `onAfterRender` probe.
 
 ## Renderer Mounting
@@ -38,8 +38,10 @@ Runtime hardening is implemented pending browser acceptance. The showcase render
 
 ## Surface Geometry
 
-- The media viewport is a local `relative overflow-hidden` wrapper around `CarouselContent` and the live surface.
-- Each cabin media slot is tracked by an element ref. The surface uses the committed slot's `getBoundingClientRect()` relative to the media viewport for width, height, and translation.
+- The media viewport is a local `relative overflow-hidden` wrapper around `CarouselContent` and the live surface. At `xl`, it uses one shared fixed `31.25rem` (`500px`) height for every cabin.
+- Desktop initial optical framing targets a projected cabin height of `clamp(300px, -36.848px + 26.316vw, 400px)`. The runtime projects the eight world-space corners of the model bounding box through the canonical camera at its unchanged distance, converts the NDC vertical span to Canvas pixels, and applies the target-to-measured ratio to the horizontal and vertical focal terms of the off-axis projection. Principal-point offsets and the authored camera position remain unchanged.
+- Each cabin media slot is tracked by an element ref. On desktop, the surface fills the media viewport at `0,0`; below `xl`, it uses the committed slot's `getBoundingClientRect()` relative to the media viewport for width, height, and translation.
+- The legacy poster aspect ratios remain scoped to the below-`xl` fallback frames only; desktop poster and live Canvas sizing is independent of cabin geometry and source-image aspect ratio.
 - Embla `scroll`, `reInit`, and `resize` events update positioning without React state. `ResizeObserver` and window resize cover layout changes outside Embla.
 - The wrapper and Canvas both use an explicit full-size contract. An imperative `ResizeObserver` bridge keeps R3F's internal renderer size synchronized after the positioned surface receives its slot dimensions, including when the surface starts from zero size on mobile.
 - The surface slot index changes on `settle`, so an outgoing live cabin remains attached to its moving slot during a transition.

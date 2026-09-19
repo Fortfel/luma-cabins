@@ -21,6 +21,7 @@ import { OrbitControls, useGLTF } from '@react-three/drei'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import {
   AgXToneMapping,
+  Box3,
   MathUtils,
   Matrix4,
   Mesh,
@@ -56,6 +57,10 @@ const CAMERA_ELEVATION_DRAG_SENSITIVITY = 0.005
 const CAMERA_ELEVATION_LIMIT = 0.32
 const CAMERA_ELEVATION_SETTLE_EPSILON = 0.0001
 const SHOWCASE_SHADOW_MAP_SIZE = 512
+const DESKTOP_PROJECTED_HEIGHT_MIN_PX = 300
+const DESKTOP_PROJECTED_HEIGHT_MAX_PX = 400
+const DESKTOP_PROJECTED_HEIGHT_INTERCEPT_PX = -36.848
+const DESKTOP_PROJECTED_HEIGHT_SLOPE = 0.26316
 type LightPosition = readonly [number, number, number]
 
 interface ExteriorSpotlightDefinition {
@@ -241,6 +246,7 @@ interface CabinModelProps {
   readonly modelRotationResetRef: RefObject<(() => void) | null>
   readonly metadata: CabinMetadata
   readonly finishRetryRevision: number
+  readonly isDesktop: boolean
   readonly isInteractive: boolean
   readonly selectedExteriorId: ExteriorPresetId
   readonly selectedInteriorId: InteriorPresetId
@@ -638,9 +644,15 @@ function InteractiveShowcase3DRuntime({
       const slotOpacity = Number(window.getComputedStyle(slot).opacity)
       const safeOpacity = Number.isFinite(slotOpacity) ? slotOpacity : 0
 
-      surface.style.width = `${slotBounds.width}px`
-      surface.style.height = `${slotBounds.height}px`
-      surface.style.transform = `translate3d(${slotBounds.left - viewportBounds.left}px, ${slotBounds.top - viewportBounds.top}px, 0)`
+      if (isDesktop) {
+        surface.style.width = `${viewportBounds.width}px`
+        surface.style.height = `${viewportBounds.height}px`
+        surface.style.transform = 'translate3d(0, 0, 0)'
+      } else {
+        surface.style.width = `${slotBounds.width}px`
+        surface.style.height = `${slotBounds.height}px`
+        surface.style.transform = `translate3d(${slotBounds.left - viewportBounds.left}px, ${slotBounds.top - viewportBounds.top}px, 0)`
+      }
       surface.style.opacity = `${safeOpacity}`
       surface.style.visibility = 'visible'
     }
@@ -669,7 +681,7 @@ function InteractiveShowcase3DRuntime({
         positionSyncRef.current = null
       }
     }
-  }, [mediaSlotRefs, mediaViewportRef, positionSyncRef, surfaceSlotIndex])
+  }, [isDesktop, mediaSlotRefs, mediaViewportRef, positionSyncRef, surfaceSlotIndex])
 
   const surfaceMetadata =
     loadedSurfaceMetadata?.resourceKey === surfaceResourceKey ? loadedSurfaceMetadata.metadata : null
@@ -726,6 +738,7 @@ function InteractiveShowcase3DRuntime({
                     cameraRestoreRef={cameraRestoreRef}
                     controlsRef={controlsRef}
                     finishRetryRevision={finishRetryRevision}
+                    isDesktop={isDesktop}
                     isInteractive={canInteract}
                     metadata={surfaceMetadata}
                     modelRotationResetRef={modelRotationResetRef}
@@ -1026,6 +1039,7 @@ function CabinModel({
   cameraRestoreRef,
   controlsRef,
   finishRetryRevision,
+  isDesktop,
   isInteractive,
   metadata,
   modelRotationResetRef,
@@ -1317,6 +1331,8 @@ function CabinModel({
         cameraRestoreRef={cameraRestoreRef}
         contract={metadata.camera}
         controlsRef={controlsRef}
+        isDesktop={isDesktop}
+        model={scene}
         onBeforeRestore={resetCameraElevation}
         onConfigured={handleCameraConfigured}
       />
@@ -1350,12 +1366,16 @@ function CameraResizeCalibration({
   cameraRestoreRef,
   contract,
   controlsRef,
+  isDesktop,
+  model,
   onBeforeRestore,
   onConfigured,
 }: {
   readonly cameraRestoreRef: RefObject<(() => void) | null>
   readonly contract: CameraContract
   readonly controlsRef: RefObject<ComponentRef<typeof OrbitControls> | null>
+  readonly isDesktop: boolean
+  readonly model: Object3D
   readonly onBeforeRestore: () => void
   readonly onConfigured: () => void
 }) {
@@ -1373,9 +1393,32 @@ function CameraResizeCalibration({
       controls.update()
     }
 
-    applyOffAxisProjection(perspectiveCamera, aspect, contract)
+    const framingScale = isDesktop
+      ? getDesktopFramingScale({
+          camera: perspectiveCamera,
+          canvasHeight: size.height,
+          model,
+          viewportWidth: getDesktopViewportWidth(),
+        })
+      : 1
+
+    applyOffAxisProjection(perspectiveCamera, aspect, contract, framingScale)
     invalidate()
-  }, [camera, contract, controlsRef, invalidate, onBeforeRestore, size.height, size.width])
+  }, [camera, contract, controlsRef, invalidate, isDesktop, model, onBeforeRestore, size.height, size.width])
+
+  useEffect(() => {
+    if (!isDesktop) return undefined
+
+    const handleViewportResize = () => {
+      restoreCanonicalCamera()
+    }
+
+    window.addEventListener('resize', handleViewportResize)
+
+    return () => {
+      window.removeEventListener('resize', handleViewportResize)
+    }
+  }, [isDesktop, restoreCanonicalCamera])
 
   useLayoutEffect(() => {
     cameraRestoreRef.current = restoreCanonicalCamera
@@ -1899,17 +1942,18 @@ function setCanonicalCamera(camera: PerspectiveCamera, aspect: number, contract:
   camera.updateMatrixWorld(true)
 }
 
-function applyOffAxisProjection(camera: Camera, aspect: number, contract: CameraContract) {
+function applyOffAxisProjection(camera: Camera, aspect: number, contract: CameraContract, framingScale = 1) {
   const canonicalAspect = getCanonicalAspect(contract)
   const safeAspect = Number.isFinite(aspect) && aspect > 0 ? aspect : canonicalAspect
+  const safeFramingScale = Number.isFinite(framingScale) && framingScale > 0 ? framingScale : 1
   const rows = contract.projection_matrix
   const projection = new Matrix4().set(
-    (rows[0][0] * canonicalAspect) / safeAspect,
+    ((rows[0][0] * canonicalAspect) / safeAspect) * safeFramingScale,
     rows[0][1],
     rows[0][2],
     rows[0][3],
     rows[1][0],
-    rows[1][1],
+    rows[1][1] * safeFramingScale,
     rows[1][2],
     rows[1][3],
     rows[2][0],
@@ -1932,6 +1976,84 @@ function getCanonicalAspect(contract: CameraContract) {
     return contract.image.width / contract.image.height
 
   return 1
+}
+
+function getDesktopProjectedHeight(viewportWidth: number) {
+  return MathUtils.clamp(
+    DESKTOP_PROJECTED_HEIGHT_INTERCEPT_PX + viewportWidth * DESKTOP_PROJECTED_HEIGHT_SLOPE,
+    DESKTOP_PROJECTED_HEIGHT_MIN_PX,
+    DESKTOP_PROJECTED_HEIGHT_MAX_PX,
+  )
+}
+
+function getDesktopViewportWidth() {
+  const viewportWidth = window.visualViewport?.width ?? window.innerWidth
+
+  return Number.isFinite(viewportWidth) && viewportWidth > 0 ? viewportWidth : 1280
+}
+
+function getDesktopFramingScale({
+  camera,
+  canvasHeight,
+  model,
+  viewportWidth,
+}: {
+  readonly camera: PerspectiveCamera
+  readonly canvasHeight: number
+  readonly model: Object3D
+  readonly viewportWidth: number
+}) {
+  if (canvasHeight <= 0 || viewportWidth <= 0) return 1
+
+  const boundingBoxCorners = getModelBoundingBoxCorners(model)
+  if (boundingBoxCorners === null) return 1
+
+  const measuredHeight = getProjectedModelHeight(boundingBoxCorners, camera, canvasHeight)
+  if (measuredHeight === null || measuredHeight <= Number.EPSILON) return 1
+
+  const framingScale = getDesktopProjectedHeight(viewportWidth) / measuredHeight
+
+  return Number.isFinite(framingScale) && framingScale > 0 ? framingScale : 1
+}
+
+function getModelBoundingBoxCorners(model: Object3D): ReadonlyArray<Vector3> | null {
+  model.updateWorldMatrix(true, true)
+
+  const bounds = new Box3().setFromObject(model)
+  if (bounds.isEmpty()) return null
+
+  const { min, max } = bounds
+
+  return [
+    new Vector3(min.x, min.y, min.z),
+    new Vector3(min.x, min.y, max.z),
+    new Vector3(min.x, max.y, min.z),
+    new Vector3(min.x, max.y, max.z),
+    new Vector3(max.x, min.y, min.z),
+    new Vector3(max.x, min.y, max.z),
+    new Vector3(max.x, max.y, min.z),
+    new Vector3(max.x, max.y, max.z),
+  ]
+}
+
+function getProjectedModelHeight(
+  boundingBoxCorners: ReadonlyArray<Vector3>,
+  camera: PerspectiveCamera,
+  canvasHeight: number,
+) {
+  const projectedPoint = new Vector3()
+  let minY = Number.POSITIVE_INFINITY
+  let maxY = Number.NEGATIVE_INFINITY
+
+  for (const corner of boundingBoxCorners) {
+    projectedPoint.copy(corner).project(camera)
+    if (!Number.isFinite(projectedPoint.y)) return null
+
+    minY = Math.min(minY, projectedPoint.y)
+    maxY = Math.max(maxY, projectedPoint.y)
+  }
+
+  return ((maxY - minY) * canvasHeight) / 2
 }
 
 function matrixFromRows(rows: MatrixRows) {
