@@ -23,6 +23,8 @@ Runtime hardening is implemented pending browser acceptance. The showcase render
 - After the active cabin produces its matching frame, one direction-aware adjacent cabin may be preloaded during an idle window. The candidate does not wrap, and data-saving or slow-connection signals disable this speculative request.
 - The committed surface cabin is rendered from its production GLB and camera contract. Camera matrices are read as row arrays and converted to Three.js column-major matrices while preserving the authored off-axis projection.
 - The surface remains opacity-zero until the current asset revision is loaded, both selected finish states are applied atomically, the camera is configured, and a matching frame reaches the renderer's `onAfterRender` probe.
+- The main showcase media stays clear during the initial load, including while the client-only 3D runtime is being requested; the live surface enters directly once its matching frame is ready. After a cabin switch, the active cabin's `showcasePoster` and centered `SwirlingSpinner` replace the outgoing live surface as soon as selection changes, before carousel settle. Finish-only changes do not replace the live surface with a poster.
+- A ready live cabin and its poster crossfade start in the same layout update. The opacity fade uses `1000ms`, while the separate `scale(1.05)` to `scale(1)` transition uses `2000ms`. Reduced-motion users receive an immediate reveal, while loading and error states retain their existing status and retry behavior.
 - Exterior IDs are normalized at the runtime boundary: `wood` to `natural-timber`, `white` to `whitewashed-timber`, and `black` to `charred-black-oil`.
 - Manifest and camera JSON are validated at the runtime boundary before they enter material preparation or camera configuration. Invalid contracts enter the existing controlled load-error path instead of relying on unchecked type casts.
 
@@ -41,10 +43,10 @@ Runtime hardening is implemented pending browser acceptance. The showcase render
 - The media viewport is a local `relative overflow-hidden` wrapper around `CarouselContent` and the live surface. At `xl`, it uses one shared fixed `31.25rem` (`500px`) height for every cabin.
 - Desktop initial optical framing targets a projected cabin height of `clamp(300px, -36.848px + 26.316vw, 400px)`. The runtime projects the eight world-space corners of the model bounding box through the canonical camera at its unchanged distance, converts the NDC vertical span to Canvas pixels, and applies the target-to-measured ratio to the horizontal and vertical focal terms of the off-axis projection. Principal-point offsets and the authored camera position remain unchanged.
 - Each cabin media slot is tracked by an element ref. On desktop, the surface fills the media viewport at `0,0`; below `xl`, it uses the committed slot's `getBoundingClientRect()` relative to the media viewport for width, height, and translation.
-- The legacy poster aspect ratios remain scoped to the below-`xl` fallback frames only; desktop poster and live Canvas sizing is independent of cabin geometry and source-image aspect ratio.
+- The legacy poster aspect ratios remain scoped to the below-`xl` media frames only; desktop showcase-poster and live Canvas sizing is independent of cabin geometry and source-image aspect ratio.
 - Embla `scroll`, `reInit`, and `resize` events update positioning without React state. `ResizeObserver` and window resize cover layout changes outside Embla.
 - The wrapper and Canvas both use an explicit full-size contract. An imperative `ResizeObserver` bridge keeps R3F's internal renderer size synchronized after the positioned surface receives its slot dimensions, including when the surface starts from zero size on mobile.
-- The surface slot index changes on `settle`, so an outgoing live cabin remains attached to its moving slot during a transition.
+- The surface slot index changes on carousel `select`, so the target poster and loading state replace the outgoing live cabin as soon as navigation begins.
 - Embla `reInit` preserves the selected snap before active and surface indices are synchronized, so responsive breakpoint changes do not revert the showcase to Niva.
 - A monotonic surface revision changes only when the committed slot changes, preventing an Embla resize/reInit for the same slot from restarting the model.
 - The wrapper clips the live surface to the media area; carousel arrows, thumbnails, configuration controls, and summaries remain outside its clipping region.
@@ -53,14 +55,14 @@ Runtime hardening is implemented pending browser acceptance. The showcase render
 
 - Thumbnail focus, 100 ms thumbnail hover, arrow focus/hover, and explicit cabin selection record intent before navigation completes.
 - Desktop enables cabin turntable dragging and zoom only for the revealed current surface while the section and document are visible. Horizontal dragging turns the upright cabin around its vertical axis, while vertical dragging applies a small damped camera elevation around the authored target without changing the model rotation or target. Mobile keeps the surface passive until the explicit `Explore in 3D` control is activated and provides an `Exit 3D` control afterward.
-- Loading feedback is shown while the current surface revision is pending. Finish updates retain the last complete live pair while replacement textures load.
-- Finish failures retain the last complete live pair and expose a localized retry action. Scene failures keep the canonical poster visible with a retry action; obsolete async completions cannot reveal or overwrite a newer cabin/configuration revision.
+- Cabin-switch loading feedback is shown while the current surface revision is pending. Initial loading intentionally keeps the main media clear. Finish updates retain the last complete live pair while replacement textures load.
+- Finish failures retain the last complete live pair and expose a localized retry action. Scene failures expose a retry action over the current loading presentation; obsolete async completions cannot reveal or overwrite a newer cabin/configuration revision.
 
 ## Invariants
 
 - There is at most one Canvas for the showcase section.
 - There is at most one live cabin scene in that Canvas. Neighboring cabins are preloaded but not rendered until committed.
-- Neighboring slides and thumbnails continue to use the existing canonical poster images.
+- Thumbnails use the canonical showcase posters; neighboring main-media slides stay clear once the 3D runtime has been requested.
 - No high-frequency geometry value is stored in React state.
 - Palette changes preserve the last complete live pair while replacement textures load; failed replacements do not hide or claim to replace that pair.
 - The Canvas is interactive only for the revealed current surface: desktop uses OrbitControls for zoom while custom dragging controls the cabin turntable and camera elevation, and mobile requires explicit touch-mode entry. Carousel gestures and controls retain ownership outside the live surface.

@@ -5,13 +5,10 @@ import type { Cabin, CabinExteriorFinishId } from '~/app/[locale]/(app)/_data/ca
 
 import dynamic from 'next/dynamic'
 
-interface PositionSyncRef {
-  current: (() => void) | null
-}
-
 interface LiveSurfaceVisibility {
   readonly isVisible: boolean
   readonly revision: number
+  readonly cabinId: Cabin['id']
 }
 
 interface InteractiveShowcase3DProps {
@@ -24,7 +21,6 @@ interface InteractiveShowcase3DProps {
   readonly mediaViewportRef: RefObject<HTMLDivElement | null>
   readonly navigationDirection: 'next' | 'previous' | null
   readonly onLiveSurfaceVisibilityChange: (visibility: LiveSurfaceVisibility) => void
-  readonly positionSyncRef: PositionSyncRef
   readonly selectedExterior: CabinExteriorFinishId
   readonly selectedInterior: 'dark-walnut' | 'light-oak' | 'warm-ash'
   readonly speculativeCabin: Cabin | null
@@ -39,9 +35,7 @@ interface InteractiveShowcase3DProps {
     readonly finishError: string
     readonly hintDesktop: string
     readonly hintMobile: string
-    readonly loading: string
     readonly retry: string
-    readonly updating: string
   }
 }
 
@@ -61,5 +55,5 @@ function InteractiveShowcase3D(props: InteractiveShowcase3DProps) {
   return <InteractiveShowcase3DRuntime {...props} />
 }
 
-export type { InteractiveShowcase3DProps, LiveSurfaceVisibility, PositionSyncRef }
+export type { InteractiveShowcase3DProps, LiveSurfaceVisibility }
 export { InteractiveShowcase3D }

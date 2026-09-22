@@ -19,6 +19,7 @@ import { Component, Suspense, useCallback, useEffect, useLayoutEffect, useRef, u
 
 import { OrbitControls, useGLTF } from '@react-three/drei'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { createPortal } from 'react-dom'
 import {
   AgXToneMapping,
   Box3,
@@ -34,8 +35,10 @@ import {
 
 import { Button } from '@workspace/ui/components/button'
 
+import { DESKTOP_FRAMING } from './interactive-showcase-3d-framing'
+import { REVEAL_EASING, REVEAL_FADE_DURATION_MS } from './interactive-showcase-3d-timing'
+
 const BACKGROUND_COLOR = '#f7f5f0'
-const REVEAL_DURATION_MS = 180
 const CANVAS_DPR: [number, number] = [1, 1.75]
 const CANVAS_CAMERA_OPTIONS = {
   manual: true,
@@ -57,10 +60,6 @@ const CAMERA_ELEVATION_DRAG_SENSITIVITY = 0.005
 const CAMERA_ELEVATION_LIMIT = 0.32
 const CAMERA_ELEVATION_SETTLE_EPSILON = 0.0001
 const SHOWCASE_SHADOW_MAP_SIZE = 512
-const DESKTOP_PROJECTED_HEIGHT_MIN_PX = 300
-const DESKTOP_PROJECTED_HEIGHT_MAX_PX = 400
-const DESKTOP_PROJECTED_HEIGHT_INTERCEPT_PX = -36.848
-const DESKTOP_PROJECTED_HEIGHT_SLOPE = 0.26316
 type LightPosition = readonly [number, number, number]
 
 interface ExteriorSpotlightDefinition {
@@ -239,7 +238,13 @@ interface SurfaceFrameIdentity {
   readonly interiorId: InteriorPresetId
 }
 
+interface SurfaceSize {
+  readonly width: number
+  readonly height: number
+}
+
 interface CabinModelProps {
+  readonly surfaceRef: RefObject<HTMLDivElement | null>
   readonly cabin: Cabin
   readonly cameraRestoreRef: RefObject<(() => void) | null>
   readonly controlsRef: RefObject<ComponentRef<typeof OrbitControls> | null>
@@ -309,7 +314,6 @@ function InteractiveShowcase3DRuntime({
   isSectionNear,
   mediaSlotRefs,
   mediaViewportRef,
-  positionSyncRef,
   onLiveSurfaceVisibilityChange,
   selectedExterior,
   selectedInterior,
@@ -320,11 +324,17 @@ function InteractiveShowcase3DRuntime({
   surfaceSlotIndex,
   labels,
 }: InteractiveShowcase3DProps) {
+  const [surfaceHost] = useState(() => {
+    const host = document.createElement('div')
+    host.className = 'pointer-events-none absolute inset-0 z-10'
+    host.dataset.showcaseLiveSurface = ''
+    return host
+  })
   const surfaceRef = useRef<HTMLDivElement | null>(null)
   const controlsRef = useRef<ComponentRef<typeof OrbitControls> | null>(null)
   const cameraRestoreRef = useRef<(() => void) | null>(null)
   const modelRotationResetRef = useRef<(() => void) | null>(null)
-  const [revealedSurfaceToken, setRevealedSurfaceToken] = useState<string | null>(null)
+  const [revealedSurfaceFrame, setRevealedSurfaceFrame] = useState<SurfaceFrameIdentity | null>(null)
   const [loadedSurfaceMetadata, setLoadedSurfaceMetadata] = useState<{
     readonly resourceKey: string
     readonly metadata: CabinMetadata
@@ -355,7 +365,10 @@ function InteractiveShowcase3DRuntime({
   const speculativeAssetUrl = speculativeCabin?.threeD.assetUrl
   const speculativeManifestUrl = speculativeCabin?.threeD.manifestUrl
   const speculativeCameraUrl = speculativeCabin?.threeD.cameraUrl
-  const isSurfaceVisible = revealedSurfaceToken === surfaceToken
+  const isSurfaceVisible =
+    revealedSurfaceFrame !== null &&
+    revealedSurfaceFrame.surfaceToken === surfaceToken &&
+    revealedSurfaceFrame.cabinId === surfaceCabin.id
   const currentSurfaceLoadState =
     surfaceLoadStatus?.resourceKey === surfaceResourceKey ? surfaceLoadStatus.state : 'loading'
   const currentFinishPairState =
@@ -365,9 +378,7 @@ function InteractiveShowcase3DRuntime({
     isSurfaceVisible && isSurfaceCurrent && isSectionNear && isDocumentVisible && (isDesktop || isTouchInteraction)
   const showSurfaceError = currentSurfaceLoadState === 'error'
   const showFinishError = currentFinishPairState === 'error'
-  const showSurfaceLoading = !isSurfaceVisible && !showSurfaceError && !showFinishError
-  const showFinishLoading = isSurfaceVisible && currentFinishPairState === 'loading' && !showFinishError
-  const showEnterInteraction = !isDesktop && isSurfaceVisible && !isTouchInteraction && !showFinishLoading
+  const showEnterInteraction = !isDesktop && isSurfaceVisible && !isTouchInteraction
   const currentSurfaceFrameRef = useRef<SurfaceFrameIdentity>({
     surfaceToken,
     cabinId: surfaceCabin.id,
@@ -375,14 +386,25 @@ function InteractiveShowcase3DRuntime({
     interiorId: selectedInterior,
   })
 
-  useEffect(() => {
+  // Clear only stale cabin readiness; palette updates keep the previously rendered finishes visible.
+  if (revealedSurfaceFrame !== null && !isSurfaceVisible) {
+    setRevealedSurfaceFrame(null)
+  }
+
+  // Returning from desktop to mobile requires a fresh touch opt-in.
+  if (isDesktop && touchInteractionRevision !== null) {
+    setTouchInteractionRevision(null)
+  }
+
+  useLayoutEffect(() => {
     const visibility: LiveSurfaceVisibility = {
       isVisible: isSurfaceVisible,
       revision: surfaceRevision,
+      cabinId: surfaceCabin.id,
     }
 
     onLiveSurfaceVisibilityChange(visibility)
-  }, [isSurfaceVisible, onLiveSurfaceVisibilityChange, surfaceRevision])
+  }, [isSurfaceVisible, onLiveSurfaceVisibilityChange, surfaceCabin.id, surfaceRevision])
 
   useLayoutEffect(() => {
     currentSurfaceFrameRef.current = {
@@ -564,7 +586,7 @@ function InteractiveShowcase3DRuntime({
 
       setSurfaceLoadStatus({ resourceKey: surfaceResourceKey, state: 'ready' })
       setFinishPairStatus({ revision: surfaceMaterialRevision, state: 'ready' })
-      setRevealedSurfaceToken(frame.surfaceToken)
+      setRevealedSurfaceFrame(frame)
     },
     [surfaceMaterialRevision, surfaceResourceKey],
   )
@@ -573,7 +595,7 @@ function InteractiveShowcase3DRuntime({
     if (currentSurfaceFrameRef.current.surfaceToken !== surfaceToken) return
 
     setSurfaceLoadStatus({ resourceKey: surfaceResourceKey, state: 'error' })
-    setRevealedSurfaceToken((currentToken) => (currentToken === surfaceToken ? null : currentToken))
+    setRevealedSurfaceFrame((currentFrame) => (currentFrame?.surfaceToken === surfaceToken ? null : currentFrame))
   }, [surfaceResourceKey, surfaceToken])
 
   const handleFinishStatus = useCallback(
@@ -592,7 +614,7 @@ function InteractiveShowcase3DRuntime({
       setLoadedSurfaceMetadata(null)
       setSurfaceLoadStatus({ resourceKey: surfaceResourceKey, state: 'loading' })
       setFinishPairStatus({ revision: surfaceMaterialRevision, state: 'loading' })
-      setRevealedSurfaceToken((currentToken) => (currentToken === surfaceToken ? null : currentToken))
+      setRevealedSurfaceFrame((currentFrame) => (currentFrame?.surfaceToken === surfaceToken ? null : currentFrame))
       setSceneRetryRevision((revision) => revision + 1)
       return
     }
@@ -623,65 +645,16 @@ function InteractiveShowcase3DRuntime({
   }, [cameraRestoreRef, modelRotationResetRef])
 
   useLayoutEffect(() => {
-    const surface = surfaceRef.current
-    const viewport = mediaViewportRef.current
+    const parent = isDesktop ? mediaViewportRef.current : mediaSlotRefs.current[surfaceSlotIndex]
+    if (!parent) return undefined
 
-    if (!surface || !viewport) {
-      return undefined
-    }
-
-    const updatePosition = () => {
-      const slot = mediaSlotRefs.current[surfaceSlotIndex]
-
-      if (!slot) {
-        surface.style.visibility = 'hidden'
-        surface.style.opacity = '0'
-        return
-      }
-
-      const viewportBounds = viewport.getBoundingClientRect()
-      const slotBounds = slot.getBoundingClientRect()
-      const slotOpacity = Number(window.getComputedStyle(slot).opacity)
-      const safeOpacity = Number.isFinite(slotOpacity) ? slotOpacity : 0
-
-      if (isDesktop) {
-        surface.style.width = `${viewportBounds.width}px`
-        surface.style.height = `${viewportBounds.height}px`
-        surface.style.transform = 'translate3d(0, 0, 0)'
-      } else {
-        surface.style.width = `${slotBounds.width}px`
-        surface.style.height = `${slotBounds.height}px`
-        surface.style.transform = `translate3d(${slotBounds.left - viewportBounds.left}px, ${slotBounds.top - viewportBounds.top}px, 0)`
-      }
-      surface.style.opacity = `${safeOpacity}`
-      surface.style.visibility = 'visible'
-    }
-
-    positionSyncRef.current = updatePosition
-    updatePosition()
-
-    const resizeObserver =
-      typeof ResizeObserver === 'undefined'
-        ? null
-        : new ResizeObserver(() => {
-            updatePosition()
-          })
-
-    resizeObserver?.observe(viewport)
-    mediaSlotRefs.current.forEach((slot) => {
-      if (slot) resizeObserver?.observe(slot)
-    })
-    window.addEventListener('resize', updatePosition)
-
+    // Move one stable portal container, never change the portal target/remount its Canvas.
+    // On mobile the browser now moves/composites the live frame and poster as one slide.
+    parent.append(surfaceHost)
     return () => {
-      window.removeEventListener('resize', updatePosition)
-      resizeObserver?.disconnect()
-
-      if (positionSyncRef.current === updatePosition) {
-        positionSyncRef.current = null
-      }
+      surfaceHost.remove()
     }
-  }, [isDesktop, mediaSlotRefs, mediaViewportRef, positionSyncRef, surfaceSlotIndex])
+  }, [isDesktop, mediaSlotRefs, mediaViewportRef, surfaceHost, surfaceSlotIndex])
 
   const surfaceMetadata =
     loadedSurfaceMetadata?.resourceKey === surfaceResourceKey ? loadedSurfaceMetadata.metadata : null
@@ -698,25 +671,17 @@ function InteractiveShowcase3DRuntime({
     [handleSceneError],
   )
 
-  return (
-    <div
-      ref={surfaceRef}
-      className="pointer-events-none absolute top-0 left-0 z-10 overflow-hidden"
-      style={{
-        height: 0,
-        opacity: 0,
-        visibility: 'hidden',
-        width: 0,
-      }}
-    >
+  return createPortal(
+    <div ref={surfaceRef} className="relative size-full overflow-hidden">
       <div
         className="absolute inset-0"
         style={{
           opacity: isSurfaceVisible ? 1 : 0,
-          transition: shouldReduceMotion ? 'none' : `opacity ${REVEAL_DURATION_MS}ms ease-out`,
+          transition:
+            shouldReduceMotion || !isSurfaceVisible ? 'none' : `opacity ${REVEAL_FADE_DURATION_MS}ms ${REVEAL_EASING}`,
         }}
       >
-        <SceneErrorBoundary key={`${surfaceToken}:${sceneRetryRevision}`} onError={handleSceneError}>
+        <SceneErrorBoundary key={sceneRetryRevision} onError={handleSceneError}>
           <Canvas
             camera={CANVAS_CAMERA_OPTIONS}
             className="block size-full"
@@ -724,13 +689,12 @@ function InteractiveShowcase3DRuntime({
             frameloop="demand"
             gl={createRenderer}
             onCreated={configureRenderer}
-            resize={{ scroll: false }}
+            resize={{ scroll: false, offsetSize: !isDesktop }}
             shadows
             style={{ pointerEvents: canInteract ? 'auto' : 'none', touchAction: canInteract ? 'none' : 'auto' }}
           >
-            <CanvasSizeSync surfaceRef={surfaceRef} />
             <ShowcaseLighting />
-            <SceneErrorBoundary onError={handleSceneError}>
+            <SceneErrorBoundary key={surfaceToken} onError={handleSceneError}>
               <Suspense fallback={null}>
                 {surfaceMetadata ? (
                   <CabinModel
@@ -747,6 +711,7 @@ function InteractiveShowcase3DRuntime({
                     onFrameReady={handleFrameReady}
                     selectedExteriorId={normalizedExteriorId}
                     selectedInteriorId={selectedInterior}
+                    surfaceRef={surfaceRef}
                     surfaceToken={surfaceToken}
                   />
                 ) : null}
@@ -757,18 +722,6 @@ function InteractiveShowcase3DRuntime({
       </div>
 
       <div className="pointer-events-none absolute inset-0 z-20">
-        {showSurfaceLoading ? (
-          <div
-            role="status"
-            aria-live="polite"
-            aria-atomic="true"
-            className="text-body-xs absolute inset-x-3 bottom-3 flex items-center gap-2 rounded-md border border-border/70 bg-card/90 px-3 py-2 text-foreground shadow-sm backdrop-blur-sm"
-          >
-            <span aria-hidden="true" className="size-2 shrink-0 animate-pulse rounded-full bg-primary" />
-            <span>{labels.loading}</span>
-          </div>
-        ) : null}
-
         {showSurfaceError || showFinishError ? (
           <div
             role="alert"
@@ -778,18 +731,6 @@ function InteractiveShowcase3DRuntime({
             <Button type="button" variant="outline" size="sm" onClick={handleRetry}>
               {labels.retry}
             </Button>
-          </div>
-        ) : null}
-
-        {showFinishLoading ? (
-          <div
-            role="status"
-            aria-live="polite"
-            aria-atomic="true"
-            className="text-body-xs absolute inset-x-3 bottom-3 flex items-center gap-2 rounded-md border border-border/70 bg-card/85 px-3 py-2 text-foreground shadow-sm backdrop-blur-sm"
-          >
-            <span aria-hidden="true" className="size-2 shrink-0 animate-pulse rounded-full bg-primary" />
-            <span>{labels.updating}</span>
           </div>
         ) : null}
 
@@ -825,58 +766,9 @@ function InteractiveShowcase3DRuntime({
           </span>
         ) : null}
       </div>
-    </div>
+    </div>,
+    surfaceHost,
   )
-}
-
-function CanvasSizeSync({ surfaceRef }: { readonly surfaceRef: RefObject<HTMLDivElement | null> }) {
-  const invalidate = useThree((state) => state.invalidate)
-  const setSize = useThree((state) => state.setSize)
-  const lastSizeRef = useRef({ height: 0, width: 0 })
-
-  useLayoutEffect(() => {
-    const surface = surfaceRef.current
-
-    if (!surface) return undefined
-
-    const applySize = (width: number, height: number) => {
-      if (width <= 0 || height <= 0) return
-
-      const lastSize = lastSizeRef.current
-      if (lastSize.width === width && lastSize.height === height) return
-
-      lastSizeRef.current = { height, width }
-      setSize(width, height)
-      invalidate()
-    }
-    const syncFromSurface = () => {
-      const bounds = surface.getBoundingClientRect()
-      applySize(bounds.width, bounds.height)
-    }
-    const resizeObserver =
-      typeof ResizeObserver === 'undefined'
-        ? null
-        : new ResizeObserver(([entry]) => {
-            const bounds = entry?.contentRect
-            if (bounds) {
-              applySize(bounds.width, bounds.height)
-            } else {
-              syncFromSurface()
-            }
-          })
-    const initialFrame = window.requestAnimationFrame(syncFromSurface)
-
-    resizeObserver?.observe(surface)
-    window.addEventListener('resize', syncFromSurface)
-
-    return () => {
-      window.cancelAnimationFrame(initialFrame)
-      window.removeEventListener('resize', syncFromSurface)
-      resizeObserver?.disconnect()
-    }
-  }, [invalidate, setSize, surfaceRef])
-
-  return null
 }
 
 function ShowcaseLighting() {
@@ -1048,12 +940,13 @@ function CabinModel({
   onFrameReady,
   selectedExteriorId,
   selectedInteriorId,
+  surfaceRef,
   surfaceToken,
 }: CabinModelProps) {
   const { scene } = useGLTF(cabin.threeD.assetUrl) as { scene: Object3D }
-  const { camera, gl, invalidate } = useThree()
+  const { camera, get, gl, invalidate } = useThree()
   const materialTargetsRef = useRef<PreparedMaterialTargets | null>(null)
-  const cameraConfiguredRef = useRef(false)
+  const calibratedSizeRef = useRef<SurfaceSize | null>(null)
   const appliedRevisionRef = useRef<string | null>(null)
   const reportedRevisionRef = useRef<string | null>(null)
   const modelRotationGroupRef = useRef<Group | null>(null)
@@ -1067,9 +960,6 @@ function CabinModel({
   const cameraOrbitAxisRef = useRef(new Vector3())
   const cameraOrbitQuaternionRef = useRef(new Quaternion())
   const cameraOrbitOffsetRef = useRef(new Vector3())
-  const activePointerIdRef = useRef<number | null>(null)
-  const lastPointerXRef = useRef<number | null>(null)
-  const lastPointerYRef = useRef<number | null>(null)
   const materialRevision = `${cabin.threeD.assetUrl}:${selectedExteriorId}:${selectedInteriorId}`
   const manifestUrl = cabin.threeD.manifestUrl
 
@@ -1163,46 +1053,52 @@ function CabinModel({
     if (!isInteractive) return undefined
 
     const canvas = gl.domElement
+    const pointerIds = new Set<number>()
+    let activePointerId: number | null = null
+    let lastPointerPosition: { readonly x: number; readonly y: number } | null = null
     const clearActivePointer = (pointerId: number) => {
-      if (activePointerIdRef.current !== pointerId) return
+      pointerIds.delete(pointerId)
+      if (activePointerId === pointerId) {
+        activePointerId = null
+        lastPointerPosition = null
+      }
 
       if (canvas.hasPointerCapture(pointerId)) canvas.releasePointerCapture(pointerId)
-      activePointerIdRef.current = null
-      lastPointerXRef.current = null
-      lastPointerYRef.current = null
     }
     const handlePointerDown = (event: PointerEvent) => {
-      if (!event.isPrimary || event.button !== 0 || event.target !== canvas) return
-      if (activePointerIdRef.current !== null) return
+      if (event.button !== 0 || event.target !== canvas) return
 
-      activePointerIdRef.current = event.pointerId
-      lastPointerXRef.current = event.clientX
-      lastPointerYRef.current = event.clientY
+      pointerIds.add(event.pointerId)
+      if (!event.isPrimary || pointerIds.size > 1) {
+        // OrbitControls owns pinch zoom. Do not also turn the model with the primary finger.
+        activePointerId = null
+        lastPointerPosition = null
+        return
+      }
+
+      activePointerId = event.pointerId
+      lastPointerPosition = { x: event.clientX, y: event.clientY }
       canvas.setPointerCapture(event.pointerId)
-      event.stopPropagation()
     }
     const handlePointerMove = (event: PointerEvent) => {
-      if (activePointerIdRef.current !== event.pointerId) return
+      if (activePointerId !== event.pointerId || lastPointerPosition === null) return
 
-      const previousPointerX = lastPointerXRef.current
-      const previousPointerY = lastPointerYRef.current
-      lastPointerXRef.current = event.clientX
-      lastPointerYRef.current = event.clientY
-      if (previousPointerX === null || previousPointerY === null) return
+      const previousPointerPosition = lastPointerPosition
+      lastPointerPosition = { x: event.clientX, y: event.clientY }
 
-      targetModelRotationYRef.current += (event.clientX - previousPointerX) * MODEL_ROTATION_DRAG_SENSITIVITY
+      targetModelRotationYRef.current += (event.clientX - previousPointerPosition.x) * MODEL_ROTATION_DRAG_SENSITIVITY
       targetCameraElevationRef.current = MathUtils.clamp(
-        targetCameraElevationRef.current - (event.clientY - previousPointerY) * CAMERA_ELEVATION_DRAG_SENSITIVITY,
+        targetCameraElevationRef.current -
+          (event.clientY - previousPointerPosition.y) * CAMERA_ELEVATION_DRAG_SENSITIVITY,
         -CAMERA_ELEVATION_LIMIT,
         CAMERA_ELEVATION_LIMIT,
       )
-      event.stopPropagation()
+      // Let OrbitControls' document listeners receive movement and pointer-up for zoom/cleanup.
       invalidate()
     }
     const handlePointerEnd = (event: PointerEvent) => {
-      if (activePointerIdRef.current !== event.pointerId) return
+      if (!pointerIds.has(event.pointerId)) return
 
-      event.stopPropagation()
       clearActivePointer(event.pointerId)
     }
 
@@ -1213,14 +1109,13 @@ function CabinModel({
     canvas.addEventListener('lostpointercapture', handlePointerEnd)
 
     return () => {
-      const activePointerId = activePointerIdRef.current
-      if (activePointerId !== null) clearActivePointer(activePointerId)
-
       canvas.removeEventListener('pointerdown', handlePointerDown)
       canvas.removeEventListener('pointermove', handlePointerMove)
       canvas.removeEventListener('pointerup', handlePointerEnd)
       canvas.removeEventListener('pointercancel', handlePointerEnd)
       canvas.removeEventListener('lostpointercapture', handlePointerEnd)
+
+      pointerIds.forEach((pointerId) => clearActivePointer(pointerId))
     }
   }, [gl, invalidate, isInteractive])
 
@@ -1248,10 +1143,13 @@ function CabinModel({
     }
   }, [metadata.manifest, onError, scene])
 
-  const handleCameraConfigured = useCallback(() => {
-    cameraConfiguredRef.current = true
-    invalidate()
-  }, [invalidate])
+  const handleCameraConfigured = useCallback(
+    (size: SurfaceSize) => {
+      calibratedSizeRef.current = size
+      invalidate()
+    },
+    [invalidate],
+  )
 
   useEffect(() => {
     const targets = materialTargetsRef.current
@@ -1306,11 +1204,20 @@ function CabinModel({
 
   const handleAfterRender = useCallback(() => {
     const appliedRevision = appliedRevisionRef.current
+    const surface = surfaceRef.current
+    const calibratedSize = calibratedSizeRef.current
+    const { size } = get()
 
     if (
-      !cameraConfiguredRef.current ||
-      appliedRevision === null ||
-      appliedRevision.length === 0 ||
+      !surface ||
+      !calibratedSize ||
+      size.width <= 0 ||
+      size.height <= 0 ||
+      Math.round(size.width) !== surface.clientWidth ||
+      Math.round(size.height) !== surface.clientHeight ||
+      calibratedSize.width !== size.width ||
+      calibratedSize.height !== size.height ||
+      appliedRevision !== materialRevision ||
       reportedRevisionRef.current === appliedRevision
     ) {
       return
@@ -1323,7 +1230,7 @@ function CabinModel({
       exteriorId: selectedExteriorId,
       interiorId: selectedInteriorId,
     })
-  }, [cabin.id, onFrameReady, selectedExteriorId, selectedInteriorId, surfaceToken])
+  }, [cabin.id, get, materialRevision, onFrameReady, selectedExteriorId, selectedInteriorId, surfaceRef, surfaceToken])
 
   return (
     <>
@@ -1377,7 +1284,7 @@ function CameraResizeCalibration({
   readonly isDesktop: boolean
   readonly model: Object3D
   readonly onBeforeRestore: () => void
-  readonly onConfigured: () => void
+  readonly onConfigured: (size: SurfaceSize) => void
 }) {
   const { camera, invalidate, size } = useThree()
   const restoreCanonicalCamera = useCallback(() => {
@@ -1423,14 +1330,14 @@ function CameraResizeCalibration({
   useLayoutEffect(() => {
     cameraRestoreRef.current = restoreCanonicalCamera
     restoreCanonicalCamera()
-    onConfigured()
+    onConfigured({ width: size.width, height: size.height })
 
     return () => {
       if (cameraRestoreRef.current === restoreCanonicalCamera) {
         cameraRestoreRef.current = null
       }
     }
-  }, [cameraRestoreRef, onConfigured, restoreCanonicalCamera])
+  }, [cameraRestoreRef, onConfigured, restoreCanonicalCamera, size.height, size.width])
 
   return null
 }
@@ -1980,9 +1887,9 @@ function getCanonicalAspect(contract: CameraContract) {
 
 function getDesktopProjectedHeight(viewportWidth: number) {
   return MathUtils.clamp(
-    DESKTOP_PROJECTED_HEIGHT_INTERCEPT_PX + viewportWidth * DESKTOP_PROJECTED_HEIGHT_SLOPE,
-    DESKTOP_PROJECTED_HEIGHT_MIN_PX,
-    DESKTOP_PROJECTED_HEIGHT_MAX_PX,
+    DESKTOP_FRAMING.intercept + viewportWidth * DESKTOP_FRAMING.slope,
+    DESKTOP_FRAMING.minHeight,
+    DESKTOP_FRAMING.maxHeight,
   )
 }
 

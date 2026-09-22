@@ -6,7 +6,7 @@ import type { CarouselApi } from '@workspace/ui/components/carousel'
 import type { Cabin, CabinExteriorFinishId, CabinId } from '~/app/[locale]/(app)/_data/cabins'
 import type { Locale } from '~/i18n/routing'
 
-import { useCallback, useEffect, useId, useRef, useState } from 'react'
+import { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from 'react'
 
 import { ParaglideMessage } from '@inlang/paraglide-js-react'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
@@ -25,6 +25,7 @@ import {
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@workspace/ui/components/dialog'
 import { Label } from '@workspace/ui/components/label'
 import { RadioGroup, RadioGroupItem } from '@workspace/ui/components/radio-group'
+import { SwirlingSpinner } from '@workspace/ui/components/spinner-variants'
 import { useMediaQuery } from '@workspace/ui/hooks/use-media-query'
 import { usePrefersReducedMotion } from '@workspace/ui/hooks/use-prefers-reduced-motion'
 import { cn } from '@workspace/ui/lib/utils'
@@ -49,7 +50,6 @@ import {
   showcase_choose_thumbnails,
   showcase_explore,
   showcase_exterior,
-  showcase_exterior_alt,
   showcase_finish_charred_black_oil,
   showcase_finish_natural_timber,
   showcase_finish_whitewashed_timber,
@@ -68,9 +68,7 @@ import {
   showcase_3d_finish_error,
   showcase_3d_hint_desktop,
   showcase_3d_hint_mobile,
-  showcase_3d_loading,
   showcase_3d_retry,
-  showcase_3d_updating,
   showcase_status,
   showcase_title,
   showcase_view_floor_plan,
@@ -78,6 +76,8 @@ import {
 } from '~/paraglide/messages.js'
 
 import { InteractiveShowcase3D } from './interactive-showcase-3d'
+import { getShowcasePosterStyle } from './interactive-showcase-3d-framing'
+import { REVEAL_EASING, REVEAL_FADE_DURATION_MS } from './interactive-showcase-3d-timing'
 
 const FEATURED_INDEX = 0
 const SHOWCASE_PRELOAD_MARGIN = '600px 0px'
@@ -204,9 +204,8 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
 
   const [api, setApi] = useState<CarouselApi>()
   const [activeIndex, setActiveIndex] = useState(FEATURED_INDEX)
-  const [surfaceSlotIndex, setSurfaceSlotIndex] = useState(FEATURED_INDEX)
   const [surfaceRevision, setSurfaceRevision] = useState(0)
-  const [revealedSurfaceRevision, setRevealedSurfaceRevision] = useState<number | null>(null)
+  const [liveSurfaceVisibility, setLiveSurfaceVisibility] = useState<LiveSurfaceVisibility | null>(null)
   const [selectedExterior, setSelectedExterior] = useState<ExteriorFinishId>('wood')
   const [selectedInterior, setSelectedInterior] = useState<InteriorPaletteId>('light-oak')
   const [isFloorPlanOpen, setIsFloorPlanOpen] = useState(false)
@@ -219,12 +218,15 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
   const sectionRef = useRef<HTMLElement | null>(null)
   const mediaViewportRef = useRef<HTMLDivElement | null>(null)
   const mediaSlotRefs = useRef<Array<HTMLDivElement | null>>([])
-  const positionSyncRef = useRef<(() => void) | null>(null)
-  const surfaceSlotIndexRef = useRef(FEATURED_INDEX)
   const previousActiveIndexRef = useRef(FEATURED_INDEX)
 
   const activeCabin = showcaseCabins[activeIndex]?.cabin ?? cabinsById.niva
-  const surfaceCabin = showcaseCabins[surfaceSlotIndex]?.cabin ?? activeCabin
+  const surfaceSlotIndex = activeIndex
+  const surfaceCabin = activeCabin
+  const isLiveSurfaceRevealed =
+    liveSurfaceVisibility?.isVisible === true &&
+    liveSurfaceVisibility.revision === surfaceRevision &&
+    liveSurfaceVisibility.cabinId === surfaceCabin.id
   const intentCabin =
     intentCabinId === null ? null : (showcaseCabins.find(({ cabin }) => cabin.id === intentCabinId)?.cabin ?? null)
   const speculativeCabin = showcaseCabins[activeIndex + (navigationDirection === 'previous' ? -1 : 1)]?.cabin ?? null
@@ -250,10 +252,7 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
   }
 
   const handleLiveSurfaceVisibilityChange = useCallback((visibility: LiveSurfaceVisibility) => {
-    setRevealedSurfaceRevision((currentRevision) => {
-      if (visibility.isVisible) return visibility.revision
-      return currentRevision === visibility.revision ? null : currentRevision
-    })
+    setLiveSurfaceVisibility(visibility)
   }, [])
 
   // Keep the visible model summary synchronized with Embla's selected snap, including after reinitialization.
@@ -269,20 +268,10 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
       if (nextActiveIndex !== previousActiveIndex) {
         setNavigationDirection(nextActiveIndex > previousActiveIndex ? 'next' : 'previous')
         previousActiveIndexRef.current = nextActiveIndex
+        setSurfaceRevision((revision) => revision + 1)
       }
 
       setActiveIndex(nextActiveIndex)
-    }
-    const handleSettle = () => {
-      const nextSurfaceSlotIndex = api.selectedScrollSnap()
-      const didChangeSurfaceSlot = surfaceSlotIndexRef.current !== nextSurfaceSlotIndex
-
-      surfaceSlotIndexRef.current = nextSurfaceSlotIndex
-      setSurfaceSlotIndex(nextSurfaceSlotIndex)
-      if (didChangeSurfaceSlot) {
-        setRevealedSurfaceRevision(null)
-        setSurfaceRevision((revision) => revision + 1)
-      }
     }
     const handleReInit = () => {
       const preservedIndex = previousActiveIndexRef.current
@@ -292,18 +281,14 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
       }
 
       handleSelect()
-      handleSettle()
     }
 
     handleSelect()
-    handleSettle()
     api.on('select', handleSelect)
-    api.on('settle', handleSettle)
     api.on('reInit', handleReInit)
 
     return () => {
       api.off('select', handleSelect)
-      api.off('settle', handleSettle)
       api.off('reInit', handleReInit)
     }
   }, [api])
@@ -342,24 +327,25 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
     }
   }, [])
 
-  // Update visual tween variables during drag; CSS consumes them for opacity and optical positioning.
-  useEffect(() => {
+  // Own the tween variables imperatively, including the final settled frame.
+  useLayoutEffect(() => {
     if (!api) {
       return undefined
     }
 
     const handleScroll = () => {
       updateSlideTweenStyles({ api, isDesktop })
-      positionSyncRef.current?.()
     }
 
     handleScroll()
     api.on('scroll', handleScroll)
+    api.on('settle', handleScroll)
     api.on('reInit', handleScroll)
     api.on('resize', handleScroll)
 
     return () => {
       api.off('scroll', handleScroll)
+      api.off('settle', handleScroll)
       api.off('reInit', handleScroll)
       api.off('resize', handleScroll)
     }
@@ -409,17 +395,20 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
             opts={{
               align: 'center',
               loop: false,
-              watchDrag: !isDesktop,
+              watchDrag: isDesktop ? false : canDragShowcase,
               startIndex: FEATURED_INDEX,
               containScroll: false,
             }}
             className={cn(
               'w-full',
               !isDesktop &&
-                '**:data-[slot=carousel-content]:cursor-grab **:data-[slot=carousel-content]:select-none **:data-[slot=carousel-content]:active:cursor-grabbing',
+                '**:data-[slot=carousel-content]:cursor-grab **:data-[slot=carousel-content]:touch-pan-y **:data-[slot=carousel-content]:touch-pinch-zoom **:data-[slot=carousel-content]:select-none **:data-[slot=carousel-content]:active:cursor-grabbing',
             )}
           >
-            <div ref={mediaViewportRef} className="relative w-full overflow-hidden xl:h-[31.25rem]">
+            <div
+              ref={mediaViewportRef}
+              className="relative w-full overflow-hidden xl:h-[31.25rem] xl:**:data-[slot=carousel-content]:h-full"
+            >
               <CarouselContent
                 className={cn(
                   'ms-0 items-start',
@@ -427,53 +416,64 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
                   'xl:h-full xl:py-0',
                 )}
               >
-                {showcaseCabins.map(({ cabin, mobilePosterAspectRatio }, index) => (
-                  <CarouselItem
-                    key={cabin.id}
-                    aria-label={models_slide_position(
-                      { current: index + 1, total: showcaseCabins.length, model: cabin.name },
-                      messageOptions,
-                    )}
-                    aria-roledescription={carousel_slide_role({}, messageOptions)}
-                    style={getShowcaseSlideStyle(index === activeIndex)}
-                    className={cn(
-                      'flex w-auto basis-auto flex-col items-center ps-0',
-                      'xl:h-full xl:w-full xl:basis-full',
-                    )}
-                  >
-                    <div className="flex transform-[translate3d(var(--showcase-optical-offset),0,0)] flex-col items-center gap-5 will-change-transform xl:h-full xl:w-full xl:transform-none">
-                      <div
-                        aria-hidden={index !== activeIndex}
-                        className="w-full opacity-(--showcase-summary-opacity) will-change-[opacity] xl:hidden"
-                      >
-                        <ModelSummary cabin={cabin} className="items-center text-center" />
-                      </div>
+                {showcaseCabins.map(({ cabin, mobilePosterAspectRatio }, index) => {
+                  const isSlideRevealed = index === surfaceSlotIndex && isLiveSurfaceRevealed
 
-                      <div
-                        ref={(node) => {
-                          mediaSlotRefs.current[index] = node
-                        }}
-                        style={{ aspectRatio: isDesktop ? 'auto' : mobilePosterAspectRatio }}
-                        className={cn(
-                          'h-[clamp(6rem,calc(1.197rem+21.959vw),18.75rem)]',
-                          'xl:h-full xl:w-full',
-                          'opacity-(--showcase-image-opacity) will-change-[opacity]',
-                        )}
-                      >
-                        <CabinImageCard
-                          cabin={cabin}
-                          finishId={selectedExterior}
-                          exteriorFinishes={exteriorFinishes}
-                          isLiveSurfaceRevealed={
-                            index === surfaceSlotIndex && revealedSurfaceRevision === surfaceRevision
-                          }
-                          locale={locale}
-                        />
+                  return (
+                    <CarouselItem
+                      key={cabin.id}
+                      aria-label={models_slide_position(
+                        { current: index + 1, total: showcaseCabins.length, model: cabin.name },
+                        messageOptions,
+                      )}
+                      aria-roledescription={carousel_slide_role({}, messageOptions)}
+                      style={getShowcaseSlideStyle(index === FEATURED_INDEX)}
+                      className={cn(
+                        'flex w-auto basis-auto flex-col items-center ps-0',
+                        'xl:h-full xl:w-full xl:basis-full',
+                      )}
+                    >
+                      <div className="flex transform-[translate3d(var(--showcase-optical-offset),0,0)] flex-col items-center gap-5 will-change-transform xl:h-full xl:w-full xl:transform-none">
+                        <div
+                          aria-hidden={index !== activeIndex}
+                          className="w-full opacity-(--showcase-summary-opacity) will-change-[opacity] xl:hidden"
+                        >
+                          <ModelSummary cabin={cabin} className="items-center text-center" />
+                        </div>
+
+                        <div
+                          ref={(node) => {
+                            mediaSlotRefs.current[index] = node
+                          }}
+                          style={{ aspectRatio: isDesktop ? 'auto' : mobilePosterAspectRatio }}
+                          className={cn(
+                            'relative h-[clamp(6rem,calc(1.197rem+21.959vw),18.75rem)]',
+                            'xl:aspect-auto! xl:h-full xl:w-full',
+                            'opacity-(--showcase-image-opacity) will-change-[opacity]',
+                          )}
+                        >
+                          <CabinImageCard
+                            cabin={cabin}
+                            className="xl:hidden"
+                            isLiveSurfaceRevealed={isSlideRevealed}
+                            isActive={index === activeIndex}
+                            shouldReduceMotion={shouldReduceMotion}
+                          />
+                        </div>
                       </div>
-                    </div>
-                  </CarouselItem>
-                ))}
+                    </CarouselItem>
+                  )
+                })}
               </CarouselContent>
+
+              <div className="pointer-events-none absolute inset-0 z-20 hidden xl:block">
+                <CabinImageCard
+                  cabin={surfaceCabin}
+                  isLiveSurfaceRevealed={isLiveSurfaceRevealed}
+                  isActive
+                  shouldReduceMotion={shouldReduceMotion}
+                />
+              </div>
 
               <InteractiveShowcase3D
                 activeCabin={activeCabin}
@@ -485,7 +485,6 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
                 mediaViewportRef={mediaViewportRef}
                 navigationDirection={navigationDirection}
                 onLiveSurfaceVisibilityChange={handleLiveSurfaceVisibilityChange}
-                positionSyncRef={positionSyncRef}
                 selectedExterior={selectedExterior}
                 selectedInterior={selectedInterior}
                 speculativeCabin={speculativeCabin}
@@ -500,9 +499,7 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
                   finishError: showcase_3d_finish_error({}, messageOptions),
                   hintDesktop: showcase_3d_hint_desktop({}, messageOptions),
                   hintMobile: showcase_3d_hint_mobile({}, messageOptions),
-                  loading: showcase_3d_loading({ model: activeCabin.name }, messageOptions),
                   retry: showcase_3d_retry({}, messageOptions),
-                  updating: showcase_3d_updating({}, messageOptions),
                 }}
               />
             </div>
@@ -575,7 +572,6 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
               <CarouselThumbnails
                 activeIndex={activeIndex}
                 cabins={showcaseCabins}
-                finishId={selectedExterior}
                 locale={locale}
                 className="hidden xl:flex"
                 onSelect={(index) => {
@@ -844,36 +840,54 @@ function FinishRadioItem({
 
 function CabinImageCard({
   cabin,
-  finishId,
-  exteriorFinishes,
+  isActive,
   isLiveSurfaceRevealed,
-  locale,
+  shouldReduceMotion,
   className,
 }: {
   cabin: Cabin
-  finishId: ExteriorFinishId
-  exteriorFinishes: ReadonlyArray<ExteriorFinish>
+  isActive: boolean
   isLiveSurfaceRevealed: boolean
-  locale: Locale
+  shouldReduceMotion: boolean
   className?: string
 }) {
-  const finish = getExteriorFinish(exteriorFinishes, finishId)
-
   return (
     <div
-      className={cn(
-        'relative size-full motion-safe:transition-opacity motion-safe:duration-200 motion-safe:ease-out',
-        isLiveSurfaceRevealed && 'opacity-0',
-        className,
-      )}
+      className={cn('pointer-events-none relative size-full', className)}
+      style={{
+        ...getShowcasePosterStyle(cabin.id),
+        opacity: isLiveSurfaceRevealed ? 0 : 1,
+        transition:
+          shouldReduceMotion || !isLiveSurfaceRevealed
+            ? 'none'
+            : `opacity ${REVEAL_FADE_DURATION_MS}ms ${REVEAL_EASING}`,
+      }}
     >
-      <Image
-        src={cabin.images.exteriors[finishId]}
-        alt={showcase_exterior_alt({ model: cabin.name, finish: finish.label.toLocaleLowerCase(locale) }, { locale })}
-        fill
-        sizes="(max-width: 767px) 400px, (max-width: 1279px) 700px, 800px"
-        className="object-contain"
-      />
+      <div
+        className={cn(
+          'absolute top-(--showcase-poster-top) left-(--showcase-poster-left) h-(--showcase-poster-height) w-(--showcase-poster-width) -translate-1/2',
+          'xl:top-(--showcase-poster-desktop-top) xl:left-(--showcase-poster-desktop-left) xl:h-(--showcase-poster-desktop-height) xl:w-(--showcase-poster-desktop-width)',
+        )}
+      >
+        <Image
+          key={cabin.id}
+          draggable={false}
+          src={cabin.images.showcasePoster}
+          alt={cabin.images.modelOverviewAlt}
+          fill
+          loading={isActive ? 'eager' : 'lazy'}
+          sizes="(max-width: 767px) 400px, (max-width: 1279px) 700px, 800px"
+          className="object-contain opacity-45"
+        />
+      </div>
+      {isActive ? (
+        <div aria-hidden="true" className="absolute inset-0 grid place-items-center">
+          <SwirlingSpinner
+            className={cn('text-foreground/80', shouldReduceMotion && '[&_.spin2]:animate-none')}
+            size="lg"
+          />
+        </div>
+      ) : null}
     </div>
   )
 }
@@ -957,7 +971,6 @@ function CarouselDots({
 function CarouselThumbnails({
   activeIndex,
   cabins,
-  finishId,
   locale,
   onSelect,
   onIntent,
@@ -965,7 +978,6 @@ function CarouselThumbnails({
 }: {
   activeIndex: number
   cabins: ReadonlyArray<ShowcaseCabin>
-  finishId: ExteriorFinishId
   locale: Locale
   onSelect: (index: number) => void
   onIntent: (index: number) => void
@@ -1032,7 +1044,7 @@ function CarouselThumbnails({
             index === activeIndex && 'border-primary opacity-100',
           )}
         >
-          <Image src={cabin.images.exteriors[finishId]} alt="" fill sizes="80px" className="object-contain p-1.5" />
+          <Image src={cabin.images.showcasePoster} alt="" fill sizes="80px" className="object-contain p-1.5" />
         </button>
       ))}
     </div>
@@ -1080,6 +1092,10 @@ function FloorPlanDialog({
   )
 }
 
+function canDragShowcase(_api: NonNullable<CarouselApi>, event: MouseEvent | TouchEvent) {
+  return !(event.target instanceof Element && event.target.closest('[data-showcase-live-surface]'))
+}
+
 function updateSlideTweenStyles({ api, isDesktop }: { api: NonNullable<CarouselApi>; isDesktop: boolean }) {
   // Translate Embla's scroll progress into CSS variables so slides fade and settle into place smoothly.
   const scrollProgress = api.scrollProgress()
@@ -1104,6 +1120,7 @@ function updateSlideTweenStyles({ api, isDesktop }: { api: NonNullable<CarouselA
 }
 
 function getShowcaseSlideStyle(isActive: boolean): ShowcaseSlideStyle {
+  // Mount/SSR defaults only. React must not overwrite Embla's interpolated values on selection changes.
   return {
     '--showcase-image-opacity': isActive ? 1 : INACTIVE_IMAGE_OPACITY,
     '--showcase-optical-offset': '0px',

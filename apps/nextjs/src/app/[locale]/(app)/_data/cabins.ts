@@ -39,9 +39,9 @@ interface Cabin {
     readonly maxDistance: number
   }
   readonly images: {
-    readonly overview: string
-    readonly exteriors: Record<CabinExteriorFinishId, string>
-    readonly overviewAlt: string
+    readonly modelOverview: string
+    readonly showcasePoster: string
+    readonly modelOverviewAlt: string
     readonly floorPlan: string
     readonly floorPlanAlt: string
   }
@@ -75,14 +75,10 @@ const createCabinCatalog = (locale: Locale): CabinCatalog => {
         maxDistance: 21,
       },
       images: {
-        overview: '/images/cabins/niva/Niva.jpg',
-        exteriors: {
-          wood: '/images/cabins/niva/Niva-wood.png',
-          black: '/images/cabins/niva/Niva-black.png',
-          white: '/images/cabins/niva/Niva-white.png',
-        },
+        modelOverview: '/images/cabins/niva/Niva.jpg',
+        showcasePoster: '/images/cabins/niva/niva-poster.png',
         floorPlan: '/images/cabins/niva/Niva-floorplan.jpg',
-        overviewAlt: cabin_niva_overview_alt({}, messageOptions),
+        modelOverviewAlt: cabin_niva_overview_alt({}, messageOptions),
         floorPlanAlt: cabin_niva_floor_plan_alt({}, messageOptions),
       },
     },
@@ -106,14 +102,10 @@ const createCabinCatalog = (locale: Locale): CabinCatalog => {
         maxDistance: 42,
       },
       images: {
-        overview: '/images/cabins/aster/Aster.jpg',
-        exteriors: {
-          wood: '/images/cabins/aster/Aster-wood.png',
-          black: '/images/cabins/aster/Aster-black.png',
-          white: '/images/cabins/aster/Aster-white.png',
-        },
+        modelOverview: '/images/cabins/aster/Aster.jpg',
+        showcasePoster: '/images/cabins/aster/aster-poster.png',
         floorPlan: '/images/cabins/aster/Aster-floorplan.jpg',
-        overviewAlt: cabin_aster_overview_alt({}, messageOptions),
+        modelOverviewAlt: cabin_aster_overview_alt({}, messageOptions),
         floorPlanAlt: cabin_aster_floor_plan_alt({}, messageOptions),
       },
     },
@@ -137,14 +129,10 @@ const createCabinCatalog = (locale: Locale): CabinCatalog => {
         maxDistance: 46,
       },
       images: {
-        overview: '/images/cabins/veyra/Veyra.jpg',
-        exteriors: {
-          wood: '/images/cabins/veyra/Veyra-wood.png',
-          black: '/images/cabins/veyra/Veyra-black.png',
-          white: '/images/cabins/veyra/Veyra-white.png',
-        },
+        modelOverview: '/images/cabins/veyra/Veyra.jpg',
+        showcasePoster: '/images/cabins/veyra/veyra-poster.png',
         floorPlan: '/images/cabins/veyra/Veyra-floorplan.jpg',
-        overviewAlt: cabin_veyra_overview_alt({}, messageOptions),
+        modelOverviewAlt: cabin_veyra_overview_alt({}, messageOptions),
         floorPlanAlt: cabin_veyra_floor_plan_alt({}, messageOptions),
       },
     },
