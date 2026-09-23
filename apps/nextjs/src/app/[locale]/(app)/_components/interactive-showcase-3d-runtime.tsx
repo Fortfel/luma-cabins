@@ -35,7 +35,7 @@ import {
 
 import { Button } from '@workspace/ui/components/button'
 
-import { DESKTOP_FRAMING } from './interactive-showcase-3d-framing'
+import { DESKTOP_FRAMING, getModalFraming } from './interactive-showcase-3d-framing'
 import { REVEAL_EASING, REVEAL_FADE_DURATION_MS } from './interactive-showcase-3d-timing'
 
 const BACKGROUND_COLOR = '#f7f5f0'
@@ -312,8 +312,7 @@ function InteractiveShowcase3DRuntime({
   isDesktop,
   isRequested,
   isSectionNear,
-  mediaSlotRefs,
-  mediaViewportRef,
+  hostRef,
   onLiveSurfaceVisibilityChange,
   selectedExterior,
   selectedInterior,
@@ -321,7 +320,6 @@ function InteractiveShowcase3DRuntime({
   shouldReduceMotion,
   surfaceCabin,
   surfaceRevision,
-  surfaceSlotIndex,
   labels,
 }: InteractiveShowcase3DProps) {
   const [surfaceHost] = useState(() => {
@@ -343,7 +341,6 @@ function InteractiveShowcase3DRuntime({
   const [finishPairStatus, setFinishPairStatus] = useState<FinishPairStatus | null>(null)
   const [sceneRetryRevision, setSceneRetryRevision] = useState(0)
   const [finishRetryRevision, setFinishRetryRevision] = useState(0)
-  const [touchInteractionRevision, setTouchInteractionRevision] = useState<number | null>(null)
   const [isDocumentVisible, setIsDocumentVisible] = useState(true)
 
   const activeAssetUrl = activeCabin.threeD.assetUrl
@@ -356,7 +353,6 @@ function InteractiveShowcase3DRuntime({
   const surfaceResourceKey = getCabinResourceKey(surfaceCabin.id, surfaceAssetUrl, surfaceManifestUrl, surfaceCameraUrl)
   const surfaceToken = `${surfaceRevision}:${surfaceResourceKey}`
   const surfaceMaterialRevision = `${surfaceAssetUrl}:${normalizedExteriorId}:${selectedInterior}`
-  const isTouchInteraction = touchInteractionRevision === surfaceRevision
   const intentCabinId = intentCabin?.id
   const intentAssetUrl = intentCabin?.threeD.assetUrl
   const intentManifestUrl = intentCabin?.threeD.manifestUrl
@@ -374,11 +370,9 @@ function InteractiveShowcase3DRuntime({
   const currentFinishPairState =
     finishPairStatus?.revision === surfaceMaterialRevision ? finishPairStatus.state : 'loading'
   const isSurfaceCurrent = surfaceCabin.id === activeCabin.id
-  const canInteract =
-    isSurfaceVisible && isSurfaceCurrent && isSectionNear && isDocumentVisible && (isDesktop || isTouchInteraction)
+  const canInteract = isSurfaceVisible && isSurfaceCurrent && isSectionNear && isDocumentVisible
   const showSurfaceError = currentSurfaceLoadState === 'error'
   const showFinishError = currentFinishPairState === 'error'
-  const showEnterInteraction = !isDesktop && isSurfaceVisible && !isTouchInteraction
   const currentSurfaceFrameRef = useRef<SurfaceFrameIdentity>({
     surfaceToken,
     cabinId: surfaceCabin.id,
@@ -391,20 +385,26 @@ function InteractiveShowcase3DRuntime({
     setRevealedSurfaceFrame(null)
   }
 
-  // Returning from desktop to mobile requires a fresh touch opt-in.
-  if (isDesktop && touchInteractionRevision !== null) {
-    setTouchInteractionRevision(null)
-  }
-
   useLayoutEffect(() => {
     const visibility: LiveSurfaceVisibility = {
       isVisible: isSurfaceVisible,
       revision: surfaceRevision,
       cabinId: surfaceCabin.id,
+      hasError: showSurfaceError || showFinishError,
     }
 
     onLiveSurfaceVisibilityChange(visibility)
-  }, [isSurfaceVisible, onLiveSurfaceVisibilityChange, surfaceCabin.id, surfaceRevision])
+    return () => {
+      onLiveSurfaceVisibilityChange({ ...visibility, isVisible: false, hasError: false })
+    }
+  }, [
+    isSurfaceVisible,
+    onLiveSurfaceVisibilityChange,
+    showSurfaceError,
+    showFinishError,
+    surfaceCabin.id,
+    surfaceRevision,
+  ])
 
   useLayoutEffect(() => {
     currentSurfaceFrameRef.current = {
@@ -632,29 +632,16 @@ function InteractiveShowcase3DRuntime({
     surfaceToken,
   ])
 
-  const enterTouchInteraction = useCallback(() => {
-    cameraRestoreRef.current?.()
-    modelRotationResetRef.current?.()
-    setTouchInteractionRevision(surfaceRevision)
-  }, [cameraRestoreRef, modelRotationResetRef, surfaceRevision])
-
-  const exitTouchInteraction = useCallback(() => {
-    cameraRestoreRef.current?.()
-    modelRotationResetRef.current?.()
-    setTouchInteractionRevision(null)
-  }, [cameraRestoreRef, modelRotationResetRef])
-
   useLayoutEffect(() => {
-    const parent = isDesktop ? mediaViewportRef.current : mediaSlotRefs.current[surfaceSlotIndex]
+    const parent = hostRef.current
     if (!parent) return undefined
 
-    // Move one stable portal container, never change the portal target/remount its Canvas.
-    // On mobile the browser now moves/composites the live frame and poster as one slide.
+    // Presentation hosts own geometry; the renderer never tracks carousel slides.
     parent.append(surfaceHost)
     return () => {
       surfaceHost.remove()
     }
-  }, [isDesktop, mediaSlotRefs, mediaViewportRef, surfaceHost, surfaceSlotIndex])
+  }, [hostRef, surfaceHost])
 
   const surfaceMetadata =
     loadedSurfaceMetadata?.resourceKey === surfaceResourceKey ? loadedSurfaceMetadata.metadata : null
@@ -732,32 +719,6 @@ function InteractiveShowcase3DRuntime({
               {labels.retry}
             </Button>
           </div>
-        ) : null}
-
-        {showEnterInteraction ? (
-          <Button
-            type="button"
-            variant="secondary"
-            size="sm"
-            aria-label={`${labels.enter}. ${labels.hintMobile}`}
-            className="pointer-events-auto absolute end-3 bottom-3 shadow-sm"
-            onClick={enterTouchInteraction}
-          >
-            {labels.enter}
-          </Button>
-        ) : null}
-
-        {!isDesktop && isTouchInteraction && isSurfaceVisible ? (
-          <Button
-            type="button"
-            variant="secondary"
-            size="sm"
-            aria-label={labels.exit}
-            className="pointer-events-auto absolute end-3 top-3 shadow-sm"
-            onClick={exitTouchInteraction}
-          >
-            {labels.exit}
-          </Button>
         ) : null}
 
         {isDesktop && isSurfaceVisible && !showFinishError ? (
@@ -1235,6 +1196,7 @@ function CabinModel({
   return (
     <>
       <CameraResizeCalibration
+        cabinId={cabin.id}
         cameraRestoreRef={cameraRestoreRef}
         contract={metadata.camera}
         controlsRef={controlsRef}
@@ -1270,6 +1232,7 @@ function CabinModel({
 }
 
 function CameraResizeCalibration({
+  cabinId,
   cameraRestoreRef,
   contract,
   controlsRef,
@@ -1278,6 +1241,7 @@ function CameraResizeCalibration({
   onBeforeRestore,
   onConfigured,
 }: {
+  readonly cabinId: Cabin['id']
   readonly cameraRestoreRef: RefObject<(() => void) | null>
   readonly contract: CameraContract
   readonly controlsRef: RefObject<ComponentRef<typeof OrbitControls> | null>
@@ -1300,18 +1264,20 @@ function CameraResizeCalibration({
       controls.update()
     }
 
-    const framingScale = isDesktop
-      ? getDesktopFramingScale({
-          camera: perspectiveCamera,
-          canvasHeight: size.height,
-          model,
-          viewportWidth: getDesktopViewportWidth(),
-        })
-      : 1
+    const modalFraming = getModalFraming(cabinId)
+    const framingScale = getDesktopFramingScale({
+      camera: perspectiveCamera,
+      canvasHeight: size.height,
+      model,
+      viewportWidth: getDesktopViewportWidth(),
+      targetHeight: isDesktop
+        ? undefined
+        : Math.min(size.width * modalFraming.widthRatio, size.height * modalFraming.heightRatio),
+    })
 
     applyOffAxisProjection(perspectiveCamera, aspect, contract, framingScale)
     invalidate()
-  }, [camera, contract, controlsRef, invalidate, isDesktop, model, onBeforeRestore, size.height, size.width])
+  }, [cabinId, camera, contract, controlsRef, invalidate, isDesktop, model, onBeforeRestore, size.height, size.width])
 
   useEffect(() => {
     if (!isDesktop) return undefined
@@ -1904,11 +1870,13 @@ function getDesktopFramingScale({
   canvasHeight,
   model,
   viewportWidth,
+  targetHeight = getDesktopProjectedHeight(viewportWidth),
 }: {
   readonly camera: PerspectiveCamera
   readonly canvasHeight: number
   readonly model: Object3D
   readonly viewportWidth: number
+  readonly targetHeight?: number
 }) {
   if (canvasHeight <= 0 || viewportWidth <= 0) return 1
 
@@ -1918,7 +1886,7 @@ function getDesktopFramingScale({
   const measuredHeight = getProjectedModelHeight(boundingBoxCorners, camera, canvasHeight)
   if (measuredHeight === null || measuredHeight <= Number.EPSILON) return 1
 
-  const framingScale = getDesktopProjectedHeight(viewportWidth) / measuredHeight
+  const framingScale = targetHeight / measuredHeight
 
   return Number.isFinite(framingScale) && framingScale > 0 ? framingScale : 1
 }

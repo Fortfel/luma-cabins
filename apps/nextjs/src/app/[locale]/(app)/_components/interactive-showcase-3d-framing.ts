@@ -45,12 +45,29 @@ const POSTER_FRAMING = {
   },
 } as const
 
-function getShowcasePosterStyle(cabinId: CabinId): CSSProperties & Record<`--showcase-${string}`, string> {
+function getModalFraming(cabinId: CabinId) {
+  const framing = POSTER_FRAMING[cabinId]
+  const padding = 0.88
+  return {
+    widthRatio:
+      (padding * 2 * Math.min(framing.originX, 1 - framing.originX)) / (framing.width + 2 * Math.abs(framing.offsetX)),
+    heightRatio:
+      (padding * 2 * Math.min(framing.originY, 1 - framing.originY)) / (framing.height + 2 * Math.abs(framing.offsetY)),
+  }
+}
+
+function getShowcasePosterStyle(
+  cabinId: CabinId,
+  isModal = false,
+): CSSProperties & Record<`--showcase-${string}`, string> {
   const framing = POSTER_FRAMING[cabinId]
   const { minHeight, maxHeight, intercept, slope } = DESKTOP_FRAMING
+  const modal = getModalFraming(cabinId)
 
   return {
-    '--showcase-frame-height': `clamp(${minHeight}px, calc(${intercept}px + ${slope * 100}vw), ${maxHeight}px)`,
+    '--showcase-frame-height': isModal
+      ? `min(${modal.widthRatio * 100}cqw, ${modal.heightRatio * 100}cqh)`
+      : `clamp(${minHeight}px, calc(${intercept}px + ${slope * 100}vw), ${maxHeight}px)`,
     '--showcase-poster-width': `${framing.mobileWidth * 100}%`,
     '--showcase-poster-height': `${framing.mobileHeight * 100}%`,
     '--showcase-poster-left': `${framing.mobileLeft * 100}%`,
@@ -62,4 +79,4 @@ function getShowcasePosterStyle(cabinId: CabinId): CSSProperties & Record<`--sho
   }
 }
 
-export { DESKTOP_FRAMING, getShowcasePosterStyle }
+export { DESKTOP_FRAMING, getModalFraming, getShowcasePosterStyle }

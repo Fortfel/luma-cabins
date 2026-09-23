@@ -2,29 +2,47 @@
 
 ## Status
 
-Runtime hardening is implemented pending browser acceptance. The showcase renders the selected production cabin through one persistent, client-only R3F Canvas with intent-aware preloading, desktop interaction, mobile opt-in interaction, revision-safe loading/error feedback, validated cabin contracts, and targeted exterior-lamp shadows. The live surface remains hidden until its camera, finish pair, and submitted frame match the current cabin/configuration revision. Exterior-lamp visual quality is explicitly deferred to final QA.
+The showcase uses configuration-aware posters below `xl` and an on-demand expanded 3D dialog, while desktop keeps inline 3D. Both hosts share the demand-rendered R3F runtime, revision-safe loading/error feedback, validated cabin contracts, and targeted exterior-lamp shadows. Each new cabin remains hidden until its camera, finish pair, and submitted frame match the current request. Once revealed, the cabin stays visible during in-place palette updates. Browser acceptance of the hybrid experience is user-owned; exterior-lamp visual quality remains a final-QA item.
 
 ## Implementation Map
 
 - `apps/nextjs/src/app/[locale]/(app)/_components/interactive-showcase-section.tsx`
-- `InteractiveShowcaseSection`: owns the carousel, media-slot refs, proximity gate, and the committed slot index used by the live surface.
+- `InteractiveShowcaseSection`: owns the carousel, desktop host ref, proximity gate, and global cabin/exterior/interior selection.
+- `Showcase3DDialog`: below-`xl` dialog with a separate media host, compact finish controls, and immediate poster/loading presentation. It lives outside the carousel's React tree so captured carousel arrow keys cannot intercept the dialog radios.
 - `apps/nextjs/src/app/[locale]/(app)/_components/interactive-showcase-3d.tsx`
-- `InteractiveShowcase3D`: client-only lazy boundary for the renderer runtime.
+- `InteractiveShowcase3D`: client-effect dynamic import boundary for the renderer runtime. Bundle failures preserve the poster and expose a localized retry without throwing into the page error boundary.
 - `apps/nextjs/src/app/[locale]/(app)/_components/interactive-showcase-3d-runtime.tsx`
-- `InteractiveShowcase3DRuntime`: one demand-rendered Canvas, resource preloading, revision-safe presentation readiness, and a clipped surface that fills the shared desktop media viewport while tracking the corresponding carousel media slot below `xl`.
+- `InteractiveShowcase3DRuntime`: one demand-rendered Canvas, resource preloading, revision-safe presentation readiness, and a stable portal host attached to the presentation's `hostRef`. It does not track carousel slots.
 - `CabinModel`: applies the production manifest's `ExteriorCladding` and `InteriorJoinery` finish boundaries and reports readiness from a renderable `onAfterRender` probe.
+- `apps/nextjs/src/app/[locale]/(app)/_components/interactive-showcase-3d-framing.ts`: shares the desktop framing range and stores camera-projected silhouette measurements for sizing and positioning the cropped posters before any GLB loads.
+- `interactive-showcase-configuration.ts`: typed `(cabinId, exterior, interior)` poster resolver for all 27 supplied JPEGs under `public/images/showcase/configurations/`.
+- `interactive-showcase-poster.tsx`: responsive decoded-image replacement, stale-completion protection, delayed updating feedback, and localized image retry.
+
+## Configuration Posters
+
+- Exterior and interior remain global. Every mobile slide (including side peeks), desktop thumbnail, desktop fallback, and dialog fallback resolves the same finish pair for its own cabin.
+- Normal carousel posters have no loading dim or 3D spinner. Neighbor opacity is still controlled by the existing carousel tween.
+- Images use `next/image` optimization and responsive sizes. Initial images are lazy; approaching the section requests the currently needed posters. A finish change mounts incoming images for the current pair across the three rendered previews. The incoming image itself is the preload, so there is no separate original-JPEG request alongside an optimized image request.
+- The previous decoded poster stays visible until its replacement decodes. A request-source guard prevents obsolete completions from replacing newer selections. Active previews show delayed updating feedback after 450 ms and an image retry on failure. Thumbnails remain small responsive image requests rather than full-size poster downloads.
+- No eager preload of all 27 combinations or idle warming of unselected finish combinations is performed. Desktop GLB speculation retains its existing connection guards.
+- Catalog `showcasePoster` defaults point to the wood/light-oak configurations; the removed legacy PNGs are no longer referenced by the catalog.
 
 ## Renderer Mounting
 
-- The renderer bundle is requested when the showcase section enters a `600px` vertical `IntersectionObserver` preload margin.
-- Once requested, the Canvas remains mounted for the lifetime of the showcase section. Leaving the viewport does not recreate the WebGL context.
+- Desktop requests the renderer bundle when the showcase section enters a `600px` vertical `IntersectionObserver` preload margin. Once requested, its Canvas remains mounted while desktop presentation is active. Leaving the viewport does not recreate the WebGL context.
+- Below `xl`, scrolling, carousel navigation, and finish changes do not import the renderer or request GLBs. Opening the dialog mounts the runtime for the active cabin only. Closing unmounts its Canvas and viewer-owned resources; module, GLTF, metadata, and texture caches can be reused on reopening. These shared asset caches are not explicitly evicted on close.
+- Responsive presentation branches are mutually exclusive. Moving to desktop unmounts the mobile dialog; returning to mobile does not reopen it. Global cabin and finish selections persist.
+- Cabin switches reset the inner scene error boundary and model, not the Canvas. Only a scene-error retry remounts the outer boundary/Canvas.
+- The portal container stays stable for each mounted viewer. Cabin switches within desktop do not change the target or recreate its Canvas.
 - The Canvas uses `frameloop="demand"`; no continuous idle render loop is used.
 - Once the runtime is requested, the active cabin's GLB, manifest, camera contract, and selected external finish textures are preloaded. Explicit intent preloads its target with the same deduplicated cache.
-- After the active cabin produces its matching frame, one direction-aware adjacent cabin may be preloaded during an idle window. The candidate does not wrap, and data-saving or slow-connection signals disable this speculative request.
+- On desktop, after the active cabin produces its matching frame, one direction-aware adjacent cabin may be preloaded during an idle window. The candidate does not wrap, and data-saving or slow-connection signals disable this speculative request. The dialog has no intent or speculative cabin candidate.
 - The committed surface cabin is rendered from its production GLB and camera contract. Camera matrices are read as row arrays and converted to Three.js column-major matrices while preserving the authored off-axis projection.
-- The surface remains opacity-zero until the current asset revision is loaded, both selected finish states are applied atomically, the camera is configured, and a matching frame reaches the renderer's `onAfterRender` probe.
-- The main showcase media stays clear during the initial load, including while the client-only 3D runtime is being requested; the live surface enters directly once its matching frame is ready. After a cabin switch, the active cabin's `showcasePoster` and centered `SwirlingSpinner` replace the outgoing live surface as soon as selection changes, before carousel settle. Finish-only changes do not replace the live surface with a poster.
-- A ready live cabin and its poster crossfade start in the same layout update. The opacity fade uses `1000ms`, while the separate `scale(1.05)` to `scale(1)` transition uses `2000ms`. Reduced-motion users receive an immediate reveal, while loading and error states retain their existing status and retry behavior.
+- The surface remains opacity-zero until the current asset revision is loaded, both selected finish states are applied atomically, the camera is configured, and a matching frame reaches the renderer's `onAfterRender` probe. Readiness also requires the camera's calibrated dimensions, current R3F dimensions, and destination DOM surface dimensions to agree. A frame rendered at the outgoing cabin's size cannot reveal the incoming cabin.
+- Desktop and the open dialog mount matching configuration posters as visual fallbacks. Their image is dimmed to 45% opacity beneath the centered `SwirlingSpinner`; the entire fallback fades away only after the exact cabin, exterior, and interior frame reports ready. Errors stop the spinner and retain the poster with a localized retry. Palette changes after first reveal preserve the live model while replacement textures load, then apply both materials atomically without a loading overlay or another reveal animation.
+- Desktop uses a stationary fallback outside the moving carousel track. The dialog opens immediately with its own fallback and available close control, including while the renderer bundle is still downloading.
+- Visibility reports include only the cabin and surface revision, so finish changes cannot hide an already revealed cabin. First-frame readiness still requires the applied material revision to equal the requested revision, and obsolete completions cannot reveal a different cabin.
+- Cabin switches hide the outgoing live frame and restore the destination fallback immediately. The poster image is keyed by cabin so the browser cannot retain the outgoing decoded raster while fetching an uncached destination. The matching frame crossfades at 100% scale using the shared duration/easing in `interactive-showcase-3d-timing.ts`; there is no zoom during reveal. Reduced-motion users receive an immediate reveal, and cached frames are not held behind a minimum loading duration.
 - Exterior IDs are normalized at the runtime boundary: `wood` to `natural-timber`, `white` to `whitewashed-timber`, and `black` to `charred-black-oil`.
 - Manifest and camera JSON are validated at the runtime boundary before they enter material preparation or camera configuration. Invalid contracts enter the existing controlled load-error path instead of relying on unchecked type casts.
 
@@ -41,34 +59,40 @@ Runtime hardening is implemented pending browser acceptance. The showcase render
 ## Surface Geometry
 
 - The media viewport is a local `relative overflow-hidden` wrapper around `CarouselContent` and the live surface. At `xl`, it uses one shared fixed `31.25rem` (`500px`) height for every cabin.
+- The intermediate carousel viewport also fills that desktop height, keeping percentage-height slots from collapsing. CSS overrides the mobile aspect ratio at `xl` before hydration. The desktop live surface stays fully opaque independently of the carousel slide-opacity tween.
 - Desktop initial optical framing targets a projected cabin height of `clamp(300px, -36.848px + 26.316vw, 400px)`. The runtime projects the eight world-space corners of the model bounding box through the canonical camera at its unchanged distance, converts the NDC vertical span to Canvas pixels, and applies the target-to-measured ratio to the horizontal and vertical focal terms of the off-axis projection. Principal-point offsets and the authored camera position remain unchanged.
-- Each cabin media slot is tracked by an element ref. On desktop, the surface fills the media viewport at `0,0`; below `xl`, it uses the committed slot's `getBoundingClientRect()` relative to the media viewport for width, height, and translation.
+- The 300–400px target measures the projected **world bounding box**, not the visible silhouette. `POSTER_FRAMING` measures each mesh's POSITION vertices through its node world transform and canonical view/projection matrices. Desktop poster dimensions and center offsets are normalized by that world-box projected height, with the canonical aspect applied to horizontal values. Camera principal-point offsets position the image within the viewport. The resulting visible-height ratios are approximately 0.898151 (Niva), 0.893844 (Aster), and 0.916590 (Veyra). Mobile carousel posters use the same projected silhouette's normalized viewport dimensions and center. Remeasure this data when changing geometry or canonical cameras; keep configuration posters cropped to the corresponding silhouette. These measurements require no GLB download or browser geometry work to display the fallback.
+- The dialog is full-viewport on phones and near-fullscreen from `sm` until `xl`, with dynamic viewport height and safe-area padding. Its flexible media stage fills the space between the title/close row and compact finish controls. `getModalFraming` fits both width and height with padding while preserving the authored projection origin; CSS container units and runtime camera calibration use the same ratios. A portrait viewport cannot crop a wide cabin simply because it has more vertical space.
+- On desktop, the portal host fills the shared media viewport at `0,0`. In the dialog, it fills the separate media stage. Mobile carousel slides contain images only.
 - The legacy poster aspect ratios remain scoped to the below-`xl` media frames only; desktop showcase-poster and live Canvas sizing is independent of cabin geometry and source-image aspect ratio.
-- Embla `scroll`, `reInit`, and `resize` events update positioning without React state. `ResizeObserver` and window resize cover layout changes outside Embla.
-- The wrapper and Canvas both use an explicit full-size contract. An imperative `ResizeObserver` bridge keeps R3F's internal renderer size synchronized after the positioned surface receives its slot dimensions, including when the surface starts from zero size on mobile.
-- The surface slot index changes on carousel `select`, so the target poster and loading state replace the outgoing live cabin as soon as navigation begins.
+- Embla `scroll`, `settle`, `reInit`, and `resize` events update slide tween variables, including the final snapped frame. The tween subscription is installed in a layout effect. React supplies fixed mount/SSR defaults for those variables; selection changes must not overwrite the ongoing imperative opacity and optical-offset tween. No carousel event manually positions or resizes the Canvas.
+- The host, wrapper, and Canvas use a full-size CSS contract. R3F's built-in resize handling is the sole renderer-size writer; the previous custom `CanvasSizeSync` bridge is removed. Mobile enables `offsetSize` so transforms cannot perturb its measured layout size. Scroll tracking stays disabled because carousel translation does not change the drawing-buffer dimensions.
+- Desktop selection changes on carousel `select`, so the target poster and loading state replace the outgoing live cabin as soon as navigation begins.
 - Embla `reInit` preserves the selected snap before active and surface indices are synchronized, so responsive breakpoint changes do not revert the showcase to Niva.
-- A monotonic surface revision changes only when the committed slot changes, preventing an Embla resize/reInit for the same slot from restarting the model.
+- A monotonic surface revision changes only when the selected index changes, preventing an Embla resize/reInit for the same slot from restarting the model. There is no separate settle-driven surface index that can disagree with the active cabin.
 - The wrapper clips the live surface to the media area; carousel arrows, thumbnails, configuration controls, and summaries remain outside its clipping region.
 
 ## Interaction and Failure States
 
 - Thumbnail focus, 100 ms thumbnail hover, arrow focus/hover, and explicit cabin selection record intent before navigation completes.
-- Desktop enables cabin turntable dragging and zoom only for the revealed current surface while the section and document are visible. Horizontal dragging turns the upright cabin around its vertical axis, while vertical dragging applies a small damped camera elevation around the authored target without changing the model rotation or target. Mobile keeps the surface passive until the explicit `Explore in 3D` control is activated and provides an `Exit 3D` control afterward.
-- Cabin-switch loading feedback is shown while the current surface revision is pending. Initial loading intentionally keeps the main media clear. Finish updates retain the last complete live pair while replacement textures load.
-- Finish failures retain the last complete live pair and expose a localized retry action. Scene failures expose a retry action over the current loading presentation; obsolete async completions cannot reveal or overwrite a newer cabin/configuration revision.
+- Desktop enables cabin turntable dragging and zoom only for the revealed current surface while the section and document are visible. Horizontal dragging turns the upright cabin around its vertical axis, while vertical dragging applies a small damped camera elevation around the authored target without changing model rotation or target. In the open dialog, interaction is enabled as soon as the matching model is revealed; there is no second Explore/Exit interaction gate.
+- The mobile carousel declares `touch-action: pan-y pinch-zoom`, leaving vertical page scrolling and page zoom to the browser and horizontal dragging to Embla. Poster images disable native HTML dragging. The dialog isolates model gestures from the carousel and locks background scrolling through the shared Dialog primitive.
+- One-finger dragging controls the model; adding another finger cancels that drag for the rest of the gesture and leaves pinch zoom to OrbitControls. Pointer tracking is local to the active interaction subscription, and captured pointers are released on cancellation or scene teardown.
+- The dialog uses a real trigger, localized title/description/close label, initial close-button focus, focus trapping, Escape dismissal, and trigger focus restoration. Compact exterior/interior radios have 44px targets, accessible finish names, selected/focus rings, and a visible category plus selected finish label. Changes immediately update global state and persist on close. Cabin switching stays in the carousel.
+- Loading feedback is shown over the active cabin's poster until that cabin's first requested finish pair has rendered. Later palette updates have no loading overlay.
+- Scene failures and initial finish failures keep the selected configuration poster visible and expose a localized retry action. Later finish failures preserve the already visible cabin with its last applied finishes and expose the finish retry action; obsolete async completions cannot reveal or overwrite a newer cabin/configuration revision.
 
 ## Invariants
 
 - There is at most one Canvas for the showcase section.
 - There is at most one live cabin scene in that Canvas. Neighboring cabins are preloaded but not rendered until committed.
-- Thumbnails use the canonical showcase posters; neighboring main-media slides stay clear once the 3D runtime has been requested.
+- All poster surfaces resolve the global exterior/interior pair for their own cabin. A pending replacement may temporarily retain its previous decoded image; it must never commit an obsolete request.
 - No high-frequency geometry value is stored in React state.
-- Palette changes preserve the last complete live pair while replacement textures load; failed replacements do not hide or claim to replace that pair.
-- The Canvas is interactive only for the revealed current surface: desktop uses OrbitControls for zoom while custom dragging controls the cabin turntable and camera elevation, and mobile requires explicit touch-mode entry. Carousel gestures and controls retain ownership outside the live surface.
+- Palette changes preserve the revealed cabin, camera/orbit, and interaction mode. Only a successfully loaded, still-current finish pair replaces the visible materials.
+- The Canvas is interactive only for the revealed current surface: desktop uses OrbitControls for zoom while custom dragging controls the cabin turntable and camera elevation; mobile requires explicitly opening the dialog. Carousel gestures and controls retain ownership outside that dialog.
 
 ## Verification Baseline
 
 - Veyra exterior illumination and orbit interaction have been checked at desktop; final user acceptance remains required for the interior light balance and side-window view.
 
-For this hardening phase, run the `nextjs` lint, typecheck, and build tasks. Browser verification should confirm the Niva, Aster, and Veyra live frames at desktop and mobile widths, explicit mobile 3D entry/exit for each newly selected cabin, desktop interaction affordances, finish-pair changes, persisted configuration across cabin switching, the unchanged carousel controls/poster presentation, and controlled retry behavior. Exterior-lamp illumination remains deferred to final QA.
+Run lint, typecheck, and the `nextjs` production build. User browser acceptance should cover all three cabins at phone/tablet/desktop widths; matching posters and side peeks after global finish changes; no mobile GLBs before Explore; dialog loading/reveal, close/reopen, compact keyboard/touch radios and persisted selections; resize across `xl`; desktop inline interaction; slow/failed image, bundle, GLB and texture requests; and reduced motion. Exterior-lamp illumination remains deferred to final QA.

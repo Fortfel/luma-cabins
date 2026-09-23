@@ -76,7 +76,7 @@ const createCabinCatalog = (locale: Locale): CabinCatalog => {
       },
       images: {
         modelOverview: '/images/cabins/niva/Niva.jpg',
-        showcasePoster: '/images/cabins/niva/niva-poster.png',
+        showcasePoster: '/images/showcase/configurations/niva/wood-light-oak.jpg',
         floorPlan: '/images/cabins/niva/Niva-floorplan.jpg',
         modelOverviewAlt: cabin_niva_overview_alt({}, messageOptions),
         floorPlanAlt: cabin_niva_floor_plan_alt({}, messageOptions),
@@ -103,7 +103,7 @@ const createCabinCatalog = (locale: Locale): CabinCatalog => {
       },
       images: {
         modelOverview: '/images/cabins/aster/Aster.jpg',
-        showcasePoster: '/images/cabins/aster/aster-poster.png',
+        showcasePoster: '/images/showcase/configurations/aster/wood-light-oak.jpg',
         floorPlan: '/images/cabins/aster/Aster-floorplan.jpg',
         modelOverviewAlt: cabin_aster_overview_alt({}, messageOptions),
         floorPlanAlt: cabin_aster_floor_plan_alt({}, messageOptions),
@@ -130,7 +130,7 @@ const createCabinCatalog = (locale: Locale): CabinCatalog => {
       },
       images: {
         modelOverview: '/images/cabins/veyra/Veyra.jpg',
-        showcasePoster: '/images/cabins/veyra/veyra-poster.png',
+        showcasePoster: '/images/showcase/configurations/veyra/wood-light-oak.jpg',
         floorPlan: '/images/cabins/veyra/Veyra-floorplan.jpg',
         modelOverviewAlt: cabin_veyra_overview_alt({}, messageOptions),
         floorPlanAlt: cabin_veyra_floor_plan_alt({}, messageOptions),
