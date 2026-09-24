@@ -179,6 +179,7 @@
   "showcase_3d_finish_error": "Nie udało się wczytać tego wykończenia. Nadal widoczne jest poprzednie wykończenie.",
   "showcase_3d_hint_desktop": "Przeciągnij, aby eksplorować. Przewiń, aby powiększyć.",
   "showcase_3d_hint_mobile": "Przeciągnij, aby obracać. Rozsuń palce, aby przybliżyć.",
+  "showcase_3d_loading": "Wczytywanie podglądu 3D modelu {model}…",
   "showcase_3d_retry": "Ponów podgląd 3D",
   "showcase_preview_updating": "Aktualizowanie podglądu…",
   "showcase_preview_error": "Nie udało się wczytać obrazu podglądu.",

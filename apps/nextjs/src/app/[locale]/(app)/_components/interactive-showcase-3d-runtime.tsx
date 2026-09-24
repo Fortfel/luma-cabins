@@ -15,11 +15,12 @@ import type {
 } from 'three'
 import type { Cabin, CabinExteriorFinishId } from '~/app/[locale]/(app)/_data/cabins'
 
-import { Component, Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { Component, Suspense, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 
 import { OrbitControls, useGLTF } from '@react-three/drei'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { createRoot, events, extend, useFrame, useThree } from '@react-three/fiber'
 import { createPortal } from 'react-dom'
+import * as THREE from 'three'
 import {
   AgXToneMapping,
   Box3,
@@ -270,6 +271,13 @@ interface SceneErrorBoundaryState {
   readonly hasError: boolean
 }
 
+interface ControlledCanvasProps {
+  readonly children: ReactNode
+  readonly isDesktop: boolean
+  readonly canInteract: boolean
+  readonly onError: () => void
+}
+
 type SurfaceLoadState = 'loading' | 'ready' | 'error'
 type FinishPairState = 'loading' | 'ready' | 'error'
 
@@ -304,6 +312,107 @@ class SceneErrorBoundary extends Component<SceneErrorBoundaryProps, SceneErrorBo
   render() {
     return this.state.hasError ? null : this.props.children
   }
+}
+
+function ControlledShowcaseCanvas({ children, isDesktop, canInteract, onError }: ControlledCanvasProps) {
+  const containerRef = useRef<HTMLDivElement | null>(null)
+  const rootRef = useRef<ReturnType<typeof createRoot> | null>(null)
+  const storeRef = useRef<ReturnType<ReturnType<typeof createRoot>['render']> | null>(null)
+  const childrenRef = useRef(children)
+  const onErrorRef = useRef(onError)
+
+  useMemo(() => extend(THREE as unknown as Parameters<typeof extend>[0]), [])
+
+  useLayoutEffect(() => {
+    childrenRef.current = children
+    onErrorRef.current = onError
+  })
+
+  useLayoutEffect(() => {
+    const container = containerRef.current
+    if (!container) return undefined
+
+    // A fresh element also keeps Strict Mode's effect replay from reusing an unmounting R3F root.
+    const canvas = document.createElement('canvas')
+    canvas.className = 'block size-full'
+    container.append(canvas)
+    const root = createRoot(canvas)
+    let isCurrent = true
+    let isConfigured = false
+    let isConfiguring = false
+    let hasFailed = false
+    let latestWidth = 0
+    let latestHeight = 0
+    rootRef.current = root
+
+    const observer = new ResizeObserver(() => {
+      if (!isCurrent || hasFailed) return
+
+      const rect = container.getBoundingClientRect()
+      const width = isDesktop ? rect.width : container.offsetWidth
+      const height = isDesktop ? rect.height : container.offsetHeight
+      if (width <= 0 || height <= 0) return
+      latestWidth = width
+      latestHeight = height
+
+      if (isConfigured) {
+        storeRef.current?.getState().setSize(width, height)
+        return
+      }
+      if (isConfiguring) return
+
+      isConfiguring = true
+      void root
+        .configure({
+          camera: CANVAS_CAMERA_OPTIONS,
+          dpr: CANVAS_DPR,
+          events,
+          frameloop: 'demand',
+          gl: (defaultProps: WebGLRendererParameters) => new WebGLRenderer({ ...defaultProps, ...CANVAS_GL_OPTIONS }),
+          onCreated: (state) => {
+            state.events.connect?.(container)
+            configureRenderer(state)
+          },
+          shadows: true,
+          size: { width, height, top: 0, left: 0 },
+        })
+        .then(() => {
+          if (!isCurrent || hasFailed) return
+          isConfigured = true
+          storeRef.current = root.render(childrenRef.current)
+          storeRef.current.getState().setSize(latestWidth, latestHeight)
+        })
+        .catch(() => {
+          if (!isCurrent || hasFailed) return
+          hasFailed = true
+          observer.disconnect()
+          onErrorRef.current()
+        })
+    })
+
+    observer.observe(container)
+    return () => {
+      isCurrent = false
+      observer.disconnect()
+      rootRef.current = null
+      storeRef.current = null
+      root.unmount()
+      canvas.remove()
+    }
+  }, [isDesktop])
+
+  useLayoutEffect(() => {
+    const root = rootRef.current
+    if (root && storeRef.current) root.render(children)
+  }, [children])
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative size-full overflow-hidden"
+      style={{ pointerEvents: canInteract ? 'auto' : 'none', touchAction: canInteract ? 'none' : 'auto' }}
+    />
+  )
 }
 
 function InteractiveShowcase3DRuntime({
@@ -646,18 +755,6 @@ function InteractiveShowcase3DRuntime({
   const surfaceMetadata =
     loadedSurfaceMetadata?.resourceKey === surfaceResourceKey ? loadedSurfaceMetadata.metadata : null
 
-  const createRenderer = useCallback(
-    (defaultProps: WebGLRendererParameters) => {
-      try {
-        return new WebGLRenderer({ ...defaultProps, ...CANVAS_GL_OPTIONS })
-      } catch (error: unknown) {
-        handleSceneError()
-        throw error
-      }
-    },
-    [handleSceneError],
-  )
-
   return createPortal(
     <div ref={surfaceRef} className="relative size-full overflow-hidden">
       <div
@@ -668,44 +765,41 @@ function InteractiveShowcase3DRuntime({
             shouldReduceMotion || !isSurfaceVisible ? 'none' : `opacity ${REVEAL_FADE_DURATION_MS}ms ${REVEAL_EASING}`,
         }}
       >
-        <SceneErrorBoundary key={sceneRetryRevision} onError={handleSceneError}>
-          <Canvas
-            camera={CANVAS_CAMERA_OPTIONS}
-            className="block size-full"
-            dpr={CANVAS_DPR}
-            frameloop="demand"
-            gl={createRenderer}
-            onCreated={configureRenderer}
-            resize={{ scroll: false, offsetSize: !isDesktop }}
-            shadows
-            style={{ pointerEvents: canInteract ? 'auto' : 'none', touchAction: canInteract ? 'none' : 'auto' }}
+        {showSurfaceError ? null : (
+          <ControlledShowcaseCanvas
+            key={sceneRetryRevision}
+            canInteract={canInteract}
+            isDesktop={isDesktop}
+            onError={handleSceneError}
           >
-            <ShowcaseLighting />
-            <SceneErrorBoundary key={surfaceToken} onError={handleSceneError}>
-              <Suspense fallback={null}>
-                {surfaceMetadata ? (
-                  <CabinModel
-                    cabin={surfaceCabin}
-                    cameraRestoreRef={cameraRestoreRef}
-                    controlsRef={controlsRef}
-                    finishRetryRevision={finishRetryRevision}
-                    isDesktop={isDesktop}
-                    isInteractive={canInteract}
-                    metadata={surfaceMetadata}
-                    modelRotationResetRef={modelRotationResetRef}
-                    onError={handleSceneError}
-                    onFinishStatus={handleFinishStatus}
-                    onFrameReady={handleFrameReady}
-                    selectedExteriorId={normalizedExteriorId}
-                    selectedInteriorId={selectedInterior}
-                    surfaceRef={surfaceRef}
-                    surfaceToken={surfaceToken}
-                  />
-                ) : null}
-              </Suspense>
+            <SceneErrorBoundary key={sceneRetryRevision} onError={handleSceneError}>
+              <ShowcaseLighting />
+              <SceneErrorBoundary key={surfaceToken} onError={handleSceneError}>
+                <Suspense fallback={null}>
+                  {surfaceMetadata ? (
+                    <CabinModel
+                      cabin={surfaceCabin}
+                      cameraRestoreRef={cameraRestoreRef}
+                      controlsRef={controlsRef}
+                      finishRetryRevision={finishRetryRevision}
+                      isDesktop={isDesktop}
+                      isInteractive={canInteract}
+                      metadata={surfaceMetadata}
+                      modelRotationResetRef={modelRotationResetRef}
+                      onError={handleSceneError}
+                      onFinishStatus={handleFinishStatus}
+                      onFrameReady={handleFrameReady}
+                      selectedExteriorId={normalizedExteriorId}
+                      selectedInteriorId={selectedInterior}
+                      surfaceRef={surfaceRef}
+                      surfaceToken={surfaceToken}
+                    />
+                  ) : null}
+                </Suspense>
+              </SceneErrorBoundary>
             </SceneErrorBoundary>
-          </Canvas>
-        </SceneErrorBoundary>
+          </ControlledShowcaseCanvas>
+        )}
       </div>
 
       <div className="pointer-events-none absolute inset-0 z-20">

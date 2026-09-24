@@ -179,6 +179,7 @@
   "showcase_3d_finish_error": "This finish could not be loaded. The previous finish is still shown.",
   "showcase_3d_hint_desktop": "Drag to explore. Scroll to zoom.",
   "showcase_3d_hint_mobile": "Drag to rotate. Pinch to zoom.",
+  "showcase_3d_loading": "Loading the {model} 3D preview…",
   "showcase_3d_retry": "Retry 3D preview",
   "showcase_preview_updating": "Updating preview…",
   "showcase_preview_error": "This image preview could not be loaded.",

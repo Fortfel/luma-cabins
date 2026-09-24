@@ -80,6 +80,7 @@ import {
   showcase_3d_finish_error,
   showcase_3d_hint_desktop,
   showcase_3d_hint_mobile,
+  showcase_3d_loading,
   showcase_3d_retry,
   showcase_status,
   showcase_title,
@@ -239,6 +240,14 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
     liveSurfaceVisibility?.isVisible === true &&
     liveSurfaceVisibility.revision === surfaceRevision &&
     liveSurfaceVisibility.cabinId === surfaceCabin.id
+  const isDesktop3DLoading =
+    isDesktop &&
+    !isLiveSurfaceRevealed &&
+    !(
+      liveSurfaceVisibility?.hasError === true &&
+      liveSurfaceVisibility.cabinId === surfaceCabin.id &&
+      liveSurfaceVisibility.revision === surfaceRevision
+    )
   const intentCabin =
     intentCabinId === null ? null : (showcaseCabins.find(({ cabin }) => cabin.id === intentCabinId)?.cabin ?? null)
   const speculativeCabin = showcaseCabins[activeIndex + (navigationDirection === 'previous' ? -1 : 1)]?.cabin ?? null
@@ -253,6 +262,7 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
     finishError: showcase_3d_finish_error({}, messageOptions),
     hintDesktop: showcase_3d_hint_desktop({}, messageOptions),
     hintMobile: showcase_3d_hint_mobile({}, messageOptions),
+    loading: showcase_3d_loading({ model: activeCabin.name }, messageOptions),
     retry: showcase_3d_retry({}, messageOptions),
   }
   const posterLabels = {
@@ -434,6 +444,7 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
           >
             <div
               ref={mediaViewportRef}
+              aria-busy={isDesktop ? isDesktop3DLoading : undefined}
               className="relative w-full overflow-hidden xl:h-[31.25rem] xl:**:data-[slot=carousel-content]:h-full"
             >
               <CarouselContent
@@ -533,6 +544,11 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
                 />
               ) : null}
             </div>
+            {isDesktop ? (
+              <p role="status" className="sr-only">
+                {isDesktop3DLoading ? viewerLabels.loading : null}
+              </p>
+            ) : null}
 
             <CarouselPrevious
               aria-label={carousel_previous({}, messageOptions)}
@@ -1153,6 +1169,7 @@ function Showcase3DDialog({
   const hostRef = useRef<HTMLDivElement | null>(null)
   const closeRef = useRef<HTMLButtonElement | null>(null)
   const isRevealed = visibility?.cabinId === cabin.id && visibility.isVisible
+  const isLoading = !isRevealed && visibility?.hasError !== true
 
   return (
     <Dialog
@@ -1185,14 +1202,18 @@ function Showcase3DDialog({
             <span className="sr-only">{dialog_close({}, { locale })}</span>
           </DialogClose>
         </DialogHeader>
-        <div ref={hostRef} className="[container-type:size] relative min-h-0 flex-1 overflow-hidden">
+        <div
+          ref={hostRef}
+          aria-busy={isLoading}
+          className="[container-type:size] relative min-h-0 flex-1 overflow-hidden"
+        >
           <div className="pointer-events-none absolute inset-0 z-20">
             <CabinImageCard
               key={cabin.id}
               cabin={cabin}
               selectedExterior={selectedExterior}
               selectedInterior={selectedInterior}
-              isLoading={visibility?.hasError !== true}
+              isLoading={isLoading}
               isLiveSurfaceRevealed={isRevealed}
               isModal
               posterLabels={{
@@ -1223,6 +1244,9 @@ function Showcase3DDialog({
             />
           ) : null}
         </div>
+        <p role="status" className="sr-only">
+          {isLoading ? labels.loading : null}
+        </p>
         <div className="grid shrink-0 gap-2 border-t border-border px-5 pt-3 pb-[max(1rem,env(safe-area-inset-bottom))] sm:grid-cols-2 sm:gap-6">
           <CompactFinishControl
             label={showcase_exterior({}, { locale })}
