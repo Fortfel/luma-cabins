@@ -58,7 +58,11 @@ const MODEL_ROTATION_DRAG_SENSITIVITY = 0.01
 const MODEL_ROTATION_SETTLE_EPSILON = 0.0001
 const CAMERA_ELEVATION_DAMPING = 7
 const CAMERA_ELEVATION_DRAG_SENSITIVITY = 0.005
-const CAMERA_ELEVATION_LIMIT = 0.32
+const CAMERA_MAX_ELEVATION_DEGREES = 80
+const CAMERA_MIN_ELEVATION = 0
+const CAMERA_MAX_ELEVATION = MathUtils.degToRad(CAMERA_MAX_ELEVATION_DEGREES)
+const CAMERA_MIN_POLAR_ANGLE = Math.PI / 2 - CAMERA_MAX_ELEVATION
+const CAMERA_MAX_POLAR_ANGLE = Math.PI / 2 - CAMERA_MIN_ELEVATION
 const CAMERA_ELEVATION_SETTLE_EPSILON = 0.0001
 const SHOWCASE_SHADOW_MAP_SIZE = 512
 type LightPosition = readonly [number, number, number]
@@ -244,6 +248,11 @@ interface SurfaceFrameIdentity {
 interface SurfaceSize {
   readonly width: number
   readonly height: number
+}
+
+interface CameraElevationLimits {
+  readonly minimumOffset: number
+  readonly maximumOffset: number
 }
 
 interface CabinModelProps {
@@ -1012,6 +1021,7 @@ function CabinModel({
   const canonicalCameraQuaternionRef = useRef(new Quaternion())
   const cameraTargetRef = useRef(new Vector3())
   const canonicalCameraOffsetRef = useRef(new Vector3())
+  const cameraElevationLimitsRef = useRef<CameraElevationLimits>({ minimumOffset: 0, maximumOffset: 0 })
   const cameraOrbitAxisRef = useRef(new Vector3())
   const cameraOrbitQuaternionRef = useRef(new Quaternion())
   const cameraOrbitOffsetRef = useRef(new Vector3())
@@ -1059,6 +1069,14 @@ function CabinModel({
     cameraTargetRef.current.fromArray(metadata.camera.target_gltf)
     canonicalCameraOffsetRef.current.copy(canonicalCameraPositionRef.current).sub(cameraTargetRef.current)
     cameraOrbitAxisRef.current.set(1, 0, 0).applyQuaternion(canonicalCameraQuaternionRef.current).normalize()
+    const canonicalCameraElevation = Math.atan2(
+      canonicalCameraOffsetRef.current.y,
+      Math.hypot(canonicalCameraOffsetRef.current.x, canonicalCameraOffsetRef.current.z),
+    )
+    cameraElevationLimitsRef.current = {
+      minimumOffset: canonicalCameraElevation - CAMERA_MAX_ELEVATION,
+      maximumOffset: canonicalCameraElevation - CAMERA_MIN_ELEVATION,
+    }
     resetCameraElevation()
   }, [metadata.camera, resetCameraElevation])
 
@@ -1145,8 +1163,8 @@ function CabinModel({
       targetCameraElevationRef.current = MathUtils.clamp(
         targetCameraElevationRef.current -
           (event.clientY - previousPointerPosition.y) * CAMERA_ELEVATION_DRAG_SENSITIVITY,
-        -CAMERA_ELEVATION_LIMIT,
-        CAMERA_ELEVATION_LIMIT,
+        cameraElevationLimitsRef.current.minimumOffset,
+        cameraElevationLimitsRef.current.maximumOffset,
       )
       // Let OrbitControls' document listeners receive movement and pointer-up for zoom/cleanup.
       invalidate()
@@ -1315,8 +1333,8 @@ function CabinModel({
         dampingFactor={0.08}
         minDistance={cabin.threeD.minDistance}
         maxDistance={cabin.threeD.maxDistance}
-        minPolarAngle={1.15}
-        maxPolarAngle={2.05}
+        minPolarAngle={CAMERA_MIN_POLAR_ANGLE}
+        maxPolarAngle={CAMERA_MAX_POLAR_ANGLE}
         rotateSpeed={0.7}
         zoomSpeed={0.7}
         target={metadata.camera.target_gltf}
