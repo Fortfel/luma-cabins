@@ -2,7 +2,7 @@
 
 import type { ComponentRef, ReactNode, RefObject } from 'react'
 import type { InteractiveShowcase3DProps, LiveSurfaceVisibility } from './interactive-showcase-3d'
-import type { RootState } from '@react-three/fiber'
+import type { RootState, Catalogue } from '@react-three/fiber'
 import type {
   Camera,
   Group,
@@ -15,7 +15,7 @@ import type {
 } from 'three'
 import type { Cabin, CabinExteriorFinishId } from '~/app/[locale]/(app)/_data/cabins'
 
-import { Component, Suspense, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { Component, Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 import { OrbitControls, useGLTF } from '@react-three/drei'
 import { createRoot, events, extend, useFrame, useThree } from '@react-three/fiber'
@@ -62,6 +62,8 @@ const CAMERA_ELEVATION_LIMIT = 0.32
 const CAMERA_ELEVATION_SETTLE_EPSILON = 0.0001
 const SHOWCASE_SHADOW_MAP_SIZE = 512
 type LightPosition = readonly [number, number, number]
+
+extend(THREE as unknown as Catalogue)
 
 interface ExteriorSpotlightDefinition {
   readonly position: LightPosition
@@ -320,8 +322,6 @@ function ControlledShowcaseCanvas({ children, isDesktop, canInteract, onError }:
   const storeRef = useRef<ReturnType<ReturnType<typeof createRoot>['render']> | null>(null)
   const childrenRef = useRef(children)
   const onErrorRef = useRef(onError)
-
-  useMemo(() => extend(THREE as unknown as Parameters<typeof extend>[0]), [])
 
   useLayoutEffect(() => {
     childrenRef.current = children
