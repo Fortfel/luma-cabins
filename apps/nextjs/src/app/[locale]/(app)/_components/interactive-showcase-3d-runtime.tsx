@@ -36,7 +36,7 @@ import {
 
 import { Button } from '@workspace/ui/components/button'
 
-import { DESKTOP_FRAMING, getModalFraming } from './interactive-showcase-3d-framing'
+import { DESKTOP_FRAMING, NIVA_VISUAL_OFFSET, getModalFraming } from './interactive-showcase-3d-framing'
 import { REVEAL_EASING, REVEAL_FADE_DURATION_MS } from './interactive-showcase-3d-timing'
 
 const BACKGROUND_COLOR = '#f7f5f0'
@@ -56,6 +56,9 @@ const CANVAS_GL_OPTIONS = {
 const MODEL_ROTATION_DAMPING = 7
 const MODEL_ROTATION_DRAG_SENSITIVITY = 0.01
 const MODEL_ROTATION_SETTLE_EPSILON = 0.0001
+// Moving Niva right increases its apparent camera azimuth by about 2.5° at the front facade.
+const NIVA_INITIAL_ROTATION_Y = -MathUtils.degToRad(2.5)
+const NIVA_INITIAL_ROTATION = [0, NIVA_INITIAL_ROTATION_Y, 0] as const
 const CAMERA_ELEVATION_DAMPING = 7
 const CAMERA_ELEVATION_DRAG_SENSITIVITY = 0.005
 const CAMERA_MAX_ELEVATION_DEGREES = 80
@@ -1014,7 +1017,8 @@ function CabinModel({
   const appliedRevisionRef = useRef<string | null>(null)
   const reportedRevisionRef = useRef<string | null>(null)
   const modelRotationGroupRef = useRef<Group | null>(null)
-  const targetModelRotationYRef = useRef(0)
+  const initialModelRotationY = cabin.id === 'niva' ? NIVA_INITIAL_ROTATION_Y : 0
+  const targetModelRotationYRef = useRef(initialModelRotationY)
   const currentCameraElevationRef = useRef(0)
   const targetCameraElevationRef = useRef(0)
   const canonicalCameraPositionRef = useRef(new Vector3())
@@ -1057,11 +1061,11 @@ function CabinModel({
   }, [camera])
 
   const resetModelRotation = useCallback(() => {
-    targetModelRotationYRef.current = 0
-    if (modelRotationGroupRef.current) modelRotationGroupRef.current.rotation.set(0, 0, 0)
+    targetModelRotationYRef.current = initialModelRotationY
+    if (modelRotationGroupRef.current) modelRotationGroupRef.current.rotation.set(0, initialModelRotationY, 0)
     resetCameraElevation()
     invalidate()
-  }, [invalidate, resetCameraElevation])
+  }, [initialModelRotationY, invalidate, resetCameraElevation])
 
   useLayoutEffect(() => {
     const worldMatrix = matrixFromRows(metadata.camera.matrix_world_gltf)
@@ -1317,7 +1321,11 @@ function CabinModel({
         onBeforeRestore={resetCameraElevation}
         onConfigured={handleCameraConfigured}
       />
-      <group ref={modelRotationGroupRef}>
+      <group
+        ref={modelRotationGroupRef}
+        position={cabin.id === 'niva' ? NIVA_VISUAL_OFFSET : undefined}
+        rotation={cabin.id === 'niva' ? NIVA_INITIAL_ROTATION : undefined}
+      >
         <primitive object={scene} dispose={null} />
         <CabinMountedLighting cabinId={cabin.id} />
       </group>

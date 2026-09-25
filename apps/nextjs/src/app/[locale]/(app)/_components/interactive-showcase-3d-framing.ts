@@ -3,6 +3,10 @@ import type { CabinId } from '~/app/[locale]/(app)/_data/cabins'
 
 // 300px @ 1280px -> 400px @ 1660px. Shared by the camera and its poster fallback.
 const DESKTOP_FRAMING = { minHeight: 300, maxHeight: 400, intercept: -36.848, slope: 0.26316 } as const
+const NIVA_VISUAL_OFFSET = [1, 0, 0] as const
+// Niva's projected silhouette center moves 0.1144 world-bounds heights per GLTF unit in X.
+const NIVA_POSTER_SHIFT_PER_UNIT = 0.1144
+const NIVA_CANONICAL_POSTER_OFFSET_X = 0.075794
 
 // Projected mesh silhouettes from the production GLBs and canonical camera contracts.
 // Desktop dimensions/offsets are relative to the projected world-bounds height, not the cropped PNG height.
@@ -10,7 +14,7 @@ const POSTER_FRAMING = {
   niva: {
     width: 0.875722,
     height: 0.898151,
-    offsetX: 0.075794,
+    offsetX: NIVA_CANONICAL_POSTER_OFFSET_X + NIVA_VISUAL_OFFSET[0] * NIVA_POSTER_SHIFT_PER_UNIT,
     offsetY: 0.017008,
     originX: 0.423455,
     originY: 0.482199,
@@ -47,10 +51,12 @@ const POSTER_FRAMING = {
 
 function getModalFraming(cabinId: CabinId) {
   const framing = POSTER_FRAMING[cabinId]
+  // Niva's shifted poster still fits the existing padded stage; do not shrink the live model to move it right.
+  const framingOffsetX = cabinId === 'niva' ? NIVA_CANONICAL_POSTER_OFFSET_X : framing.offsetX
   const padding = 0.88
   return {
     widthRatio:
-      (padding * 2 * Math.min(framing.originX, 1 - framing.originX)) / (framing.width + 2 * Math.abs(framing.offsetX)),
+      (padding * 2 * Math.min(framing.originX, 1 - framing.originX)) / (framing.width + 2 * Math.abs(framingOffsetX)),
     heightRatio:
       (padding * 2 * Math.min(framing.originY, 1 - framing.originY)) / (framing.height + 2 * Math.abs(framing.offsetY)),
   }
@@ -79,4 +85,4 @@ function getShowcasePosterStyle(
   }
 }
 
-export { DESKTOP_FRAMING, getModalFraming, getShowcasePosterStyle }
+export { DESKTOP_FRAMING, NIVA_VISUAL_OFFSET, getModalFraming, getShowcasePosterStyle }
