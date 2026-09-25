@@ -842,10 +842,10 @@ function ShowcaseLighting() {
   return (
     <>
       <color attach="background" args={[BACKGROUND_COLOR]} />
-      <hemisphereLight args={['#fffaf0', '#8b938f', 1.2]} />
-      <directionalLight position={[-5, 9, 6]} intensity={2.2} color="#fff2dd" />
-      <directionalLight position={[5, 6, 4]} intensity={1.4} color="#e5efff" />
-      <directionalLight position={[0, 8, -6]} intensity={1.8} color="#fff5e4" />
+      <hemisphereLight args={['#fffdf8', '#8f918d', 1.0]} />
+      <directionalLight position={[-5, 9, 6]} intensity={1.8} color="#fff6e8" />
+      <directionalLight position={[5, 6, 4]} intensity={1.5} color="#f2f6ff" />
+      <directionalLight position={[0, 8, -6]} intensity={1.4} color="#fff8ed" />
     </>
   )
 }
