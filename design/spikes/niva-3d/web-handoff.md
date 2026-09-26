@@ -1,5 +1,13 @@
 # Niva Configurator Asset Handoff
 
+## Deck and window delivery — September 25, 2026
+
+`DeckFrontFascia` now meets the deck underside with a 20 mm front setback and 12 mm end setbacks. `Left_InteriorLining` and `Right_InteriorLining` meet the cladding inner planes without the former overlapping reveal surfaces. Front/rear lining depth also meets the cladding to close the small reveal gaps.
+
+All four window reveals (right living room, left WC, front loft and rear kitchen) now use `FixedInteriorLining`, matching the fixed interior wall finish. The four cladding meshes contain separate exterior and interior-material primitives; apply exterior presets by material name, never to every primitive on those objects. The black metal window frames retain their fixed finish.
+
+The updated source and GLB are saved; the web copy is `apps/nextjs/public/cabin-3d/niva/niva-configurator.glb`. Saved-source joint/material checks passed, modified meshes have no degenerate faces or nonmanifold edges after welding, exported reveal materials were checked, and embedded image payloads are unchanged. Blender close-ups were inspected. No browser tests were run; browser review belongs to the user.
+
 ## Gutter delivery — September 15, 2026
 
 `niva-final.blend / Niva_Source` now contains Veyra-style open half-round `Left_Gutter` / `Right_Gutter` meshes and four `*_GutterClosedEnd_*` caps. Their inner edges clear the timber barge ends, and the lips sit closely beneath the roof edge rather than leaving an exposed timber gap. The final gutter lip is approximately Z=3.627 m in Blender world coordinates. `Left_GutterElbow` / `Right_GutterElbow` are hollow swept connectors with tops fitted to the curved gutter underside; the downspout tops meet the new bends.
@@ -8,27 +16,27 @@ These are direct saved-source edits; older authoring scripts do not reproduce th
 
 ## Current Delivery
 
-**September 15, 2026 delivery:** final gutter fit, closed end caps and hollow downpipe joints, retaining the earlier corrected roof grain, kitchen hardware, corner clearances and WC curtains. The model is regenerated and synced into `apps/nextjs/public/niva-3d/`. The runtime's displayed payload and model-count constants have been updated.
+**September 25, 2026 delivery:** corrected deck edge and fixed-interior window reveals, retaining the gutter, roof, kitchen and curtain revisions. The model is regenerated and synced into `apps/nextjs/public/cabin-3d/niva/`. The runtime's displayed payload is updated.
 
 **The browser poster is now captured from the live WebGL canvas. Do not generate, sync or overwrite the Blender poster during future asset work.** The retained design poster remains unchanged and stale relative to this model.
 
 Historical September 11 evidence: targeted typecheck and Chrome browser verification rendered the preceding GLB at 474 meshes, and its 954 x 866 poster was captured with the UI overlays hidden. That capture does not represent the September 15 export. The integrated browser capture session timed out, so Chrome CDP was used for that earlier capture.
 
-| File                                   | Purpose                                            |      Bytes |
-| -------------------------------------- | -------------------------------------------------- | ---------: |
-| `niva-configurator.glb`                | Current single runtime model                       |  7,782,032 |
-| `niva-presets.json`                    | Independent material/preset mapping                |      4,959 |
-| `niva-camera.json`                     | Canonical camera contract                          |      2,398 |
-| `renders/niva-configurator-poster.png` | Legacy 954 × 866 Blender poster; retained unchanged |    832,550 |
-| `apps/nextjs/public/niva-3d/niva-configurator-poster.png` | Web-captured 954 × 866 poster used by the gate | 374,814 |
-| `niva-final.blend`                     | Authoritative source, scene `Niva_Source` | 17,991,665 |
-| `niva-configurator-delivery.json`      | Current SHA-256 hashes and accounting              |   See file |
+| File                                                            | Purpose                                             |      Bytes |
+| --------------------------------------------------------------- | --------------------------------------------------- | ---------: |
+| `niva-configurator.glb`                                         | Current single runtime model                        |  7,786,100 |
+| `niva-presets.json`                                             | Independent material/preset mapping                 |      4,959 |
+| `niva-camera.json`                                              | Canonical camera contract                           |      2,398 |
+| `renders/niva-configurator-poster.png`                          | Legacy 954 × 866 Blender poster; retained unchanged |    832,550 |
+| `apps/nextjs/public/cabin-3d/niva/niva-configurator-poster.png` | Web-captured 954 × 866 poster used by the gate      |    374,814 |
+| `niva-final.blend`                                              | Authoritative source, scene `Niva_Source`           | 17,994,341 |
+| `niva-configurator-delivery.json`                               | Current SHA-256 hashes and accounting               |   See file |
 
-Use `/niva-3d/niva-configurator.glb` and `/niva-3d/niva-configurator-poster.png` in the app. Transfer camera/preset JSON and `finishes/textures/` with their relative layout. Do not deploy source blends, backups, authoring close-ups or validation intermediates. `niva.glb` and `niva-web-candidate.glb` remain older reference assets.
+Use `/cabin-3d/niva/niva-configurator.glb` and `/cabin-3d/niva/niva-configurator-poster.png` in the app. Transfer camera/preset JSON and `finishes/textures/` with their relative layout. Do not deploy source blends, backups, authoring close-ups or validation intermediates. `niva.glb` and `niva-web-candidate.glb` remain older reference assets.
 
 ## Geometry And Compatibility
 
-The delivered GLB is a full export from the September 15 editable source, with modifiers applied for glTF. It contains **96,920 triangles, 478 meshes, 479 nodes, 27 materials and eight embedded images**. It has one model for all independent finish combinations. No new decoder dependency was introduced.
+The delivered GLB is a full export from the September 25 editable source, with modifiers applied for glTF. It contains **96,920 triangles, 478 meshes, 479 nodes, 27 materials and eight embedded images**. It has one model for all independent finish combinations. No new decoder dependency was introduced.
 
 - `Front_ContinuousTimberBarge` / `Rear_ContinuousTimberBarge`: fixed zero-width UVs on the narrow faces and aligned the grain with each roof slope. Material is the same `FixedArchitecturalTimber` used by `CeilingBeam_0`. The two broad concave faces are split into coplanar quads at existing ridge vertices, allowing separate slope UV islands without changing vertex positions or silhouette. Mapping uses 1.83 m tiles and proper two-dimensional islands for broad faces, narrow depth faces and end caps.
 - `KitchenPull_1_*` / `KitchenFridge_OverheadPull_*`: grips shortened to 140 mm, centered as before, with narrower mount spacing. Larger return-drawer pulls retain their existing size.
@@ -95,7 +103,7 @@ If bridging showcase IDs, map `wood` → `natural-timber`, `white` → `whitewas
 
 ### Finish boundaries
 
-`ExteriorCladding` targets only the four exterior cladding meshes. Deck, steps, roof, structural trim, gutters, chimney and metal/exterior frames remain fixed.
+`ExteriorCladding` targets only the exterior-material primitives of the four cladding meshes. Their window reveal primitives use `FixedInteriorLining` and must not change with exterior presets. Deck, steps, roof, structural trim, gutters, chimney and metal/exterior frames remain fixed.
 
 `InteriorJoinery` includes the existing cabinetry, tables, chopping board, ladder and WC timber, plus new timber cabinet fronts/carcasses, corner filler/divider, fridge enclosure, microwave shelf, WC liners, stops and header reveal cover. Fridge/microwave appliance faces, hardware, stone worktops, glazing, walls, floor, ceiling, fixed loft structure, textiles including `WC_PleatedLinen`, and lights remain fixed. Some fixed materials share the original oak image; assign a replacement map to the configurable material rather than editing shared image data.
 

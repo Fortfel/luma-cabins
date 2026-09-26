@@ -1,8 +1,10 @@
-# Niva: Gutters, Roof Grain, Kitchen Hardware And WC Curtains
+# Niva: Deck Edge And Interior Window Reveals
 
-**Current source: September 15, 2026, gutter follow-up.** `niva-final.blend` is the authoritative editable source, using scene `Niva_Source`. Both gutters now use Veyra's open half-round profile and closed end caps, fitted closely beneath the roof edge and clear of the timber barge trim. Hollow swept downpipe connections replace the intersecting capped elbows.
+**Current source: September 25, 2026, deck/window follow-up.** `niva-final.blend` is the authoritative editable source, using scene `Niva_Source`. The deck fascia now meets the timber underside with 20 mm front and 12 mm end setbacks. The right living-room, left WC, front loft and rear kitchen window reveals use `FixedInteriorLining`, matching the interior walls independently of exterior palette changes. Wall shells meet at butt joints instead of overlapping on the reveal surfaces. Fixed black metal window frames remain separate from these painted reveals.
 
-The September 15 configurator GLB is regenerated and synced to `apps/nextjs/public/niva-3d/niva-configurator.glb`. Delivery hashes/counts and the runtime's displayed payload figures are updated. Existing posters predate this export and remain retained for the user's web-capture workflow. No tests were run. See [web-handoff.md](./web-handoff.md#gutter-delivery--september-15-2026).
+The September 25 configurator GLB is regenerated and synced to `apps/nextjs/public/cabin-3d/niva/niva-configurator.glb`. Delivery hashes/counts and runtime payload figures are updated. Saved-source geometry/material assertions and exported material/image checks passed; Blender close-ups were inspected. Browser testing is left to the user. See [web-handoff.md](./web-handoff.md#deck-and-window-delivery--september-25-2026).
+
+The September 15 open half-round gutters, closed end caps and hollow downpipe connections are retained.
 
 **Previous revision: September 11, 2026, roof/hardware follow-up including the corner/curtain fixes.** Those changes remain included in the new export.
 
@@ -23,20 +25,20 @@ The September 15 configurator GLB is regenerated and synced to `apps/nextjs/publ
 
 ## Current Assets
 
-| Asset                                  | Purpose                                            |           Bytes |
-| -------------------------------------- | -------------------------------------------------- | --------------: |
-| `niva-final.blend`                     | Authoritative editable source                      |      17,991,665 |
-| `niva-configurator.glb`                | Current web model                                  |       7,782,032 |
-| `renders/niva-configurator-poster.png` | Legacy 954 × 866 Blender poster; retained unchanged |         832,550 |
-| `apps/nextjs/public/niva-3d/niva-configurator-poster.png` | Web-captured 954 × 866 gate poster |         374,814 |
-| `niva-camera.json`                     | Canonical pose and off-axis projection             |           2,398 |
-| `niva-presets.json`                    | Independent exterior/interior finish mapping       |           4,959 |
-| `finishes/textures/`                   | Four optional finish JPEGs                         | 1,183,666 total |
-| `niva-configurator-delivery.json`      | Current hashes, counts and review status           |        See file |
+| Asset                                                           | Purpose                                             |           Bytes |
+| --------------------------------------------------------------- | --------------------------------------------------- | --------------: |
+| `niva-final.blend`                                              | Authoritative editable source                       |      17,994,341 |
+| `niva-configurator.glb`                                         | Current web model                                   |       7,786,100 |
+| `renders/niva-configurator-poster.png`                          | Legacy 954 × 866 Blender poster; retained unchanged |         832,550 |
+| `apps/nextjs/public/cabin-3d/niva/niva-configurator-poster.png` | Web-captured 954 × 866 gate poster                  |         374,814 |
+| `niva-camera.json`                                              | Canonical pose and off-axis projection              |           2,398 |
+| `niva-presets.json`                                             | Independent exterior/interior finish mapping        |           4,959 |
+| `finishes/textures/`                                            | Four optional finish JPEGs                          | 1,183,666 total |
+| `niva-configurator-delivery.json`                               | Current hashes, counts and review status            |        See file |
 
-Export accounting: **96,920 triangles, 478 meshes, 479 nodes, 27 materials, eight embedded images**. Model plus retained legacy poster and camera/preset payload: **8,621,939 bytes**. With all four optional finish textures: **9,805,605 bytes**, before HTTP compression and runtime code. The separate retained web poster is 374,814 bytes.
+Export accounting: **96,920 triangles, 478 meshes, 479 nodes, 27 materials, eight embedded images**. Model plus retained legacy poster and camera/preset payload: **8,626,007 bytes**. With all four optional finish textures: **9,809,673 bytes**, before HTTP compression and runtime code. The separate retained web poster is 374,814 bytes.
 
-The export reuses the previous GLB's eight optimized image payloads exactly: seven 1K maps and one 512 px fabric map. Authoring textures remain 2K where originally supplied. No decoder or additional texture dependency was introduced. This is a full export from the saved September 15 source, including the final gutter fit and downpipe connections.
+The export reuses the previous GLB's eight optimized image payloads exactly: seven 1K maps and one 512 px fabric map. Authoring textures remain 2K where originally supplied. No decoder or additional texture dependency was introduced. This is a full export from the saved September 25 source, including the final gutter fit and downpipe connections.
 
 ## Finishes And Camera
 
@@ -59,6 +61,8 @@ The retained design poster was rendered during the previous door/L-kitchen pass 
 The linked design image files predate these follow-ups. The separate web poster and the targeted typecheck/live Chrome capture belong to the September 11 delivery. **No tests, topology-validation scripts, browser checks, lint or typecheck were run for the September 15 export.** Earlier reports under `validation/` and finish sheets describe preceding models. The raw `validation/niva-doors-kitchen-full.glb` is an export intermediate, not a validation report.
 
 ## Editing And Reproduction
+
+The September 25 follow-up is implemented in `scripts/fix-deck-window-reveals.py`. Its `author()` backs up the current source before editing and refuses to run twice. Its `validate()` checks all four reveal joints/materials and the deck fascia clearances. Latest pre-edit backup: `validation/before-deck-window-reveals-20260925-175854/`.
 
 The September 15 gutter edits are authored directly in the saved source and are not reproduced by the older authoring scripts. Continue from `niva-final.blend`; use the existing export/accounting workflow when a new web delivery is requested.
 
