@@ -9,13 +9,14 @@ import json
 import math
 import contextlib
 import io
+import sys
 from pathlib import Path
 
 import bmesh
 import bpy
 from mathutils import Vector
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(sys.argv[sys.argv.index('--') + 1]).resolve() if '--' in sys.argv else Path(__file__).resolve().parents[1]
 
 
 def mesh_record(obj, evaluated=False):
@@ -44,10 +45,11 @@ def mesh_record(obj, evaluated=False):
 def run():
     if not bpy.app.background:
         raise RuntimeError('Run in background Blender only; this test resets its process scene.')
+    source_hash = hashlib.sha256(Path(bpy.data.filepath).read_bytes()).hexdigest()
     source = bpy.data.scenes['Aster_Source']
     bpy.context.window.scene = source
     groups = ('Architecture', 'Glazing', 'ExteriorDetails', 'ShallowInterior')
-    objects = [o for g in groups for o in bpy.data.collections['Aster_' + g].objects if o.type == 'MESH']
+    objects = {o for g in groups for o in bpy.data.collections['Aster_' + g].all_objects if o.type == 'MESH' and not o.hide_render}
     expected = {o.name: mesh_record(o, True) for o in objects}
     bpy.ops.wm.read_factory_settings(use_empty=True)
     with contextlib.redirect_stdout(io.StringIO()):
@@ -91,6 +93,7 @@ def run():
     images = [{'name': image.name, 'size': list(image.size), 'space': image.colorspace_settings.name,
                'packed': bool(image.packed_file)} for image in bpy.data.images if image.type == 'IMAGE']
     report = {'asset_sha256': hashlib.sha256((ROOT / 'aster-configurator.glb').read_bytes()).hexdigest(),
+              'source_sha256': source_hash,
               'passed': not failures, 'failures': failures, 'expected_open_surfaces': notices,
               'source_objects': len(expected), 'imported_objects': len(actual),
               'triangles': sum(x['triangles'] for x in actual.values()), 'images': images,

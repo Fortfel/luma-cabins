@@ -7,6 +7,7 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+(ROOT / 'validation').mkdir(parents=True, exist_ok=True)
 
 
 class Handler(SimpleHTTPRequestHandler):

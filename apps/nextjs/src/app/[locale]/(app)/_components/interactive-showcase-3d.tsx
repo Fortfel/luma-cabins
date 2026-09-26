@@ -36,6 +36,8 @@ interface InteractiveShowcase3DProps {
     readonly finishError: string
     readonly hintDesktop: string
     readonly hintMobile: string
+    readonly hintKeyboard: string
+    readonly viewer: string
     readonly loading: string
     readonly retry: string
   }

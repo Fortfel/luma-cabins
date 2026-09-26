@@ -179,6 +179,8 @@
   "showcase_3d_finish_error": "This finish could not be loaded. The previous finish is still shown.",
   "showcase_3d_hint_desktop": "Drag to explore. Scroll to zoom.",
   "showcase_3d_hint_mobile": "Drag to rotate. Pinch to zoom.",
+  "showcase_3d_hint_keyboard": "Use Left and Right arrows to rotate, Up and Down arrows to change elevation, plus or equals to zoom in, minus to zoom out, and Home to reset the view. Press Tab to leave the viewer.",
+  "showcase_3d_viewer": "Interactive 3D view of {model}",
   "showcase_3d_loading": "Loading the {model} 3D preview…",
   "showcase_3d_retry": "Retry 3D preview",
   "showcase_preview_updating": "Updating preview…",

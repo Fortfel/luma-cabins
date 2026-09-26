@@ -179,6 +179,8 @@
   "showcase_3d_finish_error": "Nie udało się wczytać tego wykończenia. Nadal widoczne jest poprzednie wykończenie.",
   "showcase_3d_hint_desktop": "Przeciągnij, aby eksplorować. Przewiń, aby powiększyć.",
   "showcase_3d_hint_mobile": "Przeciągnij, aby obracać. Rozsuń palce, aby przybliżyć.",
+  "showcase_3d_hint_keyboard": "Strzałki w lewo i w prawo obracają model, strzałki w górę i w dół zmieniają wysokość widoku. Plus lub znak równości przybliża, minus oddala, a Home przywraca widok początkowy. Naciśnij Tab, aby opuścić widok 3D.",
+  "showcase_3d_viewer": "Interaktywny widok 3D modelu {model}",
   "showcase_3d_loading": "Wczytywanie podglądu 3D modelu {model}…",
   "showcase_3d_retry": "Ponów podgląd 3D",
   "showcase_preview_updating": "Aktualizowanie podglądu…",

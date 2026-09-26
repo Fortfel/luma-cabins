@@ -80,6 +80,8 @@ import {
   showcase_3d_finish_error,
   showcase_3d_hint_desktop,
   showcase_3d_hint_mobile,
+  showcase_3d_hint_keyboard,
+  showcase_3d_viewer,
   showcase_3d_loading,
   showcase_3d_retry,
   showcase_status,
@@ -262,6 +264,8 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
     finishError: showcase_3d_finish_error({}, messageOptions),
     hintDesktop: showcase_3d_hint_desktop({}, messageOptions),
     hintMobile: showcase_3d_hint_mobile({}, messageOptions),
+    hintKeyboard: showcase_3d_hint_keyboard({}, messageOptions),
+    viewer: showcase_3d_viewer({ model: activeCabin.name }, messageOptions),
     loading: showcase_3d_loading({ model: activeCabin.name }, messageOptions),
     retry: showcase_3d_retry({}, messageOptions),
   }
@@ -428,6 +432,18 @@ function InteractiveShowcaseSection({ locale, className, ...props }: Interactive
           <Carousel
             aria-label={showcase_carousel_label({}, messageOptions)}
             aria-roledescription={carousel_role({}, messageOptions)}
+            onKeyDownCapture={(event) => {
+              // The embedded canvas owns its arrows. The shared carousel's capture
+              // handler would otherwise switch cabins before the viewer receives them.
+              if (event.target instanceof HTMLCanvasElement) return
+              if (event.key === 'ArrowLeft') {
+                event.preventDefault()
+                api?.scrollPrev()
+              } else if (event.key === 'ArrowRight') {
+                event.preventDefault()
+                api?.scrollNext()
+              }
+            }}
             setApi={setApi}
             opts={{
               align: 'center',

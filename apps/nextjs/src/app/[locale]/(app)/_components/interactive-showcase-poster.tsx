@@ -29,19 +29,29 @@ function InteractiveShowcasePoster({
 }: Omit<ComponentProps<typeof Image>, 'src'> & { readonly src: string; readonly labels?: PosterLabels }) {
   const [displayedSrc, setDisplayedSrc] = useState(src)
   const [failedSrc, setFailedSrc] = useState<typeof src | null>(null)
-  const requestedSrc = useRef(src)
+  const [request, setRequest] = useState({ src })
+  const requestedRef = useRef(request)
   const [pendingFeedbackSrc, setPendingFeedbackSrc] = useState<string | null>(null)
   const [retryRevision, setRetryRevision] = useState(0)
+  // Reset before committing a new source, including A -> B -> C -> B. A source
+  // string alone cannot distinguish the old B request from the new one.
+  if (request.src !== src) {
+    setRequest({ src })
+    setFailedSrc(null)
+    setPendingFeedbackSrc(null)
+  }
   useLayoutEffect(() => {
-    requestedSrc.current = src
-  }, [src])
+    requestedRef.current = request
+  }, [request])
   const isUpdating = displayedSrc !== src
   const hasError = failedSrc === src
   useEffect(() => {
     if (!isUpdating || hasError) return undefined
-    const timer = window.setTimeout(() => setPendingFeedbackSrc(src), PREVIEW_FEEDBACK_DELAY_MS)
+    const timer = window.setTimeout(() => {
+      if (requestedRef.current === request) setPendingFeedbackSrc(src)
+    }, PREVIEW_FEEDBACK_DELAY_MS)
     return () => window.clearTimeout(timer)
-  }, [hasError, isUpdating, src])
+  }, [hasError, isUpdating, request, src])
 
   return (
     <>
@@ -52,7 +62,7 @@ function InteractiveShowcasePoster({
         aria-busy={isUpdating}
         className={className}
         onError={(event) => {
-          if (requestedSrc.current !== displayedSrc) return
+          if (requestedRef.current !== request || requestedRef.current.src !== displayedSrc) return
           setFailedSrc(displayedSrc)
           onError?.(event)
         }}
@@ -67,14 +77,16 @@ function InteractiveShowcasePoster({
           loading="eager"
           className={cn(className, 'invisible')}
           onLoad={(event) => {
-            if (requestedSrc.current !== src) return
+            if (requestedRef.current !== request) return
             setDisplayedSrc(src)
             setFailedSrc(null)
+            setPendingFeedbackSrc(null)
             onLoad?.(event)
           }}
           onError={(event) => {
-            if (requestedSrc.current !== src) return
+            if (requestedRef.current !== request) return
             setFailedSrc(src)
+            setPendingFeedbackSrc(null)
             onError?.(event)
           }}
         />
@@ -92,7 +104,10 @@ function InteractiveShowcasePoster({
               onClick={() => {
                 setFailedSrc(null)
                 setPendingFeedbackSrc(null)
-                setRetryRevision((revision) => revision + 1)
+                setRequest({ src })
+                // Only remount a failed displayed image. An incoming-image retry
+                // must keep the last decoded raster mounted underneath it.
+                if (!isUpdating) setRetryRevision((revision) => revision + 1)
               }}
             >
               {labels.retry}

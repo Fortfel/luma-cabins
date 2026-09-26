@@ -15,7 +15,7 @@ import type {
 } from 'three'
 import type { Cabin, CabinExteriorFinishId } from '~/app/[locale]/(app)/_data/cabins'
 
-import { Component, Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { Component, Suspense, useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from 'react'
 
 import { OrbitControls, useGLTF } from '@react-three/drei'
 import { createRoot, events, extend, flushSync, useFrame, useThree } from '@react-three/fiber'
@@ -56,6 +56,8 @@ const CANVAS_GL_OPTIONS = {
 const MODEL_ROTATION_DAMPING = 7
 const MODEL_ROTATION_DRAG_SENSITIVITY = 0.01
 const MODEL_ROTATION_SETTLE_EPSILON = 0.0001
+const KEYBOARD_ROTATION_STEP = MathUtils.degToRad(10)
+const KEYBOARD_ELEVATION_STEP = MathUtils.degToRad(5)
 // Moving Niva right increases its apparent camera azimuth by about 2.5° at the front facade.
 const NIVA_INITIAL_ROTATION_Y = -MathUtils.degToRad(2.5)
 const NIVA_INITIAL_ROTATION = [0, NIVA_INITIAL_ROTATION_Y, 0] as const
@@ -289,6 +291,8 @@ interface ControlledCanvasProps {
   readonly children: ReactNode
   readonly isDesktop: boolean
   readonly canInteract: boolean
+  readonly label: string
+  readonly instructions: string
   readonly onError: () => void
 }
 
@@ -328,7 +332,15 @@ class SceneErrorBoundary extends Component<SceneErrorBoundaryProps, SceneErrorBo
   }
 }
 
-function ControlledShowcaseCanvas({ children, isDesktop, canInteract, onError }: ControlledCanvasProps) {
+function ControlledShowcaseCanvas({
+  children,
+  isDesktop,
+  canInteract,
+  label,
+  instructions,
+  onError,
+}: ControlledCanvasProps) {
+  const instructionsId = useId()
   const containerRef = useRef<HTMLDivElement | null>(null)
   const rootRef = useRef<ReturnType<typeof createRoot> | null>(null)
   const storeRef = useRef<ReturnType<ReturnType<typeof createRoot>['render']> | null>(null)
@@ -346,7 +358,11 @@ function ControlledShowcaseCanvas({ children, isDesktop, canInteract, onError }:
 
     // A fresh element also keeps Strict Mode's effect replay from reusing an unmounting R3F root.
     const canvas = document.createElement('canvas')
-    canvas.className = 'block size-full'
+    canvas.className =
+      'block size-full focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-primary'
+    canvas.tabIndex = -1
+    canvas.setAttribute('role', 'application')
+    canvas.setAttribute('aria-describedby', instructionsId)
     container.append(canvas)
     const root = createRoot(canvas)
     let isCurrent = true
@@ -427,7 +443,16 @@ function ControlledShowcaseCanvas({ children, isDesktop, canInteract, onError }:
       root.unmount()
       canvas.remove()
     }
-  }, [isDesktop])
+  }, [instructionsId, isDesktop])
+
+  useLayoutEffect(() => {
+    const canvas = containerRef.current?.querySelector('canvas')
+    if (!canvas) return
+    canvas.tabIndex = canInteract ? 0 : -1
+    canvas.setAttribute('aria-label', label)
+    canvas.setAttribute('aria-hidden', String(!canInteract))
+    if (!canInteract && document.activeElement === canvas) canvas.blur()
+  }, [canInteract, isDesktop, label])
 
   useLayoutEffect(() => {
     const root = rootRef.current
@@ -439,7 +464,11 @@ function ControlledShowcaseCanvas({ children, isDesktop, canInteract, onError }:
       ref={containerRef}
       className="relative size-full overflow-hidden"
       style={{ pointerEvents: canInteract ? 'auto' : 'none', touchAction: canInteract ? 'none' : 'auto' }}
-    />
+    >
+      <span id={instructionsId} className="sr-only">
+        {instructions}
+      </span>
+    </div>
   )
 }
 
@@ -797,6 +826,8 @@ function InteractiveShowcase3DRuntime({
           <ControlledShowcaseCanvas
             key={sceneRetryRevision}
             canInteract={canInteract}
+            label={labels.viewer}
+            instructions={labels.hintKeyboard}
             isDesktop={isDesktop}
             onError={handleSceneError}
           >
@@ -1141,6 +1172,50 @@ function CabinModel({
       invalidate()
     }
   })
+
+  useEffect(() => {
+    if (!isInteractive) return undefined
+
+    const canvas = gl.domElement
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (document.activeElement !== canvas || event.altKey || event.ctrlKey || event.metaKey || event.isComposing)
+        return
+      switch (event.key) {
+        case 'ArrowLeft':
+          targetModelRotationYRef.current -= KEYBOARD_ROTATION_STEP
+          break
+        case 'ArrowRight':
+          targetModelRotationYRef.current += KEYBOARD_ROTATION_STEP
+          break
+        case 'ArrowUp':
+        case 'ArrowDown':
+          targetCameraElevationRef.current = MathUtils.clamp(
+            targetCameraElevationRef.current + (event.key === 'ArrowUp' ? -1 : 1) * KEYBOARD_ELEVATION_STEP,
+            cameraElevationLimitsRef.current.minimumOffset,
+            cameraElevationLimitsRef.current.maximumOffset,
+          )
+          break
+        case '+':
+        case '=':
+          controlsRef.current?.dollyIn()
+          break
+        case '-':
+          controlsRef.current?.dollyOut()
+          break
+        case 'Home':
+          resetModelRotation()
+          cameraRestoreRef.current?.()
+          break
+        default:
+          return
+      }
+      event.preventDefault()
+      event.stopPropagation()
+      invalidate()
+    }
+    canvas.addEventListener('keydown', handleKeyDown)
+    return () => canvas.removeEventListener('keydown', handleKeyDown)
+  }, [cameraRestoreRef, controlsRef, gl, invalidate, isInteractive, resetModelRotation])
 
   useEffect(() => {
     if (!isInteractive) return undefined

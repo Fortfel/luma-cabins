@@ -1,4 +1,5 @@
 {
+  "source_package_note": "The file fields record original download provenance, not required checkout inputs. Current authoring images are packed in niva-final.blend; optimized runtime images are embedded in niva-configurator.glb. No download or historical texture directory is required to export.",
   "assets": [
     {
       "asset_id": "oak_veneer_01",
@@ -6,10 +7,7 @@
       "authors": {
         "Jenelle van Heerden": "All"
       },
-      "dimensions_mm": [
-        1830.0000429153442,
-        1830.0000429153442
-      ],
+      "dimensions_mm": [1830.0000429153442, 1830.0000429153442],
       "resolution": "2k",
       "maps": {
         "diff": {
@@ -38,10 +36,7 @@
       "authors": {
         "Dimitrios Savva": "All"
       },
-      "dimensions_mm": [
-        1699.9996900558472,
-        1699.9996900558472
-      ],
+      "dimensions_mm": [1699.9996900558472, 1699.9996900558472],
       "resolution": "2k",
       "maps": {
         "diff": {

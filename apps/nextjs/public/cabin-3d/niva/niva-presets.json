@@ -2,7 +2,6 @@
   "schemaVersion": 1,
   "asset": "niva-configurator.glb",
   "camera": "niva-camera.json",
-  "poster": "renders/niva-configurator-poster.png",
   "defaults": {
     "exterior": "natural-timber",
     "interior": "light-oak"

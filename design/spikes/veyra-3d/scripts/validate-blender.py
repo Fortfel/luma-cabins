@@ -5,12 +5,13 @@ import hashlib
 import io
 import json
 import math
+import sys
 from pathlib import Path
 
 import bmesh
 import bpy
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(sys.argv[sys.argv.index('--') + 1]).resolve() if '--' in sys.argv else Path(__file__).resolve().parents[1]
 GROUPS = ('Architecture', 'Glazing', 'ExteriorDetails', 'ShallowInterior')
 EXPECTED_EXTERIOR = {'Cladding_Front', 'Cladding_Rear', 'Cladding_LeftGable', 'Cladding_RightGable'}
 SURFACE_MARKERS = ('Glass', 'Glazing', 'Curtain', 'Leaf', 'Leaves', 'Solar', 'Grid', 'Blind', 'Towel', 'Linen', 'Rug', 'Vine', 'String', 'Screen')
@@ -124,8 +125,8 @@ def live_meshes():
     for group in GROUPS:
         collection = bpy.data.collections.get('Veyra_' + group)
         if collection:
-            for obj in collection.objects:
-                if obj.type == 'MESH':
+            for obj in collection.all_objects:
+                if obj.type == 'MESH' and not obj.hide_render:
                     objects[obj.name] = obj
     return objects
 
@@ -133,6 +134,7 @@ def live_meshes():
 def run():
     if not bpy.app.background:
         raise RuntimeError('Run this check in background Blender only.')
+    source_hash = hashlib.sha256(Path(bpy.data.filepath).read_bytes()).hexdigest()
     source = bpy.data.scenes.get('Veyra_Source')
     if source is None:
         raise RuntimeError('Veyra_Source scene is missing.')
@@ -206,6 +208,7 @@ def run():
 
     report = {
         'asset_sha256': hashlib.sha256((ROOT / 'veyra-configurator.glb').read_bytes()).hexdigest(),
+        'source_sha256': source_hash,
         'passed': not failures,
         'failures': failures,
         'notices': notices,

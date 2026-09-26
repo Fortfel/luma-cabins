@@ -1,0 +1,6 @@
+# Local authoring history and generated validation/render output are not source inputs.
+*-3d/history/
+*-3d/validation/
+*-3d/renders/
+*.blend1
+__pycache__/
