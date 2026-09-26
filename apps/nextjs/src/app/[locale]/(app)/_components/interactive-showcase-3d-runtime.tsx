@@ -18,7 +18,7 @@ import type { Cabin, CabinExteriorFinishId } from '~/app/[locale]/(app)/_data/ca
 import { Component, Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 import { OrbitControls, useGLTF } from '@react-three/drei'
-import { createRoot, events, extend, useFrame, useThree } from '@react-three/fiber'
+import { createRoot, events, extend, flushSync, useFrame, useThree } from '@react-three/fiber'
 import { createPortal } from 'react-dom'
 import * as THREE from 'three'
 import {
@@ -357,6 +357,22 @@ function ControlledShowcaseCanvas({ children, isDesktop, canInteract, onError }:
     let latestHeight = 0
     rootRef.current = root
 
+    const resizeCanvas = (width: number, height: number) => {
+      const state = storeRef.current?.getState()
+      if (!state || (state.size.width === width && state.size.height === height)) return
+
+      // setSize clears the drawing buffer. Commit camera calibration and redraw before
+      // ResizeObserver yields to paint; demand invalidation alone waits until a later frame.
+      flushSync(() => state.setSize(width, height))
+
+      const resizedState = state.get()
+      if (!resizedState.internal.active) return
+
+      resizedState.advance(performance.now(), false)
+      // advance consumes a demand frame; retain a follow-up for controls/damping invalidations.
+      resizedState.invalidate()
+    }
+
     const observer = new ResizeObserver(() => {
       if (!isCurrent || hasFailed) return
 
@@ -368,7 +384,7 @@ function ControlledShowcaseCanvas({ children, isDesktop, canInteract, onError }:
       latestHeight = height
 
       if (isConfigured) {
-        storeRef.current?.getState().setSize(width, height)
+        resizeCanvas(width, height)
         return
       }
       if (isConfiguring) return
@@ -392,7 +408,7 @@ function ControlledShowcaseCanvas({ children, isDesktop, canInteract, onError }:
           if (!isCurrent || hasFailed) return
           isConfigured = true
           storeRef.current = root.render(childrenRef.current)
-          storeRef.current.getState().setSize(latestWidth, latestHeight)
+          resizeCanvas(latestWidth, latestHeight)
         })
         .catch(() => {
           if (!isCurrent || hasFailed) return
@@ -1371,12 +1387,39 @@ function CameraResizeCalibration({
   readonly onConfigured: (size: SurfaceSize) => void
 }) {
   const { camera, invalidate, size } = useThree()
-  const restoreCanonicalCamera = useCallback(() => {
-    const aspect = size.width / Math.max(size.height, 1)
-    const perspectiveCamera = camera as PerspectiveCamera
+  const [framingCamera] = useState(() => new THREE.PerspectiveCamera())
+  const framingBoundsRef = useRef<ReadonlyArray<Vector3> | null>(null)
 
+  useLayoutEffect(() => {
+    // Keep the initial framing baseline independent of subsequent turntable rotation.
+    framingBoundsRef.current = getModelBoundingBoxCorners(model)
+  }, [model])
+
+  const updateCameraFraming = useCallback(() => {
+    const aspect = size.width / Math.max(size.height, 1)
+
+    // Measure at the authored pose/distance, never against the user's elevation or zoom.
+    setCanonicalCamera(framingCamera, aspect, contract)
+
+    const modalFraming = getModalFraming(cabinId)
+    const framingScale = getDesktopFramingScale({
+      boundingBoxCorners: framingBoundsRef.current,
+      camera: framingCamera,
+      canvasHeight: size.height,
+      viewportWidth: getDesktopViewportWidth(),
+      targetHeight: isDesktop
+        ? undefined
+        : Math.min(size.width * modalFraming.widthRatio, size.height * modalFraming.heightRatio),
+    })
+
+    // Resize changes only projection; live pose, control distance and damping targets survive.
+    applyOffAxisProjection(camera, aspect, contract, framingScale)
+    invalidate()
+  }, [cabinId, camera, contract, framingCamera, invalidate, isDesktop, size.height, size.width])
+
+  const restoreCanonicalCamera = useCallback(() => {
     onBeforeRestore()
-    setCanonicalCamera(perspectiveCamera, aspect, contract)
+    setCanonicalCamera(camera as PerspectiveCamera, size.width / Math.max(size.height, 1), contract)
 
     const controls = controlsRef.current
     if (controls) {
@@ -1384,26 +1427,29 @@ function CameraResizeCalibration({
       controls.update()
     }
 
-    const modalFraming = getModalFraming(cabinId)
-    const framingScale = getDesktopFramingScale({
-      camera: perspectiveCamera,
-      canvasHeight: size.height,
-      model,
-      viewportWidth: getDesktopViewportWidth(),
-      targetHeight: isDesktop
-        ? undefined
-        : Math.min(size.width * modalFraming.widthRatio, size.height * modalFraming.heightRatio),
-    })
+    updateCameraFraming()
+  }, [camera, contract, controlsRef, onBeforeRestore, size.height, size.width, updateCameraFraming])
 
-    applyOffAxisProjection(perspectiveCamera, aspect, contract, framingScale)
-    invalidate()
-  }, [cabinId, camera, contract, controlsRef, invalidate, isDesktop, model, onBeforeRestore, size.height, size.width])
+  useLayoutEffect(() => {
+    cameraRestoreRef.current = restoreCanonicalCamera
+
+    return () => {
+      if (cameraRestoreRef.current === restoreCanonicalCamera) {
+        cameraRestoreRef.current = null
+      }
+    }
+  }, [cameraRestoreRef, restoreCanonicalCamera])
+
+  useLayoutEffect(() => {
+    updateCameraFraming()
+    onConfigured({ width: size.width, height: size.height })
+  }, [model, onConfigured, size.height, size.width, updateCameraFraming])
 
   useEffect(() => {
     if (!isDesktop) return undefined
 
     const handleViewportResize = () => {
-      restoreCanonicalCamera()
+      updateCameraFraming()
     }
 
     window.addEventListener('resize', handleViewportResize)
@@ -1411,19 +1457,7 @@ function CameraResizeCalibration({
     return () => {
       window.removeEventListener('resize', handleViewportResize)
     }
-  }, [isDesktop, restoreCanonicalCamera])
-
-  useLayoutEffect(() => {
-    cameraRestoreRef.current = restoreCanonicalCamera
-    restoreCanonicalCamera()
-    onConfigured({ width: size.width, height: size.height })
-
-    return () => {
-      if (cameraRestoreRef.current === restoreCanonicalCamera) {
-        cameraRestoreRef.current = null
-      }
-    }
-  }, [cameraRestoreRef, onConfigured, restoreCanonicalCamera, size.height, size.width])
+  }, [isDesktop, updateCameraFraming])
 
   return null
 }
@@ -1986,21 +2020,20 @@ function getDesktopViewportWidth() {
 }
 
 function getDesktopFramingScale({
+  boundingBoxCorners,
   camera,
   canvasHeight,
-  model,
   viewportWidth,
   targetHeight = getDesktopProjectedHeight(viewportWidth),
 }: {
+  readonly boundingBoxCorners: ReadonlyArray<Vector3> | null
   readonly camera: PerspectiveCamera
   readonly canvasHeight: number
-  readonly model: Object3D
   readonly viewportWidth: number
   readonly targetHeight?: number
 }) {
   if (canvasHeight <= 0 || viewportWidth <= 0) return 1
 
-  const boundingBoxCorners = getModelBoundingBoxCorners(model)
   if (boundingBoxCorners === null) return 1
 
   const measuredHeight = getProjectedModelHeight(boundingBoxCorners, camera, canvasHeight)
