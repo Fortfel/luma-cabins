@@ -58,7 +58,7 @@ function InteriorComparisonSection({ locale, className, ...props }: InteriorComp
         <ImageComparison defaultValue={56} className="4xl:rounded-xl aspect-3/2 md:aspect-video">
           <ImageComparisonLeft>
             <Image
-              src="/images/huts/veyra/Veyra-interior-left-primary.jpg"
+              src="/images/cabins/veyra/Veyra-interior-left-primary.jpg"
               alt={interior_focus_alt({}, messageOptions)}
               fill
               sizes={COMPARISON_IMAGE_SIZES}
@@ -75,7 +75,7 @@ function InteriorComparisonSection({ locale, className, ...props }: InteriorComp
 
           <ImageComparisonRight>
             <Image
-              src="/images/huts/veyra/Veyra-interior-left-alternate.jpg"
+              src="/images/cabins/veyra/Veyra-interior-left-alternate.jpg"
               alt={interior_unwind_alt({}, messageOptions)}
               fill
               sizes={COMPARISON_IMAGE_SIZES}

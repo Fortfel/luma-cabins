@@ -173,6 +173,19 @@
     }
   ],
   "showcase_pricing": "Cena",
+  "showcase_3d_enter": "Zobacz w 3D",
+  "showcase_3d_error": "Podgląd 3D modelu {model} jest niedostępny. Podgląd obrazu jest nadal dostępny.",
+  "showcase_3d_exit": "Zamknij widok 3D",
+  "showcase_3d_finish_error": "Nie udało się wczytać tego wykończenia. Nadal widoczne jest poprzednie wykończenie.",
+  "showcase_3d_hint_desktop": "Przeciągnij, aby eksplorować. Przewiń, aby powiększyć.",
+  "showcase_3d_hint_mobile": "Przeciągnij, aby obracać. Rozsuń palce, aby przybliżyć.",
+  "showcase_3d_hint_keyboard": "Strzałki w lewo i w prawo obracają model, strzałki w górę i w dół zmieniają wysokość widoku. Plus lub znak równości przybliża, minus oddala, a Home przywraca widok początkowy. Naciśnij Tab, aby opuścić widok 3D.",
+  "showcase_3d_viewer": "Interaktywny widok 3D modelu {model}",
+  "showcase_3d_loading": "Wczytywanie podglądu 3D modelu {model}…",
+  "showcase_3d_retry": "Ponów podgląd 3D",
+  "showcase_preview_updating": "Aktualizowanie podglądu…",
+  "showcase_preview_error": "Nie udało się wczytać obrazu podglądu.",
+  "showcase_preview_retry": "Ponów wczytywanie",
   "showcase_status": [
     {
       "declarations": [

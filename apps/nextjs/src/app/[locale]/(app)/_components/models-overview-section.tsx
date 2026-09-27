@@ -321,8 +321,8 @@ function ModelsOverviewSection({ locale, className, ...props }: ModelsOverviewSe
                   )}
                 >
                   <Image
-                    src={model.images.overview}
-                    alt={model.images.overviewAlt}
+                    src={model.images.modelOverview}
+                    alt={model.images.modelOverviewAlt}
                     fill
                     sizes="(max-width: 1919px) 100vw, 1920px"
                     className="object-cover"
@@ -494,7 +494,13 @@ function CabinThumbnail({
         'md:aspect-video md:h-18',
       )}
     >
-      <Image src={model.images.overview} alt="" fill sizes="(max-width: 767px) 86px, 128px" className="object-cover" />
+      <Image
+        src={model.images.modelOverview}
+        alt=""
+        fill
+        sizes="(max-width: 767px) 86px, 128px"
+        className="object-cover"
+      />
       {isActive && shouldShowAutoplayProgress ? <CabinAutoplayProgress key={autoplayProgressCycle} /> : null}
     </button>
   )

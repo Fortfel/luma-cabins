@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
   typescript: { ignoreBuildErrors: true },
   reactCompiler: true,
   experimental: { globalNotFound: true },
-  allowedDevOrigins: ['192.168.0.100'],
+  allowedDevOrigins: ['192.168.0.101'],
   redirects: () => Promise.resolve(canonicalRedirects),
   rewrites: () => Promise.resolve({ beforeFiles: publicRewrites }),
 }

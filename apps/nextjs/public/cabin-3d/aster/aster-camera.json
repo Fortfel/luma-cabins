@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "camera": "Aster_CanonicalCamera",
+  "asset": "aster-configurator.glb",
+  "posterStatus": "Deferred: user will capture from the web renderer. No current poster supplied.",
+  "image": {
+    "width": 1309,
+    "height": 697,
+    "transparent": true,
+    "background": "#f7f5f0"
+  },
+  "coordinateConvention": {
+    "blender": "+Z up, -Y front",
+    "gltf": "+Y up, +Z front",
+    "origin": "ground level at footprint center",
+    "units": "meters",
+    "conversion": "[x, y, z] Blender -> [x, z, -y] glTF"
+  },
+  "position_blender": [-13.800000190734863, -26.0, 3.799999952316284],
+  "position_gltf": [-13.800000190734863, 3.8000011444091797, 26.0],
+  "target_blender": [-0.10000000149011612, -0.10000000149011612, 2.5],
+  "target_gltf": [-0.10000000149011612, 2.5, 0.09999988973140717],
+  "lens_mm": 86.00658416748047,
+  "sensor_width_mm": 36.0,
+  "sensor_fit": "HORIZONTAL",
+  "near": 0.10000000149011612,
+  "far": 1000.0,
+  "shift_x": -0.009647177532315254,
+  "shift_y": -0.0014504342107102275,
+  "matrix_world_blender": [
+    [0.883953869342804, 0.020725272595882416, -0.46711447834968567, -13.800000190734863],
+    [-0.46757400035858154, 0.039181459695100784, -0.8830851316452026, -26.0],
+    [4.653123397702075e-8, 0.9990171790122986, 0.04432520642876625, 3.799999952316284],
+    [0.0, 0.0, 0.0, 1.0]
+  ],
+  "matrix_world_gltf": [
+    [0.883953869342804, 0.020725272595882416, -0.46711447834968567, -13.800000190734863],
+    [6.696954102380914e-8, 0.9990171790122986, 0.044325243681669235, 3.8000011444091797],
+    [0.46757400035858154, -0.039181504398584366, 0.8830851316452026, 26.0],
+    [0.0, 0.0, 0.0, 1.0]
+  ],
+  "projection_matrix": [
+    [4.778143405914307, 0.0, -0.019294368103146553, 0.0],
+    [0.0, 8.973586082458496, -0.005448000971227884, 0.0],
+    [0.0, 0.0, -1.0001999139785767, -0.20002000033855438],
+    [0.0, 0.0, -1.0, 0.0]
+  ],
+  "matrixStorage": "row arrays",
+  "resize": "Preserve horizontal sensor fit and shifts. Recompute projection for changed aspect. Do not flatten row arrays into column-major APIs.",
+  "defaults": {
+    "exterior": "natural-timber",
+    "interior": "light-oak"
+  },
+  "status": "Revision 8; camera retained as an initial view. Pending user inspection; web poster deferred."
+}

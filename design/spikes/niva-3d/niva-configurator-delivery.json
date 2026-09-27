@@ -1,0 +1,77 @@
+{
+  "asset": "niva-configurator.glb",
+  "source": {
+    "path": "niva-final.blend",
+    "bytes": 18007477,
+    "sha256": "6b1c52cea5f5b2b3cba3b1ec61ae80f0623410942542c3bbefd4f2e294828b48"
+  },
+  "scene": "Niva_Source",
+  "production_directory": "apps/nextjs/public/cabin-3d/niva/",
+  "production_asset_url": "/cabin-3d/niva/niva-configurator.glb",
+  "export_entry_point": "scripts/package-niva.py",
+  "shared_exporter": "../cabin-package.py",
+  "geometry": {
+    "triangles": 96920,
+    "meshes": 478,
+    "nodes": 479,
+    "materials": 27
+  },
+  "embedded_images": 8,
+  "extensions_used": ["KHR_materials_emissive_strength", "KHR_materials_specular"],
+  "default_files": [
+    {
+      "path": "niva-configurator.glb",
+      "bytes": 7786100,
+      "sha256": "ead3132b223862308cc5b7466bc2c7b1209d43a5ac703550d1c86186b5978180"
+    },
+    {
+      "path": "niva-camera.json",
+      "bytes": 2398,
+      "sha256": "a15d819ffbafa8acbd7838a90d713a90f017b2b8b57bc8ca50254bc6fd121d70"
+    },
+    {
+      "path": "niva-presets.json",
+      "bytes": 4303,
+      "sha256": "6a5e60bee4354d55a6b5480f951e0e04d9d13d568285d71ae02978de05a08546"
+    }
+  ],
+  "optional_finish_files": [
+    {
+      "path": "finishes/textures/exterior-whitewashed-timber-basecolor.jpg",
+      "bytes": 259372,
+      "sha256": "5eb497b50640962f3a936f207aad28d69f4fde513921204df52db80b2108c3b9"
+    },
+    {
+      "path": "finishes/textures/exterior-charred-black-oil-basecolor.jpg",
+      "bytes": 237319,
+      "sha256": "e55af436e3155e5ecb4ca55a4bbc6059271ef28b115db718c4dad0953b7e66a8"
+    },
+    {
+      "path": "finishes/textures/interior-warm-ash-basecolor.jpg",
+      "bytes": 280054,
+      "sha256": "58a8f454fd9882f341f1f007572c47d841fd91f0ad5cbbadb021302012da5eeb"
+    },
+    {
+      "path": "finishes/textures/interior-dark-walnut-basecolor.jpg",
+      "bytes": 406921,
+      "sha256": "8965baabf0c44bd5deb5831cb8987bd58d5ced5fd5128360149ab141b1047636"
+    }
+  ],
+  "default_file_bytes": 7792801,
+  "all_optional_texture_bytes": 1183666,
+  "all_presets_file_bytes": 8976467,
+  "external_finish_images": 4,
+  "historical_files": [
+    {
+      "path": "renders/niva-configurator-poster.png",
+      "bytes": 832550,
+      "sha256": "8c36df658b7d394369833fc8ecba371cb98d46d7e6862179af6927ced5992f60"
+    }
+  ],
+  "historical_file_bytes": 832550,
+  "poster_policy": "Web-owned; no posters generated, copied or included in runtime payload totals.",
+  "validation": {},
+  "browser_verification": "User-owned; not run by packaging.",
+  "texture_strategy": "Reuse exact optimized embedded images from the committed design GLB (seven 1K maps and one 512px fabric map).",
+  "accounting_note": "Design GLB + camera/presets, excluding posters, source, runtime code and HTTP compression. Production presets relocate finish URIs; their JSON byte size may differ. Counts are not performance evidence."
+}
