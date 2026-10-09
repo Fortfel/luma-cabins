@@ -1,0 +1,90 @@
+{
+  "asset": "aster-configurator.glb",
+  "source": {
+    "path": "aster-source.blend",
+    "bytes": 3387672,
+    "sha256": "ace25c5673ed65445eb078960b934b3069381fdb33bb04d3b4d4068cb8220d4f"
+  },
+  "scene": "Aster_Source",
+  "production_directory": "apps/nextjs/public/cabin-3d/aster/",
+  "production_asset_url": "/cabin-3d/aster/aster-configurator.glb",
+  "export_entry_point": "scripts/package-aster.py",
+  "shared_exporter": "../cabin-package.py",
+  "geometry": {
+    "triangles": 88386,
+    "meshes": 574,
+    "nodes": 574,
+    "materials": 25
+  },
+  "embedded_images": 7,
+  "extensions_used": ["KHR_materials_emissive_strength", "KHR_materials_specular"],
+  "default_files": [
+    {
+      "path": "aster-configurator.glb",
+      "bytes": 8088464,
+      "sha256": "a26a979fb18c8f4a8362738c4f70d82f426fb5180d0c4f403d54145c02dfbb83"
+    },
+    {
+      "path": "aster-camera.json",
+      "bytes": 2810,
+      "sha256": "fb0232a9e018ef02f46f368159a23294db42ae35ea2b1b7cf87ea6403ce3edd7"
+    },
+    {
+      "path": "aster-presets.json",
+      "bytes": 4910,
+      "sha256": "84d7eca7ddf847429561717d1cc5a81b99b0d9ec1eac5108ee40b2558ce531ff"
+    }
+  ],
+  "optional_finish_files": [
+    {
+      "path": "finishes/textures/exterior-whitewashed-timber-basecolor.jpg",
+      "bytes": 259372,
+      "sha256": "5eb497b50640962f3a936f207aad28d69f4fde513921204df52db80b2108c3b9"
+    },
+    {
+      "path": "finishes/textures/exterior-charred-black-oil-basecolor.jpg",
+      "bytes": 237319,
+      "sha256": "e55af436e3155e5ecb4ca55a4bbc6059271ef28b115db718c4dad0953b7e66a8"
+    },
+    {
+      "path": "finishes/textures/interior-warm-ash-basecolor.jpg",
+      "bytes": 280054,
+      "sha256": "58a8f454fd9882f341f1f007572c47d841fd91f0ad5cbbadb021302012da5eeb"
+    },
+    {
+      "path": "finishes/textures/interior-dark-walnut-basecolor.jpg",
+      "bytes": 406921,
+      "sha256": "8965baabf0c44bd5deb5831cb8987bd58d5ced5fd5128360149ab141b1047636"
+    }
+  ],
+  "default_file_bytes": 8096184,
+  "all_optional_texture_bytes": 1183666,
+  "all_presets_file_bytes": 9279850,
+  "external_finish_images": 4,
+  "historical_files": [
+    {
+      "path": "renders/aster-configurator-poster.png",
+      "bytes": 977083,
+      "sha256": "ee4344c2c7c5dc2f5228774168d7dbd25a8f8c624a78563866255f01ecb38e6b"
+    }
+  ],
+  "historical_file_bytes": 977083,
+  "poster_policy": "Web-owned; no posters generated, copied or included in runtime payload totals.",
+  "validation": {
+    "gltf": {
+      "path": "validation/khronos-validator.json",
+      "matches_current_asset": false,
+      "matches_current_source": true,
+      "passed": false
+    },
+    "roundtrip": {
+      "path": "validation/blender-roundtrip.json",
+      "matches_current_asset": false,
+      "matches_current_source": false,
+      "passed": false
+    }
+  },
+  "browser_verification": "User-owned; not run by packaging.",
+  "texture_strategy": "Export packed 1K source images; keep alternative finishes external.",
+  "accounting_note": "Design GLB + camera/presets, excluding posters, source, runtime code and HTTP compression. Production presets relocate finish URIs; their JSON byte size may differ. Counts are not performance evidence."
+}

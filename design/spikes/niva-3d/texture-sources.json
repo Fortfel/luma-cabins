@@ -1,0 +1,71 @@
+{
+  "source_package_note": "The file fields record original download provenance, not required checkout inputs. Current authoring images are packed in niva-final.blend; optimized runtime images are embedded in niva-configurator.glb. No download or historical texture directory is required to export.",
+  "assets": [
+    {
+      "asset_id": "oak_veneer_01",
+      "license": "CC0",
+      "authors": {
+        "Jenelle van Heerden": "All"
+      },
+      "dimensions_mm": [1830.0000429153442, 1830.0000429153442],
+      "resolution": "2k",
+      "maps": {
+        "diff": {
+          "file": "textures\\polyhaven\\oak_veneer_01\\oak_veneer_01_diff_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/oak_veneer_01/oak_veneer_01_diff_2k.jpg",
+          "bytes": 2831117,
+          "sha256": "0718c2e1a209afe6138ccb41d70e1a18cd825d1e73db33ad7cf80806fa9ce5a4"
+        },
+        "rough": {
+          "file": "textures\\polyhaven\\oak_veneer_01\\oak_veneer_01_rough_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/oak_veneer_01/oak_veneer_01_rough_2k.jpg",
+          "bytes": 3968436,
+          "sha256": "5c81718ee172299c44e0754fadbe652758b6feed05a8fd88be6efff5aa70ca1e"
+        },
+        "nor_gl": {
+          "file": "textures\\polyhaven\\oak_veneer_01\\oak_veneer_01_nor_gl_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/oak_veneer_01/oak_veneer_01_nor_gl_2k.jpg",
+          "bytes": 2429019,
+          "sha256": "e74a9d3ddcd86473a21815a28464f4dac4ceb8f86e7f170226dede8ed70d8eb9"
+        }
+      }
+    },
+    {
+      "asset_id": "wood_floor",
+      "license": "CC0",
+      "authors": {
+        "Dimitrios Savva": "All"
+      },
+      "dimensions_mm": [1699.9996900558472, 1699.9996900558472],
+      "resolution": "2k",
+      "maps": {
+        "diff": {
+          "file": "textures\\polyhaven\\wood_floor\\wood_floor_diff_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/wood_floor/wood_floor_diff_2k.jpg",
+          "bytes": 2983667,
+          "sha256": "7c3ff1164c8dd0758ef2c048e9a266d28174120de01052ec40e6ca486177345c"
+        },
+        "rough": {
+          "file": "textures\\polyhaven\\wood_floor\\wood_floor_rough_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/wood_floor/wood_floor_rough_2k.jpg",
+          "bytes": 2267559,
+          "sha256": "297eda0d75f2020cc541dbf242e1f5fd058053249567f49a4506fc2c5b1a172b"
+        },
+        "nor_gl": {
+          "file": "textures\\polyhaven\\wood_floor\\wood_floor_nor_gl_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/wood_floor/wood_floor_nor_gl_2k.jpg",
+          "bytes": 1863576,
+          "sha256": "eff2e4db46bab930dc05997faf5085157eec4fd652cdfc6cd01fa11edd56ef10"
+        }
+      }
+    }
+  ],
+  "hdri": null,
+  "hdri_bytes": 0,
+  "derivations": {
+    "cladding": "oak_veneer_01 diffuse, saturation 0.86, seeded 12-board groove/tone mask; no light bake",
+    "joinery": "oak_veneer_01 diffuse, saturation 0.86",
+    "orm": "R=255, G=roughness clamped to minimum 110, B=0",
+    "fabric": "seed 194, 512px woven-noise color, sage grey"
+  }
+}

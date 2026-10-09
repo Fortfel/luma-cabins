@@ -281,6 +281,15 @@ For non-UI changes, browser verification is optional unless runtime behavior is 
 
 Do not claim browser verification succeeded if the browser tool was unavailable, blocked, or not actually run.
 
+### Windows Background Servers
+
+When starting long-running development or production servers from OpenCode on Windows:
+
+- Do not use `-RedirectStandardOutput` or `-RedirectStandardError` with `Start-Process`
+- Do not wait on the spawned process
+- Start the server in one tool call and verify it in a separate tool call
+- Prefer checking the listening port or making an HTTP request to verify startup
+
 ## Agent Workflow
 
 - Identify the exact workspace before editing
@@ -290,6 +299,31 @@ Do not claim browser verification succeeded if the browser tool was unavailable,
 - Run `build` when changes affect bundling, emitted types, or production behavior
 - If work spans multiple packages, use root `pnpm lint` and `pnpm typecheck` when practical
 - If you add a real test setup, update this file with the exact single-test command
+
+## Agent delegation
+
+Keep quick implementation-local checks in the current agent:
+
+- format
+- lint
+- typecheck
+- targeted tests
+- normal build verification
+
+Delegate substantial, repetitive, noisy, or long-running validation to a cheaper subagent, for example:
+
+- Blender/GLB round-trip checks
+- Khronos glTF validation
+- browser automation
+- repeated variant/material checks
+- orbit/performance/statistics validation
+- large mechanical test reports
+
+The primary agent keeps subjective work such as modeling, reference interpretation, design decisions, and visual acceptance.
+
+For visual acceptance, inspect only the minimum representative outputs needed to judge quality. Do not rerun the full validation/render suite if a validation subagent has already produced usable evidence.
+
+Validation subagents should reuse existing scripts, avoid duplicate diagnostics, and return concise actionable results. The primary agent should not rerun the full suite unless the result is ambiguous.
 
 ## Pen File Rules
 

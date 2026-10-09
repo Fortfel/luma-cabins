@@ -1,0 +1,102 @@
+{
+  "license": "CC0",
+  "assets": [
+    {
+      "asset_id": "oak_veneer_01",
+      "author": "Jenelle van Heerden",
+      "url": "https://polyhaven.com/a/oak_veneer_01",
+      "original_resolution": "2k",
+      "runtime_resolution": "1k",
+      "uses": [
+        "cladding",
+        "joinery",
+        "fixed step timber",
+        "fixed guitar soundboard (shared existing oak base/normal/ORM maps)"
+      ]
+    },
+    {
+      "asset_id": "wood_floor",
+      "author": "Dimitrios Savva",
+      "url": "https://polyhaven.com/a/wood_floor",
+      "original_resolution": "2k",
+      "runtime_resolution": "1k",
+      "uses": [
+        "fixed interior floor"
+      ]
+    }
+  ],
+  "provenance": "Approved CC0 Niva/Aster material bytes copied locally; no cabin geometry imported.",
+  "derivations": {
+    "cladding": "Oak diffuse saturation 0.86; seeded 12-board groove/tone mask; no light bake.",
+    "joinery": "Oak diffuse saturation 0.86.",
+    "orm": "R=255; G=roughness with minimum 110; B=0.",
+    "alternatives": "Same grain and documented sRGB colorization endpoints as preset textureFiles."
+  },
+  "files": [
+    {
+      "path": "textures/oak-normal-1k.jpg",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "bytes": 139556,
+      "sha256": "225df0693eb74ec1f96b4b51d00af0068ab3ba9ed6dd2e7d9c63ae467073668a"
+    },
+    {
+      "path": "textures/light-oak-basecolor-1k.jpg",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "bytes": 247623,
+      "sha256": "c3b5ecd52f2b5971410152033eba5422fdcbf983410220b90655e11ecc8a19e2"
+    },
+    {
+      "path": "textures/oak-orm-1k.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "bytes": 896984,
+      "sha256": "3f4d4cc6ef7a157c98404bde0bfc4c056fd2da97f9665b6c3729035ff80e6560"
+    },
+    {
+      "path": "textures/natural-cladding-basecolor-1k.jpg",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "bytes": 253004,
+      "sha256": "8f2aa5d2704ce53bd6ef60a295cdf33131903c31fee52ea01ebbb5d30d340651"
+    },
+    {
+      "path": "textures/floor-normal-1k.jpg",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "bytes": 101843,
+      "sha256": "604f73bdb28ed59a46721466d2292b676dbff0179f0e5030565fe461223bd6b8"
+    },
+    {
+      "path": "textures/floor-basecolor-1k.jpg",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "bytes": 305688,
+      "sha256": "f172fb5fc41c80cc4a7d5d4eab46fe82a59880e863202c36d303624aa686d82b"
+    },
+    {
+      "path": "textures/floor-orm-1k.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "bytes": 673305,
+      "sha256": "9b0fdf2d9185e5eba2226f7211a3b40fd5be898574070c5723bf45f7e547acba"
+    }
+  ],
+  "hdri": null,
+  "hdri_bytes": 0
+}

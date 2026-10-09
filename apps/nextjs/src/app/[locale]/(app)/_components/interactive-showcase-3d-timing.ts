@@ -1,0 +1,4 @@
+const REVEAL_FADE_DURATION_MS = 1000
+const REVEAL_EASING = 'cubic-bezier(0.16, 1, 0.3, 1)'
+
+export { REVEAL_EASING, REVEAL_FADE_DURATION_MS }

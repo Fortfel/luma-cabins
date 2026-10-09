@@ -65,7 +65,7 @@ When changing this order, review adjacent background transitions and confirm tha
 | Aster | `39 m² · Studio`        | `€170,000`              |
 | Veyra | `56 m² · 1 Bedroom`     | `€210,000`              |
 
-The interactive showcase keeps raw `priceEur` values as immutable cabin starting prices and derives the displayed starting price for the active model and selected finish combination from the active base plus the selected exterior and interior finish deltas. The value is not a final all-in configured total: installation and other project-specific costs remain additional. The derived starting price is passed to one localized pricing message; a Paraglide number declaration formats EUR for the active locale, and message markup preserves the emphasized price without splitting translator-controlled word order or punctuation. Natural Timber, Whitewashed Timber, and Charred Black Oil are the exterior options; Light Oak, Warm Ash, and Dark Walnut are the interior options. Charred Black Oil adds €2,500 and Dark Walnut adds €1,500. Each radio uses a local circular material texture, a persistent localized visible name, and an optional localized surcharge at every breakpoint. Interior selection affects the displayed starting price but does not change the showcase image. Do not add sleeper counts or extra bedroom claims beyond the current typed layout values unless they are added to the cabin data first.
+The interactive showcase keeps raw `priceEur` values as immutable cabin starting prices and derives the displayed starting price for the active model and selected finish combination from the active base plus the selected exterior and interior finish deltas. The value is not a final all-in configured total: installation and other project-specific costs remain additional. The derived starting price is passed to one localized pricing message; a Paraglide number declaration formats EUR for the active locale, and message markup preserves the emphasized price without splitting translator-controlled word order or punctuation. Natural Timber, Whitewashed Timber, and Charred Black Oil are the exterior options; Light Oak, Warm Ash, and Dark Walnut are the interior options. Charred Black Oil adds €2,500 and Dark Walnut adds €1,500. Main-panel radios use circular material textures, persistent localized names, and optional localized surcharges. Both finish selections are global and update all cabin posters, desktop thumbnails, and the live model. Below `xl`, the carousel shows rendered configuration posters and an Explore in 3D action opens a full/near-fullscreen viewer with compact finish radios; those controls retain accessible names and show the current finish beside each category. Desktop keeps inline 3D. Do not add sleeper counts or extra bedroom claims beyond the current typed layout values unless they are added to the cabin data first.
 
 ## Layout System
 
@@ -91,6 +91,8 @@ Prefer existing `md`, `lg`, `xl`, `3xl`, and `4xl` breakpoints. Add a one-off br
 ## Navbar And Anchors
 
 The fixed navbar height is exposed as `--nav-height` by `AppLayout`. Sticky sections, anchored sections, and viewport-height calculations must account for it instead of duplicating the navbar height.
+
+The fixed navbar uses stack level `49`, below shared portal-based dialogs and overlays at `50`, so modal content can cover the navigation while it remains above ordinary page content.
 
 Every same-page fragment returned by `getNavigationDesktopLinks` must match a rendered section ID. Route links such as `/about` and `/contact` are not part of this fragment contract.
 
@@ -122,6 +124,7 @@ Prefer existing shared infrastructure before adding section-local alternatives:
 Existing complex interaction references:
 
 - [Models overview](./models-overview.md) covers autoplay, visibility gating, touch intent, and carousel controls.
+- [Interactive showcase 3D](./interactive-showcase-3d.md) covers configuration posters, desktop inline rendering, on-demand mobile/tablet viewing, and shared finish/loading contracts.
 - [Testimonials](./testimonials.md) covers coordinated geometry, portals, dismissal, and reduced motion.
 - [Interior comparison](./interior-comparison.md) covers continuous pointer state, touch intent, clipping, and range accessibility.
 
