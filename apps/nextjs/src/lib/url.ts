@@ -4,13 +4,31 @@ export function getBaseUrl() {
   if (typeof window !== 'undefined') {
     return window.location.origin
   }
-  // oxlint-disable-next-line typescript/strict-boolean-expressions
-  if (env.VERCEL_ENV === 'production' && env.VERCEL_PROJECT_PRODUCTION_URL) {
-    return `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
+  if (env.VERCEL_ENV === 'production') {
+    const hostname = env.VERCEL_PROJECT_PRODUCTION_URL
+    if (hostname === undefined || hostname === '') {
+      throw new Error('VERCEL_PROJECT_PRODUCTION_URL is required when VERCEL_ENV is production')
+    }
+
+    const origin = `https://${hostname}`
+    if (!URL.canParse(origin) || new URL(origin).origin !== origin) {
+      throw new Error('VERCEL_PROJECT_PRODUCTION_URL must be a valid hostname without a protocol or path')
+    }
+
+    return origin
   }
-  // oxlint-disable-next-line typescript/strict-boolean-expressions
-  if (env.VERCEL_ENV === 'preview' && env.VERCEL_URL) {
-    return `https://${env.VERCEL_URL}`
+  if (env.VERCEL_ENV === 'preview') {
+    const hostname = env.VERCEL_URL
+    if (hostname === undefined || hostname === '') {
+      throw new Error('VERCEL_URL is required when VERCEL_ENV is preview')
+    }
+
+    const origin = `https://${hostname}`
+    if (!URL.canParse(origin) || new URL(origin).origin !== origin) {
+      throw new Error('VERCEL_URL must be a valid hostname without a protocol or path')
+    }
+
+    return origin
   }
 
   // oxlint-disable-next-line no-restricted-properties

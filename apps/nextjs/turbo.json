@@ -4,7 +4,16 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build", "i18n:compile"],
-      "env": ["PUBLIC_*", "PROD", "DEV", "MODE", "BASE_URL"],
+      "env": [
+        "PUBLIC_*",
+        "PROD",
+        "DEV",
+        "MODE",
+        "BASE_URL",
+        "VERCEL_ENV",
+        "VERCEL_URL",
+        "VERCEL_PROJECT_PRODUCTION_URL"
+      ],
       "outputs": [".next/**", "!.next/cache/**", "next-env.d.ts"]
     },
     "dev": {

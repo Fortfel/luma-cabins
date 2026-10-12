@@ -59,6 +59,10 @@ Components and app-local data use the framework-facing factories in `app-link-op
 
 `app/sitemap.ts` derives every entry and language alternate from the shared route map. It includes both public locale variants and excludes all internal paths and aliases.
 
+Both use `getBaseUrl()` in `apps/nextjs/src/lib/url.ts`. On the server, `VERCEL_ENV=production` requires a valid bare `VERCEL_PROJECT_PRODUCTION_URL` hostname and uses its HTTPS origin; missing or malformed values throw instead of falling back to localhost. Vercel supplies this hostname automatically (`luma-cabins-gold.vercel.app` for the current project). Preview deployments use `https://VERCEL_URL` when supplied; local execution and previews without a deployment URL retain `http://localhost:${PORT ?? 3000}`. Browser calls use `window.location.origin`. Deployment selection uses `VERCEL_ENV`, not `NODE_ENV`, so local production-mode builds retain local URLs.
+
+The app's Turbo `build.env` declares `VERCEL_ENV`, `VERCEL_URL`, and `VERCEL_PROJECT_PRODUCTION_URL` to forward and hash all three values. This prevents cached metadata and sitemap output from being reused across different deployment environments or hostnames. Root `globalPassThroughEnv` remains unchanged. The same task-level environment declarations and URL-resolution policy can be used in a TanStack Start app with its own environment adapter.
+
 ## Build Workflow
 
 The `nextjs` workspace owns `i18n:compile`. Its package-level `turbo.json` makes `build`, `dev`, `lint`, and `typecheck` depend on generation without adding i18n tasks to unrelated workspaces. The task declares the compiler, route map, messages, and Inlang settings as inputs and `src/paraglide/**` as its output.
