@@ -146,6 +146,8 @@ function HowItWorksExperience({ steps, labels }: { steps: ReadonlyArray<ProcessS
       return undefined
     }
 
+    let shouldSyncGeometry = true
+
     const updateActiveStep = () => {
       scrollFrameRef.current = null
 
@@ -153,11 +155,10 @@ function HowItWorksExperience({ steps, labels }: { steps: ReadonlyArray<ProcessS
       const previousScrollY = lastScrollYRef.current
       lastScrollYRef.current = scrollY
 
-      if (previousScrollY === null || scrollY === previousScrollY) {
+      if (!shouldSyncGeometry && (previousScrollY === null || scrollY === previousScrollY)) {
         return
       }
 
-      const direction = scrollY > previousScrollY ? 1 : -1
       const bandTop = window.innerHeight * ACTIVATION_BAND_TOP_RATIO
       const bandBottom = window.innerHeight * ACTIVATION_BAND_BOTTOM_RATIO
       const currentIndex = activeStepRef.current
@@ -168,7 +169,34 @@ function HowItWorksExperience({ steps, labels }: { steps: ReadonlyArray<ProcessS
         return bounds.top <= bandBottom && bounds.bottom >= bandTop
       }
 
-      if (direction > 0) {
+      if (shouldSyncGeometry) {
+        shouldSyncGeometry = false
+
+        // Re-anchor to visible geometry, including gaps and positions outside the section.
+        const bandCenter = (bandTop + bandBottom) / 2
+        let closestDistance = Number.POSITIVE_INFINITY
+
+        for (let index = 0; index < steps.length; index += 1) {
+          const content = stepContentRefs.current[index]
+
+          if (!content) {
+            continue
+          }
+
+          const bounds = content.getBoundingClientRect()
+
+          if (bounds.height === 0) {
+            continue
+          }
+
+          const distance = Math.max(bounds.top - bandCenter, bandCenter - bounds.bottom, 0)
+
+          if (distance < closestDistance) {
+            closestDistance = distance
+            nextIndex = index
+          }
+        }
+      } else if (previousScrollY !== null && scrollY > previousScrollY) {
         for (let index = currentIndex + 1; index < steps.length; index += 1) {
           const content = stepContentRefs.current[index]
 
@@ -200,22 +228,29 @@ function HowItWorksExperience({ steps, labels }: { steps: ReadonlyArray<ProcessS
       scrollFrameRef.current = window.requestAnimationFrame(updateActiveStep)
     }
 
-    lastScrollYRef.current = window.scrollY
+    const scheduleGeometrySync = () => {
+      shouldSyncGeometry = true
+      scheduleActiveStepUpdate()
+    }
+
+    scheduleGeometrySync()
     window.addEventListener('scroll', scheduleActiveStepUpdate, { passive: true })
-    window.addEventListener('resize', scheduleActiveStepUpdate)
-    window.visualViewport?.addEventListener('resize', scheduleActiveStepUpdate)
+    window.addEventListener('resize', scheduleGeometrySync)
+    window.addEventListener('pageshow', scheduleGeometrySync)
+    window.visualViewport?.addEventListener('resize', scheduleGeometrySync)
 
     return () => {
       window.removeEventListener('scroll', scheduleActiveStepUpdate)
-      window.removeEventListener('resize', scheduleActiveStepUpdate)
-      window.visualViewport?.removeEventListener('resize', scheduleActiveStepUpdate)
+      window.removeEventListener('resize', scheduleGeometrySync)
+      window.removeEventListener('pageshow', scheduleGeometrySync)
+      window.visualViewport?.removeEventListener('resize', scheduleGeometrySync)
 
       if (scrollFrameRef.current !== null) {
         window.cancelAnimationFrame(scrollFrameRef.current)
         scrollFrameRef.current = null
       }
     }
-  }, [isTabletOrDesktop, steps.length])
+  }, [isDesktop, isTabletOrDesktop, steps.length])
 
   const handleTimelineClick = (index: number, event: React.MouseEvent<HTMLButtonElement>) => {
     event.currentTarget.focus({ preventScroll: true })

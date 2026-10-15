@@ -64,6 +64,8 @@ Scroll tracking is enabled only from `768px` upward. The client boundary stores 
 
 The natural-height content wrapper inside each step is measured against an activation band matching the Sanity reference: the vertical band spans 25% to 50% of the viewport. The outer step article still provides the desktop viewport-height section and top-scroll target; only its content wrapper participates in activation. During downward scrolling, the next content wrapper becomes active when it overlaps the band; during upward scrolling, the previous wrapper becomes active when its bottom re-enters the same band. This directional boundary avoids a switch at the first heading crossing and preserves delayed reverse-scroll behavior.
 
+On initialization, window or visual-viewport resize, `pageshow` restoration, and changes across the `768px` or `1280px` breakpoints, selection is synchronized independently of scroll direction. The rendered content wrapper nearest the activation band's midpoint becomes active, with the earlier step winning an equal-distance tie. This also resolves gaps between steps and positions before or after the section. Synchronization shares the scroll animation-frame scheduler, takes priority over a pending directional update, and resets the scroll-position baseline; React state changes only when the selected index changes. Returning to mobile takes selection from the carousel's current snap and subsequent `reInit` events.
+
 The filled connector is derived only from the active step index: `0` at step 01 and `1` at step 04, with equal marker-to-marker increments between them. Its top-origin scale transform animates over approximately 400ms when the active step changes and becomes immediate for reduced-motion users. This keeps the line and markers synchronized during both downward and upward scrolling.
 
 ## Timeline Buttons
@@ -113,7 +115,8 @@ Final raster and video process media should share one color grade, keep importan
 ## Behavioral Invariants
 
 - The navbar's existing `#process` link lands with the H2 below the fixed navbar.
-- Step 01 and its media are active initially.
+- Step 01 and its media are the initial default; restored tablet/desktop scroll positions synchronize selection to the rendered content.
+- Resizing or changing responsive layouts synchronizes the selected marker and media with the visible step, even without a scroll-position change.
 - The rail fill advances in equal marker-to-marker steps and reaches each marker when that step activates.
 - Upward scrolling reverses markers, media, and line progress without a React per-frame loop.
 - Sticky columns release after step 04.
@@ -133,6 +136,7 @@ Final raster and video process media should share one color grade, keep importan
 - Check short tablet and desktop viewports around `600px` high.
 - Activate the navbar `#process` link and verify the H2 is visible below the fixed navbar.
 - Scroll down and up through all four H3 triggers and verify exact marker activation and continuous progress reversal.
+- Reload or restore history partway through the process, resize without scrolling, and cross both responsive breakpoints; verify marker, media, and visible content agree, then check directional scrolling still works in both directions.
 - Activate every timeline button with pointer and keyboard input and verify focus stays on the button and the URL does not change.
 - Verify sticky rail and media release after step 04.
 - Verify mobile card dragging, partial-card tapping, dots, shared arrow keys, vertical scrolling, and CTA links.
