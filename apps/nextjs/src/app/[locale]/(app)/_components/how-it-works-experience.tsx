@@ -42,7 +42,9 @@ function HowItWorksExperience({ steps, labels }: { steps: ReadonlyArray<ProcessS
   const [activeStepIndex, setActiveStepIndex] = useState(0)
   const [carouselApi, setCarouselApi] = useState<CarouselApi>()
   const [hasEnteredViewport, setHasEnteredViewport] = useState(false)
+  const [isExperienceInView, setIsExperienceInView] = useState(false)
   const isTabletOrDesktop = useMediaQuery('(min-width: 768px)', { initializeWithValue: false }) === true
+  const isDesktop = useMediaQuery('(min-width: 1280px)', { initializeWithValue: false }) === true
   const shouldReduceMotion = usePrefersReducedMotion()
 
   const experienceRef = useRef<HTMLDivElement>(null)
@@ -79,6 +81,26 @@ function HowItWorksExperience({ steps, labels }: { steps: ReadonlyArray<ProcessS
       },
       { rootMargin: '400px 0px' },
     )
+
+    observer.observe(experience)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
+  useEffect(() => {
+    const experience = experienceRef.current
+
+    if (!experience || typeof IntersectionObserver === 'undefined') {
+      setIsExperienceInView(true)
+      return undefined
+    }
+
+    // Playback needs current visibility, independent of the one-shot preload margin.
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsExperienceInView(entry?.isIntersecting ?? false)
+    })
 
     observer.observe(experience)
 
@@ -318,7 +340,7 @@ function HowItWorksExperience({ steps, labels }: { steps: ReadonlyArray<ProcessS
               <ProcessStepCopy
                 key={step.id}
                 step={step}
-                isActive={index === activeStepIndex}
+                isActive={isExperienceInView && isTabletOrDesktop && !isDesktop && index === activeStepIndex}
                 shouldPreload={hasEnteredViewport && Math.abs(index - activeStepIndex) <= 1}
                 shouldReduceMotion={shouldReduceMotion}
                 contentRef={(node) => {
@@ -335,6 +357,7 @@ function HowItWorksExperience({ steps, labels }: { steps: ReadonlyArray<ProcessS
         <ProcessDesktopMedia
           steps={steps}
           activeStepIndex={activeStepIndex}
+          canPlay={isExperienceInView && isDesktop}
           hasEnteredViewport={hasEnteredViewport}
           shouldReduceMotion={shouldReduceMotion}
         />
@@ -373,6 +396,7 @@ function HowItWorksExperience({ steps, labels }: { steps: ReadonlyArray<ProcessS
                 <ProcessMobileCard
                   step={step}
                   isActive={index === activeStepIndex}
+                  canPlay={isExperienceInView && !isTabletOrDesktop && !isDesktop}
                   shouldPreload={hasEnteredViewport && Math.abs(index - activeStepIndex) <= 1}
                   shouldReduceMotion={shouldReduceMotion}
                 />
@@ -681,23 +705,23 @@ function ProcessVideo({
       return undefined
     }
 
-    const playVideo = () => {
+    const syncPlayback = () => {
+      if (document.visibilityState !== 'visible') {
+        video.pause()
+        return
+      }
+
       void video.play().catch(() => undefined)
     }
 
-    const handleVisibilityChange = () => {
-      if (!document.hidden) {
-        playVideo()
-      }
-    }
-
-    playVideo()
-    video.addEventListener('canplay', playVideo)
-    document.addEventListener('visibilitychange', handleVisibilityChange)
+    syncPlayback()
+    video.addEventListener('canplay', syncPlayback)
+    document.addEventListener('visibilitychange', syncPlayback)
 
     return () => {
-      video.removeEventListener('canplay', playVideo)
-      document.removeEventListener('visibilitychange', handleVisibilityChange)
+      video.removeEventListener('canplay', syncPlayback)
+      document.removeEventListener('visibilitychange', syncPlayback)
+      video.pause()
     }
   }, [shouldPlay, src, webmSrc])
 
@@ -706,7 +730,6 @@ function ProcessVideo({
       ref={videoRef}
       aria-label={isDecorative ? undefined : alt}
       aria-hidden={isDecorative ? true : undefined}
-      autoPlay={shouldPlay}
       muted
       loop
       playsInline
@@ -724,11 +747,13 @@ function ProcessVideo({
 function ProcessDesktopMedia({
   steps,
   activeStepIndex,
+  canPlay,
   hasEnteredViewport,
   shouldReduceMotion,
 }: {
   steps: ReadonlyArray<ProcessStep>
   activeStepIndex: number
+  canPlay: boolean
   hasEnteredViewport: boolean
   shouldReduceMotion: boolean
 }) {
@@ -744,7 +769,7 @@ function ProcessDesktopMedia({
             step={step}
             isDecorative
             sizes={DESKTOP_MEDIA_SIZES}
-            isActive={index === activeStepIndex}
+            isActive={canPlay && index === activeStepIndex}
             shouldPreload={hasEnteredViewport && Math.abs(index - activeStepIndex) <= 1}
             shouldReduceMotion={shouldReduceMotion}
             className={cn(
@@ -762,11 +787,13 @@ function ProcessDesktopMedia({
 function ProcessMobileCard({
   step,
   isActive,
+  canPlay,
   shouldPreload,
   shouldReduceMotion,
 }: {
   step: ProcessStep
   isActive: boolean
+  canPlay: boolean
   shouldPreload: boolean
   shouldReduceMotion: boolean
 }) {
@@ -778,7 +805,7 @@ function ProcessMobileCard({
         <ProcessEmbeddedMedia
           step={step}
           sizes={MOBILE_MEDIA_SIZES}
-          isActive={isActive}
+          isActive={canPlay && isActive}
           shouldPreload={shouldPreload}
           shouldReduceMotion={shouldReduceMotion}
           className=""

@@ -82,6 +82,8 @@ Desktop media is a decorative duplicate because the scrolling copy column alread
 
 Raster process media uses lazy loading until the process section is near the viewport, then the active step and its immediate neighbors load eagerly. Process videos use poster frames and `preload="auto"` for that same active-neighbor window, while playback remains active-step-only. The `unoptimized` flag remains available for placeholder media but is disabled for the final raster and video assets.
 
+Video playback is limited to the active step in the current responsive layout: mobile below `768px`, embedded tablet media from `768px` to below `1280px`, and sticky desktop media from `1280px` upward. A separate zero-margin intersection observer tracks whether the experience is currently in the viewport; the existing one-shot `400px` preload observer remains independent. The playback effect checks document visibility both before playing and on `canplay` / `visibilitychange`, explicitly pausing when the tab is hidden. Leaving the viewport, changing the active step or breakpoint, enabling reduced motion, and effect cleanup pause the previously eligible video. Native `autoPlay` is omitted so it cannot bypass these checks. All responsive copies stay mounted, preserving loaded media, playback positions, and opacity transitions.
+
 ## Mobile Carousel
 
 The mobile composition uses the shared `Carousel`, `CarouselContent`, and `CarouselItem` components with Embla options `align: 'center'`, `containScroll: false`, `loop: false`, and `dragFree: false`. This keeps the active card centered and exposes neighboring card peeks on both sides where available. Shared carousel keyboard arrow handling remains enabled even though visual arrows are intentionally omitted.
@@ -121,6 +123,7 @@ Final raster and video process media should share one color grade, keep importan
 - Mobile has no arrows, visible count, autoplay, or looping.
 - Reduced-motion users receive immediate media and timeline-scroll changes.
 - Media reserves stable 4:3 geometry and does not use head preloading; posters prevent blank video frames while active and neighboring media are prepared near the viewport.
+- Only the active step's video in the current responsive layout can play, and only while the experience and document are visible and reduced motion is disabled.
 - Focus styles, labels, `aria-current`, and the final CTA remain usable by keyboard.
 - Scroll tracking uses one passive rAF path and does not continuously re-render React state.
 
@@ -135,4 +138,5 @@ Final raster and video process media should share one color grade, keep importan
 - Verify mobile card dragging, partial-card tapping, dots, shared arrow keys, vertical scrolling, and CTA links.
 - Verify no mobile arrows, visible count, autoplay, or looping appear.
 - Verify reduced-motion media and timeline behavior.
+- With a video step active, verify only the visible responsive copy plays; check viewport exit/re-entry, tab hide/show, and changes across the `768px` and `1280px` breakpoints, including while media is loading.
 - Verify no console errors, layout shift, horizontal page overflow, or continuous React re-render loop.
