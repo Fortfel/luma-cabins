@@ -18,7 +18,7 @@ Implemented on the landing page. This document describes current carousel and au
 ## Autoplay
 
 - Slides advance every `4000ms` while at least `35%` of the carousel is visible.
-- Autoplay remains disabled when reduced motion is requested.
+- Autoplay starts disabled when reduced motion is requested; explicitly pressing Play opts in for the mounted carousel while preserving visibility and pause gating.
 - The play/pause control creates an explicit pause that persists when the carousel leaves and re-enters the viewport.
 - A navigation interaction pauses autoplay while the carousel remains in view. Leaving the viewport clears that interaction pause, so autoplay may resume when the carousel returns.
 - The active thumbnail displays the current autoplay cycle.
@@ -40,7 +40,7 @@ Implemented on the landing page. This document describes current carousel and au
 - The carousel, slides, navigation buttons, and play/pause control expose descriptive labels.
 - Carousel role descriptions, controls, model positions, and thumbnail labels use the active locale.
 - The selected model is announced through a polite live region.
-- Reduced-motion users cannot start autoplay.
+- Reduced-motion users can explicitly start and pause autoplay with the same accessible play/pause control.
 - Focus entering carousel controls prevents an automatic slide change during keyboard interaction.
 
 ## Responsive Layout
@@ -69,4 +69,4 @@ Implemented on the landing page. This document describes current carousel and au
 - Pause explicitly, drag or tap the carousel, and confirm it does not restart.
 - Verify keyboard focus and navigation pause autoplay.
 - Verify leaving and returning clears interaction pause but preserves explicit pause.
-- Verify reduced motion prevents autoplay.
+- With reduced motion enabled, verify autoplay stays off initially, Play starts it, and Pause stops it and persists across viewport exit and re-entry.

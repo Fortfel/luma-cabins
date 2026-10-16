@@ -61,6 +61,7 @@ function ModelsOverviewSection({ locale, className, ...props }: ModelsOverviewSe
   const [activeIndex, setActiveIndex] = useState(0)
   const [isCarouselInView, setIsCarouselInView] = useState(false)
   const [isDocumentVisible, setIsDocumentVisible] = useState(true)
+  const [hasExplicitAutoplayConsent, setHasExplicitAutoplayConsent] = useState(false)
   const [autoplayPauseReason, setAutoplayPauseReason] = useState<AutoplayPauseReason>(null)
   const [autoplayProgressCycle, setAutoplayProgressCycle] = useState(0)
   const isDesktop = useMediaQuery('(min-width: 1024px)', { initializeWithValue: false }) === true
@@ -75,9 +76,13 @@ function ModelsOverviewSection({ locale, className, ...props }: ModelsOverviewSe
     { current: activeIndex + 1, total: cabins.length, model: activeModel.name },
     messageOptions,
   )
-  // Autoplay requires motion consent, sufficient visibility, and no user-requested pause.
+  // Reduced motion requires explicit Play consent; visibility and pause gates still apply.
   const canAutoplay =
-    Boolean(api) && !shouldReduceMotion && isCarouselInView && isDocumentVisible && autoplayPauseReason === null
+    Boolean(api) &&
+    (!shouldReduceMotion || hasExplicitAutoplayConsent) &&
+    isCarouselInView &&
+    isDocumentVisible &&
+    autoplayPauseReason === null
 
   useEffect(() => {
     if (!api) {
@@ -266,10 +271,7 @@ function ModelsOverviewSection({ locale, className, ...props }: ModelsOverviewSe
       return
     }
 
-    if (shouldReduceMotion) {
-      return
-    }
-
+    setHasExplicitAutoplayConsent(true)
     setAutoplayPauseReason(null)
   }
 
@@ -399,7 +401,6 @@ function ModelsOverviewSection({ locale, className, ...props }: ModelsOverviewSe
             playLabel={models_carousel_play({}, messageOptions)}
             pauseLabel={models_carousel_pause({}, messageOptions)}
             onClick={handleToggleAutoplay}
-            aria-disabled={shouldReduceMotion}
             className="absolute right-3 bottom-8 z-20 border-primary-foreground/25 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground focus-visible:ring-primary-foreground/80 sm:right-6"
           />
 
