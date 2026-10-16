@@ -53,7 +53,8 @@ The carousel uses Embla with the shared `AutoScroll` plugin.
 - Mobile uses a `12px` edge inset.
 - Viewports at `768px` and wider use a `92px` inset, covering the `80px` visual fade plus a `12px` buffer.
 - Repositioning uses Embla duration `14` and begins opening as soon as measured geometry reaches its target.
-- A `600ms` fallback prevents a missed Embla `settle` event from blocking the Popover indefinitely.
+- With reduced motion enabled, both keyboard-focus and pre-opening alignment use Embla duration `0` to move immediately. Opening skips the `settle` listener, geometry polling, and animated-centering delay.
+- A `600ms` fallback prevents a missed Embla `settle` event from blocking an animated alignment indefinitely.
 
 `scrollSlideToNearestEdge` uses Embla's private `internalEngine()` because Embla has no public distance-scrolling API. Keep this access isolated and verify it after Embla upgrades.
 
@@ -176,7 +177,7 @@ Client names, initials, ratings, and testimonials are fictional portfolio conten
 - Scroll the page and verify the Popover runs its closing animation.
 - Verify the source card appears only after collapse completes.
 - Close with Escape and backdrop click.
-- Verify behavior with reduced motion enabled.
+- With reduced motion enabled, focus and open cards outside the horizontal safe area at mobile and desktop widths; verify alignment is immediate and opening has no animated-centering delay.
 - Confirm no browser console errors during opening, scrolling, switching, or closing.
 
 ## Decision History

@@ -206,8 +206,12 @@ function TestimonialsSection({ locale, className, ...props }: TestimonialsSectio
       setIsPopoverOpen(true)
     }
 
-    api.on('settle', completeCentering)
-    const didScroll = scrollSlideToNearestEdge(api, pendingIndex, isDesktop)
+    if (!shouldReduceMotion) {
+      api.on('settle', completeCentering)
+    }
+
+    const didScroll = scrollSlideToNearestEdge({ api, index: pendingIndex, isDesktop, shouldReduceMotion })
+    const shouldWaitForCentering = didScroll && !shouldReduceMotion
 
     const checkCentering = () => {
       if (getNearestEdgeScrollDistance(api, pendingIndex, isDesktop) === 0) {
@@ -218,11 +222,11 @@ function TestimonialsSection({ locale, className, ...props }: TestimonialsSectio
       centeringFrame = window.requestAnimationFrame(checkCentering)
     }
 
-    if (didScroll) {
+    if (shouldWaitForCentering) {
       centeringFrame = window.requestAnimationFrame(checkCentering)
     }
 
-    const fallbackTimeout = window.setTimeout(completeCentering, didScroll ? CENTERING_FALLBACK_MS : 0)
+    const fallbackTimeout = window.setTimeout(completeCentering, shouldWaitForCentering ? CENTERING_FALLBACK_MS : 0)
 
     return () => {
       hasCompleted = true
@@ -230,7 +234,7 @@ function TestimonialsSection({ locale, className, ...props }: TestimonialsSectio
       window.clearTimeout(fallbackTimeout)
       api.off('settle', completeCentering)
     }
-  }, [api, isDesktop, pendingIndex])
+  }, [api, isDesktop, pendingIndex, shouldReduceMotion])
 
   const handlePopoverOpenChange: PopoverOpenChangeHandler = (isOpen, eventDetails) => {
     if (!isOpen) {
@@ -286,7 +290,7 @@ function TestimonialsSection({ locale, className, ...props }: TestimonialsSectio
 
         if (Number.isInteger(index)) {
           autoScroll.stop()
-          scrollSlideToNearestEdge(api, index, isDesktop)
+          scrollSlideToNearestEdge({ api, index, isDesktop, shouldReduceMotion })
         }
       }
     }
@@ -824,7 +828,17 @@ function getVerticalViewportPositionAdjustment(trigger: HTMLElement, popupHeight
   return 0
 }
 
-function scrollSlideToNearestEdge(api: NonNullable<CarouselApi>, index: number, isDesktop: boolean) {
+function scrollSlideToNearestEdge({
+  api,
+  index,
+  isDesktop,
+  shouldReduceMotion,
+}: {
+  api: NonNullable<CarouselApi>
+  index: number
+  isDesktop: boolean
+  shouldReduceMotion: boolean
+}) {
   const distance = getNearestEdgeScrollDistance(api, index, isDesktop)
 
   if (Math.abs(distance) <= SCROLL_DISTANCE_TOLERANCE_PX) {
@@ -835,7 +849,7 @@ function scrollSlideToNearestEdge(api: NonNullable<CarouselApi>, index: number, 
   const { animation, scrollBody, scrollTo } = api.internalEngine()
 
   animation.stop()
-  scrollBody.useBaseFriction().useDuration(NEAREST_EDGE_SCROLL_DURATION)
+  scrollBody.useBaseFriction().useDuration(shouldReduceMotion ? 0 : NEAREST_EDGE_SCROLL_DURATION)
   scrollTo.distance(distance, false)
 
   return true
