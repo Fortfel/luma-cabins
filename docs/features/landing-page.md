@@ -94,6 +94,8 @@ The fixed navbar height is exposed as `--nav-height` by `AppLayout`. Sticky sect
 
 The fixed navbar uses stack level `49`, below shared portal-based dialogs and overlays at `50`, so modal content can cover the navigation while it remains above ordinary page content.
 
+`NavbarProvider` recalculates the scroll threshold from the viewport height and configured navbar height on resize. The shared `useIsScrolled` hook reconciles the current scroll position on the next animation frame after each threshold change, even without a scroll event, while retaining one passive scroll subscription.
+
 Every same-page fragment returned by `getNavigationDesktopLinks` must match a rendered section ID. Route links such as `/about` and `/contact` are not part of this fragment contract.
 
 Navigation route and fragment hrefs must be created through `apps/nextjs/src/i18n/routing.ts`. English uses unprefixed public paths, Polish uses translated `/pl` paths, and home fragments include the localized home path so they remain correct from secondary pages. `AppNavbar` receives translated labels and the validated locale from `AppLayout`; it uses selected layout segments rather than the rewritten pathname when building equivalent language-switcher targets.

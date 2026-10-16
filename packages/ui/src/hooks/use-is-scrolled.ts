@@ -18,9 +18,12 @@ const useIsScrolled = (threshold = 0) => {
   useEffect(() => {
     const animationFrameId = window.requestAnimationFrame(updateIsScrolled)
 
+    return () => window.cancelAnimationFrame(animationFrameId)
+  }, [threshold])
+
+  useEffect(() => {
     window.addEventListener('scroll', updateIsScrolled, { passive: true })
     return () => {
-      window.cancelAnimationFrame(animationFrameId)
       window.removeEventListener('scroll', updateIsScrolled)
     }
   }, [])
