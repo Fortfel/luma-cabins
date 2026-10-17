@@ -41,6 +41,7 @@ import { REVEAL_EASING, REVEAL_FADE_DURATION_MS } from './interactive-showcase-3
 
 const BACKGROUND_COLOR = '#f7f5f0'
 const CANVAS_DPR: [number, number] = [1, 1.75]
+const MOBILE_CANVAS_DPR: [number, number] = [1, 1.25]
 const CANVAS_CAMERA_OPTIONS = {
   manual: true,
   near: 0.05,
@@ -55,6 +56,7 @@ const CANVAS_GL_OPTIONS = {
 }
 const MODEL_ROTATION_DAMPING = 7
 const MODEL_ROTATION_DRAG_SENSITIVITY = 0.01
+const TOUCH_DRAG_SENSITIVITY_SCALE = 0.75
 const MODEL_ROTATION_SETTLE_EPSILON = 0.0001
 const KEYBOARD_ROTATION_STEP = MathUtils.degToRad(10)
 const KEYBOARD_ELEVATION_STEP = MathUtils.degToRad(5)
@@ -69,6 +71,9 @@ const CAMERA_MAX_ELEVATION = MathUtils.degToRad(CAMERA_MAX_ELEVATION_DEGREES)
 const CAMERA_MIN_POLAR_ANGLE = Math.PI / 2 - CAMERA_MAX_ELEVATION
 const CAMERA_MAX_POLAR_ANGLE = Math.PI / 2 - CAMERA_MIN_ELEVATION
 const CAMERA_ELEVATION_SETTLE_EPSILON = 0.0001
+const MOUSE_ZOOM_SPEED = 0.7
+const TOUCH_ZOOM_SPEED = 1
+const ZOOM_DISTANCE_EPSILON = 0.000001
 const SHOWCASE_SHADOW_MAP_SIZE = 512
 type LightPosition = readonly [number, number, number]
 
@@ -276,6 +281,7 @@ interface CabinModelProps {
   readonly onError: () => void
   readonly onFinishStatus: (status: FinishPairStatus) => void
   readonly onFrameReady: (frame: SurfaceFrameIdentity) => void
+  readonly onWheelZoomActiveChange: (isActive: boolean) => void
 }
 
 interface SceneErrorBoundaryProps {
@@ -409,7 +415,7 @@ function ControlledShowcaseCanvas({
       void root
         .configure({
           camera: CANVAS_CAMERA_OPTIONS,
-          dpr: CANVAS_DPR,
+          dpr: isDesktop ? CANVAS_DPR : MOBILE_CANVAS_DPR,
           events,
           frameloop: 'demand',
           gl: (defaultProps: WebGLRendererParameters) => new WebGLRenderer({ ...defaultProps, ...CANVAS_GL_OPTIONS }),
@@ -508,6 +514,7 @@ function InteractiveShowcase3DRuntime({
   const [sceneRetryRevision, setSceneRetryRevision] = useState(0)
   const [finishRetryRevision, setFinishRetryRevision] = useState(0)
   const [isDocumentVisible, setIsDocumentVisible] = useState(true)
+  const [isWheelZoomActive, setIsWheelZoomActive] = useState(false)
 
   const activeAssetUrl = activeCabin.threeD.assetUrl
   const activeManifestUrl = activeCabin.threeD.manifestUrl
@@ -848,6 +855,7 @@ function InteractiveShowcase3DRuntime({
                       onError={handleSceneError}
                       onFinishStatus={handleFinishStatus}
                       onFrameReady={handleFrameReady}
+                      onWheelZoomActiveChange={setIsWheelZoomActive}
                       selectedExteriorId={normalizedExteriorId}
                       selectedInteriorId={selectedInterior}
                       surfaceRef={surfaceRef}
@@ -876,7 +884,7 @@ function InteractiveShowcase3DRuntime({
 
         {isDesktop && isSurfaceVisible && !showFinishError ? (
           <span className="text-body-xs absolute start-3 bottom-3 rounded-md bg-card/75 px-2 py-1 text-foreground/80 backdrop-blur-sm">
-            {labels.hintDesktop}
+            {canInteract && isWheelZoomActive ? labels.hintDesktopActive : labels.hintDesktop}
           </span>
         ) : null}
       </div>
@@ -1052,6 +1060,7 @@ function CabinModel({
   onError,
   onFinishStatus,
   onFrameReady,
+  onWheelZoomActiveChange,
   selectedExteriorId,
   selectedInteriorId,
   surfaceRef,
@@ -1068,6 +1077,7 @@ function CabinModel({
   const targetModelRotationYRef = useRef(initialModelRotationY)
   const currentCameraElevationRef = useRef(0)
   const targetCameraElevationRef = useRef(0)
+  const shouldDampInteractionRef = useRef(true)
   const canonicalCameraPositionRef = useRef(new Vector3())
   const canonicalCameraQuaternionRef = useRef(new Quaternion())
   const cameraTargetRef = useRef(new Vector3())
@@ -1136,18 +1146,18 @@ function CabinModel({
     if (!modelRotationGroup) return
 
     const currentRotationY = modelRotationGroup.rotation.y
-    const nextRotationY = MathUtils.damp(
-      currentRotationY,
-      targetModelRotationYRef.current,
-      MODEL_ROTATION_DAMPING,
-      delta,
-    )
-    const nextCameraElevation = MathUtils.damp(
-      currentCameraElevationRef.current,
-      targetCameraElevationRef.current,
-      CAMERA_ELEVATION_DAMPING,
-      delta,
-    )
+    // Touch uses the latest targets on the next frame, including the final move before release.
+    const nextRotationY = shouldDampInteractionRef.current
+      ? MathUtils.damp(currentRotationY, targetModelRotationYRef.current, MODEL_ROTATION_DAMPING, delta)
+      : targetModelRotationYRef.current
+    const nextCameraElevation = shouldDampInteractionRef.current
+      ? MathUtils.damp(
+          currentCameraElevationRef.current,
+          targetCameraElevationRef.current,
+          CAMERA_ELEVATION_DAMPING,
+          delta,
+        )
+      : targetCameraElevationRef.current
     const modelRotationSettled =
       Math.abs(nextRotationY - targetModelRotationYRef.current) <= MODEL_ROTATION_SETTLE_EPSILON
     const cameraElevationSettled =
@@ -1209,6 +1219,7 @@ function CabinModel({
         default:
           return
       }
+      shouldDampInteractionRef.current = true
       event.preventDefault()
       event.stopPropagation()
       invalidate()
@@ -1222,8 +1233,40 @@ function CabinModel({
 
     const canvas = gl.domElement
     const pointerIds = new Set<number>()
+    let isWheelZoomActive = false
     let activePointerId: number | null = null
     let lastPointerPosition: { readonly x: number; readonly y: number } | null = null
+    const setWheelZoomActive = (isActive: boolean) => {
+      if (isWheelZoomActive === isActive) return
+
+      isWheelZoomActive = isActive
+      onWheelZoomActiveChange(isActive)
+    }
+    const handleWheel = (event: WheelEvent) => {
+      const controls = controlsRef.current
+      // Gate native wheel delivery before OrbitControls can prevent page scrolling.
+      // Keep enableZoom unchanged so touch pinch and keyboard dolly still work.
+      if (!isWheelZoomActive || controls?.enabled !== true || !controls.enableZoom || event.deltaY === 0) {
+        event.stopImmediatePropagation()
+        return
+      }
+
+      const distance = controls.getDistance()
+      const isBeyondLimit =
+        event.deltaY < 0
+          ? distance <= controls.minDistance + ZOOM_DISTANCE_EPSILON
+          : distance >= controls.maxDistance - ZOOM_DISTANCE_EPSILON
+
+      // Check the distance BEFORE this wheel step: arriving at a limit stays active.
+      if (isBeyondLimit) {
+        setWheelZoomActive(false)
+        event.stopImmediatePropagation()
+      }
+    }
+    const handlePointerLeave = () => setWheelZoomActive(false)
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setWheelZoomActive(false)
+    }
     const clearActivePointer = (pointerId: number) => {
       pointerIds.delete(pointerId)
       if (activePointerId === pointerId) {
@@ -1231,12 +1274,19 @@ function CabinModel({
         lastPointerPosition = null
       }
 
+      if (pointerIds.size === 0 && controlsRef.current) controlsRef.current.zoomSpeed = MOUSE_ZOOM_SPEED
       if (canvas.hasPointerCapture(pointerId)) canvas.releasePointerCapture(pointerId)
     }
     const handlePointerDown = (event: PointerEvent) => {
       if (event.button !== 0 || event.target !== canvas) return
 
       pointerIds.add(event.pointerId)
+      const isTouchInput = event.pointerType === 'touch'
+      shouldDampInteractionRef.current = !isTouchInput
+      if (controlsRef.current) {
+        // OrbitControls applies pinch scale immediately; exponent 1 tracks finger spacing 1:1.
+        controlsRef.current.zoomSpeed = isTouchInput ? TOUCH_ZOOM_SPEED : MOUSE_ZOOM_SPEED
+      }
       if (!event.isPrimary || pointerIds.size > 1) {
         // OrbitControls owns pinch zoom. Do not also turn the model with the primary finger.
         activePointerId = null
@@ -1244,20 +1294,37 @@ function CabinModel({
         return
       }
 
+      // Pointer-down covers both clicks and drag starts, before capture is acquired.
+      // Do not reactivate on move/up: leaving or Escape must survive the rest of a drag.
+      if (isDesktop && event.pointerType !== 'touch') setWheelZoomActive(true)
       activePointerId = event.pointerId
       lastPointerPosition = { x: event.clientX, y: event.clientY }
       canvas.setPointerCapture(event.pointerId)
     }
     const handlePointerMove = (event: PointerEvent) => {
+      if (isWheelZoomActive && event.pointerType !== 'touch') {
+        // Captured drags suppress pointerleave, so check the physical canvas bounds.
+        const rect = canvas.getBoundingClientRect()
+        if (
+          event.clientX < rect.left ||
+          event.clientX >= rect.right ||
+          event.clientY < rect.top ||
+          event.clientY >= rect.bottom
+        ) {
+          setWheelZoomActive(false)
+        }
+      }
       if (activePointerId !== event.pointerId || lastPointerPosition === null) return
 
       const previousPointerPosition = lastPointerPosition
       lastPointerPosition = { x: event.clientX, y: event.clientY }
+      const sensitivityScale = event.pointerType === 'touch' ? TOUCH_DRAG_SENSITIVITY_SCALE : 1
 
-      targetModelRotationYRef.current += (event.clientX - previousPointerPosition.x) * MODEL_ROTATION_DRAG_SENSITIVITY
+      targetModelRotationYRef.current +=
+        (event.clientX - previousPointerPosition.x) * MODEL_ROTATION_DRAG_SENSITIVITY * sensitivityScale
       targetCameraElevationRef.current = MathUtils.clamp(
         targetCameraElevationRef.current -
-          (event.clientY - previousPointerPosition.y) * CAMERA_ELEVATION_DRAG_SENSITIVITY,
+          (event.clientY - previousPointerPosition.y) * CAMERA_ELEVATION_DRAG_SENSITIVITY * sensitivityScale,
         cameraElevationLimitsRef.current.minimumOffset,
         cameraElevationLimitsRef.current.maximumOffset,
       )
@@ -1275,6 +1342,11 @@ function CabinModel({
     canvas.addEventListener('pointerup', handlePointerEnd)
     canvas.addEventListener('pointercancel', handlePointerEnd)
     canvas.addEventListener('lostpointercapture', handlePointerEnd)
+    if (isDesktop) {
+      canvas.addEventListener('wheel', handleWheel, { capture: true, passive: true })
+      canvas.addEventListener('pointerleave', handlePointerLeave)
+      document.addEventListener('keydown', handleEscape)
+    }
 
     return () => {
       canvas.removeEventListener('pointerdown', handlePointerDown)
@@ -1282,10 +1354,14 @@ function CabinModel({
       canvas.removeEventListener('pointerup', handlePointerEnd)
       canvas.removeEventListener('pointercancel', handlePointerEnd)
       canvas.removeEventListener('lostpointercapture', handlePointerEnd)
+      canvas.removeEventListener('wheel', handleWheel, true)
+      canvas.removeEventListener('pointerleave', handlePointerLeave)
+      document.removeEventListener('keydown', handleEscape)
 
       pointerIds.forEach((pointerId) => clearActivePointer(pointerId))
+      setWheelZoomActive(false)
     }
-  }, [gl, invalidate, isInteractive])
+  }, [controlsRef, gl, invalidate, isDesktop, isInteractive, onWheelZoomActiveChange])
 
   useLayoutEffect(() => {
     cameraRestoreRef.current?.()
@@ -1435,7 +1511,7 @@ function CabinModel({
         minPolarAngle={CAMERA_MIN_POLAR_ANGLE}
         maxPolarAngle={CAMERA_MAX_POLAR_ANGLE}
         rotateSpeed={0.7}
-        zoomSpeed={0.7}
+        zoomSpeed={MOUSE_ZOOM_SPEED}
         target={metadata.camera.target_gltf}
       />
     </>
