@@ -20,6 +20,21 @@ The brand focuses on:
 
 ## Tech Stack
 
+Development and CI use Node.js **24.22.2** (`.nvmrc`) and pnpm **12.18.0**
+(`package.json#packageManager`). Install these versions before working in this repository.
+On Windows PowerShell, use `pnpm.cmd` if execution policy blocks `pnpm.ps1`.
+
+```sh
+pnpm install --frozen-lockfile
+pnpm build
+pnpm lint
+pnpm typecheck
+```
+
+There is no automated test runner configured. For hosted deployments, select Node.js 24.x
+and use the pinned pnpm version; the hosting provider controls the available Node patch version.
+Dependency build permissions live in `pnpm-workspace.yaml#allowBuilds` for pnpm 12.
+
 * [Next.js](https://nextjs.org/)
 * [React](https://react.dev/)
 * [TypeScript](https://www.typescriptlang.org/)
